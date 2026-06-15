@@ -1,0 +1,19 @@
+# TEMPORÁRIO — verificação do diff_summary (será removido após o teste).
+name: _test_summary
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt anthropic
+      - name: Gerar frase de exemplo
+        run: python scripts/diff_summary.py "Câmbio USD/BRL - venda: 5.0827 -> 5.0430"
