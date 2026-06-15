@@ -1,5 +1,5 @@
 """
-fetch.py — Coletor de séries do SGS/BACEN. STUB / NÃO IMPLEMENTADO.
+fetch.py — Coletor de séries do SGS/BACEN.
 
 Objetivo
 --------
@@ -8,29 +8,170 @@ Banco Central (SGS) e gravar/atualizar snapshots JSON dentro de `data/`. Esses
 snapshots, versionados pelo Git, formam o "banco de dados temporal" do
 observatório: cada commit é um ponto no tempo.
 
-Como deve funcionar (a ser implementado pelo Claude Code)
----------------------------------------------------------
-TODO:
-  1. Carregar config.yml (pyyaml) -> base_url + lista de séries (codigo, nome).
-  2. Para cada série, montar a URL substituindo {codigo} em base_url e fazer
-     GET com `requests` (tratar timeout, status != 200 e JSON vazio).
-  3. Normalizar a resposta do SGS (formato [{"data": "dd/mm/aaaa", "valor": "x"}]).
-  4. Persistir em data/ -- sugestao de estrategia (decidir depois):
-       - data/<codigo>.json  -> historico acumulado (append idempotente), e/ou
-       - data/latest.json    -> ultimo valor de todas as series num so arquivo.
-     Garantir idempotencia: nao duplicar pontos ja existentes para a mesma data.
-  5. Escrever os JSON de forma estavel (chaves ordenadas, indent=2, newline final)
-     para que o `git diff` entre snapshots seja limpo e legivel.
-  6. Logar um resumo (quantas series OK, quantas falharam) no stdout.
+Arquivos gerados em data/
+-------------------------
+  - data/<codigo>.json          -> último snapshot bruto normalizado da série.
+  - data/<codigo>_history.json  -> histórico acumulado: lista de
+                                    {data_coleta, valor}. Só recebe um novo
+                                    ponto quando o valor muda em relação ao
+                                    último registrado (o "diff" que vira evento).
+  - data/series.json            -> manifesto (codigo, nome, valor_atual, ...)
+                                    consumido pela página estática docs/index.html.
 
-Notas:
-  - Nao derrubar a execucao inteira se UMA serie falhar; registrar e seguir.
-  - Sem segredos: a API do SGS e publica e nao exige autenticacao.
+Quando um valor muda, uma linha é anexada ao CHANGELOG.md (alerta do MVP):
+  [timestamp] <nome>: <valor_antigo> -> <valor_novo>
+
+A API do SGS é pública e não exige autenticação. Falhas de rede em UMA série
+são registradas e não derrubam a coleta das demais.
 """
 
-# TODO: implementar. Esqueleto apenas.
+from __future__ import annotations
+
+import json
+import sys
+from datetime import datetime, timezone
+from pathlib import Path
+
+import requests
+import yaml
+
+# Caminhos âncora — resolvidos a partir da raiz do repositório (pai de scripts/).
+ROOT = Path(__file__).resolve().parent.parent
+CONFIG_PATH = ROOT / "config.yml"
+DATA_DIR = ROOT / "data"
+CHANGELOG_PATH = ROOT / "CHANGELOG.md"
+
+TIMEOUT = 30  # segundos por requisição
+
+
+def load_config() -> dict:
+    """Carrega config.yml -> base_url + lista de séries."""
+    with CONFIG_PATH.open(encoding="utf-8") as fh:
+        return yaml.safe_load(fh)
+
+
+def write_json(path: Path, payload) -> None:
+    """Escreve JSON estável (UTF-8, indentado, newline final) p/ git diff limpo."""
+    path.write_text(
+        json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+
+
+def read_json(path: Path, default):
+    if not path.exists():
+        return default
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError):
+        return default
+
+
+def fetch_serie(base_url: str, codigo) -> dict:
+    """
+    Consulta a API do SGS para um código e devolve o ponto normalizado:
+    {"data": "dd/mm/aaaa", "valor": "x"}. Levanta exceção em falha de rede/HTTP.
+
+    Formato da resposta do SGS (validado): [{"data": "dd/mm/aaaa", "valor": "x"}]
+    """
+    url = base_url.format(codigo=codigo)
+    resp = requests.get(url, timeout=TIMEOUT)
+    resp.raise_for_status()
+    dados = resp.json()
+    if not isinstance(dados, list) or not dados:
+        raise ValueError("resposta vazia ou em formato inesperado")
+    ponto = dados[-1]  # /ultimos/1 retorna 1 item; -1 é robusto p/ N itens
+    if "data" not in ponto or "valor" not in ponto:
+        raise ValueError(f"ponto sem campos esperados: {ponto!r}")
+    return {"data": ponto["data"], "valor": ponto["valor"]}
+
+
+def append_changelog(linhas: list[str]) -> None:
+    """Anexa linhas de evento ao CHANGELOG.md (cria com cabeçalho se ausente)."""
+    if not linhas:
+        return
+    cabecalho = ""
+    if not CHANGELOG_PATH.exists():
+        cabecalho = "# CHANGELOG — Observatório de Taxas\n\n"
+    with CHANGELOG_PATH.open("a", encoding="utf-8") as fh:
+        if cabecalho:
+            fh.write(cabecalho)
+        for linha in linhas:
+            fh.write(linha + "\n")
+
+
 def main() -> None:
-    raise NotImplementedError("fetch.py ainda nao foi implementado -- ver TODOs acima.")
+    config = load_config()
+    base_url = config["base_url"]
+    series = config.get("series", [])
+
+    DATA_DIR.mkdir(exist_ok=True)
+
+    agora = datetime.now(timezone.utc).astimezone()
+    data_coleta = agora.isoformat(timespec="seconds")
+    timestamp = agora.strftime("%Y-%m-%d %H:%M:%S %z")
+
+    eventos: list[str] = []
+    manifesto: list[dict] = []
+    ok = 0
+    falhas = 0
+
+    for item in series:
+        codigo = item["codigo"]
+        nome = item.get("nome", str(codigo))
+        try:
+            ponto = fetch_serie(base_url, codigo)
+        except Exception as exc:  # rede, HTTP, JSON, formato — não derruba o job
+            falhas += 1
+            print(f"[ERRO] série {codigo} ({nome}): {exc}", file=sys.stderr)
+            continue
+
+        valor_novo = ponto["valor"]
+
+        # Snapshot bruto do último valor.
+        snapshot_path = DATA_DIR / f"{codigo}.json"
+        write_json(snapshot_path, {**ponto, "codigo": codigo, "nome": nome})
+
+        # Histórico acumulado: anexa só se o valor mudou vs último registrado.
+        history_path = DATA_DIR / f"{codigo}_history.json"
+        history = read_json(history_path, [])
+        valor_antigo = history[-1]["valor"] if history else None
+
+        mudou = valor_antigo is None or str(valor_antigo) != str(valor_novo)
+        if mudou:
+            history.append({
+                "data_coleta": data_coleta,
+                "valor": valor_novo,
+                "data_referencia": ponto["data"],
+            })
+            write_json(history_path, history)
+            if valor_antigo is not None:
+                eventos.append(
+                    f"[{timestamp}] {nome}: {valor_antigo} -> {valor_novo}"
+                )
+                print(f"[MUDOU] {nome}: {valor_antigo} -> {valor_novo}")
+            else:
+                print(f"[NOVO] {nome}: {valor_novo} (primeiro registro)")
+        else:
+            print(f"[OK] {nome}: {valor_novo} (sem mudança)")
+
+        manifesto.append({
+            "codigo": codigo,
+            "nome": nome,
+            "valor_atual": valor_novo,
+            "data_referencia": ponto["data"],
+            "ultima_coleta": data_coleta,
+        })
+        ok += 1
+
+    # Manifesto p/ a página estática saber quais séries existem e seus nomes.
+    write_json(DATA_DIR / "series.json", manifesto)
+    append_changelog(eventos)
+
+    print(
+        f"\nResumo: {ok} série(s) OK, {falhas} falha(s), "
+        f"{len(eventos)} mudança(s) registrada(s)."
+    )
 
 
 if __name__ == "__main__":

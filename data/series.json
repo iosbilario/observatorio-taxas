@@ -1,0 +1,23 @@
+[
+  {
+    "codigo": 432,
+    "data_referencia": "17/06/2026",
+    "nome": "Meta Selic (% a.a.)",
+    "ultima_coleta": "2026-06-15T12:55:22-03:00",
+    "valor_atual": "14.50"
+  },
+  {
+    "codigo": 433,
+    "data_referencia": "01/05/2026",
+    "nome": "IPCA - variação mensal (%)",
+    "ultima_coleta": "2026-06-15T12:55:22-03:00",
+    "valor_atual": "0.58"
+  },
+  {
+    "codigo": 1,
+    "data_referencia": "12/06/2026",
+    "nome": "Câmbio USD/BRL - venda",
+    "ultima_coleta": "2026-06-15T12:55:22-03:00",
+    "valor_atual": "5.0827"
+  }
+]
