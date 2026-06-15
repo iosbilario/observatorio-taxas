@@ -23,6 +23,9 @@ concurrency:
 jobs:
   collect:
     runs-on: ubuntu-latest
+    # Exposto ao job inteiro; vazio se o secret não estiver configurado.
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -34,6 +37,12 @@ jobs:
 
       - name: Instalar dependências
         run: pip install -r requirements.txt
+
+      # Dependência opcional do resumo em linguagem natural (diff_summary.py).
+      # Só instala se o secret ANTHROPIC_API_KEY estiver definido.
+      - name: Instalar dependência opcional (resumo NL)
+        if: env.ANTHROPIC_API_KEY != ''
+        run: pip install anthropic
 
       - name: Coletar séries do SGS/BACEN
         run: python scripts/fetch.py

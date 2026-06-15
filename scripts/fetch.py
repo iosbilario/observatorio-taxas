@@ -62,6 +62,32 @@ def write_json(path: Path, payload) -> None:
     )
 
 
+# Estado do resumo em linguagem natural (camada opcional via diff_summary.py):
+#   None  -> ainda não testado    True -> ativo    False -> indisponível
+_summary_enabled = None
+
+
+def try_summary(diff_text: str):
+    """
+    Tenta traduzir um diff em uma frase PT-BR via diff_summary (API da Anthropic).
+    Totalmente opcional: se o pacote/chave faltarem ou a API falhar, devolve None
+    sem nunca interromper a coleta. Só loga o motivo na primeira tentativa.
+    """
+    global _summary_enabled
+    if _summary_enabled is False:
+        return None
+    try:
+        from diff_summary import summarize_change
+        frase = summarize_change(diff_text)
+        _summary_enabled = True
+        return frase
+    except Exception as exc:
+        if _summary_enabled is None:
+            print(f"[info] resumo em linguagem natural desativado: {exc}", file=sys.stderr)
+        _summary_enabled = False
+        return None
+
+
 def read_json(path: Path, default):
     if not path.exists():
         return default
@@ -166,6 +192,10 @@ def main() -> None:
                 eventos.append(
                     f"[{timestamp}] {nome}: {valor_antigo} -> {valor_novo}"
                 )
+                # Camada opcional: frase em PT-BR (só se diff_summary estiver ativo).
+                frase = try_summary(f"{nome}: {valor_antigo} -> {valor_novo}")
+                if frase:
+                    eventos.append(f"    ↳ {frase}")
                 print(f"[MUDOU] {nome}: {valor_antigo} -> {valor_novo}")
             else:
                 print(f"[NOVO] {nome}: {valor_novo} (primeiro registro)")

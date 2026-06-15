@@ -67,7 +67,17 @@ A API do SGS é pública e retorna `[{"data": "dd/mm/aaaa", "valor": "x"}]`; a `
 
 ## Resumo opcional via API da Anthropic (`diff_summary.py`)
 
-Ponto de extensão **desligado por padrão** — o núcleo não depende dele nem exige chave de API. Para ativar:
+Camada **desligada por padrão** — o núcleo não depende dela nem exige chave de API. O `fetch.py` já está plugado: ao detectar uma mudança, tenta gerar uma frase e a anexa ao `CHANGELOG.md` (indentada com `↳`); se o pacote ou a chave faltarem, a coleta segue normalmente sem o resumo.
+
+**Ativar na nuvem (workflow):** cadastre a chave como secret do repositório:
+
+```bash
+gh secret set ANTHROPIC_API_KEY        # cole o valor no prompt (não fica no histórico)
+```
+
+O `monitor.yml` instala o pacote `anthropic` e injeta a chave **apenas quando o secret existe**, então forks sem chave continuam rodando sem custo.
+
+**Testar localmente:**
 
 ```bash
 pip install anthropic                     # dependência mantida fora de requirements.txt
@@ -76,7 +86,7 @@ python scripts/diff_summary.py "Meta Selic (% a.a.): 13.75 -> 14.50"
 # -> "A meta Selic subiu de 13,75% para 14,50% ao ano."
 ```
 
-A função `summarize_change(diff_text)` pode então ser chamada de dentro de `fetch.py` ao detectar uma mudança. Sem o pacote ou a chave, ela falha com mensagem clara, sem afetar a coleta.
+> Nunca comite a chave nem a cole em chats/arquivos versionados — o `.gitignore` já bloqueia `.env`. Se uma chave vazar, revogue-a no console da Anthropic e gere outra.
 
 ## Publicação no GitHub Pages (servindo `/docs`)
 
