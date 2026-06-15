@@ -3,21 +3,24 @@
     "codigo": 432,
     "data_referencia": "17/06/2026",
     "nome": "Meta Selic (% a.a.)",
-    "ultima_mudanca": "2026-06-15T12:55:22-03:00",
+    "pontos": 733,
+    "ultima_mudanca": "30/04/2026",
     "valor_atual": "14.50"
   },
   {
     "codigo": 433,
     "data_referencia": "01/05/2026",
     "nome": "IPCA - variação mensal (%)",
-    "ultima_mudanca": "2026-06-15T12:55:22-03:00",
+    "pontos": 24,
+    "ultima_mudanca": "01/05/2026",
     "valor_atual": "0.58"
   },
   {
     "codigo": 1,
     "data_referencia": "15/06/2026",
     "nome": "Câmbio USD/BRL - venda",
-    "ultima_mudanca": "2026-06-15T16:26:38+00:00",
+    "pontos": 502,
+    "ultima_mudanca": "15/06/2026",
     "valor_atual": "5.0430"
   }
 ]

@@ -5,7 +5,12 @@
 # Referência das séries: https://www3.bcb.gov.br/sgspub/
 
 fonte: "BACEN SGS"
-base_url: "https://api.bcb.gov.br/dados/serie/bcdata.sgs.{codigo}/dados/ultimos/1?formato=json"
+# Base sem sufixo: o código monta /ultimos/N (coleta) ou ?dataInicial=&dataFinal=
+# (backfill histórico). Ver scripts/fetch.py e scripts/backfill.py.
+base_url: "https://api.bcb.gov.br/dados/serie/bcdata.sgs.{codigo}/dados"
+
+# Quantos anos de histórico o backfill puxa (scripts/backfill.py).
+anos_historico: 2
 
 series:
   - codigo: 432
