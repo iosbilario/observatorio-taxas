@@ -9,9 +9,22 @@ O sistema é um ciclo fechado e sem servidor:
 1. **API (SGS/BACEN).** `scripts/fetch.py` lê `config.yml` (lista de séries + `base_url`) e consulta a API de dados abertos do Banco Central para cada código.
 2. **Action (GitHub Actions).** `.github/workflows/monitor.yml` roda por `cron` a cada 6 horas, prepara o Python, instala as dependências e executa o coletor.
 3. **Commit (Git como base temporal).** Os snapshots JSON gerados em `data/` são commitados e enviados (push) automaticamente. Cada commit é um ponto no tempo — versionar é o que cria o histórico, sem precisar de banco de dados.
-4. **Pages (visualização).** A página estática `docs/index.html` lê os JSONs de `../data/` e renderiza a série temporal, podendo ser publicada via GitHub Pages.
+4. **Pages (visualização).** A página estática `docs/index.html` lê os JSONs (espelhados em `docs/data/`) e renderiza a série temporal com Chart.js, publicada via GitHub Pages servindo a pasta `/docs`.
 
-Estado atual: **apenas o esqueleto e as configurações estão prontos**. A lógica de coleta (`fetch.py`), o resumo opcional via API da Anthropic (`diff_summary.py`), o workflow (`monitor.yml`) e o gráfico (`index.html`) estão como _stubs_ com TODOs, para serem implementados depois.
+Estado atual: **implementado e funcional** — coleta (`fetch.py`), workflow (`monitor.yml`) e gráfico (`index.html`) prontos. O resumo em linguagem natural via API da Anthropic (`diff_summary.py`) está pronto como ponto de extensão, porém **desligado por padrão**.
+
+## Arquivos gerados em `data/`
+
+A cada coleta, `fetch.py` produz (chaves ordenadas, UTF-8, indentado — para `git diff` limpo):
+
+| Arquivo | Conteúdo |
+| --- | --- |
+| `data/<codigo>.json` | Último snapshot bruto da série (`data`, `valor`, `codigo`, `nome`). |
+| `data/<codigo>_history.json` | Histórico acumulado: lista de `{data_coleta, valor, data_referencia}`. **Só recebe um novo ponto quando o valor muda** — esse é o "diff" que vira evento. |
+| `data/series.json` | Manifesto (`codigo`, `nome`, `valor_atual`, ...) consumido pela página. |
+| `CHANGELOG.md` | Uma linha por mudança detectada: `[timestamp] <nome>: <antigo> -> <novo>`. |
+
+Os arquivos que a página consome (`series.json` e cada `<codigo>_history.json`) são **espelhados em `docs/data/`**, porque o GitHub Pages servindo `/docs` só publica o que está dentro de `docs/`. O store canônico continua sendo `data/` na raiz.
 
 ## Estrutura
 
@@ -49,3 +62,25 @@ python -m http.server -d docs 8000
 ## Configuração
 
 Edite `config.yml` para ajustar ou ampliar as séries monitoradas. Os códigos do SGS devem ser validados (referência: https://www3.bcb.gov.br/sgspub/).
+
+A API do SGS é pública e retorna `[{"data": "dd/mm/aaaa", "valor": "x"}]`; a `base_url` em `config.yml` usa o sufixo `/dados/ultimos/1` para pegar o valor mais recente.
+
+## Resumo opcional via API da Anthropic (`diff_summary.py`)
+
+Ponto de extensão **desligado por padrão** — o núcleo não depende dele nem exige chave de API. Para ativar:
+
+```bash
+pip install anthropic                     # dependência mantida fora de requirements.txt
+export ANTHROPIC_API_KEY="sk-ant-..."     # Windows: $env:ANTHROPIC_API_KEY="..."
+python scripts/diff_summary.py "Meta Selic (% a.a.): 13.75 -> 14.50"
+# -> "A meta Selic subiu de 13,75% para 14,50% ao ano."
+```
+
+A função `summarize_change(diff_text)` pode então ser chamada de dentro de `fetch.py` ao detectar uma mudança. Sem o pacote ou a chave, ela falha com mensagem clara, sem afetar a coleta.
+
+## Publicação no GitHub Pages (servindo `/docs`)
+
+1. **Settings → Actions → General → Workflow permissions** → selecione **Read and write permissions** e salve. Isso permite ao `monitor.yml` commitar os snapshots de volta usando o `GITHUB_TOKEN` padrão.
+2. **Settings → Pages** → em *Build and deployment*, *Source* = **Deploy from a branch**; escolha a branch (`main`) e a pasta **`/docs`**; salve.
+3. Aguarde o deploy; o site fica em `https://<usuario>.github.io/<repo>/`.
+4. Rode o workflow uma vez (aba **Actions → monitor → Run workflow**) para gerar e commitar os primeiros JSONs em `docs/data/`. A partir daí ele roda sozinho a cada 6 h.
