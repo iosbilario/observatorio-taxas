@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://iosbilario.github.io/observatorio-taxas/sitemap.xml

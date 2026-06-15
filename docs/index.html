@@ -3,86 +3,124 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Observatório de Taxas — BACEN/SGS</title>
+
+  <!-- ===================== SEO ===================== -->
+  <title>Observatório de Taxas — Selic, IPCA e Câmbio (BACEN/SGS) | Série histórica</title>
+  <meta name="description" content="Acompanhe a série histórica da Meta Selic, do IPCA e do câmbio USD/BRL com dados oficiais do Banco Central do Brasil (SGS). Gráficos interativos, atualização automática e acesso gratuito." />
+  <meta name="keywords" content="Selic, meta Selic, IPCA, inflação, câmbio, dólar, USD/BRL, BACEN, Banco Central do Brasil, SGS, taxa de juros, indicadores econômicos, série histórica, dados abertos, Brasil" />
+  <meta name="author" content="LBP Tecnologia" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="canonical" href="https://iosbilario.github.io/observatorio-taxas/" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230f172a'/%3E%3Cpolyline points='4,22 12,14 18,18 28,6' fill='none' stroke='%2338bdf8' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+
+  <!-- ===================== Open Graph / Twitter ===================== -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:site_name" content="Observatório de Taxas" />
+  <meta property="og:title" content="Observatório de Taxas — Selic, IPCA e Câmbio (BACEN/SGS)" />
+  <meta property="og:description" content="Série histórica de Selic, IPCA e câmbio USD/BRL com dados oficiais do Banco Central. Gráficos interativos e gratuitos." />
+  <meta property="og:url" content="https://iosbilario.github.io/observatorio-taxas/" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Observatório de Taxas — Selic, IPCA e Câmbio (BACEN/SGS)" />
+  <meta name="twitter:description" content="Série histórica de Selic, IPCA e câmbio USD/BRL com dados oficiais do Banco Central. Gráficos interativos e gratuitos." />
+
+  <!-- ===================== Dados estruturados (SEO + motores generativos) ===================== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://iosbilario.github.io/observatorio-taxas/#website",
+        "url": "https://iosbilario.github.io/observatorio-taxas/",
+        "name": "Observatório de Taxas",
+        "description": "Série histórica de indicadores do Banco Central do Brasil (Selic, IPCA, câmbio).",
+        "inLanguage": "pt-BR",
+        "publisher": { "@id": "https://iosbilario.github.io/observatorio-taxas/#org" }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://iosbilario.github.io/observatorio-taxas/#org",
+        "name": "LBP Tecnologia",
+        "url": "https://iosbilario.github.io/observatorio-taxas/"
+      },
+      {
+        "@type": "Dataset",
+        "name": "Observatório de Taxas — séries do BACEN/SGS",
+        "description": "Série temporal da Meta Selic, do IPCA (variação mensal) e do câmbio USD/BRL (venda), coletada da API pública do Sistema Gerenciador de Séries Temporais (SGS) do Banco Central do Brasil e atualizada automaticamente.",
+        "url": "https://iosbilario.github.io/observatorio-taxas/",
+        "keywords": ["Selic", "IPCA", "câmbio", "USD/BRL", "BACEN", "SGS", "indicadores econômicos", "Brasil"],
+        "inLanguage": "pt-BR",
+        "isAccessibleForFree": true,
+        "creator": { "@id": "https://iosbilario.github.io/observatorio-taxas/#org" },
+        "publisher": { "@id": "https://iosbilario.github.io/observatorio-taxas/#org" },
+        "spatialCoverage": { "@type": "Place", "name": "Brasil" },
+        "sourceOrganization": { "@type": "GovernmentOrganization", "name": "Banco Central do Brasil", "url": "https://www.bcb.gov.br/" },
+        "distribution": {
+          "@type": "DataDownload",
+          "encodingFormat": "application/json",
+          "contentUrl": "https://iosbilario.github.io/observatorio-taxas/data/series.json"
+        },
+        "variableMeasured": ["Meta Selic (% a.a.)", "IPCA - variação mensal (%)", "Câmbio USD/BRL - venda"]
+      }
+    ]
+  }
+  </script>
+
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
   <style>
     :root {
-      --bg: #0f172a;
-      --card: #1e293b;
-      --line: #334155;
-      --text: #e2e8f0;
-      --muted: #94a3b8;
-      --accent: #38bdf8;
+      --bg: #0f172a; --card: #1e293b; --line: #334155;
+      --text: #e2e8f0; --muted: #94a3b8; --accent: #38bdf8;
+      --up: #f87171; --down: #4ade80;
     }
     * { box-sizing: border-box; }
     body {
-      margin: 0;
+      margin: 0; background: var(--bg); color: var(--text); line-height: 1.5;
       font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.5;
     }
-    header {
-      padding: 1.5rem 1rem;
-      max-width: 960px;
-      margin: 0 auto;
-    }
+    header, .intro, main, .filtros-wrap { max-width: 960px; margin: 0 auto; }
+    header { padding: 1.5rem 1rem .5rem; }
+    header .tagline { font-size: .8rem; color: var(--accent); letter-spacing: .03em; text-transform: uppercase; margin: 0 0 .35rem; }
     h1 { margin: 0 0 .25rem; font-size: 1.6rem; }
-    header p { margin: 0; color: var(--muted); font-size: .95rem; }
-    main {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 0 1rem 3rem;
-      display: grid;
-      gap: 1rem;
-      grid-template-columns: 1fr;
+    header > p { margin: 0; color: var(--muted); font-size: .95rem; }
+    .intro { padding: .75rem 1rem 0; }
+    .intro .panel {
+      background: var(--card); border: 1px solid var(--line);
+      border-left: 3px solid var(--accent); border-radius: 10px;
+      padding: .9rem 1.1rem; color: var(--muted); font-size: .9rem;
     }
-    @media (min-width: 720px) {
-      main { grid-template-columns: 1fr 1fr; }
+    .intro .panel strong { color: var(--text); }
+    .intro .panel a, footer a { color: var(--accent); }
+
+    .filtros-wrap { padding: 1rem 1rem 0; }
+    .filtros { display: flex; flex-wrap: wrap; gap: .4rem; align-items: center; }
+    .filtros .lbl { color: var(--muted); font-size: .8rem; margin-right: .25rem; }
+    .filtros button {
+      background: var(--card); color: var(--text); border: 1px solid var(--line);
+      border-radius: 999px; padding: .35rem .75rem; font-size: .82rem; cursor: pointer;
+      transition: background .15s, border-color .15s;
     }
+    .filtros button:hover { border-color: var(--accent); }
+    .filtros button.active { background: var(--accent); color: #0b1220; border-color: var(--accent); font-weight: 600; }
+
+    main { padding: 1rem 1rem 3rem; display: grid; gap: 1rem; grid-template-columns: 1fr; }
+    @media (min-width: 720px) { main { grid-template-columns: 1fr 1fr; } }
     .card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 1rem 1.1rem 1.2rem;
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: 12px; padding: 1rem 1.1rem 1.2rem;
     }
     .card h2 { margin: 0; font-size: 1rem; font-weight: 600; }
-    .value {
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--accent);
-      margin: .2rem 0 0;
-      line-height: 1.1;
-    }
-    .meta { color: var(--muted); font-size: .8rem; margin: .1rem 0 .8rem; }
-    .chart-wrap { position: relative; height: 180px; }
-    footer {
-      text-align: center;
-      color: var(--muted);
-      font-size: .8rem;
-      padding: 1.5rem 1rem 2.5rem;
-    }
-    footer a { color: var(--accent); }
+    .value { font-size: 2rem; font-weight: 700; color: var(--accent); margin: .2rem 0 0; line-height: 1.1; }
+    .meta { color: var(--muted); font-size: .8rem; margin: .1rem 0 .2rem; }
+    .delta { font-size: .82rem; margin: 0 0 .7rem; font-weight: 600; }
+    .delta.up { color: var(--up); } .delta.down { color: var(--down); } .delta.flat { color: var(--muted); }
+    .chart-wrap { position: relative; height: 190px; }
+    footer { text-align: center; color: var(--muted); font-size: .8rem; padding: 1.5rem 1rem 2.5rem; }
     footer p { margin: .3rem 0; }
     footer .brand { color: var(--text); font-weight: 600; }
     .status { grid-column: 1 / -1; color: var(--muted); }
-    .intro {
-      max-width: 960px;
-      margin: 0 auto 1.25rem;
-      padding: 0 1rem;
-    }
-    .intro .panel {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-left: 3px solid var(--accent);
-      border-radius: 10px;
-      padding: .9rem 1.1rem;
-      color: var(--muted);
-      font-size: .9rem;
-    }
-    .intro .panel strong { color: var(--text); }
-    .intro .panel a { color: var(--accent); }
-    header .tagline { font-size: .8rem; color: var(--accent); letter-spacing: .03em; text-transform: uppercase; margin-bottom: .35rem; }
   </style>
 </head>
 <body>
@@ -90,21 +128,26 @@
     <p class="tagline">Banco Central do Brasil · SGS</p>
     <h1>Observatório de Taxas</h1>
     <p>
-      Indicadores oficiais do Banco Central do Brasil, versionados no Git e
-      atualizados automaticamente a cada 6 horas — sem servidor e a custo zero.
+      Série histórica da Meta Selic, do IPCA e do câmbio USD/BRL — dados oficiais
+      do Banco Central, atualizados automaticamente a cada 6 horas, a custo zero.
     </p>
   </header>
 
   <section class="intro">
     <div class="panel">
-      <strong>Sobre o projeto.</strong> Este observatório coleta periodicamente as séries
-      do <strong>Sistema Gerenciador de Séries Temporais (SGS)</strong> do Banco Central,
-      registra cada valor como um ponto no histórico e mantém um registro auditável das
-      mudanças ao longo do tempo. Os dados vêm da API pública do BACEN; nenhuma informação
-      é inserida manualmente. Fonte oficial:
-      <a href="https://www3.bcb.gov.br/sgspub/" target="_blank" rel="noopener">www3.bcb.gov.br/sgspub</a>.
+      <strong>Sobre o projeto.</strong> Este observatório coleta periodicamente as séries do
+      <strong>Sistema Gerenciador de Séries Temporais (SGS)</strong> do Banco Central do Brasil,
+      registra cada valor como um ponto no histórico e mantém um registro auditável das mudanças
+      ao longo do tempo. Os dados vêm da API pública do BACEN; nada é inserido manualmente. Fonte
+      oficial: <a href="https://www3.bcb.gov.br/sgspub/" target="_blank" rel="noopener">www3.bcb.gov.br/sgspub</a>.
     </div>
   </section>
+
+  <div class="filtros-wrap">
+    <div class="filtros" id="filtros" role="group" aria-label="Filtro de período">
+      <span class="lbl">Período:</span>
+    </div>
+  </div>
 
   <main id="grafico">
     <p class="status" id="status">Carregando séries…</p>
@@ -122,11 +165,12 @@
   </footer>
 
   <script>
-    // Os JSONs são espelhados em docs/data/ (mesma pasta da página). Assim a
-    // página funciona tanto no GitHub Pages servindo /docs quanto localmente.
     const DATA_BASE = "data";
+    const PERIODOS = [7, 15, 30, 60, 90, 120, 365];
+    const PADRAO = 90;                 // filtro inicial (dias)
+    const cards = [];                  // { serie, history, chart, els }
+    let periodoAtivo = PADRAO;
 
-    // Ano corrente no rodapé (sempre atualizado).
     document.getElementById("year").textContent = new Date().getFullYear();
 
     async function getJSON(path) {
@@ -135,54 +179,103 @@
       return resp.json();
     }
 
-    function fmtData(coleta) {
-      // ISO -> dd/mm hh:mm para os rótulos do eixo X.
-      const d = new Date(coleta);
-      if (isNaN(d)) return coleta;
-      return d.toLocaleDateString("pt-BR", { day: "2-digit", month: "2-digit" });
+    function parseData(s) {            // "dd/mm/aaaa" -> Date
+      const [d, m, a] = String(s).split("/").map(Number);
+      return new Date(a, m - 1, d);
+    }
+
+    function filtra(history, dias) {
+      if (!history.length) return [];
+      if (dias === "tudo") return history;
+      const ref = parseData(history[history.length - 1].data);
+      const corte = new Date(ref); corte.setDate(corte.getDate() - dias);
+      return history.filter((p) => parseData(p.data) >= corte);
+    }
+
+    function rotulo(p, spanDias) {
+      const d = parseData(p.data);
+      const opt = spanDias > 180
+        ? { month: "2-digit", year: "2-digit" }
+        : { day: "2-digit", month: "2-digit" };
+      return d.toLocaleDateString("pt-BR", opt);
+    }
+
+    function fmtPct(x) {
+      return (x > 0 ? "+" : "") + x.toLocaleString("pt-BR", { maximumFractionDigits: 2 }) + "%";
+    }
+
+    function atualizaCard(c) {
+      const pts = filtra(c.history, periodoAtivo);
+      const labels = pts.map((p) => rotulo(p, periodoAtivo === "tudo" ? 9999 : periodoAtivo));
+      const valores = pts.map((p) => Number(String(p.valor).replace(",", ".")));
+
+      c.chart.data.labels = labels;
+      c.chart.data.datasets[0].data = valores;
+      c.chart.data.datasets[0].pointRadius = valores.length > 60 ? 0 : (valores.length === 1 ? 4 : 2);
+      c.chart.update();
+
+      // Variação no período (primeiro vs. último ponto da janela).
+      const el = c.els.delta;
+      if (valores.length >= 2) {
+        const ini = valores[0], fim = valores[valores.length - 1];
+        const pct = ini !== 0 ? ((fim - ini) / Math.abs(ini)) * 100 : 0;
+        const cls = pct > 0 ? "up" : pct < 0 ? "down" : "flat";
+        el.className = "delta " + cls;
+        const seta = pct > 0 ? "▲" : pct < 0 ? "▼" : "■";
+        el.textContent = `${seta} ${fmtPct(pct)} no período (${pts.length} pontos)`;
+      } else {
+        el.className = "delta flat";
+        el.textContent = pts.length === 1 ? "1 ponto no período" : "sem dados nesse período";
+      }
     }
 
     function renderCard(serie, history) {
       const main = document.getElementById("grafico");
       const card = document.createElement("section");
       card.className = "card";
-
-      const labels = history.map((p) => fmtData(p.data_coleta));
-      const valores = history.map((p) => Number(p.valor));
-
       card.innerHTML = `
         <h2>${serie.nome}</h2>
-        <p class="value">${serie.valor_atual}</p>
-        <p class="meta">ref. ${serie.data_referencia} · código SGS ${serie.codigo}</p>
+        <p class="value">${serie.valor_atual ?? "—"}</p>
+        <p class="meta">ref. ${serie.data_referencia ?? "—"} · código SGS ${serie.codigo} · ${serie.pontos ?? history.length} pontos no total</p>
+        <p class="delta flat"></p>
         <div class="chart-wrap"><canvas></canvas></div>
       `;
       main.appendChild(card);
 
-      // Com um único ponto o gráfico de linha fica vazio; mostramos um ponto.
-      new Chart(card.querySelector("canvas"), {
+      const chart = new Chart(card.querySelector("canvas"), {
         type: "line",
-        data: {
-          labels,
-          datasets: [{
-            data: valores,
-            borderColor: "#38bdf8",
-            backgroundColor: "rgba(56,189,248,.15)",
-            fill: true,
-            tension: 0.25,
-            pointRadius: history.length === 1 ? 4 : 2,
-            borderWidth: 2,
-          }],
-        },
+        data: { labels: [], datasets: [{
+          data: [], borderColor: "#38bdf8", backgroundColor: "rgba(56,189,248,.15)",
+          fill: true, tension: 0.25, borderWidth: 2, pointRadius: 2,
+        }] },
         options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: { legend: { display: false } },
+          responsive: true, maintainAspectRatio: false, animation: { duration: 250 },
+          plugins: { legend: { display: false }, tooltip: { intersect: false, mode: "index" } },
           scales: {
-            x: { ticks: { color: "#94a3b8", maxTicksLimit: 6 }, grid: { color: "#33415540" } },
+            x: { ticks: { color: "#94a3b8", maxTicksLimit: 7, autoSkip: true }, grid: { color: "#33415540" } },
             y: { ticks: { color: "#94a3b8" }, grid: { color: "#33415540" } },
           },
         },
       });
+
+      cards.push({ serie, history, chart, els: { delta: card.querySelector(".delta") } });
+    }
+
+    function montaFiltros() {
+      const box = document.getElementById("filtros");
+      const opcoes = [...PERIODOS.map((d) => ({ v: d, t: `${d}d` })), { v: "tudo", t: "Tudo" }];
+      for (const o of opcoes) {
+        const b = document.createElement("button");
+        b.textContent = o.t;
+        b.dataset.v = o.v;
+        if (o.v === PADRAO) b.classList.add("active");
+        b.addEventListener("click", () => {
+          periodoAtivo = o.v === "tudo" ? "tudo" : Number(o.v);
+          box.querySelectorAll("button").forEach((x) => x.classList.toggle("active", x === b));
+          cards.forEach(atualizaCard);
+        });
+        box.appendChild(b);
+      }
     }
 
     async function init() {
@@ -190,29 +283,26 @@
       try {
         const series = await getJSON("series.json");
         if (!Array.isArray(series) || series.length === 0) {
-          status.textContent = "Nenhuma série disponível ainda.";
-          return;
+          status.textContent = "Nenhuma série disponível ainda."; return;
         }
         status.remove();
+        montaFiltros();
         for (const serie of series) {
           try {
             const history = await getJSON(`${serie.codigo}_history.json`);
             renderCard(serie, history);
-          } catch (e) {
-            console.error(e);
-          }
+          } catch (e) { console.error(e); }
         }
-        const ultimas = series.map((s) => s.ultima_mudanca).filter(Boolean).sort();
-        const recente = ultimas[ultimas.length - 1];
-        document.getElementById("updated").textContent = recente
-          ? "última mudança de valor: " +
-            new Date(recente).toLocaleString("pt-BR", { dateStyle: "short", timeStyle: "short" })
-          : "";
+        cards.forEach(atualizaCard);
+
+        const ultimas = series.map((s) => s.ultima_mudanca).filter(Boolean);
+        const recente = ultimas.sort((a, b) => parseData(a) - parseData(b)).pop();
+        document.getElementById("updated").textContent =
+          recente ? "última mudança de valor em " + recente : "";
       } catch (e) {
         status.textContent =
           "Não foi possível carregar os dados (" + e.message + "). " +
-          "Sirva via HTTP (ex.: python -m http.server -d docs) — abrir o arquivo " +
-          "direto (file://) bloqueia o fetch.";
+          "Sirva via HTTP (ex.: python -m http.server -d docs) — abrir o arquivo direto (file://) bloqueia o fetch.";
         console.error(e);
       }
     }
