@@ -121,6 +121,17 @@
     footer p { margin: .3rem 0; }
     footer .brand { color: var(--text); font-weight: 600; }
     .status { grid-column: 1 / -1; color: var(--muted); }
+    .grupo-head {
+      grid-column: 1 / -1; margin: .7rem 0 -.2rem; font-size: .95rem;
+      color: var(--text); border-bottom: 1px solid var(--line); padding-bottom: .35rem;
+    }
+    .grupo-head:first-child { margin-top: 0; }
+    .destaques { padding: .5rem 1rem 0; display: flex; gap: .5rem; flex-wrap: wrap; }
+    .destaques .pill {
+      background: var(--card); border: 1px solid var(--line); border-radius: 10px;
+      padding: .45rem .7rem; font-size: .82rem; color: var(--muted);
+    }
+    .destaques .pill b { color: var(--accent); font-size: .95rem; margin-left: .15rem; }
   </style>
 </head>
 <body>
@@ -142,6 +153,8 @@
       oficial: <a href="https://www3.bcb.gov.br/sgspub/" target="_blank" rel="noopener">www3.bcb.gov.br/sgspub</a>.
     </div>
   </section>
+
+  <section class="destaques" id="destaques" aria-label="Destaques"></section>
 
   <div class="filtros-wrap">
     <div class="filtros" id="filtros" role="group" aria-label="Filtro de período">
@@ -168,8 +181,17 @@
     const DATA_BASE = "data";
     const PERIODOS = [7, 15, 30, 60, 90, 120, 365];
     const PADRAO = 90;                 // filtro inicial (dias)
+    const HIGHLIGHTS = [432, 13522, 1, 24369];          // destaques no topo (por código)
+    const HL_LABEL = { 432: "Selic", 13522: "IPCA 12m", 1: "Dólar", 24369: "Desemprego" };
     const cards = [];                  // { serie, history, chart, els }
     let periodoAtivo = PADRAO;
+
+    // Formata número no padrão pt-BR (2 a 4 casas) — corrige câmbio com casas extras.
+    function fmtValor(v) {
+      const n = Number(String(v).replace(",", "."));
+      if (!isFinite(n)) return v ?? "—";
+      return n.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 4 });
+    }
 
     document.getElementById("year").textContent = new Date().getFullYear();
 
@@ -235,7 +257,7 @@
       card.className = "card";
       card.innerHTML = `
         <h2>${serie.nome}</h2>
-        <p class="value">${serie.valor_atual ?? "—"}</p>
+        <p class="value">${fmtValor(serie.valor_atual)}</p>
         <p class="meta">ref. ${serie.data_referencia ?? "—"} · código SGS ${serie.codigo} · ${serie.pontos ?? history.length} pontos no total</p>
         <p class="delta flat"></p>
         <div class="chart-wrap"><canvas></canvas></div>
@@ -278,6 +300,19 @@
       }
     }
 
+    function renderDestaques(series) {
+      const box = document.getElementById("destaques");
+      const porCodigo = Object.fromEntries(series.map((s) => [s.codigo, s]));
+      for (const code of HIGHLIGHTS) {
+        const s = porCodigo[code];
+        if (!s) continue;
+        const pill = document.createElement("span");
+        pill.className = "pill";
+        pill.innerHTML = `${HL_LABEL[code] || s.nome} <b>${fmtValor(s.valor_atual)}</b>`;
+        box.appendChild(pill);
+      }
+    }
+
     async function init() {
       const status = document.getElementById("status");
       try {
@@ -286,8 +321,19 @@
           status.textContent = "Nenhuma série disponível ainda."; return;
         }
         status.remove();
+        renderDestaques(series);
         montaFiltros();
+        const main = document.getElementById("grafico");
+        let grupoAtual = null;
         for (const serie of series) {
+          const grupo = serie.grupo || "Outros";
+          if (grupo !== grupoAtual) {                     // cabeçalho de seção
+            grupoAtual = grupo;
+            const h = document.createElement("h3");
+            h.className = "grupo-head";
+            h.textContent = grupo;
+            main.appendChild(h);
+          }
           try {
             const history = await getJSON(`${serie.codigo}_history.json`);
             renderCard(serie, history);

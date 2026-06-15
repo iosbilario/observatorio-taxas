@@ -116,11 +116,12 @@ def data_ultima_mudanca(history: list[dict]):
     return ultima
 
 
-def manifest_entry(codigo, nome: str, history: list[dict]) -> dict:
+def manifest_entry(codigo, nome: str, history: list[dict], grupo: str = None) -> dict:
     ultimo = history[-1] if history else {}
     return {
         "codigo": codigo,
         "nome": nome,
+        "grupo": grupo or "Outros",
         "valor_atual": ultimo.get("valor"),
         "data_referencia": ultimo.get("data"),
         "ultima_mudanca": data_ultima_mudanca(history),
@@ -254,7 +255,7 @@ def main() -> None:
                 print(f"[MUDOU] {nome}: {antigo} -> {novo} (ref. {nd})")
 
         write_series_files(codigo, nome, merged)
-        manifesto.append(manifest_entry(codigo, nome, merged))
+        manifesto.append(manifest_entry(codigo, nome, merged, item.get("grupo")))
         ok += 1
         if not novas_datas:
             print(f"[OK] {nome}: {merged[-1]['valor']} (sem ponto novo)")

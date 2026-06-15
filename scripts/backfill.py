@@ -49,7 +49,7 @@ def main() -> None:
         existing = F.read_json(F.DATA_DIR / f"{codigo}_history.json", [])
         merged = F.merge_history(existing, pontos)
         F.write_series_files(codigo, nome, merged)
-        manifesto.append(F.manifest_entry(codigo, nome, merged))
+        manifesto.append(F.manifest_entry(codigo, nome, merged, item.get("grupo")))
         ok += 1
         print(f"[OK] {nome}: {len(merged)} pontos "
               f"({merged[0]['data']} … {merged[-1]['data']})")

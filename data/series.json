@@ -2,6 +2,7 @@
   {
     "codigo": 432,
     "data_referencia": "17/06/2026",
+    "grupo": "Juros",
     "nome": "Meta Selic (% a.a.)",
     "pontos": 733,
     "ultima_mudanca": "30/04/2026",
@@ -10,6 +11,7 @@
   {
     "codigo": 1178,
     "data_referencia": "12/06/2026",
+    "grupo": "Juros",
     "nome": "Selic anualizada (% a.a.)",
     "pontos": 501,
     "ultima_mudanca": "30/04/2026",
@@ -18,14 +20,34 @@
   {
     "codigo": 4390,
     "data_referencia": "01/06/2026",
+    "grupo": "Juros",
     "nome": "CDI - acumulado no mês (%)",
     "pontos": 25,
     "ultima_mudanca": "01/06/2026",
     "valor_atual": "0.48"
   },
   {
+    "codigo": 226,
+    "data_referencia": "12/06/2026",
+    "grupo": "Juros",
+    "nome": "TR - Taxa Referencial (%)",
+    "pontos": 728,
+    "ultima_mudanca": "12/06/2026",
+    "valor_atual": "0.1706"
+  },
+  {
+    "codigo": 25,
+    "data_referencia": "12/06/2026",
+    "grupo": "Juros",
+    "nome": "Poupança - rendimento (%)",
+    "pontos": 670,
+    "ultima_mudanca": "12/06/2026",
+    "valor_atual": "0.6715"
+  },
+  {
     "codigo": 433,
     "data_referencia": "01/05/2026",
+    "grupo": "Inflação",
     "nome": "IPCA - variação mensal (%)",
     "pontos": 24,
     "ultima_mudanca": "01/05/2026",
@@ -34,6 +56,7 @@
   {
     "codigo": 13522,
     "data_referencia": "01/05/2026",
+    "grupo": "Inflação",
     "nome": "IPCA - acumulado 12 meses (%)",
     "pontos": 24,
     "ultima_mudanca": "01/05/2026",
@@ -42,6 +65,7 @@
   {
     "codigo": 188,
     "data_referencia": "01/05/2026",
+    "grupo": "Inflação",
     "nome": "INPC - variação mensal (%)",
     "pontos": 24,
     "ultima_mudanca": "01/05/2026",
@@ -50,25 +74,64 @@
   {
     "codigo": 189,
     "data_referencia": "01/05/2026",
+    "grupo": "Inflação",
     "nome": "IGP-M - variação mensal (%)",
     "pontos": 24,
     "ultima_mudanca": "01/05/2026",
     "valor_atual": "0.84"
   },
   {
+    "codigo": 190,
+    "data_referencia": "01/04/2026",
+    "grupo": "Inflação",
+    "nome": "IGP-DI - variação mensal (%)",
+    "pontos": 23,
+    "ultima_mudanca": "01/04/2026",
+    "valor_atual": "2.41"
+  },
+  {
     "codigo": 1,
     "data_referencia": "15/06/2026",
+    "grupo": "Câmbio",
     "nome": "Câmbio USD/BRL - venda",
     "pontos": 502,
     "ultima_mudanca": "15/06/2026",
     "valor_atual": "5.0430"
   },
   {
+    "codigo": 10813,
+    "data_referencia": "15/06/2026",
+    "grupo": "Câmbio",
+    "nome": "Câmbio USD/BRL - compra",
+    "pontos": 502,
+    "ultima_mudanca": "15/06/2026",
+    "valor_atual": "5.0424"
+  },
+  {
     "codigo": 21619,
     "data_referencia": "15/06/2026",
+    "grupo": "Câmbio",
     "nome": "Câmbio EUR/BRL - venda",
     "pontos": 502,
     "ultima_mudanca": "15/06/2026",
     "valor_atual": "5.8494000"
+  },
+  {
+    "codigo": 24363,
+    "data_referencia": "01/03/2026",
+    "grupo": "Atividade & Emprego",
+    "nome": "IBC-Br - índice (proxy do PIB)",
+    "pontos": 22,
+    "ultima_mudanca": "01/03/2026",
+    "valor_atual": "117.61851"
+  },
+  {
+    "codigo": 24369,
+    "data_referencia": "01/04/2026",
+    "grupo": "Atividade & Emprego",
+    "nome": "Taxa de desocupação - PNAD (%)",
+    "pontos": 23,
+    "ultima_mudanca": "01/04/2026",
+    "valor_atual": "5.8"
   }
 ]

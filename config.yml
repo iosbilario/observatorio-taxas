@@ -16,21 +16,49 @@ series:
   # --- Juros ---
   - codigo: 432
     nome: "Meta Selic (% a.a.)"
+    grupo: "Juros"
   - codigo: 1178
     nome: "Selic anualizada (% a.a.)"
+    grupo: "Juros"
   - codigo: 4390
     nome: "CDI - acumulado no mês (%)"
+    grupo: "Juros"
+  - codigo: 226
+    nome: "TR - Taxa Referencial (%)"
+    grupo: "Juros"
+  - codigo: 25
+    nome: "Poupança - rendimento (%)"
+    grupo: "Juros"
   # --- Inflação ---
   - codigo: 433
     nome: "IPCA - variação mensal (%)"
+    grupo: "Inflação"
   - codigo: 13522
     nome: "IPCA - acumulado 12 meses (%)"
+    grupo: "Inflação"
   - codigo: 188
     nome: "INPC - variação mensal (%)"
+    grupo: "Inflação"
   - codigo: 189
     nome: "IGP-M - variação mensal (%)"
+    grupo: "Inflação"
+  - codigo: 190
+    nome: "IGP-DI - variação mensal (%)"
+    grupo: "Inflação"
   # --- Câmbio ---
   - codigo: 1
     nome: "Câmbio USD/BRL - venda"
+    grupo: "Câmbio"
+  - codigo: 10813
+    nome: "Câmbio USD/BRL - compra"
+    grupo: "Câmbio"
   - codigo: 21619
     nome: "Câmbio EUR/BRL - venda"
+    grupo: "Câmbio"
+  # --- Atividade & Emprego ---
+  - codigo: 24363
+    nome: "IBC-Br - índice (proxy do PIB)"
+    grupo: "Atividade & Emprego"
+  - codigo: 24369
+    nome: "Taxa de desocupação - PNAD (%)"
+    grupo: "Atividade & Emprego"
