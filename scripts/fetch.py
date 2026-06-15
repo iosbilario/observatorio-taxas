@@ -163,12 +163,15 @@ def main() -> None:
         # Espelho para o GitHub Pages (sempre, para manter docs/data em sincronia).
         write_json(DOCS_DATA_DIR / f"{codigo}_history.json", history)
 
+        # ultima_mudanca = quando o valor mudou pela última vez (último ponto do
+        # histórico). Estável entre coletas sem mudança -> git diff vazio ->
+        # nenhum commit ruído a cada 6h. NÃO usar o timestamp da coleta atual aqui.
         manifesto.append({
             "codigo": codigo,
             "nome": nome,
             "valor_atual": valor_novo,
             "data_referencia": ponto["data"],
-            "ultima_coleta": data_coleta,
+            "ultima_mudanca": history[-1]["data_coleta"],
         })
         ok += 1
 

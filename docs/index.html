@@ -162,8 +162,12 @@
             console.error(e);
           }
         }
-        document.getElementById("updated").textContent =
-          "última coleta: " + (series[0].ultima_coleta || "—");
+        const ultimas = series.map((s) => s.ultima_mudanca).filter(Boolean).sort();
+        const recente = ultimas[ultimas.length - 1];
+        document.getElementById("updated").textContent = recente
+          ? "última mudança de valor: " +
+            new Date(recente).toLocaleString("pt-BR", { dateStyle: "short", timeStyle: "short" })
+          : "";
       } catch (e) {
         status.textContent =
           "Não foi possível carregar os dados (" + e.message + "). " +
