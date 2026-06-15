@@ -63,31 +63,71 @@
       padding: 1.5rem 1rem 2.5rem;
     }
     footer a { color: var(--accent); }
+    footer p { margin: .3rem 0; }
+    footer .brand { color: var(--text); font-weight: 600; }
     .status { grid-column: 1 / -1; color: var(--muted); }
+    .intro {
+      max-width: 960px;
+      margin: 0 auto 1.25rem;
+      padding: 0 1rem;
+    }
+    .intro .panel {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-left: 3px solid var(--accent);
+      border-radius: 10px;
+      padding: .9rem 1.1rem;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+    .intro .panel strong { color: var(--text); }
+    .intro .panel a { color: var(--accent); }
+    header .tagline { font-size: .8rem; color: var(--accent); letter-spacing: .03em; text-transform: uppercase; margin-bottom: .35rem; }
   </style>
 </head>
 <body>
   <header>
+    <p class="tagline">Banco Central do Brasil · SGS</p>
     <h1>Observatório de Taxas</h1>
     <p>
-      Séries de taxas e indicadores do Banco Central do Brasil (SGS),
-      versionadas no Git ao longo do tempo.
+      Indicadores oficiais do Banco Central do Brasil, versionados no Git e
+      atualizados automaticamente a cada 6 horas — sem servidor e a custo zero.
     </p>
   </header>
+
+  <section class="intro">
+    <div class="panel">
+      <strong>Sobre o projeto.</strong> Este observatório coleta periodicamente as séries
+      do <strong>Sistema Gerenciador de Séries Temporais (SGS)</strong> do Banco Central,
+      registra cada valor como um ponto no histórico e mantém um registro auditável das
+      mudanças ao longo do tempo. Os dados vêm da API pública do BACEN; nenhuma informação
+      é inserida manualmente. Fonte oficial:
+      <a href="https://www3.bcb.gov.br/sgspub/" target="_blank" rel="noopener">www3.bcb.gov.br/sgspub</a>.
+    </div>
+  </section>
 
   <main id="grafico">
     <p class="status" id="status">Carregando séries…</p>
   </main>
 
   <footer>
-    Fonte: <a href="https://www3.bcb.gov.br/sgspub/" target="_blank" rel="noopener">SGS / BACEN</a>
-    · gerado automaticamente · <span id="updated"></span>
+    <p>
+      Fonte dos dados: <a href="https://www3.bcb.gov.br/sgspub/" target="_blank" rel="noopener">SGS / BACEN</a>
+      · atualizado automaticamente a cada 6h · <span id="updated"></span>
+    </p>
+    <p>
+      Desenvolvido por <span class="brand">LBP Tecnologia</span> · <span id="year"></span> ·
+      <a href="https://github.com/iosbilario/observatorio-taxas" target="_blank" rel="noopener">código-fonte no GitHub</a>
+    </p>
   </footer>
 
   <script>
     // Os JSONs são espelhados em docs/data/ (mesma pasta da página). Assim a
     // página funciona tanto no GitHub Pages servindo /docs quanto localmente.
     const DATA_BASE = "data";
+
+    // Ano corrente no rodapé (sempre atualizado).
+    document.getElementById("year").textContent = new Date().getFullYear();
 
     async function getJSON(path) {
       const resp = await fetch(`${DATA_BASE}/${path}`, { cache: "no-store" });
