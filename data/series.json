@@ -8,6 +8,22 @@
     "valor_atual": "14.50"
   },
   {
+    "codigo": 1178,
+    "data_referencia": "12/06/2026",
+    "nome": "Selic anualizada (% a.a.)",
+    "pontos": 501,
+    "ultima_mudanca": "30/04/2026",
+    "valor_atual": "14.40"
+  },
+  {
+    "codigo": 4390,
+    "data_referencia": "01/06/2026",
+    "nome": "CDI - acumulado no mês (%)",
+    "pontos": 25,
+    "ultima_mudanca": "01/06/2026",
+    "valor_atual": "0.48"
+  },
+  {
     "codigo": 433,
     "data_referencia": "01/05/2026",
     "nome": "IPCA - variação mensal (%)",
@@ -16,11 +32,43 @@
     "valor_atual": "0.58"
   },
   {
+    "codigo": 13522,
+    "data_referencia": "01/05/2026",
+    "nome": "IPCA - acumulado 12 meses (%)",
+    "pontos": 24,
+    "ultima_mudanca": "01/05/2026",
+    "valor_atual": "4.72"
+  },
+  {
+    "codigo": 188,
+    "data_referencia": "01/05/2026",
+    "nome": "INPC - variação mensal (%)",
+    "pontos": 24,
+    "ultima_mudanca": "01/05/2026",
+    "valor_atual": "0.65"
+  },
+  {
+    "codigo": 189,
+    "data_referencia": "01/05/2026",
+    "nome": "IGP-M - variação mensal (%)",
+    "pontos": 24,
+    "ultima_mudanca": "01/05/2026",
+    "valor_atual": "0.84"
+  },
+  {
     "codigo": 1,
     "data_referencia": "15/06/2026",
     "nome": "Câmbio USD/BRL - venda",
     "pontos": 502,
     "ultima_mudanca": "15/06/2026",
     "valor_atual": "5.0430"
+  },
+  {
+    "codigo": 21619,
+    "data_referencia": "15/06/2026",
+    "nome": "Câmbio EUR/BRL - venda",
+    "pontos": 502,
+    "ultima_mudanca": "15/06/2026",
+    "valor_atual": "5.8494000"
   }
 ]

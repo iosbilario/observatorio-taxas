@@ -13,9 +13,24 @@ base_url: "https://api.bcb.gov.br/dados/serie/bcdata.sgs.{codigo}/dados"
 anos_historico: 2
 
 series:
+  # --- Juros ---
   - codigo: 432
     nome: "Meta Selic (% a.a.)"
+  - codigo: 1178
+    nome: "Selic anualizada (% a.a.)"
+  - codigo: 4390
+    nome: "CDI - acumulado no mês (%)"
+  # --- Inflação ---
   - codigo: 433
     nome: "IPCA - variação mensal (%)"
+  - codigo: 13522
+    nome: "IPCA - acumulado 12 meses (%)"
+  - codigo: 188
+    nome: "INPC - variação mensal (%)"
+  - codigo: 189
+    nome: "IGP-M - variação mensal (%)"
+  # --- Câmbio ---
   - codigo: 1
     nome: "Câmbio USD/BRL - venda"
+  - codigo: 21619
+    nome: "Câmbio EUR/BRL - venda"
