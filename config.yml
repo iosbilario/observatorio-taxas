@@ -1,0 +1,16 @@
+# config.yml — Séries do SGS/BACEN monitoradas pelo observatório.
+#
+# NOTA: os códigos abaixo devem ser VALIDADOS contra o SGS e podem ser
+# ampliados livremente (basta adicionar novos itens em `series`).
+# Referência das séries: https://www3.bcb.gov.br/sgspub/
+
+fonte: "BACEN SGS"
+base_url: "https://api.bcb.gov.br/dados/serie/bcdata.sgs.{codigo}/dados/ultimos/1?formato=json"
+
+series:
+  - codigo: 432
+    nome: "Meta Selic (% a.a.)"
+  - codigo: 433
+    nome: "IPCA - variação mensal (%)"
+  - codigo: 1
+    nome: "Câmbio USD/BRL - venda"
