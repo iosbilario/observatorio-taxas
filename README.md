@@ -1,5 +1,7 @@
 # observatorio-taxas
 
+> 📊 **Site:** https://iosbilario.github.io/observatorio-taxas/ · **100% gratuito** (sem servidor, sem banco de dados, sem serviços pagos)
+
 Observatório de baixíssima manutenção que **versiona séries de taxas e indicadores do Banco Central do Brasil (SGS) ao longo do tempo**, usando o próprio **Git como banco de dados temporal** e o **GitHub Actions como motor** — tudo a custo zero. A cada execução agendada, um robô consulta a API pública do SGS/BACEN, grava os valores como snapshots JSON em `data/` e commita as mudanças; o histórico de commits passa a ser, então, a linha do tempo de cada indicador, e uma página estática em `docs/` lê esses JSONs para desenhar os gráficos.
 
 ## Arquitetura — o loop API → Action → commit → Pages
@@ -11,7 +13,7 @@ O sistema é um ciclo fechado e sem servidor:
 3. **Commit (Git como base temporal).** Os snapshots JSON gerados em `data/` são commitados e enviados (push) automaticamente. Cada commit é um ponto no tempo — versionar é o que cria o histórico, sem precisar de banco de dados.
 4. **Pages (visualização).** A página estática `docs/index.html` lê os JSONs (espelhados em `docs/data/`) e renderiza a série temporal com Chart.js, publicada via GitHub Pages servindo a pasta `/docs`.
 
-Estado atual: **implementado e funcional** — coleta (`fetch.py`), workflow (`monitor.yml`) e gráfico (`index.html`) prontos. O resumo em linguagem natural via API da Anthropic (`diff_summary.py`) está pronto como ponto de extensão, porém **desligado por padrão**.
+Estado atual: **implementado e em produção.** Coleta (`fetch.py`), workflow agendado (`monitor.yml`) e gráficos (`index.html`) funcionando; o site já está publicado. As mudanças de valor geram uma frase-resumo em PT-BR gerada localmente (grátis). A camada de IA via API da Anthropic (`diff_summary.py`) é um upgrade **opcional e pago**, desligado por padrão.
 
 ## Arquivos gerados em `data/`
 
@@ -22,7 +24,7 @@ A cada coleta, `fetch.py` produz (chaves ordenadas, UTF-8, indentado — para `g
 | `data/<codigo>.json` | Último snapshot bruto da série (`data`, `valor`, `codigo`, `nome`). |
 | `data/<codigo>_history.json` | Histórico acumulado: lista de `{data_coleta, valor, data_referencia}`. **Só recebe um novo ponto quando o valor muda** — esse é o "diff" que vira evento. |
 | `data/series.json` | Manifesto (`codigo`, `nome`, `valor_atual`, ...) consumido pela página. |
-| `CHANGELOG.md` | Uma linha por mudança detectada: `[timestamp] <nome>: <antigo> -> <novo>`. |
+| `CHANGELOG.md` | Uma linha por mudança detectada: `[timestamp] <nome>: <antigo> -> <novo>`, seguida de uma frase-resumo em PT-BR (`↳ ... subiu/caiu de X para Y`). |
 
 Os arquivos que a página consome (`series.json` e cada `<codigo>_history.json`) são **espelhados em `docs/data/`**, porque o GitHub Pages servindo `/docs` só publica o que está dentro de `docs/`. O store canônico continua sendo `data/` na raiz.
 
@@ -30,14 +32,19 @@ Os arquivos que a página consome (`series.json` e cada `<codigo>_history.json`)
 
 ```
 observatorio-taxas/
-├── .github/workflows/monitor.yml   # STUB: workflow agendado (cron 6h) → fetch → commit/push
-├── data/.gitkeep                   # snapshots JSON serão commitados aqui
-├── scripts/fetch.py                # STUB: coletor SGS/BACEN
-├── scripts/diff_summary.py         # STUB opcional: resumo via API da Anthropic
-├── docs/index.html                 # STUB: página/gráfico da série temporal
-├── config.yml                      # séries monitoradas (pronto)
-├── requirements.txt                # requests, pyyaml (pronto)
-├── .gitignore                      # padrão Python (pronto)
+├── .github/workflows/monitor.yml   # workflow agendado (cron 6h) → fetch → commit/push
+├── data/                           # snapshots + histórico (store canônico, versionado)
+│   ├── <codigo>.json               #   último valor bruto de cada série
+│   ├── <codigo>_history.json       #   histórico acumulado (ponto novo só quando muda)
+│   └── series.json                 #   manifesto consumido pela página
+├── scripts/fetch.py                # coletor SGS/BACEN + resumo grátis das mudanças
+├── scripts/diff_summary.py         # upgrade opcional/pago: resumo via API da Anthropic
+├── docs/index.html                 # página/gráficos (Chart.js) — publicada via Pages
+├── docs/data/                      # espelho dos JSONs que a página lê (servido por /docs)
+├── CHANGELOG.md                    # log de mudanças de valor (gerado automaticamente)
+├── config.yml                      # séries monitoradas
+├── requirements.txt                # requests, pyyaml
+├── .gitignore                      # padrão Python
 └── README.md
 ```
 
@@ -51,7 +58,7 @@ source .venv/bin/activate        # Windows: .venv\Scripts\activate
 # 2. dependências
 pip install -r requirements.txt
 
-# 3. coletar (após implementar fetch.py) — grava/atualiza JSONs em data/
+# 3. coletar — grava/atualiza os JSONs em data/ (e o espelho em docs/data/)
 python scripts/fetch.py
 
 # 4. visualizar a página localmente
