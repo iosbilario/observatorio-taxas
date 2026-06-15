@@ -121,6 +121,14 @@ def main() -> None:
     ok = 0
     falhas = 0
 
+    # Manifesto anterior, indexado por código. Em caso de falha de uma série,
+    # preservamos sua última entrada conhecida — assim um soluço de rede não
+    # remove o indicador do series.json (evita commit "flapping" e a série
+    # sumindo da página até a próxima coleta).
+    prev_manifesto = {
+        s["codigo"]: s for s in read_json(DATA_DIR / "series.json", [])
+    }
+
     for item in series:
         codigo = item["codigo"]
         nome = item.get("nome", str(codigo))
@@ -129,6 +137,10 @@ def main() -> None:
         except Exception as exc:  # rede, HTTP, JSON, formato — não derruba o job
             falhas += 1
             print(f"[ERRO] série {codigo} ({nome}): {exc}", file=sys.stderr)
+            # Preserva a entrada anterior no manifesto, se houver, para não
+            # remover o indicador por causa de uma falha transitória.
+            if codigo in prev_manifesto:
+                manifesto.append(prev_manifesto[codigo])
             continue
 
         valor_novo = ponto["valor"]
