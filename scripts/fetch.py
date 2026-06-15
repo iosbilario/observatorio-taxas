@@ -15,8 +15,11 @@ Arquivos gerados em data/
                                     {data_coleta, valor}. Só recebe um novo
                                     ponto quando o valor muda em relação ao
                                     último registrado (o "diff" que vira evento).
-  - data/series.json            -> manifesto (codigo, nome, valor_atual, ...)
-                                    consumido pela página estática docs/index.html.
+  - data/series.json            -> manifesto (codigo, nome, valor_atual, ...).
+
+Para que o GitHub Pages (servindo a pasta /docs) consiga ler os dados, os
+arquivos que a página consome (series.json e cada <codigo>_history.json) são
+espelhados em docs/data/. O store canônico continua sendo data/ na raiz.
 
 Quando um valor muda, uma linha é anexada ao CHANGELOG.md (alerta do MVP):
   [timestamp] <nome>: <valor_antigo> -> <valor_novo>
@@ -39,6 +42,7 @@ import yaml
 ROOT = Path(__file__).resolve().parent.parent
 CONFIG_PATH = ROOT / "config.yml"
 DATA_DIR = ROOT / "data"
+DOCS_DATA_DIR = ROOT / "docs" / "data"  # espelho servido pelo GitHub Pages
 CHANGELOG_PATH = ROOT / "CHANGELOG.md"
 
 TIMEOUT = 30  # segundos por requisição
@@ -106,6 +110,7 @@ def main() -> None:
     series = config.get("series", [])
 
     DATA_DIR.mkdir(exist_ok=True)
+    DOCS_DATA_DIR.mkdir(parents=True, exist_ok=True)
 
     agora = datetime.now(timezone.utc).astimezone()
     data_coleta = agora.isoformat(timespec="seconds")
@@ -155,6 +160,9 @@ def main() -> None:
         else:
             print(f"[OK] {nome}: {valor_novo} (sem mudança)")
 
+        # Espelho para o GitHub Pages (sempre, para manter docs/data em sincronia).
+        write_json(DOCS_DATA_DIR / f"{codigo}_history.json", history)
+
         manifesto.append({
             "codigo": codigo,
             "nome": nome,
@@ -166,6 +174,7 @@ def main() -> None:
 
     # Manifesto p/ a página estática saber quais séries existem e seus nomes.
     write_json(DATA_DIR / "series.json", manifesto)
+    write_json(DOCS_DATA_DIR / "series.json", manifesto)  # espelho p/ Pages
     append_changelog(eventos)
 
     print(

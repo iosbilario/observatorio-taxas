@@ -4,24 +4,176 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Observatório de Taxas — BACEN/SGS</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --line: #334155;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+    header {
+      padding: 1.5rem 1rem;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    h1 { margin: 0 0 .25rem; font-size: 1.6rem; }
+    header p { margin: 0; color: var(--muted); font-size: .95rem; }
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 1rem 3rem;
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 720px) {
+      main { grid-template-columns: 1fr 1fr; }
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 1rem 1.1rem 1.2rem;
+    }
+    .card h2 { margin: 0; font-size: 1rem; font-weight: 600; }
+    .value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin: .2rem 0 0;
+      line-height: 1.1;
+    }
+    .meta { color: var(--muted); font-size: .8rem; margin: .1rem 0 .8rem; }
+    .chart-wrap { position: relative; height: 180px; }
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: .8rem;
+      padding: 1.5rem 1rem 2.5rem;
+    }
+    footer a { color: var(--accent); }
+    .status { grid-column: 1 / -1; color: var(--muted); }
+  </style>
 </head>
 <body>
-  <h1>Observatório de Taxas</h1>
-  <p>
-    Séries de taxas e indicadores do Banco Central do Brasil (SGS),
-    versionadas no Git ao longo do tempo.
-  </p>
+  <header>
+    <h1>Observatório de Taxas</h1>
+    <p>
+      Séries de taxas e indicadores do Banco Central do Brasil (SGS),
+      versionadas no Git ao longo do tempo.
+    </p>
+  </header>
 
-  <!-- ====================================================================
-       TODO (Claude Code): aqui entra o gráfico da série temporal.
-       - Ler os snapshots JSON de ../data/ (fetch para data/<codigo>.json
-         ou data/latest.json, conforme a estratégia definida em fetch.py).
-       - Renderizar uma ou mais séries num gráfico de linha temporal
-         (ex.: Chart.js via CDN, ou SVG puro — manter leve / zero build).
-       - Permitir alternar entre as séries definidas em config.yml.
-       ==================================================================== -->
-  <div id="grafico">
-    <!-- TODO: o gráfico será injetado aqui -->
-  </div>
+  <main id="grafico">
+    <p class="status" id="status">Carregando séries…</p>
+  </main>
+
+  <footer>
+    Fonte: <a href="https://www3.bcb.gov.br/sgspub/" target="_blank" rel="noopener">SGS / BACEN</a>
+    · gerado automaticamente · <span id="updated"></span>
+  </footer>
+
+  <script>
+    // Os JSONs são espelhados em docs/data/ (mesma pasta da página). Assim a
+    // página funciona tanto no GitHub Pages servindo /docs quanto localmente.
+    const DATA_BASE = "data";
+
+    async function getJSON(path) {
+      const resp = await fetch(`${DATA_BASE}/${path}`, { cache: "no-store" });
+      if (!resp.ok) throw new Error(`${path}: HTTP ${resp.status}`);
+      return resp.json();
+    }
+
+    function fmtData(coleta) {
+      // ISO -> dd/mm hh:mm para os rótulos do eixo X.
+      const d = new Date(coleta);
+      if (isNaN(d)) return coleta;
+      return d.toLocaleDateString("pt-BR", { day: "2-digit", month: "2-digit" });
+    }
+
+    function renderCard(serie, history) {
+      const main = document.getElementById("grafico");
+      const card = document.createElement("section");
+      card.className = "card";
+
+      const labels = history.map((p) => fmtData(p.data_coleta));
+      const valores = history.map((p) => Number(p.valor));
+
+      card.innerHTML = `
+        <h2>${serie.nome}</h2>
+        <p class="value">${serie.valor_atual}</p>
+        <p class="meta">ref. ${serie.data_referencia} · código SGS ${serie.codigo}</p>
+        <div class="chart-wrap"><canvas></canvas></div>
+      `;
+      main.appendChild(card);
+
+      // Com um único ponto o gráfico de linha fica vazio; mostramos um ponto.
+      new Chart(card.querySelector("canvas"), {
+        type: "line",
+        data: {
+          labels,
+          datasets: [{
+            data: valores,
+            borderColor: "#38bdf8",
+            backgroundColor: "rgba(56,189,248,.15)",
+            fill: true,
+            tension: 0.25,
+            pointRadius: history.length === 1 ? 4 : 2,
+            borderWidth: 2,
+          }],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { display: false } },
+          scales: {
+            x: { ticks: { color: "#94a3b8", maxTicksLimit: 6 }, grid: { color: "#33415540" } },
+            y: { ticks: { color: "#94a3b8" }, grid: { color: "#33415540" } },
+          },
+        },
+      });
+    }
+
+    async function init() {
+      const status = document.getElementById("status");
+      try {
+        const series = await getJSON("series.json");
+        if (!Array.isArray(series) || series.length === 0) {
+          status.textContent = "Nenhuma série disponível ainda.";
+          return;
+        }
+        status.remove();
+        for (const serie of series) {
+          try {
+            const history = await getJSON(`${serie.codigo}_history.json`);
+            renderCard(serie, history);
+          } catch (e) {
+            console.error(e);
+          }
+        }
+        document.getElementById("updated").textContent =
+          "última coleta: " + (series[0].ultima_coleta || "—");
+      } catch (e) {
+        status.textContent =
+          "Não foi possível carregar os dados (" + e.message + "). " +
+          "Sirva via HTTP (ex.: python -m http.server -d docs) — abrir o arquivo " +
+          "direto (file://) bloqueia o fetch.";
+        console.error(e);
+      }
+    }
+
+    init();
+  </script>
 </body>
 </html>

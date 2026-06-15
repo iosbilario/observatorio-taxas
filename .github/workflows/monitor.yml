@@ -1,54 +1,52 @@
 # ============================================================================
-# monitor.yml — Motor do observatório (GitHub Actions). STUB / NÃO IMPLEMENTADO.
+# monitor.yml — Motor do observatório (GitHub Actions).
+#
+# A cada 6 horas (e sob demanda via workflow_dispatch) consulta o SGS/BACEN,
+# atualiza os snapshots em data/ e o CHANGELOG.md, e commita/empurra de volta
+# SOMENTE quando algo mudou. Custo zero, idempotente.
 # ============================================================================
-#
-# TODO (para o Claude Code montar depois):
-#
-# Este workflow é o "robô" que faz o observatório funcionar com custo zero.
-# Ele deve:
-#
-#   1. AGENDAR via cron a cada 6 horas (ex.: "0 */6 * * *").
-#      Incluir também `workflow_dispatch` para permitir execução manual.
-#
-#   2. CHECKOUT do repositório (actions/checkout@v4) com permissão de escrita
-#      (permissions: contents: write) para poder commitar de volta.
-#
-#   3. SETUP do Python (actions/setup-python@v5, Python 3.12) e instalar
-#      dependências: `pip install -r requirements.txt`.
-#
-#   4. RODAR o coletor: `python scripts/fetch.py`
-#      (lê config.yml, busca cada série no SGS/BACEN e grava/atualiza
-#       snapshots JSON em data/).
-#
-#   5. COMMIT + PUSH automático dos arquivos alterados em data/:
-#      - configurar git user (github-actions[bot])
-#      - `git add data/`
-#      - commitar SOMENTE se houver mudança (checar `git status --porcelain`)
-#      - mensagem tipo "chore(data): snapshot YYYY-MM-DDTHH:MMZ"
-#      - `git push`
-#
-#   6. (OPCIONAL, depois) publicar docs/ no GitHub Pages.
-#
-# Esqueleto mínimo de referência (preencher conforme TODO acima):
-#
-# name: monitor
-# on:
-#   schedule:
-#     - cron: "0 */6 * * *"
-#   workflow_dispatch:
-# permissions:
-#   contents: write
-# jobs:
-#   collect:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@v4
-#       - uses: actions/setup-python@v5
-#         with:
-#           python-version: "3.12"
-#       - run: pip install -r requirements.txt
-#       - run: python scripts/fetch.py
-#       - name: commit snapshots
-#         run: |
-#           # TODO: git config, git add data/, commit-if-changed, git push
-# ============================================================================
+name: monitor
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"   # a cada 6 horas (UTC)
+  workflow_dispatch:         # execução manual pela aba Actions
+
+permissions:
+  contents: write            # necessário para o commit/push automático
+
+# Evita execuções concorrentes pisando umas nas outras.
+concurrency:
+  group: monitor
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instalar dependências
+        run: pip install -r requirements.txt
+
+      - name: Coletar séries do SGS/BACEN
+        run: python scripts/fetch.py
+
+      - name: Commit + push se houver mudança
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/ docs/data/
+          [ -f CHANGELOG.md ] && git add CHANGELOG.md
+          if git diff --cached --quiet; then
+            echo "Nenhuma mudança — nada a commitar."
+          else
+            git commit -m "chore: snapshot $(date -u +%Y-%m-%d)"
+            git push
+          fi
