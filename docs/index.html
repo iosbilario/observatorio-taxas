@@ -129,12 +129,17 @@
       color: var(--text); border-bottom: 1px solid var(--line); padding-bottom: .35rem;
     }
     .grupo-head:first-child { margin-top: 0; }
-    .destaques { padding: .5rem 1rem 0; display: flex; gap: .5rem; flex-wrap: wrap; }
+    .destaques { padding: .5rem 1rem 0; display: flex; gap: .5rem; flex-wrap: wrap; align-items: stretch; }
     .destaques .pill {
       background: var(--card); border: 1px solid var(--line); border-radius: 10px;
-      padding: .45rem .7rem; font-size: .82rem; color: var(--muted);
+      padding: .45rem .7rem; display: flex; flex-direction: column; justify-content: center;
+      min-width: 96px; flex: 1 1 auto;
     }
-    .destaques .pill b { color: var(--accent); font-size: .95rem; margin-left: .15rem; }
+    .destaques .pill .k {
+      font-size: .68rem; color: var(--muted); text-transform: uppercase;
+      letter-spacing: .04em; line-height: 1.2;
+    }
+    .destaques .pill b { color: var(--accent); font-size: 1.05rem; line-height: 1.2; }
   </style>
 </head>
 <body>
@@ -311,7 +316,7 @@
         if (!s) continue;
         const pill = document.createElement("span");
         pill.className = "pill";
-        pill.innerHTML = `${HL_LABEL[code] || s.nome} <b>${fmtValor(s.valor_atual)}</b>`;
+        pill.innerHTML = `<span class="k">${HL_LABEL[code] || s.nome}</span><b>${fmtValor(s.valor_atual)}</b>`;
         box.appendChild(pill);
       }
     }
