@@ -65,26 +65,26 @@ Edite `config.yml` para ajustar ou ampliar as séries monitoradas. Os códigos d
 
 A API do SGS é pública e retorna `[{"data": "dd/mm/aaaa", "valor": "x"}]`; a `base_url` em `config.yml` usa o sufixo `/dados/ultimos/1` para pegar o valor mais recente.
 
-## Resumo opcional via API da Anthropic (`diff_summary.py`)
+## Resumo das mudanças no CHANGELOG (grátis, padrão)
 
-Camada **desligada por padrão** — o núcleo não depende dela nem exige chave de API. O `fetch.py` já está plugado: ao detectar uma mudança, tenta gerar uma frase e a anexa ao `CHANGELOG.md` (indentada com `↳`); se o pacote ou a chave faltarem, a coleta segue normalmente sem o resumo.
+Ao detectar uma mudança, o `fetch.py` anexa ao `CHANGELOG.md` uma frase em PT-BR (indentada com `↳`) gerada **localmente, em Python puro — sem API, sem chave, sem custo**. É o comportamento padrão e mantém o projeto **100% NoCost**:
 
-**Ativar na nuvem (workflow):** cadastre a chave como secret do repositório:
-
-```bash
-gh secret set ANTHROPIC_API_KEY        # cole o valor no prompt (não fica no histórico)
+```
+[2026-06-15 ...] Câmbio USD/BRL - venda: 5.0827 -> 5.0430
+    ↳ Câmbio USD/BRL - venda: caiu de 5,0827 para 5,043.
 ```
 
-O `monitor.yml` instala o pacote `anthropic` e injeta a chave **apenas quando o secret existe**, então forks sem chave continuam rodando sem custo.
+### Upgrade OPCIONAL e PAGO via API da Anthropic (`diff_summary.py`)
 
-**Testar localmente:**
+Quem quiser frases mais "naturais" pode, **por conta própria**, ligar a camada de IA — mas ela **custa por uso** (a API da Anthropic exige conta com créditos) e por isso vem **desligada**. O `fetch.py` só a tenta se a variável `ANTHROPIC_API_KEY` estiver definida; sem ela, usa o resumo grátis acima, em silêncio.
 
 ```bash
-pip install anthropic                     # dependência mantida fora de requirements.txt
+pip install anthropic
 export ANTHROPIC_API_KEY="sk-ant-..."     # Windows: $env:ANTHROPIC_API_KEY="..."
 python scripts/diff_summary.py "Meta Selic (% a.a.): 13.75 -> 14.50"
-# -> "A meta Selic subiu de 13,75% para 14,50% ao ano."
 ```
+
+No workflow, basta cadastrar o secret `ANTHROPIC_API_KEY` (`gh secret set ANTHROPIC_API_KEY` ou em *Settings → Secrets*); o `monitor.yml` instala `anthropic` e injeta a chave **só quando o secret existe**. Sem secret, nada de IA e nenhum custo.
 
 > Nunca comite a chave nem a cole em chats/arquivos versionados — o `.gitignore` já bloqueia `.env`. Se uma chave vazar, revogue-a no console da Anthropic e gere outra.
 

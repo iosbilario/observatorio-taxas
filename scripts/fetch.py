@@ -31,6 +31,7 @@ são registradas e não derrubam a coleta das demais.
 from __future__ import annotations
 
 import json
+import os
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -62,19 +63,53 @@ def write_json(path: Path, payload) -> None:
     )
 
 
-# Estado do resumo em linguagem natural (camada opcional via diff_summary.py):
-#   None  -> ainda não testado    True -> ativo    False -> indisponível
+def _fmt_num(valor) -> str:
+    """Formata um número no padrão PT-BR (vírgula decimal), sem zeros à toa."""
+    try:
+        x = float(str(valor).replace(",", "."))
+    except (TypeError, ValueError):
+        return str(valor)
+    s = f"{x:.4f}".rstrip("0").rstrip(".")
+    return s.replace(".", ",")
+
+
+def frase_mudanca(nome: str, valor_antigo, valor_novo) -> str:
+    """
+    Resumo em PT-BR 100% GRÁTIS e local (sem API, sem chave, sem custo).
+    Compara os números e descreve a direção. É o padrão do observatório.
+    Ex.: "Meta Selic (% a.a.): subiu de 13,75 para 14,50."
+    """
+    try:
+        a = float(str(valor_antigo).replace(",", "."))
+        b = float(str(valor_novo).replace(",", "."))
+    except (TypeError, ValueError):
+        return f"{nome}: {valor_antigo} -> {valor_novo}"
+    if b > a:
+        return f"{nome}: subiu de {_fmt_num(a)} para {_fmt_num(b)}."
+    if b < a:
+        return f"{nome}: caiu de {_fmt_num(a)} para {_fmt_num(b)}."
+    return f"{nome}: manteve-se em {_fmt_num(b)}."
+
+
+# Estado da camada de IA OPCIONAL E PAGA (diff_summary.py / API da Anthropic):
+#   None -> não testado   True -> ativa   False -> indisponível/desligada.
+# Por padrão fica DESLIGADA: só é tentada se ANTHROPIC_API_KEY estiver definida.
+# Sem ela, usamos frase_mudanca() (grátis) — o projeto permanece NoCost.
 _summary_enabled = None
 
 
 def try_summary(diff_text: str):
     """
-    Tenta traduzir um diff em uma frase PT-BR via diff_summary (API da Anthropic).
-    Totalmente opcional: se o pacote/chave faltarem ou a API falhar, devolve None
-    sem nunca interromper a coleta. Só loga o motivo na primeira tentativa.
+    Upgrade OPCIONAL: frase via API da Anthropic (paga). Só tenta se houver
+    ANTHROPIC_API_KEY no ambiente; caso contrário devolve None em silêncio para
+    cair no resumo grátis. Qualquer falha (chave, pacote, saldo, rede) é
+    capturada e nunca interrompe a coleta.
     """
     global _summary_enabled
     if _summary_enabled is False:
+        return None
+    if not os.environ.get("ANTHROPIC_API_KEY"):
+        _summary_enabled = False  # camada paga não configurada -> silencioso
         return None
     try:
         from diff_summary import summarize_change
@@ -83,7 +118,8 @@ def try_summary(diff_text: str):
         return frase
     except Exception as exc:
         if _summary_enabled is None:
-            print(f"[info] resumo em linguagem natural desativado: {exc}", file=sys.stderr)
+            print(f"[info] resumo via IA indisponível ({exc}); usando resumo grátis.",
+                  file=sys.stderr)
         _summary_enabled = False
         return None
 
@@ -192,10 +228,11 @@ def main() -> None:
                 eventos.append(
                     f"[{timestamp}] {nome}: {valor_antigo} -> {valor_novo}"
                 )
-                # Camada opcional: frase em PT-BR (só se diff_summary estiver ativo).
-                frase = try_summary(f"{nome}: {valor_antigo} -> {valor_novo}")
-                if frase:
-                    eventos.append(f"    ↳ {frase}")
+                # Frase em PT-BR: grátis (local) por padrão; usa IA só se houver
+                # ANTHROPIC_API_KEY configurada. Sempre presente, sem custo.
+                frase = (try_summary(f"{nome}: {valor_antigo} -> {valor_novo}")
+                         or frase_mudanca(nome, valor_antigo, valor_novo))
+                eventos.append(f"    ↳ {frase}")
                 print(f"[MUDOU] {nome}: {valor_antigo} -> {valor_novo}")
             else:
                 print(f"[NOVO] {nome}: {valor_novo} (primeiro registro)")
