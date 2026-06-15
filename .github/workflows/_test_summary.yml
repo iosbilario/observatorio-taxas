@@ -16,4 +16,5 @@ jobs:
           python-version: "3.12"
       - run: pip install -r requirements.txt anthropic
       - name: Gerar frase de exemplo
-        run: python scripts/diff_summary.py "Câmbio USD/BRL - venda: 5.0827 -> 5.0430"
+        run: |
+          python scripts/diff_summary.py "Câmbio USD/BRL - venda: 5.0827 -> 5.0430"
