@@ -21,9 +21,9 @@ A cada coleta, `fetch.py` produz (chaves ordenadas, UTF-8, indentado — para `g
 
 | Arquivo | Conteúdo |
 | --- | --- |
-| `data/<codigo>.json` | Último snapshot bruto da série (`data`, `valor`, `codigo`, `nome`). |
-| `data/<codigo>_history.json` | Histórico acumulado: lista de `{data_coleta, valor, data_referencia}`. **Só recebe um novo ponto quando o valor muda** — esse é o "diff" que vira evento. |
-| `data/series.json` | Manifesto (`codigo`, `nome`, `valor_atual`, ...) consumido pela página. |
+| `data/<codigo>.json` | Último ponto bruto da série (`data`, `valor`, `codigo`, `nome`). |
+| `data/<codigo>_history.json` | **Série temporal** acumulada: lista de `{data, valor}` por data de referência do BACEN, ordenada. Fundida por data (sem duplicar) a cada coleta. |
+| `data/series.json` | Manifesto (`codigo`, `nome`, `valor_atual`, `data_referencia`, `ultima_mudanca`, `pontos`) consumido pela página. |
 | `CHANGELOG.md` | Uma linha por mudança detectada: `[timestamp] <nome>: <antigo> -> <novo>`, seguida de uma frase-resumo em PT-BR (`↳ ... subiu/caiu de X para Y`). |
 
 Os arquivos que a página consome (`series.json` e cada `<codigo>_history.json`) são **espelhados em `docs/data/`**, porque o GitHub Pages servindo `/docs` só publica o que está dentro de `docs/`. O store canônico continua sendo `data/` na raiz.
@@ -35,12 +35,15 @@ observatorio-taxas/
 ├── .github/workflows/monitor.yml   # workflow agendado (cron 6h) → fetch → commit/push
 ├── data/                           # snapshots + histórico (store canônico, versionado)
 │   ├── <codigo>.json               #   último valor bruto de cada série
-│   ├── <codigo>_history.json       #   histórico acumulado (ponto novo só quando muda)
+│   ├── <codigo>_history.json       #   série temporal [{data, valor}] por data de referência
 │   └── series.json                 #   manifesto consumido pela página
 ├── scripts/fetch.py                # coletor SGS/BACEN + resumo grátis das mudanças
+├── scripts/backfill.py             # carga inicial do histórico (N anos; padrão 2)
 ├── scripts/diff_summary.py         # upgrade opcional/pago: resumo via API da Anthropic
-├── docs/index.html                 # página/gráficos (Chart.js) — publicada via Pages
+├── docs/index.html                 # página/gráficos interativos (Chart.js) — via Pages
 ├── docs/data/                      # espelho dos JSONs que a página lê (servido por /docs)
+├── docs/robots.txt, sitemap.xml    # SEO / indexação
+├── docs/.nojekyll                  # desativa o Jekyll no GitHub Pages
 ├── CHANGELOG.md                    # log de mudanças de valor (gerado automaticamente)
 ├── config.yml                      # séries monitoradas
 ├── requirements.txt                # requests, pyyaml
@@ -58,10 +61,13 @@ source .venv/bin/activate        # Windows: .venv\Scripts\activate
 # 2. dependências
 pip install -r requirements.txt
 
-# 3. coletar — grava/atualiza os JSONs em data/ (e o espelho em docs/data/)
+# 3. (uma vez) carga inicial do histórico — puxa 2 anos de cada série
+python scripts/backfill.py            # ou: python scripts/backfill.py 5  (5 anos)
+
+# 4. coletar — funde os pontos novos nos JSONs de data/ (e espelho em docs/data/)
 python scripts/fetch.py
 
-# 4. visualizar a página localmente
+# 5. visualizar a página localmente
 python -m http.server -d docs 8000
 # abra http://localhost:8000
 ```
@@ -70,7 +76,17 @@ python -m http.server -d docs 8000
 
 Edite `config.yml` para ajustar ou ampliar as séries monitoradas. Os códigos do SGS devem ser validados (referência: https://www3.bcb.gov.br/sgspub/).
 
-A API do SGS é pública e retorna `[{"data": "dd/mm/aaaa", "valor": "x"}]`; a `base_url` em `config.yml` usa o sufixo `/dados/ultimos/1` para pegar o valor mais recente.
+A API do SGS é pública e retorna `[{"data": "dd/mm/aaaa", "valor": "x"}]`. A `base_url` em `config.yml` é a base sem sufixo; o código monta `/dados/ultimos/N` (coleta) ou `?dataInicial=&dataFinal=` (backfill). Ajuste `anos_historico` para mudar a janela do `backfill.py`.
+
+## Página (gráficos interativos)
+
+`docs/index.html` desenha uma série por indicador com **Chart.js** e oferece filtros de período (**7, 15, 30, 60, 90, 120, 365 dias** e *Tudo*), além da **variação percentual no período** selecionado. Layout escuro, responsivo e sem etapa de build.
+
+## SEO / indexação
+
+A página inclui `title`/`description`/`keywords`, `canonical`, Open Graph, Twitter Card, favicon embutido e **dados estruturados JSON-LD** (`WebSite` + `Organization` + `Dataset`, ótimos para busca tradicional e para motores generativos). Há `docs/robots.txt`, `docs/sitemap.xml` e `docs/.nojekyll`.
+
+Para acelerar a indexação: cadastre o site no **[Google Search Console](https://search.google.com/search-console)** (e no **Bing Webmaster Tools**), confirme a propriedade e envie a sitemap `https://iosbilario.github.io/observatorio-taxas/sitemap.xml`.
 
 ## Resumo das mudanças no CHANGELOG (grátis, padrão)
 
