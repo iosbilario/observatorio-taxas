@@ -10,10 +10,10 @@
   },
   {
     "codigo": 1178,
-    "data_referencia": "12/06/2026",
+    "data_referencia": "15/06/2026",
     "grupo": "Juros",
     "nome": "Selic anualizada (% a.a.)",
-    "pontos": 501,
+    "pontos": 502,
     "ultima_mudanca": "30/04/2026",
     "valor_atual": "14.40"
   },
@@ -24,7 +24,7 @@
     "nome": "CDI - acumulado no mês (%)",
     "pontos": 25,
     "ultima_mudanca": "01/06/2026",
-    "valor_atual": "0.48"
+    "valor_atual": "0.54"
   },
   {
     "codigo": 226,
