@@ -199,10 +199,17 @@
     const cards = [];                  // { serie, history, chart, els }
     let periodoAtivo = PADRAO;
 
+    // Escapa caracteres HTML — defesa contra XSS ao injetar dados em innerHTML.
+    function esc(s) {
+      return String(s ?? "—").replace(/[&<>"']/g, (c) =>
+        ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+    }
+
     // Formata número no padrão pt-BR (2 a 4 casas) — corrige câmbio com casas extras.
+    // Valor não-numérico é escapado (nunca devolvido cru) para não virar vetor de XSS.
     function fmtValor(v) {
       const n = Number(String(v).replace(",", "."));
-      if (!isFinite(n)) return v ?? "—";
+      if (!isFinite(n)) return esc(v ?? "—");
       return n.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 4 });
     }
 
@@ -269,9 +276,9 @@
       const card = document.createElement("section");
       card.className = "card";
       card.innerHTML = `
-        <h2>${serie.nome}</h2>
+        <h2>${esc(serie.nome)}</h2>
         <p class="value">${fmtValor(serie.valor_atual)}</p>
-        <p class="meta">ref. ${serie.data_referencia ?? "—"} · código SGS ${serie.codigo} · ${serie.pontos ?? history.length} pontos no total</p>
+        <p class="meta">ref. ${esc(serie.data_referencia)} · código SGS ${esc(serie.codigo)} · ${esc(serie.pontos ?? history.length)} pontos no total</p>
         <p class="delta flat"></p>
         <div class="chart-wrap"><canvas></canvas></div>
       `;
@@ -321,7 +328,7 @@
         if (!s) continue;
         const pill = document.createElement("span");
         pill.className = "pill";
-        pill.innerHTML = `<span class="k">${HL_LABEL[code] || s.nome}</span><b>${fmtValor(s.valor_atual)}</b>`;
+        pill.innerHTML = `<span class="k">${esc(HL_LABEL[code] || s.nome)}</span><b>${fmtValor(s.valor_atual)}</b>`;
         box.appendChild(pill);
       }
     }
