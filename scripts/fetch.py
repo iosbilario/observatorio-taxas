@@ -25,7 +25,7 @@ from __future__ import annotations
 import json
 import os
 import sys
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 import requests
@@ -39,6 +39,9 @@ CHANGELOG_PATH = ROOT / "CHANGELOG.md"
 
 TIMEOUT = 30   # segundos por requisição
 ULTIMOS = 8    # quantos últimos pontos buscar por execução (cobre dias perdidos)
+
+# Brasil não adota horário de verão desde 2019 -> offset fixo, sem depender de tzdata.
+BRT = timezone(timedelta(hours=-3))
 
 
 # --------------------------------------------------------------------------- #
@@ -145,6 +148,22 @@ def write_manifest(manifesto: list[dict]) -> None:
     write_json(DOCS_DATA_DIR / "series.json", manifesto)
 
 
+def write_meta() -> None:
+    """Registra o instante da coleta (horário de Brasília) para o rodapé do site.
+
+    Gravado SOMENTE quando houve mudança de dados (ver main), de modo a não
+    quebrar a idempotência do job — sem mudança, nada é commitado.
+    """
+    agora = datetime.now(timezone.utc).astimezone(BRT)
+    meta = {
+        "gerado_em": agora.isoformat(timespec="seconds"),
+        "gerado_em_fmt": agora.strftime("%d/%m/%Y às %H:%M"),
+        "timezone": "America/Sao_Paulo (UTC-3)",
+    }
+    write_json(DATA_DIR / "meta.json", meta)
+    write_json(DOCS_DATA_DIR / "meta.json", meta)
+
+
 # --------------------------------------------------------------------------- #
 # Resumo em PT-BR: grátis (local) por padrão; IA (paga) só se ANTHROPIC_API_KEY.
 # --------------------------------------------------------------------------- #
@@ -218,6 +237,7 @@ def main() -> None:
     eventos: list[str] = []
     manifesto: list[dict] = []
     ok = falhas = 0
+    houve_mudanca = False   # algum arquivo de série mudou? (controla o meta.json)
 
     # Manifesto anterior — preserva entrada em caso de falha transitória da série.
     prev_manifesto = {s["codigo"]: s for s in read_json(DATA_DIR / "series.json", [])}
@@ -238,6 +258,8 @@ def main() -> None:
         existing = read_json(history_path, [])
         datas_antigas = {p["data"] for p in existing}
         merged = merge_history(existing, novos)
+        if merged != existing:          # ponto novo ou revisão -> haverá commit
+            houve_mudanca = True
         pos = {p["data"]: i for i, p in enumerate(merged)}
 
         # Eventos: pontos novos cujo valor difere do ponto anterior na série.
@@ -263,6 +285,8 @@ def main() -> None:
             print(f"[OK] {nome}: {len(novas_datas)} ponto(s) novo(s), sem mudança de valor")
 
     write_manifest(manifesto)
+    if houve_mudanca:
+        write_meta()
     append_changelog(eventos)
     print(f"\nResumo: {ok} série(s) OK, {falhas} falha(s), "
           f"{len([e for e in eventos if not e.startswith('    ')])} mudança(s).")

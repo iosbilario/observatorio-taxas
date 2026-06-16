@@ -562,9 +562,19 @@
       const labels = pts.map((p) => rotulo(p, periodoAtivo === "tudo" ? 9999 : periodoAtivo));
       const valores = pts.map((p) => num(p.valor));
 
+      // Destaca SEMPRE o ponto de dados mais recente (último da janela).
+      const n = valores.length, last = n - 1;
+      const baseR = n > 60 ? 0 : (n === 1 ? 4 : 2);
+      const lastR = Math.max(baseR + 3, 5);
+      const ds = c.chart.data.datasets[0];
+      ds.data = valores;
+      ds.pointRadius = valores.map((_, i) => (i === last ? lastR : baseR));
+      ds.pointBackgroundColor = valores.map((_, i) => (i === last ? "#eaf7ff" : "#38bdf8"));
+      ds.pointBorderColor = valores.map((_, i) => (i === last ? "#38bdf8" : "transparent"));
+      ds.pointBorderWidth = valores.map((_, i) => (i === last ? 2 : 0));
+      ds.pointHoverRadius = valores.map((_, i) => (i === last ? lastR + 1 : 5));
+
       c.chart.data.labels = labels;
-      c.chart.data.datasets[0].data = valores;
-      c.chart.data.datasets[0].pointRadius = valores.length > 60 ? 0 : (valores.length === 1 ? 4 : 2);
       c.chart.update();
 
       // Variação no período (primeiro vs. último ponto da janela).
@@ -696,10 +706,15 @@
         cards.forEach(atualizaCard);
         atualizaTendenciaKPIs();
 
+        // Horário da última coleta (data/meta.json) + data da última mudança de valor.
+        let metaFmt = null;
+        try { metaFmt = (await getJSON("meta.json")).gerado_em_fmt || null; } catch (_) { /* opcional */ }
         const ultimas = series.map((s) => s.ultima_mudanca).filter(Boolean);
         const recente = ultimas.sort((a, b) => parseData(a) - parseData(b)).pop();
-        document.getElementById("updated").textContent =
-          recente ? "última mudança de valor em " + recente : "";
+        const partes = [];
+        if (metaFmt) partes.push("atualizado em " + metaFmt);
+        if (recente) partes.push("última mudança de valor em " + recente);
+        document.getElementById("updated").textContent = partes.join(" · ");
       } catch (e) {
         const main = document.getElementById("grafico");
         main.innerHTML = `<p class="status">Não foi possível carregar os dados (${esc(e.message)}). ` +
