@@ -24,9 +24,10 @@ A cada coleta, `fetch.py` produz (chaves ordenadas, UTF-8, indentado — para `g
 | `data/<codigo>.json` | Último ponto bruto da série (`data`, `valor`, `codigo`, `nome`). |
 | `data/<codigo>_history.json` | **Série temporal** acumulada: lista de `{data, valor}` por data de referência do BACEN, ordenada. Fundida por data (sem duplicar) a cada coleta. |
 | `data/series.json` | Manifesto (`codigo`, `nome`, `valor_atual`, `data_referencia`, `ultima_mudanca`, `pontos`) consumido pela página. |
+| `data/meta.json` | Instante da última coleta com mudança (`gerado_em_fmt`, ex.: `15/06/2026 às 15:06`), em **horário de Brasília** (UTC-3). Exibido no rodapé do site. Gravado **só quando há mudança de dados**, para preservar a idempotência do job. |
 | `CHANGELOG.md` | Uma linha por mudança detectada: `[timestamp] <nome>: <antigo> -> <novo>`, seguida de uma frase-resumo em PT-BR (`↳ ... subiu/caiu de X para Y`). |
 
-Os arquivos que a página consome (`series.json` e cada `<codigo>_history.json`) são **espelhados em `docs/data/`**, porque o GitHub Pages servindo `/docs` só publica o que está dentro de `docs/`. O store canônico continua sendo `data/` na raiz.
+Os arquivos que a página consome (`series.json`, `meta.json` e cada `<codigo>_history.json`) são **espelhados em `docs/data/`**, porque o GitHub Pages servindo `/docs` só publica o que está dentro de `docs/`. O store canônico continua sendo `data/` na raiz.
 
 ## Estrutura
 
@@ -36,18 +37,20 @@ observatorio-taxas/
 ├── data/                           # snapshots + histórico (store canônico, versionado)
 │   ├── <codigo>.json               #   último valor bruto de cada série
 │   ├── <codigo>_history.json       #   série temporal [{data, valor}] por data de referência
-│   └── series.json                 #   manifesto consumido pela página
+│   ├── series.json                 #   manifesto consumido pela página
+│   └── meta.json                   #   horário da última coleta (rodapé do site)
 ├── scripts/fetch.py                # coletor SGS/BACEN + resumo grátis das mudanças
 ├── scripts/backfill.py             # carga inicial do histórico (N anos; padrão 2)
 ├── scripts/diff_summary.py         # upgrade opcional/pago: resumo via API da Anthropic
-├── docs/index.html                 # página/gráficos interativos (Chart.js) — via Pages
+├── docs/index.html                 # landing page + dashboard interativo (Chart.js) — via Pages
 ├── docs/data/                      # espelho dos JSONs que a página lê (servido por /docs)
+├── docs/og-image.png               # imagem de compartilhamento (Open Graph / Twitter)
 ├── docs/robots.txt, sitemap.xml    # SEO / indexação
 ├── docs/.nojekyll                  # desativa o Jekyll no GitHub Pages
 ├── CHANGELOG.md                    # log de mudanças de valor (gerado automaticamente)
 ├── config.yml                      # séries monitoradas
 ├── requirements.txt                # requests, pyyaml
-├── .gitignore                      # padrão Python
+├── .gitignore                      # padrão Python + .claude/ (config local de preview)
 └── README.md
 ```
 
@@ -78,9 +81,16 @@ Edite `config.yml` para ajustar ou ampliar as séries monitoradas. Os códigos d
 
 A API do SGS é pública e retorna `[{"data": "dd/mm/aaaa", "valor": "x"}]`. A `base_url` em `config.yml` é a base sem sufixo; o código monta `/dados/ultimos/N` (coleta) ou `?dataInicial=&dataFinal=` (backfill). Ajuste `anos_historico` para mudar a janela do `backfill.py`.
 
-## Página (gráficos interativos)
+## Página (landing page + dashboard)
 
-`docs/index.html` desenha uma série por indicador com **Chart.js** e oferece filtros de período (**7, 15, 30, 60, 90, 120, 365 dias** e *Tudo*), além da **variação percentual no período** selecionado. Layout escuro, responsivo e sem etapa de build.
+`docs/index.html` é uma **landing page** de página única (sem etapa de build), em layout escuro e responsivo, com:
+
+- **Hero ao vivo** — destaques (Selic, IPCA 12 meses, dólar, desemprego) lidos de `series.json`, cada um com a **tendência de 90 dias** calculada do histórico.
+- **"A história dos dados"** — parágrafo executivo conectando juros, inflação, câmbio e atividade ao dia a dia, e **"Impacto no Brasil real"** explicando o que cada grupo de indicadores move.
+- **Dashboard** — uma série por indicador com **Chart.js**, filtros de período (**7, 15, 30, 60, 90, 120, 365 dias** e *Tudo*) e a **variação percentual no período**. O **ponto de dados mais recente é destacado** em todos os gráficos. O rodapé mostra o **horário da última coleta** (de `meta.json`) e a data da última mudança de valor.
+- **Metodologia & transparência** — métricas dinâmicas (nº de séries, total de pontos) e os pilares do projeto.
+
+> Segurança: todos os valores vindos da API são injetados na página com escape de HTML (`esc()`), como defesa em profundidade contra XSS — mesmo sendo fonte oficial via HTTPS.
 
 ## SEO / indexação
 
