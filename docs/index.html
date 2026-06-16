@@ -13,7 +13,7 @@
   <meta name="keywords" content="Selic, meta Selic, IPCA, inflação, câmbio, dólar, USD/BRL, BACEN, Banco Central do Brasil, SGS, taxa de juros, indicadores econômicos, série histórica, dados abertos, Brasil" />
   <meta name="author" content="LBP Tecnologia" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
-  <meta name="theme-color" content="#0f172a" />
+  <meta name="theme-color" content="#0b1120" />
   <link rel="canonical" href="https://iosbilario.github.io/observatorio-taxas/" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230f172a'/%3E%3Cpolyline points='4,22 12,14 18,18 28,6' fill='none' stroke='%2338bdf8' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
 
@@ -79,115 +79,382 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
   <style>
     :root {
-      --bg: #0f172a; --card: #1e293b; --line: #334155;
-      --text: #e2e8f0; --muted: #94a3b8; --accent: #38bdf8;
-      --up: #f87171; --down: #4ade80;
+      --bg: #0b1120; --bg-soft: #0f172a; --card: #131c31; --card-2: #16213a;
+      --line: #243049; --line-soft: #1c2640;
+      --text: #e8eef7; --muted: #93a3bd; --faint: #64748b;
+      --accent: #38bdf8; --accent-2: #818cf8; --accent-3: #2dd4bf;
+      --up: #fb7185; --down: #34d399; --flat: #94a3b8;
+      --radius: 16px; --maxw: 1080px;
+      --shadow: 0 10px 40px -12px rgba(0,0,0,.6);
     }
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
-      margin: 0; background: var(--bg); color: var(--text); line-height: 1.5;
+      margin: 0; background: var(--bg); color: var(--text); line-height: 1.6;
       font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased; overflow-x: hidden;
     }
-    header, .intro, .destaques, main, .filtros-wrap { max-width: 960px; margin: 0 auto; }
-    header { padding: 1.5rem 1rem .5rem; }
-    header .tagline { font-size: .8rem; color: var(--accent); letter-spacing: .03em; text-transform: uppercase; margin: 0 0 .35rem; }
-    h1 { margin: 0 0 .25rem; font-size: 1.6rem; }
-    header > p { margin: 0; color: var(--muted); font-size: .95rem; }
-    .intro { padding: .75rem 1rem 0; }
-    .intro .panel {
-      background: var(--card); border: 1px solid var(--line);
-      border-left: 3px solid var(--accent); border-radius: 10px;
-      padding: .9rem 1.1rem; color: var(--muted); font-size: .9rem;
+    /* Glows de fundo (sem assets externos) */
+    body::before {
+      content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+      background:
+        radial-gradient(900px 500px at 12% -8%, rgba(56,189,248,.14), transparent 60%),
+        radial-gradient(800px 480px at 92% 4%, rgba(129,140,248,.13), transparent 60%),
+        radial-gradient(700px 600px at 50% 110%, rgba(45,212,191,.08), transparent 55%);
     }
-    .intro .panel strong { color: var(--text); }
-    .intro .panel a, footer a { color: var(--accent); }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 1.25rem; }
+    .gradtext {
+      background: linear-gradient(100deg, var(--accent), var(--accent-2) 55%, var(--accent-3));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
 
-    .filtros-wrap { padding: 1rem 1rem 0; }
+    /* ===================== NAV ===================== */
+    nav.top {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      background: rgba(11,17,32,.72); border-bottom: 1px solid var(--line-soft);
+    }
+    nav.top .wrap { display: flex; align-items: center; gap: 1rem; height: 60px; }
+    .brand-mark { display: flex; align-items: center; gap: .55rem; font-weight: 700; letter-spacing: -.01em; }
+    .brand-mark svg { width: 26px; height: 26px; flex: none; }
+    .brand-mark .sub { color: var(--faint); font-weight: 500; font-size: .72rem; }
+    nav.top .links { margin-left: auto; display: flex; gap: .35rem; align-items: center; }
+    nav.top .links a {
+      color: var(--muted); font-size: .85rem; padding: .4rem .7rem; border-radius: 8px;
+      transition: color .15s, background .15s;
+    }
+    nav.top .links a:hover { color: var(--text); background: rgba(255,255,255,.04); text-decoration: none; }
+    nav.top .links a.cta {
+      background: linear-gradient(100deg, var(--accent), var(--accent-2));
+      color: #07101f; font-weight: 700;
+    }
+    nav.top .links a.cta:hover { filter: brightness(1.08); }
+    @media (max-width: 680px) { nav.top .links a.nav-only { display: none; } }
+
+    /* ===================== HERO ===================== */
+    .hero { padding: clamp(2.5rem, 7vw, 5.5rem) 0 2rem; position: relative; }
+    .badge {
+      display: inline-flex; align-items: center; gap: .5rem; font-size: .78rem;
+      color: var(--accent); background: rgba(56,189,248,.1);
+      border: 1px solid rgba(56,189,248,.28); padding: .35rem .75rem; border-radius: 999px;
+      letter-spacing: .02em;
+    }
+    .badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-3); box-shadow: 0 0 0 0 rgba(45,212,191,.7); animation: pulse 2s infinite; }
+    @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(45,212,191,.6); } 70% { box-shadow: 0 0 0 9px rgba(45,212,191,0); } 100% { box-shadow: 0 0 0 0 rgba(45,212,191,0); } }
+    .hero h1 {
+      font-size: clamp(2.1rem, 6vw, 3.6rem); line-height: 1.05; letter-spacing: -.025em;
+      margin: 1.1rem 0 .7rem; font-weight: 800; max-width: 18ch;
+    }
+    .hero .lead { font-size: clamp(1rem, 2.4vw, 1.2rem); color: var(--muted); max-width: 62ch; margin: 0 0 1.6rem; }
+    .hero .actions { display: flex; flex-wrap: wrap; gap: .7rem; margin-bottom: 2.4rem; }
+    .btn {
+      display: inline-flex; align-items: center; gap: .5rem; padding: .7rem 1.15rem;
+      border-radius: 11px; font-weight: 700; font-size: .92rem; cursor: pointer; border: 1px solid transparent;
+      transition: transform .12s, filter .15s, border-color .15s, background .15s;
+    }
+    .btn:hover { transform: translateY(-1px); text-decoration: none; }
+    .btn.primary { background: linear-gradient(100deg, var(--accent), var(--accent-2)); color: #07101f; }
+    .btn.primary:hover { filter: brightness(1.08); }
+    .btn.ghost { background: rgba(255,255,255,.03); border-color: var(--line); color: var(--text); }
+    .btn.ghost:hover { border-color: var(--accent); }
+
+    /* KPI strip ao vivo */
+    .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: .8rem; }
+    @media (max-width: 760px) { .kpis { grid-template-columns: repeat(2, 1fr); } }
+    .kpi {
+      background: linear-gradient(180deg, var(--card-2), var(--card)); border: 1px solid var(--line);
+      border-radius: var(--radius); padding: 1rem 1.1rem; position: relative; overflow: hidden;
+    }
+    .kpi::after { content: ""; position: absolute; inset: 0 0 auto 0; height: 2px; background: linear-gradient(90deg, transparent, var(--accent), transparent); opacity: .5; }
+    .kpi .k { font-size: .72rem; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
+    .kpi .v { font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 800; line-height: 1.1; margin: .25rem 0 .2rem; letter-spacing: -.02em; }
+    .kpi .t { font-size: .76rem; font-weight: 700; display: inline-flex; align-items: center; gap: .25rem; }
+    .kpi .t.up { color: var(--up); } .kpi .t.down { color: var(--down); } .kpi .t.flat { color: var(--flat); }
+    .kpi .t .sub { color: var(--faint); font-weight: 500; }
+
+    /* ===================== SECTIONS ===================== */
+    section.block { padding: clamp(2.4rem, 6vw, 4.2rem) 0; }
+    .eyebrow { color: var(--accent); font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; margin: 0 0 .6rem; }
+    .h2 { font-size: clamp(1.5rem, 3.6vw, 2.1rem); font-weight: 800; letter-spacing: -.02em; margin: 0 0 .8rem; }
+    .section-lead { color: var(--muted); max-width: 70ch; margin: 0; font-size: 1.02rem; }
+
+    /* História — narrativa executiva */
+    .story { background: linear-gradient(180deg, var(--card-2), var(--card)); border: 1px solid var(--line); border-radius: 20px; padding: clamp(1.4rem, 4vw, 2.6rem); box-shadow: var(--shadow); }
+    .story p { color: #cdd8ea; margin: 0 0 1rem; }
+    .story p:last-child { margin-bottom: 0; }
+    .story strong { color: var(--text); }
+    .story .drop::first-letter { font-size: 3.1rem; font-weight: 800; float: left; line-height: .8; padding: .35rem .55rem 0 0; }
+    .story .drop::first-letter { background: linear-gradient(100deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+    /* Impactos — grid de cards */
+    .impact-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 1.6rem; }
+    @media (max-width: 760px) { .impact-grid { grid-template-columns: 1fr; } }
+    .impact {
+      background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 1.3rem 1.4rem; position: relative; transition: transform .15s, border-color .15s;
+    }
+    .impact:hover { transform: translateY(-3px); border-color: rgba(56,189,248,.45); }
+    .impact .ico { width: 42px; height: 42px; border-radius: 11px; display: grid; place-items: center; margin-bottom: .85rem; background: rgba(56,189,248,.12); }
+    .impact .ico svg { width: 22px; height: 22px; stroke: var(--accent); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .impact h3 { margin: 0 0 .2rem; font-size: 1.12rem; }
+    .impact .tag { color: var(--accent-2); font-size: .78rem; font-weight: 700; }
+    .impact p { color: var(--muted); font-size: .92rem; margin: .55rem 0 .8rem; }
+    .impact .effects { display: flex; flex-wrap: wrap; gap: .35rem; }
+    .impact .effects span { font-size: .73rem; color: #bcc8de; background: rgba(255,255,255,.04); border: 1px solid var(--line-soft); border-radius: 999px; padding: .22rem .6rem; }
+
+    /* ===================== DASHBOARD ===================== */
+    .filtros-wrap { padding-top: .4rem; }
     .filtros { display: flex; flex-wrap: wrap; gap: .4rem; align-items: center; }
     .filtros .lbl { color: var(--muted); font-size: .8rem; margin-right: .25rem; }
     .filtros button {
       background: var(--card); color: var(--text); border: 1px solid var(--line);
-      border-radius: 999px; padding: .35rem .75rem; font-size: .82rem; cursor: pointer;
-      transition: background .15s, border-color .15s;
+      border-radius: 999px; padding: .35rem .8rem; font-size: .82rem; cursor: pointer;
+      transition: background .15s, border-color .15s, color .15s;
     }
     .filtros button:hover { border-color: var(--accent); }
-    .filtros button.active { background: var(--accent); color: #0b1220; border-color: var(--accent); font-weight: 600; }
+    .filtros button.active { background: linear-gradient(100deg, var(--accent), var(--accent-2)); color: #07101f; border-color: transparent; font-weight: 700; }
 
-    main { padding: 1rem 1rem 3rem; display: grid; gap: 1rem; grid-template-columns: 1fr; }
-    @media (min-width: 720px) { main { grid-template-columns: 1fr 1fr; } }
+    main#grafico { padding-top: 1.4rem; display: grid; gap: 1rem; grid-template-columns: 1fr; }
+    @media (min-width: 720px) { main#grafico { grid-template-columns: 1fr 1fr; } }
     .card {
       background: var(--card); border: 1px solid var(--line);
-      border-radius: 12px; padding: 1rem 1.1rem 1.2rem;
+      border-radius: var(--radius); padding: 1.1rem 1.2rem 1.25rem; transition: border-color .15s, transform .15s;
     }
-    .card h2 { margin: 0; font-size: 1rem; font-weight: 600; }
-    .value { font-size: 2rem; font-weight: 700; color: var(--accent); margin: .2rem 0 0; line-height: 1.1; }
-    .meta { color: var(--muted); font-size: .8rem; margin: .1rem 0 .2rem; }
-    .delta { font-size: .82rem; margin: 0 0 .7rem; font-weight: 600; }
-    .delta.up { color: var(--up); } .delta.down { color: var(--down); } .delta.flat { color: var(--muted); }
+    .card:hover { border-color: rgba(56,189,248,.4); }
+    .card h2 { margin: 0; font-size: 1rem; font-weight: 700; }
+    .value { font-size: 2.1rem; font-weight: 800; letter-spacing: -.02em; margin: .2rem 0 0; line-height: 1.1; }
+    .value.gradtext { display: inline-block; }
+    .meta { color: var(--muted); font-size: .78rem; margin: .15rem 0 .25rem; }
+    .delta { font-size: .82rem; margin: 0 0 .7rem; font-weight: 700; }
+    .delta.up { color: var(--up); } .delta.down { color: var(--down); } .delta.flat { color: var(--flat); }
     .chart-wrap { position: relative; height: 190px; }
-    footer { text-align: center; color: var(--muted); font-size: .8rem; padding: 1.5rem 1rem 2.5rem; }
-    footer p { margin: .3rem 0; }
-    footer .brand { color: var(--text); font-weight: 600; }
     .status { grid-column: 1 / -1; color: var(--muted); }
     .grupo-head {
-      grid-column: 1 / -1; margin: .7rem 0 -.2rem; font-size: .95rem;
-      color: var(--text); border-bottom: 1px solid var(--line); padding-bottom: .35rem;
+      grid-column: 1 / -1; margin: 1rem 0 -.1rem; font-size: 1.05rem; font-weight: 700;
+      color: var(--text); display: flex; align-items: center; gap: .6rem;
     }
+    .grupo-head::after { content: ""; flex: 1; height: 1px; background: var(--line); }
     .grupo-head:first-child { margin-top: 0; }
-    .destaques { padding: .5rem 1rem 0; display: flex; gap: .5rem; flex-wrap: wrap; align-items: stretch; }
-    .destaques .pill {
-      background: var(--card); border: 1px solid var(--line); border-radius: 10px;
-      padding: .45rem .7rem; display: flex; flex-direction: column; justify-content: center;
-      flex: 1 1 0; min-width: 110px;
+    .grupo-head .cnt { color: var(--faint); font-size: .8rem; font-weight: 500; }
+
+    /* Metodologia */
+    .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 1.6rem; }
+    @media (max-width: 760px) { .metrics { grid-template-columns: repeat(2, 1fr); } }
+    .metric { text-align: center; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.3rem 1rem; }
+    .metric .big { font-size: clamp(1.7rem, 5vw, 2.3rem); font-weight: 800; letter-spacing: -.02em; }
+    .metric .lab { color: var(--muted); font-size: .82rem; margin-top: .2rem; }
+    .pillars { display: grid; grid-template-columns: repeat(2, 1fr); gap: .8rem; margin-top: 1.2rem; }
+    @media (max-width: 680px) { .pillars { grid-template-columns: 1fr; } }
+    .pillar { display: flex; gap: .7rem; align-items: flex-start; background: rgba(255,255,255,.02); border: 1px solid var(--line-soft); border-radius: 12px; padding: .9rem 1rem; }
+    .pillar .chk { color: var(--accent-3); flex: none; margin-top: .1rem; }
+    .pillar b { display: block; font-size: .92rem; }
+    .pillar span { color: var(--muted); font-size: .84rem; }
+
+    /* ===================== FOOTER ===================== */
+    footer { border-top: 1px solid var(--line-soft); margin-top: 2rem; }
+    footer .wrap { padding: 2.2rem 1.25rem 2.6rem; color: var(--muted); font-size: .85rem; }
+    footer .frow { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; align-items: center; }
+    footer .brand { color: var(--text); font-weight: 700; }
+    footer p { margin: .35rem 0; }
+
+    /* Reveal on scroll */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      html { scroll-behavior: auto; }
+      .badge .dot { animation: none; }
     }
-    .destaques .pill .k {
-      font-size: .68rem; color: var(--muted); text-transform: uppercase;
-      letter-spacing: .04em; line-height: 1.2;
-    }
-    .destaques .pill b { color: var(--accent); font-size: 1.05rem; line-height: 1.2; }
   </style>
 </head>
 <body>
-  <header>
-    <p class="tagline">Banco Central do Brasil · SGS</p>
-    <h1>Observatório de Taxas</h1>
-    <p>
-      Série histórica da Meta Selic, do IPCA e do câmbio USD/BRL — dados oficiais
-      do Banco Central, atualizados automaticamente a cada 6 horas, a custo zero.
-    </p>
+  <!-- ===================== NAV ===================== -->
+  <nav class="top">
+    <div class="wrap">
+      <span class="brand-mark">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#0f172a"/><polyline points="4,22 12,14 18,18 28,6" fill="none" stroke="#38bdf8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Observatório de Taxas <span class="sub">· BACEN/SGS</span>
+      </span>
+      <div class="links">
+        <a href="#historia" class="nav-only">História</a>
+        <a href="#impactos" class="nav-only">Impactos</a>
+        <a href="#indicadores" class="nav-only">Indicadores</a>
+        <a href="#metodologia" class="nav-only">Metodologia</a>
+        <a href="#indicadores" class="cta">Ver dados ao vivo</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===================== HERO ===================== -->
+  <header class="hero">
+    <div class="wrap">
+      <span class="badge"><span class="dot"></span> Atualizado automaticamente a cada 6 horas</span>
+      <h1>O termômetro da economia brasileira, <span class="gradtext">na fonte oficial</span>.</h1>
+      <p class="lead">
+        Selic, inflação, câmbio e emprego não são apenas números — são as forças que
+        definem o crédito, o poder de compra e o custo de vida de 200 milhões de brasileiros.
+        Coletamos cada indicador direto do Banco Central, registramos sua história ponto a ponto
+        e traduzimos o que ela significa para o seu bolso.
+      </p>
+      <div class="actions">
+        <a href="#indicadores" class="btn primary">Explorar indicadores
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="#historia" class="btn ghost">Entender os dados</a>
+      </div>
+      <div class="kpis" id="kpis" aria-label="Destaques ao vivo">
+        <!-- preenchido via JS a partir de series.json -->
+      </div>
+    </div>
   </header>
 
-  <section class="intro">
-    <div class="panel">
-      <strong>Sobre o projeto.</strong> Este observatório coleta periodicamente as séries do
-      <strong>Sistema Gerenciador de Séries Temporais (SGS)</strong> do Banco Central do Brasil,
-      registra cada valor como um ponto no histórico e mantém um registro auditável das mudanças
-      ao longo do tempo. Os dados vêm da API pública do BACEN; nada é inserido manualmente. Fonte
-      oficial: <a href="https://www3.bcb.gov.br/sgspub/" target="_blank" rel="noopener">www3.bcb.gov.br/sgspub</a>.
+  <!-- ===================== HISTÓRIA DOS DADOS ===================== -->
+  <section class="block" id="historia">
+    <div class="wrap">
+      <p class="eyebrow reveal">A história dos dados</p>
+      <h2 class="h2 reveal">Por trás de cada taxa, uma decisão que chega até você</h2>
+      <p class="section-lead reveal" style="margin-bottom:1.6rem">
+        Indicadores econômicos parecem abstratos, mas contam uma narrativa concreta sobre o país.
+        Veja o fio que conecta esses números ao dia a dia.
+      </p>
+      <div class="story reveal">
+        <p class="drop">
+          Todo mês, o <strong>Comitê de Política Monetária (Copom)</strong> do Banco Central se reúne e decide
+          o <strong>preço do dinheiro</strong> no Brasil: a Meta Selic. Essa única taxa se ramifica por toda a economia —
+          encarece ou barateia o financiamento da casa própria, o crédito da empresa, a fatura do cartão e, ao mesmo
+          tempo, define quanto rende a poupança, o Tesouro e o CDB de cada família.
+        </p>
+        <p>
+          Os juros sobem justamente para conter a <strong>inflação</strong> — a corrosão silenciosa do poder de compra
+          medida pelo <strong>IPCA</strong>, o índice oficial que baliza a meta do país, os reajustes de salários, aluguéis
+          e benefícios. Quando os preços disparam, o Banco Central aperta os juros; quando cedem, afrouxa. É um equilíbrio
+          delicado entre conter a alta dos preços e não sufocar a atividade econômica.
+        </p>
+        <p>
+          Sobre tudo isso paira o <strong>câmbio</strong>. O dólar define o custo de tudo o que o Brasil importa —
+          combustíveis, eletrônicos, fertilizantes, remédios — e exporta a inflação para dentro de casa. Um real mais
+          fraco encarece a gasolina e a viagem, mas favorece o agronegócio e a indústria exportadora.
+        </p>
+        <p>
+          No fim da linha está a <strong>economia real</strong>: o ritmo da atividade medido pelo IBC-Br (a prévia do PIB)
+          e o desemprego apurado pela PNAD. São eles que revelam se toda essa engrenagem está gerando renda, emprego e
+          confiança — ou não. <strong>Este observatório acompanha cada um desses sinais na fonte primária e guarda sua
+          história, ponto a ponto, de forma aberta e auditável.</strong>
+        </p>
+      </div>
     </div>
   </section>
 
-  <section class="destaques" id="destaques" aria-label="Destaques"></section>
+  <!-- ===================== IMPACTOS ===================== -->
+  <section class="block" id="impactos">
+    <div class="wrap">
+      <p class="eyebrow reveal">Impacto no Brasil real</p>
+      <h2 class="h2 reveal">O que cada grupo de indicadores move no país</h2>
+      <p class="section-lead reveal">Quatro frentes, quatro histórias — e onde cada uma toca a vida de quem mora no Brasil.</p>
 
-  <div class="filtros-wrap">
-    <div class="filtros" id="filtros" role="group" aria-label="Filtro de período">
-      <span class="lbl">Período:</span>
+      <div class="impact-grid">
+        <article class="impact reveal">
+          <div class="ico"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></div>
+          <span class="tag">Juros · Selic, CDI, TR</span>
+          <h3>O preço do dinheiro</h3>
+          <p>A Selic é a taxa básica que baliza todo o crédito do país. Quando sobe, financiamento, crédito e cartão ficam mais caros — mas a renda fixa rende mais e a inflação tende a ceder. Quando cai, o crédito barato estimula consumo e investimento.</p>
+          <div class="effects"><span>Financiamento imobiliário</span><span>Crédito e cartão</span><span>Renda fixa</span><span>Dívida pública</span></div>
+        </article>
+
+        <article class="impact reveal">
+          <div class="ico"><svg viewBox="0 0 24 24"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></div>
+          <span class="tag">Inflação · IPCA, INPC, IGP</span>
+          <h3>A régua do poder de compra</h3>
+          <p>O IPCA é o índice oficial que mede quanto a cesta de consumo encareceu e define se a meta de inflação foi cumprida. É a régua que reajusta o salário mínimo, os aluguéis (IGP-M), os benefícios do INSS e o preço da cesta básica.</p>
+          <div class="effects"><span>Salário mínimo</span><span>Aluguéis</span><span>Cesta básica</span><span>Benefícios do INSS</span></div>
+        </article>
+
+        <article class="impact reveal">
+          <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 2v20"/><path d="M17 6H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+          <span class="tag">Câmbio · USD/BRL, EUR/BRL</span>
+          <h3>A temperatura externa</h3>
+          <p>O dólar define o preço de tudo o que o Brasil importa — combustíveis, eletrônicos, trigo, remédios — e influencia diretamente a inflação. Pesa na bomba de gasolina, nas viagens e na competitividade da indústria e do agro.</p>
+          <div class="effects"><span>Gasolina e diesel</span><span>Eletrônicos</span><span>Viagens</span><span>Exportações do agro</span></div>
+        </article>
+
+        <article class="impact reveal">
+          <div class="ico"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/></svg></div>
+          <span class="tag">Atividade & Emprego · IBC-Br, PNAD</span>
+          <h3>O pulso da economia real</h3>
+          <p>O IBC-Br é a prévia mensal do PIB; a taxa de desocupação revela quantos brasileiros procuram trabalho. Juntos, mostram se a engrenagem dos juros, da inflação e do câmbio está virando renda, emprego e confiança.</p>
+          <div class="effects"><span>Renda das famílias</span><span>Geração de empregos</span><span>Arrecadação</span><span>Confiança</span></div>
+        </article>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <main id="grafico">
-    <p class="status" id="status">Carregando séries…</p>
-  </main>
+  <!-- ===================== INDICADORES (DASHBOARD) ===================== -->
+  <section class="block" id="indicadores">
+    <div class="wrap">
+      <p class="eyebrow reveal">Painel ao vivo</p>
+      <h2 class="h2 reveal">Indicadores e suas séries históricas</h2>
+      <p class="section-lead reveal" style="margin-bottom:1.4rem">
+        Cada valor abaixo vem direto da API pública do BACEN e é versionado a cada coleta — você vê o número de hoje e toda a sua trajetória.
+      </p>
 
+      <div class="filtros-wrap reveal">
+        <div class="filtros" id="filtros" role="group" aria-label="Filtro de período">
+          <span class="lbl">Período:</span>
+        </div>
+      </div>
+
+      <main id="grafico">
+        <p class="status" id="status">Carregando séries…</p>
+      </main>
+    </div>
+  </section>
+
+  <!-- ===================== METODOLOGIA ===================== -->
+  <section class="block" id="metodologia">
+    <div class="wrap">
+      <p class="eyebrow reveal">Metodologia & transparência</p>
+      <h2 class="h2 reveal">Dados oficiais, sem intermediários — e auditáveis por qualquer pessoa</h2>
+      <p class="section-lead reveal">
+        Nada é inserido manualmente. Um robô consulta o Sistema Gerenciador de Séries Temporais (SGS) do Banco Central,
+        registra cada ponto e versiona o histórico no Git. Cada commit é uma fotografia da economia no tempo.
+      </p>
+
+      <div class="metrics reveal">
+        <div class="metric"><div class="big gradtext" id="m-series">—</div><div class="lab">séries monitoradas</div></div>
+        <div class="metric"><div class="big gradtext" id="m-pontos">—</div><div class="lab">pontos históricos</div></div>
+        <div class="metric"><div class="big gradtext">6 h</div><div class="lab">frequência de coleta</div></div>
+        <div class="metric"><div class="big gradtext">R$ 0</div><div class="lab">custo de operação</div></div>
+      </div>
+
+      <div class="pillars reveal">
+        <div class="pillar"><svg class="chk" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><div><b>Fonte primária</b><span>Direto da API pública do SGS/BACEN, sem intermediários.</span></div></div>
+        <div class="pillar"><svg class="chk" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><div><b>Histórico auditável</b><span>Cada valor é versionado no Git — dá para auditar qualquer mudança.</span></div></div>
+        <div class="pillar"><svg class="chk" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><div><b>Atualização automática</b><span>Coleta a cada 6 horas via GitHub Actions, sem intervenção humana.</span></div></div>
+        <div class="pillar"><svg class="chk" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><div><b>Aberto e gratuito</b><span>Código e dados abertos no GitHub, livres para consultar e reutilizar.</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
   <footer>
-    <p>
-      Fonte dos dados: <a href="https://www3.bcb.gov.br/sgspub/" target="_blank" rel="noopener">SGS / BACEN</a>
-      · atualizado automaticamente a cada 6h · <span id="updated"></span>
-    </p>
-    <p>
-      Desenvolvido por <span class="brand">LBP Tecnologia</span> · <span id="year"></span> ·
-      <a href="https://github.com/iosbilario/observatorio-taxas" target="_blank" rel="noopener">código-fonte no GitHub</a>
-    </p>
+    <div class="wrap">
+      <div class="frow">
+        <span class="brand-mark">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#0f172a"/><polyline points="4,22 12,14 18,18 28,6" fill="none" stroke="#38bdf8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Observatório de Taxas
+        </span>
+        <span>Fonte: <a href="https://www3.bcb.gov.br/sgspub/" target="_blank" rel="noopener">SGS / BACEN</a> · <span id="updated"></span></span>
+      </div>
+      <p style="margin-top:1rem">
+        Desenvolvido por <span class="brand">LBP Tecnologia</span> · <span id="year"></span> ·
+        <a href="https://github.com/iosbilario/observatorio-taxas" target="_blank" rel="noopener">código-fonte no GitHub</a>
+      </p>
+      <p style="color:var(--faint)">
+        Conteúdo informativo, sem caráter de recomendação financeira. Dados oficiais do Banco Central do Brasil.
+      </p>
+    </div>
   </footer>
 
   <script>
@@ -195,8 +462,10 @@
     const PERIODOS = [7, 15, 30, 60, 90, 120, 365];
     const PADRAO = 90;                 // filtro inicial (dias)
     const HIGHLIGHTS = [432, 13522, 1, 24369];          // destaques no topo (por código)
-    const HL_LABEL = { 432: "Selic", 13522: "IPCA 12m", 1: "Dólar", 24369: "Desemprego" };
+    const HL_LABEL = { 432: "Meta Selic", 13522: "IPCA 12 meses", 1: "Dólar (venda)", 24369: "Desemprego" };
+    const HL_SUFFIX = { 432: "% a.a.", 13522: "%", 1: "R$", 24369: "%" };
     const cards = [];                  // { serie, history, chart, els }
+    const histByCode = {};             // codigo -> history (para o hero)
     let periodoAtivo = PADRAO;
 
     // Escapa caracteres HTML — defesa contra XSS ao injetar dados em innerHTML.
@@ -212,6 +481,8 @@
       if (!isFinite(n)) return esc(v ?? "—");
       return n.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 4 });
     }
+
+    function num(v) { return Number(String(v).replace(",", ".")); }
 
     document.getElementById("year").textContent = new Date().getFullYear();
 
@@ -246,10 +517,50 @@
       return (x > 0 ? "+" : "") + x.toLocaleString("pt-BR", { maximumFractionDigits: 2 }) + "%";
     }
 
+    // ---------------- HERO (KPIs ao vivo) ----------------
+    function renderKPIs(series) {
+      const box = document.getElementById("kpis");
+      const porCodigo = Object.fromEntries(series.map((s) => [s.codigo, s]));
+      box.innerHTML = "";
+      for (const code of HIGHLIGHTS) {
+        const s = porCodigo[code];
+        if (!s) continue;
+        const pref = HL_SUFFIX[code] === "R$" ? "R$ " : "";
+        const suf = HL_SUFFIX[code] && HL_SUFFIX[code] !== "R$" ? " " + HL_SUFFIX[code] : "";
+        const el = document.createElement("div");
+        el.className = "kpi";
+        el.dataset.code = code;
+        el.innerHTML =
+          `<div class="k">${esc(HL_LABEL[code] || s.nome)}</div>` +
+          `<div class="v gradtext">${pref}${fmtValor(s.valor_atual)}${suf}</div>` +
+          `<div class="t flat" data-trend>· <span class="sub">ref. ${esc(s.data_referencia)}</span></div>`;
+        box.appendChild(el);
+      }
+    }
+
+    // Após carregar os históricos, anota a tendência (variação no período padrão) nos KPIs.
+    function atualizaTendenciaKPIs() {
+      document.querySelectorAll(".kpi").forEach((el) => {
+        const code = Number(el.dataset.code);
+        const hist = histByCode[code];
+        const t = el.querySelector("[data-trend]");
+        if (!hist || hist.length < 2 || !t) return;
+        const janela = filtra(hist, 90);
+        if (janela.length < 2) return;
+        const ini = num(janela[0].valor), fim = num(janela[janela.length - 1].valor);
+        if (!isFinite(ini) || !isFinite(fim) || ini === 0) return;
+        const pct = ((fim - ini) / Math.abs(ini)) * 100;
+        const cls = pct > 0.0005 ? "up" : pct < -0.0005 ? "down" : "flat";
+        const seta = cls === "up" ? "▲" : cls === "down" ? "▼" : "■";
+        t.className = "t " + cls;
+        t.innerHTML = `${seta} ${fmtPct(pct)} <span class="sub">em 90 dias</span>`;
+      });
+    }
+
     function atualizaCard(c) {
       const pts = filtra(c.history, periodoAtivo);
       const labels = pts.map((p) => rotulo(p, periodoAtivo === "tudo" ? 9999 : periodoAtivo));
-      const valores = pts.map((p) => Number(String(p.valor).replace(",", ".")));
+      const valores = pts.map((p) => num(p.valor));
 
       c.chart.data.labels = labels;
       c.chart.data.datasets[0].data = valores;
@@ -274,28 +585,42 @@
     function renderCard(serie, history) {
       const main = document.getElementById("grafico");
       const card = document.createElement("section");
-      card.className = "card";
+      card.className = "card reveal";
       card.innerHTML = `
         <h2>${esc(serie.nome)}</h2>
-        <p class="value">${fmtValor(serie.valor_atual)}</p>
+        <p class="value gradtext">${fmtValor(serie.valor_atual)}</p>
         <p class="meta">ref. ${esc(serie.data_referencia)} · código SGS ${esc(serie.codigo)} · ${esc(serie.pontos ?? history.length)} pontos no total</p>
         <p class="delta flat"></p>
         <div class="chart-wrap"><canvas></canvas></div>
       `;
       main.appendChild(card);
+      observeReveal(card);
 
-      const chart = new Chart(card.querySelector("canvas"), {
+      const ctx = card.querySelector("canvas");
+      const grad = ctx.getContext("2d").createLinearGradient(0, 0, 0, 190);
+      grad.addColorStop(0, "rgba(56,189,248,.28)");
+      grad.addColorStop(1, "rgba(56,189,248,0)");
+
+      const chart = new Chart(ctx, {
         type: "line",
         data: { labels: [], datasets: [{
-          data: [], borderColor: "#38bdf8", backgroundColor: "rgba(56,189,248,.15)",
-          fill: true, tension: 0.25, borderWidth: 2, pointRadius: 2,
+          data: [], borderColor: "#38bdf8", backgroundColor: grad,
+          fill: true, tension: 0.3, borderWidth: 2, pointRadius: 2,
+          pointHoverRadius: 5, pointBackgroundColor: "#38bdf8",
         }] },
         options: {
-          responsive: true, maintainAspectRatio: false, animation: { duration: 250 },
-          plugins: { legend: { display: false }, tooltip: { intersect: false, mode: "index" } },
+          responsive: true, maintainAspectRatio: false, animation: { duration: 300 },
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              intersect: false, mode: "index", backgroundColor: "#0b1120",
+              borderColor: "#243049", borderWidth: 1, titleColor: "#e8eef7",
+              bodyColor: "#93a3bd", padding: 10, displayColors: false,
+            },
+          },
           scales: {
-            x: { ticks: { color: "#94a3b8", maxTicksLimit: 7, autoSkip: true }, grid: { color: "#33415540" } },
-            y: { ticks: { color: "#94a3b8" }, grid: { color: "#33415540" } },
+            x: { ticks: { color: "#64748b", maxTicksLimit: 7, autoSkip: true }, grid: { color: "#24304940" } },
+            y: { ticks: { color: "#64748b" }, grid: { color: "#24304940" } },
           },
         },
       });
@@ -320,18 +645,18 @@
       }
     }
 
-    function renderDestaques(series) {
-      const box = document.getElementById("destaques");
-      const porCodigo = Object.fromEntries(series.map((s) => [s.codigo, s]));
-      for (const code of HIGHLIGHTS) {
-        const s = porCodigo[code];
-        if (!s) continue;
-        const pill = document.createElement("span");
-        pill.className = "pill";
-        pill.innerHTML = `<span class="k">${esc(HL_LABEL[code] || s.nome)}</span><b>${fmtValor(s.valor_atual)}</b>`;
-        box.appendChild(pill);
+    // ---------------- Reveal on scroll ----------------
+    let revObserver = null;
+    function observeReveal(el) {
+      if (!revObserver) {
+        if (!("IntersectionObserver" in window)) { el.classList.add("in"); return; }
+        revObserver = new IntersectionObserver((entries) => {
+          for (const e of entries) if (e.isIntersecting) { e.target.classList.add("in"); revObserver.unobserve(e.target); }
+        }, { threshold: 0.12 });
       }
+      revObserver.observe(el);
     }
+    document.querySelectorAll(".reveal").forEach(observeReveal);
 
     async function init() {
       const status = document.getElementById("status");
@@ -341,34 +666,44 @@
           status.textContent = "Nenhuma série disponível ainda."; return;
         }
         status.remove();
-        renderDestaques(series);
+
+        renderKPIs(series);
         montaFiltros();
+
+        // Métricas da seção de metodologia.
+        document.getElementById("m-series").textContent = series.length;
+        const totalPontos = series.reduce((acc, s) => acc + (Number(s.pontos) || 0), 0);
+        document.getElementById("m-pontos").textContent = totalPontos.toLocaleString("pt-BR");
+
         const main = document.getElementById("grafico");
         let grupoAtual = null;
         for (const serie of series) {
           const grupo = serie.grupo || "Outros";
           if (grupo !== grupoAtual) {                     // cabeçalho de seção
             grupoAtual = grupo;
+            const qtd = series.filter((s) => (s.grupo || "Outros") === grupo).length;
             const h = document.createElement("h3");
             h.className = "grupo-head";
-            h.textContent = grupo;
+            h.innerHTML = `${esc(grupo)} <span class="cnt">${qtd} série${qtd > 1 ? "s" : ""}</span>`;
             main.appendChild(h);
           }
           try {
             const history = await getJSON(`${serie.codigo}_history.json`);
+            histByCode[serie.codigo] = history;
             renderCard(serie, history);
           } catch (e) { console.error(e); }
         }
         cards.forEach(atualizaCard);
+        atualizaTendenciaKPIs();
 
         const ultimas = series.map((s) => s.ultima_mudanca).filter(Boolean);
         const recente = ultimas.sort((a, b) => parseData(a) - parseData(b)).pop();
         document.getElementById("updated").textContent =
           recente ? "última mudança de valor em " + recente : "";
       } catch (e) {
-        status.textContent =
-          "Não foi possível carregar os dados (" + e.message + "). " +
-          "Sirva via HTTP (ex.: python -m http.server -d docs) — abrir o arquivo direto (file://) bloqueia o fetch.";
+        const main = document.getElementById("grafico");
+        main.innerHTML = `<p class="status">Não foi possível carregar os dados (${esc(e.message)}). ` +
+          "Sirva via HTTP (ex.: <code>python -m http.server -d docs</code>) — abrir o arquivo direto (file://) bloqueia o fetch.</p>";
         console.error(e);
       }
     }

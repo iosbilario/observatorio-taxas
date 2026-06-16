@@ -26,3 +26,6 @@ env/
 Thumbs.db
 .idea/
 .vscode/
+
+# Claude Code (config local de preview/dev)
+.claude/
