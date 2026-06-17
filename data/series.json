@@ -28,21 +28,21 @@
   },
   {
     "codigo": 226,
-    "data_referencia": "15/06/2026",
+    "data_referencia": "16/06/2026",
     "grupo": "Juros",
     "nome": "TR - Taxa Referencial (%)",
-    "pontos": 731,
-    "ultima_mudanca": "15/06/2026",
-    "valor_atual": "0.1722"
+    "pontos": 732,
+    "ultima_mudanca": "16/06/2026",
+    "valor_atual": "0.1720"
   },
   {
     "codigo": 25,
-    "data_referencia": "15/06/2026",
+    "data_referencia": "16/06/2026",
     "grupo": "Juros",
     "nome": "Poupança - rendimento (%)",
-    "pontos": 673,
-    "ultima_mudanca": "15/06/2026",
-    "valor_atual": "0.6731"
+    "pontos": 674,
+    "ultima_mudanca": "16/06/2026",
+    "valor_atual": "0.6729"
   },
   {
     "codigo": 433,
@@ -118,12 +118,12 @@
   },
   {
     "codigo": 24363,
-    "data_referencia": "01/03/2026",
+    "data_referencia": "01/04/2026",
     "grupo": "Atividade & Emprego",
     "nome": "IBC-Br - índice (proxy do PIB)",
-    "pontos": 22,
-    "ultima_mudanca": "01/03/2026",
-    "valor_atual": "117.61851"
+    "pontos": 23,
+    "ultima_mudanca": "01/04/2026",
+    "valor_atual": "113.72712"
   },
   {
     "codigo": 24369,
