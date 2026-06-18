@@ -37,3 +37,11 @@
     ↳ Meta Selic (% a.a.): caiu de 14,5 para 14,25.
 [2026-06-18 14:53:31 +0000] Poupança - rendimento (%): 0.6729 -> 0.6728
     ↳ Poupança - rendimento (%): caiu de 0,6729 para 0,6728.
+[2026-06-18 20:14:44 +0000] TR - Taxa Referencial (%): 0.1720 -> 0.1719
+    ↳ TR - Taxa Referencial (%): caiu de 0,172 para 0,1719.
+[2026-06-18 20:14:44 +0000] Câmbio USD/BRL - venda: 5.0641 -> 5.1613
+    ↳ Câmbio USD/BRL - venda: subiu de 5,0641 para 5,1613.
+[2026-06-18 20:14:44 +0000] Câmbio USD/BRL - compra: 5.0635 -> 5.1607
+    ↳ Câmbio USD/BRL - compra: subiu de 5,0635 para 5,1607.
+[2026-06-18 20:14:44 +0000] Câmbio EUR/BRL - venda: 5.8713000 -> 5.9205000
+    ↳ Câmbio EUR/BRL - venda: subiu de 5,8713 para 5,9205.
