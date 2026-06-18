@@ -35,3 +35,5 @@
     ↳ Câmbio EUR/BRL - venda: caiu de 5,8981 para 5,8713.
 [2026-06-18 02:53:33 +0000] Meta Selic (% a.a.): 14.50 -> 14.25
     ↳ Meta Selic (% a.a.): caiu de 14,5 para 14,25.
+[2026-06-18 14:53:31 +0000] Poupança - rendimento (%): 0.6729 -> 0.6728
+    ↳ Poupança - rendimento (%): caiu de 0,6729 para 0,6728.
