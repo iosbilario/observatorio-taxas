@@ -33,3 +33,5 @@
     ↳ Câmbio USD/BRL - compra: caiu de 5,0774 para 5,0635.
 [2026-06-17 20:04:55 +0000] Câmbio EUR/BRL - venda: 5.8981000 -> 5.8713000
     ↳ Câmbio EUR/BRL - venda: caiu de 5,8981 para 5,8713.
+[2026-06-18 02:53:33 +0000] Meta Selic (% a.a.): 14.50 -> 14.25
+    ↳ Meta Selic (% a.a.): caiu de 14,5 para 14,25.

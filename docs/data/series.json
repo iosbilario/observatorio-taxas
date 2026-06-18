@@ -1,19 +1,19 @@
 [
   {
     "codigo": 432,
-    "data_referencia": "17/06/2026",
+    "data_referencia": "05/08/2026",
     "grupo": "Juros",
     "nome": "Meta Selic (% a.a.)",
-    "pontos": 733,
-    "ultima_mudanca": "30/04/2026",
-    "valor_atual": "14.50"
+    "pontos": 741,
+    "ultima_mudanca": "29/07/2026",
+    "valor_atual": "14.25"
   },
   {
     "codigo": 1178,
-    "data_referencia": "16/06/2026",
+    "data_referencia": "17/06/2026",
     "grupo": "Juros",
     "nome": "Selic anualizada (% a.a.)",
-    "pontos": 503,
+    "pontos": 504,
     "ultima_mudanca": "30/04/2026",
     "valor_atual": "14.40"
   },
@@ -24,7 +24,7 @@
     "nome": "CDI - acumulado no mês (%)",
     "pontos": 25,
     "ultima_mudanca": "01/06/2026",
-    "valor_atual": "0.59"
+    "valor_atual": "0.64"
   },
   {
     "codigo": 226,
