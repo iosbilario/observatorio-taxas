@@ -47,3 +47,7 @@
     ↳ Câmbio EUR/BRL - venda: subiu de 5,8713 para 5,9205.
 [2026-06-19 03:39:45 +0000] Selic anualizada (% a.a.): 14.40 -> 14.15
     ↳ Selic anualizada (% a.a.): caiu de 14,4 para 14,15.
+[2026-06-19 14:48:47 +0000] TR - Taxa Referencial (%): 0.1719 -> 0.1717
+    ↳ TR - Taxa Referencial (%): caiu de 0,1719 para 0,1717.
+[2026-06-19 14:48:47 +0000] Poupança - rendimento (%): 0.6728 -> 0.6726
+    ↳ Poupança - rendimento (%): caiu de 0,6728 para 0,6726.
