@@ -95,3 +95,9 @@
     ↳ Câmbio USD/BRL - compra: subiu de 5,1737 para 5,2092.
 [2026-06-24 19:38:34 +0000] Câmbio EUR/BRL - venda: 5.8904000 -> 5.9126000
     ↳ Câmbio EUR/BRL - venda: subiu de 5,8904 para 5,9126.
+[2026-06-25 19:49:24 +0000] Câmbio USD/BRL - venda: 5.2098 -> 5.1892
+    ↳ Câmbio USD/BRL - venda: caiu de 5,2098 para 5,1892.
+[2026-06-25 19:49:24 +0000] Câmbio USD/BRL - compra: 5.2092 -> 5.1886
+    ↳ Câmbio USD/BRL - compra: caiu de 5,2092 para 5,1886.
+[2026-06-25 19:49:24 +0000] Câmbio EUR/BRL - venda: 5.9126000 -> 5.9079000
+    ↳ Câmbio EUR/BRL - venda: caiu de 5,9126 para 5,9079.
