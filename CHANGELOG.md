@@ -107,3 +107,9 @@
     ↳ Poupança - rendimento (%): caiu de 0,6725 para 0,6723.
 [2026-06-26 14:09:50 +0000] Taxa de desocupação - PNAD (%): 5.8 -> 5.6
     ↳ Taxa de desocupação - PNAD (%): caiu de 5,8 para 5,6.
+[2026-06-26 19:39:26 +0000] Câmbio USD/BRL - venda: 5.1892 -> 5.1695
+    ↳ Câmbio USD/BRL - venda: caiu de 5,1892 para 5,1695.
+[2026-06-26 19:39:26 +0000] Câmbio USD/BRL - compra: 5.1886 -> 5.1689
+    ↳ Câmbio USD/BRL - compra: caiu de 5,1886 para 5,1689.
+[2026-06-26 19:39:26 +0000] Câmbio EUR/BRL - venda: 5.9079000 -> 5.8953000
+    ↳ Câmbio EUR/BRL - venda: caiu de 5,9079 para 5,8953.
