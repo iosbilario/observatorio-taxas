@@ -28,21 +28,21 @@
   },
   {
     "codigo": 226,
-    "data_referencia": "24/06/2026",
+    "data_referencia": "25/06/2026",
     "grupo": "Juros",
     "nome": "TR - Taxa Referencial (%)",
-    "pontos": 740,
-    "ultima_mudanca": "23/06/2026",
-    "valor_atual": "0.1716"
+    "pontos": 741,
+    "ultima_mudanca": "25/06/2026",
+    "valor_atual": "0.1714"
   },
   {
     "codigo": 25,
-    "data_referencia": "24/06/2026",
+    "data_referencia": "25/06/2026",
     "grupo": "Juros",
     "nome": "Poupança - rendimento (%)",
-    "pontos": 682,
-    "ultima_mudanca": "23/06/2026",
-    "valor_atual": "0.6725"
+    "pontos": 683,
+    "ultima_mudanca": "25/06/2026",
+    "valor_atual": "0.6723"
   },
   {
     "codigo": 433,
@@ -127,11 +127,11 @@
   },
   {
     "codigo": 24369,
-    "data_referencia": "01/04/2026",
+    "data_referencia": "01/05/2026",
     "grupo": "Atividade & Emprego",
     "nome": "Taxa de desocupação - PNAD (%)",
-    "pontos": 23,
-    "ultima_mudanca": "01/04/2026",
-    "valor_atual": "5.8"
+    "pontos": 24,
+    "ultima_mudanca": "01/05/2026",
+    "valor_atual": "5.6"
   }
 ]
