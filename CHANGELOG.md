@@ -117,3 +117,9 @@
     ↳ Poupança - rendimento (%): caiu de 0,6723 para 0,6704.
 [2026-06-29 15:35:09 +0000] IGP-M - variação mensal (%): 0.84 -> -0.50
     ↳ IGP-M - variação mensal (%): caiu de 0,84 para -0,5.
+[2026-06-29 19:47:56 +0000] Câmbio USD/BRL - venda: 5.1695 -> 5.1717
+    ↳ Câmbio USD/BRL - venda: subiu de 5,1695 para 5,1717.
+[2026-06-29 19:47:56 +0000] Câmbio USD/BRL - compra: 5.1689 -> 5.1711
+    ↳ Câmbio USD/BRL - compra: subiu de 5,1689 para 5,1711.
+[2026-06-29 19:47:56 +0000] Câmbio EUR/BRL - venda: 5.8953000 -> 5.9087000
+    ↳ Câmbio EUR/BRL - venda: subiu de 5,8953 para 5,9087.
