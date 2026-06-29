@@ -37,12 +37,12 @@
   },
   {
     "codigo": 25,
-    "data_referencia": "25/06/2026",
+    "data_referencia": "26/06/2026",
     "grupo": "Juros",
     "nome": "Poupança - rendimento (%)",
-    "pontos": 683,
-    "ultima_mudanca": "25/06/2026",
-    "valor_atual": "0.6723"
+    "pontos": 684,
+    "ultima_mudanca": "26/06/2026",
+    "valor_atual": "0.6704"
   },
   {
     "codigo": 433,
@@ -73,12 +73,12 @@
   },
   {
     "codigo": 189,
-    "data_referencia": "01/05/2026",
+    "data_referencia": "01/06/2026",
     "grupo": "Inflação",
     "nome": "IGP-M - variação mensal (%)",
-    "pontos": 24,
-    "ultima_mudanca": "01/05/2026",
-    "valor_atual": "0.84"
+    "pontos": 25,
+    "ultima_mudanca": "01/06/2026",
+    "valor_atual": "-0.50"
   },
   {
     "codigo": 190,
