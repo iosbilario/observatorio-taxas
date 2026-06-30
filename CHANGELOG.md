@@ -125,3 +125,13 @@
     ↳ Câmbio EUR/BRL - venda: subiu de 5,8953 para 5,9087.
 [2026-06-30 02:42:40 +0000] TR - Taxa Referencial (%): 0.1714 -> 0.1696
     ↳ TR - Taxa Referencial (%): caiu de 0,1714 para 0,1696.
+[2026-06-30 14:03:49 +0000] TR - Taxa Referencial (%): 0.1696 -> 0.1524
+    ↳ TR - Taxa Referencial (%): caiu de 0,1696 para 0,1524.
+[2026-06-30 14:03:49 +0000] TR - Taxa Referencial (%): 0.1524 -> 0.1695
+    ↳ TR - Taxa Referencial (%): subiu de 0,1524 para 0,1695.
+[2026-06-30 14:03:49 +0000] TR - Taxa Referencial (%): 0.1695 -> 0.1713
+    ↳ TR - Taxa Referencial (%): subiu de 0,1695 para 0,1713.
+[2026-06-30 14:03:49 +0000] Poupança - rendimento (%): 0.6704 -> 0.6532
+    ↳ Poupança - rendimento (%): caiu de 0,6704 para 0,6532.
+[2026-06-30 14:03:49 +0000] Poupança - rendimento (%): 0.6532 -> 0.6703
+    ↳ Poupança - rendimento (%): subiu de 0,6532 para 0,6703.
