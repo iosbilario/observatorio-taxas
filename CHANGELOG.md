@@ -149,3 +149,5 @@
     ↳ Câmbio USD/BRL - compra: subiu de 5,176 para 5,1944.
 [2026-07-01 19:43:35 +0000] Câmbio EUR/BRL - venda: 5.9106000 -> 5.9145000
     ↳ Câmbio EUR/BRL - venda: subiu de 5,9106 para 5,9145.
+[2026-07-02 02:38:11 +0000] CDI - acumulado no mês (%): 1.12 -> 0.05
+    ↳ CDI - acumulado no mês (%): caiu de 1,12 para 0,05.
