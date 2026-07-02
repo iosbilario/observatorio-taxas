@@ -151,3 +151,9 @@
     ↳ Câmbio EUR/BRL - venda: subiu de 5,9106 para 5,9145.
 [2026-07-02 02:38:11 +0000] CDI - acumulado no mês (%): 1.12 -> 0.05
     ↳ CDI - acumulado no mês (%): caiu de 1,12 para 0,05.
+[2026-07-02 13:43:54 +0000] TR - Taxa Referencial (%): 0.1711 -> 0.1729
+    ↳ TR - Taxa Referencial (%): subiu de 0,1711 para 0,1729.
+[2026-07-02 13:43:54 +0000] TR - Taxa Referencial (%): 0.1711 -> 0.1729
+    ↳ TR - Taxa Referencial (%): subiu de 0,1711 para 0,1729.
+[2026-07-02 13:43:54 +0000] Poupança - rendimento (%): 0.6703 -> 0.6738
+    ↳ Poupança - rendimento (%): subiu de 0,6703 para 0,6738.
