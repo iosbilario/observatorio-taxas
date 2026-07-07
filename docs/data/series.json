@@ -28,21 +28,21 @@
   },
   {
     "codigo": 226,
-    "data_referencia": "03/07/2026",
+    "data_referencia": "06/07/2026",
     "grupo": "Juros",
     "nome": "TR - Taxa Referencial (%)",
-    "pontos": 749,
-    "ultima_mudanca": "03/07/2026",
-    "valor_atual": "0.1696"
+    "pontos": 752,
+    "ultima_mudanca": "06/07/2026",
+    "valor_atual": "0.1731"
   },
   {
     "codigo": 25,
-    "data_referencia": "03/07/2026",
+    "data_referencia": "06/07/2026",
     "grupo": "Juros",
     "nome": "Poupança - rendimento (%)",
-    "pontos": 689,
-    "ultima_mudanca": "03/07/2026",
-    "valor_atual": "0.6704"
+    "pontos": 692,
+    "ultima_mudanca": "06/07/2026",
+    "valor_atual": "0.6740"
   },
   {
     "codigo": 433,
@@ -82,12 +82,12 @@
   },
   {
     "codigo": 190,
-    "data_referencia": "01/05/2026",
+    "data_referencia": "01/06/2026",
     "grupo": "Inflação",
     "nome": "IGP-DI - variação mensal (%)",
-    "pontos": 24,
-    "ultima_mudanca": "01/05/2026",
-    "valor_atual": "0.87"
+    "pontos": 25,
+    "ultima_mudanca": "01/06/2026",
+    "valor_atual": "-0.79"
   },
   {
     "codigo": 1,
