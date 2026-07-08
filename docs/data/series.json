@@ -91,30 +91,30 @@
   },
   {
     "codigo": 1,
-    "data_referencia": "07/07/2026",
+    "data_referencia": "08/07/2026",
     "grupo": "Câmbio",
     "nome": "Câmbio USD/BRL - venda",
-    "pontos": 518,
-    "ultima_mudanca": "07/07/2026",
-    "valor_atual": "5.1458"
+    "pontos": 519,
+    "ultima_mudanca": "08/07/2026",
+    "valor_atual": "5.1552"
   },
   {
     "codigo": 10813,
-    "data_referencia": "07/07/2026",
+    "data_referencia": "08/07/2026",
     "grupo": "Câmbio",
     "nome": "Câmbio USD/BRL - compra",
-    "pontos": 518,
-    "ultima_mudanca": "07/07/2026",
-    "valor_atual": "5.1452"
+    "pontos": 519,
+    "ultima_mudanca": "08/07/2026",
+    "valor_atual": "5.1546"
   },
   {
     "codigo": 21619,
-    "data_referencia": "07/07/2026",
+    "data_referencia": "08/07/2026",
     "grupo": "Câmbio",
     "nome": "Câmbio EUR/BRL - venda",
-    "pontos": 518,
-    "ultima_mudanca": "07/07/2026",
-    "valor_atual": "5.8786000"
+    "pontos": 519,
+    "ultima_mudanca": "08/07/2026",
+    "valor_atual": "5.8749000"
   },
   {
     "codigo": 24363,
