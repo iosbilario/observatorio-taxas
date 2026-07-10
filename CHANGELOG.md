@@ -229,3 +229,9 @@
     ↳ IPCA - acumulado 12 meses (%): caiu de 4,72 para 4,64.
 [2026-07-10 14:06:25 +0000] INPC - variação mensal (%): 0.65 -> 0.14
     ↳ INPC - variação mensal (%): caiu de 0,65 para 0,14.
+[2026-07-10 19:19:01 +0000] Câmbio USD/BRL - venda: 5.1329 -> 5.1088
+    ↳ Câmbio USD/BRL - venda: caiu de 5,1329 para 5,1088.
+[2026-07-10 19:19:01 +0000] Câmbio USD/BRL - compra: 5.1323 -> 5.1082
+    ↳ Câmbio USD/BRL - compra: caiu de 5,1323 para 5,1082.
+[2026-07-10 19:19:01 +0000] Câmbio EUR/BRL - venda: 5.8720000 -> 5.8434000
+    ↳ Câmbio EUR/BRL - venda: caiu de 5,872 para 5,8434.
