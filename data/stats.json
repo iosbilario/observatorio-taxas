@@ -1,0 +1,171 @@
+{
+  "gerado_em": "2026-07-12T01:44:25-03:00",
+  "gerado_em_fmt": "12/07/2026 às 01:44",
+  "grupos": {
+    "Admin": {
+      "acessos": 0,
+      "sub": {}
+    },
+    "Correção": {
+      "acessos": 0,
+      "sub": {
+        "IGP-DI": 0,
+        "IGP-M": 0,
+        "INPC": 0,
+        "IPCA": 0
+      }
+    },
+    "Home": {
+      "acessos": 0,
+      "sub": {}
+    },
+    "Reajuste": {
+      "acessos": 0,
+      "sub": {
+        "IGP-DI": 0,
+        "IGP-M": 0,
+        "INPC": 0,
+        "IPCA": 0
+      }
+    }
+  },
+  "serie_diaria": [
+    {
+      "acessos": 0,
+      "data": "2026-06-12"
+    },
+    {
+      "acessos": 0,
+      "data": "2026-06-13"
+    },
+    {
+      "acessos": 0,
+      "data": "2026-06-14"
+    },
+    {
+      "acessos": 0,
+      "data": "2026-06-15"
+    },
+    {
+      "acessos": 0,
+      "data": "2026-06-16"
+    },
+    {
+      "acessos": 0,
+      "data": "2026-06-17"
+    },
+    {
+      "acessos": 0,
+      "data": "2026-06-18"
+    },
+    {
+      "acessos": 0,
+      "data": "2026-06-19"
+    },
+    {
+      "acessos": 0,
+      "data": "2026-06-20"
+    },
+    {
+      "acessos": 0,
+      "data": "2026-06-21"
+    },
+    {
+      "acessos": 0,
+      "data": "2026-06-22"
+    },
+    {
+      "acessos": 0,
+      "data": "2026-06-23"
+    },
+    {
+      "acessos": 0,
+      "data": "2026-06-24"
+    },
+    {
+      "acessos": 0,
+      "data": "2026-06-25"
+    },
+    {
+      "acessos": 0,
+      "data": "2026-06-26"
+    },
+    {
+      "acessos": 0,
+      "data": "2026-06-27"
+    },
+    {
+      "acessos": 0,
+      "data": "2026-06-28"
+    },
+    {
+      "acessos": 0,
+      "data": "2026-06-29"
+    },
+    {
+      "acessos": 0,
+      "data": "2026-06-30"
+    },
+    {
+      "acessos": 0,
+      "data": "2026-07-01"
+    },
+    {
+      "acessos": 0,
+      "data": "2026-07-02"
+    },
+    {
+      "acessos": 0,
+      "data": "2026-07-03"
+    },
+    {
+      "acessos": 0,
+      "data": "2026-07-04"
+    },
+    {
+      "acessos": 0,
+      "data": "2026-07-05"
+    },
+    {
+      "acessos": 0,
+      "data": "2026-07-06"
+    },
+    {
+      "acessos": 0,
+      "data": "2026-07-07"
+    },
+    {
+      "acessos": 0,
+      "data": "2026-07-08"
+    },
+    {
+      "acessos": 0,
+      "data": "2026-07-09"
+    },
+    {
+      "acessos": 0,
+      "data": "2026-07-10"
+    },
+    {
+      "acessos": 0,
+      "data": "2026-07-11"
+    },
+    {
+      "acessos": 0,
+      "data": "2026-07-12"
+    }
+  ],
+  "site": "observatoriotaxas",
+  "timezone": "America/Sao_Paulo (UTC-3)",
+  "top_paginas": [],
+  "totais": {
+    "all_time": {
+      "acessos": 0,
+      "visitantes": 0
+    },
+    "ultimos_30d": {
+      "acessos": 0,
+      "visitantes": 0
+    }
+  }
+}
