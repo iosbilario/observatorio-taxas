@@ -41,7 +41,11 @@ DOCS_DATA_DIR = ROOT / "docs" / "data"  # espelho servido pelo GitHub Pages
 TIMEOUT = 30          # segundos por requisição
 HITS_LIMIT = 200      # teto da API por chamada; cobre todas as páginas do site
 DIAS_JANELA = 30      # janela "recente" e da série diária
-INICIO_TUDO = "2020-01-01T00:00:00Z"  # "all-time": a API limita à disponibilidade
+
+# "All-time": o SaaS do GoatCounter recusa (404) janelas muito largas em
+# /stats/total. Tentamos estas janelas (em dias) da maior para a menor e usamos
+# a PRIMEIRA que a API aceitar — para um site novo, a maior já responde.
+JANELAS_ALL_TIME = (3650, 365, 90, 35)
 
 # Brasil sem horário de verão desde 2019 -> offset fixo, sem depender de tzdata.
 BRT = timezone(timedelta(hours=-3))
@@ -96,19 +100,23 @@ class GoatCounter:
         self.houve_sucesso = True
         return data if isinstance(data, dict) else {}
 
-    def total(self, start: str, end: str) -> tuple[int, list[dict]]:
-        """(visitantes no período, série diária [{data, acessos}, ...])."""
+    def total(self, start: str, end: str) -> tuple[bool, int, list[dict]]:
+        """(ok, visitantes no período, série diária [{data, acessos}, ...]).
+
+        ok=False se a chamada não retornou 200 — o chamador usa isso para tentar
+        janelas menores no 'all-time' (o SaaS 404a janelas muito largas).
+        """
         try:
             data = self._get("/stats/total", {"start": start, "end": end})
         except Exception as exc:  # noqa: BLE001
-            print(f"[aviso] /stats/total falhou: {exc}", file=sys.stderr)
-            return 0, []
+            print(f"[aviso] /stats/total ({start}..{end}) falhou: {exc}", file=sys.stderr)
+            return False, 0, []
         total = int(data.get("total") or 0)
         diaria = [
             {"data": s.get("day"), "acessos": int(s.get("daily") or 0)}
             for s in (data.get("stats") or []) if s.get("day")
         ]
-        return total, diaria
+        return True, total, diaria
 
     def hits(self, start: str, end: str) -> list[dict]:
         """Páginas do período: [{path, count}, ...] (até HITS_LIMIT)."""
@@ -198,9 +206,22 @@ def main() -> None:
     ini_30d = rfc3339(agora - timedelta(days=DIAS_JANELA))
 
     gc = GoatCounter(code, token)
-    vis_tudo, _ = gc.total(INICIO_TUDO, fim)
-    vis_30d, serie_diaria = gc.total(ini_30d, fim)
-    hits_tudo = gc.hits(INICIO_TUDO, fim)
+
+    # All-time: acha a MAIOR janela que a API aceita (candidatos decrescentes).
+    # A janela encontrada vira também o start dos hits all-time, p/ coerência.
+    ini_tudo, vis_tudo = None, 0
+    for dias in JANELAS_ALL_TIME:
+        cand = rfc3339(agora - timedelta(days=dias))
+        ok, total_v, _ = gc.total(cand, fim)
+        if ok:
+            ini_tudo, vis_tudo = cand, total_v
+            break
+    if ini_tudo is None:                 # nenhuma janela grande passou -> 30 dias
+        ini_tudo = ini_30d
+        _, vis_tudo, _ = gc.total(ini_tudo, fim)
+
+    _, vis_30d, serie_diaria = gc.total(ini_30d, fim)
+    hits_tudo = gc.hits(ini_tudo, fim)
     hits_30d = gc.hits(ini_30d, fim)
 
     if not gc.houve_sucesso:
