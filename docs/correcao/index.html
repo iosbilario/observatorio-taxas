@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Calculadora de correção monetária entre datas: IPCA, IGP-M, INPC e IGP-DI</title>
+<meta name="description" content="Corrija (atualize) um valor entre duas datas pelo IPCA, IGP-M, INPC ou IGP-DI, com fator de correção, percentual acumulado e dados oficiais do Banco Central. Gratuito e sem cadastro."/>
+<meta name="robots" content="index, follow"/>
+<meta name="theme-color" content="#0b1120"/>
+<link rel="canonical" href="https://iosbilario.github.io/observatorio-taxas/correcao/"/>
+<meta property="og:type" content="website"/>
+<meta property="og:locale" content="pt_BR"/>
+<meta property="og:site_name" content="Observatório de Taxas"/>
+<meta property="og:title" content="Calculadora de correção monetária entre datas: IPCA, IGP-M, INPC e IGP-DI"/>
+<meta property="og:description" content="Corrija (atualize) um valor entre duas datas pelo IPCA, IGP-M, INPC ou IGP-DI, com fator de correção, percentual acumulado e dados oficiais do Banco Central. Gratuito e sem cadastro."/>
+<meta property="og:url" content="https://iosbilario.github.io/observatorio-taxas/correcao/"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "O que é correção monetária?", "acceptedAnswer": {"@type": "Answer", "text": "É a atualização de um valor ao longo do tempo pela variação de um índice de preços (como IPCA ou IGP-M), preservando o poder de compra entre a data original e a data atual."}}, {"@type": "Question", "name": "Qual índice devo usar para corrigir um valor?", "acceptedAnswer": {"@type": "Answer", "text": "Depende do contrato ou da decisão: IPCA para atualização geral e muitas condenações judiciais, IGP-M em aluguéis, INPC para verbas ligadas a salário, e IGP-DI em contratos públicos e de fornecimento."}}]}</script>
+<style>
+:root{--bg:#0b1120;--card:#0f172a;--line:#1e293b;--tx:#e2e8f0;--mut:#94a3b8;--ac:#38bdf8;--ok:#4ade80;--warn:#fbbf24}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.wrap{max-width:860px;margin:0 auto;padding:24px 16px 64px}
+a{color:var(--ac);text-decoration:none}a:hover{text-decoration:underline}
+h1{font-size:1.5rem;line-height:1.3;margin:.5em 0}.crumb{color:var(--mut);font-size:.85rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;margin:16px 0}
+.big{font-size:2.2rem;font-weight:700;color:var(--ac)}.big.neg{color:var(--warn)}
+table{width:100%;border-collapse:collapse;font-size:.9rem}
+th,td{padding:8px 10px;text-align:right;border-bottom:1px solid var(--line)}
+th:first-child,td:first-child{text-align:left}thead th{color:var(--mut);font-weight:600}
+input,select{background:#0b1526;border:1px solid var(--line);border-radius:8px;color:var(--tx);padding:10px 12px;font-size:1rem;width:100%}
+label{display:block;margin:12px 0 4px;color:var(--mut);font-size:.85rem}
+button{background:var(--ac);color:#04121f;border:0;border-radius:8px;padding:12px 18px;font-size:1rem;font-weight:700;cursor:pointer;margin-top:14px;width:100%}
+.res{margin-top:14px;font-size:1.15rem}.res b{color:var(--ok)}
+.mut{color:var(--mut);font-size:.85rem}.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.pill{display:inline-block;background:#0b1526;border:1px solid var(--line);border-radius:999px;padding:4px 12px;margin:3px;font-size:.85rem}
+footer{margin-top:32px;color:var(--mut);font-size:.8rem}
+@media(max-width:520px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body><div class="wrap">
+<p class="crumb"><a href="https://iosbilario.github.io/observatorio-taxas/">Observatório de Taxas</a> › <a href="https://iosbilario.github.io/observatorio-taxas/correcao/">Correção monetária</a></p>
+
+<h1>Correção monetária entre datas</h1>
+<p>Atualize qualquer valor entre duas datas por um índice de inflação oficial, com fator de correção e
+percentual acumulado. Dados coletados automaticamente do BACEN e
+<a href="https://github.com/iosbilario/observatorio-taxas">versionados em aberto</a>.</p>
+
+<div class="card">
+<h2>Calcule a correção</h2>
+<label>Índice</label><select id="indice"><option value="ipca">IPCA</option><option value="igpm">IGP-M</option><option value="inpc">INPC</option><option value="igpdi">IGP-DI</option></select>
+<label>Valor a corrigir (R$)</label>
+<input id="valor" type="text" inputmode="decimal" placeholder="1.000,00"/>
+<div class="grid">
+<div><label>Do mês</label><select id="de"></select></div>
+<div><label>Até o mês</label><select id="ate"></select></div>
+</div>
+<button onclick="calc()">Corrigir valor</button>
+<p class="res" id="res"></p>
+<p class="mut">A correção aplica, de forma composta, a variação mensal do índice dos meses posteriores ao inicial até o final.</p>
+</div>
+<div class="card"><h2>Páginas por índice</h2><a class="pill" href="https://iosbilario.github.io/observatorio-taxas/correcao/ipca/">IPCA</a><a class="pill" href="https://iosbilario.github.io/observatorio-taxas/correcao/igpm/">IGP-M</a><a class="pill" href="https://iosbilario.github.io/observatorio-taxas/correcao/inpc/">INPC</a><a class="pill" href="https://iosbilario.github.io/observatorio-taxas/correcao/igpdi/">IGP-DI</a></div>
+<div class="card"><h2>Reajuste anual de contrato</h2>
+<p class="mut">Para o reajuste fechado de 12 meses (aluguel, mensalidades), use a
+<a href="https://iosbilario.github.io/observatorio-taxas/reajuste/">calculadora de reajuste</a>.</p></div>
+
+<script>
+const SERIES = {"ipca": {"nome": "IPCA", "pts": [{"label": "Junho de 2024", "v": 0.21}, {"label": "Julho de 2024", "v": 0.38}, {"label": "Agosto de 2024", "v": -0.02}, {"label": "Setembro de 2024", "v": 0.44}, {"label": "Outubro de 2024", "v": 0.56}, {"label": "Novembro de 2024", "v": 0.39}, {"label": "Dezembro de 2024", "v": 0.52}, {"label": "Janeiro de 2025", "v": 0.16}, {"label": "Fevereiro de 2025", "v": 1.31}, {"label": "Março de 2025", "v": 0.56}, {"label": "Abril de 2025", "v": 0.43}, {"label": "Maio de 2025", "v": 0.26}, {"label": "Junho de 2025", "v": 0.24}, {"label": "Julho de 2025", "v": 0.26}, {"label": "Agosto de 2025", "v": -0.11}, {"label": "Setembro de 2025", "v": 0.48}, {"label": "Outubro de 2025", "v": 0.09}, {"label": "Novembro de 2025", "v": 0.18}, {"label": "Dezembro de 2025", "v": 0.33}, {"label": "Janeiro de 2026", "v": 0.33}, {"label": "Fevereiro de 2026", "v": 0.7}, {"label": "Março de 2026", "v": 0.88}, {"label": "Abril de 2026", "v": 0.67}, {"label": "Maio de 2026", "v": 0.58}, {"label": "Junho de 2026", "v": 0.16}]}, "igpm": {"nome": "IGP-M", "pts": [{"label": "Junho de 2024", "v": 0.81}, {"label": "Julho de 2024", "v": 0.61}, {"label": "Agosto de 2024", "v": 0.29}, {"label": "Setembro de 2024", "v": 0.62}, {"label": "Outubro de 2024", "v": 1.52}, {"label": "Novembro de 2024", "v": 1.3}, {"label": "Dezembro de 2024", "v": 0.94}, {"label": "Janeiro de 2025", "v": 0.27}, {"label": "Fevereiro de 2025", "v": 1.06}, {"label": "Março de 2025", "v": -0.34}, {"label": "Abril de 2025", "v": 0.24}, {"label": "Maio de 2025", "v": -0.49}, {"label": "Junho de 2025", "v": -1.67}, {"label": "Julho de 2025", "v": -0.77}, {"label": "Agosto de 2025", "v": 0.36}, {"label": "Setembro de 2025", "v": 0.42}, {"label": "Outubro de 2025", "v": -0.36}, {"label": "Novembro de 2025", "v": 0.27}, {"label": "Dezembro de 2025", "v": -0.01}, {"label": "Janeiro de 2026", "v": 0.41}, {"label": "Fevereiro de 2026", "v": -0.73}, {"label": "Março de 2026", "v": 0.52}, {"label": "Abril de 2026", "v": 2.73}, {"label": "Maio de 2026", "v": 0.84}, {"label": "Junho de 2026", "v": -0.5}]}, "inpc": {"nome": "INPC", "pts": [{"label": "Junho de 2024", "v": 0.25}, {"label": "Julho de 2024", "v": 0.26}, {"label": "Agosto de 2024", "v": -0.14}, {"label": "Setembro de 2024", "v": 0.48}, {"label": "Outubro de 2024", "v": 0.61}, {"label": "Novembro de 2024", "v": 0.33}, {"label": "Dezembro de 2024", "v": 0.48}, {"label": "Janeiro de 2025", "v": 0.0}, {"label": "Fevereiro de 2025", "v": 1.48}, {"label": "Março de 2025", "v": 0.51}, {"label": "Abril de 2025", "v": 0.48}, {"label": "Maio de 2025", "v": 0.35}, {"label": "Junho de 2025", "v": 0.23}, {"label": "Julho de 2025", "v": 0.21}, {"label": "Agosto de 2025", "v": -0.21}, {"label": "Setembro de 2025", "v": 0.52}, {"label": "Outubro de 2025", "v": 0.03}, {"label": "Novembro de 2025", "v": 0.03}, {"label": "Dezembro de 2025", "v": 0.21}, {"label": "Janeiro de 2026", "v": 0.39}, {"label": "Fevereiro de 2026", "v": 0.56}, {"label": "Março de 2026", "v": 0.91}, {"label": "Abril de 2026", "v": 0.81}, {"label": "Maio de 2026", "v": 0.65}, {"label": "Junho de 2026", "v": 0.14}]}, "igpdi": {"nome": "IGP-DI", "pts": [{"label": "Junho de 2024", "v": 0.5}, {"label": "Julho de 2024", "v": 0.83}, {"label": "Agosto de 2024", "v": 0.12}, {"label": "Setembro de 2024", "v": 1.03}, {"label": "Outubro de 2024", "v": 1.54}, {"label": "Novembro de 2024", "v": 1.18}, {"label": "Dezembro de 2024", "v": 0.87}, {"label": "Janeiro de 2025", "v": 0.11}, {"label": "Fevereiro de 2025", "v": 1.0}, {"label": "Março de 2025", "v": -0.5}, {"label": "Abril de 2025", "v": 0.3}, {"label": "Maio de 2025", "v": -0.85}, {"label": "Junho de 2025", "v": -1.8}, {"label": "Julho de 2025", "v": -0.07}, {"label": "Agosto de 2025", "v": 0.2}, {"label": "Setembro de 2025", "v": 0.36}, {"label": "Outubro de 2025", "v": -0.03}, {"label": "Novembro de 2025", "v": 0.01}, {"label": "Dezembro de 2025", "v": 0.1}, {"label": "Janeiro de 2026", "v": 0.2}, {"label": "Fevereiro de 2026", "v": -0.84}, {"label": "Março de 2026", "v": 1.14}, {"label": "Abril de 2026", "v": 2.41}, {"label": "Maio de 2026", "v": 0.87}, {"label": "Junho de 2026", "v": -0.79}]}};
+const DEFAULT_KEY = "ipca";
+function opt(sel,i,txt){var o=document.createElement('option');o.value=i;o.textContent=txt;sel.appendChild(o);}
+function fillMeses(){
+  var key = idxKey();
+  var pts = SERIES[key].pts;
+  var de = document.getElementById('de'), ate = document.getElementById('ate');
+  var deVal = de.value, ateVal = ate.value;
+  de.innerHTML=''; ate.innerHTML='';
+  for(var i=0;i<pts.length;i++){opt(de,i,pts[i].label);opt(ate,i,pts[i].label);}
+  // padrões: de = 12 meses antes do fim; ate = último mês disponível
+  var last = pts.length-1, start = Math.max(0,last-12);
+  de.value = (deVal!==''&&deVal<pts.length)?deVal:start;
+  ate.value = (ateVal!==''&&ateVal<pts.length)?ateVal:last;
+}
+function idxKey(){
+  var s=document.getElementById('indice');
+  return s?s.value:DEFAULT_KEY;
+}
+function calc(){
+  var key=idxKey(), pts=SERIES[key].pts;
+  var i0=parseInt(document.getElementById('de').value,10);
+  var i1=parseInt(document.getElementById('ate').value,10);
+  var v=parseFloat((document.getElementById('valor').value||'').replace('.','').replace(',','.'));
+  var res=document.getElementById('res');
+  if(isNaN(v)){res.textContent='Informe o valor a corrigir.';return;}
+  if(i1<=i0){res.textContent='O mês final deve ser posterior ao inicial.';return;}
+  var fator=1.0;
+  for(var k=i0+1;k<=i1;k++){fator*=1+pts[k].v/100;}
+  var novo=v*fator, ac=(fator-1)*100;
+  var f6=fator.toLocaleString('pt-BR',{minimumFractionDigits:6,maximumFractionDigits:6});
+  res.innerHTML='Valor corrigido: <b>R$ '+novo.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})+'</b>'
+    +'<br><span class="mut">'+SERIES[key].nome+' acumulado no período: '+ac.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})+'%'
+    +' · fator '+f6+' · de '+pts[i0].label+' a '+pts[i1].label+'</span>';
+}
+document.addEventListener('DOMContentLoaded',function(){
+  fillMeses();
+  var is=document.getElementById('indice');
+  if(is){is.addEventListener('change',fillMeses);}
+});
+</script>
+
+
+<footer>Fonte primária: API pública do SGS/Banco Central do Brasil. Série histórica versionada e auditável no
+<a href="https://github.com/iosbilario/observatorio-taxas">GitHub</a>. Conteúdo informativo; confira o índice e a
+convenção de correção previstos no seu contrato ou decisão. Projeto <a href="https://iosbilario.github.io/observatorio-taxas/">Observatório de Taxas</a>, LBP Tecnologia.</footer>
+</div></body></html>
