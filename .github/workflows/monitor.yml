@@ -50,6 +50,9 @@ jobs:
       - name: Gerar páginas programáticas de reajuste
         run: python scripts/build_pages.py
 
+      - name: Gerar calculadora de correção monetária
+        run: python scripts/build_correcao.py
+
       - name: Commit + push se houver mudança
         run: |
           git config user.name "github-actions[bot]"
