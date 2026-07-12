@@ -204,6 +204,16 @@
     .impact .effects { display: flex; flex-wrap: wrap; gap: .35rem; }
     .impact .effects span { font-size: .73rem; color: #bcc8de; background: rgba(255,255,255,.04); border: 1px solid var(--line-soft); border-radius: 999px; padding: .22rem .6rem; }
 
+    /* Reajuste — pills de índices linkando para as páginas programáticas */
+    .idx-pills { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: 1.2rem; }
+    .idx-pills a {
+      font-size: .85rem; font-weight: 700; color: var(--text);
+      background: var(--card); border: 1px solid var(--line); border-radius: 999px;
+      padding: .45rem .95rem; transition: border-color .15s, transform .12s;
+    }
+    .idx-pills a:hover { border-color: var(--accent); transform: translateY(-1px); text-decoration: none; }
+    .idx-pills a small { color: var(--muted); font-weight: 500; }
+
     /* ===================== DASHBOARD ===================== */
     .filtros-wrap { padding-top: .4rem; }
     .filtros { display: flex; flex-wrap: wrap; gap: .4rem; align-items: center; }
@@ -280,6 +290,7 @@
       <div class="links">
         <a href="#historia" class="nav-only">História</a>
         <a href="#impactos" class="nav-only">Impactos</a>
+        <a href="#reajuste" class="nav-only">Reajuste</a>
         <a href="#indicadores" class="nav-only">Indicadores</a>
         <a href="#metodologia" class="nav-only">Metodologia</a>
         <a href="#indicadores" class="cta">Ver dados ao vivo</a>
@@ -302,7 +313,7 @@
         <a href="#indicadores" class="btn primary">Explorar indicadores
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
-        <a href="#historia" class="btn ghost">Entender os dados</a>
+        <a href="reajuste/" class="btn ghost">Calcular reajuste de contrato</a>
       </div>
       <div class="kpis" id="kpis" aria-label="Destaques ao vivo">
         <!-- preenchido via JS a partir de series.json -->
@@ -386,6 +397,30 @@
           <p>O IBC-Br é a prévia mensal do PIB; a taxa de desocupação revela quantos brasileiros procuram trabalho. Juntos, mostram se a engrenagem dos juros, da inflação e do câmbio está virando renda, emprego e confiança.</p>
           <div class="effects"><span>Renda das famílias</span><span>Geração de empregos</span><span>Arrecadação</span><span>Confiança</span></div>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== REAJUSTE DE CONTRATOS ===================== -->
+  <section class="block" id="reajuste">
+    <div class="wrap">
+      <p class="eyebrow reveal">Novo · Calculadora de reajuste</p>
+      <h2 class="h2 reveal">Quanto seu aluguel ou contrato deve ser reajustado?</h2>
+      <p class="section-lead reveal">
+        Das séries que já coletamos do BACEN nasce uma página para cada índice e mês: o acumulado de
+        12 meses, o fator de reajuste, a memória de cálculo completa e uma calculadora — informe o
+        valor atual do contrato e veja o novo valor na hora, com a mesma fonte oficial e auditável.
+      </p>
+      <div class="idx-pills reveal">
+        <a href="reajuste/">IPCA <small>· serviços e mensalidades</small></a>
+        <a href="reajuste/">IGP-M <small>· aluguéis</small></a>
+        <a href="reajuste/">INPC <small>· dissídios e pensões</small></a>
+        <a href="reajuste/">IGP-DI <small>· contratos públicos</small></a>
+      </div>
+      <div class="actions reveal" style="display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.4rem">
+        <a href="reajuste/" class="btn primary">Abrir a calculadora de reajuste
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
       </div>
     </div>
   </section>
