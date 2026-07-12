@@ -5,6 +5,14 @@
 # Referência das séries: https://www3.bcb.gov.br/sgspub/
 
 fonte: "BACEN SGS"
+
+# GoatCounter — coletor de métricas de acesso (grátis, sem servidor).
+# Guarde APENAS o código do site (o subdomínio em <code>.goatcounter.com).
+# A partir dele são montados, sem duplicação:
+#   - o beacon <script> injetado nas páginas (build_pages.py / build_correcao.py);
+#   - a URL da API de estatísticas (scripts/fetch_stats.py).
+# Deixe "" para desativar a coleta e não injetar nenhum beacon.
+goatcounter_code: "observatoriotaxas"
 # Base sem sufixo: o código monta /ultimos/N (coleta) ou ?dataInicial=&dataFinal=
 # (backfill histórico). Ver scripts/fetch.py e scripts/backfill.py.
 base_url: "https://api.bcb.gov.br/dados/serie/bcdata.sgs.{codigo}/dados"

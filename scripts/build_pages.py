@@ -23,12 +23,35 @@ import json
 from datetime import datetime
 from pathlib import Path
 
+import yaml
+
 ROOT = Path(__file__).resolve().parent.parent
+CONFIG_PATH = ROOT / "config.yml"
 DATA_DIR = ROOT / "data"
 DOCS_DIR = ROOT / "docs"
 OUT_DIR = DOCS_DIR / "reajuste"
 
 BASE_URL = "https://iosbilario.github.io/observatorio-taxas"
+
+
+def goatcounter_beacon() -> str:
+    """Beacon do GoatCounter a partir de `goatcounter_code` em config.yml.
+
+    Devolve "" (nada injetado) se o código não estiver configurado ou se o
+    config não puder ser lido — nunca quebra a geração das páginas.
+    """
+    try:
+        cfg = yaml.safe_load(CONFIG_PATH.read_text(encoding="utf-8")) or {}
+        code = str(cfg.get("goatcounter_code", "")).strip()
+    except Exception:
+        return ""
+    if not code:
+        return ""
+    return (f'<script data-goatcounter="https://{code}.goatcounter.com/count" '
+            f'async src="//gc.zgo.at/count.js"></script>')
+
+
+GOATCOUNTER_BEACON = goatcounter_beacon()
 
 # Formulário de captura de e-mail ("me avise quando o índice sair").
 # Deixe vazio para ocultar o bloco. Ex.: "https://formsubmit.co/SEU_ID"
@@ -122,6 +145,7 @@ def head(title: str, desc: str, canonical: str, jsonld: str = "") -> str:
 <meta property="og:url" content="{canonical}"/>
 {jsonld}
 <style>{CSS}</style>
+{GOATCOUNTER_BEACON}
 </head>
 <body><div class="wrap">
 <p class="crumb"><a href="{BASE_URL}/">Observatório de Taxas</a> › <a href="{BASE_URL}/reajuste/">Reajuste de contratos</a></p>

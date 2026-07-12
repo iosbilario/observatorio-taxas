@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Fora dos índices de busca e do sitemap. -->
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#0b1120" />
+  <title>Painel de acessos — Observatório de Taxas</title>
+
+  <!--
+    NOTA DE SEGURANÇA (leia antes de "proteger com senha"):
+    Este é um site 100% estático no GitHub Pages — não há servidor nem backend
+    para validar credenciais. Qualquer "senha" em JavaScript seria teatro: o
+    código e os dados chegam inteiros ao navegador. Portanto NÃO há login aqui.
+    A proteção real é operacional e por obscuridade deliberada:
+      1. <meta robots="noindex, nofollow"> + Disallow em robots.txt;
+      2. página fora do sitemap.xml e não linkada em nenhum lugar do site;
+      3. só expõe NÚMEROS AGREGADOS (contagens), nunca dados de visitantes.
+    Se algum dia precisar de sigilo real, mova estas métricas para trás de um
+    serviço autenticado — não tente simular autenticação no cliente.
+  -->
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+  <style>
+    :root {
+      --bg: #0b1120; --card: #0f172a; --card-2: #131c31; --line: #1e293b;
+      --tx: #e2e8f0; --mut: #94a3b8; --faint: #64748b;
+      --ac: #38bdf8; --ac-2: #818cf8; --ok: #4ade80; --warn: #fbbf24;
+      --radius: 14px; --maxw: 960px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; background: var(--bg); color: var(--tx); line-height: 1.6;
+      font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    body::before {
+      content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+      background:
+        radial-gradient(800px 460px at 10% -8%, rgba(56,189,248,.12), transparent 60%),
+        radial-gradient(700px 440px at 92% 2%, rgba(129,140,248,.10), transparent 60%);
+    }
+    a { color: var(--ac); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 28px 18px 72px; }
+    .gradtext {
+      background: linear-gradient(100deg, var(--ac), var(--ac-2));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    header.top { display: flex; align-items: baseline; gap: .7rem; flex-wrap: wrap; margin-bottom: .3rem; }
+    header.top h1 { font-size: 1.5rem; letter-spacing: -.02em; margin: 0; }
+    .tag { font-size: .7rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ac);
+           border: 1px solid rgba(56,189,248,.3); background: rgba(56,189,248,.08);
+           padding: .18rem .55rem; border-radius: 999px; }
+    .sub { color: var(--mut); font-size: .9rem; margin: 0 0 1.6rem; }
+
+    .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: .8rem; margin-bottom: 1.4rem; }
+    @media (max-width: 720px) { .kpis { grid-template-columns: repeat(2, 1fr); } }
+    .kpi { background: linear-gradient(180deg, var(--card-2), var(--card));
+           border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem 1.1rem; }
+    .kpi .k { font-size: .72rem; text-transform: uppercase; letter-spacing: .05em; color: var(--mut); }
+    .kpi .v { font-size: clamp(1.4rem, 4vw, 1.9rem); font-weight: 800; letter-spacing: -.02em; margin: .25rem 0 0; line-height: 1.15; }
+    .kpi .v.small { font-size: 1.05rem; font-weight: 700; }
+
+    .card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+            padding: 1.1rem 1.2rem 1.3rem; margin: 1rem 0; }
+    .card h2 { margin: 0 0 .8rem; font-size: 1.05rem; }
+    .chart-wrap { position: relative; height: 260px; }
+
+    table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+    th, td { padding: .55rem .6rem; text-align: right; border-bottom: 1px solid var(--line); }
+    th:first-child, td:first-child { text-align: left; }
+    thead th { color: var(--mut); font-weight: 600; font-size: .8rem; text-transform: uppercase; letter-spacing: .04em; }
+    tr.grp td:first-child { font-weight: 700; }
+    tr.sub td:first-child { padding-left: 1.6rem; color: var(--mut); font-weight: 400; }
+    tr.sub td { border-bottom: 1px dashed var(--line); }
+    td.num { font-variant-numeric: tabular-nums; }
+    .path { color: var(--tx); word-break: break-all; }
+
+    .empty { text-align: center; color: var(--mut); padding: 2.4rem 1rem; }
+    .empty .big { font-size: 2.4rem; margin-bottom: .4rem; }
+    footer { margin-top: 2.2rem; color: var(--faint); font-size: .8rem; }
+    footer code { color: var(--mut); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <h1><span class="gradtext">Painel de acessos</span></h1>
+      <span class="tag">interno · noindex</span>
+    </header>
+    <p class="sub">Volume de acesso agregado do Observatório de Taxas — via GoatCounter, coletado a cada 6 h pelo mesmo robô das séries do BACEN.</p>
+
+    <div id="app"></div>
+
+    <footer>
+      Fonte: <a href="https://www.goatcounter.com/" target="_blank" rel="noopener">GoatCounter</a> ·
+      dados de <code>../data/stats.json</code>, gerados por <code>scripts/fetch_stats.py</code>.
+      Só contagens agregadas — nenhum dado pessoal de visitantes é exposto.
+    </footer>
+  </div>
+
+  <script>
+    const IDX_ORDEM = ["IPCA", "IGP-M", "INPC", "IGP-DI"];
+
+    function fmt(n) {
+      return Number(n || 0).toLocaleString("pt-BR");
+    }
+    function esc(s) {
+      return String(s ?? "—").replace(/[&<>"']/g, (c) =>
+        ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+    }
+    // Encurta o path p/ leitura: remove a base do repositório, "/" vira "(home)".
+    function pathCurto(p) {
+      let s = String(p || "/").replace(/^\/observatorio-taxas/, "");
+      if (s === "" || s === "/") return "/ (home)";
+      return s;
+    }
+
+    function kpis(s) {
+      const t = s.totais || {};
+      const all = t.all_time || {}, m30 = t.ultimos_30d || {};
+      return `
+        <div class="kpis">
+          <div class="kpi"><div class="k">Total de acessos</div><div class="v gradtext">${fmt(all.acessos)}</div></div>
+          <div class="kpi"><div class="k">Últimos 30 dias</div><div class="v">${fmt(m30.acessos)}</div></div>
+          <div class="kpi"><div class="k">Visitantes únicos</div><div class="v">${fmt(all.visitantes)}</div></div>
+          <div class="kpi"><div class="k">Atualizado em</div><div class="v small">${esc(s.gerado_em_fmt || "—")}</div></div>
+        </div>`;
+    }
+
+    function tabelaRecursos(grupos) {
+      grupos = grupos || {};
+      const linhas = [];
+      const ordem = ["Home", "Reajuste", "Correção", "Admin"];
+      for (const nome of ordem) {
+        const g = grupos[nome] || { acessos: 0, sub: {} };
+        linhas.push(`<tr class="grp"><td>${esc(nome)}</td><td class="num">${fmt(g.acessos)}</td></tr>`);
+        if (g.sub && (nome === "Reajuste" || nome === "Correção")) {
+          for (const idx of IDX_ORDEM) {
+            if (idx in g.sub) {
+              linhas.push(`<tr class="sub"><td>${esc(idx)}</td><td class="num">${fmt(g.sub[idx])}</td></tr>`);
+            }
+          }
+        }
+      }
+      return `
+        <div class="card">
+          <h2>Acessos por recurso</h2>
+          <table>
+            <thead><tr><th>Recurso</th><th>Acessos</th></tr></thead>
+            <tbody>${linhas.join("")}</tbody>
+          </table>
+        </div>`;
+    }
+
+    function tabelaTop(top) {
+      top = top || [];
+      if (!top.length) return "";
+      const linhas = top.map((h, i) =>
+        `<tr><td>${i + 1}. <span class="path">${esc(pathCurto(h.path))}</span></td><td class="num">${fmt(h.count)}</td></tr>`
+      ).join("");
+      return `
+        <div class="card">
+          <h2>Top páginas</h2>
+          <table>
+            <thead><tr><th>Página</th><th>Acessos</th></tr></thead>
+            <tbody>${linhas}</tbody>
+          </table>
+        </div>`;
+    }
+
+    function grafico(serie) {
+      serie = serie || [];
+      if (!serie.length) {
+        return `<div class="card"><h2>Acessos por dia (30 dias)</h2><p class="sub" style="margin:0">Sem série diária ainda.</p></div>`;
+      }
+      return `<div class="card"><h2>Acessos por dia (30 dias)</h2><div class="chart-wrap"><canvas id="chart"></canvas></div></div>`;
+    }
+
+    function desenhaGrafico(serie) {
+      if (!serie || !serie.length) return;
+      const ctx = document.getElementById("chart");
+      if (!ctx) return;
+      const grad = ctx.getContext("2d").createLinearGradient(0, 0, 0, 260);
+      grad.addColorStop(0, "rgba(56,189,248,.30)");
+      grad.addColorStop(1, "rgba(56,189,248,0)");
+      const labels = serie.map((p) => {
+        const [a, m, d] = String(p.data).split("-");
+        return d && m ? `${d}/${m}` : p.data;
+      });
+      new Chart(ctx, {
+        type: "line",
+        data: { labels, datasets: [{
+          data: serie.map((p) => p.acessos), borderColor: "#38bdf8", backgroundColor: grad,
+          fill: true, tension: 0.3, borderWidth: 2, pointRadius: 2, pointHoverRadius: 5,
+          pointBackgroundColor: "#38bdf8",
+        }] },
+        options: {
+          responsive: true, maintainAspectRatio: false, animation: { duration: 300 },
+          plugins: {
+            legend: { display: false },
+            tooltip: { intersect: false, mode: "index", backgroundColor: "#0b1120",
+                       borderColor: "#243049", borderWidth: 1, titleColor: "#e8eef7",
+                       bodyColor: "#93a3bd", padding: 10, displayColors: false },
+          },
+          scales: {
+            x: { ticks: { color: "#64748b", maxTicksLimit: 8, autoSkip: true }, grid: { color: "#24304940" } },
+            y: { ticks: { color: "#64748b", precision: 0 }, grid: { color: "#24304940" }, beginAtZero: true },
+          },
+        },
+      });
+    }
+
+    function vazio(msg) {
+      return `<div class="card"><div class="empty"><div class="big">📊</div>${esc(msg)}</div></div>`;
+    }
+
+    // stats.json "cheio" o bastante para renderizar? (evita painel só com zeros).
+    function temDados(s) {
+      if (!s || !s.totais) return false;
+      const all = (s.totais.all_time || {});
+      const acessos = Number(all.acessos || 0), vis = Number(all.visitantes || 0);
+      return acessos > 0 || vis > 0 || (s.serie_diaria || []).length > 0 || (s.top_paginas || []).length > 0;
+    }
+
+    async function init() {
+      const app = document.getElementById("app");
+      let stats = null;
+      try {
+        const r = await fetch("../data/stats.json", { cache: "no-store" });
+        if (r.ok) stats = await r.json();
+      } catch (e) { /* rede/arquivo ausente: cai no estado "coletando" */ }
+
+      if (!temDados(stats)) {
+        app.innerHTML = vazio("Ainda coletando dados — volte após a primeira execução do robô.");
+        return;
+      }
+
+      app.innerHTML =
+        kpis(stats) +
+        grafico(stats.serie_diaria) +
+        tabelaRecursos(stats.grupos) +
+        tabelaTop(stats.top_paginas);
+      desenhaGrafico(stats.serie_diaria);
+    }
+
+    init();
+  </script>
+</body>
+</html>

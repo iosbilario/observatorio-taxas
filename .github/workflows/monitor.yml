@@ -53,6 +53,12 @@ jobs:
       - name: Gerar calculadora de correção monetária
         run: python scripts/build_correcao.py
 
+      - name: Coletar estatísticas de acesso (GoatCounter)
+        if: ${{ secrets.GOATCOUNTER_TOKEN != '' }}
+        env:
+          GOATCOUNTER_TOKEN: ${{ secrets.GOATCOUNTER_TOKEN }}
+        run: python scripts/fetch_stats.py
+
       - name: Commit + push se houver mudança
         run: |
           git config user.name "github-actions[bot]"
