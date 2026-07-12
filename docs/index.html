@@ -219,6 +219,9 @@
       color: var(--text); padding: .68rem .85rem; font-size: 1rem; font-family: inherit;
     }
     .rj-calc input:focus, .rj-calc select:focus { outline: none; border-color: var(--accent); }
+    .rj-calc .rj-modes { margin: 0 0 1rem; }
+    .rj-calc .row + .row { margin-top: .8rem; }
+    .rj-calc .row[hidden] { display: none; }  /* [hidden] perde para o display:grid da .row sem isto */
     .rj-res { margin: 1rem 0 0; font-size: 1.05rem; color: var(--muted); }
     .rj-res .novo { font-size: 1.45rem; font-weight: 800; letter-spacing: -.02em; }
     .rj-res .memo { display: inline-block; margin-top: .25rem; font-size: .85rem; }
@@ -420,6 +423,7 @@
         Das séries que já coletamos do BACEN nasce uma página para cada índice e mês: o acumulado de
         12 meses, o fator de reajuste, a memória de cálculo completa e uma calculadora — informe o
         valor atual do contrato e veja o novo valor na hora, com a mesma fonte oficial e auditável.
+        E se precisar atualizar um valor entre duas datas quaisquer, a correção monetária também está aqui.
       </p>
       <!-- Cards ao vivo: preenchidos via JS com o acumulado 12m de cada índice.
            Sem JS (ou se o fetch falhar) continuam funcionando como link para o hub. -->
@@ -446,25 +450,43 @@
         </a>
       </div>
 
-      <!-- Calculadora rápida: usa os mesmos históricos dos cards, tudo no navegador. -->
+      <!-- Calculadora rápida: usa os mesmos históricos dos cards, tudo no navegador.
+           Dois modos: reajuste anual (12m) e correção monetária entre datas livres. -->
       <div class="rj-calc reveal" id="rj-calc" hidden>
         <h3>Calculadora rápida</h3>
+        <div class="filtros rj-modes" role="group" aria-label="Modo de cálculo">
+          <button type="button" data-mode="anual" class="active">Reajuste anual (12 meses)</button>
+          <button type="button" data-mode="datas">Correção entre datas</button>
+        </div>
         <div class="row">
           <div>
-            <label for="rj-valor">Valor atual do contrato (R$)</label>
+            <label for="rj-valor">Valor a atualizar (R$)</label>
             <input id="rj-valor" type="text" inputmode="decimal" placeholder="2.000,00" autocomplete="off" />
           </div>
           <div>
-            <label for="rj-indice">Índice do contrato</label>
+            <label for="rj-indice">Índice</label>
             <select id="rj-indice"></select>
           </div>
         </div>
-        <p class="rj-res" id="rj-res" aria-live="polite">Informe o valor para ver o novo valor reajustado.</p>
-        <p class="rj-note">Aplica o acumulado de 12 meses mais recente do índice. Confira no contrato o índice pactuado e o mês de referência (defasagem). Conteúdo informativo.</p>
+        <div class="row" id="rj-row-datas" hidden>
+          <div>
+            <label for="rj-de">Do mês</label>
+            <select id="rj-de"></select>
+          </div>
+          <div>
+            <label for="rj-ate">Até o mês</label>
+            <select id="rj-ate"></select>
+          </div>
+        </div>
+        <p class="rj-res" id="rj-res" aria-live="polite">Informe o valor para ver o resultado.</p>
+        <p class="rj-note" id="rj-note">Aplica o acumulado de 12 meses mais recente do índice. Confira no contrato o índice pactuado e o mês de referência (defasagem). Conteúdo informativo.</p>
       </div>
 
       <div class="actions reveal" style="display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.4rem">
         <a href="reajuste/" class="btn ghost">Ver todos os meses e a memória de cálculo
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="correcao/" class="btn ghost">Correção monetária entre datas
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
       </div>
@@ -825,14 +847,18 @@
         try {
           const hist = await getJSON(`${ix.codigo}_history.json`);
           if (!Array.isArray(hist) || hist.length < 12) return;
-          const pts = hist.slice().sort((a, b) => parseData(a.data) - parseData(b.data)).slice(-12);
-          let fator = 1;
+          const pts = hist.slice().sort((a, b) => parseData(a.data) - parseData(b.data));
+          const serie = [];                              // série completa p/ correção entre datas
           for (const p of pts) {
             const v = num(p.valor);
             if (!isFinite(v)) return;
-            fator *= 1 + v / 100;
+            const d = parseData(p.data);
+            serie.push({ label: `${RJ_MESES[d.getMonth()]} de ${d.getFullYear()}`, v });
           }
+          let fator = 1;
+          for (const p of serie.slice(-12)) fator *= 1 + p.v / 100;
           const ref = parseData(pts[pts.length - 1].data);
+          ix.pts = serie;
           ix.fator = fator;
           ix.ac = (fator - 1) * 100;
           ix.refTxt = `${RJ_MESES[ref.getMonth()]} de ${ref.getFullYear()}`;
@@ -852,17 +878,41 @@
       }
       if (!vivos.length) return;                       // fetch falhou: fica o fallback estático
 
-      // Calculadora: novo valor = valor atual × fator do índice escolhido.
+      // Calculadora em dois modos: reajuste anual (12m) e correção monetária
+      // entre datas — este espelha o cálculo de scripts/build_correcao.py
+      // (produto composto das variações dos meses posteriores ao inicial).
       const calc = document.getElementById("rj-calc");
       const inp = document.getElementById("rj-valor");
       const sel = document.getElementById("rj-indice");
       const res = document.getElementById("rj-res");
+      const nota = document.getElementById("rj-note");
+      const rowDatas = document.getElementById("rj-row-datas");
+      const selDe = document.getElementById("rj-de");
+      const selAte = document.getElementById("rj-ate");
+      let modo = "anual";
       for (const ix of vivos) {
         const o = document.createElement("option");
         o.value = ix.key;
         o.textContent = `${ix.nome} — ${fmtPct(ix.ac)} até ${ix.refTxt}`;
         sel.appendChild(o);
       }
+      const idxAtual = () => vivos.find((i) => i.key === sel.value) || vivos[0];
+
+      // (Re)popula os meses do índice atual preservando a seleção quando possível.
+      // Padrão: janela de 12 meses encerrando no mês mais recente.
+      const fillMeses = () => {
+        const pts = idxAtual().pts;
+        const de0 = selDe.value, ate0 = selAte.value;
+        selDe.innerHTML = ""; selAte.innerHTML = "";
+        pts.forEach((p, i) => {
+          selDe.appendChild(new Option(p.label, i));
+          selAte.appendChild(new Option(p.label, i));
+        });
+        const last = pts.length - 1;
+        selDe.value = de0 !== "" && Number(de0) <= last ? de0 : String(Math.max(0, last - 12));
+        selAte.value = ate0 !== "" && Number(ate0) <= last ? ate0 : String(last);
+      };
+
       // Aceita "2.000,00" (pt-BR), "2000.50" (decimal com ponto) e "2.000" (milhar).
       const parseValor = (s) => {
         s = String(s).trim();
@@ -870,21 +920,59 @@
         else if (/^\d{1,3}(\.\d{3})+$/.test(s)) s = s.replace(/\./g, "");
         return Number(s);
       };
+
       const atualiza = () => {
-        const ix = vivos.find((i) => i.key === sel.value) || vivos[0];
+        const ix = idxAtual();
         const v = parseValor(inp.value);
         if (!isFinite(v) || v <= 0) {
-          res.textContent = "Informe o valor para ver o novo valor reajustado.";
+          res.textContent = "Informe o valor para ver o resultado.";
           return;
         }
-        const novo = v * ix.fator;
+        let fator, rotulo, desc, url, urlTxt;
+        if (modo === "anual") {
+          fator = ix.fator;
+          rotulo = "Novo valor";
+          desc = `${fmtPct(ix.ac)} · acumulado 12 meses até ${ix.refTxt}`;
+          url = ix.url;
+          urlTxt = `Ver a memória de cálculo do ${ix.nome} de ${ix.refTxt}`;
+        } else {
+          const i0 = Number(selDe.value), i1 = Number(selAte.value);
+          if (!(i1 > i0)) {
+            res.textContent = "O mês final deve ser posterior ao inicial.";
+            return;
+          }
+          fator = 1;
+          for (let k = i0 + 1; k <= i1; k++) fator *= 1 + ix.pts[k].v / 100;
+          const f6 = fator.toLocaleString("pt-BR", { minimumFractionDigits: 6, maximumFractionDigits: 6 });
+          rotulo = "Valor corrigido";
+          desc = `${ix.nome} de ${ix.pts[i0].label} a ${ix.pts[i1].label}: ${fmtPct((fator - 1) * 100)} · fator ${f6}`;
+          url = `correcao/${ix.key}/`;
+          urlTxt = `Abrir a calculadora completa de correção pelo ${ix.nome}`;
+        }
+        const novo = v * fator, dif = novo - v;
         res.innerHTML =
-          `Novo valor: <span class="novo gradtext">R$ ${fmtBRL(novo)}</span> ` +
-          `<span>(${fmtPct(ix.ac)} · +R$ ${fmtBRL(novo - v)})</span><br/>` +
-          `<a class="memo" href="${ix.url}">Ver a memória de cálculo do ${esc(ix.nome)} de ${esc(ix.refTxt)} →</a>`;
+          `${rotulo}: <span class="novo gradtext">R$ ${fmtBRL(novo)}</span> ` +
+          `<span>(${dif < 0 ? "−" : "+"}R$ ${fmtBRL(Math.abs(dif))})</span><br/>` +
+          `<span>${esc(desc)}</span><br/>` +
+          `<a class="memo" href="${url}">${esc(urlTxt)} →</a>`;
       };
+
+      calc.querySelectorAll(".rj-modes button").forEach((b) => {
+        b.addEventListener("click", () => {
+          modo = b.dataset.mode;
+          calc.querySelectorAll(".rj-modes button").forEach((x) => x.classList.toggle("active", x === b));
+          rowDatas.hidden = modo !== "datas";
+          nota.textContent = modo === "anual"
+            ? "Aplica o acumulado de 12 meses mais recente do índice. Confira no contrato o índice pactuado e o mês de referência (defasagem). Conteúdo informativo."
+            : "Aplica, de forma composta, a variação mensal do índice dos meses posteriores ao inicial até o final. Conteúdo informativo.";
+          atualiza();
+        });
+      });
       inp.addEventListener("input", atualiza);
-      sel.addEventListener("change", atualiza);
+      sel.addEventListener("change", () => { fillMeses(); atualiza(); });
+      selDe.addEventListener("change", atualiza);
+      selAte.addEventListener("change", atualiza);
+      fillMeses();
       calc.hidden = false;
     }
 
