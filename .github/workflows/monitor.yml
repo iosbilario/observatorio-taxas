@@ -47,11 +47,14 @@ jobs:
       - name: Coletar séries do SGS/BACEN
         run: python scripts/fetch.py
 
+      - name: Gerar páginas programáticas de reajuste
+        run: python scripts/build_pages.py
+
       - name: Commit + push se houver mudança
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/ docs/data/
+          git add data/ docs/
           [ -f CHANGELOG.md ] && git add CHANGELOG.md
           if git diff --cached --quiet; then
             echo "Nenhuma mudança — nada a commitar."
