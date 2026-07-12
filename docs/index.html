@@ -204,15 +204,25 @@
     .impact .effects { display: flex; flex-wrap: wrap; gap: .35rem; }
     .impact .effects span { font-size: .73rem; color: #bcc8de; background: rgba(255,255,255,.04); border: 1px solid var(--line-soft); border-radius: 999px; padding: .22rem .6rem; }
 
-    /* Reajuste — pills de índices linkando para as páginas programáticas */
-    .idx-pills { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: 1.2rem; }
-    .idx-pills a {
-      font-size: .85rem; font-weight: 700; color: var(--text);
-      background: var(--card); border: 1px solid var(--line); border-radius: 999px;
-      padding: .45rem .95rem; transition: border-color .15s, transform .12s;
+    /* Reajuste — cards ao vivo por índice (acumulado 12m) + calculadora embutida */
+    .rj-grid { margin-top: 1.6rem; }
+    a.rj-card { display: block; color: inherit; transition: transform .15s, border-color .15s; }
+    a.rj-card:hover { text-decoration: none; transform: translateY(-3px); border-color: rgba(56,189,248,.45); }
+    .rj-card .t.link { color: var(--accent); }
+    .rj-calc { background: linear-gradient(180deg, var(--card-2), var(--card)); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.3rem 1.4rem; margin-top: 1rem; }
+    .rj-calc h3 { margin: 0 0 .9rem; font-size: 1.12rem; }
+    .rj-calc .row { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; }
+    @media (max-width: 680px) { .rj-calc .row { grid-template-columns: 1fr; } }
+    .rj-calc label { display: block; font-size: .78rem; color: var(--muted); margin-bottom: .35rem; }
+    .rj-calc input, .rj-calc select {
+      width: 100%; background: var(--bg-soft); border: 1px solid var(--line); border-radius: 11px;
+      color: var(--text); padding: .68rem .85rem; font-size: 1rem; font-family: inherit;
     }
-    .idx-pills a:hover { border-color: var(--accent); transform: translateY(-1px); text-decoration: none; }
-    .idx-pills a small { color: var(--muted); font-weight: 500; }
+    .rj-calc input:focus, .rj-calc select:focus { outline: none; border-color: var(--accent); }
+    .rj-res { margin: 1rem 0 0; font-size: 1.05rem; color: var(--muted); }
+    .rj-res .novo { font-size: 1.45rem; font-weight: 800; letter-spacing: -.02em; }
+    .rj-res .memo { display: inline-block; margin-top: .25rem; font-size: .85rem; }
+    .rj-note { color: var(--faint); font-size: .78rem; margin: .8rem 0 0; }
 
     /* ===================== DASHBOARD ===================== */
     .filtros-wrap { padding-top: .4rem; }
@@ -411,14 +421,50 @@
         12 meses, o fator de reajuste, a memória de cálculo completa e uma calculadora — informe o
         valor atual do contrato e veja o novo valor na hora, com a mesma fonte oficial e auditável.
       </p>
-      <div class="idx-pills reveal">
-        <a href="reajuste/">IPCA <small>· serviços e mensalidades</small></a>
-        <a href="reajuste/">IGP-M <small>· aluguéis</small></a>
-        <a href="reajuste/">INPC <small>· dissídios e pensões</small></a>
-        <a href="reajuste/">IGP-DI <small>· contratos públicos</small></a>
+      <!-- Cards ao vivo: preenchidos via JS com o acumulado 12m de cada índice.
+           Sem JS (ou se o fetch falhar) continuam funcionando como link para o hub. -->
+      <div class="kpis rj-grid reveal" id="rj-grid" aria-label="Acumulado de 12 meses por índice">
+        <a class="kpi rj-card" data-idx="ipca" href="reajuste/">
+          <div class="k">IPCA · serviços e mensalidades</div>
+          <div class="v gradtext" data-v>—</div>
+          <div class="t flat" data-ref>acumulado 12 meses</div>
+        </a>
+        <a class="kpi rj-card" data-idx="igpm" href="reajuste/">
+          <div class="k">IGP-M · aluguéis</div>
+          <div class="v gradtext" data-v>—</div>
+          <div class="t flat" data-ref>acumulado 12 meses</div>
+        </a>
+        <a class="kpi rj-card" data-idx="inpc" href="reajuste/">
+          <div class="k">INPC · dissídios e pensões</div>
+          <div class="v gradtext" data-v>—</div>
+          <div class="t flat" data-ref>acumulado 12 meses</div>
+        </a>
+        <a class="kpi rj-card" data-idx="igpdi" href="reajuste/">
+          <div class="k">IGP-DI · contratos públicos</div>
+          <div class="v gradtext" data-v>—</div>
+          <div class="t flat" data-ref>acumulado 12 meses</div>
+        </a>
       </div>
+
+      <!-- Calculadora rápida: usa os mesmos históricos dos cards, tudo no navegador. -->
+      <div class="rj-calc reveal" id="rj-calc" hidden>
+        <h3>Calculadora rápida</h3>
+        <div class="row">
+          <div>
+            <label for="rj-valor">Valor atual do contrato (R$)</label>
+            <input id="rj-valor" type="text" inputmode="decimal" placeholder="2.000,00" autocomplete="off" />
+          </div>
+          <div>
+            <label for="rj-indice">Índice do contrato</label>
+            <select id="rj-indice"></select>
+          </div>
+        </div>
+        <p class="rj-res" id="rj-res" aria-live="polite">Informe o valor para ver o novo valor reajustado.</p>
+        <p class="rj-note">Aplica o acumulado de 12 meses mais recente do índice. Confira no contrato o índice pactuado e o mês de referência (defasagem). Conteúdo informativo.</p>
+      </div>
+
       <div class="actions reveal" style="display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.4rem">
-        <a href="reajuste/" class="btn primary">Abrir a calculadora de reajuste
+        <a href="reajuste/" class="btn ghost">Ver todos os meses e a memória de cálculo
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
       </div>
@@ -758,7 +804,92 @@
       }
     }
 
+    // ---------------- Reajuste (cards ao vivo + calculadora) ----------------
+    // Espelha o cálculo de scripts/build_pages.py: acumulado composto dos últimos
+    // 12 meses e slug "<indice>-<mês>-<ano>" da página programática correspondente.
+    const RJ_INDICES = [
+      { key: "ipca",  codigo: 433, nome: "IPCA"   },
+      { key: "igpm",  codigo: 189, nome: "IGP-M"  },
+      { key: "inpc",  codigo: 188, nome: "INPC"   },
+      { key: "igpdi", codigo: 190, nome: "IGP-DI" },
+    ];
+    const RJ_MESES = ["janeiro", "fevereiro", "março", "abril", "maio", "junho",
+                      "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"];
+
+    function fmtBRL(v) {
+      return v.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    async function initReajuste() {
+      await Promise.all(RJ_INDICES.map(async (ix) => {
+        try {
+          const hist = await getJSON(`${ix.codigo}_history.json`);
+          if (!Array.isArray(hist) || hist.length < 12) return;
+          const pts = hist.slice().sort((a, b) => parseData(a.data) - parseData(b.data)).slice(-12);
+          let fator = 1;
+          for (const p of pts) {
+            const v = num(p.valor);
+            if (!isFinite(v)) return;
+            fator *= 1 + v / 100;
+          }
+          const ref = parseData(pts[pts.length - 1].data);
+          ix.fator = fator;
+          ix.ac = (fator - 1) * 100;
+          ix.refTxt = `${RJ_MESES[ref.getMonth()]} de ${ref.getFullYear()}`;
+          ix.url = `reajuste/${ix.key}-${RJ_MESES[ref.getMonth()]}-${ref.getFullYear()}/`;
+        } catch (e) { console.error(e); }
+      }));
+      const vivos = RJ_INDICES.filter((ix) => ix.fator);  // ordem canônica, só quem carregou
+
+      // Cards: acumulado, mês de referência e link direto para a página do mês.
+      for (const ix of vivos) {
+        const card = document.querySelector(`.rj-card[data-idx="${ix.key}"]`);
+        if (!card) continue;
+        card.href = ix.url;
+        card.querySelector("[data-v]").textContent = fmtPct(ix.ac);
+        card.querySelector("[data-ref]").innerHTML =
+          `<span class="link">até ${esc(ix.refTxt)} →</span>`;
+      }
+      if (!vivos.length) return;                       // fetch falhou: fica o fallback estático
+
+      // Calculadora: novo valor = valor atual × fator do índice escolhido.
+      const calc = document.getElementById("rj-calc");
+      const inp = document.getElementById("rj-valor");
+      const sel = document.getElementById("rj-indice");
+      const res = document.getElementById("rj-res");
+      for (const ix of vivos) {
+        const o = document.createElement("option");
+        o.value = ix.key;
+        o.textContent = `${ix.nome} — ${fmtPct(ix.ac)} até ${ix.refTxt}`;
+        sel.appendChild(o);
+      }
+      // Aceita "2.000,00" (pt-BR), "2000.50" (decimal com ponto) e "2.000" (milhar).
+      const parseValor = (s) => {
+        s = String(s).trim();
+        if (s.includes(",")) s = s.replace(/\./g, "").replace(",", ".");
+        else if (/^\d{1,3}(\.\d{3})+$/.test(s)) s = s.replace(/\./g, "");
+        return Number(s);
+      };
+      const atualiza = () => {
+        const ix = vivos.find((i) => i.key === sel.value) || vivos[0];
+        const v = parseValor(inp.value);
+        if (!isFinite(v) || v <= 0) {
+          res.textContent = "Informe o valor para ver o novo valor reajustado.";
+          return;
+        }
+        const novo = v * ix.fator;
+        res.innerHTML =
+          `Novo valor: <span class="novo gradtext">R$ ${fmtBRL(novo)}</span> ` +
+          `<span>(${fmtPct(ix.ac)} · +R$ ${fmtBRL(novo - v)})</span><br/>` +
+          `<a class="memo" href="${ix.url}">Ver a memória de cálculo do ${esc(ix.nome)} de ${esc(ix.refTxt)} →</a>`;
+      };
+      inp.addEventListener("input", atualiza);
+      sel.addEventListener("change", atualiza);
+      calc.hidden = false;
+    }
+
     init();
+    initReajuste();
   </script>
 </body>
 </html>
