@@ -3,35 +3,28 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <!-- Verificação de propriedade — Google Search Console -->
   <meta name="google-site-verification" content="B1ymo2agmjaqa4m4AJtfpx4bZWTsnIqhPqwHOMwyC4g" />
 
-  <!-- ===================== SEO ===================== -->
-  <title>Observatório de Taxas — Selic, IPCA e Câmbio (BACEN/SGS) | Série histórica</title>
-  <meta name="description" content="Acompanhe a série histórica da Meta Selic, do IPCA e do câmbio USD/BRL com dados oficiais do Banco Central do Brasil (SGS). Gráficos interativos, atualização automática e acesso gratuito." />
-  <meta name="keywords" content="Selic, meta Selic, IPCA, inflação, câmbio, dólar, USD/BRL, BACEN, Banco Central do Brasil, SGS, taxa de juros, indicadores econômicos, série histórica, dados abertos, Brasil" />
+  <title>Selic, IPCA e Dólar hoje | Observatório de Taxas</title>
+  <meta name="description" content="Taxa Selic hoje, IPCA acumulado em 12 meses, cotação do dólar, IGP-M e desemprego, direto do Banco Central (SGS/BACEN). Números do dia, série histórica desde 2015 e dados oficiais versionados em aberto." />
+  <meta name="keywords" content="Selic hoje, IPCA hoje, dólar hoje, IGP-M, desemprego, BACEN, SGS, Banco Central, indicadores econômicos, série histórica" />
   <meta name="author" content="LBP Tecnologia" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
-  <meta name="theme-color" content="#0b1120" />
-  <link rel="canonical" href="https://iosbilario.github.io/observatorio-taxas/" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230f172a'/%3E%3Cpolyline points='4,22 12,14 18,18 28,6' fill='none' stroke='%2338bdf8' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+  <meta name="theme-color" content="#0E1210" />
+  <link rel="canonical" href="https://observatoriodetaxas.tec.br/" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230E1210'/%3E%3Cpolyline points='4,22 12,14 18,18 28,6' fill='none' stroke='%23D9B54A' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
 
-  <!-- ===================== Open Graph / Twitter ===================== -->
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="pt_BR" />
   <meta property="og:site_name" content="Observatório de Taxas" />
-  <meta property="og:title" content="Observatório de Taxas — Selic, IPCA e Câmbio (BACEN/SGS)" />
-  <meta property="og:description" content="Série histórica de Selic, IPCA e câmbio USD/BRL com dados oficiais do Banco Central. Gráficos interativos e gratuitos." />
-  <meta property="og:url" content="https://iosbilario.github.io/observatorio-taxas/" />
-  <meta property="og:image" content="https://iosbilario.github.io/observatorio-taxas/og-image.png" />
-  <meta property="og:image:width" content="1731" />
-  <meta property="og:image:height" content="909" />
-  <meta property="og:image:alt" content="Observatório de Taxas — Selic, IPCA e Câmbio (BACEN/SGS)" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Observatório de Taxas — Selic, IPCA e Câmbio (BACEN/SGS)" />
-  <meta name="twitter:description" content="Série histórica de Selic, IPCA e câmbio USD/BRL com dados oficiais do Banco Central. Gráficos interativos e gratuitos." />
-  <meta name="twitter:image" content="https://iosbilario.github.io/observatorio-taxas/og-image.png" />
+  <meta property="og:title" content="Selic, IPCA e Dólar hoje | Observatório de Taxas" />
+  <meta property="og:description" content="Os números do dia da economia brasileira, direto do Banco Central, com série histórica desde 2015 e dados versionados em aberto." />
+  <meta property="og:url" content="https://observatoriodetaxas.tec.br/" />
+  <meta property="og:image" content="https://observatoriodetaxas.tec.br/og-image.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
   <!-- ===================== Dados estruturados (SEO + motores generativos) ===================== -->
   <script type="application/ld+json">
@@ -39,817 +32,401 @@
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "WebSite",
-        "@id": "https://iosbilario.github.io/observatorio-taxas/#website",
-        "url": "https://iosbilario.github.io/observatorio-taxas/",
+        "@type": "Organization",
+        "@id": "https://observatoriodetaxas.tec.br/#org",
         "name": "Observatório de Taxas",
-        "description": "Série histórica de indicadores do Banco Central do Brasil (Selic, IPCA, câmbio).",
-        "inLanguage": "pt-BR",
-        "publisher": { "@id": "https://iosbilario.github.io/observatorio-taxas/#org" }
+        "url": "https://observatoriodetaxas.tec.br/",
+        "description": "Coletor automático e aberto de indicadores econômicos oficiais do Brasil (SGS/BACEN).",
+        "founder": { "@type": "Organization", "name": "LBP Tecnologia" }
       },
       {
-        "@type": "Organization",
-        "@id": "https://iosbilario.github.io/observatorio-taxas/#org",
-        "name": "LBP Tecnologia",
-        "url": "https://iosbilario.github.io/observatorio-taxas/"
+        "@type": "WebSite",
+        "@id": "https://observatoriodetaxas.tec.br/#website",
+        "url": "https://observatoriodetaxas.tec.br/",
+        "name": "Observatório de Taxas",
+        "inLanguage": "pt-BR",
+        "publisher": { "@id": "https://observatoriodetaxas.tec.br/#org" },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://observatoriodetaxas.tec.br/var.html?claim={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
       },
       {
         "@type": "Dataset",
-        "name": "Observatório de Taxas — séries do BACEN/SGS",
-        "description": "Série temporal da Meta Selic, do IPCA (variação mensal) e do câmbio USD/BRL (venda), coletada da API pública do Sistema Gerenciador de Séries Temporais (SGS) do Banco Central do Brasil e atualizada automaticamente.",
-        "url": "https://iosbilario.github.io/observatorio-taxas/",
-        "keywords": ["Selic", "IPCA", "câmbio", "USD/BRL", "BACEN", "SGS", "indicadores econômicos", "Brasil"],
-        "inLanguage": "pt-BR",
+        "name": "Juros — séries do BACEN/SGS",
+        "description": "Série histórica diária e mensal de Meta Selic, CDI, TR e poupança, coletada da API pública do SGS/Banco Central do Brasil.",
+        "license": "https://creativecommons.org/publicdomain/zero/1.0/",
         "isAccessibleForFree": true,
-        "creator": { "@id": "https://iosbilario.github.io/observatorio-taxas/#org" },
-        "publisher": { "@id": "https://iosbilario.github.io/observatorio-taxas/#org" },
+        "inLanguage": "pt-BR",
+        "temporalCoverage": "2015-01-01/..",
         "spatialCoverage": { "@type": "Place", "name": "Brasil" },
+        "creator": { "@id": "https://observatoriodetaxas.tec.br/#org" },
         "sourceOrganization": { "@type": "GovernmentOrganization", "name": "Banco Central do Brasil", "url": "https://www.bcb.gov.br/" },
-        "distribution": {
-          "@type": "DataDownload",
-          "encodingFormat": "application/json",
-          "contentUrl": "https://iosbilario.github.io/observatorio-taxas/data/series.json"
-        },
-        "variableMeasured": ["Meta Selic (% a.a.)", "IPCA - variação mensal (%)", "Câmbio USD/BRL - venda"]
+        "variableMeasured": ["Meta Selic (% a.a.)", "CDI (%)", "TR (%)", "Poupança (%)"],
+        "distribution": [
+          { "@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://observatoriodetaxas.tec.br/data/432_history.json" },
+          { "@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://observatoriodetaxas.tec.br/data/4390_history.json" }
+        ]
+      },
+      {
+        "@type": "Dataset",
+        "name": "Inflação — séries do BACEN/SGS",
+        "description": "Série histórica mensal de IPCA (mensal e acumulado em 12 meses), INPC, IGP-M e IGP-DI, coletada da API pública do SGS/Banco Central do Brasil.",
+        "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "isAccessibleForFree": true,
+        "inLanguage": "pt-BR",
+        "temporalCoverage": "2015-01-01/..",
+        "spatialCoverage": { "@type": "Place", "name": "Brasil" },
+        "creator": { "@id": "https://observatoriodetaxas.tec.br/#org" },
+        "sourceOrganization": { "@type": "GovernmentOrganization", "name": "Banco Central do Brasil", "url": "https://www.bcb.gov.br/" },
+        "variableMeasured": ["IPCA - variação mensal (%)", "IPCA - acumulado 12 meses (%)", "INPC (%)", "IGP-M (%)", "IGP-DI (%)"],
+        "distribution": [
+          { "@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://observatoriodetaxas.tec.br/data/13522_history.json" },
+          { "@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://observatoriodetaxas.tec.br/data/433_history.json" },
+          { "@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://observatoriodetaxas.tec.br/data/189_history.json" }
+        ]
+      },
+      {
+        "@type": "Dataset",
+        "name": "Câmbio — séries do BACEN/SGS",
+        "description": "Série histórica diária do câmbio USD/BRL e EUR/BRL (compra e venda), coletada da API pública do SGS/Banco Central do Brasil.",
+        "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "isAccessibleForFree": true,
+        "inLanguage": "pt-BR",
+        "temporalCoverage": "2015-01-01/..",
+        "spatialCoverage": { "@type": "Place", "name": "Brasil" },
+        "creator": { "@id": "https://observatoriodetaxas.tec.br/#org" },
+        "sourceOrganization": { "@type": "GovernmentOrganization", "name": "Banco Central do Brasil", "url": "https://www.bcb.gov.br/" },
+        "variableMeasured": ["Câmbio USD/BRL - venda", "Câmbio EUR/BRL - venda"],
+        "distribution": [
+          { "@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://observatoriodetaxas.tec.br/data/1_history.json" },
+          { "@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://observatoriodetaxas.tec.br/data/21619_history.json" }
+        ]
+      },
+      {
+        "@type": "Dataset",
+        "name": "Atividade e emprego — séries do BACEN/SGS",
+        "description": "Série histórica mensal do IBC-Br (proxy do PIB) e da taxa de desocupação (PNAD Contínua), coletada da API pública do SGS/Banco Central do Brasil.",
+        "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "isAccessibleForFree": true,
+        "inLanguage": "pt-BR",
+        "temporalCoverage": "2015-01-01/..",
+        "spatialCoverage": { "@type": "Place", "name": "Brasil" },
+        "creator": { "@id": "https://observatoriodetaxas.tec.br/#org" },
+        "sourceOrganization": { "@type": "GovernmentOrganization", "name": "Banco Central do Brasil", "url": "https://www.bcb.gov.br/" },
+        "variableMeasured": ["IBC-Br", "Taxa de desocupação - PNAD (%)"],
+        "distribution": [
+          { "@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://observatoriodetaxas.tec.br/data/24363_history.json" },
+          { "@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://observatoriodetaxas.tec.br/data/24369_history.json" }
+        ]
       }
     ]
   }
   </script>
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
-
-  <!-- Métricas de acesso (GoatCounter) — grátis, sem cookies, sem servidor.
-       Alimenta o painel /admin/ via scripts/fetch_stats.py. -->
-  <script data-goatcounter="https://observatoriotaxas.goatcounter.com/count"
-          async src="//gc.zgo.at/count.js"></script>
+  <!-- Métricas de acesso (GoatCounter) — grátis, sem cookies, sem servidor. -->
+  <script data-goatcounter="https://observatoriotaxas.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
   <style>
     :root {
-      --bg: #0b1120; --bg-soft: #0f172a; --card: #131c31; --card-2: #16213a;
-      --line: #243049; --line-soft: #1c2640;
-      --text: #e8eef7; --muted: #93a3bd; --faint: #64748b;
-      --accent: #38bdf8; --accent-2: #818cf8; --accent-3: #2dd4bf;
-      --up: #fb7185; --down: #34d399; --flat: #94a3b8;
-      --radius: 16px; --maxw: 1080px;
-      --shadow: 0 10px 40px -12px rgba(0,0,0,.6);
+      --cofre: #0E1210; --papel: #E9E6DC; --alta: #3FD68F; --queda: #E4574F;
+      --carimbo: #D9B54A; --neutro: #5A625D;
+      --papel-70: rgba(233,230,220,.70); --papel-45: rgba(233,230,220,.45);
+      --linha: rgba(233,230,220,.14); --campo: #0d1210; --maxw: 1080px;
     }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
-      margin: 0; background: var(--bg); color: var(--text); line-height: 1.6;
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-      -webkit-font-smoothing: antialiased; overflow-x: hidden;
+      margin: 0; background: var(--cofre); color: var(--papel); line-height: 1.55;
+      font-family: "Archivo", system-ui, -apple-system, sans-serif; -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
-    /* Glows de fundo (sem assets externos) */
-    body::before {
-      content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
-      background:
-        radial-gradient(900px 500px at 12% -8%, rgba(56,189,248,.14), transparent 60%),
-        radial-gradient(800px 480px at 92% 4%, rgba(129,140,248,.13), transparent 60%),
-        radial-gradient(700px 600px at 50% 110%, rgba(45,212,191,.08), transparent 55%);
+    a { color: inherit; }
+    ::selection { background: rgba(217,181,74,.28); }
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(1rem, 4vw, 2rem); }
+    .mono { font-family: "IBM Plex Mono", monospace; }
+    .btn-link {
+      display: inline-flex; align-items: center; gap: .4rem; font-family: "IBM Plex Mono", monospace;
+      font-size: .82rem; font-weight: 600; letter-spacing: .02em; color: var(--carimbo);
+      text-decoration: none; border-bottom: 1px solid rgba(217,181,74,.4); padding-bottom: 2px;
     }
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 1.25rem; }
-    .gradtext {
-      background: linear-gradient(100deg, var(--accent), var(--accent-2) 55%, var(--accent-3));
-      -webkit-background-clip: text; background-clip: text; color: transparent;
-    }
+    .btn-link:hover, .btn-link:focus-visible { border-bottom-color: var(--carimbo); outline: none; }
 
-    /* ===================== NAV ===================== */
-    nav.top {
-      position: sticky; top: 0; z-index: 50;
-      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
-      background: rgba(11,17,32,.72); border-bottom: 1px solid var(--line-soft);
-    }
-    nav.top .wrap { display: flex; align-items: center; gap: 1rem; height: 60px; }
-    .brand-mark { display: flex; align-items: center; gap: .55rem; font-weight: 700; letter-spacing: -.01em; }
-    .brand-mark svg { width: 26px; height: 26px; flex: none; }
-    .brand-mark .sub { color: var(--faint); font-weight: 500; font-size: .72rem; }
-    nav.top .links { margin-left: auto; display: flex; gap: .35rem; align-items: center; }
-    nav.top .links a {
-      color: var(--muted); font-size: .85rem; padding: .4rem .7rem; border-radius: 8px;
-      transition: color .15s, background .15s;
-    }
-    nav.top .links a:hover { color: var(--text); background: rgba(255,255,255,.04); text-decoration: none; }
-    nav.top .links a.cta {
-      background: linear-gradient(100deg, var(--accent), var(--accent-2));
-      color: #07101f; font-weight: 700;
-    }
-    nav.top .links a.cta:hover { filter: brightness(1.08); }
-    @media (max-width: 680px) { nav.top .links a.nav-only { display: none; } }
+    /* ===================== MASTHEAD ===================== */
+    .masthead { border-bottom: 3px double var(--linha); padding: clamp(1.4rem, 4vw, 2.4rem) 0 1rem; text-align: center; }
+    .masthead .kicker { font-family: "IBM Plex Mono", monospace; font-size: .68rem; letter-spacing: .3em; text-transform: uppercase; color: var(--carimbo); margin: 0 0 .5rem; }
+    .masthead h1 { font-family: "Fraunces", Georgia, serif; font-optical-sizing: auto; font-weight: 700; font-size: clamp(2.4rem, 8vw, 4.6rem); line-height: .95; letter-spacing: -.02em; margin: 0; }
+    .masthead-data { font-family: "Fraunces", Georgia, serif; font-weight: 500; font-style: italic; font-size: clamp(1rem, 2.6vw, 1.3rem); color: var(--papel-70); margin: .7rem 0 .2rem; }
+    .carimbo-linha { font-family: "IBM Plex Mono", monospace; font-size: .72rem; letter-spacing: .04em; color: var(--papel-45); margin: .2rem 0 0; }
+    .carimbo-linha a { color: var(--carimbo); text-decoration: none; }
 
-    /* ===================== HERO ===================== */
-    .hero { padding: clamp(2.5rem, 7vw, 5.5rem) 0 2rem; position: relative; }
-    .badge {
-      display: inline-flex; align-items: center; gap: .5rem; font-size: .78rem;
-      color: var(--accent); background: rgba(56,189,248,.1);
-      border: 1px solid rgba(56,189,248,.28); padding: .35rem .75rem; border-radius: 999px;
-      letter-spacing: .02em;
-    }
-    .badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-3); box-shadow: 0 0 0 0 rgba(45,212,191,.7); animation: pulse 2s infinite; }
-    @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(45,212,191,.6); } 70% { box-shadow: 0 0 0 9px rgba(45,212,191,0); } 100% { box-shadow: 0 0 0 0 rgba(45,212,191,0); } }
-    .hero h1 {
-      font-size: clamp(2.1rem, 6vw, 3.6rem); line-height: 1.05; letter-spacing: -.025em;
-      margin: 1.1rem 0 .7rem; font-weight: 800; max-width: 18ch;
-    }
-    .hero .lead { font-size: clamp(1rem, 2.4vw, 1.2rem); color: var(--muted); max-width: 62ch; margin: 0 0 1.6rem; }
-    .hero .actions { display: flex; flex-wrap: wrap; gap: .7rem; margin-bottom: 2.4rem; }
-    .btn {
-      display: inline-flex; align-items: center; gap: .5rem; padding: .7rem 1.15rem;
-      border-radius: 11px; font-weight: 700; font-size: .92rem; cursor: pointer; border: 1px solid transparent;
-      transition: transform .12s, filter .15s, border-color .15s, background .15s;
-    }
-    .btn:hover { transform: translateY(-1px); text-decoration: none; }
-    .btn.primary { background: linear-gradient(100deg, var(--accent), var(--accent-2)); color: #07101f; }
-    .btn.primary:hover { filter: brightness(1.08); }
-    .btn.ghost { background: rgba(255,255,255,.03); border-color: var(--line); color: var(--text); }
-    .btn.ghost:hover { border-color: var(--accent); }
+    /* ===================== BOLETIM (5 números) ===================== */
+    .boletim { display: grid; grid-template-columns: repeat(5, 1fr); border-bottom: 1px solid var(--linha); }
+    @media (max-width: 860px) { .boletim { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 460px) { .boletim { grid-template-columns: 1fr; } }
+    .num { padding: 1.1rem 1rem 1.2rem; border-right: 1px solid var(--linha); border-top: 1px solid var(--linha); }
+    .num:nth-child(5n) { border-right: 0; }
+    @media (max-width: 860px) { .num { border-right: 1px solid var(--linha); } .num:nth-child(2n) { border-right: 0; } .num:nth-child(5n) { border-right: 1px solid var(--linha); } }
+    @media (max-width: 460px) { .num { border-right: 0; } }
+    .num-tag { font-size: .74rem; font-weight: 600; color: var(--papel-70); margin: 0 0 .1rem; line-height: 1.25; }
+    .num-rot { font-family: "IBM Plex Mono", monospace; font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; color: var(--papel-45); margin: 0 0 .5rem; }
+    .num-val { margin: 0; line-height: 1; }
+    .num-val .v { font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: clamp(1.7rem, 4.4vw, 2.3rem); letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+    .num-val .suf { font-family: "IBM Plex Mono", monospace; font-size: .8rem; color: var(--papel-45); margin-left: .25rem; }
+    .num-delta { font-family: "IBM Plex Mono", monospace; font-size: .78rem; font-weight: 600; margin: .35rem 0 0; font-variant-numeric: tabular-nums; }
+    .num-delta.up { color: var(--alta); } .num-delta.down { color: var(--queda); } .num-delta.flat { color: var(--papel-45); }
+    .num-ref { font-family: "IBM Plex Mono", monospace; font-size: .64rem; color: var(--papel-45); margin: .2rem 0 0; }
+    .spark { height: 30px; margin-top: .5rem; }
+    .spark svg { display: block; width: 100%; height: 30px; overflow: visible; }
+    .spark .l { fill: none; stroke: var(--papel-45); stroke-width: 1.3; }
+    .spark .d { fill: var(--carimbo); }
 
-    /* KPI strip ao vivo */
-    .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: .8rem; }
-    @media (max-width: 760px) { .kpis { grid-template-columns: repeat(2, 1fr); } }
-    .kpi {
-      background: linear-gradient(180deg, var(--card-2), var(--card)); border: 1px solid var(--line);
-      border-radius: var(--radius); padding: 1rem 1.1rem; position: relative; overflow: hidden;
-    }
-    .kpi::after { content: ""; position: absolute; inset: 0 0 auto 0; height: 2px; background: linear-gradient(90deg, transparent, var(--accent), transparent); opacity: .5; }
-    .kpi .k { font-size: .72rem; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
-    .kpi .v { font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 800; line-height: 1.1; margin: .25rem 0 .2rem; letter-spacing: -.02em; }
-    .kpi .t { font-size: .76rem; font-weight: 700; display: inline-flex; align-items: center; gap: .25rem; }
-    .kpi .t.up { color: var(--up); } .kpi .t.down { color: var(--down); } .kpi .t.flat { color: var(--flat); }
-    .kpi .t .sub { color: var(--faint); font-weight: 500; }
+    .posic { padding: 1.1rem 0 0; }
+    .posic p { max-width: 62ch; margin: 0 auto; text-align: center; color: var(--papel-70); font-size: 1.02rem; }
+    .posic a { color: var(--carimbo); text-decoration: none; border-bottom: 1px solid rgba(217,181,74,.4); }
 
-    /* ===================== SECTIONS ===================== */
-    section.block { padding: clamp(2.4rem, 6vw, 4.2rem) 0; }
-    .eyebrow { color: var(--accent); font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; margin: 0 0 .6rem; }
-    .h2 { font-size: clamp(1.5rem, 3.6vw, 2.1rem); font-weight: 800; letter-spacing: -.02em; margin: 0 0 .8rem; }
-    .section-lead { color: var(--muted); max-width: 70ch; margin: 0; font-size: 1.02rem; }
+    /* ===================== SEÇÕES ===================== */
+    section.bloco { padding: clamp(2rem, 5vw, 3.2rem) 0; border-top: 1px solid var(--linha); }
+    .eyebrow { font-family: "IBM Plex Mono", monospace; font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; color: var(--carimbo); margin: 0 0 .5rem; }
+    .bloco h2.tit { font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: clamp(1.5rem, 3.6vw, 2.1rem); letter-spacing: -.015em; margin: 0 0 .5rem; }
+    .bloco .sub { color: var(--papel-70); max-width: 60ch; margin: 0 0 1.4rem; }
+    .duas { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6rem; align-items: center; }
+    @media (max-width: 760px) { .duas { grid-template-columns: 1fr; } }
 
-    /* História — narrativa executiva */
-    .story { background: linear-gradient(180deg, var(--card-2), var(--card)); border: 1px solid var(--line); border-radius: 20px; padding: clamp(1.4rem, 4vw, 2.6rem); box-shadow: var(--shadow); }
-    .story p { color: #cdd8ea; margin: 0 0 1rem; }
-    .story p:last-child { margin-bottom: 0; }
-    .story strong { color: var(--text); }
-    .story .drop::first-letter { font-size: 3.1rem; font-weight: 800; float: left; line-height: .8; padding: .35rem .55rem 0 0; }
-    .story .drop::first-letter { background: linear-gradient(100deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    /* Rebobinar */
+    .fita-mini { position: relative; display: flex; justify-content: space-between; align-items: center; height: 24px; margin: 0 0 .6rem; max-width: 320px; }
+    .fita-mini .fio-mini { position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--linha); }
+    .no-mini { width: 9px; height: 9px; border-radius: 50%; border: 1px solid var(--neutro); background: transparent; position: relative; }
+    .no-mini.ativo { background: var(--carimbo); border-color: var(--carimbo); transform: scale(1.4); }
+    .fita-meses { font-family: "IBM Plex Mono", monospace; font-size: .72rem; color: var(--papel-45); margin: 0 0 .6rem; }
+    .manchete-mes { font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: clamp(1.4rem, 3.4vw, 1.9rem); line-height: 1.1; letter-spacing: -.015em; margin: 0 0 1rem; }
 
-    /* Impactos — grid de cards */
-    .impact-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 1.6rem; }
-    @media (max-width: 760px) { .impact-grid { grid-template-columns: 1fr; } }
-    .impact {
-      background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
-      padding: 1.3rem 1.4rem; position: relative; transition: transform .15s, border-color .15s;
-    }
-    .impact:hover { transform: translateY(-3px); border-color: rgba(56,189,248,.45); }
-    .impact .ico { width: 42px; height: 42px; border-radius: 11px; display: grid; place-items: center; margin-bottom: .85rem; background: rgba(56,189,248,.12); }
-    .impact .ico svg { width: 22px; height: 22px; stroke: var(--accent); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-    .impact h3 { margin: 0 0 .2rem; font-size: 1.12rem; }
-    .impact .tag { color: var(--accent-2); font-size: .78rem; font-weight: 700; }
-    .impact p { color: var(--muted); font-size: .92rem; margin: .55rem 0 .8rem; }
-    .impact .effects { display: flex; flex-wrap: wrap; gap: .35rem; }
-    .impact .effects span { font-size: .73rem; color: #bcc8de; background: rgba(255,255,255,.04); border: 1px solid var(--line-soft); border-radius: 999px; padding: .22rem .6rem; }
+    /* VAR — recibo mini (única superfície clara) */
+    .recibo-mini { background: #F4F0E4; color: #1c1a14; font-family: "IBM Plex Mono", monospace; border-radius: 3px; padding: 1.1rem 1.15rem; max-width: 340px; }
+    .recibo-mini .rc-h { font-size: .64rem; letter-spacing: .16em; text-transform: uppercase; color: #6b6656; margin: 0 0 .6rem; }
+    .recibo-mini .rc-claim { font-size: .86rem; line-height: 1.5; margin: 0 0 .8rem; }
+    .recibo-mini .rc-row { display: flex; justify-content: space-between; gap: 1rem; font-size: .82rem; padding: .15rem 0; border-top: 1px dashed #cfc8b2; }
+    .recibo-mini .rc-vered { text-align: center; font-weight: 600; font-size: 1.1rem; letter-spacing: .04em; margin: .8rem 0 0; }
+    .recibo-mini .rc-vered.ok { color: #b48f1f; } .recibo-mini .rc-vered.no { color: #c0392f; }
 
-    /* Reajuste — cards ao vivo por índice (acumulado 12m) + calculadora embutida */
-    .rj-grid { margin-top: 1.6rem; }
-    a.rj-card { display: block; color: inherit; transition: transform .15s, border-color .15s; }
-    a.rj-card:hover { text-decoration: none; transform: translateY(-3px); border-color: rgba(56,189,248,.45); }
-    .rj-card .t.link { color: var(--accent); }
-    .rj-calc { background: linear-gradient(180deg, var(--card-2), var(--card)); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.3rem 1.4rem; margin-top: 1rem; }
-    .rj-calc h3 { margin: 0 0 .9rem; font-size: 1.12rem; }
-    .rj-calc .row { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; }
-    @media (max-width: 680px) { .rj-calc .row { grid-template-columns: 1fr; } }
-    .rj-calc label { display: block; font-size: .78rem; color: var(--muted); margin-bottom: .35rem; }
-    .rj-calc input, .rj-calc select {
-      width: 100%; background: var(--bg-soft); border: 1px solid var(--line); border-radius: 11px;
-      color: var(--text); padding: .68rem .85rem; font-size: 1rem; font-family: inherit;
-    }
-    .rj-calc input:focus, .rj-calc select:focus { outline: none; border-color: var(--accent); }
-    .rj-calc .rj-modes { margin: 0 0 1rem; }
-    .rj-calc .row + .row { margin-top: .8rem; }
-    .rj-calc .row[hidden] { display: none; }  /* [hidden] perde para o display:grid da .row sem isto */
-    .rj-res { margin: 1rem 0 0; font-size: 1.05rem; color: var(--muted); }
-    .rj-res .novo { font-size: 1.45rem; font-weight: 800; letter-spacing: -.02em; }
-    .rj-res .memo { display: inline-block; margin-top: .25rem; font-size: .85rem; }
-    .rj-note { color: var(--faint); font-size: .78rem; margin: .8rem 0 0; }
+    /* Reajuste */
+    .rj-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: .7rem; margin: 0 0 1.2rem; }
+    @media (max-width: 620px) { .rj-grid { grid-template-columns: repeat(2, 1fr); } }
+    a.rj-card { display: block; text-decoration: none; border: 1px solid var(--linha); border-radius: 8px; padding: .8rem .9rem; transition: border-color .15s; }
+    a.rj-card:hover { border-color: rgba(217,181,74,.5); }
+    .rj-card .rj-nome { display: block; font-family: "IBM Plex Mono", monospace; font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: var(--papel-45); }
+    .rj-card .rj-v { display: block; font-family: "Fraunces", serif; font-weight: 600; font-size: 1.4rem; margin: .1rem 0; font-variant-numeric: tabular-nums; }
+    .rj-card .rj-ref { font-size: .72rem; color: var(--papel-45); }
+    .rj-card .rj-ref .link { color: var(--carimbo); }
+    .rj-calc { border: 1px solid var(--linha); border-radius: 10px; padding: 1.1rem 1.2rem 1.3rem; }
+    .rj-modes { display: flex; flex-wrap: wrap; gap: .4rem; margin: 0 0 1rem; }
+    .rj-modes button { font-family: "IBM Plex Mono", monospace; font-size: .78rem; color: var(--papel-70); background: transparent; border: 1px solid var(--linha); border-radius: 999px; padding: .35rem .8rem; cursor: pointer; }
+    .rj-modes button.active { color: var(--cofre); background: var(--carimbo); border-color: var(--carimbo); font-weight: 600; }
+    .rj-calc label { display: block; font-family: "IBM Plex Mono", monospace; font-size: .64rem; letter-spacing: .1em; text-transform: uppercase; color: var(--papel-45); margin: 0 0 .3rem; }
+    .rj-calc .row { display: grid; grid-template-columns: 1fr 1fr; gap: .7rem; }
+    .rj-calc .row[hidden] { display: none; }
+    .rj-calc .row + .row { margin-top: .7rem; }
+    .rj-calc input, .rj-calc select { width: 100%; background: var(--campo); border: 1px solid var(--linha); border-radius: 8px; color: var(--papel); padding: .6rem .7rem; font: inherit; font-size: 1rem; }
+    .rj-calc input:focus-visible, .rj-calc select:focus-visible { outline: 2px solid var(--carimbo); outline-offset: 1px; }
+    .rj-res { margin: 1rem 0 0; color: var(--papel-70); font-size: 1rem; }
+    .rj-res .novo { font-family: "Fraunces", serif; font-weight: 700; font-size: 1.4rem; color: var(--papel); }
+    .rj-res .memo { display: inline-block; margin-top: .3rem; color: var(--carimbo); text-decoration: none; font-size: .86rem; }
+    .rj-note { color: var(--papel-45); font-size: .78rem; margin: .8rem 0 0; }
 
-    /* ===================== DASHBOARD ===================== */
-    .filtros-wrap { padding-top: .4rem; }
-    .filtros { display: flex; flex-wrap: wrap; gap: .4rem; align-items: center; }
-    .filtros .lbl { color: var(--muted); font-size: .8rem; margin-right: .25rem; }
-    .filtros button {
-      background: var(--card); color: var(--text); border: 1px solid var(--line);
-      border-radius: 999px; padding: .35rem .8rem; font-size: .82rem; cursor: pointer;
-      transition: background .15s, border-color .15s, color .15s;
-    }
-    .filtros button:hover { border-color: var(--accent); }
-    .filtros button.active { background: linear-gradient(100deg, var(--accent), var(--accent-2)); color: #07101f; border-color: transparent; font-weight: 700; }
+    /* Retransmissora */
+    .frame { border: 1px solid var(--linha); border-radius: 10px; overflow: hidden; background: #000; }
+    iframe.demo { width: 100%; height: 300px; border: 0; display: block; }
+    pre.snip { background: var(--campo); border: 1px solid var(--linha); border-radius: 8px; padding: .8rem .9rem; font-family: "IBM Plex Mono", monospace; font-size: .74rem; color: var(--papel-70); overflow-x: auto; white-space: pre-wrap; word-break: break-all; margin: .8rem 0 0; }
 
-    main#grafico { padding-top: 1.4rem; display: grid; gap: 1rem; grid-template-columns: 1fr; }
-    @media (min-width: 720px) { main#grafico { grid-template-columns: 1fr 1fr; } }
-    .card {
-      background: var(--card); border: 1px solid var(--line);
-      border-radius: var(--radius); padding: 1.1rem 1.2rem 1.25rem; transition: border-color .15s, transform .15s;
-    }
-    .card:hover { border-color: rgba(56,189,248,.4); }
-    .card h2 { margin: 0; font-size: 1rem; font-weight: 700; }
-    .value { font-size: 2.1rem; font-weight: 800; letter-spacing: -.02em; margin: .2rem 0 0; line-height: 1.1; }
-    .value.gradtext { display: inline-block; }
-    .meta { color: var(--muted); font-size: .78rem; margin: .15rem 0 .25rem; }
-    .delta { font-size: .82rem; margin: 0 0 .7rem; font-weight: 700; }
-    .delta.up { color: var(--up); } .delta.down { color: var(--down); } .delta.flat { color: var(--flat); }
-    .chart-wrap { position: relative; height: 190px; }
-    .status { grid-column: 1 / -1; color: var(--muted); }
-    .grupo-head {
-      grid-column: 1 / -1; margin: 1rem 0 -.1rem; font-size: 1.05rem; font-weight: 700;
-      color: var(--text); display: flex; align-items: center; gap: .6rem;
-    }
-    .grupo-head::after { content: ""; flex: 1; height: 1px; background: var(--line); }
-    .grupo-head:first-child { margin-top: 0; }
-    .grupo-head .cnt { color: var(--faint); font-size: .8rem; font-weight: 500; }
+    /* Fecho redações */
+    .redacoes { text-align: center; }
+    .redacoes h2 { font-family: "Fraunces", serif; font-weight: 600; font-size: clamp(1.5rem, 4vw, 2rem); margin: 0 0 .6rem; }
+    .redacoes p { color: var(--papel-70); max-width: 60ch; margin: 0 auto .5rem; }
+    .redacoes .mail { color: var(--carimbo); text-decoration: none; border-bottom: 1px solid rgba(217,181,74,.4); font-weight: 600; font-family: "IBM Plex Mono", monospace; }
 
-    /* Metodologia */
-    .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 1.6rem; }
-    @media (max-width: 760px) { .metrics { grid-template-columns: repeat(2, 1fr); } }
-    .metric { text-align: center; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.3rem 1rem; }
-    .metric .big { font-size: clamp(1.7rem, 5vw, 2.3rem); font-weight: 800; letter-spacing: -.02em; }
-    .metric .lab { color: var(--muted); font-size: .82rem; margin-top: .2rem; }
-    .pillars { display: grid; grid-template-columns: repeat(2, 1fr); gap: .8rem; margin-top: 1.2rem; }
-    @media (max-width: 680px) { .pillars { grid-template-columns: 1fr; } }
-    .pillar { display: flex; gap: .7rem; align-items: flex-start; background: rgba(255,255,255,.02); border: 1px solid var(--line-soft); border-radius: 12px; padding: .9rem 1rem; }
-    .pillar .chk { color: var(--accent-3); flex: none; margin-top: .1rem; }
-    .pillar b { display: block; font-size: .92rem; }
-    .pillar span { color: var(--muted); font-size: .84rem; }
+    footer { border-top: 3px double var(--linha); margin-top: 1rem; }
+    footer .wrap { padding: 1.8rem clamp(1rem, 4vw, 2rem) 2.2rem; color: var(--papel-45); font-size: .82rem; }
+    footer a { color: var(--papel-70); text-decoration: none; border-bottom: 1px solid var(--linha); }
+    footer nav { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: .8rem; }
+    footer nav a { border: 0; color: var(--papel-70); font-family: "IBM Plex Mono", monospace; font-size: .8rem; }
+    footer nav a:hover { color: var(--papel); }
 
-    /* ===================== FOOTER ===================== */
-    footer { border-top: 1px solid var(--line-soft); margin-top: 2rem; }
-    footer .wrap { padding: 2.2rem 1.25rem 2.6rem; color: var(--muted); font-size: .85rem; }
-    footer .frow { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; align-items: center; }
-    footer .brand { color: var(--text); font-weight: 700; }
-    footer p { margin: .35rem 0; }
-
-    /* Reveal on scroll */
-    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
-    .reveal.in { opacity: 1; transform: none; }
-    @media (prefers-reduced-motion: reduce) {
-      .reveal { opacity: 1; transform: none; transition: none; }
-      html { scroll-behavior: auto; }
-      .badge .dot { animation: none; }
-    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   </style>
 </head>
 <body>
-  <!-- ===================== NAV ===================== -->
-  <nav class="top">
+  <header class="masthead">
     <div class="wrap">
-      <span class="brand-mark">
-        <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#0f172a"/><polyline points="4,22 12,14 18,18 28,6" fill="none" stroke="#38bdf8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        Observatório de Taxas <span class="sub">· BACEN/SGS</span>
-      </span>
-      <div class="links">
-        <a href="#historia" class="nav-only">História</a>
-        <a href="#impactos" class="nav-only">Impactos</a>
-        <a href="rebobinar.html" class="nav-only">Rebobinar a economia</a>
-        <a href="var.html" class="nav-only">Conferir uma afirmação</a>
-        <a href="retransmissora.html" class="nav-only">Use nossos gráficos no seu site</a>
-        <a href="#reajuste" class="nav-only">Reajuste</a>
-        <a href="#indicadores" class="nav-only">Indicadores</a>
-        <a href="#metodologia" class="nav-only">Metodologia</a>
-        <a href="#indicadores" class="cta">Ver dados ao vivo</a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- ===================== HERO ===================== -->
-  <header class="hero">
-    <div class="wrap">
-      <span class="badge"><span class="dot"></span> Atualizado automaticamente a cada 6 horas</span>
-      <h1>O termômetro da economia brasileira, <span class="gradtext">na fonte oficial</span>.</h1>
-      <p class="lead">
-        Selic, inflação, câmbio e emprego não são apenas números — são as forças que
-        definem o crédito, o poder de compra e o custo de vida de 200 milhões de brasileiros.
-        Coletamos cada indicador direto do Banco Central, registramos sua história ponto a ponto
-        e traduzimos o que ela significa para o seu bolso.
-      </p>
-      <div class="actions">
-        <a href="#indicadores" class="btn primary">Explorar indicadores
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
-        <a href="reajuste/" class="btn ghost">Calcular reajuste de contrato</a>
-      </div>
-      <div class="kpis" id="kpis" aria-label="Destaques ao vivo">
-        <!-- preenchido via JS a partir de series.json -->
-      </div>
+      <p class="kicker">A primeira página que se reescreve sozinha</p>
+      <h1>Observatório de Taxas</h1>
+      <!-- boletim:inicio -->
+<p class="masthead-data" id="hoje">Segunda-feira, 13 de julho de 2026</p>
+<p class="carimbo-linha">coletado às 16:11 · commit <a href="https://github.com/iosbilario/observatorio-taxas/commits/main">9756c01</a> · fonte SGS/BACEN</p>
+<div class="boletim">
+<article class="num" id="selic"><h2 class="num-tag">Taxa Selic hoje</h2><p class="num-rot">Meta Selic</p><p class="num-val"><span class="v">14,25</span><span class="suf">% a.a.</span></p><p class="num-delta flat">■ 0,00 p.p. no mês</p><p class="num-ref">ref. 13/07/2026</p><div class="spark" data-cod="432" data-casas="2" aria-hidden="true"></div></article>
+<article class="num" id="ipca"><h2 class="num-tag">IPCA acumulado 12 meses hoje</h2><p class="num-rot">IPCA 12 meses</p><p class="num-val"><span class="v">4,64</span><span class="suf">%</span></p><p class="num-delta down">▼ -0,08 p.p. no mês</p><p class="num-ref">ref. 01/06/2026</p><div class="spark" data-cod="13522" data-casas="2" aria-hidden="true"></div></article>
+<article class="num" id="dolar"><h2 class="num-tag">Cotação do dólar hoje</h2><p class="num-rot">Dólar (venda)</p><p class="num-val"><span class="v">R$ 5,1183</span></p><p class="num-delta down">▼ -R$ 0,0583 no mês</p><p class="num-ref">ref. 13/07/2026</p><div class="spark" data-cod="1" data-casas="4" aria-hidden="true"></div></article>
+<article class="num" id="igpm"><h2 class="num-tag">IGP-M no mês hoje</h2><p class="num-rot">IGP-M no mês</p><p class="num-val"><span class="v">-0,50</span><span class="suf">%</span></p><p class="num-delta down">▼ -1,34 p.p. no mês</p><p class="num-ref">ref. 01/06/2026</p><div class="spark" data-cod="189" data-casas="2" aria-hidden="true"></div></article>
+<article class="num" id="desemprego"><h2 class="num-tag">Taxa de desemprego hoje</h2><p class="num-rot">Desemprego</p><p class="num-val"><span class="v">5,6</span><span class="suf">%</span></p><p class="num-delta down">▼ -0,2 p.p. no mês</p><p class="num-ref">ref. 01/05/2026</p><div class="spark" data-cod="24369" data-casas="1" aria-hidden="true"></div></article>
+</div>
+<!-- boletim:fim -->
     </div>
   </header>
 
-  <!-- ===================== HISTÓRIA DOS DADOS ===================== -->
-  <section class="block" id="historia">
-    <div class="wrap">
-      <p class="eyebrow reveal">A história dos dados</p>
-      <h2 class="h2 reveal">Por trás de cada taxa, uma decisão que chega até você</h2>
-      <p class="section-lead reveal" style="margin-bottom:1.6rem">
-        Indicadores econômicos parecem abstratos, mas contam uma narrativa concreta sobre o país.
-        Veja o fio que conecta esses números ao dia a dia.
-      </p>
-      <div class="story reveal">
-        <p class="drop">
-          Todo mês, o <strong>Comitê de Política Monetária (Copom)</strong> do Banco Central se reúne e decide
-          o <strong>preço do dinheiro</strong> no Brasil: a Meta Selic. Essa única taxa se ramifica por toda a economia —
-          encarece ou barateia o financiamento da casa própria, o crédito da empresa, a fatura do cartão e, ao mesmo
-          tempo, define quanto rende a poupança, o Tesouro e o CDB de cada família.
-        </p>
-        <p>
-          Os juros sobem justamente para conter a <strong>inflação</strong> — a corrosão silenciosa do poder de compra
-          medida pelo <strong>IPCA</strong>, o índice oficial que baliza a meta do país, os reajustes de salários, aluguéis
-          e benefícios. Quando os preços disparam, o Banco Central aperta os juros; quando cedem, afrouxa. É um equilíbrio
-          delicado entre conter a alta dos preços e não sufocar a atividade econômica.
-        </p>
-        <p>
-          Sobre tudo isso paira o <strong>câmbio</strong>. O dólar define o custo de tudo o que o Brasil importa —
-          combustíveis, eletrônicos, fertilizantes, remédios — e exporta a inflação para dentro de casa. Um real mais
-          fraco encarece a gasolina e a viagem, mas favorece o agronegócio e a indústria exportadora.
-        </p>
-        <p>
-          No fim da linha está a <strong>economia real</strong>: o ritmo da atividade medido pelo IBC-Br (a prévia do PIB)
-          e o desemprego apurado pela PNAD. São eles que revelam se toda essa engrenagem está gerando renda, emprego e
-          confiança — ou não. <strong>Este observatório acompanha cada um desses sinais na fonte primária e guarda sua
-          história, ponto a ponto, de forma aberta e auditável.</strong>
-        </p>
-      </div>
+  <div class="wrap">
+    <div class="posic">
+      <p>Cada número acima vem direto da API pública do Banco Central, é registrado a cada coleta e fica <a href="https://github.com/iosbilario/observatorio-taxas" target="_blank" rel="noopener">versionado em aberto no Git</a>. Dado oficial, história ponto a ponto, sem intermediário.</p>
     </div>
-  </section>
 
-  <!-- ===================== IMPACTOS ===================== -->
-  <section class="block" id="impactos">
-    <div class="wrap">
-      <p class="eyebrow reveal">Impacto no Brasil real</p>
-      <h2 class="h2 reveal">O que cada grupo de indicadores move no país</h2>
-      <p class="section-lead reveal">Quatro frentes, quatro histórias — e onde cada uma toca a vida de quem mora no Brasil.</p>
-
-      <div class="impact-grid">
-        <article class="impact reveal">
-          <div class="ico"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></div>
-          <span class="tag">Juros · Selic, CDI, TR</span>
-          <h3>O preço do dinheiro</h3>
-          <p>A Selic é a taxa básica que baliza todo o crédito do país. Quando sobe, financiamento, crédito e cartão ficam mais caros — mas a renda fixa rende mais e a inflação tende a ceder. Quando cai, o crédito barato estimula consumo e investimento.</p>
-          <div class="effects"><span>Financiamento imobiliário</span><span>Crédito e cartão</span><span>Renda fixa</span><span>Dívida pública</span></div>
-        </article>
-
-        <article class="impact reveal">
-          <div class="ico"><svg viewBox="0 0 24 24"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></div>
-          <span class="tag">Inflação · IPCA, INPC, IGP</span>
-          <h3>A régua do poder de compra</h3>
-          <p>O IPCA é o índice oficial que mede quanto a cesta de consumo encareceu e define se a meta de inflação foi cumprida. É a régua que reajusta o salário mínimo, os aluguéis (IGP-M), os benefícios do INSS e o preço da cesta básica.</p>
-          <div class="effects"><span>Salário mínimo</span><span>Aluguéis</span><span>Cesta básica</span><span>Benefícios do INSS</span></div>
-        </article>
-
-        <article class="impact reveal">
-          <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 2v20"/><path d="M17 6H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
-          <span class="tag">Câmbio · USD/BRL, EUR/BRL</span>
-          <h3>A temperatura externa</h3>
-          <p>O dólar define o preço de tudo o que o Brasil importa — combustíveis, eletrônicos, trigo, remédios — e influencia diretamente a inflação. Pesa na bomba de gasolina, nas viagens e na competitividade da indústria e do agro.</p>
-          <div class="effects"><span>Gasolina e diesel</span><span>Eletrônicos</span><span>Viagens</span><span>Exportações do agro</span></div>
-        </article>
-
-        <article class="impact reveal">
-          <div class="ico"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/></svg></div>
-          <span class="tag">Atividade & Emprego · IBC-Br, PNAD</span>
-          <h3>O pulso da economia real</h3>
-          <p>O IBC-Br é a prévia mensal do PIB; a taxa de desocupação revela quantos brasileiros procuram trabalho. Juntos, mostram se a engrenagem dos juros, da inflação e do câmbio está virando renda, emprego e confiança.</p>
-          <div class="effects"><span>Renda das famílias</span><span>Geração de empregos</span><span>Arrecadação</span><span>Confiança</span></div>
-        </article>
+    <!-- ===================== REBOBINAR ===================== -->
+    <section class="bloco" id="rebobinar-sec">
+      <p class="eyebrow">Rebobinar</p>
+      <h2 class="tit">A economia como um repositório: cada mês é um commit</h2>
+      <p class="sub">Arraste a fita e a página inteira faz checkout do mês, com a manchete e o diff dos indicadores.</p>
+      <div class="duas">
+        <div>
+          <!-- rebobinar:inicio -->
+<div class="fita-mini" aria-hidden="true"><span class="fio-mini"></span><span class="no-mini"></span><span class="no-mini"></span><span class="no-mini"></span><span class="no-mini"></span><span class="no-mini"></span><span class="no-mini ativo"></span></div><p class="fita-meses">fev/26 … jul/26</p><p class="manchete-mes">O euro recuou e marcou Julho de 2026</p><a class="btn-link" href="rebobinar.html">Rebobinar mês a mês →</a>
+<!-- rebobinar:fim -->
+        </div>
+        <div></div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ===================== REAJUSTE DE CONTRATOS ===================== -->
-  <section class="block" id="reajuste">
-    <div class="wrap">
-      <p class="eyebrow reveal">Novo · Calculadora de reajuste</p>
-      <h2 class="h2 reveal">Quanto seu aluguel ou contrato deve ser reajustado?</h2>
-      <p class="section-lead reveal">
-        Das séries que já coletamos do BACEN nasce uma página para cada índice e mês: o acumulado de
-        12 meses, o fator de reajuste, a memória de cálculo completa e uma calculadora — informe o
-        valor atual do contrato e veja o novo valor na hora, com a mesma fonte oficial e auditável.
-        E se precisar atualizar um valor entre duas datas quaisquer, a correção monetária também está aqui.
-      </p>
-      <!-- Cards ao vivo: preenchidos via JS com o acumulado 12m de cada índice.
-           Sem JS (ou se o fetch falhar) continuam funcionando como link para o hub. -->
-      <div class="kpis rj-grid reveal" id="rj-grid" aria-label="Acumulado de 12 meses por índice">
-        <a class="kpi rj-card" data-idx="ipca" href="reajuste/">
-          <div class="k">IPCA · serviços e mensalidades</div>
-          <div class="v gradtext" data-v>—</div>
-          <div class="t flat" data-ref>acumulado 12 meses</div>
-        </a>
-        <a class="kpi rj-card" data-idx="igpm" href="reajuste/">
-          <div class="k">IGP-M · aluguéis</div>
-          <div class="v gradtext" data-v>—</div>
-          <div class="t flat" data-ref>acumulado 12 meses</div>
-        </a>
-        <a class="kpi rj-card" data-idx="inpc" href="reajuste/">
-          <div class="k">INPC · dissídios e pensões</div>
-          <div class="v gradtext" data-v>—</div>
-          <div class="t flat" data-ref>acumulado 12 meses</div>
-        </a>
-        <a class="kpi rj-card" data-idx="igpdi" href="reajuste/">
-          <div class="k">IGP-DI · contratos públicos</div>
-          <div class="v gradtext" data-v>—</div>
-          <div class="t flat" data-ref>acumulado 12 meses</div>
-        </a>
+    <!-- ===================== VAR ===================== -->
+    <section class="bloco" id="var-sec">
+      <p class="eyebrow">VAR da Economia</p>
+      <h2 class="tit">Conferir uma afirmação e emitir um recibo</h2>
+      <p class="sub">Compare dois períodos de um indicador e receba um recibo verificável, com a regra de cálculo, a fonte e o commit exato dos dados.</p>
+      <div class="duas">
+        <div>
+          <!-- var:inicio -->
+<div class="recibo-mini"><p class="rc-h">RECIBO · VAR DA ECONOMIA</p><p class="rc-claim">O IPCA acumulado entre jan/2019 e dez/2022 foi maior do que entre jan/2023 e jun/2026.</p><div class="rc-row"><span>jan/2019 a dez/2022</span><b>26,93%</b></div><div class="rc-row"><span>jan/2023 a jun/2026</span><b>18,20%</b></div><p class="rc-vered ok">CONFERE</p></div><a class="btn-link" href="var.html?s=433&op=acum&a1=2019-01&a2=2022-12&b1=2023-01&b2=2026-06&cmp=maior">Abrir e auditar este recibo no VAR →</a>
+<!-- var:fim -->
+        </div>
+        <div></div>
       </div>
+    </section>
 
-      <!-- Calculadora rápida: usa os mesmos históricos dos cards, tudo no navegador.
-           Dois modos: reajuste anual (12m) e correção monetária entre datas livres. -->
-      <div class="rj-calc reveal" id="rj-calc" hidden>
-        <h3>Calculadora rápida</h3>
-        <div class="filtros rj-modes" role="group" aria-label="Modo de cálculo">
+    <!-- ===================== REAJUSTE ===================== -->
+    <section class="bloco" id="reajuste-sec">
+      <p class="eyebrow">Reajuste e correção</p>
+      <h2 class="tit">Quanto reajustar um aluguel ou contrato</h2>
+      <p class="sub">O acumulado de 12 meses de cada índice e uma calculadora rápida em dois modos: reajuste anual ou correção monetária entre datas.</p>
+      <div class="rj-grid" id="rj-grid">
+        <a class="rj-card" data-idx="ipca" href="reajuste/"><span class="rj-nome">IPCA</span><span class="rj-v" data-v>—</span><span class="rj-ref" data-ref>acumulado 12 meses</span></a>
+        <a class="rj-card" data-idx="igpm" href="reajuste/"><span class="rj-nome">IGP-M</span><span class="rj-v" data-v>—</span><span class="rj-ref" data-ref>acumulado 12 meses</span></a>
+        <a class="rj-card" data-idx="inpc" href="reajuste/"><span class="rj-nome">INPC</span><span class="rj-v" data-v>—</span><span class="rj-ref" data-ref>acumulado 12 meses</span></a>
+        <a class="rj-card" data-idx="igpdi" href="reajuste/"><span class="rj-nome">IGP-DI</span><span class="rj-v" data-v>—</span><span class="rj-ref" data-ref>acumulado 12 meses</span></a>
+      </div>
+      <div class="rj-calc" id="rj-calc" hidden>
+        <div class="rj-modes" role="group" aria-label="Modo de cálculo">
           <button type="button" data-mode="anual" class="active">Reajuste anual (12 meses)</button>
           <button type="button" data-mode="datas">Correção entre datas</button>
         </div>
         <div class="row">
-          <div>
-            <label for="rj-valor">Valor a atualizar (R$)</label>
-            <input id="rj-valor" type="text" inputmode="decimal" placeholder="2.000,00" autocomplete="off" />
-          </div>
-          <div>
-            <label for="rj-indice">Índice</label>
-            <select id="rj-indice"></select>
-          </div>
+          <div><label for="rj-valor">Valor a atualizar (R$)</label><input id="rj-valor" type="text" inputmode="decimal" placeholder="2.000,00" autocomplete="off" /></div>
+          <div><label for="rj-indice">Índice</label><select id="rj-indice"></select></div>
         </div>
         <div class="row" id="rj-row-datas" hidden>
-          <div>
-            <label for="rj-de">Do mês</label>
-            <select id="rj-de"></select>
-          </div>
-          <div>
-            <label for="rj-ate">Até o mês</label>
-            <select id="rj-ate"></select>
-          </div>
+          <div><label for="rj-de">Do mês</label><select id="rj-de"></select></div>
+          <div><label for="rj-ate">Até o mês</label><select id="rj-ate"></select></div>
         </div>
         <p class="rj-res" id="rj-res" aria-live="polite">Informe o valor para ver o resultado.</p>
         <p class="rj-note" id="rj-note">Aplica o acumulado de 12 meses mais recente do índice. Confira no contrato o índice pactuado e o mês de referência (defasagem). Conteúdo informativo.</p>
       </div>
+    </section>
 
-      <div class="actions reveal" style="display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.4rem">
-        <a href="reajuste/" class="btn ghost">Ver todos os meses e a memória de cálculo
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
-        <a href="correcao/" class="btn ghost">Correção monetária entre datas
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== INDICADORES (DASHBOARD) ===================== -->
-  <section class="block" id="indicadores">
-    <div class="wrap">
-      <p class="eyebrow reveal">Painel ao vivo</p>
-      <h2 class="h2 reveal">Indicadores e suas séries históricas</h2>
-      <p class="section-lead reveal" style="margin-bottom:1.4rem">
-        Cada valor abaixo vem direto da API pública do BACEN e é versionado a cada coleta — você vê o número de hoje e toda a sua trajetória.
-      </p>
-
-      <div class="filtros-wrap reveal">
-        <div class="filtros" id="filtros" role="group" aria-label="Filtro de período">
-          <span class="lbl">Período:</span>
+    <!-- ===================== RETRANSMISSORA ===================== -->
+    <section class="bloco" id="retransmissora-sec">
+      <p class="eyebrow">Retransmissora</p>
+      <h2 class="tit">Use nossos gráficos no seu site</h2>
+      <p class="sub">Um iframe que se atualiza sozinho a cada coleta, credita a fonte e não usa cookies. Escolha, copie e cole.</p>
+      <div class="duas">
+        <div class="frame"><iframe class="demo" src="embed.html?s=1&tema=escuro&h=300" title="Dólar (USD/BRL) — Observatório de Taxas" loading="lazy"></iframe></div>
+        <div>
+          <pre class="snip">&lt;iframe src="https://observatoriodetaxas.tec.br/embed.html?s=1&amp;tema=escuro&amp;h=300"
+  width="100%" height="300" style="border:0;width:100%"
+  loading="lazy" title="Dólar — Observatório de Taxas"&gt;&lt;/iframe&gt;</pre>
+          <p style="margin-top:1rem"><a class="btn-link" href="retransmissora.html">Configurar outra série →</a></p>
         </div>
       </div>
+    </section>
 
-      <main id="grafico">
-        <p class="status" id="status">Carregando séries…</p>
-      </main>
-    </div>
-  </section>
+    <!-- ===================== FECHO REDAÇÕES ===================== -->
+    <section class="bloco redacoes" id="redacoes">
+      <h2>Para redações e newsletters</h2>
+      <p>Todos os números vêm direto do Banco Central e se atualizam sozinhos a cada coleta.</p>
+      <p>O código e os dados são abertos, versionados em aberto e livres para reutilizar.</p>
+      <p>Precisa de uma série, um recorte ou um formato que não está aqui?</p>
+      <p style="margin-top:1rem"><a class="mail" href="mailto:contato@observatoriodetaxas.tec.br?subject=Observat%C3%B3rio%20de%20Taxas">contato@observatoriodetaxas.tec.br</a></p>
+    </section>
+  </div>
 
-  <!-- ===================== METODOLOGIA ===================== -->
-  <section class="block" id="metodologia">
-    <div class="wrap">
-      <p class="eyebrow reveal">Metodologia & transparência</p>
-      <h2 class="h2 reveal">Dados oficiais, sem intermediários — e auditáveis por qualquer pessoa</h2>
-      <p class="section-lead reveal">
-        Nada é inserido manualmente. Um robô consulta o Sistema Gerenciador de Séries Temporais (SGS) do Banco Central,
-        registra cada ponto e versiona o histórico no Git. Cada commit é uma fotografia da economia no tempo.
-      </p>
-
-      <div class="metrics reveal">
-        <div class="metric"><div class="big gradtext" id="m-series">—</div><div class="lab">séries monitoradas</div></div>
-        <div class="metric"><div class="big gradtext" id="m-pontos">—</div><div class="lab">pontos históricos</div></div>
-        <div class="metric"><div class="big gradtext">6 h</div><div class="lab">frequência de coleta</div></div>
-        <div class="metric"><div class="big gradtext">R$ 0</div><div class="lab">custo de operação</div></div>
-      </div>
-
-      <div class="pillars reveal">
-        <div class="pillar"><svg class="chk" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><div><b>Fonte primária</b><span>Direto da API pública do SGS/BACEN, sem intermediários.</span></div></div>
-        <div class="pillar"><svg class="chk" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><div><b>Histórico auditável</b><span>Cada valor é versionado no Git — dá para auditar qualquer mudança.</span></div></div>
-        <div class="pillar"><svg class="chk" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><div><b>Atualização automática</b><span>Coleta a cada 6 horas via GitHub Actions, sem intervenção humana.</span></div></div>
-        <div class="pillar"><svg class="chk" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><div><b>Aberto e gratuito</b><span>Código e dados abertos no GitHub, livres para consultar e reutilizar.</span></div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== FOOTER ===================== -->
   <footer>
     <div class="wrap">
-      <div class="frow">
-        <span class="brand-mark">
-          <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#0f172a"/><polyline points="4,22 12,14 18,18 28,6" fill="none" stroke="#38bdf8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Observatório de Taxas
-        </span>
-        <span>Fonte: <a href="https://www3.bcb.gov.br/sgspub/" target="_blank" rel="noopener">SGS / BACEN</a> · <span id="updated"></span></span>
-      </div>
-      <p style="margin-top:1rem">
-        Desenvolvido por <span class="brand">LBP Tecnologia</span> · <span id="year"></span> ·
-        <a href="https://github.com/iosbilario/observatorio-taxas" target="_blank" rel="noopener">código-fonte no GitHub</a>
-      </p>
-      <p style="color:var(--faint)">
-        Conteúdo informativo, sem caráter de recomendação financeira. Dados oficiais do Banco Central do Brasil.
-      </p>
+      <nav>
+        <a href="rebobinar.html">Rebobinar</a>
+        <a href="var.html">Verificar afirmação</a>
+        <a href="reajuste/">Reajuste</a>
+        <a href="correcao/">Correção monetária</a>
+        <a href="retransmissora.html">Embeds</a>
+      </nav>
+      <p>Fonte: <a href="https://www3.bcb.gov.br/sgspub/" target="_blank" rel="noopener">SGS / Banco Central do Brasil</a> · <a href="https://github.com/iosbilario/observatorio-taxas" target="_blank" rel="noopener">código-fonte no GitHub</a></p>
+      <p>Desenvolvido por LBP Tecnologia · <span id="ano"></span>. Conteúdo informativo, sem caráter de recomendação financeira.</p>
     </div>
   </footer>
 
   <script>
     const DATA_BASE = "data";
-    const PERIODOS = [7, 15, 30, 60, 90, 120, 365];
-    const PADRAO = 90;                 // filtro inicial (dias)
-    const HIGHLIGHTS = [432, 13522, 1, 24369];          // destaques no topo (por código)
-    const HL_LABEL = { 432: "Meta Selic", 13522: "IPCA 12 meses", 1: "Dólar (venda)", 24369: "Desemprego" };
-    const HL_SUFFIX = { 432: "% a.a.", 13522: "%", 1: "R$", 24369: "%" };
-    const cards = [];                  // { serie, history, chart, els }
-    const histByCode = {};             // codigo -> history (para o hero)
-    let periodoAtivo = PADRAO;
-
-    // Escapa caracteres HTML — defesa contra XSS ao injetar dados em innerHTML.
-    function esc(s) {
-      return String(s ?? "—").replace(/[&<>"']/g, (c) =>
-        ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-    }
-
-    // Formata número no padrão pt-BR (2 a 4 casas) — corrige câmbio com casas extras.
-    // Valor não-numérico é escapado (nunca devolvido cru) para não virar vetor de XSS.
-    function fmtValor(v) {
-      const n = Number(String(v).replace(",", "."));
-      if (!isFinite(n)) return esc(v ?? "—");
-      return n.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 4 });
-    }
-
+    function esc(s) { return String(s ?? "—").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])); }
     function num(v) { return Number(String(v).replace(",", ".")); }
+    function parseData(s) { const [d, m, a] = String(s).split("/").map(Number); return new Date(a, m - 1, d); }
+    function fmtPct(x) { return (x > 0 ? "+" : "") + x.toLocaleString("pt-BR", { maximumFractionDigits: 2 }) + "%"; }
+    function fmtBRL(v) { return v.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+    async function getJSON(path) { const r = await fetch(`${DATA_BASE}/${path}`, { cache: "no-store" }); if (!r.ok) throw new Error(path + " " + r.status); return r.json(); }
 
-    document.getElementById("year").textContent = new Date().getFullYear();
+    const el = document.getElementById("ano"); if (el) el.textContent = new Date().getFullYear();
 
-    async function getJSON(path) {
-      const resp = await fetch(`${DATA_BASE}/${path}`, { cache: "no-store" });
-      if (!resp.ok) throw new Error(`${path}: HTTP ${resp.status}`);
-      return resp.json();
+    // Data por extenso: atualiza para o dia do visitante (o HTML já traz a data da coleta).
+    (function () {
+      const h = document.getElementById("hoje");
+      if (!h) return;
+      const d = new Date();
+      const dias = ["domingo", "segunda-feira", "terça-feira", "quarta-feira", "quinta-feira", "sexta-feira", "sábado"];
+      const mes = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"];
+      const cap = (s) => s.charAt(0).toUpperCase() + s.slice(1);
+      h.textContent = `${cap(dias[d.getDay()])}, ${d.getDate()} de ${mes[d.getMonth()]} de ${d.getFullYear()}`;
+    })();
+
+    // Sparklines: hidrata cada .spark[data-cod] com um SVG do histórico recente.
+    async function hidrataSparklines() {
+      const alvos = Array.from(document.querySelectorAll(".spark[data-cod]"));
+      await Promise.all(alvos.map(async (box) => {
+        try {
+          const hist = await getJSON(`${box.dataset.cod}_history.json`);
+          const pts = hist.slice(-60).map((p) => num(p.valor)).filter(isFinite);
+          if (pts.length < 2) return;
+          const W = 120, H = 30, min = Math.min(...pts), max = Math.max(...pts), span = (max - min) || 1;
+          const X = (i) => (i / (pts.length - 1)) * W;
+          const Y = (v) => 2 + (1 - (v - min) / span) * (H - 4);
+          const d = pts.map((v, i) => X(i).toFixed(1) + "," + Y(v).toFixed(1)).join(" ");
+          const lx = X(pts.length - 1).toFixed(1), ly = Y(pts[pts.length - 1]).toFixed(1);
+          box.innerHTML = `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" aria-hidden="true"><polyline class="l" points="${d}"/><circle class="d" cx="${lx}" cy="${ly}" r="2"/></svg>`;
+        } catch (e) { /* mantém vazio */ }
+      }));
     }
+    hidrataSparklines();
 
-    function parseData(s) {            // "dd/mm/aaaa" -> Date
-      const [d, m, a] = String(s).split("/").map(Number);
-      return new Date(a, m - 1, d);
-    }
-
-    function filtra(history, dias) {
-      if (!history.length) return [];
-      if (dias === "tudo") return history;
-      const ref = parseData(history[history.length - 1].data);
-      const corte = new Date(ref); corte.setDate(corte.getDate() - dias);
-      return history.filter((p) => parseData(p.data) >= corte);
-    }
-
-    function rotulo(p, spanDias) {
-      const d = parseData(p.data);
-      const opt = spanDias > 180
-        ? { month: "2-digit", year: "2-digit" }
-        : { day: "2-digit", month: "2-digit" };
-      return d.toLocaleDateString("pt-BR", opt);
-    }
-
-    function fmtPct(x) {
-      return (x > 0 ? "+" : "") + x.toLocaleString("pt-BR", { maximumFractionDigits: 2 }) + "%";
-    }
-
-    // ---------------- HERO (KPIs ao vivo) ----------------
-    function renderKPIs(series) {
-      const box = document.getElementById("kpis");
-      const porCodigo = Object.fromEntries(series.map((s) => [s.codigo, s]));
-      box.innerHTML = "";
-      for (const code of HIGHLIGHTS) {
-        const s = porCodigo[code];
-        if (!s) continue;
-        const pref = HL_SUFFIX[code] === "R$" ? "R$ " : "";
-        const suf = HL_SUFFIX[code] && HL_SUFFIX[code] !== "R$" ? " " + HL_SUFFIX[code] : "";
-        const el = document.createElement("div");
-        el.className = "kpi";
-        el.dataset.code = code;
-        el.innerHTML =
-          `<div class="k">${esc(HL_LABEL[code] || s.nome)}</div>` +
-          `<div class="v gradtext">${pref}${fmtValor(s.valor_atual)}${suf}</div>` +
-          `<div class="t flat" data-trend>· <span class="sub">ref. ${esc(s.data_referencia)}</span></div>`;
-        box.appendChild(el);
-      }
-    }
-
-    // Após carregar os históricos, anota a tendência (variação no período padrão) nos KPIs.
-    function atualizaTendenciaKPIs() {
-      document.querySelectorAll(".kpi").forEach((el) => {
-        const code = Number(el.dataset.code);
-        const hist = histByCode[code];
-        const t = el.querySelector("[data-trend]");
-        if (!hist || hist.length < 2 || !t) return;
-        const janela = filtra(hist, 90);
-        if (janela.length < 2) return;
-        const ini = num(janela[0].valor), fim = num(janela[janela.length - 1].valor);
-        if (!isFinite(ini) || !isFinite(fim) || ini === 0) return;
-        const pct = ((fim - ini) / Math.abs(ini)) * 100;
-        const cls = pct > 0.0005 ? "up" : pct < -0.0005 ? "down" : "flat";
-        const seta = cls === "up" ? "▲" : cls === "down" ? "▼" : "■";
-        t.className = "t " + cls;
-        t.innerHTML = `${seta} ${fmtPct(pct)} <span class="sub">em 90 dias</span>`;
-      });
-    }
-
-    function atualizaCard(c) {
-      const pts = filtra(c.history, periodoAtivo);
-      const labels = pts.map((p) => rotulo(p, periodoAtivo === "tudo" ? 9999 : periodoAtivo));
-      const valores = pts.map((p) => num(p.valor));
-
-      // Destaca SEMPRE o ponto de dados mais recente (último da janela).
-      const n = valores.length, last = n - 1;
-      const baseR = n > 60 ? 0 : (n === 1 ? 4 : 2);
-      const lastR = Math.max(baseR + 3, 5);
-      const ds = c.chart.data.datasets[0];
-      ds.data = valores;
-      ds.pointRadius = valores.map((_, i) => (i === last ? lastR : baseR));
-      ds.pointBackgroundColor = valores.map((_, i) => (i === last ? "#eaf7ff" : "#38bdf8"));
-      ds.pointBorderColor = valores.map((_, i) => (i === last ? "#38bdf8" : "transparent"));
-      ds.pointBorderWidth = valores.map((_, i) => (i === last ? 2 : 0));
-      ds.pointHoverRadius = valores.map((_, i) => (i === last ? lastR + 1 : 5));
-
-      c.chart.data.labels = labels;
-      c.chart.update();
-
-      // Variação no período (primeiro vs. último ponto da janela).
-      const el = c.els.delta;
-      if (valores.length >= 2) {
-        const ini = valores[0], fim = valores[valores.length - 1];
-        const pct = ini !== 0 ? ((fim - ini) / Math.abs(ini)) * 100 : 0;
-        const cls = pct > 0 ? "up" : pct < 0 ? "down" : "flat";
-        el.className = "delta " + cls;
-        const seta = pct > 0 ? "▲" : pct < 0 ? "▼" : "■";
-        el.textContent = `${seta} ${fmtPct(pct)} no período (${pts.length} pontos)`;
-      } else {
-        el.className = "delta flat";
-        el.textContent = pts.length === 1 ? "1 ponto no período" : "sem dados nesse período";
-      }
-    }
-
-    function renderCard(serie, history) {
-      const main = document.getElementById("grafico");
-      const card = document.createElement("section");
-      card.className = "card reveal";
-      card.innerHTML = `
-        <h2>${esc(serie.nome)}</h2>
-        <p class="value gradtext">${fmtValor(serie.valor_atual)}</p>
-        <p class="meta">ref. ${esc(serie.data_referencia)} · código SGS ${esc(serie.codigo)} · ${esc(serie.pontos ?? history.length)} pontos no total</p>
-        <p class="delta flat"></p>
-        <div class="chart-wrap"><canvas></canvas></div>
-      `;
-      main.appendChild(card);
-      observeReveal(card);
-
-      const ctx = card.querySelector("canvas");
-      const grad = ctx.getContext("2d").createLinearGradient(0, 0, 0, 190);
-      grad.addColorStop(0, "rgba(56,189,248,.28)");
-      grad.addColorStop(1, "rgba(56,189,248,0)");
-
-      const chart = new Chart(ctx, {
-        type: "line",
-        data: { labels: [], datasets: [{
-          data: [], borderColor: "#38bdf8", backgroundColor: grad,
-          fill: true, tension: 0.3, borderWidth: 2, pointRadius: 2,
-          pointHoverRadius: 5, pointBackgroundColor: "#38bdf8",
-        }] },
-        options: {
-          responsive: true, maintainAspectRatio: false, animation: { duration: 300 },
-          plugins: {
-            legend: { display: false },
-            tooltip: {
-              intersect: false, mode: "index", backgroundColor: "#0b1120",
-              borderColor: "#243049", borderWidth: 1, titleColor: "#e8eef7",
-              bodyColor: "#93a3bd", padding: 10, displayColors: false,
-            },
-          },
-          scales: {
-            x: { ticks: { color: "#64748b", maxTicksLimit: 7, autoSkip: true }, grid: { color: "#24304940" } },
-            y: { ticks: { color: "#64748b" }, grid: { color: "#24304940" } },
-          },
-        },
-      });
-
-      cards.push({ serie, history, chart, els: { delta: card.querySelector(".delta") } });
-    }
-
-    function montaFiltros() {
-      const box = document.getElementById("filtros");
-      const opcoes = [...PERIODOS.map((d) => ({ v: d, t: `${d}d` })), { v: "tudo", t: "Tudo" }];
-      for (const o of opcoes) {
-        const b = document.createElement("button");
-        b.textContent = o.t;
-        b.dataset.v = o.v;
-        if (o.v === PADRAO) b.classList.add("active");
-        b.addEventListener("click", () => {
-          periodoAtivo = o.v === "tudo" ? "tudo" : Number(o.v);
-          box.querySelectorAll("button").forEach((x) => x.classList.toggle("active", x === b));
-          cards.forEach(atualizaCard);
-        });
-        box.appendChild(b);
-      }
-    }
-
-    // ---------------- Reveal on scroll ----------------
-    let revObserver = null;
-    function observeReveal(el) {
-      if (!revObserver) {
-        if (!("IntersectionObserver" in window)) { el.classList.add("in"); return; }
-        revObserver = new IntersectionObserver((entries) => {
-          for (const e of entries) if (e.isIntersecting) { e.target.classList.add("in"); revObserver.unobserve(e.target); }
-        }, { threshold: 0.12 });
-      }
-      revObserver.observe(el);
-    }
-    document.querySelectorAll(".reveal").forEach(observeReveal);
-
-    async function init() {
-      const status = document.getElementById("status");
-      try {
-        const series = await getJSON("series.json");
-        if (!Array.isArray(series) || series.length === 0) {
-          status.textContent = "Nenhuma série disponível ainda."; return;
-        }
-        status.remove();
-
-        renderKPIs(series);
-        montaFiltros();
-
-        // Métricas da seção de metodologia.
-        document.getElementById("m-series").textContent = series.length;
-        const totalPontos = series.reduce((acc, s) => acc + (Number(s.pontos) || 0), 0);
-        document.getElementById("m-pontos").textContent = totalPontos.toLocaleString("pt-BR");
-
-        const main = document.getElementById("grafico");
-        let grupoAtual = null;
-        for (const serie of series) {
-          const grupo = serie.grupo || "Outros";
-          if (grupo !== grupoAtual) {                     // cabeçalho de seção
-            grupoAtual = grupo;
-            const qtd = series.filter((s) => (s.grupo || "Outros") === grupo).length;
-            const h = document.createElement("h3");
-            h.className = "grupo-head";
-            h.innerHTML = `${esc(grupo)} <span class="cnt">${qtd} série${qtd > 1 ? "s" : ""}</span>`;
-            main.appendChild(h);
-          }
-          try {
-            const history = await getJSON(`${serie.codigo}_history.json`);
-            histByCode[serie.codigo] = history;
-            renderCard(serie, history);
-          } catch (e) { console.error(e); }
-        }
-        cards.forEach(atualizaCard);
-        atualizaTendenciaKPIs();
-
-        // Horário da última coleta (data/meta.json) + data da última mudança de valor.
-        let metaFmt = null;
-        try { metaFmt = (await getJSON("meta.json")).gerado_em_fmt || null; } catch (_) { /* opcional */ }
-        const ultimas = series.map((s) => s.ultima_mudanca).filter(Boolean);
-        const recente = ultimas.sort((a, b) => parseData(a) - parseData(b)).pop();
-        const partes = [];
-        if (metaFmt) partes.push("atualizado em " + metaFmt);
-        if (recente) partes.push("última mudança de valor em " + recente);
-        document.getElementById("updated").textContent = partes.join(" · ");
-      } catch (e) {
-        const main = document.getElementById("grafico");
-        main.innerHTML = `<p class="status">Não foi possível carregar os dados (${esc(e.message)}). ` +
-          "Sirva via HTTP (ex.: <code>python -m http.server -d docs</code>) — abrir o arquivo direto (file://) bloqueia o fetch.</p>";
-        console.error(e);
-      }
-    }
-
-    // ---------------- Reajuste (cards ao vivo + calculadora) ----------------
-    // Espelha o cálculo de scripts/build_pages.py: acumulado composto dos últimos
-    // 12 meses e slug "<indice>-<mês>-<ano>" da página programática correspondente.
+    // ---------------- Calculadora de reajuste (mantida do index anterior) ----------------
     const RJ_INDICES = [
-      { key: "ipca",  codigo: 433, nome: "IPCA"   },
-      { key: "igpm",  codigo: 189, nome: "IGP-M"  },
-      { key: "inpc",  codigo: 188, nome: "INPC"   },
+      { key: "ipca", codigo: 433, nome: "IPCA" },
+      { key: "igpm", codigo: 189, nome: "IGP-M" },
+      { key: "inpc", codigo: 188, nome: "INPC" },
       { key: "igpdi", codigo: 190, nome: "IGP-DI" },
     ];
-    const RJ_MESES = ["janeiro", "fevereiro", "março", "abril", "maio", "junho",
-                      "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"];
-
-    function fmtBRL(v) {
-      return v.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-    }
+    const RJ_MESES = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"];
 
     async function initReajuste() {
       await Promise.all(RJ_INDICES.map(async (ix) => {
@@ -857,7 +434,7 @@
           const hist = await getJSON(`${ix.codigo}_history.json`);
           if (!Array.isArray(hist) || hist.length < 12) return;
           const pts = hist.slice().sort((a, b) => parseData(a.data) - parseData(b.data));
-          const serie = [];                              // série completa p/ correção entre datas
+          const serie = [];
           for (const p of pts) {
             const v = num(p.valor);
             if (!isFinite(v)) return;
@@ -874,22 +451,17 @@
           ix.url = `reajuste/${ix.key}-${RJ_MESES[ref.getMonth()]}-${ref.getFullYear()}/`;
         } catch (e) { console.error(e); }
       }));
-      const vivos = RJ_INDICES.filter((ix) => ix.fator);  // ordem canônica, só quem carregou
+      const vivos = RJ_INDICES.filter((ix) => ix.fator);
 
-      // Cards: acumulado, mês de referência e link direto para a página do mês.
       for (const ix of vivos) {
         const card = document.querySelector(`.rj-card[data-idx="${ix.key}"]`);
         if (!card) continue;
         card.href = ix.url;
         card.querySelector("[data-v]").textContent = fmtPct(ix.ac);
-        card.querySelector("[data-ref]").innerHTML =
-          `<span class="link">até ${esc(ix.refTxt)} →</span>`;
+        card.querySelector("[data-ref]").innerHTML = `<span class="link">até ${esc(ix.refTxt)} →</span>`;
       }
-      if (!vivos.length) return;                       // fetch falhou: fica o fallback estático
+      if (!vivos.length) return;
 
-      // Calculadora em dois modos: reajuste anual (12m) e correção monetária
-      // entre datas — este espelha o cálculo de scripts/build_correcao.py
-      // (produto composto das variações dos meses posteriores ao inicial).
       const calc = document.getElementById("rj-calc");
       const inp = document.getElementById("rj-valor");
       const sel = document.getElementById("rj-indice");
@@ -906,66 +478,46 @@
         sel.appendChild(o);
       }
       const idxAtual = () => vivos.find((i) => i.key === sel.value) || vivos[0];
-
-      // (Re)popula os meses do índice atual preservando a seleção quando possível.
-      // Padrão: janela de 12 meses encerrando no mês mais recente.
       const fillMeses = () => {
         const pts = idxAtual().pts;
         const de0 = selDe.value, ate0 = selAte.value;
         selDe.innerHTML = ""; selAte.innerHTML = "";
-        pts.forEach((p, i) => {
-          selDe.appendChild(new Option(p.label, i));
-          selAte.appendChild(new Option(p.label, i));
-        });
+        pts.forEach((p, i) => { selDe.appendChild(new Option(p.label, i)); selAte.appendChild(new Option(p.label, i)); });
         const last = pts.length - 1;
         selDe.value = de0 !== "" && Number(de0) <= last ? de0 : String(Math.max(0, last - 12));
         selAte.value = ate0 !== "" && Number(ate0) <= last ? ate0 : String(last);
       };
-
-      // Aceita "2.000,00" (pt-BR), "2000.50" (decimal com ponto) e "2.000" (milhar).
       const parseValor = (s) => {
         s = String(s).trim();
         if (s.includes(",")) s = s.replace(/\./g, "").replace(",", ".");
         else if (/^\d{1,3}(\.\d{3})+$/.test(s)) s = s.replace(/\./g, "");
         return Number(s);
       };
-
       const atualiza = () => {
         const ix = idxAtual();
         const v = parseValor(inp.value);
-        if (!isFinite(v) || v <= 0) {
-          res.textContent = "Informe o valor para ver o resultado.";
-          return;
-        }
+        if (!isFinite(v) || v <= 0) { res.textContent = "Informe o valor para ver o resultado."; return; }
         let fator, rotulo, desc, url, urlTxt;
         if (modo === "anual") {
-          fator = ix.fator;
-          rotulo = "Novo valor";
+          fator = ix.fator; rotulo = "Novo valor";
           desc = `${fmtPct(ix.ac)} · acumulado 12 meses até ${ix.refTxt}`;
-          url = ix.url;
-          urlTxt = `Ver a memória de cálculo do ${ix.nome} de ${ix.refTxt}`;
+          url = ix.url; urlTxt = `Ver a memória de cálculo do ${ix.nome} de ${ix.refTxt}`;
         } else {
           const i0 = Number(selDe.value), i1 = Number(selAte.value);
-          if (!(i1 > i0)) {
-            res.textContent = "O mês final deve ser posterior ao inicial.";
-            return;
-          }
+          if (!(i1 > i0)) { res.textContent = "O mês final deve ser posterior ao inicial."; return; }
           fator = 1;
           for (let k = i0 + 1; k <= i1; k++) fator *= 1 + ix.pts[k].v / 100;
           const f6 = fator.toLocaleString("pt-BR", { minimumFractionDigits: 6, maximumFractionDigits: 6 });
           rotulo = "Valor corrigido";
           desc = `${ix.nome} de ${ix.pts[i0].label} a ${ix.pts[i1].label}: ${fmtPct((fator - 1) * 100)} · fator ${f6}`;
-          url = `correcao/${ix.key}/`;
-          urlTxt = `Abrir a calculadora completa de correção pelo ${ix.nome}`;
+          url = `correcao/${ix.key}/`; urlTxt = `Abrir a calculadora completa de correção pelo ${ix.nome}`;
         }
         const novo = v * fator, dif = novo - v;
-        res.innerHTML =
-          `${rotulo}: <span class="novo gradtext">R$ ${fmtBRL(novo)}</span> ` +
+        res.innerHTML = `${rotulo}: <span class="novo">R$ ${fmtBRL(novo)}</span> ` +
           `<span>(${dif < 0 ? "−" : "+"}R$ ${fmtBRL(Math.abs(dif))})</span><br/>` +
           `<span>${esc(desc)}</span><br/>` +
           `<a class="memo" href="${url}">${esc(urlTxt)} →</a>`;
       };
-
       calc.querySelectorAll(".rj-modes button").forEach((b) => {
         b.addEventListener("click", () => {
           modo = b.dataset.mode;
@@ -984,8 +536,6 @@
       fillMeses();
       calc.hidden = false;
     }
-
-    init();
     initReajuste();
   </script>
 </body>

@@ -31,7 +31,7 @@ Convenções: índices de inflação (IPCA, IGP-M, INPC, IGP-DI) trazem a varia�
 
 ## Páginas canônicas
 
-- https://observatoriodetaxas.tec.br/ — painel ao vivo com gráficos das séries.
+- https://observatoriodetaxas.tec.br/ — "Primeira Página": os 5 números do dia (Meta Selic, IPCA 12 meses, dólar, IGP-M, desemprego) com data de referência e variação no mês. Esses valores são ASSADOS no HTML estático (não dependem de JavaScript), entre os marcadores `<!-- boletim:inicio -->` e `<!-- boletim:fim -->`, reescritos a cada coleta pelo scripts/render_index.py. Cada número tem âncora própria (#selic, #ipca, #dolar, #igpm, #desemprego).
 - https://observatoriodetaxas.tec.br/rebobinar.html — linha do tempo editorial, mês a mês, da economia.
 - https://observatoriodetaxas.tec.br/reajuste/ — calculadora de reajuste de contratos por índice e mês (IPCA, IGP-M, INPC, IGP-DI).
 - https://observatoriodetaxas.tec.br/correcao/ — correção monetária de um valor entre duas datas.
