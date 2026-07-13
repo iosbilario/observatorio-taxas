@@ -233,6 +233,10 @@ def main() -> None:
     series = config.get("series", [])
 
     timestamp = datetime.now(timezone.utc).astimezone().strftime("%Y-%m-%d %H:%M:%S %z")
+    # Descarta pontos com data de referência futura (ex.: Meta Selic vem com a
+    # vigência até o próximo COPOM). O corte é "hoje" no fuso de Brasília.
+    hoje = datetime.now(timezone.utc).astimezone(BRT).date()
+    corte_hoje = (hoje.year, hoje.month, hoje.day)
 
     eventos: list[str] = []
     manifesto: list[dict] = []
@@ -254,10 +258,13 @@ def main() -> None:
                 manifesto.append(prev_manifesto[codigo])
             continue
 
+        novos = [p for p in novos if _chave_data(p["data"]) <= corte_hoje]
+
         history_path = DATA_DIR / f"{codigo}_history.json"
         existing = read_json(history_path, [])
         datas_antigas = {p["data"] for p in existing}
-        merged = merge_history(existing, novos)
+        merged = [p for p in merge_history(existing, novos)
+                  if _chave_data(p["data"]) <= corte_hoje]
         if merged != existing:          # ponto novo ou revisão -> haverá commit
             houve_mudanca = True
         pos = {p["data"]: i for i, p in enumerate(merged)}

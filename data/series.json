@@ -1,11 +1,11 @@
 [
   {
     "codigo": 432,
-    "data_referencia": "05/08/2026",
+    "data_referencia": "13/07/2026",
     "grupo": "Juros",
     "nome": "Meta Selic (% a.a.)",
-    "pontos": 741,
-    "ultima_mudanca": "29/07/2026",
+    "pontos": 759,
+    "ultima_mudanca": "18/06/2026",
     "valor_atual": "14.25"
   },
   {
@@ -91,12 +91,12 @@
   },
   {
     "codigo": 1,
-    "data_referencia": "10/07/2026",
+    "data_referencia": "13/07/2026",
     "grupo": "Câmbio",
     "nome": "Câmbio USD/BRL - venda",
-    "pontos": 521,
-    "ultima_mudanca": "10/07/2026",
-    "valor_atual": "5.1088"
+    "pontos": 522,
+    "ultima_mudanca": "13/07/2026",
+    "valor_atual": "5.1183"
   },
   {
     "codigo": 10813,
@@ -109,12 +109,12 @@
   },
   {
     "codigo": 21619,
-    "data_referencia": "10/07/2026",
+    "data_referencia": "13/07/2026",
     "grupo": "Câmbio",
     "nome": "Câmbio EUR/BRL - venda",
-    "pontos": 521,
-    "ultima_mudanca": "10/07/2026",
-    "valor_atual": "5.8434000"
+    "pontos": 522,
+    "ultima_mudanca": "13/07/2026",
+    "valor_atual": "5.8364000"
   },
   {
     "codigo": 24363,
