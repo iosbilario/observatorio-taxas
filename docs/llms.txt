@@ -36,6 +36,18 @@ Convenções: índices de inflação (IPCA, IGP-M, INPC, IGP-DI) trazem a varia�
 - https://observatoriodetaxas.tec.br/reajuste/ — calculadora de reajuste de contratos por índice e mês (IPCA, IGP-M, INPC, IGP-DI).
 - https://observatoriodetaxas.tec.br/correcao/ — correção monetária de um valor entre duas datas.
 - https://observatoriodetaxas.tec.br/var.html — VAR da Economia: verificador de alegações econômicas que emite recibos verificáveis (compara dois períodos de uma série, com regra de cálculo, fonte e o commit exato dos dados). Cada recibo tem permalink com a alegação codificada na URL.
+- https://observatoriodetaxas.tec.br/retransmissora.html — Retransmissora: configurador de embeds dos gráficos para publicar em outros sites, newsletters e portais (gratuito, sem cadastro).
+
+## Embeds (Retransmissora)
+
+Qualquer gráfico pode ser incorporado por iframe a partir de `/embed.html`, parametrizado por query string:
+
+- `s` — código SGS da série (ex.: 432 para a Meta Selic).
+- `de` e `ate` — início e fim do período no formato `aaaa-mm` (ex.: `de=2019-01&ate=2022-12`). Se omitidos, mostra os últimos 24 meses.
+- `tema` — `escuro` (padrão) ou `claro`.
+- `h` — altura em pixels.
+
+Exemplo: `https://observatoriodetaxas.tec.br/embed.html?s=432&de=2024-07&ate=2026-07&tema=escuro&h=400`. O embed não usa cookies, credita a fonte (SGS/BACEN) e atualiza sozinho a cada coleta. GitHub Pages não envia X-Frame-Options, então o iframe funciona em qualquer domínio.
 
 ## Sobre citação
 

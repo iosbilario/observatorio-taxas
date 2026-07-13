@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, follow" />
+<title>Gráfico — Observatório de Taxas</title>
+<style>
+  /* Fontes de sistema por design: a tipografia da marca vive no site, não dentro
+     do iframe de terceiros. Peso da página (sem dados) bem abaixo de 60KB. */
+  :root {
+    --alta: #3FD68F; --queda: #E4574F;
+    --bg: #0E1210; --tx: #E9E6DC; --mut: rgba(233,230,220,.55);
+    --line: rgba(233,230,220,.14); --chart: rgba(233,230,220,.78); --dot: #E9E6DC;
+    --plaq-bg: rgba(233,230,220,.08);
+  }
+  body.claro {
+    --bg: #FFFFFF; --tx: #1A1A1A; --mut: rgba(26,26,26,.55);
+    --line: rgba(26,26,26,.12); --chart: rgba(26,26,26,.78); --dot: #1A1A1A;
+    --plaq-bg: rgba(26,26,26,.06);
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    background: var(--bg); color: var(--tx); overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    display: flex; flex-direction: column; padding: 12px 14px 10px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .top { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+  .titulo { font-size: 14px; font-weight: 700; letter-spacing: -.01em; margin: 0; line-height: 1.25; }
+  .ref { font-size: 11px; color: var(--mut); white-space: nowrap; }
+  .valor-linha { display: flex; align-items: baseline; gap: 10px; margin: 2px 0 4px; flex-wrap: wrap; }
+  .valor { font-size: 26px; font-weight: 800; letter-spacing: -.02em; line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .delta { font-size: 12px; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .delta.up { color: var(--alta); } .delta.down { color: var(--queda); } .delta.flat { color: var(--mut); }
+  .delta .cap { color: var(--mut); font-weight: 400; }
+  .chart-wrap { position: relative; flex: 1 1 auto; min-height: 40px; margin-top: 2px; }
+  svg { display: block; width: 100%; height: 100%; overflow: visible; }
+  .ax { fill: var(--mut); font-size: 10px; font-variant-numeric: tabular-nums; }
+  .grid { stroke: var(--line); stroke-width: 1; }
+  .serie { fill: none; stroke: var(--chart); stroke-width: 1.6; stroke-linejoin: round; stroke-linecap: round; }
+  .lastdot { fill: var(--dot); }
+  .cursor { stroke: var(--mut); stroke-width: 1; stroke-dasharray: 3 3; opacity: 0; }
+  .cursor-dot { fill: var(--dot); opacity: 0; }
+  .tip {
+    position: absolute; pointer-events: none; opacity: 0; transform: translate(-50%, -120%);
+    background: var(--bg); border: 1px solid var(--line); border-radius: 5px; padding: 4px 7px;
+    font-size: 11px; white-space: nowrap; font-variant-numeric: tabular-nums;
+    box-shadow: 0 6px 18px -8px rgba(0,0,0,.5);
+  }
+  .tip .d { color: var(--mut); }
+  .foot { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 6px; }
+  .fonte { font-size: 10px; color: var(--mut); }
+  /* A plaquinha: assinatura do produto, sempre visível. */
+  .plaq {
+    font-size: 10px; font-weight: 600; letter-spacing: .02em; text-decoration: none; color: var(--tx);
+    background: var(--plaq-bg); border: 1px solid var(--line); border-radius: 999px; padding: 3px 9px;
+    white-space: nowrap; opacity: .9;
+  }
+  .plaq:hover { opacity: 1; }
+  .plaq b { font-weight: 700; }
+  .msg { flex: 1 1 auto; display: flex; align-items: center; justify-content: center; color: var(--mut); font-size: 13px; text-align: center; }
+  .nojs { padding: 16px; text-align: center; color: var(--mut); font-size: 13px; }
+  .nojs a { color: inherit; }
+</style>
+</head>
+<body>
+  <div class="top">
+    <p class="titulo" id="titulo">Observatório de Taxas</p>
+    <span class="ref" id="ref"></span>
+  </div>
+  <div class="valor-linha">
+    <span class="valor" id="valor">—</span>
+    <span class="delta flat" id="delta"></span>
+  </div>
+  <div class="chart-wrap" id="wrap">
+    <div class="msg" id="msg">Carregando…</div>
+  </div>
+  <div class="foot">
+    <span class="fonte">Fonte: SGS/Banco Central do Brasil</span>
+    <a class="plaq" id="plaq" href="https://observatoriodetaxas.tec.br" target="_blank" rel="noopener noreferrer">dados: <b>Observatório de Taxas</b></a>
+  </div>
+
+  <noscript>
+    <div class="nojs">
+      Gráfico interativo do Observatório de Taxas.<br />
+      Ative o JavaScript ou veja em
+      <a href="https://observatoriodetaxas.tec.br" target="_blank" rel="noopener noreferrer">observatoriodetaxas.tec.br</a>.
+    </div>
+  </noscript>
+
+  <script>
+  "use strict";
+  (function () {
+    // Formatação por série (auto-contido: só o history.json é buscado).
+    var META = {
+      432: { nome: "Meta Selic", suf: "% a.a.", casas: 2 },
+      1178: { nome: "Selic anualizada", suf: "%", casas: 2 },
+      4390: { nome: "CDI no mês", suf: "%", casas: 2 },
+      226: { nome: "TR", suf: "%", casas: 4 },
+      25: { nome: "Poupança", suf: "%", casas: 4 },
+      433: { nome: "IPCA no mês", suf: "%", casas: 2 },
+      13522: { nome: "IPCA 12 meses", suf: "%", casas: 2 },
+      188: { nome: "INPC no mês", suf: "%", casas: 2 },
+      189: { nome: "IGP-M no mês", suf: "%", casas: 2 },
+      190: { nome: "IGP-DI no mês", suf: "%", casas: 2 },
+      1: { nome: "Dólar (USD/BRL)", pref: "R$ ", casas: 4 },
+      10813: { nome: "Dólar compra", pref: "R$ ", casas: 4 },
+      21619: { nome: "Euro (EUR/BRL)", pref: "R$ ", casas: 4 },
+      24363: { nome: "IBC-Br", casas: 2 },
+      24369: { nome: "Desemprego (PNAD)", suf: "%", casas: 1 },
+    };
+    var MES = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"];
+
+    var qs = new URLSearchParams(location.search);
+    var cod = Number(qs.get("s")) || 432;
+    var tema = qs.get("tema") === "claro" ? "claro" : "escuro";
+    var de = /^\d{4}-\d{2}$/.test(qs.get("de") || "") ? qs.get("de") : null;
+    var ate = /^\d{4}-\d{2}$/.test(qs.get("ate") || "") ? qs.get("ate") : null;
+    if (tema === "claro") document.body.className = "claro";
+    var m = META[cod] || { nome: "Série " + cod, casas: 2 };
+
+    function num(v) { return parseFloat(String(v).replace(",", ".")); }
+    function ymOf(d) { var p = String(d).split("/"); return p[2] + "-" + p[1]; }
+    function ymNum(ym) { var a = ym.split("-"); return (+a[0]) * 12 + (+a[1]) - 1; }
+    function fmt(x) {
+      var s = x.toLocaleString("pt-BR", { minimumFractionDigits: m.casas, maximumFractionDigits: m.casas });
+      return (m.pref || "") + s + (m.suf ? (m.suf[0] === "%" ? m.suf : " " + m.suf) : "");
+    }
+    function fmtSuf() { return m.suf ? (m.suf[0] === "%" ? "%" : "") : ""; }
+    function dataBonita(d) { var p = String(d).split("/"); return p[0] + "/" + p[1] + "/" + p[2]; }
+
+    var $ = function (id) { return document.getElementById(id); };
+    $("titulo").textContent = m.nome;
+
+    var pontos = [], geo = null;
+
+    function filtra(hist) {
+      var arr = hist.map(function (p) { return { d: p.data, ym: ymOf(p.data), v: num(p.valor), n: chave(p.data) }; })
+        .filter(function (p) { return isFinite(p.v); })
+        .sort(function (a, b) { return a.n - b.n; });
+      if (!de && !ate) {  // padrão: últimos 24 meses
+        var maxYm = arr.length ? ymNum(arr[arr.length - 1].ym) : 0;
+        return arr.filter(function (p) { return ymNum(p.ym) >= maxYm - 23; });
+      }
+      var lo = de ? ymNum(de) : -Infinity, hi = ate ? ymNum(ate) : Infinity;
+      return arr.filter(function (p) { var n = ymNum(p.ym); return n >= lo && n <= hi; });
+    }
+    function chave(d) { var p = String(d).split("/"); return (+p[2]) * 10000 + (+p[1]) * 100 + (+p[0]); }
+
+    function desenha() {
+      var wrap = $("wrap");
+      var W = wrap.clientWidth, H = wrap.clientHeight;
+      if (W < 2 || H < 2) return;
+      var vals = pontos.map(function (p) { return p.v; });
+      var min = Math.min.apply(null, vals), max = Math.max.apply(null, vals);
+      var span = (max - min) || Math.abs(max) || 1;
+      var padL = 6, padR = 6, padT = 8, padB = 16;
+      var X = function (i) { return padL + (pontos.length <= 1 ? 0.5 : i / (pontos.length - 1)) * (W - padL - padR); };
+      var Y = function (v) { return padT + (1 - (v - min) / span) * (H - padT - padB); };
+      geo = { X: X, Y: Y, W: W, H: H };
+
+      var pts = pontos.map(function (p, i) { return X(i).toFixed(1) + "," + Y(p.v).toFixed(1); }).join(" ");
+      var last = pontos.length - 1;
+      var yMaxL = fmt(max), yMinL = fmt(min);
+      var xDe = rotuloData(pontos[0].d), xAte = rotuloData(pontos[last].d);
+
+      var svg =
+        '<svg viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="none" role="img" aria-label="Gráfico de ' + esc(m.nome) + '">' +
+        '<line class="grid" x1="' + padL + '" y1="' + Y(max).toFixed(1) + '" x2="' + (W - padR) + '" y2="' + Y(max).toFixed(1) + '"/>' +
+        '<line class="grid" x1="' + padL + '" y1="' + Y(min).toFixed(1) + '" x2="' + (W - padR) + '" y2="' + Y(min).toFixed(1) + '"/>' +
+        (pontos.length > 1 ? '<polyline class="serie" points="' + pts + '"/>' : '') +
+        '<circle class="lastdot" cx="' + X(last).toFixed(1) + '" cy="' + Y(pontos[last].v).toFixed(1) + '" r="3"/>' +
+        '<line class="cursor" id="cur" x1="0" y1="' + padT + '" x2="0" y2="' + (H - padB) + '"/>' +
+        '<circle class="cursor-dot" id="curdot" r="3.2"/>' +
+        '<text class="ax" x="' + padL + '" y="' + (padT - 1) + '">' + esc(yMaxL) + '</text>' +
+        '<text class="ax" x="' + padL + '" y="' + (Y(min) - 3).toFixed(1) + '">' + esc(yMinL) + '</text>' +
+        '<text class="ax" x="' + padL + '" y="' + (H - 2) + '">' + esc(xDe) + '</text>' +
+        '<text class="ax" x="' + (W - padR) + '" y="' + (H - 2) + '" text-anchor="end">' + esc(xAte) + '</text>' +
+        '</svg>';
+      wrap.innerHTML = svg + '<div class="tip" id="tip"></div>';
+    }
+    function rotuloData(d) { var p = String(d).split("/"); return MES[(+p[1]) - 1] + "/" + p[2].slice(2); }
+    function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]; }); }
+
+    function hover(ev) {
+      if (!geo || !pontos.length) return;
+      var wrap = $("wrap"), r = wrap.getBoundingClientRect();
+      var x = (ev.touches ? ev.touches[0].clientX : ev.clientX) - r.left;
+      var frac = (x - 6) / (geo.W - 12);
+      var i = Math.round(frac * (pontos.length - 1));
+      i = Math.max(0, Math.min(pontos.length - 1, i));
+      var px = geo.X(i), py = geo.Y(pontos[i].v);
+      var cur = $("cur"), dot = $("curdot"), tip = $("tip");
+      cur.setAttribute("x1", px); cur.setAttribute("x2", px); cur.style.opacity = ".6";
+      dot.setAttribute("cx", px); dot.setAttribute("cy", py); dot.style.opacity = "1";
+      tip.innerHTML = '<b>' + esc(fmt(pontos[i].v)) + '</b> <span class="d">' + esc(dataBonita(pontos[i].d)) + '</span>';
+      tip.style.left = px + "px"; tip.style.top = py + "px"; tip.style.opacity = "1";
+    }
+    function sai() { var c = $("cur"), d = $("curdot"), t = $("tip"); if (c) c.style.opacity = "0"; if (d) d.style.opacity = "0"; if (t) t.style.opacity = "0"; }
+
+    function render(hist) {
+      pontos = filtra(hist);
+      var last = pontos[pontos.length - 1];
+      if (last) {
+        $("ref").textContent = "ref. " + dataBonita(last.d);
+        $("valor").textContent = fmt(last.v);
+        var first = pontos[0], dd = last.v - first.v;
+        var el = $("delta");
+        if (pontos.length > 1 && Math.abs(dd) > 1e-9) {
+          var up = dd > 0;
+          el.className = "delta " + (up ? "up" : "down");
+          el.innerHTML = (up ? "▲" : "▼") + " " + esc((up ? "+" : "-") + fmt(Math.abs(dd)).replace(/^R\$ /, "R$ ")) + ' <span class="cap">no período</span>';
+        } else { el.className = "delta flat"; el.innerHTML = '<span class="cap">estável no período</span>'; }
+      }
+      if (!pontos.length) {
+        $("valor").textContent = "—"; $("delta").textContent = "";
+        $("wrap").innerHTML = '<div class="msg">Sem dados neste período.</div>';
+        return;
+      }
+      if (pontos.length === 1) {
+        $("wrap").innerHTML = '<div class="msg">Apenas um ponto no período (' + esc(dataBonita(pontos[0].d)) + ').</div>';
+        return;
+      }
+      desenha();
+      var wrap = $("wrap");
+      wrap.addEventListener("mousemove", hover);
+      wrap.addEventListener("touchmove", hover, { passive: true });
+      wrap.addEventListener("mouseleave", sai);
+      wrap.addEventListener("touchend", sai);
+    }
+
+    var redrawT;
+    window.addEventListener("resize", function () {
+      clearTimeout(redrawT);
+      redrawT = setTimeout(function () { if (pontos.length > 1) { desenha(); } }, 120);
+    });
+
+    fetch("data/" + cod + "_history.json", { cache: "no-store" })
+      .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+      .then(function (h) { render(h); })
+      .catch(function (e) {
+        $("wrap").innerHTML = '<div class="msg">Não foi possível carregar os dados.</div>';
+      });
+  })();
+  </script>
+</body>
+</html>

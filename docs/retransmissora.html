@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Retransmissora — gráficos do Observatório de Taxas para o seu site</title>
+  <meta name="description" content="Publique os gráficos ao vivo do Observatório de Taxas (Selic, IPCA, câmbio e mais) no seu site, newsletter ou portal. Escolha a série, o período e o tema, copie o código e pronto. Dados oficiais do Banco Central." />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0E1210" />
+  <link rel="canonical" href="https://observatoriodetaxas.tec.br/retransmissora.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:site_name" content="Observatório de Taxas" />
+  <meta property="og:title" content="Retransmissora — gráficos para o seu site" />
+  <meta property="og:description" content="Embed gratuito dos gráficos ao vivo do Banco Central. Escolha, copie e cole." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Métricas de acesso (GoatCounter) — grátis, sem cookies, sem servidor. -->
+  <script data-goatcounter="https://observatoriotaxas.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
+
+  <style>
+    :root {
+      --cofre: #0E1210; --papel: #E9E6DC; --alta: #3FD68F; --queda: #E4574F;
+      --carimbo: #D9B54A; --neutro: #5A625D;
+      --papel-70: rgba(233,230,220,.70); --papel-45: rgba(233,230,220,.45);
+      --linha: rgba(233,230,220,.14); --campo: #0d1210;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--cofre); color: var(--papel); font-family: "Archivo", system-ui, sans-serif; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; }
+    ::selection { background: rgba(217,181,74,.28); }
+    header.top { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; padding: 1.1rem clamp(1rem, 4vw, 2.4rem); border-bottom: 1px solid var(--linha); font-family: "IBM Plex Mono", monospace; }
+    header .mark { font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; color: var(--papel-70); }
+    header .mark b { color: var(--papel); font-weight: 500; }
+    header .back { font-size: .78rem; letter-spacing: .06em; text-decoration: none; color: var(--papel-70); border-bottom: 1px solid transparent; }
+    header .back:hover, header .back:focus-visible { color: var(--papel); border-bottom-color: var(--carimbo); outline: none; }
+
+    main { max-width: 1000px; margin: 0 auto; padding: clamp(1.8rem, 5vw, 3rem) clamp(1rem, 4vw, 2rem) 4rem; }
+    .eyebrow { font-family: "IBM Plex Mono", monospace; font-size: .76rem; letter-spacing: .18em; text-transform: uppercase; color: var(--carimbo); margin: 0 0 .7rem; }
+    h1 { font-family: "Fraunces", Georgia, serif; font-optical-sizing: auto; font-weight: 600; font-size: clamp(2rem, 6vw, 3rem); line-height: 1.05; letter-spacing: -.015em; margin: 0 0 .6rem; }
+    .lead { font-size: clamp(1rem, 2.4vw, 1.14rem); color: var(--papel-70); max-width: 60ch; margin: 0 0 2rem; }
+
+    .grid { display: grid; grid-template-columns: 340px 1fr; gap: 1.4rem; align-items: start; }
+    .grid > * { min-width: 0; }   /* deixa as faixas encolherem abaixo do min-content dos filhos */
+    @media (max-width: 820px) { .grid { grid-template-columns: 1fr; } }
+    select, input { max-width: 100%; }
+
+    .painel { border: 1px solid var(--linha); border-radius: 10px; padding: 1.1rem 1.2rem 1.3rem; }
+    .painel h2 { font-size: .95rem; margin: 0 0 1rem; font-family: "IBM Plex Mono", monospace; letter-spacing: .1em; text-transform: uppercase; color: var(--papel-70); font-weight: 500; }
+    label { display: block; font-family: "IBM Plex Mono", monospace; font-size: .66rem; letter-spacing: .12em; text-transform: uppercase; color: var(--papel-45); margin: 0 0 .3rem; }
+    .campo { margin-bottom: 1rem; }
+    select, input[type="number"], input[type="month"] {
+      width: 100%; background: var(--campo); color: var(--papel); border: 1px solid var(--linha);
+      border-radius: 6px; padding: .55rem .6rem; font: inherit; font-size: .92rem;
+    }
+    select:focus-visible, input:focus-visible { outline: 2px solid var(--carimbo); outline-offset: 1px; }
+    .segs { display: flex; flex-wrap: wrap; gap: .35rem; }
+    .seg { font-family: "IBM Plex Mono", monospace; font-size: .78rem; color: var(--papel-70); background: transparent; border: 1px solid var(--linha); border-radius: 999px; padding: .35rem .7rem; cursor: pointer; }
+    .seg[aria-pressed="true"] { color: var(--cofre); background: var(--carimbo); border-color: var(--carimbo); font-weight: 600; }
+    .seg:focus-visible { outline: 2px solid var(--carimbo); outline-offset: 2px; }
+    .dois { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; }
+    .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; }
+
+    .preview-box { }
+    .preview-box h2 { font-size: .95rem; margin: 0 0 .7rem; font-family: "IBM Plex Mono", monospace; letter-spacing: .1em; text-transform: uppercase; color: var(--papel-70); font-weight: 500; }
+    .frame { border: 1px solid var(--linha); border-radius: 10px; overflow: hidden; background: #000; }
+    iframe.preview { width: 100%; border: 0; display: block; }
+
+    .code { margin-top: 1.4rem; }
+    .code h3 { font-family: "IBM Plex Mono", monospace; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--papel-45); margin: 0 0 .4rem; }
+    pre.snippet, .url {
+      background: var(--campo); border: 1px solid var(--linha); border-radius: 8px; padding: .8rem .9rem;
+      font-family: "IBM Plex Mono", monospace; font-size: .8rem; color: var(--papel); overflow-x: auto;
+      white-space: pre-wrap; word-break: break-all; margin: 0;
+    }
+    .url { white-space: nowrap; overflow-x: auto; word-break: normal; }
+    .btnrow { display: flex; gap: .5rem; margin-top: .5rem; flex-wrap: wrap; }
+    button.copiar { font-family: "IBM Plex Mono", monospace; font-size: .78rem; letter-spacing: .03em; color: var(--cofre); background: var(--carimbo); border: 0; border-radius: 6px; padding: .5rem .9rem; cursor: pointer; font-weight: 600; }
+    button.copiar.ghost { color: var(--papel-70); background: transparent; border: 1px solid var(--linha); font-weight: 400; }
+    button.copiar:hover, button.copiar:focus-visible { filter: brightness(1.06); outline: none; }
+    button.copiar.ghost:hover { color: var(--papel); border-color: var(--carimbo); }
+
+    .redacoes { margin-top: 2.6rem; border-top: 1px solid var(--linha); padding-top: 1.8rem; }
+    .redacoes h2 { font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: 1.5rem; margin: 0 0 .6rem; }
+    .redacoes p { color: var(--papel-70); max-width: 65ch; margin: 0 0 .6rem; }
+    .redacoes a.mail { color: var(--carimbo); text-decoration: none; border-bottom: 1px solid rgba(217,181,74,.4); font-weight: 600; }
+    .redacoes a.mail:hover { border-bottom-color: var(--carimbo); }
+
+    footer { border-top: 1px solid var(--linha); margin-top: 2.4rem; padding: 1.6rem clamp(1rem, 4vw, 2.4rem) 2rem; color: var(--papel-45); font-size: .82rem; }
+    footer a { color: var(--papel-70); text-decoration: none; border-bottom: 1px solid var(--linha); }
+    footer a:hover { color: var(--papel); }
+    footer p { margin: .3rem 0; max-width: 72ch; }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <span class="mark"><b>Observatório de Taxas</b> · retransmissora</span>
+    <a class="back" href="index.html">voltar ao painel &nbsp;›</a>
+  </header>
+
+  <main>
+    <p class="eyebrow">Embeds · para veículos e criadores</p>
+    <h1>Retransmissora</h1>
+    <p class="lead">Publique os gráficos ao vivo do Banco Central no seu site, newsletter ou portal. Escolha a série, o período e o tema, copie o código e cole. Atualiza sozinho a cada coleta, e a fonte fica sempre creditada.</p>
+
+    <div class="grid">
+      <div class="painel">
+        <h2>Configurar</h2>
+        <div class="campo">
+          <label for="serie">Série</label>
+          <select id="serie"></select>
+        </div>
+        <div class="campo">
+          <label>Período</label>
+          <div class="segs" id="periodos" role="group" aria-label="Período">
+            <button class="seg" type="button" data-p="12" aria-pressed="false">12 meses</button>
+            <button class="seg" type="button" data-p="24" aria-pressed="true">24 meses</button>
+            <button class="seg" type="button" data-p="2015" aria-pressed="false">Desde 2015</button>
+            <button class="seg" type="button" data-p="custom" aria-pressed="false">Personalizado</button>
+          </div>
+          <div class="dois" id="customRow" style="margin-top:.6rem; display:none">
+            <div><label for="de">De</label><input type="month" id="de" /></div>
+            <div><label for="ate">Até</label><input type="month" id="ate" /></div>
+          </div>
+        </div>
+        <div class="row2">
+          <div class="campo">
+            <label for="tema">Tema</label>
+            <select id="tema"><option value="escuro">Escuro</option><option value="claro">Claro</option></select>
+          </div>
+          <div class="campo">
+            <label for="altura">Altura (px)</label>
+            <input type="number" id="altura" value="400" min="220" max="900" step="10" />
+          </div>
+        </div>
+      </div>
+
+      <div class="preview-box">
+        <h2>Prévia ao vivo</h2>
+        <div class="frame"><iframe class="preview" id="preview" title="Prévia do gráfico" loading="lazy"></iframe></div>
+
+        <div class="code">
+          <h3>Código para incorporar (iframe)</h3>
+          <pre class="snippet" id="snippet"></pre>
+          <div class="btnrow">
+            <button class="copiar" id="copySnippet" type="button">copiar código</button>
+          </div>
+          <h3 style="margin-top:1.1rem">Só o link (para plataformas que aceitam URL)</h3>
+          <p class="url" id="url"></p>
+          <div class="btnrow">
+            <button class="copiar ghost" id="copyUrl" type="button">copiar link</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="redacoes">
+      <h2>Para redações e newsletters</h2>
+      <p>Cada gráfico vem direto da API pública do Banco Central e se atualiza sozinho a cada coleta, sem você mexer em nada depois de colar. O crédito da fonte é fixo e o embed não usa cookies, então não pesa no seu banner de consentimento.</p>
+      <p>É gratuito e sem cadastro: escolha a série, copie o código e publique. Precisa de uma série, um recorte ou um formato que não está aqui?</p>
+      <p><a class="mail" href="mailto:contato@observatoriodetaxas.tec.br?subject=Retransmissora%20%E2%80%94%20embed%20de%20gr%C3%A1ficos">contato@observatoriodetaxas.tec.br</a></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Fonte primária: <a href="https://www3.bcb.gov.br/sgspub/" target="_blank" rel="noopener">SGS / Banco Central do Brasil</a>. Série coletada automaticamente e versionada em aberto no <a href="https://github.com/iosbilario/observatorio-taxas" target="_blank" rel="noopener">GitHub</a>. Conteúdo informativo, sem caráter de recomendação financeira.</p>
+    <p>Desenvolvido por LBP Tecnologia.</p>
+  </footer>
+
+  <script>
+  "use strict";
+  (function () {
+    var BASE = "https://observatoriodetaxas.tec.br";
+    var MES = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
+    var st = { s: 432, nome: "Meta Selic", periodo: "24", de: null, ate: null, tema: "escuro", h: 400, ref: null };
+
+    function $(id) { return document.getElementById(id); }
+    function ymNum(ym) { var a = ym.split("-"); return (+a[0]) * 12 + (+a[1]) - 1; }
+    function ymFrom(n) { var y = Math.floor(n / 12), m = (n % 12) + 1; return y + "-" + (m < 10 ? "0" + m : m); }
+    function refToYm(dref) { var p = String(dref).split("/"); return p[2] + "-" + p[1]; }  // dd/mm/aaaa
+
+    var seriesData = [];
+
+    function calcPeriodo() {
+      // ate = mês de referência da série; de conforme o preset.
+      var ateYm = st.ref || "2026-01";
+      if (st.periodo === "custom") {
+        st.de = $("de").value || null; st.ate = $("ate").value || null;
+        return;
+      }
+      st.ate = ateYm;
+      var n = ymNum(ateYm);
+      if (st.periodo === "12") st.de = ymFrom(n - 11);
+      else if (st.periodo === "24") st.de = ymFrom(n - 23);
+      else if (st.periodo === "2015") st.de = "2015-01";
+    }
+
+    function params() {
+      var p = new URLSearchParams();
+      p.set("s", st.s);
+      if (st.de) p.set("de", st.de);
+      if (st.ate) p.set("ate", st.ate);
+      p.set("tema", st.tema);
+      p.set("h", st.h);
+      return p.toString();
+    }
+    function embedRel() { return "embed.html?" + params(); }        // prévia (local + prod)
+
+    function snippet() {
+      var titulo = st.nome + " — Observatório de Taxas";
+      return '<iframe src="' + BASE + "/embed.html?" + params() + '" ' +
+        'width="100%" height="' + st.h + '" style="border:0;width:100%" ' +
+        'loading="lazy" title="' + titulo.replace(/"/g, "&quot;") + '"></iframe>';
+    }
+
+    function atualiza() {
+      calcPeriodo();
+      var pv = $("preview");
+      pv.style.height = st.h + "px";
+      pv.src = embedRel();
+      $("snippet").textContent = snippet();
+      $("url").textContent = BASE + "/embed.html?" + params();
+    }
+
+    function montaSeries(lista) {
+      seriesData = lista;
+      var sel = $("serie");
+      var grupos = {};
+      lista.forEach(function (s) { (grupos[s.grupo] = grupos[s.grupo] || []).push(s); });
+      Object.keys(grupos).forEach(function (g) {
+        var og = document.createElement("optgroup"); og.label = g;
+        grupos[g].forEach(function (s) {
+          var o = document.createElement("option"); o.value = s.codigo; o.textContent = s.nome; og.appendChild(o);
+        });
+        sel.appendChild(og);
+      });
+      sel.value = String(st.s);
+      aplicaSerie();
+    }
+    function aplicaSerie() {
+      var s = seriesData.filter(function (x) { return String(x.codigo) === String(st.s); })[0];
+      if (s) { st.nome = s.nome.replace(/\s*\(.*\)\s*$/, "").trim(); st.ref = refToYm(s.data_referencia); }
+      // sincroniza os campos custom com o período atual (útil ao alternar p/ personalizado)
+      calcPeriodo();
+      if (st.de) $("de").value = st.de;
+      if (st.ate) $("ate").value = st.ate;
+    }
+
+    function bind() {
+      $("serie").addEventListener("change", function () { st.s = Number(this.value); aplicaSerie(); atualiza(); });
+      $("periodos").addEventListener("click", function (e) {
+        var b = e.target.closest(".seg"); if (!b) return;
+        st.periodo = b.dataset.p;
+        Array.prototype.forEach.call(this.querySelectorAll(".seg"), function (x) { x.setAttribute("aria-pressed", x === b); });
+        $("customRow").style.display = st.periodo === "custom" ? "grid" : "none";
+        atualiza();
+      });
+      $("de").addEventListener("change", function () { if (st.periodo === "custom") atualiza(); });
+      $("ate").addEventListener("change", function () { if (st.periodo === "custom") atualiza(); });
+      $("tema").addEventListener("change", function () { st.tema = this.value; atualiza(); });
+      $("altura").addEventListener("input", function () { var v = Math.max(220, Math.min(900, Number(this.value) || 400)); st.h = v; atualiza(); });
+      $("copySnippet").addEventListener("click", function () { copia(snippet(), this, "copiar código"); });
+      $("copyUrl").addEventListener("click", function () { copia(BASE + "/embed.html?" + params(), this, "copiar link"); });
+    }
+    function copia(txt, btn, label) {
+      var ok = function () { btn.textContent = "copiado ✓"; setTimeout(function () { btn.textContent = label; }, 1600); };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(ok).catch(ok); else ok();
+    }
+
+    fetch("data/series.json", { cache: "no-store" })
+      .then(function (r) { return r.json(); })
+      .then(function (lista) { montaSeries(lista); bind(); atualiza(); })
+      .catch(function () {
+        $("serie").innerHTML = '<option>erro ao carregar séries</option>';
+      });
+  })();
+  </script>
+</body>
+</html>
