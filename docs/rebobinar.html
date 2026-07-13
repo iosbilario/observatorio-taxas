@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Rebobinar a economia — Observatório de Taxas</title>
+  <meta name="description" content="Uma linha do tempo editorial, mês a mês, da economia brasileira. Cada mês é um commit: arraste a fita e a página faz checkout daquele mês, com a manchete e o diff dos indicadores do BACEN." />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0E1210" />
+  <link rel="canonical" href="https://iosbilario.github.io/observatorio-taxas/rebobinar.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:site_name" content="Observatório de Taxas" />
+  <meta property="og:title" content="Rebobinar a economia" />
+  <meta property="og:description" content="A economia brasileira como um repositório Git: cada mês é um commit. Arraste a fita e dê checkout." />
+  <meta property="og:url" content="https://iosbilario.github.io/observatorio-taxas/rebobinar.html" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Métricas de acesso (GoatCounter) — grátis, sem cookies, sem servidor. -->
+  <script data-goatcounter="https://observatoriotaxas.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
+
+  <style>
+    :root {
+      --cofre: #0E1210;      /* fundo, sala-cofre */
+      --papel: #E9E6DC;      /* texto, papel-moeda */
+      --alta: #3FD68F;       /* SÓ em diffs/deltas */
+      --queda: #E4574F;      /* SÓ em diffs/deltas */
+      --carimbo: #D9B54A;    /* destaque, carimbo */
+      --neutro: #5A625D;     /* linhas, apoio */
+      --papel-70: rgba(233,230,220,.70);
+      --papel-45: rgba(233,230,220,.45);
+      --linha: rgba(233,230,220,.14);
+      --fita-h: 92px;
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0; background: var(--cofre); color: var(--papel);
+      font-family: "Archivo", system-ui, sans-serif; line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: calc(var(--fita-h) + env(safe-area-inset-bottom, 0px));
+      min-height: 100vh;
+    }
+    a { color: inherit; }
+    ::selection { background: rgba(217,181,74,.28); }
+
+    /* ---------------- Cabeçalho ---------------- */
+    header.top {
+      display: flex; align-items: baseline; justify-content: space-between; gap: 1rem;
+      padding: 1.1rem clamp(1rem, 4vw, 2.4rem);
+      border-bottom: 1px solid var(--linha);
+      font-family: "IBM Plex Mono", monospace;
+    }
+    header .mark { font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; color: var(--papel-70); }
+    header .mark b { color: var(--papel); font-weight: 500; }
+    header .back { font-size: .78rem; letter-spacing: .06em; text-decoration: none; color: var(--papel-70); border-bottom: 1px solid transparent; }
+    header .back:hover, header .back:focus-visible { color: var(--papel); border-bottom-color: var(--carimbo); outline: none; }
+
+    /* ---------------- Palco / edição ---------------- */
+    main { max-width: 720px; margin: 0 auto; padding: clamp(1.8rem, 5vw, 3.4rem) clamp(1rem, 4vw, 2rem) 2rem; }
+    .kicker { font-family: "IBM Plex Mono", monospace; font-size: .78rem; letter-spacing: .04em; color: var(--papel-45); margin: 0 0 1.1rem; }
+    .kicker .hash { color: var(--carimbo); }
+
+    .edicao { transition: opacity .16s ease, transform .16s ease; }
+    .edicao.troca { opacity: 0; transform: translateY(6px); }
+
+    h1.manchete {
+      font-family: "Fraunces", Georgia, serif; font-optical-sizing: auto;
+      font-weight: 600; font-size: clamp(2.05rem, 7vw, 3.4rem); line-height: 1.04;
+      letter-spacing: -.015em; margin: 0 0 .9rem; color: var(--papel); text-wrap: balance;
+    }
+    p.lide { font-size: clamp(1.02rem, 2.4vw, 1.18rem); color: var(--papel-70); max-width: 58ch; margin: 0 0 2rem; }
+    p.lide .n { color: var(--papel); font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+    /* ---------------- Bloco diff ---------------- */
+    .diff {
+      position: relative; border: 1px solid var(--linha); border-radius: 3px;
+      background: rgba(233,230,220,.02); padding: 1.05rem 1.15rem 1.15rem; margin: 0 0 1.9rem;
+    }
+    .diff .rot { font-family: "IBM Plex Mono", monospace; font-size: .68rem; letter-spacing: .18em; text-transform: uppercase; color: var(--papel-45); margin: 0 0 .8rem; }
+    pre.linhas {
+      font-family: "IBM Plex Mono", monospace; font-size: clamp(.8rem, 2.6vw, .93rem);
+      line-height: 1.75; margin: 0; overflow-x: auto; white-space: pre; color: var(--papel-70);
+    }
+    pre.linhas .l { display: block; }
+    pre.linhas .up { color: var(--alta); }
+    pre.linhas .down { color: var(--queda); }
+    pre.linhas .flat { color: var(--neutro); }
+    pre.linhas .nota { color: var(--papel-45); }
+
+    .carimbo {
+      position: absolute; top: -.7rem; right: .9rem;
+      font-family: "IBM Plex Mono", monospace; font-size: .72rem; letter-spacing: .1em;
+      color: var(--carimbo); border: 1px solid var(--carimbo); border-radius: 3px;
+      padding: .22rem .5rem; background: var(--cofre); transform: rotate(-5deg);
+      transform-origin: center;
+    }
+    .carimbo.bate { animation: bater .42s cubic-bezier(.2,1.3,.4,1); }
+    @keyframes bater {
+      0% { opacity: 0; transform: rotate(-5deg) scale(1.7); }
+      55% { opacity: 1; transform: rotate(-7deg) scale(.94); }
+      100% { opacity: 1; transform: rotate(-5deg) scale(1); }
+    }
+
+    /* ---------------- Sparkline ---------------- */
+    .spark { display: flex; align-items: center; gap: .9rem; margin: 0 0 .4rem; }
+    .spark svg { width: clamp(160px, 44vw, 240px); height: 46px; overflow: visible; flex: none; }
+    .spark .cap { font-family: "IBM Plex Mono", monospace; font-size: .72rem; color: var(--papel-45); letter-spacing: .02em; }
+    .spark .linha { fill: none; stroke: var(--papel-45); stroke-width: 1.4; }
+    .spark .dot { fill: var(--carimbo); }
+    .spark .dot-ring { fill: none; stroke: var(--carimbo); stroke-width: 1; opacity: .4; }
+
+    .acoes { margin-top: 1.5rem; }
+    button.copiar {
+      font-family: "IBM Plex Mono", monospace; font-size: .76rem; letter-spacing: .04em;
+      color: var(--papel-70); background: transparent; border: 1px solid var(--linha);
+      border-radius: 3px; padding: .5rem .8rem; cursor: pointer; transition: border-color .15s, color .15s;
+    }
+    button.copiar:hover, button.copiar:focus-visible { color: var(--papel); border-color: var(--carimbo); outline: none; }
+
+    /* ---------------- Rebobinador (fita) ---------------- */
+    .fita-outer {
+      position: fixed; left: 0; right: 0; bottom: 0; height: var(--fita-h);
+      background: var(--cofre); border-top: 1px solid var(--linha); z-index: 30;
+      padding: 1.5rem clamp(1rem, 4vw, 2.4rem) calc(.7rem + env(safe-area-inset-bottom, 0px));
+      user-select: none;
+    }
+    .fita-legenda {
+      position: absolute; top: .42rem; left: 0; right: 0; text-align: center;
+      font-family: "IBM Plex Mono", monospace; font-size: .68rem; letter-spacing: .16em;
+      text-transform: uppercase; color: var(--papel-45); pointer-events: none;
+    }
+    .trilho {
+      position: relative; height: 34px; cursor: grab; touch-action: none;
+      display: flex; align-items: center;
+    }
+    .trilho:active { cursor: grabbing; }
+    .trilho:focus-visible { outline: none; }
+    .trilho:focus-visible .no.ativo { box-shadow: 0 0 0 3px rgba(217,181,74,.35); }
+    .trilho .fio { position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--linha); }
+    .nos { position: relative; display: flex; justify-content: space-between; width: 100%; }
+    .no {
+      width: 9px; height: 9px; border-radius: 50%; background: transparent;
+      border: 1px solid var(--neutro); transition: transform .14s ease, background .14s, border-color .14s;
+    }
+    .no.ativo { background: var(--carimbo); border-color: var(--carimbo); transform: scale(1.55); }
+    .no.passado { border-color: var(--papel-45); }
+    .rotulo-ativo {
+      position: absolute; bottom: 40px; transform: translateX(-50%);
+      font-family: "IBM Plex Mono", monospace; font-size: .74rem; color: var(--carimbo);
+      letter-spacing: .04em; white-space: nowrap; pointer-events: none; transition: left .14s ease;
+    }
+
+    /* ---------------- Rodapé ---------------- */
+    footer { border-top: 1px solid var(--linha); margin-top: 1rem; padding: 1.6rem clamp(1rem, 4vw, 2.4rem) 1.8rem; color: var(--papel-45); font-size: .82rem; }
+    footer a { color: var(--papel-70); text-decoration: none; border-bottom: 1px solid var(--linha); }
+    footer a:hover { color: var(--papel); }
+    footer p { margin: .3rem 0; max-width: 70ch; }
+
+    .estado { font-family: "IBM Plex Mono", monospace; color: var(--papel-45); padding: 2rem 0; }
+
+    @media (max-width: 560px) {
+      :root { --fita-h: 84px; }
+      header.top { flex-direction: row; }
+      p.lide { margin-bottom: 1.6rem; }
+      .fita-legenda { display: none; }         /* sem espaço; rótulo do mês assume */
+      .rotulo-ativo { bottom: 36px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .edicao, .no, .rotulo-ativo { transition: none; }
+      .carimbo.bate { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <span class="mark"><b>Observatório de Taxas</b> · rebobinar</span>
+    <a class="back" href="index.html">voltar ao painel &nbsp;›</a>
+  </header>
+
+  <main>
+    <div id="palco">
+      <p class="estado" id="estado">Carregando os commits da economia…</p>
+    </div>
+  </main>
+
+  <div class="fita-outer" id="fita" hidden>
+    <div class="fita-legenda">o rebobinador · arraste, clique ou use ← →</div>
+    <div class="trilho" id="trilho" role="slider" tabindex="0"
+         aria-label="Linha do tempo mensal" aria-valuemin="1" aria-valuemax="24" aria-valuenow="24">
+      <div class="fio"></div>
+      <div class="nos" id="nos"></div>
+      <div class="rotulo-ativo" id="rotuloAtivo"></div>
+    </div>
+  </div>
+
+  <footer>
+    <p>Fonte primária: <a href="https://www3.bcb.gov.br/sgspub/" target="_blank" rel="noopener">SGS / Banco Central do Brasil</a>. Série histórica coletada automaticamente e versionada em aberto no <a href="https://github.com/iosbilario/observatorio-taxas" target="_blank" rel="noopener">GitHub</a>.</p>
+    <p>Manchetes e diffs são gerados no seu navegador a partir dos dados oficiais. Conteúdo informativo, sem caráter de recomendação financeira.</p>
+    <p>Desenvolvido por LBP Tecnologia.</p>
+  </footer>
+
+  <script>
+  "use strict";
+  (function () {
+    // ----------------------------------------------------------------- //
+    // Metadados por série. `uni` = entra na eleição da manchete (z-score).
+    // Só indicadores de NÍVEL entram: em séries de fluxo (variação/acumulado
+    // no mês: CDI, IPCA mensal, INPC, IGP-M/DI) o mês corrente é parcial e o
+    // delta mês-a-mês vira ruído. Elas seguem no diff, mas não viram manchete.
+    // `copy` traz artigo p/ o texto; pref/suf/casas formatam o número.
+    // ----------------------------------------------------------------- //
+    const META = {
+      432:   { curto: "Meta Selic",  copy: "a Selic",                suf: "%",   casas: 2, uni: true,  prio: 0, fam: "juros" },
+      1178:  { curto: "Selic anual", copy: "a Selic anualizada",     suf: "%",   casas: 2, uni: false },
+      4390:  { curto: "CDI mês",     copy: "o CDI",                  suf: "%",   casas: 2, uni: false },
+      226:   { curto: "TR",          copy: "a TR",                   suf: "%",   casas: 4, uni: false },
+      25:    { curto: "Poupança",    copy: "a poupança",             suf: "%",   casas: 4, uni: false },
+      433:   { curto: "IPCA mês",    copy: "o IPCA do mês",          suf: "%",   casas: 2, uni: false },
+      13522: { curto: "IPCA 12m",    copy: "a inflação em 12 meses", suf: "%",   casas: 2, uni: true,  prio: 2, fam: "ipca" },
+      188:   { curto: "INPC",        copy: "o INPC",                 suf: "%",   casas: 2, uni: false },
+      189:   { curto: "IGP-M",       copy: "o IGP-M",                suf: "%",   casas: 2, uni: false },
+      190:   { curto: "IGP-DI",      copy: "o IGP-DI",               suf: "%",   casas: 2, uni: false },
+      1:     { curto: "USD/BRL",     copy: "o dólar",                pref: "R$ ", casas: 4, uni: true, prio: 1, fam: "usd" },
+      10813: { curto: "USD compra",  copy: "o dólar (compra)",       pref: "R$ ", casas: 4, uni: false },
+      21619: { curto: "EUR/BRL",     copy: "o euro",                 pref: "R$ ", casas: 4, uni: true, prio: 1, fam: "eur" },
+      24363: { curto: "IBC-Br",      copy: "a atividade",            casas: 2, uni: true,  prio: 5, fam: "atividade" },
+      24369: { curto: "Desemprego",  copy: "o desemprego",           suf: "%",   casas: 1, uni: true,  prio: 4, fam: "trabalho" },
+    };
+    const CODIGOS = Object.keys(META).map(Number);
+    // Indicadores fixos do bloco diff (ordem importa).
+    const DIFF = [
+      { cod: 432,   rot: "Meta Selic" },
+      { cod: 13522, rot: "IPCA 12m" },
+      { cod: 1,     rot: "USD/BRL" },
+      { cod: 24369, rot: "Desemprego" },
+      { cod: 189,   rot: "IGP-M" },
+    ];
+    const MES_ABREV = ["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
+    const MES_CHEIO = ["janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"];
+    const N = 24;                 // meses exibidos
+    const EPS = 1e-9;
+
+    // ----------------------------- utils ----------------------------- //
+    const num = (v) => parseFloat(String(v).replace(",", "."));
+    const chave = (s) => { const [d, m, a] = String(s).split("/").map(Number); return a * 10000 + m * 100 + d; };
+    const ymDe = (s) => { const [, m, a] = String(s).split("/").map(Number); return a + "-" + String(m).padStart(2, "0"); };
+    function nfmt(x, casas) { return x.toLocaleString("pt-BR", { minimumFractionDigits: casas, maximumFractionDigits: casas }); }
+    function fmtVal(cod, x) { const m = META[cod]; return (m.pref || "") + nfmt(x, m.casas) + (m.suf || ""); }
+    function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+    // Hash determinístico (FNV-1a) p/ sorteio estável por mês.
+    function seed(str) { let h = 2166136261; for (let i = 0; i < str.length; i++) { h ^= str.charCodeAt(i); h = Math.imul(h, 16777619); } return h >>> 0; }
+
+    async function getJSON(path) {
+      const r = await fetch("data/" + path, { cache: "no-store" });
+      if (!r.ok) throw new Error(path + " HTTP " + r.status);
+      return r.json();
+    }
+
+    // ------------------------- templates de copy ------------------------- //
+    // {mes} = "Março de 2025" · {ind} = "o dólar" · {Ind} = "O dólar".
+    const T_MANCH = {
+      up: [
+        "{mes}: {ind} rouba a cena",
+        "{Ind} não deu trégua em {mes}",
+        "Foi {ind} que ditou o rumo de {mes}",
+        "{mes} ganhou o tom de {ind} em alta",
+        "{Ind} subiu e organizou o mês",
+      ],
+      down: [
+        "{Ind} finalmente cede",
+        "{mes}: {ind} perde força",
+        "A trégua veio de {ind} em {mes}",
+        "{mes} respira com {ind} em queda",
+        "Foi a baixa de {ind} que marcou {mes}",
+      ],
+      estavel: [
+        "{mes}: um mês de poucas surpresas",
+        "Calmaria: {mes} quase sem sobressaltos",
+        "{mes} passou sem grandes abalos",
+        "Poucos números se mexeram em {mes}",
+        "Um {mes} de agenda parada",
+      ],
+    };
+    function preencheManch(tpl, mesCap, ind) {
+      return tpl.replace("{mes}", mesCap).replace("{Ind}", cap(ind)).replace("{ind}", ind);
+    }
+
+    // ------------------------------ estado ------------------------------ //
+    let meses = [];        // [{ym, y, m, abrev, cheio}]
+    let eff = {};          // cod -> [N] valor efetivo (as-of fim do mês) ou null
+    let effRef = {};       // cod -> [N] "yyyy-mm" de onde o valor veio (p/ nota de defasagem)
+    let edicoes = [];      // [N] edição pronta
+    let atual = N - 1;
+    let els = {};
+
+    // -------------------------- processamento --------------------------- //
+    function agregaEfetivo(raw) {
+      // Descobre o mês mais recente entre as séries DIÁRIAS (mais atualizadas).
+      let maxK = 0;
+      for (const cod of [432, 1, 21619]) {
+        const h = raw[cod]; if (h && h.length) maxK = Math.max(maxK, chave(h[h.length - 1].data));
+      }
+      if (!maxK) { for (const cod of CODIGOS) { const h = raw[cod]; if (h && h.length) maxK = Math.max(maxK, chave(h[h.length - 1].data)); } }
+      const maxY = Math.floor(maxK / 10000), maxM = Math.floor(maxK / 100) % 100;
+
+      // Gera N+1 meses (um extra atrás p/ o delta do primeiro exibido).
+      const seq = [];
+      for (let i = N; i >= 0; i--) {
+        const idx = (maxY * 12 + (maxM - 1)) - i;
+        const y = Math.floor(idx / 12), m = (idx % 12) + 1;
+        seq.push({ y, m, ym: y + "-" + String(m).padStart(2, "0") });
+      }
+      meses = seq.slice(1).map((mm) => ({
+        ym: mm.ym, y: mm.y, m: mm.m,
+        abrev: MES_ABREV[mm.m - 1] + "/" + String(mm.y).slice(2),
+        cheio: cap(MES_CHEIO[mm.m - 1]) + " de " + mm.y,
+      }));
+
+      for (const cod of CODIGOS) {
+        const pts = (raw[cod] || []).map((p) => ({ k: chave(p.data), v: num(p.valor), ym: ymDe(p.data) }))
+          .filter((p) => isFinite(p.v)).sort((a, b) => a.k - b.k);
+        const arrV = [], arrR = [];
+        for (const mm of seq) {                       // valor "as-of" fim de cada mês
+          const alvo = mm.y * 10000 + mm.m * 100 + 31;
+          let achou = null;
+          for (let i = pts.length - 1; i >= 0; i--) { if (pts[i].k <= alvo) { achou = pts[i]; break; } }
+          arrV.push(achou ? achou.v : null);
+          arrR.push(achou ? achou.ym : null);
+        }
+        eff[cod] = arrV.slice(1);                      // N exibidos
+        effRef[cod] = arrR.slice(1);
+        // guarda a coluna "anterior" p/ deltas
+        eff["_prev_" + cod] = arrV.slice(0, N);
+      }
+    }
+
+    function deltasEZ(cod) {
+      const cur = eff[cod], prev = eff["_prev_" + cod];
+      const d = cur.map((v, i) => (v == null || prev[i] == null) ? null : v - prev[i]);
+      const vals = d.filter((x) => x != null);
+      let mean = 0, std = 0;
+      if (vals.length) {
+        mean = vals.reduce((a, b) => a + b, 0) / vals.length;
+        std = Math.sqrt(vals.reduce((a, b) => a + (b - mean) * (b - mean), 0) / vals.length);
+      }
+      // z = delta / desvio (sem centrar na média): "quantos desvios foi o movimento
+      // deste mês". Mês sem movimento => z 0 (não vira manchete); o maior movimento vence.
+      const z = d.map((x) => (x == null || std < EPS) ? 0 : x / std);
+      return { d, z };
+    }
+
+    function montaEdicoes() {
+      const DZ = {};
+      for (const cod of CODIGOS) DZ[cod] = deltasEZ(cod);
+      const universo = CODIGOS.filter((c) => META[c].uni);
+
+      for (let i = 0; i < N; i++) {
+        // Eleição da manchete: maior |z| no universo (desempate por prioridade).
+        let cands = universo
+          .filter((c) => eff[c][i] != null && eff["_prev_" + c][i] != null)
+          .map((c) => ({ cod: c, z: DZ[c].z[i], d: DZ[c].d[i], abs: Math.abs(DZ[c].z[i]) }));
+        cands.sort((a, b) => (b.abs - a.abs) || (META[a.cod].prio - META[b.cod].prio));
+        const head = cands[0] || { cod: 432, z: 0, d: 0, abs: 0 };
+
+        // Segundo movimento: maior |z| de outra "família".
+        const seg = cands.slice(1).find((c) => META[c.cod].fam !== META[head.cod].fam) || cands[1] || null;
+
+        // Direção/tom: mês quieto (|z| pequeno) => estável.
+        let dir = "estavel";
+        if (head.abs >= 0.4) dir = head.d > EPS ? "up" : head.d < -EPS ? "down" : "estavel";
+
+        const mesCap = meses[i].cheio;
+        const tplList = T_MANCH[dir];
+        const manch = preencheManch(tplList[seed(meses[i].ym) % tplList.length], mesCap, META[head.cod].copy);
+
+        // Lide: 2 frases (personagem principal + segundo maior movimento).
+        const hp = eff["_prev_" + head.cod][i], hn = eff[head.cod][i];
+        const vP = `<span class="n">${fmtVal(head.cod, hp)}</span>`, vN = `<span class="n">${fmtVal(head.cod, hn)}</span>`;
+        let f1;
+        if (dir === "up") f1 = `${cap(META[head.cod].copy)} passou de ${vP} para ${vN}, o movimento mais forte entre os indicadores de ${MES_CHEIO[meses[i].m - 1]}.`;
+        else if (dir === "down") f1 = `${cap(META[head.cod].copy)} recuou de ${vP} para ${vN}, o destaque de ${MES_CHEIO[meses[i].m - 1]}.`;
+        else f1 = `Nenhum indicador se mexeu com força; ${META[head.cod].copy} mal saiu de ${vN}.`;
+
+        let f2 = "";
+        if (seg && eff[seg.cod][i] != null) {
+          const sp = eff["_prev_" + seg.cod][i], sn = eff[seg.cod][i];
+          const sPrev = `<span class="n">${fmtVal(seg.cod, sp)}</span>`, sNovo = `<span class="n">${fmtVal(seg.cod, sn)}</span>`;
+          const sd = sn - sp;
+          if (Math.abs(sd) < EPS) f2 = ` Logo atrás, ${META[seg.cod].copy} ficou perto de ${sNovo}.`;
+          else f2 = ` No segundo posto, ${META[seg.cod].copy} ${sd > 0 ? "avançou" : "recuou"} de ${sPrev} para ${sNovo}.`;
+        }
+
+        // Bloco diff: 5 indicadores fixos.
+        const linhas = DIFF.map((it) => {
+          const p = eff["_prev_" + it.cod][i], n = eff[it.cod][i];
+          if (n == null) return { rot: it.rot, vazio: true };
+          const dd = (p == null) ? 0 : n - p;
+          const cls = dd > EPS ? "up" : dd < -EPS ? "down" : "flat";
+          const sinal = dd > EPS ? "+" : dd < -EPS ? "-" : "=";
+          const stale = effRef[it.cod][i] && effRef[it.cod][i] !== meses[i].ym;
+          let nota = "";
+          if (stale) { const [ya, ma] = effRef[it.cod][i].split("-"); nota = ` (dado de ${MES_ABREV[+ma - 1]}/${ya.slice(2)})`; }
+          return { rot: it.rot, cls, sinal, prev: p == null ? "—" : fmtVal(it.cod, p), novo: fmtVal(it.cod, n), nota };
+        });
+
+        edicoes.push({ headCod: head.cod, manch, lide: f1 + f2, linhas });
+      }
+    }
+
+    // ------------------------------ render ------------------------------ //
+    function sparkline(cod, ativo) {
+      const serie = eff[cod];
+      const W = 240, H = 40, PAD = 3;
+      const idxs = serie.map((v, i) => (v == null ? null : i)).filter((x) => x != null);
+      const vals = idxs.map((i) => serie[i]);
+      const min = Math.min(...vals), max = Math.max(...vals), span = (max - min) || 1;
+      const X = (i) => (i / (N - 1)) * W;
+      const Y = (v) => PAD + (H - 2 * PAD) * (1 - (v - min) / span);
+      const pts = idxs.map((i) => X(i).toFixed(1) + "," + Y(serie[i]).toFixed(1)).join(" ");
+      const ax = X(ativo), ay = Y(serie[ativo] == null ? min : serie[ativo]);
+      return `<svg viewBox="0 0 ${W} ${H}" aria-hidden="true">
+        <polyline class="linha" points="${pts}"></polyline>
+        <circle class="dot-ring" cx="${ax.toFixed(1)}" cy="${ay.toFixed(1)}" r="5"></circle>
+        <circle class="dot" cx="${ax.toFixed(1)}" cy="${ay.toFixed(1)}" r="2.6"></circle>
+      </svg>`;
+    }
+
+    function render(i, animarCarimbo) {
+      const ed = edicoes[i], mes = meses[i];
+      const hashCurto = seed(mes.ym).toString(16).padStart(8, "0").slice(0, 7);
+      const diffHTML = ed.linhas.map((l) => {
+        if (l.vazio) return `<span class="l flat">= ${l.rot.padEnd(11)}  sem dado</span>`;
+        const rot = l.rot.padEnd(11);
+        return `<span class="l ${l.cls}">${l.sinal} ${rot}  ${l.prev} -&gt; ${l.novo}<span class="nota">${l.nota}</span></span>`;
+      }).join("");
+
+      els.palco.innerHTML = `
+        <div class="edicao" id="edicao">
+          <p class="kicker">commit <span class="hash">${hashCurto}</span> · edição de ${mes.cheio.toLowerCase()}</p>
+          <h1 class="manchete">${ed.manch}</h1>
+          <p class="lide">${ed.lide}</p>
+          <div class="diff">
+            <p class="rot">diff do mês · prev -&gt; novo</p>
+            <pre class="linhas">${diffHTML}</pre>
+            <span class="carimbo${animarCarimbo ? " bate" : ""}" id="carimbo">checkout: ${mes.ym}</span>
+          </div>
+          <div class="spark">
+            ${sparkline(ed.headCod, i)}
+            <span class="cap">${cap(META[ed.headCod].copy)} · 24 meses</span>
+          </div>
+          <div class="acoes">
+            <button class="copiar" id="copiar" type="button">copiar link deste mês</button>
+          </div>
+        </div>`;
+      document.getElementById("copiar").addEventListener("click", copiarLink);
+    }
+
+    function copiarLink() {
+      const btn = document.getElementById("copiar");
+      const url = location.origin + location.pathname + "#" + meses[atual].ym;
+      const ok = () => { btn.textContent = "link copiado ✓"; setTimeout(() => { btn.textContent = "copiar link deste mês"; }, 1800); };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(ok).catch(ok);
+      else ok();
+    }
+
+    // ------------------------------ fita ------------------------------ //
+    function montaFita() {
+      els.nos.innerHTML = meses.map((mm, i) => `<span class="no" data-i="${i}" title="${mm.abrev}"></span>`).join("");
+      atualizaFita();
+    }
+    function atualizaFita() {
+      const nos = els.nos.children;
+      for (let i = 0; i < nos.length; i++) {
+        nos[i].className = "no" + (i === atual ? " ativo" : (i < atual ? " passado" : ""));
+      }
+      els.rotulo.textContent = meses[atual].abrev;
+      els.rotulo.style.left = (atual / (N - 1) * 100) + "%";
+      els.trilho.setAttribute("aria-valuenow", atual + 1);
+      els.trilho.setAttribute("aria-valuetext", meses[atual].cheio);
+    }
+
+    function irPara(i, opts) {
+      opts = opts || {};
+      i = Math.max(0, Math.min(N - 1, i));
+      if (i === atual && !opts.forcar) return;
+      const mudou = i !== atual;
+      atual = i;
+      atualizaFita();
+      const ed = document.getElementById("edicao");
+      const reduz = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const pinta = () => { render(atual, mudou && !reduz); };
+      if (ed && mudou && !reduz) {
+        ed.classList.add("troca");
+        setTimeout(pinta, 150);
+      } else { pinta(); }
+      if (!opts.semHash) history.replaceState(null, "", "#" + meses[atual].ym);
+    }
+
+    function idxDoPonteiro(clientX) {
+      const r = els.trilho.getBoundingClientRect();
+      const frac = (clientX - r.left) / r.width;
+      return Math.round(frac * (N - 1));
+    }
+    function ligaFita() {
+      let arrastando = false;
+      els.trilho.addEventListener("pointerdown", (e) => {
+        arrastando = true; els.trilho.setPointerCapture(e.pointerId);
+        irPara(idxDoPonteiro(e.clientX)); e.preventDefault();
+      });
+      els.trilho.addEventListener("pointermove", (e) => { if (arrastando) irPara(idxDoPonteiro(e.clientX)); });
+      const solta = (e) => { if (arrastando) { arrastando = false; try { els.trilho.releasePointerCapture(e.pointerId); } catch (_) {} } };
+      els.trilho.addEventListener("pointerup", solta);
+      els.trilho.addEventListener("pointercancel", solta);
+      els.trilho.addEventListener("keydown", (e) => {
+        let alvo = null;
+        if (e.key === "ArrowLeft" || e.key === "ArrowDown") alvo = atual - 1;
+        else if (e.key === "ArrowRight" || e.key === "ArrowUp") alvo = atual + 1;
+        else if (e.key === "Home") alvo = 0;
+        else if (e.key === "End") alvo = N - 1;
+        if (alvo != null) { irPara(alvo); e.preventDefault(); }
+      });
+      // Setas também quando o foco não está num campo de texto/botão.
+      window.addEventListener("keydown", (e) => {
+        const t = e.target;
+        if (t && (t === els.trilho || /INPUT|TEXTAREA|BUTTON|SELECT/.test(t.tagName))) return;
+        if (e.key === "ArrowLeft") { irPara(atual - 1); e.preventDefault(); }
+        else if (e.key === "ArrowRight") { irPara(atual + 1); e.preventDefault(); }
+      });
+      window.addEventListener("hashchange", () => {
+        const i = meses.findIndex((mm) => mm.ym === location.hash.slice(1));
+        if (i >= 0 && i !== atual) irPara(i, { semHash: true });
+      });
+    }
+
+    // ------------------------------ init ------------------------------ //
+    async function init() {
+      els = {
+        palco: document.getElementById("palco"),
+        fita: document.getElementById("fita"),
+        trilho: document.getElementById("trilho"),
+        nos: document.getElementById("nos"),
+        rotulo: document.getElementById("rotuloAtivo"),
+      };
+      try {
+        const raw = {};
+        await Promise.all(CODIGOS.map(async (cod) => {
+          try { raw[cod] = await getJSON(cod + "_history.json"); } catch (_) { raw[cod] = []; }
+        }));
+        if (!CODIGOS.some((c) => (raw[c] || []).length)) throw new Error("sem séries");
+
+        agregaEfetivo(raw);
+        montaEdicoes();
+
+        // Mês inicial: hash válido, senão o mais recente.
+        const hi = meses.findIndex((mm) => mm.ym === location.hash.slice(1));
+        atual = hi >= 0 ? hi : N - 1;
+
+        els.fita.hidden = false;
+        montaFita();
+        ligaFita();
+        render(atual, false);
+        history.replaceState(null, "", "#" + meses[atual].ym);
+      } catch (e) {
+        els.palco.innerHTML = `<p class="estado">Não foi possível montar a linha do tempo (${e.message}). ` +
+          `Sirva a pasta <code>docs/</code> via HTTP (ex.: <code>python -m http.server -d docs</code>).</p>`;
+        console.error(e);
+      }
+    }
+
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+    else init();
+  })();
+  </script>
+</body>
+</html>
