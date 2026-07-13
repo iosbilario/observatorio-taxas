@@ -56,6 +56,9 @@ jobs:
       - name: Gerar calculadora de correção monetária
         run: python scripts/build_correcao.py
 
+      - name: Assar boletim no HTML da landing e regenerar o sitemap
+        run: python scripts/render_index.py
+
       - name: Coletar estatísticas de acesso (GoatCounter)
         if: env.GOATCOUNTER_TOKEN != ''
         run: python scripts/fetch_stats.py
