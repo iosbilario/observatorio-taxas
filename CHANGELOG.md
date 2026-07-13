@@ -241,3 +241,5 @@
     ↳ Poupança - rendimento (%): caiu de 0,6722 para 0,6703.
 [2026-07-13 13:18:49 -0300] Câmbio USD/BRL - venda: 5.1088 -> 5.1183
     ↳ Câmbio USD/BRL - venda: subiu de 5,1088 para 5,1183.
+[2026-07-13 19:11:13 +0000] Câmbio USD/BRL - compra: 5.1082 -> 5.1177
+    ↳ Câmbio USD/BRL - compra: subiu de 5,1082 para 5,1177.
