@@ -244,6 +244,18 @@
     .redacoes h2 { font-family: "Fraunces", serif; font-weight: 600; font-size: clamp(1.5rem, 4vw, 2rem); margin: 0 0 .6rem; }
     .redacoes p { color: var(--papel-70); max-width: 60ch; margin: 0 auto .5rem; }
     .redacoes .mail { color: var(--carimbo); text-decoration: none; border-bottom: 1px solid rgba(217,181,74,.4); font-weight: 600; font-family: "IBM Plex Mono", monospace; }
+    .carta { max-width: 460px; margin: 1.6rem auto 0; text-align: left; border: 1px solid var(--linha); border-radius: 10px; padding: 1.2rem 1.3rem 1.3rem; }
+    .carta-sel { font-family: "IBM Plex Mono", monospace; font-size: .64rem; letter-spacing: .2em; text-transform: uppercase; color: var(--carimbo); margin: 0 0 1rem; }
+    .carta label { display: block; font-family: "IBM Plex Mono", monospace; font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; color: var(--papel-45); margin: 0 0 .3rem; }
+    .carta-row { display: grid; grid-template-columns: 1fr 1fr; gap: .7rem; margin-bottom: .8rem; }
+    @media (max-width: 520px) { .carta-row { grid-template-columns: 1fr; } }
+    .carta input, .carta textarea { width: 100%; max-width: 100%; background: var(--campo); border: 1px solid var(--linha); border-radius: 8px; color: var(--papel); padding: .6rem .7rem; font: inherit; font-size: .95rem; }
+    .carta textarea { resize: vertical; margin-bottom: .9rem; line-height: 1.5; }
+    .carta input:focus-visible, .carta textarea:focus-visible { outline: 2px solid var(--carimbo); outline-offset: 1px; }
+    .carta button { width: 100%; font-family: "IBM Plex Mono", monospace; font-weight: 600; font-size: .9rem; letter-spacing: .02em; color: var(--cofre); background: var(--carimbo); border: 0; border-radius: 8px; padding: .72rem 1rem; cursor: pointer; transition: filter .15s; }
+    .carta button:hover, .carta button:focus-visible { filter: brightness(1.06); outline: none; }
+    .carta button:focus-visible { outline: 2px solid var(--papel); outline-offset: 2px; }
+    .carta-alt { font-family: "IBM Plex Mono", monospace; font-size: .74rem; color: var(--papel-45); margin: .9rem 0 0; text-align: center; }
 
     footer { border-top: 3px double var(--linha); margin-top: 1rem; }
     footer .wrap { padding: 1.8rem clamp(1rem, 4vw, 2rem) 2.2rem; color: var(--papel-45); font-size: .82rem; }
@@ -357,10 +369,23 @@
     <!-- ===================== FECHO REDAÇÕES ===================== -->
     <section class="bloco redacoes" id="redacoes">
       <h2>Para redações e newsletters</h2>
-      <p>Todos os números vêm direto do Banco Central e se atualizam sozinhos a cada coleta.</p>
-      <p>O código e os dados são abertos, versionados em aberto e livres para reutilizar.</p>
-      <p>Precisa de uma série, um recorte ou um formato que não está aqui?</p>
-      <p style="margin-top:1rem"><a class="mail" href="mailto:contato@observatoriodetaxas.tec.br?subject=Observat%C3%B3rio%20de%20Taxas">contato@observatoriodetaxas.tec.br</a></p>
+      <p>Todos os números vêm direto do Banco Central e se atualizam sozinhos a cada coleta. Código e dados abertos, livres para reutilizar.</p>
+      <p>Precisa de uma série, um recorte ou um formato que não está aqui? Escreva para a redação.</p>
+
+      <!-- Carta à redação: sem servidor. O envio compõe um mailto já formatado
+           e abre o e-mail do visitante. Sem JS, o próprio form abre o e-mail;
+           e o link direto embaixo funciona sempre. -->
+      <form class="carta" id="carta" action="mailto:lbptech@icloud.com" method="post" enctype="text/plain">
+        <p class="carta-sel">Carta à redação</p>
+        <div class="carta-row">
+          <div><label for="c-nome">Seu nome</label><input id="c-nome" name="nome" type="text" autocomplete="name" /></div>
+          <div><label for="c-veiculo">Veículo ou newsletter</label><input id="c-veiculo" name="veiculo" type="text" /></div>
+        </div>
+        <label for="c-msg">O que você precisa</label>
+        <textarea id="c-msg" name="mensagem" rows="3" placeholder="Ex.: quero o IGP-M dos últimos 24 meses em CSV para uma matéria de aluguel."></textarea>
+        <button type="submit" id="c-btn">Escrever para a redação →</button>
+        <p class="carta-alt">Prefere escrever do seu jeito? <a class="mail" href="mailto:lbptech@icloud.com?subject=Observat%C3%B3rio%20de%20Taxas%2C%20contato%20da%20reda%C3%A7%C3%A3o">lbptech@icloud.com</a></p>
+      </form>
     </section>
   </div>
 
@@ -418,6 +443,28 @@
       }));
     }
     hidrataSparklines();
+
+    // Carta à redação: compõe um e-mail já formatado (sem servidor nem terceiros).
+    (function () {
+      const carta = document.getElementById("carta");
+      if (!carta) return;
+      const btn = document.getElementById("c-btn");
+      carta.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const nome = document.getElementById("c-nome").value.trim();
+        const veic = document.getElementById("c-veiculo").value.trim();
+        const msg = document.getElementById("c-msg").value.trim();
+        const assunto = "Observatório de Taxas · " + (veic || nome || "contato da redação");
+        const cab = [];
+        if (nome) cab.push("Nome: " + nome);
+        if (veic) cab.push("Veículo: " + veic);
+        const corpo = cab.length ? cab.join("\n") + "\n\n" + msg : msg;
+        window.location.href = "mailto:lbptech@icloud.com?subject=" +
+          encodeURIComponent(assunto) + "&body=" + encodeURIComponent(corpo);
+        btn.textContent = "Abrindo seu e-mail…";
+        setTimeout(() => { btn.textContent = "Escrever para a redação →"; }, 2500);
+      });
+    })();
 
     // ---------------- Calculadora de reajuste (mantida do index anterior) ----------------
     const RJ_INDICES = [
