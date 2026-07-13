@@ -294,8 +294,10 @@
       // são preservadas: um período sem dado vira "SEM DADO" no recibo, sem grampear
       // silenciosamente a alegação para outra data.
       const hi = ymNum(RANGE.max), lo = ymNum(RANGE.min);
-      if (!st.a1 || !st.a2) { st.a1 = RANGE.min; st.a2 = ymFromNum(Math.min(hi, lo + 11)); }
-      if (!st.b1 || !st.b2) { st.b1 = ymFromNum(Math.max(lo, hi - 11)); st.b2 = RANGE.max; }
+      const clamp = (ym) => ymFromNum(Math.max(lo, Math.min(hi, ymNum(ym))));
+      // Exemplo padrão já mostra a comparação de períodos longos (dados desde 2015).
+      if (!st.a1 || !st.a2) { st.a1 = clamp("2019-01"); st.a2 = clamp("2022-12"); }
+      if (!st.b1 || !st.b2) { st.b1 = clamp("2023-01"); st.b2 = RANGE.max; }
     }
 
     // ------------------------------ cálculo ------------------------------ //
@@ -384,10 +386,12 @@
     function montaPeriodo(pop, tipo) {
       const k1 = tipo === "A" ? "a1" : "b1", k2 = tipo === "A" ? "a2" : "b2";
       const lo = ymNum(RANGE.min), hi = ymNum(RANGE.max);
+      const cl = (ym) => ymFromNum(Math.max(lo, Math.min(hi, ymNum(ym))));
       const presets = [
-        { label: "Primeiros 12 meses", v: [ymFromNum(lo), ymFromNum(Math.min(hi, lo + 11))] },
+        { label: "2015 a 2018", v: [cl("2015-01"), cl("2018-12")] },
+        { label: "2019 a 2022", v: [cl("2019-01"), cl("2022-12")] },
+        { label: "2023 a hoje", v: [cl("2023-01"), RANGE.max] },
         { label: "Últimos 12 meses", v: [ymFromNum(Math.max(lo, hi - 11)), ymFromNum(hi)] },
-        { label: "12 meses anteriores", v: [ymFromNum(Math.max(lo, hi - 23)), ymFromNum(Math.max(lo, hi - 12))] },
         { label: "Todo o período", v: [RANGE.min, RANGE.max] },
       ];
       let opt = ""; for (let n = lo; n <= hi; n++) opt += `<option value="${ymFromNum(n)}">${ymLabelC(ymFromNum(n))}</option>`;

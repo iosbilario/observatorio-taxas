@@ -4,7 +4,7 @@
     "data_referencia": "13/07/2026",
     "grupo": "Juros",
     "nome": "Meta Selic (% a.a.)",
-    "pontos": 759,
+    "pontos": 4212,
     "ultima_mudanca": "18/06/2026",
     "valor_atual": "14.25"
   },
@@ -13,7 +13,7 @@
     "data_referencia": "10/07/2026",
     "grupo": "Juros",
     "nome": "Selic anualizada (% a.a.)",
-    "pontos": 521,
+    "pontos": 2890,
     "ultima_mudanca": "18/06/2026",
     "valor_atual": "14.15"
   },
@@ -22,7 +22,7 @@
     "data_referencia": "01/07/2026",
     "grupo": "Juros",
     "nome": "CDI - acumulado no mês (%)",
-    "pontos": 26,
+    "pontos": 139,
     "ultima_mudanca": "01/07/2026",
     "valor_atual": "0.42"
   },
@@ -31,7 +31,7 @@
     "data_referencia": "10/07/2026",
     "grupo": "Juros",
     "nome": "TR - Taxa Referencial (%)",
-    "pontos": 756,
+    "pontos": 4209,
     "ultima_mudanca": "10/07/2026",
     "valor_atual": "0.1695"
   },
@@ -40,7 +40,7 @@
     "data_referencia": "10/07/2026",
     "grupo": "Juros",
     "nome": "Poupança - rendimento (%)",
-    "pontos": 696,
+    "pontos": 3874,
     "ultima_mudanca": "10/07/2026",
     "valor_atual": "0.6703"
   },
@@ -49,7 +49,7 @@
     "data_referencia": "01/06/2026",
     "grupo": "Inflação",
     "nome": "IPCA - variação mensal (%)",
-    "pontos": 25,
+    "pontos": 138,
     "ultima_mudanca": "01/06/2026",
     "valor_atual": "0.16"
   },
@@ -58,7 +58,7 @@
     "data_referencia": "01/06/2026",
     "grupo": "Inflação",
     "nome": "IPCA - acumulado 12 meses (%)",
-    "pontos": 25,
+    "pontos": 138,
     "ultima_mudanca": "01/06/2026",
     "valor_atual": "4.64"
   },
@@ -67,7 +67,7 @@
     "data_referencia": "01/06/2026",
     "grupo": "Inflação",
     "nome": "INPC - variação mensal (%)",
-    "pontos": 25,
+    "pontos": 138,
     "ultima_mudanca": "01/06/2026",
     "valor_atual": "0.14"
   },
@@ -76,7 +76,7 @@
     "data_referencia": "01/06/2026",
     "grupo": "Inflação",
     "nome": "IGP-M - variação mensal (%)",
-    "pontos": 25,
+    "pontos": 138,
     "ultima_mudanca": "01/06/2026",
     "valor_atual": "-0.50"
   },
@@ -85,7 +85,7 @@
     "data_referencia": "01/06/2026",
     "grupo": "Inflação",
     "nome": "IGP-DI - variação mensal (%)",
-    "pontos": 25,
+    "pontos": 138,
     "ultima_mudanca": "01/06/2026",
     "valor_atual": "-0.79"
   },
@@ -94,7 +94,7 @@
     "data_referencia": "13/07/2026",
     "grupo": "Câmbio",
     "nome": "Câmbio USD/BRL - venda",
-    "pontos": 522,
+    "pontos": 2891,
     "ultima_mudanca": "13/07/2026",
     "valor_atual": "5.1183"
   },
@@ -103,7 +103,7 @@
     "data_referencia": "13/07/2026",
     "grupo": "Câmbio",
     "nome": "Câmbio USD/BRL - compra",
-    "pontos": 522,
+    "pontos": 2891,
     "ultima_mudanca": "13/07/2026",
     "valor_atual": "5.1177"
   },
@@ -112,7 +112,7 @@
     "data_referencia": "13/07/2026",
     "grupo": "Câmbio",
     "nome": "Câmbio EUR/BRL - venda",
-    "pontos": 522,
+    "pontos": 2889,
     "ultima_mudanca": "13/07/2026",
     "valor_atual": "5.8364000"
   },
@@ -121,7 +121,7 @@
     "data_referencia": "01/04/2026",
     "grupo": "Atividade & Emprego",
     "nome": "IBC-Br - índice (proxy do PIB)",
-    "pontos": 23,
+    "pontos": 136,
     "ultima_mudanca": "01/04/2026",
     "valor_atual": "113.72712"
   },
@@ -130,7 +130,7 @@
     "data_referencia": "01/05/2026",
     "grupo": "Atividade & Emprego",
     "nome": "Taxa de desocupação - PNAD (%)",
-    "pontos": 24,
+    "pontos": 137,
     "ultima_mudanca": "01/05/2026",
     "valor_atual": "5.6"
   }
