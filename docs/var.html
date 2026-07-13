@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>VAR da Economia — recibos verificáveis de alegações econômicas</title>
+  <meta name="description" id="meta-desc" content="Monte uma alegação sobre indicadores do BACEN e receba um recibo verificável e permanente: dois períodos comparados, veredito, regra de cálculo, fonte oficial e o commit exato dos dados." />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0E1210" />
+  <link rel="canonical" id="canonical" href="https://observatoriodetaxas.tec.br/var.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:site_name" content="Observatório de Taxas" />
+  <meta property="og:title" id="og-title" content="VAR da Economia" />
+  <meta property="og:description" id="og-desc" content="Recibos verificáveis de alegações econômicas, sobre dados oficiais do Banco Central." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Métricas de acesso (GoatCounter) — grátis, sem cookies, sem servidor. -->
+  <script data-goatcounter="https://observatoriotaxas.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
+
+  <style>
+    :root {
+      --cofre: #0E1210; --papel: #E9E6DC; --alta: #3FD68F; --queda: #E4574F;
+      --carimbo: #D9B54A; --neutro: #5A625D;
+      --papel-70: rgba(233,230,220,.70); --papel-45: rgba(233,230,220,.45);
+      --linha: rgba(233,230,220,.14);
+      --cupom: #F4F0E4; --cupom-tx: #1c1a14; --cupom-mut: #6b6656; --cupom-linha: #cfc8b2;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; background: var(--cofre); color: var(--papel);
+      font-family: "Archivo", system-ui, sans-serif; line-height: 1.55;
+      -webkit-font-smoothing: antialiased; min-height: 100vh;
+    }
+    a { color: inherit; }
+    ::selection { background: rgba(217,181,74,.28); }
+
+    header.top {
+      display: flex; align-items: baseline; justify-content: space-between; gap: 1rem;
+      padding: 1.1rem clamp(1rem, 4vw, 2.4rem); border-bottom: 1px solid var(--linha);
+      font-family: "IBM Plex Mono", monospace;
+    }
+    header .mark { font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; color: var(--papel-70); }
+    header .mark b { color: var(--papel); font-weight: 500; }
+    header .back { font-size: .78rem; letter-spacing: .06em; text-decoration: none; color: var(--papel-70); border-bottom: 1px solid transparent; }
+    header .back:hover, header .back:focus-visible { color: var(--papel); border-bottom-color: var(--carimbo); outline: none; }
+
+    main { max-width: 760px; margin: 0 auto; padding: clamp(1.8rem, 5vw, 3.2rem) clamp(1rem, 4vw, 2rem) 4rem; }
+    .eyebrow { font-family: "IBM Plex Mono", monospace; font-size: .76rem; letter-spacing: .18em; text-transform: uppercase; color: var(--carimbo); margin: 0 0 .7rem; }
+    h1.titulo { font-family: "Fraunces", Georgia, serif; font-optical-sizing: auto; font-weight: 600; font-size: clamp(2rem, 6.5vw, 3.1rem); line-height: 1.05; letter-spacing: -.015em; margin: 0 0 .7rem; }
+    p.tagline { font-size: clamp(1rem, 2.4vw, 1.14rem); color: var(--papel-70); max-width: 60ch; margin: 0 0 2.2rem; }
+
+    /* ---------------- Construtor: a frase com lacunas ---------------- */
+    .frase {
+      font-size: clamp(1.15rem, 3.2vw, 1.55rem); line-height: 1.75; color: var(--papel);
+      max-width: 40ch; margin: 0 0 1.6rem;
+    }
+    .slot {
+      font: inherit; color: var(--carimbo); background: transparent; border: 0; cursor: pointer;
+      padding: 0 .05em; border-bottom: 2px solid rgba(217,181,74,.45); border-radius: 0;
+      transition: border-color .15s, color .15s;
+    }
+    .slot:hover { border-bottom-color: var(--carimbo); }
+    .slot:focus-visible { outline: 2px solid var(--carimbo); outline-offset: 3px; }
+    .slot.sub { color: var(--papel); border-bottom-color: var(--linha); }
+
+    .conferir {
+      font-family: "IBM Plex Mono", monospace; font-size: .9rem; font-weight: 600; letter-spacing: .04em;
+      color: var(--cofre); background: var(--carimbo); border: 0; border-radius: 3px;
+      padding: .7rem 1.3rem; cursor: pointer; transition: filter .15s;
+    }
+    .conferir:hover, .conferir:focus-visible { filter: brightness(1.08); outline: none; }
+    .conferir:focus-visible { outline: 2px solid var(--papel); outline-offset: 2px; }
+
+    /* ---------------- Popover de seleção ---------------- */
+    .pop {
+      position: absolute; z-index: 60; min-width: 220px; max-width: min(92vw, 320px);
+      background: #141917; border: 1px solid var(--linha); border-radius: 6px;
+      box-shadow: 0 18px 40px -18px rgba(0,0,0,.8); padding: .7rem; font-family: "Archivo", sans-serif;
+    }
+    .pop[hidden] { display: none; }
+    .pop .grp { font-family: "IBM Plex Mono", monospace; font-size: .66rem; letter-spacing: .14em; text-transform: uppercase; color: var(--papel-45); margin: .2rem 0 .45rem; }
+    .pop .opt {
+      display: block; width: 100%; text-align: left; background: transparent; border: 1px solid transparent;
+      color: var(--papel); font: inherit; font-size: .92rem; padding: .4rem .5rem; border-radius: 4px; cursor: pointer;
+    }
+    .pop .opt:hover, .pop .opt:focus-visible { background: rgba(233,230,220,.06); outline: none; }
+    .pop .opt[aria-selected="true"] { color: var(--carimbo); border-color: rgba(217,181,74,.4); }
+    .pop .presets { display: flex; flex-wrap: wrap; gap: .35rem; margin-bottom: .6rem; }
+    .pop .preset {
+      font-family: "IBM Plex Mono", monospace; font-size: .74rem; color: var(--papel-70);
+      background: transparent; border: 1px solid var(--linha); border-radius: 999px; padding: .28rem .6rem; cursor: pointer;
+    }
+    .pop .preset:hover, .pop .preset:focus-visible { border-color: var(--carimbo); color: var(--papel); outline: none; }
+    .pop .selrow { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; margin-top: .3rem; }
+    .pop .selrow + .selrow { margin-top: .45rem; }
+    .pop label { display: block; font-family: "IBM Plex Mono", monospace; font-size: .64rem; letter-spacing: .1em; text-transform: uppercase; color: var(--papel-45); margin: 0 0 .2rem; }
+    .pop select {
+      width: 100%; background: #0d1210; color: var(--papel); border: 1px solid var(--linha);
+      border-radius: 4px; padding: .4rem .45rem; font: inherit; font-size: .86rem;
+    }
+    .pop select:focus-visible { outline: 2px solid var(--carimbo); outline-offset: 1px; }
+
+    /* ---------------- O recibo (cupom fiscal) ---------------- */
+    .recibo-area { margin-top: 2.4rem; }
+    .recibo-area[hidden] { display: none; }
+    .recibo {
+      position: relative; width: 340px; max-width: 100%; margin: 0 0 .6rem;
+      background: var(--cupom); color: var(--cupom-tx);
+      font-family: "IBM Plex Mono", monospace; font-size: .82rem; line-height: 1.6;
+      padding: 1.4rem 1.3rem 1.7rem; border-radius: 2px 2px 0 0;
+    }
+    .recibo::after {
+      content: ""; position: absolute; left: 0; right: 0; bottom: -11px; height: 12px; background: var(--cupom);
+      -webkit-mask: conic-gradient(from -45deg at 50% 0, #000 90deg, transparent 0) 0 0 / 13px 100%;
+      mask: conic-gradient(from -45deg at 50% 0, #000 90deg, transparent 0) 0 0 / 13px 100%;
+    }
+    .recibo h2 { font-size: .74rem; letter-spacing: .18em; text-transform: uppercase; text-align: center; margin: 0 0 .2rem; font-weight: 600; }
+    .recibo .sub-h { text-align: center; font-size: .64rem; letter-spacing: .1em; text-transform: uppercase; color: var(--cupom-mut); margin: 0 0 1rem; }
+    .recibo hr { border: 0; border-top: 1px dashed var(--cupom-linha); margin: .9rem 0; }
+    .recibo .claim { font-size: .88rem; line-height: 1.55; margin: 0 0 1rem; }
+    .recibo .row { display: flex; justify-content: space-between; gap: 1rem; }
+    .recibo .row .k { color: var(--cupom-mut); }
+    .recibo .row .v { text-align: right; font-weight: 600; }
+    .recibo .metric { font-size: 1.02rem; }
+    .recibo .veredito {
+      text-align: center; font-size: 1.35rem; font-weight: 600; letter-spacing: .04em;
+      margin: 1rem 0 .3rem; text-transform: uppercase;
+    }
+    .recibo .carimbo-v {
+      display: inline-block; border: 2px solid; border-radius: 4px; padding: .15rem .6rem;
+      transform: rotate(-4deg); font-size: 1.15rem;
+    }
+    .recibo .carimbo-v.ok { color: var(--carimbo); border-color: var(--carimbo); }
+    .recibo .carimbo-v.no { color: var(--queda); border-color: var(--queda); }
+    .recibo .meta-l { font-size: .68rem; color: var(--cupom-mut); line-height: 1.7; }
+    .recibo .selo {
+      margin-top: .7rem; font-size: .64rem; letter-spacing: .04em; color: var(--cupom-tx);
+      background: rgba(217,181,74,.22); border: 1px solid rgba(180,150,50,.5); border-radius: 3px; padding: .3rem .45rem; text-align: center;
+    }
+    .recibo .sem-dado { text-align: center; color: var(--queda); font-weight: 600; margin: 1rem 0; }
+
+    .acoes { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.4rem; max-width: 340px; }
+    .acoes button {
+      flex: 1 1 auto; font-family: "IBM Plex Mono", monospace; font-size: .76rem; letter-spacing: .03em;
+      color: var(--papel-70); background: transparent; border: 1px solid var(--linha); border-radius: 3px;
+      padding: .55rem .7rem; cursor: pointer; transition: border-color .15s, color .15s;
+    }
+    .acoes button:hover, .acoes button:focus-visible { color: var(--papel); border-color: var(--carimbo); outline: none; }
+
+    footer { border-top: 1px solid var(--linha); margin-top: 2rem; padding: 1.6rem clamp(1rem, 4vw, 2.4rem) 2rem; color: var(--papel-45); font-size: .82rem; }
+    footer a { color: var(--papel-70); text-decoration: none; border-bottom: 1px solid var(--linha); }
+    footer a:hover { color: var(--papel); }
+    footer p { margin: .3rem 0; max-width: 72ch; }
+    footer .arb { color: var(--papel-70); }
+
+    .estado { font-family: "IBM Plex Mono", monospace; color: var(--papel-45); padding: 1.4rem 0; }
+
+    @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <span class="mark"><b>Observatório de Taxas</b> · VAR da economia</span>
+    <a class="back" href="index.html">voltar ao painel &nbsp;›</a>
+  </header>
+
+  <main>
+    <p class="eyebrow">Verificador · recibo permanente</p>
+    <h1 class="titulo">VAR da Economia</h1>
+    <p class="tagline">Monte uma afirmação sobre os indicadores do Banco Central e receba um recibo verificável. Ele compara dois períodos, mostra a regra de cálculo e o commit exato dos dados. Sem opinião: só os números.</p>
+
+    <p class="frase" id="frase"></p>
+    <button class="conferir" id="conferir" type="button">Conferir e emitir recibo</button>
+
+    <div class="recibo-area" id="reciboArea" hidden>
+      <div class="recibo" id="recibo"></div>
+      <div class="acoes">
+        <button id="btnLink" type="button">copiar link do recibo</button>
+        <button id="btnPng" type="button">baixar recibo (PNG)</button>
+      </div>
+    </div>
+
+    <p class="estado" id="estado">Carregando as séries…</p>
+  </main>
+
+  <footer>
+    <p class="arb">Este recibo compara séries oficiais. Ele não avalia causas, méritos ou culpas.</p>
+    <p>Fonte primária: <a href="https://www3.bcb.gov.br/sgspub/" target="_blank" rel="noopener">SGS / Banco Central do Brasil</a>. Série coletada automaticamente e versionada em aberto no <a href="https://github.com/iosbilario/observatorio-taxas" target="_blank" rel="noopener">GitHub</a>. Conteúdo informativo, sem caráter de recomendação financeira.</p>
+    <p>Desenvolvido por LBP Tecnologia.</p>
+  </footer>
+
+  <script>
+  "use strict";
+  (function () {
+    const REPO = "iosbilario/observatorio-taxas";
+    const MES = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"];
+    const MESC = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"];
+
+    // Naturezas: fluxo (acumula composto), nivel (média/ponta), cambio (variação/média).
+    const SERIES = {
+      433:   { tok: "o IPCA",            nome: "IPCA (variação mensal)",     serie: "433",   nat: "fluxo",  suf: "%", casas: 2 },
+      13522: { tok: "o IPCA em 12 meses", nome: "IPCA acumulado 12 meses",   serie: "13522", nat: "nivel",  suf: "%", casas: 2 },
+      189:   { tok: "o IGP-M",           nome: "IGP-M (variação mensal)",    serie: "189",   nat: "fluxo",  suf: "%", casas: 2 },
+      432:   { tok: "a Meta Selic",      nome: "Meta Selic",                 serie: "432",   nat: "nivel",  suf: "%", casas: 2 },
+      1:     { tok: "o dólar",           nome: "Câmbio USD/BRL (venda)",     serie: "1",     nat: "cambio", pref: "R$ ", casas: 4 },
+      24369: { tok: "o desemprego",      nome: "Desocupação (PNAD)",         serie: "24369", nat: "nivel",  suf: "%", casas: 1 },
+      25:    { tok: "a poupança",        nome: "Poupança (rendimento)",      serie: "25",    nat: "nivel",  suf: "%", casas: 4 },
+      4390:  { tok: "o CDI",             nome: "CDI (acumulado no mês)",     serie: "4390",  nat: "fluxo",  suf: "%", casas: 2 },
+    };
+    const CODS = Object.keys(SERIES).map(Number);
+
+    // Operações válidas por natureza + rótulo (substantivo) usado na frase.
+    const OPS = {
+      fluxo:  [{ v: "acum", n: "acumulado" }, { v: "media", n: "média mensal" }],
+      nivel:  [{ v: "media", n: "média" }, { v: "ponta", n: "variação ponta a ponta" }],
+      cambio: [{ v: "ponta", n: "variação" }, { v: "media", n: "cotação média" }],
+    };
+    const OP_DEFAULT = { fluxo: "acum", nivel: "media", cambio: "ponta" };
+
+    function regraTxt(cod, op) {
+      if (op === "acum") return "Acumulado composto da variação mensal (produto de 1 + i/100).";
+      if (op === "media") return "Média simples dos valores observados no período.";
+      return SERIES[cod].nat === "cambio"
+        ? "Variação ponta a ponta (valor final dividido pelo inicial)."
+        : "Variação ponta a ponta (valor final menos o inicial).";
+    }
+    function opNoun(cod, op) { return (OPS[SERIES[cod].nat].find((o) => o.v === op) || OPS[SERIES[cod].nat][0]).n; }
+
+    // ------------------------------ utils ------------------------------ //
+    const num = (v) => parseFloat(String(v).replace(",", "."));
+    const dataToYm = (s) => { const [, m, a] = s.split("/"); return a + "-" + m; };
+    const ymNum = (ym) => { const [y, m] = ym.split("-").map(Number); return y * 12 + (m - 1); };
+    const ymFromNum = (n) => { const y = Math.floor(n / 12), m = (n % 12) + 1; return y + "-" + String(m).padStart(2, "0"); };
+    const ymLabel = (ym) => { const [y, m] = ym.split("-").map(Number); return MES[m - 1] + "/" + y; };
+    const ymLabelC = (ym) => { const [y, m] = ym.split("-").map(Number); return MESC[m - 1] + " de " + y; };
+    function nfmt(x, c) { return x.toLocaleString("pt-BR", { minimumFractionDigits: c, maximumFractionDigits: c }); }
+    function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+    function fmtUnit(cod, x) { const S = SERIES[cod]; return (S.pref || "") + nfmt(x, S.casas) + (S.suf || ""); }
+
+    // ------------------------------ estado ------------------------------ //
+    let DATA = {};       // cod -> [{ym, v}] ordenado
+    let RANGE = { min: null, max: null };
+    let shaAtual = null; // sha dos dados (para recibo + permalink)
+    let auditado = false; // aberto via permalink com sha
+    const st = { s: 433, op: "acum", a1: null, a2: null, b1: null, b2: null, cmp: "maior" };
+    const els = {};
+    let popAberto = null;
+
+    // ------------------------- carregamento ---------------------------- //
+    function parseParams() {
+      const p = new URLSearchParams(location.search);
+      const s = Number(p.get("s")); if (SERIES[s]) st.s = s;
+      const op = p.get("op"); if (op && OPS[SERIES[st.s].nat].some((o) => o.v === op)) st.op = op;
+      else st.op = OP_DEFAULT[SERIES[st.s].nat];
+      const okYm = (x) => /^\d{4}-\d{2}$/.test(x || "");
+      ["a1", "a2", "b1", "b2"].forEach((k) => { const v = p.get(k); if (okYm(v)) st[k] = v; });
+      const cmp = p.get("cmp"); if (cmp === "maior" || cmp === "menor") st.cmp = cmp;
+      const sha = p.get("sha"); if (sha && /^[0-9a-f]{7,40}$/i.test(sha)) { st.sha = sha; shaAtual = sha; auditado = true; }
+    }
+
+    async function carrega(base) {
+      await Promise.all(CODS.map(async (cod) => {
+        try {
+          const r = await fetch(base + cod + "_history.json", { cache: "no-store" });
+          if (!r.ok) throw new Error("HTTP " + r.status);
+          const arr = await r.json();
+          DATA[cod] = arr.map((p) => ({ ym: dataToYm(p.data), v: num(p.valor) }))
+            .filter((p) => isFinite(p.v)).sort((a, b) => ymNum(a.ym) - ymNum(b.ym));
+        } catch (e) { DATA[cod] = []; }
+      }));
+      let lo = Infinity, hi = -Infinity;
+      for (const cod of CODS) for (const p of DATA[cod]) { const n = ymNum(p.ym); if (n < lo) lo = n; if (n > hi) hi = n; }
+      RANGE = { min: ymFromNum(lo), max: ymFromNum(hi) };
+    }
+
+    async function buscaSha() {
+      try {
+        const r = await fetch("https://api.github.com/repos/" + REPO + "/commits?path=docs/data&per_page=1",
+          { headers: { "Accept": "application/vnd.github+json" } });
+        if (!r.ok) throw new Error("HTTP " + r.status);
+        const j = await r.json();
+        return (j[0] && j[0].sha) ? j[0].sha : null;
+      } catch (e) { return null; }
+    }
+
+    function ensureDefaults() {
+      // Só preenche o que veio VAZIO na URL. Datas informadas (mesmo fora do range)
+      // são preservadas: um período sem dado vira "SEM DADO" no recibo, sem grampear
+      // silenciosamente a alegação para outra data.
+      const hi = ymNum(RANGE.max), lo = ymNum(RANGE.min);
+      if (!st.a1 || !st.a2) { st.a1 = RANGE.min; st.a2 = ymFromNum(Math.min(hi, lo + 11)); }
+      if (!st.b1 || !st.b2) { st.b1 = ymFromNum(Math.max(lo, hi - 11)); st.b2 = RANGE.max; }
+    }
+
+    // ------------------------------ cálculo ------------------------------ //
+    function metrica(cod, op, p1, p2) {
+      const lo = Math.min(ymNum(p1), ymNum(p2)), hi = Math.max(ymNum(p1), ymNum(p2));
+      const pts = DATA[cod].filter((p) => { const n = ymNum(p.ym); return n >= lo && n <= hi; });
+      if (!pts.length) return { ok: false };
+      const vals = pts.map((p) => p.v);
+      if (op === "acum") { let f = 1; for (const v of vals) f *= 1 + v / 100; return { ok: true, tipo: "pct", metric: (f - 1) * 100 }; }
+      if (op === "media") {
+        const m = vals.reduce((a, b) => a + b, 0) / vals.length;
+        return { ok: true, tipo: SERIES[cod].nat === "cambio" ? "cotacao" : "nivel", metric: m };
+      }
+      // ponta
+      const a = vals[0], z = vals[vals.length - 1];
+      if (SERIES[cod].nat === "cambio") return { ok: true, tipo: "pct", metric: (z / a - 1) * 100, de: a, ate: z };
+      return { ok: true, tipo: "delta", metric: z - a, de: a, ate: z };
+    }
+
+    function fmtMetric(cod, op, r) {
+      if (r.tipo === "pct") return (op === "ponta" && r.metric >= 0 ? "+" : "") + nfmt(r.metric, 2) + "%";
+      if (r.tipo === "nivel" || r.tipo === "cotacao") return fmtUnit(cod, r.metric);
+      // delta (nível ponta a ponta)
+      const sig = r.metric > 0 ? "+" : (r.metric < 0 ? "-" : "");
+      const mag = Math.abs(r.metric);
+      return sig + (SERIES[cod].pref ? "R$ " + nfmt(mag, SERIES[cod].casas) : nfmt(mag, SERIES[cod].casas) + " p.p.");
+    }
+
+    // ------------------------------ frase ------------------------------ //
+    function slot(id, texto, sub) { return `<button class="slot${sub ? " sub" : ""}" data-slot="${id}" type="button">${texto}</button>`; }
+    function fraseTexto(plano) {
+      const S = SERIES[st.s];
+      const indTxt = cap(S.tok);   // "O IPCA", "A Meta Selic" — início da frase
+      const ind = plano ? indTxt : slot("ind", indTxt);
+      const op = plano ? opNoun(st.s, st.op) : slot("op", opNoun(st.s, st.op));
+      const a1 = plano ? ymLabel(st.a1) : slot("A", ymLabel(st.a1), true);
+      const a2 = plano ? ymLabel(st.a2) : slot("A", ymLabel(st.a2), true);
+      const b1 = plano ? ymLabel(st.b1) : slot("B", ymLabel(st.b1), true);
+      const b2 = plano ? ymLabel(st.b2) : slot("B", ymLabel(st.b2), true);
+      const cmp = plano ? st.cmp : slot("cmp", st.cmp);
+      return `${ind} teve ${op} entre ${a1} e ${a2} ${cmp} do que entre ${b1} e ${b2}.`;
+    }
+    function claimTexto() { return fraseTexto(true).replace(/\s+/g, " ").trim(); }
+
+    function renderFrase() {
+      els.frase.innerHTML = fraseTexto(false);
+      els.frase.querySelectorAll(".slot").forEach((b) => b.addEventListener("click", (e) => abrePop(b, b.dataset.slot, e)));
+    }
+
+    // ------------------------------ popover ------------------------------ //
+    function fechaPop() { if (popAberto) { popAberto.remove(); popAberto = null; document.removeEventListener("keydown", escFecha); } }
+    function escFecha(e) { if (e.key === "Escape") { fechaPop(); } }
+    function posiciona(pop, alvo) {
+      const r = alvo.getBoundingClientRect();
+      pop.style.top = (window.scrollY + r.bottom + 6) + "px";
+      let left = window.scrollX + r.left;
+      pop.style.left = "0px"; document.body.appendChild(pop);
+      const pw = pop.offsetWidth;
+      left = Math.min(left, window.scrollX + document.documentElement.clientWidth - pw - 8);
+      pop.style.left = Math.max(8, left) + "px";
+    }
+    function abrePop(alvo, tipo, ev) {
+      ev.stopPropagation(); fechaPop();
+      const pop = document.createElement("div"); pop.className = "pop";
+      if (tipo === "ind") montaLista(pop, "Indicador", CODS.map((c) => ({ v: c, label: cap(SERIES[c].tok) })), st.s, (v) => {
+        st.s = Number(v); st.op = OP_DEFAULT[SERIES[st.s].nat]; fechaPop(); renderFrase(); conferir();
+      });
+      else if (tipo === "op") montaLista(pop, "Cálculo", OPS[SERIES[st.s].nat].map((o) => ({ v: o.v, label: o.n })), st.op, (v) => {
+        st.op = v; fechaPop(); renderFrase(); conferir();
+      });
+      else if (tipo === "cmp") montaLista(pop, "Comparação", [{ v: "maior", label: "maior" }, { v: "menor", label: "menor" }], st.cmp, (v) => {
+        st.cmp = v; fechaPop(); renderFrase(); conferir();
+      });
+      else montaPeriodo(pop, tipo);
+      posiciona(pop, alvo);
+      popAberto = pop;
+      document.addEventListener("keydown", escFecha);
+      const first = pop.querySelector(".opt, .preset, select"); if (first) first.focus();
+    }
+    function montaLista(pop, titulo, opcoes, sel, onPick) {
+      let h = `<p class="grp">${titulo}</p>`;
+      opcoes.forEach((o) => { h += `<button class="opt" role="option" aria-selected="${String(o.v) === String(sel)}" data-v="${o.v}" type="button">${o.label}</button>`; });
+      pop.innerHTML = h;
+      pop.querySelectorAll(".opt").forEach((b) => b.addEventListener("click", () => onPick(b.dataset.v)));
+    }
+    function montaPeriodo(pop, tipo) {
+      const k1 = tipo === "A" ? "a1" : "b1", k2 = tipo === "A" ? "a2" : "b2";
+      const lo = ymNum(RANGE.min), hi = ymNum(RANGE.max);
+      const presets = [
+        { label: "Primeiros 12 meses", v: [ymFromNum(lo), ymFromNum(Math.min(hi, lo + 11))] },
+        { label: "Últimos 12 meses", v: [ymFromNum(Math.max(lo, hi - 11)), ymFromNum(hi)] },
+        { label: "12 meses anteriores", v: [ymFromNum(Math.max(lo, hi - 23)), ymFromNum(Math.max(lo, hi - 12))] },
+        { label: "Todo o período", v: [RANGE.min, RANGE.max] },
+      ];
+      let opt = ""; for (let n = lo; n <= hi; n++) opt += `<option value="${ymFromNum(n)}">${ymLabelC(ymFromNum(n))}</option>`;
+      pop.innerHTML =
+        `<p class="grp">Período (${tipo === "A" ? "primeiro" : "segundo"})</p>
+         <div class="presets">${presets.map((p, i) => `<button class="preset" data-i="${i}" type="button">${p.label}</button>`).join("")}</div>
+         <div class="selrow">
+           <div><label>de</label><select data-k="${k1}">${opt}</select></div>
+           <div><label>até</label><select data-k="${k2}">${opt}</select></div>
+         </div>`;
+      const sd = pop.querySelector(`select[data-k="${k1}"]`), sa = pop.querySelector(`select[data-k="${k2}"]`);
+      sd.value = st[k1]; sa.value = st[k2];
+      const aplica = () => {
+        let n1 = ymNum(sd.value), n2 = ymNum(sa.value);
+        if (n1 > n2) { const t = n1; n1 = n2; n2 = t; }
+        st[k1] = ymFromNum(n1); st[k2] = ymFromNum(n2);
+        renderFrase(); conferir();
+      };
+      sd.addEventListener("change", aplica); sa.addEventListener("change", aplica);
+      pop.querySelectorAll(".preset").forEach((b) => b.addEventListener("click", () => {
+        const pr = presets[Number(b.dataset.i)]; st[k1] = pr.v[0]; st[k2] = pr.v[1];
+        sd.value = st[k1]; sa.value = st[k2]; fechaPop(); renderFrase(); conferir();
+      }));
+    }
+    document.addEventListener("click", (e) => { if (popAberto && !popAberto.contains(e.target) && !e.target.classList.contains("slot")) fechaPop(); });
+
+    // ------------------------------ recibo ------------------------------ //
+    let ultimo = null; // guarda dados p/ o canvas
+
+    function conferir() {
+      const cod = st.s, op = st.op;
+      const mA = metrica(cod, op, st.a1, st.a2);
+      const mB = metrica(cod, op, st.b1, st.b2);
+      const claim = claimTexto();
+      atualizaMetaEUrl(claim);
+
+      els.reciboArea.hidden = false;
+      const S = SERIES[cod];
+      const fonteTxt = `SGS/BACEN, série ${S.serie}`;
+      const agora = new Date();
+      const dh = agora.toLocaleString("pt-BR", { day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit", timeZone: "America/Sao_Paulo" });
+      const hashTxt = shaAtual ? shaAtual.slice(0, 7) : null;
+
+      if (!mA.ok || !mB.ok) {
+        const qual = !mA.ok && !mB.ok ? "nos dois períodos" : (!mA.ok ? "no primeiro período" : "no segundo período");
+        els.recibo.innerHTML =
+          `<h2>VAR da Economia</h2><p class="sub-h">recibo</p>
+           <p class="claim">${claim}</p><hr>
+           <p class="sem-dado">SEM DADO</p>
+           <p class="meta-l">Não há dado de ${S.nome} ${qual}. A série disponível vai de ${ymLabelC(RANGE.min)} a ${ymLabelC(RANGE.max)}.</p>`;
+        ultimo = null;
+        return;
+      }
+
+      const conf = st.cmp === "maior" ? mA.metric > mB.metric : mA.metric < mB.metric;
+      const iguais = Math.abs(mA.metric - mB.metric) < 1e-9;
+      const vTxt = iguais ? "NÃO CONFERE" : (conf ? "CONFERE" : "NÃO CONFERE");
+      const vClass = (conf && !iguais) ? "ok" : "no";
+      const vA = fmtMetric(cod, op, mA), vB = fmtMetric(cod, op, mB);
+
+      const selo = auditado
+        ? `<div class="selo">recibo auditado contra o snapshot ${hashTxt}</div>`
+        : "";
+      const linhaHash = hashTxt ? `commit dos dados: ${hashTxt}` : "snapshot ao vivo (sem hash)";
+
+      els.recibo.innerHTML =
+        `<h2>VAR da Economia</h2><p class="sub-h">recibo verificável</p>
+         <p class="claim">${claim}</p>
+         <hr>
+         <div class="row"><span class="k">${ymLabel(st.a1)} a ${ymLabel(st.a2)}</span><span class="v metric">${vA}</span></div>
+         <div class="row"><span class="k">${ymLabel(st.b1)} a ${ymLabel(st.b2)}</span><span class="v metric">${vB}</span></div>
+         <div class="veredito"><span class="carimbo-v ${vClass}">${vTxt}</span></div>
+         ${iguais ? `<p class="meta-l" style="text-align:center">Os dois valores são iguais.</p>` : ""}
+         <hr>
+         <p class="meta-l">Regra: ${regraTxt(cod, op)}<br>
+         Fonte: ${fonteTxt} (${S.nome}).<br>
+         Emitido em ${dh} (Brasília).<br>
+         ${linhaHash}</p>
+         ${selo}`;
+
+      ultimo = { claim, vA, vB, vTxt, conf: (conf && !iguais), regra: regraTxt(cod, op), fonte: fonteTxt, nome: S.nome, dh, hashTxt, auditado, pa: `${ymLabel(st.a1)} a ${ymLabel(st.a2)}`, pb: `${ymLabel(st.b1)} a ${ymLabel(st.b2)}` };
+      injetaJsonLd(claim, (conf && !iguais), vTxt);
+    }
+
+    // -------------------- meta dinâmica, URL, JSON-LD -------------------- //
+    function permalink() {
+      const p = new URLSearchParams({ s: st.s, op: st.op, a1: st.a1, a2: st.a2, b1: st.b1, b2: st.b2, cmp: st.cmp });
+      if (shaAtual) p.set("sha", shaAtual.slice(0, 40));
+      return location.origin + location.pathname + "?" + p.toString();
+    }
+    function atualizaMetaEUrl(claim) {
+      history.replaceState(null, "", "?" + permalink().split("?")[1]);
+      document.title = claim + " · VAR da Economia";
+      const d = 'Recibo verificável: "' + claim + '" Conferido sobre dados oficiais do BACEN (SGS).';
+      const md = document.getElementById("meta-desc"); if (md) md.setAttribute("content", d);
+      const od = document.getElementById("og-desc"); if (od) od.setAttribute("content", d);
+      const ot = document.getElementById("og-title"); if (ot) ot.setAttribute("content", claim);
+      const cn = document.getElementById("canonical"); if (cn) cn.setAttribute("href", permalink());
+    }
+    function injetaJsonLd(claim, conf, vTxt) {
+      let el = document.getElementById("ld-claim");
+      if (!el) { el = document.createElement("script"); el.type = "application/ld+json"; el.id = "ld-claim"; document.head.appendChild(el); }
+      const data = {
+        "@context": "https://schema.org", "@type": "ClaimReview",
+        "url": permalink(),
+        "claimReviewed": claim,
+        "datePublished": new Date().toISOString().slice(0, 10),
+        "author": { "@type": "Organization", "name": "Observatório de Taxas", "url": "https://observatoriodetaxas.tec.br/" },
+        "reviewRating": {
+          "@type": "Rating", "bestRating": 5, "worstRating": 1,
+          "ratingValue": conf ? 5 : 1, "alternateName": conf ? "Confere" : "Não confere",
+        },
+        "itemReviewed": {
+          "@type": "Claim",
+          "author": { "@type": "Organization", "name": "usuário do VAR da Economia" },
+          "appearance": { "@type": "CreativeWork", "url": permalink() },
+        },
+      };
+      el.textContent = JSON.stringify(data);
+    }
+
+    // ------------------------------ ações ------------------------------ //
+    function copiaLink() {
+      const url = permalink(); const btn = els.btnLink;
+      const ok = () => { btn.textContent = "link copiado ✓"; setTimeout(() => { btn.textContent = "copiar link do recibo"; }, 1800); };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(ok).catch(ok); else ok();
+    }
+
+    async function baixaPng() {
+      if (!ultimo) return;
+      try { await document.fonts.load("600 13px 'IBM Plex Mono'"); await document.fonts.load("13px 'IBM Plex Mono'"); } catch (e) {}
+      const sc = 2, W = 340, PAD = 26;
+      const cnv = document.createElement("canvas");
+      const ctx = cnv.getContext("2d");
+      const linhas = [];
+      const push = (t, o) => linhas.push(Object.assign({ t: t, size: 13, color: "#1c1a14", align: "left", weight: "400", gap: 6 }, o || {}));
+      const mono = (w, s) => `${w} ${s}px 'IBM Plex Mono', monospace`;
+      // monta conteúdo
+      push("VAR DA ECONOMIA", { size: 13, weight: "600", align: "center", track: 3 });
+      push("RECIBO VERIFICÁVEL", { size: 9, color: "#6b6656", align: "center", track: 2, gap: 12 });
+      // claim (wrap)
+      ctx.font = mono("400", 13 * sc);
+      wrap(ctx, ultimo.claim, (W - 2 * PAD) * sc, 13 * sc).forEach((ln) => push(ln, { size: 13 }));
+      push("", { size: 4, rule: true, gap: 10 });
+      push(ultimo.pa, { size: 11, color: "#6b6656", inlineRight: ultimo.vA });
+      push(ultimo.pb, { size: 11, color: "#6b6656", inlineRight: ultimo.vB, gap: 12 });
+      push(ultimo.vTxt, { size: 18, weight: "600", align: "center", color: ultimo.conf ? "#b48f1f" : "#c0392f", gap: 12 });
+      push("", { size: 4, rule: true, gap: 10 });
+      ctx.font = mono("400", 9 * sc);
+      wrap(ctx, "Regra: " + ultimo.regra, (W - 2 * PAD) * sc, 9 * sc).forEach((ln) => push(ln, { size: 9, color: "#6b6656", gap: 3 }));
+      push("Fonte: " + ultimo.fonte, { size: 9, color: "#6b6656", gap: 3 });
+      push("Emitido em " + ultimo.dh + " (Brasília)", { size: 9, color: "#6b6656", gap: 3 });
+      push(ultimo.hashTxt ? "commit dos dados: " + ultimo.hashTxt : "snapshot ao vivo (sem hash)", { size: 9, color: "#6b6656", gap: 3 });
+      if (ultimo.auditado) push("auditado contra o snapshot " + ultimo.hashTxt, { size: 9, color: "#b48f1f", gap: 3 });
+
+      // mede altura
+      let y = PAD;
+      linhas.forEach((l) => { y += (l.size + (l.rule ? 6 : 0)) + l.gap; });
+      const H = y + PAD + 8;
+      cnv.width = W * sc; cnv.height = H * sc;
+      ctx.fillStyle = "#F4F0E4"; ctx.fillRect(0, 0, cnv.width, cnv.height);
+
+      // desenha
+      y = PAD;
+      linhas.forEach((l) => {
+        y += l.size;
+        if (l.rule) {
+          ctx.strokeStyle = "#cfc8b2"; ctx.lineWidth = 1 * sc; ctx.setLineDash([4 * sc, 4 * sc]);
+          ctx.beginPath(); ctx.moveTo(PAD * sc, y * sc); ctx.lineTo((W - PAD) * sc, y * sc); ctx.stroke(); ctx.setLineDash([]);
+        } else {
+          ctx.fillStyle = l.color; ctx.font = mono(l.weight, l.size * sc); ctx.textBaseline = "alphabetic";
+          const t = l.track ? l.t.split("").join(String.fromCharCode(8202)) : l.t;
+          if (l.align === "center") { ctx.textAlign = "center"; ctx.fillText(t, (W / 2) * sc, y * sc); }
+          else { ctx.textAlign = "left"; ctx.fillText(t, PAD * sc, y * sc); }
+          if (l.inlineRight) { ctx.textAlign = "right"; ctx.fillStyle = "#1c1a14"; ctx.font = mono("600", 12 * sc); ctx.fillText(l.inlineRight, (W - PAD) * sc, y * sc); }
+        }
+        y += l.gap;
+      });
+      // serrilha inferior
+      ctx.fillStyle = "#0E1210"; // recorta triângulos "para fora" pintando o fundo da página
+      const tw = 13 * sc; for (let x = 0; x < cnv.width; x += tw) { ctx.beginPath(); ctx.moveTo(x, cnv.height); ctx.lineTo(x + tw / 2, cnv.height - 9 * sc); ctx.lineTo(x + tw, cnv.height); ctx.closePath(); ctx.fill(); }
+
+      cnv.toBlob((blob) => {
+        const a = document.createElement("a"); a.href = URL.createObjectURL(blob);
+        a.download = "recibo-var-economia.png"; document.body.appendChild(a); a.click();
+        setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500);
+      }, "image/png");
+    }
+    function wrap(ctx, txt, maxW, size) {
+      const palavras = txt.split(" "); const out = []; let linha = "";
+      for (const w of palavras) {
+        const teste = linha ? linha + " " + w : w;
+        if (ctx.measureText(teste).width > maxW && linha) { out.push(linha); linha = w; } else linha = teste;
+      }
+      if (linha) out.push(linha); return out;
+    }
+
+    // ------------------------------ init ------------------------------ //
+    async function init() {
+      els.frase = document.getElementById("frase");
+      els.conferir = document.getElementById("conferir");
+      els.reciboArea = document.getElementById("reciboArea");
+      els.recibo = document.getElementById("recibo");
+      els.estado = document.getElementById("estado");
+      els.btnLink = document.getElementById("btnLink");
+      els.btnPng = document.getElementById("btnPng");
+
+      parseParams();
+      const base = st.sha
+        ? `https://raw.githubusercontent.com/${REPO}/${st.sha}/docs/data/`
+        : "data/";
+      try {
+        await carrega(base);
+        if (!CODS.some((c) => DATA[c].length)) throw new Error("sem séries");
+        if (!st.sha) shaAtual = await buscaSha();   // hash p/ recibo + permalink
+        ensureDefaults();
+        els.estado.remove();
+        renderFrase();
+        conferir();
+        els.conferir.addEventListener("click", conferir);
+        els.btnLink.addEventListener("click", copiaLink);
+        els.btnPng.addEventListener("click", baixaPng);
+      } catch (e) {
+        els.estado.innerHTML = `Não foi possível carregar os dados (${e.message}). ` +
+          `Sirva a pasta <code>docs/</code> via HTTP (ex.: <code>python -m http.server -d docs</code>).`;
+        console.error(e);
+      }
+    }
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
+  })();
+  </script>
+</body>
+</html>

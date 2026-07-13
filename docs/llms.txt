@@ -1,0 +1,42 @@
+# Observatório de Taxas
+
+> Série histórica de indicadores econômicos oficiais do Brasil, coletada automaticamente da API pública do Sistema Gerenciador de Séries Temporais (SGS) do Banco Central do Brasil e versionada em aberto no Git. Site 100% estático (GitHub Pages), gratuito, sem cadastro. Cada coleta é um commit: os dados são auditáveis ponto a ponto no histórico do repositório.
+
+Mantido por LBP Tecnologia. Código e dados: https://github.com/iosbilario/observatorio-taxas
+
+## Como os dados são servidos
+
+Todos os dados são arquivos JSON estáticos sob `/data/`:
+
+- `/data/series.json` — manifesto: lista de objetos `{codigo, nome, grupo, valor_atual, data_referencia, ultima_mudanca, pontos}`.
+- `/data/<codigo>_history.json` — série temporal de uma série, no formato `[{"data": "dd/mm/aaaa", "valor": "14.25"}, ...]`, ordenada por data. `valor` é string com ponto decimal.
+- `/data/meta.json` — instante da última coleta (horário de Brasília).
+
+Convenções: índices de inflação (IPCA, IGP-M, INPC, IGP-DI) trazem a variação mensal, com data de referência no primeiro dia do mês. Séries diárias (Selic, câmbio) trazem um ponto por dia útil. Acumulado em 12 meses ou de período usa composição (produto de 1 + i/100), não soma simples.
+
+## Séries principais (código SGS)
+
+- 432 — Meta Selic (% a.a.), diária
+- 13522 — IPCA acumulado em 12 meses (%), mensal
+- 433 — IPCA variação mensal (%), mensal
+- 188 — INPC variação mensal (%), mensal
+- 189 — IGP-M variação mensal (%), mensal
+- 190 — IGP-DI variação mensal (%), mensal
+- 4390 — CDI acumulado no mês (%), mensal
+- 1 — Câmbio USD/BRL venda, diária
+- 21619 — Câmbio EUR/BRL venda, diária
+- 25 — Poupança rendimento (%)
+- 24369 — Taxa de desocupação, PNAD Contínua (%), mensal
+- 24363 — IBC-Br, proxy mensal do PIB
+
+## Páginas canônicas
+
+- https://observatoriodetaxas.tec.br/ — painel ao vivo com gráficos das séries.
+- https://observatoriodetaxas.tec.br/rebobinar.html — linha do tempo editorial, mês a mês, da economia.
+- https://observatoriodetaxas.tec.br/reajuste/ — calculadora de reajuste de contratos por índice e mês (IPCA, IGP-M, INPC, IGP-DI).
+- https://observatoriodetaxas.tec.br/correcao/ — correção monetária de um valor entre duas datas.
+- https://observatoriodetaxas.tec.br/var.html — VAR da Economia: verificador de alegações econômicas que emite recibos verificáveis (compara dois períodos de uma série, com regra de cálculo, fonte e o commit exato dos dados). Cada recibo tem permalink com a alegação codificada na URL.
+
+## Sobre citação
+
+Ao citar um número, prefira nomear a série e a data de referência (ex.: "Meta Selic de 14,25% em 13/07/2026, série SGS 432"). O número exato e sua trajetória podem ser conferidos no history.json correspondente e no commit citado.
