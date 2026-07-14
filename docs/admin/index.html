@@ -5,14 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- ===================== Segurança (site estático, sem headers HTTP) ===================== -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; connect-src 'self'" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; connect-src 'self'" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <script>if (top !== self) { try { top.location = self.location; } catch (e) { document.documentElement.style.display = "none"; } }</script>
 
   <!-- Fora dos índices de busca e do sitemap. -->
   <meta name="robots" content="noindex, nofollow" />
-  <meta name="theme-color" content="#0b1120" />
+  <meta name="theme-color" content="#0E1210" />
   <title>Painel de acessos — Observatório de Taxas</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
   <!--
     NOTA DE SEGURANÇA (leia antes de "proteger com senha"):
@@ -32,65 +36,65 @@
           integrity="sha384-jb8JQMbMoBUzgWatfe6COACi2ljcDdZQ2OxczGA3bGNeWe+6DChMTBJemed7ZnvJ"
           crossorigin="anonymous"></script>
   <style>
+    /* Mesma identidade da landing: sala-cofre + carimbo dourado, Fraunces/Archivo/Mono. */
     :root {
-      --bg: #0b1120; --card: #0f172a; --card-2: #131c31; --line: #1e293b;
-      --tx: #e2e8f0; --mut: #94a3b8; --faint: #64748b;
-      --ac: #38bdf8; --ac-2: #818cf8; --ok: #4ade80; --warn: #fbbf24;
-      --radius: 14px; --maxw: 960px;
+      --cofre: #0E1210; --papel: #E9E6DC; --carimbo: #D9B54A;
+      --alta: #3FD68F; --queda: #E4574F; --neutro: #5A625D;
+      --papel-70: rgba(233,230,220,.70); --papel-45: rgba(233,230,220,.45); --faint: rgba(233,230,220,.32);
+      --linha: rgba(233,230,220,.14); --card: rgba(233,230,220,.02);
+      --radius: 12px; --maxw: 960px;
     }
     * { box-sizing: border-box; }
     body {
-      margin: 0; background: var(--bg); color: var(--tx); line-height: 1.6;
-      font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      margin: 0; background: var(--cofre); color: var(--papel); line-height: 1.6;
+      font-family: "Archivo", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
       -webkit-font-smoothing: antialiased;
     }
     body::before {
       content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
       background:
-        radial-gradient(800px 460px at 10% -8%, rgba(56,189,248,.12), transparent 60%),
-        radial-gradient(700px 440px at 92% 2%, rgba(129,140,248,.10), transparent 60%);
+        radial-gradient(820px 460px at 8% -10%, rgba(217,181,74,.08), transparent 60%),
+        radial-gradient(680px 420px at 94% 0%, rgba(217,181,74,.05), transparent 60%);
     }
-    a { color: var(--ac); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 28px 18px 72px; }
-    .gradtext {
-      background: linear-gradient(100deg, var(--ac), var(--ac-2));
-      -webkit-background-clip: text; background-clip: text; color: transparent;
-    }
+    a { color: var(--carimbo); text-decoration: none; border-bottom: 1px solid rgba(217,181,74,.4); }
+    a:hover { border-bottom-color: var(--carimbo); }
+    ::selection { background: rgba(217,181,74,.28); }
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 28px clamp(1rem, 4vw, 2rem) 72px; }
+    .gradtext { color: var(--papel); }
     header.top { display: flex; align-items: baseline; gap: .7rem; flex-wrap: wrap; margin-bottom: .3rem; }
-    header.top h1 { font-size: 1.5rem; letter-spacing: -.02em; margin: 0; }
-    .tag { font-size: .7rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ac);
-           border: 1px solid rgba(56,189,248,.3); background: rgba(56,189,248,.08);
-           padding: .18rem .55rem; border-radius: 999px; }
-    .sub { color: var(--mut); font-size: .9rem; margin: 0 0 1.6rem; }
+    header.top h1 { font-family: "Fraunces", Georgia, serif; font-optical-sizing: auto; font-weight: 600; font-size: clamp(1.6rem, 4.2vw, 2.1rem); letter-spacing: -.015em; margin: 0; }
+    .tag { font-family: "IBM Plex Mono", monospace; font-size: .62rem; text-transform: uppercase; letter-spacing: .12em; color: var(--carimbo);
+           border: 1px solid rgba(217,181,74,.4); background: rgba(217,181,74,.08);
+           padding: .2rem .55rem; border-radius: 999px; }
+    .sub { color: var(--papel-70); font-size: .9rem; margin: .4rem 0 1.6rem; max-width: 72ch; }
 
     .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: .8rem; margin-bottom: 1.4rem; }
     @media (max-width: 720px) { .kpis { grid-template-columns: repeat(2, 1fr); } }
-    .kpi { background: linear-gradient(180deg, var(--card-2), var(--card));
-           border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem 1.1rem; }
-    .kpi .k { font-size: .72rem; text-transform: uppercase; letter-spacing: .05em; color: var(--mut); }
-    .kpi .v { font-size: clamp(1.4rem, 4vw, 1.9rem); font-weight: 800; letter-spacing: -.02em; margin: .25rem 0 0; line-height: 1.15; }
-    .kpi .v.small { font-size: 1.05rem; font-weight: 700; }
+    .kpi { background: var(--card); border: 1px solid var(--linha); border-radius: var(--radius); padding: 1rem 1.1rem; }
+    .kpi .k { font-family: "IBM Plex Mono", monospace; font-size: .62rem; text-transform: uppercase; letter-spacing: .1em; color: var(--papel-45); }
+    .kpi .v { font-family: "Fraunces", Georgia, serif; font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 700; letter-spacing: -.02em; margin: .25rem 0 0; line-height: 1.1; color: var(--carimbo); font-variant-numeric: tabular-nums; }
+    .kpi .v.small { font-family: "IBM Plex Mono", monospace; font-size: .95rem; font-weight: 500; color: var(--papel); }
 
-    .card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+    .card { background: var(--card); border: 1px solid var(--linha); border-radius: var(--radius);
             padding: 1.1rem 1.2rem 1.3rem; margin: 1rem 0; }
-    .card h2 { margin: 0 0 .8rem; font-size: 1.05rem; }
+    .card h2 { font-family: "Fraunces", Georgia, serif; font-weight: 600; margin: 0 0 .8rem; font-size: 1.1rem; letter-spacing: -.01em; }
     .chart-wrap { position: relative; height: 260px; }
 
-    table { width: 100%; border-collapse: collapse; font-size: .92rem; }
-    th, td { padding: .55rem .6rem; text-align: right; border-bottom: 1px solid var(--line); }
+    table { width: 100%; border-collapse: collapse; font-size: .92rem; font-variant-numeric: tabular-nums; }
+    th, td { padding: .55rem .6rem; text-align: right; border-bottom: 1px solid var(--linha); }
     th:first-child, td:first-child { text-align: left; }
-    thead th { color: var(--mut); font-weight: 600; font-size: .8rem; text-transform: uppercase; letter-spacing: .04em; }
+    thead th { color: var(--papel-45); font-weight: 600; font-family: "IBM Plex Mono", monospace; font-size: .66rem; text-transform: uppercase; letter-spacing: .08em; }
     tr.grp td:first-child { font-weight: 700; }
-    tr.sub td:first-child { padding-left: 1.6rem; color: var(--mut); font-weight: 400; }
-    tr.sub td { border-bottom: 1px dashed var(--line); }
+    tr.sub td:first-child { padding-left: 1.6rem; color: var(--papel-70); font-weight: 400; }
+    tr.sub td { border-bottom: 1px dashed var(--linha); }
     td.num { font-variant-numeric: tabular-nums; }
-    .path { color: var(--tx); word-break: break-all; }
+    .path { color: var(--papel); word-break: break-all; }
 
-    .empty { text-align: center; color: var(--mut); padding: 2.4rem 1rem; }
+    .empty { text-align: center; color: var(--papel-70); padding: 2.4rem 1rem; }
     .empty .big { font-size: 2.4rem; margin-bottom: .4rem; }
-    footer { margin-top: 2.2rem; color: var(--faint); font-size: .8rem; }
-    footer code { color: var(--mut); }
+    footer { margin-top: 2.2rem; color: var(--papel-45); font-size: .8rem; border-top: 1px solid var(--linha); padding-top: 1.2rem; }
+    footer code { color: var(--papel-70); font-family: "IBM Plex Mono", monospace; }
+    footer a { color: var(--papel-70); }
   </style>
 </head>
 <body>
@@ -193,8 +197,8 @@
       const ctx = document.getElementById("chart");
       if (!ctx) return;
       const grad = ctx.getContext("2d").createLinearGradient(0, 0, 0, 260);
-      grad.addColorStop(0, "rgba(56,189,248,.30)");
-      grad.addColorStop(1, "rgba(56,189,248,0)");
+      grad.addColorStop(0, "rgba(217,181,74,.28)");
+      grad.addColorStop(1, "rgba(217,181,74,0)");
       const labels = serie.map((p) => {
         const [a, m, d] = String(p.data).split("-");
         return d && m ? `${d}/${m}` : p.data;
@@ -202,21 +206,22 @@
       new Chart(ctx, {
         type: "line",
         data: { labels, datasets: [{
-          data: serie.map((p) => p.acessos), borderColor: "#38bdf8", backgroundColor: grad,
+          data: serie.map((p) => p.acessos), borderColor: "#D9B54A", backgroundColor: grad,
           fill: true, tension: 0.3, borderWidth: 2, pointRadius: 2, pointHoverRadius: 5,
-          pointBackgroundColor: "#38bdf8",
+          pointBackgroundColor: "#D9B54A",
         }] },
         options: {
           responsive: true, maintainAspectRatio: false, animation: { duration: 300 },
+          font: { family: "IBM Plex Mono, monospace" },
           plugins: {
             legend: { display: false },
-            tooltip: { intersect: false, mode: "index", backgroundColor: "#0b1120",
-                       borderColor: "#243049", borderWidth: 1, titleColor: "#e8eef7",
-                       bodyColor: "#93a3bd", padding: 10, displayColors: false },
+            tooltip: { intersect: false, mode: "index", backgroundColor: "#0E1210",
+                       borderColor: "rgba(233,230,220,.2)", borderWidth: 1, titleColor: "#E9E6DC",
+                       bodyColor: "rgba(233,230,220,.7)", padding: 10, displayColors: false },
           },
           scales: {
-            x: { ticks: { color: "#64748b", maxTicksLimit: 8, autoSkip: true }, grid: { color: "#24304940" } },
-            y: { ticks: { color: "#64748b", precision: 0 }, grid: { color: "#24304940" }, beginAtZero: true },
+            x: { ticks: { color: "rgba(233,230,220,.45)", maxTicksLimit: 8, autoSkip: true }, grid: { color: "rgba(233,230,220,.08)" } },
+            y: { ticks: { color: "rgba(233,230,220,.45)", precision: 0 }, grid: { color: "rgba(233,230,220,.08)" }, beginAtZero: true },
           },
         },
       });

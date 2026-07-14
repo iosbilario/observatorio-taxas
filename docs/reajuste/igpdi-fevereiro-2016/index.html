@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data: https://observatoriotaxas.goatcounter.com; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://gc.zgo.at; connect-src 'self' https://observatoriotaxas.goatcounter.com"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data: https://observatoriotaxas.goatcounter.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self' 'unsafe-inline' https://gc.zgo.at; connect-src 'self' https://observatoriotaxas.goatcounter.com"/>
 <meta name="referrer" content="strict-origin-when-cross-origin"/>
 <script>if (top !== self) { try { top.location = self.location; } catch (e) { document.documentElement.style.display = "none"; } }</script>
 <title>Reajuste IGP-DI fevereiro de 2016: acumulado 12 meses de 11,91%</title>
 <meta name="description" content="IGP-DI acumulado em 12 meses até fevereiro de 2016: 11,91% (fator 1,119128). Calculadora de reajuste de aluguel e contratos com memória de cálculo e dados oficiais do BACEN."/>
 <meta name="robots" content="index, follow"/>
-<meta name="theme-color" content="#0b1120"/>
+<meta name="theme-color" content="#0E1210"/>
 <link rel="canonical" href="https://iosbilario.github.io/observatorio-taxas/reajuste/igpdi-fevereiro-2016/"/>
 <meta property="og:type" content="article"/>
 <meta property="og:locale" content="pt_BR"/>
@@ -17,25 +17,40 @@
 <meta property="og:title" content="Reajuste IGP-DI fevereiro de 2016: acumulado 12 meses de 11,91%"/>
 <meta property="og:description" content="IGP-DI acumulado em 12 meses até fevereiro de 2016: 11,91% (fator 1,119128). Calculadora de reajuste de aluguel e contratos com memória de cálculo e dados oficiais do BACEN."/>
 <meta property="og:url" content="https://iosbilario.github.io/observatorio-taxas/reajuste/igpdi-fevereiro-2016/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Qual o IGP-DI acumulado de 12 meses até fevereiro de 2016?", "acceptedAnswer": {"@type": "Answer", "text": "O IGP-DI acumulado nos 12 meses encerrados em fevereiro de 2016 é de 11,91%, segundo dados do Banco Central do Brasil (SGS)."}}, {"@type": "Question", "name": "Como calcular o reajuste de aluguel pelo IGP-DI em fevereiro de 2016?", "acceptedAnswer": {"@type": "Answer", "text": "Multiplique o valor atual pelo fator 1,119128. Exemplo: um aluguel de R$ 2.000,00 passa a R$ 2.238,26."}}]}</script>
 <style>
-:root{--bg:#0b1120;--card:#0f172a;--line:#1e293b;--tx:#e2e8f0;--mut:#94a3b8;--ac:#38bdf8;--ok:#4ade80;--warn:#fbbf24}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
-.wrap{max-width:860px;margin:0 auto;padding:24px 16px 64px}
-a{color:var(--ac);text-decoration:none}a:hover{text-decoration:underline}
-h1{font-size:1.5rem;line-height:1.3;margin:.5em 0}.crumb{color:var(--mut);font-size:.85rem}
-.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;margin:16px 0}
-.big{font-size:2.2rem;font-weight:700;color:var(--ac)}.big.neg{color:var(--warn)}
-table{width:100%;border-collapse:collapse;font-size:.9rem}
-th,td{padding:8px 10px;text-align:right;border-bottom:1px solid var(--line)}
-th:first-child,td:first-child{text-align:left}thead th{color:var(--mut);font-weight:600}
-input,select{background:#0b1526;border:1px solid var(--line);border-radius:8px;color:var(--tx);padding:10px 12px;font-size:1rem;width:100%}
-label{display:block;margin:12px 0 4px;color:var(--mut);font-size:.85rem}
-button{background:var(--ac);color:#04121f;border:0;border-radius:8px;padding:12px 18px;font-size:1rem;font-weight:700;cursor:pointer;margin-top:14px;width:100%}
-.res{margin-top:14px;font-size:1.15rem}.res b{color:var(--ok)}
-.mut{color:var(--mut);font-size:.85rem}.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.pill{display:inline-block;background:#0b1526;border:1px solid var(--line);border-radius:999px;padding:4px 12px;margin:3px;font-size:.85rem}
-footer{margin-top:32px;color:var(--mut);font-size:.8rem}
+:root{--cofre:#0E1210;--papel:#E9E6DC;--carimbo:#D9B54A;--alta:#3FD68F;--queda:#E4574F;--neutro:#5A625D;--papel-70:rgba(233,230,220,.70);--papel-45:rgba(233,230,220,.45);--linha:rgba(233,230,220,.14);--campo:#0d1210;--maxw:860px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cofre);color:var(--papel);font-family:"Archivo",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:24px clamp(1rem,4vw,2rem) 64px}
+a{color:var(--carimbo);text-decoration:none;border-bottom:1px solid rgba(217,181,74,.4)}a:hover{border-bottom-color:var(--carimbo)}
+::selection{background:rgba(217,181,74,.28)}
+.crumb{font-family:"IBM Plex Mono",monospace;color:var(--papel-45);font-size:.78rem;letter-spacing:.02em;border-bottom:0}
+.crumb a{color:var(--papel-70);border-bottom:0}.crumb a:hover{color:var(--papel)}
+h1{font-family:"Fraunces",Georgia,serif;font-optical-sizing:auto;font-weight:600;font-size:clamp(1.7rem,4.6vw,2.4rem);line-height:1.08;letter-spacing:-.015em;margin:.5em 0 .35em}
+h2{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:1.2rem;letter-spacing:-.01em;margin:0 0 .7rem}
+.card{background:rgba(233,230,220,.02);border:1px solid var(--linha);border-radius:10px;padding:1.1rem 1.2rem 1.3rem;margin:1rem 0}
+.big{font-family:"Fraunces",Georgia,serif;font-weight:700;font-size:clamp(2rem,5.5vw,2.7rem);color:var(--carimbo);letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1}.big.neg{color:var(--queda)}
+table{width:100%;border-collapse:collapse;font-size:.9rem;font-variant-numeric:tabular-nums}
+th,td{padding:8px 10px;text-align:right;border-bottom:1px solid var(--linha)}
+th:first-child,td:first-child{text-align:left}
+thead th{color:var(--papel-45);font-weight:600;font-family:"IBM Plex Mono",monospace;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase}
+tfoot th{color:var(--papel);border-bottom:0;padding-top:12px}
+input,select{background:var(--campo);border:1px solid var(--linha);border-radius:8px;color:var(--papel);padding:.6rem .7rem;font:inherit;font-size:1rem;width:100%}
+input:focus-visible,select:focus-visible{outline:2px solid var(--carimbo);outline-offset:1px}
+label{display:block;margin:12px 0 4px;color:var(--papel-45);font-family:"IBM Plex Mono",monospace;font-size:.64rem;letter-spacing:.1em;text-transform:uppercase}
+button{font-family:"IBM Plex Mono",monospace;background:var(--carimbo);color:var(--cofre);border:0;border-radius:8px;padding:.72rem 1rem;font-size:.95rem;font-weight:600;letter-spacing:.02em;cursor:pointer;margin-top:14px;width:100%;transition:filter .15s}
+button:hover,button:focus-visible{filter:brightness(1.06);outline:none}
+.res{margin-top:14px;font-size:1.1rem;color:var(--papel-70)}.res b{color:var(--papel);font-family:"Fraunces",Georgia,serif;font-weight:700}
+.mut{color:var(--papel-45);font-size:.84rem}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.pill{display:inline-block;background:transparent;border:1px solid var(--linha);border-radius:999px;padding:5px 13px;margin:3px;font-size:.8rem;font-family:"IBM Plex Mono",monospace;color:var(--papel-70)}
+a.pill{border-bottom:1px solid var(--linha)}a.pill:hover{border-color:rgba(217,181,74,.5);color:var(--papel)}
+footer{margin-top:32px;color:var(--papel-45);font-size:.8rem;border-top:1px solid var(--linha);padding-top:1.2rem}
+footer a{color:var(--papel-70)}
 @media(max-width:520px){.grid{grid-template-columns:1fr}}
 </style>
 <script data-goatcounter="https://observatoriotaxas.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
