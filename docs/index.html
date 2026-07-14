@@ -188,7 +188,8 @@
     .masthead h1 { font-family: "Fraunces", Georgia, serif; font-optical-sizing: auto; font-weight: 700; font-size: clamp(2.4rem, 8vw, 4.6rem); line-height: .95; letter-spacing: -.02em; margin: 0; }
     .masthead-data { font-family: "Fraunces", Georgia, serif; font-weight: 500; font-style: italic; font-size: clamp(1rem, 2.6vw, 1.3rem); color: var(--papel-70); margin: .7rem 0 .2rem; }
     .carimbo-linha { font-family: "IBM Plex Mono", monospace; font-size: .72rem; letter-spacing: .04em; color: var(--papel-45); margin: .2rem 0 0; }
-    .carimbo-linha a { color: var(--carimbo); text-decoration: none; }
+    /* borda dourada = distinção sem depender só da cor (WCAG 1.4.1) */
+    .carimbo-linha a { color: var(--carimbo); text-decoration: none; border-bottom: 1px solid rgba(217,181,74,.5); }
 
     /* ===================== BOLETIM (5 números) ===================== */
     .boletim { display: grid; grid-template-columns: repeat(5, 1fr); border-bottom: 1px solid var(--linha); }
