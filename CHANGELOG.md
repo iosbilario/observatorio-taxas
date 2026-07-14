@@ -251,3 +251,5 @@
     ↳ Poupança - rendimento (%): subiu de 0,6703 para 0,6722.
 [2026-07-14 13:06:37 +0000] Poupança - rendimento (%): 0.6722 -> 0.6740
     ↳ Poupança - rendimento (%): subiu de 0,6722 para 0,674.
+[2026-07-14 19:01:21 +0000] Câmbio EUR/BRL - venda: 5.8364000 -> 5.7988000
+    ↳ Câmbio EUR/BRL - venda: caiu de 5,8364 para 5,7988.
