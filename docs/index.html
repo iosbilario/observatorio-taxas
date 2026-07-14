@@ -3,6 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- ===================== Segurança (site estático, sem headers HTTP) ===================== -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data: https://observatoriotaxas.goatcounter.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self' 'unsafe-inline' https://gc.zgo.at; connect-src 'self' https://observatoriotaxas.goatcounter.com; frame-src 'self'" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <script>if (top !== self) { try { top.location = self.location; } catch (e) { document.documentElement.style.display = "none"; } }</script>
+
   <meta name="google-site-verification" content="B1ymo2agmjaqa4m4AJtfpx4bZWTsnIqhPqwHOMwyC4g" />
 
   <title>Selic, IPCA e Dólar hoje | Observatório de Taxas</title>
@@ -126,7 +132,7 @@
   </script>
 
   <!-- Métricas de acesso (GoatCounter) — grátis, sem cookies, sem servidor. -->
-  <script data-goatcounter="https://observatoriotaxas.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  <script data-goatcounter="https://observatoriotaxas.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 
   <style>
     :root {
@@ -288,7 +294,7 @@
 
   <div class="wrap">
     <div class="posic">
-      <p>Cada número acima vem direto da API pública do Banco Central, é registrado a cada coleta e fica <a href="https://github.com/iosbilario/observatorio-taxas" target="_blank" rel="noopener">versionado em aberto no Git</a>. Dado oficial, história ponto a ponto, sem intermediário.</p>
+      <p>Cada número acima vem direto da API pública do Banco Central, é registrado a cada coleta e fica <a href="https://github.com/iosbilario/observatorio-taxas" target="_blank" rel="noopener noreferrer">versionado em aberto no Git</a>. Dado oficial, história ponto a ponto, sem intermediário.</p>
     </div>
 
     <!-- ===================== REBOBINAR ===================== -->
@@ -372,10 +378,11 @@
       <p>Todos os números vêm direto do Banco Central e se atualizam sozinhos a cada coleta. Código e dados abertos, livres para reutilizar.</p>
       <p>Precisa de uma série, um recorte ou um formato que não está aqui? Escreva para a redação.</p>
 
-      <!-- Carta à redação: sem servidor. O envio compõe um mailto já formatado
-           e abre o e-mail do visitante. Sem JS, o próprio form abre o e-mail;
-           e o link direto embaixo funciona sempre. -->
-      <form class="carta" id="carta" action="mailto:lbptech@icloud.com" method="post" enctype="text/plain">
+      <!-- Carta à redação: sem servidor e sem action (evita o aviso "formulário
+           não seguro" do navegador). O envio é 100% no handler JS: preventDefault
+           + mailto já formatado com encodeURIComponent. O link direto embaixo
+           funciona sempre, mesmo sem JS. -->
+      <form class="carta" id="carta">
         <p class="carta-sel">Carta à redação</p>
         <div class="carta-row">
           <div><label for="c-nome">Seu nome</label><input id="c-nome" name="nome" type="text" autocomplete="name" /></div>
@@ -383,6 +390,11 @@
         </div>
         <label for="c-msg">O que você precisa</label>
         <textarea id="c-msg" name="mensagem" rows="3" placeholder="Ex.: quero o IGP-M dos últimos 24 meses em CSV para uma matéria de aluguel."></textarea>
+        <!-- Honeypot: invisível para humanos, atrai bots. Se vier preenchido, ignoramos. -->
+        <div aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden">
+          <label for="c-website">Não preencha este campo</label>
+          <input id="c-website" name="website" type="text" tabindex="-1" autocomplete="off" />
+        </div>
         <button type="submit" id="c-btn">Escrever para a redação →</button>
         <p class="carta-alt">Prefere escrever do seu jeito? <a class="mail" href="mailto:lbptech@icloud.com?subject=Observat%C3%B3rio%20de%20Taxas%2C%20contato%20da%20reda%C3%A7%C3%A3o">lbptech@icloud.com</a></p>
       </form>
@@ -398,7 +410,7 @@
         <a href="correcao/">Correção monetária</a>
         <a href="retransmissora.html">Embeds</a>
       </nav>
-      <p>Fonte: <a href="https://www3.bcb.gov.br/sgspub/" target="_blank" rel="noopener">SGS / Banco Central do Brasil</a> · <a href="https://github.com/iosbilario/observatorio-taxas" target="_blank" rel="noopener">código-fonte no GitHub</a></p>
+      <p>Fonte: <a href="https://www3.bcb.gov.br/sgspub/" target="_blank" rel="noopener noreferrer">SGS / Banco Central do Brasil</a> · <a href="https://github.com/iosbilario/observatorio-taxas" target="_blank" rel="noopener noreferrer">código-fonte no GitHub</a></p>
       <p>Desenvolvido por LBP Tecnologia · <span id="ano"></span>. Conteúdo informativo, sem caráter de recomendação financeira.</p>
     </div>
   </footer>
@@ -449,8 +461,11 @@
       const carta = document.getElementById("carta");
       if (!carta) return;
       const btn = document.getElementById("c-btn");
+      const hp = document.getElementById("c-website");
       carta.addEventListener("submit", (e) => {
         e.preventDefault();
+        // Honeypot preenchido = bot. Silenciosamente não faz nada.
+        if (hp && hp.value.trim() !== "") return;
         const nome = document.getElementById("c-nome").value.trim();
         const veic = document.getElementById("c-veiculo").value.trim();
         const msg = document.getElementById("c-msg").value.trim();

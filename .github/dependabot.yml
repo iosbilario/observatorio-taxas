@@ -1,0 +1,22 @@
+# dependabot.yml — atualizações automáticas de dependências (semanais).
+# Cobre os dois vetores do projeto: as libs Python (requirements.txt) e as
+# GitHub Actions do workflow (mantém os SHAs pinados em dia sem esforço manual).
+version: 2
+updates:
+  # Dependências Python do coletor (requirements.txt na raiz).
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "chore(deps)"
+
+  # Actions usadas em .github/workflows/*.yml (atualiza os pins por SHA).
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "chore(ci)"

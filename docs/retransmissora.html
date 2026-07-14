@@ -3,6 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- ===================== Segurança (site estático, sem headers HTTP) ===================== -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data: https://observatoriotaxas.goatcounter.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self' 'unsafe-inline' https://gc.zgo.at; connect-src 'self' https://observatoriotaxas.goatcounter.com; frame-src 'self'" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <script>if (top !== self) { try { top.location = self.location; } catch (e) { document.documentElement.style.display = "none"; } }</script>
+
   <title>Retransmissora — gráficos do Observatório de Taxas para o seu site</title>
   <meta name="description" content="Publique os gráficos ao vivo do Observatório de Taxas (Selic, IPCA, câmbio e mais) no seu site, newsletter ou portal. Escolha a série, o período e o tema, copie o código e pronto. Dados oficiais do Banco Central." />
   <meta name="robots" content="index, follow" />
@@ -20,7 +26,7 @@
 
   <!-- Métricas de acesso (GoatCounter) — grátis, sem cookies, sem servidor. -->
   <script data-goatcounter="https://observatoriotaxas.goatcounter.com/count"
-          async src="//gc.zgo.at/count.js"></script>
+          async src="https://gc.zgo.at/count.js"></script>
 
   <style>
     :root {
@@ -167,7 +173,7 @@
   </main>
 
   <footer>
-    <p>Fonte primária: <a href="https://www3.bcb.gov.br/sgspub/" target="_blank" rel="noopener">SGS / Banco Central do Brasil</a>. Série coletada automaticamente e versionada em aberto no <a href="https://github.com/iosbilario/observatorio-taxas" target="_blank" rel="noopener">GitHub</a>. Conteúdo informativo, sem caráter de recomendação financeira.</p>
+    <p>Fonte primária: <a href="https://www3.bcb.gov.br/sgspub/" target="_blank" rel="noopener noreferrer">SGS / Banco Central do Brasil</a>. Série coletada automaticamente e versionada em aberto no <a href="https://github.com/iosbilario/observatorio-taxas" target="_blank" rel="noopener noreferrer">GitHub</a>. Conteúdo informativo, sem caráter de recomendação financeira.</p>
     <p>Desenvolvido por LBP Tecnologia.</p>
   </footer>
 

@@ -4,6 +4,11 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+  <!-- ===================== Segurança (site estático, sem headers HTTP) ===================== -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data: https://observatoriotaxas.goatcounter.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self' 'unsafe-inline' https://gc.zgo.at; connect-src 'self' https://observatoriotaxas.goatcounter.com" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <script>if (top !== self) { try { top.location = self.location; } catch (e) { document.documentElement.style.display = "none"; } }</script>
+
   <title>Rebobinar a economia — Observatório de Taxas</title>
   <meta name="description" content="Uma linha do tempo editorial, mês a mês, da economia brasileira. Cada mês é um commit: arraste a fita e a página faz checkout daquele mês, com a manchete e o diff dos indicadores do BACEN." />
   <meta name="robots" content="index, follow" />
@@ -22,7 +27,7 @@
 
   <!-- Métricas de acesso (GoatCounter) — grátis, sem cookies, sem servidor. -->
   <script data-goatcounter="https://observatoriotaxas.goatcounter.com/count"
-          async src="//gc.zgo.at/count.js"></script>
+          async src="https://gc.zgo.at/count.js"></script>
 
   <style>
     :root {
@@ -200,7 +205,7 @@
   </div>
 
   <footer>
-    <p>Fonte primária: <a href="https://www3.bcb.gov.br/sgspub/" target="_blank" rel="noopener">SGS / Banco Central do Brasil</a>. Série histórica coletada automaticamente e versionada em aberto no <a href="https://github.com/iosbilario/observatorio-taxas" target="_blank" rel="noopener">GitHub</a>.</p>
+    <p>Fonte primária: <a href="https://www3.bcb.gov.br/sgspub/" target="_blank" rel="noopener noreferrer">SGS / Banco Central do Brasil</a>. Série histórica coletada automaticamente e versionada em aberto no <a href="https://github.com/iosbilario/observatorio-taxas" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
     <p>Manchetes e diffs são gerados no seu navegador a partir dos dados oficiais. Conteúdo informativo, sem caráter de recomendação financeira.</p>
     <p>Desenvolvido por LBP Tecnologia.</p>
   </footer>

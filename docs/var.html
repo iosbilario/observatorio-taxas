@@ -4,6 +4,11 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+  <!-- ===================== Segurança (site estático, sem headers HTTP) ===================== -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data: https://observatoriotaxas.goatcounter.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self' 'unsafe-inline' https://gc.zgo.at; connect-src 'self' https://observatoriotaxas.goatcounter.com https://api.github.com https://raw.githubusercontent.com" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <script>if (top !== self) { try { top.location = self.location; } catch (e) { document.documentElement.style.display = "none"; } }</script>
+
   <title>VAR da Economia — recibos verificáveis de alegações econômicas</title>
   <meta name="description" id="meta-desc" content="Monte uma alegação sobre indicadores do BACEN e receba um recibo verificável e permanente: dois períodos comparados, veredito, regra de cálculo, fonte oficial e o commit exato dos dados." />
   <meta name="robots" content="index, follow" />
@@ -21,7 +26,7 @@
 
   <!-- Métricas de acesso (GoatCounter) — grátis, sem cookies, sem servidor. -->
   <script data-goatcounter="https://observatoriotaxas.goatcounter.com/count"
-          async src="//gc.zgo.at/count.js"></script>
+          async src="https://gc.zgo.at/count.js"></script>
 
   <style>
     :root {
@@ -191,7 +196,7 @@
 
   <footer>
     <p class="arb">Este recibo compara séries oficiais. Ele não avalia causas, méritos ou culpas.</p>
-    <p>Fonte primária: <a href="https://www3.bcb.gov.br/sgspub/" target="_blank" rel="noopener">SGS / Banco Central do Brasil</a>. Série coletada automaticamente e versionada em aberto no <a href="https://github.com/iosbilario/observatorio-taxas" target="_blank" rel="noopener">GitHub</a>. Conteúdo informativo, sem caráter de recomendação financeira.</p>
+    <p>Fonte primária: <a href="https://www3.bcb.gov.br/sgspub/" target="_blank" rel="noopener noreferrer">SGS / Banco Central do Brasil</a>. Série coletada automaticamente e versionada em aberto no <a href="https://github.com/iosbilario/observatorio-taxas" target="_blank" rel="noopener noreferrer">GitHub</a>. Conteúdo informativo, sem caráter de recomendação financeira.</p>
     <p>Desenvolvido por LBP Tecnologia.</p>
   </footer>
 
@@ -233,6 +238,8 @@
     function opNoun(cod, op) { return (OPS[SERIES[cod].nat].find((o) => o.v === op) || OPS[SERIES[cod].nat][0]).n; }
 
     // ------------------------------ utils ------------------------------ //
+    // Escapa qualquer valor antes de ir para innerHTML — 2ª camada contra XSS.
+    const esc = (s) => String(s ?? "—").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
     const num = (v) => parseFloat(String(v).replace(",", "."));
     const dataToYm = (s) => { const [, m, a] = s.split("/"); return a + "-" + m; };
     const ymNum = (ym) => { const [y, m] = ym.split("-").map(Number); return y * 12 + (m - 1); };
@@ -253,15 +260,22 @@
     let popAberto = null;
 
     // ------------------------- carregamento ---------------------------- //
+    // Toda leitura da URL passa por allowlist. Parâmetro inválido é DESCARTADO
+    // (fica o default), nunca renderizado — 1ª camada contra XSS via permalink.
     function parseParams() {
       const p = new URLSearchParams(location.search);
+      // s: precisa existir nos códigos conhecidos (subconjunto de series.json).
       const s = Number(p.get("s")); if (SERIES[s]) st.s = s;
+      // op: enum fixo por natureza da série.
       const op = p.get("op"); if (op && OPS[SERIES[st.s].nat].some((o) => o.v === op)) st.op = op;
       else st.op = OP_DEFAULT[SERIES[st.s].nat];
-      const okYm = (x) => /^\d{4}-\d{2}$/.test(x || "");
+      // a1/a2/b1/b2: aaaa-mm com mês 01..12 (não aceita 00 nem 13+).
+      const okYm = (x) => /^\d{4}-(0[1-9]|1[0-2])$/.test(x || "");
       ["a1", "a2", "b1", "b2"].forEach((k) => { const v = p.get(k); if (okYm(v)) st[k] = v; });
+      // cmp: enum fixo.
       const cmp = p.get("cmp"); if (cmp === "maior" || cmp === "menor") st.cmp = cmp;
-      const sha = p.get("sha"); if (sha && /^[0-9a-f]{7,40}$/i.test(sha)) { st.sha = sha; shaAtual = sha; auditado = true; }
+      // sha: hex de 7 a 40 (minúsculo, como o Git emite).
+      const sha = p.get("sha"); if (sha && /^[0-9a-f]{7,40}$/.test(sha)) { st.sha = sha; shaAtual = sha; auditado = true; }
     }
 
     async function carrega(base) {
@@ -327,7 +341,7 @@
     }
 
     // ------------------------------ frase ------------------------------ //
-    function slot(id, texto, sub) { return `<button class="slot${sub ? " sub" : ""}" data-slot="${id}" type="button">${texto}</button>`; }
+    function slot(id, texto, sub) { return `<button class="slot${sub ? " sub" : ""}" data-slot="${esc(id)}" type="button">${esc(texto)}</button>`; }
     function fraseTexto(plano) {
       const S = SERIES[st.s];
       const indTxt = cap(S.tok);   // "O IPCA", "A Meta Selic" — início da frase
@@ -378,8 +392,8 @@
       const first = pop.querySelector(".opt, .preset, select"); if (first) first.focus();
     }
     function montaLista(pop, titulo, opcoes, sel, onPick) {
-      let h = `<p class="grp">${titulo}</p>`;
-      opcoes.forEach((o) => { h += `<button class="opt" role="option" aria-selected="${String(o.v) === String(sel)}" data-v="${o.v}" type="button">${o.label}</button>`; });
+      let h = `<p class="grp">${esc(titulo)}</p>`;
+      opcoes.forEach((o) => { h += `<button class="opt" role="option" aria-selected="${String(o.v) === String(sel)}" data-v="${esc(o.v)}" type="button">${esc(o.label)}</button>`; });
       pop.innerHTML = h;
       pop.querySelectorAll(".opt").forEach((b) => b.addEventListener("click", () => onPick(b.dataset.v)));
     }
@@ -394,7 +408,7 @@
         { label: "Últimos 12 meses", v: [ymFromNum(Math.max(lo, hi - 11)), ymFromNum(hi)] },
         { label: "Todo o período", v: [RANGE.min, RANGE.max] },
       ];
-      let opt = ""; for (let n = lo; n <= hi; n++) opt += `<option value="${ymFromNum(n)}">${ymLabelC(ymFromNum(n))}</option>`;
+      let opt = ""; for (let n = lo; n <= hi; n++) opt += `<option value="${esc(ymFromNum(n))}">${esc(ymLabelC(ymFromNum(n)))}</option>`;
       pop.innerHTML =
         `<p class="grp">Período (${tipo === "A" ? "primeiro" : "segundo"})</p>
          <div class="presets">${presets.map((p, i) => `<button class="preset" data-i="${i}" type="button">${p.label}</button>`).join("")}</div>
@@ -439,9 +453,9 @@
         const qual = !mA.ok && !mB.ok ? "nos dois períodos" : (!mA.ok ? "no primeiro período" : "no segundo período");
         els.recibo.innerHTML =
           `<h2>VAR da Economia</h2><p class="sub-h">recibo</p>
-           <p class="claim">${claim}</p><hr>
+           <p class="claim">${esc(claim)}</p><hr>
            <p class="sem-dado">SEM DADO</p>
-           <p class="meta-l">Não há dado de ${S.nome} ${qual}. A série disponível vai de ${ymLabelC(RANGE.min)} a ${ymLabelC(RANGE.max)}.</p>`;
+           <p class="meta-l">Não há dado de ${esc(S.nome)} ${esc(qual)}. A série disponível vai de ${esc(ymLabelC(RANGE.min))} a ${esc(ymLabelC(RANGE.max))}.</p>`;
         ultimo = null;
         return;
       }
@@ -453,22 +467,22 @@
       const vA = fmtMetric(cod, op, mA), vB = fmtMetric(cod, op, mB);
 
       const selo = auditado
-        ? `<div class="selo">recibo auditado contra o snapshot ${hashTxt}</div>`
+        ? `<div class="selo">recibo auditado contra o snapshot ${esc(hashTxt)}</div>`
         : "";
-      const linhaHash = hashTxt ? `commit dos dados: ${hashTxt}` : "snapshot ao vivo (sem hash)";
+      const linhaHash = hashTxt ? `commit dos dados: ${esc(hashTxt)}` : "snapshot ao vivo (sem hash)";
 
       els.recibo.innerHTML =
         `<h2>VAR da Economia</h2><p class="sub-h">recibo verificável</p>
-         <p class="claim">${claim}</p>
+         <p class="claim">${esc(claim)}</p>
          <hr>
-         <div class="row"><span class="k">${ymLabel(st.a1)} a ${ymLabel(st.a2)}</span><span class="v metric">${vA}</span></div>
-         <div class="row"><span class="k">${ymLabel(st.b1)} a ${ymLabel(st.b2)}</span><span class="v metric">${vB}</span></div>
-         <div class="veredito"><span class="carimbo-v ${vClass}">${vTxt}</span></div>
+         <div class="row"><span class="k">${esc(ymLabel(st.a1))} a ${esc(ymLabel(st.a2))}</span><span class="v metric">${esc(vA)}</span></div>
+         <div class="row"><span class="k">${esc(ymLabel(st.b1))} a ${esc(ymLabel(st.b2))}</span><span class="v metric">${esc(vB)}</span></div>
+         <div class="veredito"><span class="carimbo-v ${esc(vClass)}">${esc(vTxt)}</span></div>
          ${iguais ? `<p class="meta-l" style="text-align:center">Os dois valores são iguais.</p>` : ""}
          <hr>
-         <p class="meta-l">Regra: ${regraTxt(cod, op)}<br>
-         Fonte: ${fonteTxt} (${S.nome}).<br>
-         Emitido em ${dh} (Brasília).<br>
+         <p class="meta-l">Regra: ${esc(regraTxt(cod, op))}<br>
+         Fonte: ${esc(fonteTxt)} (${esc(S.nome)}).<br>
+         Emitido em ${esc(dh)} (Brasília).<br>
          ${linhaHash}</p>
          ${selo}`;
 

@@ -52,7 +52,7 @@ def goatcounter_beacon() -> str:
     if not code:
         return ""
     return (f'<script data-goatcounter="https://{code}.goatcounter.com/count" '
-            f'async src="//gc.zgo.at/count.js"></script>')
+            f'async src="https://gc.zgo.at/count.js"></script>')
 
 
 GOATCOUNTER_BEACON = goatcounter_beacon()
@@ -137,6 +137,9 @@ def head(title: str, desc: str, canonical: str, jsonld: str = "") -> str:
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data: https://observatoriotaxas.goatcounter.com; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://gc.zgo.at; connect-src 'self' https://observatoriotaxas.goatcounter.com"/>
+<meta name="referrer" content="strict-origin-when-cross-origin"/>
+<script>if (top !== self) {{ try {{ top.location = self.location; }} catch (e) {{ document.documentElement.style.display = "none"; }} }}</script>
 <title>{title}</title>
 <meta name="description" content="{desc}"/>
 <meta name="robots" content="index, follow"/>

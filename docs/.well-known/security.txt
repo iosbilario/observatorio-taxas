@@ -1,0 +1,6 @@
+# security.txt — canal de contato para relatos de segurança (RFC 9116).
+# Servido em https://observatoriodetaxas.tec.br/.well-known/security.txt
+Contact: mailto:contato@observatoriodetaxas.tec.br
+Preferred-Languages: pt-BR
+Canonical: https://observatoriodetaxas.tec.br/.well-known/security.txt
+Expires: 2027-07-14T00:00:00.000Z

@@ -4,6 +4,11 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+  <!-- ===================== Segurança (site estático, sem headers HTTP) ===================== -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; connect-src 'self'" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <script>if (top !== self) { try { top.location = self.location; } catch (e) { document.documentElement.style.display = "none"; } }</script>
+
   <!-- Fora dos índices de busca e do sitemap. -->
   <meta name="robots" content="noindex, nofollow" />
   <meta name="theme-color" content="#0b1120" />
@@ -22,7 +27,10 @@
     serviço autenticado — não tente simular autenticação no cliente.
   -->
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+  <!-- Chart.js pinado por versão exata + SRI (integridade) + crossorigin. -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"
+          integrity="sha384-jb8JQMbMoBUzgWatfe6COACi2ljcDdZQ2OxczGA3bGNeWe+6DChMTBJemed7ZnvJ"
+          crossorigin="anonymous"></script>
   <style>
     :root {
       --bg: #0b1120; --card: #0f172a; --card-2: #131c31; --line: #1e293b;
@@ -96,7 +104,7 @@
     <div id="app"></div>
 
     <footer>
-      Fonte: <a href="https://www.goatcounter.com/" target="_blank" rel="noopener">GoatCounter</a> ·
+      Fonte: <a href="https://www.goatcounter.com/" target="_blank" rel="noopener noreferrer">GoatCounter</a> ·
       dados de <code>../data/stats.json</code>, gerados por <code>scripts/fetch_stats.py</code>.
       Só contagens agregadas — nenhum dado pessoal de visitantes é exposto.
     </footer>
