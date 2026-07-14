@@ -61,6 +61,9 @@ jobs:
       - name: Assar boletim no HTML da landing e regenerar o sitemap
         run: python scripts/render_index.py
 
+      - name: Gerar card social (og-image) com os números do dia
+        run: python scripts/build_og.py
+
       - name: Coletar estatísticas de acesso (GoatCounter)
         if: env.GOATCOUNTER_TOKEN != ''
         run: python scripts/fetch_stats.py
