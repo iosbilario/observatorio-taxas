@@ -1,54 +1,42 @@
 # Observatório de Taxas
 
-> Série histórica de indicadores econômicos oficiais do Brasil, coletada automaticamente da API pública do Sistema Gerenciador de Séries Temporais (SGS) do Banco Central do Brasil e versionada em aberto no Git. Site 100% estático (GitHub Pages), gratuito, sem cadastro. Cada coleta é um commit: os dados são auditáveis ponto a ponto no histórico do repositório.
+> Indicadores econômicos oficiais do Brasil — Selic, IPCA, dólar, IGP-M, desemprego e outros — coletados da API pública do Sistema Gerenciador de Séries Temporais (SGS) do Banco Central a cada 6 horas. O histórico completo vive versionado em Git desde 2015: cada coleta é um commit, então todo número é auditável ponto a ponto no repositório.
 
-Mantido por LBP Tecnologia. Código e dados: https://github.com/iosbilario/observatorio-taxas
+Site 100% estático (GitHub Pages), gratuito e sem cadastro. Os dados são arquivos JSON sob `/data/`, no formato `[{"data": "dd/mm/aaaa", "valor": "14.25"}, ...]` — `valor` é string com ponto decimal, ordenado por data. Os números do dia são "assados" direto no HTML da primeira página (entre os marcadores `<!-- boletim:inicio -->` e `<!-- boletim:fim -->`, reescritos a cada coleta), então funcionam sem JavaScript. Dados em domínio público (CC0 1.0). Código e histórico: https://github.com/iosbilario/observatorio-taxas — mantido por LBP Tecnologia.
 
-## Como os dados são servidos
+## Páginas
 
-Todos os dados são arquivos JSON estáticos sob `/data/`:
+- [Boletim de hoje](https://observatoriodetaxas.tec.br/): valores atuais de Selic, IPCA, dólar, IGP-M e desemprego assados no HTML estático, cada número com âncora própria (#selic, #ipca, #dolar, #igpm, #desemprego)
+- [Rebobinar](https://observatoriodetaxas.tec.br/rebobinar.html): a economia mês a mês em linha do tempo editorial, cada mês com permalink próprio via hash
+- [VAR da Economia](https://observatoriodetaxas.tec.br/var.html): verificador de alegações econômicas que emite recibo permanente, com regra de cálculo, fonte e commit exato dos dados, e parâmetros documentados na URL
+- [Retransmissora](https://observatoriodetaxas.tec.br/retransmissora.html): configurador de gráficos embutíveis parametrizados, para publicar em sites, newsletters e portais
+- [Reajuste de contrato](https://observatoriodetaxas.tec.br/reajuste/): calculadora de reajuste por índice e mês (IPCA, IGP-M, INPC, IGP-DI), com uma página permanente por índice-mês (ex.: /reajuste/igpm-janeiro-2026/)
+- [Correção monetária](https://observatoriodetaxas.tec.br/correcao/): correção de um valor entre duas datas pelo índice escolhido (IPCA, IGP-M, INPC, IGP-DI)
 
-- `/data/series.json` — manifesto: lista de objetos `{codigo, nome, grupo, valor_atual, data_referencia, ultima_mudanca, pontos}`.
-- `/data/<codigo>_history.json` — série temporal de uma série, no formato `[{"data": "dd/mm/aaaa", "valor": "14.25"}, ...]`, ordenada por data. `valor` é string com ponto decimal.
-- `/data/meta.json` — instante da última coleta (horário de Brasília).
+## Dados
 
-Convenções: índices de inflação (IPCA, IGP-M, INPC, IGP-DI) trazem a variação mensal, com data de referência no primeiro dia do mês. Séries diárias (Selic, câmbio) trazem um ponto por dia útil. Acumulado em 12 meses ou de período usa composição (produto de 1 + i/100), não soma simples.
+Os JSONs são a fonte canônica; use-os em vez de raspar o HTML. Índices de inflação (IPCA, IGP-M, INPC, IGP-DI) trazem a variação mensal com data de referência no primeiro dia do mês; séries diárias (Selic, câmbio) trazem um ponto por dia útil. Acumulado em 12 meses usa composição (produto de 1 + i/100), não soma simples.
 
-## Séries principais (código SGS)
+- [Manifesto de séries](https://observatoriodetaxas.tec.br/data/series.json): lista de objetos `{codigo, nome, grupo, valor_atual, data_referencia, ultima_mudanca, pontos}` — comece por aqui para descobrir códigos e valores atuais
+- [Instante da última coleta](https://observatoriodetaxas.tec.br/data/meta.json): horário de Brasília da coleta mais recente
+- [Meta Selic (SGS 432)](https://observatoriodetaxas.tec.br/data/432_history.json): série histórica diária, `[{"data": "dd/mm/aaaa", "valor": "..."}]`
+- [IPCA acumulado 12 meses (SGS 13522)](https://observatoriodetaxas.tec.br/data/13522_history.json): mensal
+- [IPCA variação mensal (SGS 433)](https://observatoriodetaxas.tec.br/data/433_history.json): mensal
+- [INPC variação mensal (SGS 188)](https://observatoriodetaxas.tec.br/data/188_history.json): mensal
+- [IGP-M variação mensal (SGS 189)](https://observatoriodetaxas.tec.br/data/189_history.json): mensal
+- [IGP-DI variação mensal (SGS 190)](https://observatoriodetaxas.tec.br/data/190_history.json): mensal
+- [CDI acumulado no mês (SGS 4390)](https://observatoriodetaxas.tec.br/data/4390_history.json): mensal
+- [Câmbio USD/BRL venda (SGS 1)](https://observatoriodetaxas.tec.br/data/1_history.json): diária
+- [Câmbio EUR/BRL venda (SGS 21619)](https://observatoriodetaxas.tec.br/data/21619_history.json): diária
+- [Poupança rendimento (SGS 25)](https://observatoriodetaxas.tec.br/data/25_history.json): rendimento em %
+- [Taxa de desocupação, PNAD Contínua (SGS 24369)](https://observatoriodetaxas.tec.br/data/24369_history.json): mensal
+- [IBC-Br, proxy mensal do PIB (SGS 24363)](https://observatoriodetaxas.tec.br/data/24363_history.json): mensal
+- [Sitemap](https://observatoriodetaxas.tec.br/sitemap.xml): todas as páginas indexáveis, incluindo cada permalink de reajuste e correção
 
-- 432 — Meta Selic (% a.a.), diária
-- 13522 — IPCA acumulado em 12 meses (%), mensal
-- 433 — IPCA variação mensal (%), mensal
-- 188 — INPC variação mensal (%), mensal
-- 189 — IGP-M variação mensal (%), mensal
-- 190 — IGP-DI variação mensal (%), mensal
-- 4390 — CDI acumulado no mês (%), mensal
-- 1 — Câmbio USD/BRL venda, diária
-- 21619 — Câmbio EUR/BRL venda, diária
-- 25 — Poupança rendimento (%)
-- 24369 — Taxa de desocupação, PNAD Contínua (%), mensal
-- 24363 — IBC-Br, proxy mensal do PIB
+## Embeds
 
-## Páginas canônicas
+Qualquer gráfico pode ser incorporado por iframe a partir de `/embed.html`, parametrizado por query string: `s` (código SGS da série), `de` e `ate` (início e fim no formato `aaaa-mm`; se omitidos, últimos 24 meses), `tema` (`escuro` padrão ou `claro`) e `h` (altura em px). Exemplo: `https://observatoriodetaxas.tec.br/embed.html?s=432&de=2024-07&ate=2026-07&tema=escuro&h=400`. O embed não usa cookies, credita a fonte (SGS/BACEN) e atualiza sozinho a cada coleta. O GitHub Pages não envia X-Frame-Options, então o iframe funciona em qualquer domínio.
 
-- https://observatoriodetaxas.tec.br/ — "Primeira Página": os 5 números do dia (Meta Selic, IPCA 12 meses, dólar, IGP-M, desemprego) com data de referência e variação no mês. Esses valores são ASSADOS no HTML estático (não dependem de JavaScript), entre os marcadores `<!-- boletim:inicio -->` e `<!-- boletim:fim -->`, reescritos a cada coleta pelo scripts/render_index.py. Cada número tem âncora própria (#selic, #ipca, #dolar, #igpm, #desemprego).
-- https://observatoriodetaxas.tec.br/rebobinar.html — linha do tempo editorial, mês a mês, da economia.
-- https://observatoriodetaxas.tec.br/reajuste/ — calculadora de reajuste de contratos por índice e mês (IPCA, IGP-M, INPC, IGP-DI).
-- https://observatoriodetaxas.tec.br/correcao/ — correção monetária de um valor entre duas datas.
-- https://observatoriodetaxas.tec.br/var.html — VAR da Economia: verificador de alegações econômicas que emite recibos verificáveis (compara dois períodos de uma série, com regra de cálculo, fonte e o commit exato dos dados). Cada recibo tem permalink com a alegação codificada na URL.
-- https://observatoriodetaxas.tec.br/retransmissora.html — Retransmissora: configurador de embeds dos gráficos para publicar em outros sites, newsletters e portais (gratuito, sem cadastro).
+## Citação
 
-## Embeds (Retransmissora)
-
-Qualquer gráfico pode ser incorporado por iframe a partir de `/embed.html`, parametrizado por query string:
-
-- `s` — código SGS da série (ex.: 432 para a Meta Selic).
-- `de` e `ate` — início e fim do período no formato `aaaa-mm` (ex.: `de=2019-01&ate=2022-12`). Se omitidos, mostra os últimos 24 meses.
-- `tema` — `escuro` (padrão) ou `claro`.
-- `h` — altura em pixels.
-
-Exemplo: `https://observatoriodetaxas.tec.br/embed.html?s=432&de=2024-07&ate=2026-07&tema=escuro&h=400`. O embed não usa cookies, credita a fonte (SGS/BACEN) e atualiza sozinho a cada coleta. GitHub Pages não envia X-Frame-Options, então o iframe funciona em qualquer domínio.
-
-## Sobre citação
-
-Ao citar um número, prefira nomear a série e a data de referência (ex.: "Meta Selic de 14,25% em 13/07/2026, série SGS 432"). O número exato e sua trajetória podem ser conferidos no history.json correspondente e no commit citado.
+Ao citar um número, prefira nomear a série e a data de referência (ex.: "Meta Selic de 14,25% em 13/07/2026, série SGS 432"). O valor exato e sua trajetória podem ser conferidos no history.json correspondente e no commit citado. Conteúdo informativo, sem caráter de recomendação financeira.
