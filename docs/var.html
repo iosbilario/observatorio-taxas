@@ -35,11 +35,23 @@
     :root {
       --cofre: #0E1210; --papel: #E9E6DC; --alta: #3FD68F; --queda: #E4574F;
       --carimbo: #D9B54A; --neutro: #5A625D;
-      --papel-70: rgba(233,230,220,.70); --papel-45: rgba(233,230,220,.45);
+      --papel-70: rgba(233,230,220,.70); --papel-45: rgba(233,230,220,.55);  /* 5,2:1 (WCAG AA) */
       --linha: rgba(233,230,220,.14);
       --cupom: #F4F0E4; --cupom-tx: #1c1a14; --cupom-mut: #6b6656; --cupom-linha: #cfc8b2;
+      /* dourado escuro p/ texto sobre o papel do cupom: 5,1:1 (WCAG AA) */
+      --cupom-ouro: #7d621a;
+      color-scheme: dark;
     }
     * { box-sizing: border-box; }
+    /* Foco visível e consistente em todo elemento interativo (WCAG 2.4.7) */
+    :focus-visible { outline: 2px solid var(--carimbo); outline-offset: 2px; }
+    .skip-link {
+      position: absolute; left: -9999px; top: 0; z-index: 100;
+      font-family: "IBM Plex Mono", monospace; font-size: .82rem; font-weight: 600;
+      color: var(--cofre); background: var(--carimbo); padding: .6rem 1rem;
+      border-radius: 0 0 8px 0; text-decoration: none;
+    }
+    .skip-link:focus { left: 0; outline: 2px solid var(--papel); outline-offset: -4px; }
     body {
       margin: 0; background: var(--cofre); color: var(--papel);
       font-family: "Archivo", system-ui, sans-serif; line-height: 1.55;
@@ -56,7 +68,7 @@
     header .mark { font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; color: var(--papel-70); }
     header .mark b { color: var(--papel); font-weight: 500; }
     header .back { font-size: .78rem; letter-spacing: .06em; text-decoration: none; color: var(--papel-70); border-bottom: 1px solid transparent; }
-    header .back:hover, header .back:focus-visible { color: var(--papel); border-bottom-color: var(--carimbo); outline: none; }
+    header .back:hover, header .back:focus-visible { color: var(--papel); border-bottom-color: var(--carimbo); }
 
     main { max-width: 760px; margin: 0 auto; padding: clamp(1.8rem, 5vw, 3.2rem) clamp(1rem, 4vw, 2rem) 4rem; }
     .eyebrow { font-family: "IBM Plex Mono", monospace; font-size: .76rem; letter-spacing: .18em; text-transform: uppercase; color: var(--carimbo); margin: 0 0 .7rem; }
@@ -75,6 +87,7 @@
     }
     .slot:hover { border-bottom-color: var(--carimbo); }
     .slot:focus-visible { outline: 2px solid var(--carimbo); outline-offset: 3px; }
+    .slot[aria-expanded="true"] { border-bottom-color: var(--carimbo); }
     .slot.sub { color: var(--papel); border-bottom-color: var(--linha); }
 
     .conferir {
@@ -82,7 +95,7 @@
       color: var(--cofre); background: var(--carimbo); border: 0; border-radius: 3px;
       padding: .7rem 1.3rem; cursor: pointer; transition: filter .15s;
     }
-    .conferir:hover, .conferir:focus-visible { filter: brightness(1.08); outline: none; }
+    .conferir:hover { filter: brightness(1.08); }
     .conferir:focus-visible { outline: 2px solid var(--papel); outline-offset: 2px; }
 
     /* ---------------- Popover de seleção ---------------- */
@@ -97,14 +110,14 @@
       display: block; width: 100%; text-align: left; background: transparent; border: 1px solid transparent;
       color: var(--papel); font: inherit; font-size: .92rem; padding: .4rem .5rem; border-radius: 4px; cursor: pointer;
     }
-    .pop .opt:hover, .pop .opt:focus-visible { background: rgba(233,230,220,.06); outline: none; }
+    .pop .opt:hover, .pop .opt:focus-visible { background: rgba(233,230,220,.06); }
     .pop .opt[aria-selected="true"] { color: var(--carimbo); border-color: rgba(217,181,74,.4); }
     .pop .presets { display: flex; flex-wrap: wrap; gap: .35rem; margin-bottom: .6rem; }
     .pop .preset {
       font-family: "IBM Plex Mono", monospace; font-size: .74rem; color: var(--papel-70);
       background: transparent; border: 1px solid var(--linha); border-radius: 999px; padding: .28rem .6rem; cursor: pointer;
     }
-    .pop .preset:hover, .pop .preset:focus-visible { border-color: var(--carimbo); color: var(--papel); outline: none; }
+    .pop .preset:hover, .pop .preset:focus-visible { border-color: var(--carimbo); color: var(--papel); }
     .pop .selrow { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; margin-top: .3rem; }
     .pop .selrow + .selrow { margin-top: .45rem; }
     .pop label { display: block; font-family: "IBM Plex Mono", monospace; font-size: .64rem; letter-spacing: .1em; text-transform: uppercase; color: var(--papel-45); margin: 0 0 .2rem; }
@@ -144,7 +157,7 @@
       display: inline-block; border: 2px solid; border-radius: 4px; padding: .15rem .6rem;
       transform: rotate(-4deg); font-size: 1.15rem;
     }
-    .recibo .carimbo-v.ok { color: var(--carimbo); border-color: var(--carimbo); }
+    .recibo .carimbo-v.ok { color: var(--cupom-ouro); border-color: var(--cupom-ouro); }
     .recibo .carimbo-v.no { color: var(--queda); border-color: var(--queda); }
     .recibo .meta-l { font-size: .68rem; color: var(--cupom-mut); line-height: 1.7; }
     .recibo .selo {
@@ -159,7 +172,7 @@
       color: var(--papel-70); background: transparent; border: 1px solid var(--linha); border-radius: 3px;
       padding: .55rem .7rem; cursor: pointer; transition: border-color .15s, color .15s;
     }
-    .acoes button:hover, .acoes button:focus-visible { color: var(--papel); border-color: var(--carimbo); outline: none; }
+    .acoes button:hover, .acoes button:focus-visible { color: var(--papel); border-color: var(--carimbo); }
 
     footer { border-top: 1px solid var(--linha); margin-top: 2rem; padding: 1.6rem clamp(1rem, 4vw, 2.4rem) 2rem; color: var(--papel-45); font-size: .82rem; }
     footer a { color: var(--papel-70); text-decoration: none; border-bottom: 1px solid var(--linha); }
@@ -173,12 +186,13 @@
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
   <header class="top">
     <span class="mark"><b>Observatório de Taxas</b> · VAR da economia</span>
     <a class="back" href="index.html">voltar ao painel &nbsp;›</a>
   </header>
 
-  <main>
+  <main id="conteudo">
     <p class="eyebrow">Verificador · recibo permanente</p>
     <h1 class="titulo">VAR da Economia</h1>
     <p class="tagline">Monte uma afirmação sobre os indicadores do Banco Central e receba um recibo verificável. Ele compara dois períodos, mostra a regra de cálculo e o commit exato dos dados. Sem opinião: só os números.</p>
@@ -187,14 +201,14 @@
     <button class="conferir" id="conferir" type="button">Conferir e emitir recibo</button>
 
     <div class="recibo-area" id="reciboArea" hidden>
-      <div class="recibo" id="recibo"></div>
+      <div class="recibo" id="recibo" aria-live="polite"></div>
       <div class="acoes">
-        <button id="btnLink" type="button">copiar link do recibo</button>
+        <button id="btnLink" type="button" aria-live="polite">copiar link do recibo</button>
         <button id="btnPng" type="button">baixar recibo (PNG)</button>
       </div>
     </div>
 
-    <p class="estado" id="estado">Carregando as séries…</p>
+    <p class="estado" id="estado" role="status">Carregando as séries…</p>
   </main>
 
   <footer>
@@ -261,6 +275,7 @@
     const st = { s: 433, op: "acum", a1: null, a2: null, b1: null, b2: null, cmp: "maior" };
     const els = {};
     let popAberto = null;
+    let slotAberto = null;   // devolve o foco ao fechar o popover
 
     // ------------------------- carregamento ---------------------------- //
     // Toda leitura da URL passa por allowlist. Parâmetro inválido é DESCARTADO
@@ -344,7 +359,7 @@
     }
 
     // ------------------------------ frase ------------------------------ //
-    function slot(id, texto, sub) { return `<button class="slot${sub ? " sub" : ""}" data-slot="${esc(id)}" type="button">${esc(texto)}</button>`; }
+    function slot(id, texto, sub) { return `<button class="slot${sub ? " sub" : ""}" data-slot="${esc(id)}" type="button" aria-haspopup="dialog" aria-expanded="false">${esc(texto)}</button>`; }
     function fraseTexto(plano) {
       const S = SERIES[st.s];
       const indTxt = cap(S.tok);   // "O IPCA", "A Meta Selic" — início da frase
@@ -365,8 +380,17 @@
     }
 
     // ------------------------------ popover ------------------------------ //
-    function fechaPop() { if (popAberto) { popAberto.remove(); popAberto = null; document.removeEventListener("keydown", escFecha); } }
-    function escFecha(e) { if (e.key === "Escape") { fechaPop(); } }
+    function fechaPop(devolveFoco) {
+      if (!popAberto) return;
+      popAberto.remove(); popAberto = null;
+      document.removeEventListener("keydown", escFecha);
+      if (slotAberto) {
+        slotAberto.setAttribute("aria-expanded", "false");
+        if (devolveFoco && document.contains(slotAberto)) slotAberto.focus();
+        slotAberto = null;
+      }
+    }
+    function escFecha(e) { if (e.key === "Escape") { fechaPop(true); } }
     function posiciona(pop, alvo) {
       const r = alvo.getBoundingClientRect();
       pop.style.top = (window.scrollY + r.bottom + 6) + "px";
@@ -379,6 +403,9 @@
     function abrePop(alvo, tipo, ev) {
       ev.stopPropagation(); fechaPop();
       const pop = document.createElement("div"); pop.className = "pop";
+      pop.setAttribute("role", "dialog");
+      pop.setAttribute("aria-label", tipo === "ind" ? "Escolher indicador" : tipo === "op" ? "Escolher cálculo" : tipo === "cmp" ? "Escolher comparação" : "Escolher período");
+      slotAberto = alvo; alvo.setAttribute("aria-expanded", "true");
       if (tipo === "ind") montaLista(pop, "Indicador", CODS.map((c) => ({ v: c, label: cap(SERIES[c].tok) })), st.s, (v) => {
         st.s = Number(v); st.op = OP_DEFAULT[SERIES[st.s].nat]; fechaPop(); renderFrase(); conferir();
       });
@@ -395,8 +422,9 @@
       const first = pop.querySelector(".opt, .preset, select"); if (first) first.focus();
     }
     function montaLista(pop, titulo, opcoes, sel, onPick) {
-      let h = `<p class="grp">${esc(titulo)}</p>`;
+      let h = `<p class="grp" id="pop-grp">${esc(titulo)}</p><div role="listbox" aria-labelledby="pop-grp">`;
       opcoes.forEach((o) => { h += `<button class="opt" role="option" aria-selected="${String(o.v) === String(sel)}" data-v="${esc(o.v)}" type="button">${esc(o.label)}</button>`; });
+      h += "</div>";
       pop.innerHTML = h;
       pop.querySelectorAll(".opt").forEach((b) => b.addEventListener("click", () => onPick(b.dataset.v)));
     }
@@ -433,7 +461,7 @@
         sd.value = st[k1]; sa.value = st[k2]; fechaPop(); renderFrase(); conferir();
       }));
     }
-    document.addEventListener("click", (e) => { if (popAberto && !popAberto.contains(e.target) && !e.target.classList.contains("slot")) fechaPop(); });
+    document.addEventListener("click", (e) => { if (popAberto && !popAberto.contains(e.target) && !e.target.classList.contains("slot")) fechaPop(false); });
 
     // ------------------------------ recibo ------------------------------ //
     let ultimo = null; // guarda dados p/ o canvas
@@ -555,14 +583,14 @@
       push("", { size: 4, rule: true, gap: 10 });
       push(ultimo.pa, { size: 11, color: "#6b6656", inlineRight: ultimo.vA });
       push(ultimo.pb, { size: 11, color: "#6b6656", inlineRight: ultimo.vB, gap: 12 });
-      push(ultimo.vTxt, { size: 18, weight: "600", align: "center", color: ultimo.conf ? "#b48f1f" : "#c0392f", gap: 12 });
+      push(ultimo.vTxt, { size: 18, weight: "600", align: "center", color: ultimo.conf ? "#7d621a" : "#c0392f", gap: 12 });
       push("", { size: 4, rule: true, gap: 10 });
       ctx.font = mono("400", 9 * sc);
       wrap(ctx, "Regra: " + ultimo.regra, (W - 2 * PAD) * sc, 9 * sc).forEach((ln) => push(ln, { size: 9, color: "#6b6656", gap: 3 }));
       push("Fonte: " + ultimo.fonte, { size: 9, color: "#6b6656", gap: 3 });
       push("Emitido em " + ultimo.dh + " (Brasília)", { size: 9, color: "#6b6656", gap: 3 });
       push(ultimo.hashTxt ? "commit dos dados: " + ultimo.hashTxt : "snapshot ao vivo (sem hash)", { size: 9, color: "#6b6656", gap: 3 });
-      if (ultimo.auditado) push("auditado contra o snapshot " + ultimo.hashTxt, { size: 9, color: "#b48f1f", gap: 3 });
+      if (ultimo.auditado) push("auditado contra o snapshot " + ultimo.hashTxt, { size: 9, color: "#7d621a", gap: 3 });
 
       // mede altura
       let y = PAD;

@@ -149,11 +149,23 @@
     :root {
       --cofre: #0E1210; --papel: #E9E6DC; --alta: #3FD68F; --queda: #E4574F;
       --carimbo: #D9B54A; --neutro: #5A625D;
-      --papel-70: rgba(233,230,220,.70); --papel-45: rgba(233,230,220,.45);
+      /* alfa .55 = contraste 5,2:1 sobre o cofre (WCAG AA para texto pequeno) */
+      --papel-70: rgba(233,230,220,.70); --papel-45: rgba(233,230,220,.55);
       --linha: rgba(233,230,220,.14); --campo: #0d1210; --maxw: 1080px;
+      color-scheme: dark;
     }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
+    /* Foco visível e consistente em todo elemento interativo (WCAG 2.4.7) */
+    :focus-visible { outline: 2px solid var(--carimbo); outline-offset: 2px; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+    .skip-link {
+      position: absolute; left: -9999px; top: 0; z-index: 100;
+      font-family: "IBM Plex Mono", monospace; font-size: .82rem; font-weight: 600;
+      color: var(--cofre); background: var(--carimbo); padding: .6rem 1rem;
+      border-radius: 0 0 8px 0; text-decoration: none;
+    }
+    .skip-link:focus { left: 0; outline: 2px solid var(--papel); outline-offset: -4px; }
     body {
       margin: 0; background: var(--cofre); color: var(--papel); line-height: 1.55;
       font-family: "Archivo", system-ui, -apple-system, sans-serif; -webkit-font-smoothing: antialiased;
@@ -168,7 +180,7 @@
       font-size: .82rem; font-weight: 600; letter-spacing: .02em; color: var(--carimbo);
       text-decoration: none; border-bottom: 1px solid rgba(217,181,74,.4); padding-bottom: 2px;
     }
-    .btn-link:hover, .btn-link:focus-visible { border-bottom-color: var(--carimbo); outline: none; }
+    .btn-link:hover, .btn-link:focus-visible { border-bottom-color: var(--carimbo); }
 
     /* ===================== MASTHEAD ===================== */
     .masthead { border-bottom: 3px double var(--linha); padding: clamp(1.4rem, 4vw, 2.4rem) 0 1rem; text-align: center; }
@@ -187,13 +199,13 @@
     @media (max-width: 860px) { .num { border-right: 1px solid var(--linha); } .num:nth-child(2n) { border-right: 0; } .num:nth-child(5n) { border-right: 1px solid var(--linha); } }
     @media (max-width: 460px) { .num { border-right: 0; } }
     .num-tag { font-size: .74rem; font-weight: 600; color: var(--papel-70); margin: 0 0 .1rem; line-height: 1.25; }
-    .num-rot { font-family: "IBM Plex Mono", monospace; font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; color: var(--papel-45); margin: 0 0 .5rem; }
+    .num-rot { font-family: "IBM Plex Mono", monospace; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--papel-45); margin: 0 0 .5rem; }
     .num-val { margin: 0; line-height: 1; }
     .num-val .v { font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: clamp(1.7rem, 4.4vw, 2.3rem); letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
     .num-val .suf { font-family: "IBM Plex Mono", monospace; font-size: .8rem; color: var(--papel-45); margin-left: .25rem; }
     .num-delta { font-family: "IBM Plex Mono", monospace; font-size: .78rem; font-weight: 600; margin: .35rem 0 0; font-variant-numeric: tabular-nums; }
     .num-delta.up { color: var(--alta); } .num-delta.down { color: var(--queda); } .num-delta.flat { color: var(--papel-45); }
-    .num-ref { font-family: "IBM Plex Mono", monospace; font-size: .64rem; color: var(--papel-45); margin: .2rem 0 0; }
+    .num-ref { font-family: "IBM Plex Mono", monospace; font-size: .7rem; color: var(--papel-45); margin: .2rem 0 0; }
     .spark { height: 30px; margin-top: .5rem; }
     .spark svg { display: block; width: 100%; height: 30px; overflow: visible; }
     .spark .l { fill: none; stroke: var(--papel-45); stroke-width: 1.3; }
@@ -225,7 +237,7 @@
     .recibo-mini .rc-claim { font-size: .86rem; line-height: 1.5; margin: 0 0 .8rem; }
     .recibo-mini .rc-row { display: flex; justify-content: space-between; gap: 1rem; font-size: .82rem; padding: .15rem 0; border-top: 1px dashed #cfc8b2; }
     .recibo-mini .rc-vered { text-align: center; font-weight: 600; font-size: 1.1rem; letter-spacing: .04em; margin: .8rem 0 0; }
-    .recibo-mini .rc-vered.ok { color: #b48f1f; } .recibo-mini .rc-vered.no { color: #c0392f; }
+    .recibo-mini .rc-vered.ok { color: #7d621a; } .recibo-mini .rc-vered.no { color: #c0392f; }
 
     /* Reajuste */
     .rj-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: .7rem; margin: 0 0 1.2rem; }
@@ -270,7 +282,7 @@
     .carta textarea { resize: vertical; margin-bottom: .9rem; line-height: 1.5; }
     .carta input:focus-visible, .carta textarea:focus-visible { outline: 2px solid var(--carimbo); outline-offset: 1px; }
     .carta button { width: 100%; font-family: "IBM Plex Mono", monospace; font-weight: 600; font-size: .9rem; letter-spacing: .02em; color: var(--cofre); background: var(--carimbo); border: 0; border-radius: 8px; padding: .72rem 1rem; cursor: pointer; transition: filter .15s; }
-    .carta button:hover, .carta button:focus-visible { filter: brightness(1.06); outline: none; }
+    .carta button:hover { filter: brightness(1.06); }
     .carta button:focus-visible { outline: 2px solid var(--papel); outline-offset: 2px; }
     .carta-alt { font-family: "IBM Plex Mono", monospace; font-size: .74rem; color: var(--papel-45); margin: .9rem 0 0; text-align: center; }
 
@@ -285,13 +297,14 @@
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
   <header class="masthead">
     <div class="wrap">
       <p class="kicker">A primeira página que se reescreve sozinha</p>
       <h1>Observatório de Taxas</h1>
       <!-- boletim:inicio -->
 <p class="masthead-data" id="hoje">Terça-feira, 14 de julho de 2026</p>
-<p class="carimbo-linha">coletado às 10:07 · commit <a href="https://github.com/iosbilario/observatorio-taxas/commits/main">9234e4d</a> · fonte SGS/BACEN</p>
+<p class="carimbo-linha">coletado às 10:07 · commit <a href="https://github.com/iosbilario/observatorio-taxas/commits/main">e3865b6</a> · fonte SGS/BACEN</p>
 <div class="boletim">
 <article class="num" id="selic"><h2 class="num-tag">Taxa Selic hoje</h2><p class="num-rot">Meta Selic</p><p class="num-val"><span class="v">14,25</span><span class="suf">% a.a.</span></p><p class="num-delta flat">■ 0,00 p.p. no mês</p><p class="num-ref">ref. 13/07/2026</p><div class="spark" data-cod="432" data-casas="2" aria-hidden="true"></div></article>
 <article class="num" id="ipca"><h2 class="num-tag">IPCA acumulado 12 meses hoje</h2><p class="num-rot">IPCA 12 meses</p><p class="num-val"><span class="v">4,64</span><span class="suf">%</span></p><p class="num-delta down">▼ -0,08 p.p. no mês</p><p class="num-ref">ref. 01/06/2026</p><div class="spark" data-cod="13522" data-casas="2" aria-hidden="true"></div></article>
@@ -303,7 +316,7 @@
     </div>
   </header>
 
-  <div class="wrap">
+  <main class="wrap" id="conteudo">
     <div class="posic">
       <p>Cada número acima vem direto da API pública do Banco Central, é registrado a cada coleta e fica <a href="https://github.com/iosbilario/observatorio-taxas" target="_blank" rel="noopener noreferrer">versionado em aberto no Git</a>. Dado oficial, história ponto a ponto, sem intermediário.</p>
     </div>
@@ -351,8 +364,8 @@
       </div>
       <div class="rj-calc" id="rj-calc" hidden>
         <div class="rj-modes" role="group" aria-label="Modo de cálculo">
-          <button type="button" data-mode="anual" class="active">Reajuste anual (12 meses)</button>
-          <button type="button" data-mode="datas">Correção entre datas</button>
+          <button type="button" data-mode="anual" class="active" aria-pressed="true">Reajuste anual (12 meses)</button>
+          <button type="button" data-mode="datas" aria-pressed="false">Correção entre datas</button>
         </div>
         <div class="row">
           <div><label for="rj-valor">Valor a atualizar (R$)</label><input id="rj-valor" type="text" inputmode="decimal" placeholder="2.000,00" autocomplete="off" /></div>
@@ -406,15 +419,15 @@
           <label for="c-website">Não preencha este campo</label>
           <input id="c-website" name="website" type="text" tabindex="-1" autocomplete="off" />
         </div>
-        <button type="submit" id="c-btn">Escrever para a redação →</button>
+        <button type="submit" id="c-btn" aria-live="polite">Escrever para a redação →</button>
         <p class="carta-alt">Prefere escrever do seu jeito? <a class="mail" href="mailto:contato@observatoriodetaxas.tec.br?subject=Observat%C3%B3rio%20de%20Taxas%2C%20contato%20da%20reda%C3%A7%C3%A3o">contato@observatoriodetaxas.tec.br</a></p>
       </form>
     </section>
-  </div>
+  </main>
 
   <footer>
     <div class="wrap">
-      <nav>
+      <nav aria-label="Seções do site">
         <a href="rebobinar.html">Rebobinar</a>
         <a href="var.html">Verificar afirmação</a>
         <a href="reajuste/">Reajuste</a>
@@ -594,7 +607,7 @@
       calc.querySelectorAll(".rj-modes button").forEach((b) => {
         b.addEventListener("click", () => {
           modo = b.dataset.mode;
-          calc.querySelectorAll(".rj-modes button").forEach((x) => x.classList.toggle("active", x === b));
+          calc.querySelectorAll(".rj-modes button").forEach((x) => { x.classList.toggle("active", x === b); x.setAttribute("aria-pressed", String(x === b)); });
           rowDatas.hidden = modo !== "datas";
           nota.textContent = modo === "anual"
             ? "Aplica o acumulado de 12 meses mais recente do índice. Confira no contrato o índice pactuado e o mês de referência (defasagem). Conteúdo informativo."

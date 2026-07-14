@@ -41,12 +41,23 @@
       --carimbo: #D9B54A;    /* destaque, carimbo */
       --neutro: #5A625D;     /* linhas, apoio */
       --papel-70: rgba(233,230,220,.70);
-      --papel-45: rgba(233,230,220,.45);
+      --papel-45: rgba(233,230,220,.55);  /* alfa .55 = 5,2:1 (WCAG AA) */
       --linha: rgba(233,230,220,.14);
       --fita-h: 92px;
+      color-scheme: dark;
     }
     * { box-sizing: border-box; }
     html { -webkit-text-size-adjust: 100%; }
+    /* Foco visível e consistente em todo elemento interativo (WCAG 2.4.7) */
+    :focus-visible { outline: 2px solid var(--carimbo); outline-offset: 2px; }
+    .skip-link {
+      position: absolute; left: -9999px; top: 0; z-index: 100;
+      font-family: "IBM Plex Mono", monospace; font-size: .82rem; font-weight: 600;
+      color: var(--cofre); background: var(--carimbo); padding: .6rem 1rem;
+      border-radius: 0 0 8px 0; text-decoration: none;
+    }
+    .skip-link:focus { left: 0; outline: 2px solid var(--papel); outline-offset: -4px; }
+
     body {
       margin: 0; background: var(--cofre); color: var(--papel);
       font-family: "Archivo", system-ui, sans-serif; line-height: 1.55;
@@ -67,7 +78,7 @@
     header .mark { font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; color: var(--papel-70); }
     header .mark b { color: var(--papel); font-weight: 500; }
     header .back { font-size: .78rem; letter-spacing: .06em; text-decoration: none; color: var(--papel-70); border-bottom: 1px solid transparent; }
-    header .back:hover, header .back:focus-visible { color: var(--papel); border-bottom-color: var(--carimbo); outline: none; }
+    header .back:hover, header .back:focus-visible { color: var(--papel); border-bottom-color: var(--carimbo); }
 
     /* ---------------- Palco / edição ---------------- */
     main { max-width: 720px; margin: 0 auto; padding: clamp(1.8rem, 5vw, 3.4rem) clamp(1rem, 4vw, 2rem) 2rem; }
@@ -129,7 +140,7 @@
       color: var(--papel-70); background: transparent; border: 1px solid var(--linha);
       border-radius: 3px; padding: .5rem .8rem; cursor: pointer; transition: border-color .15s, color .15s;
     }
-    button.copiar:hover, button.copiar:focus-visible { color: var(--papel); border-color: var(--carimbo); outline: none; }
+    button.copiar:hover, button.copiar:focus-visible { color: var(--papel); border-color: var(--carimbo); }
 
     /* ---------------- Rebobinador (fita) ---------------- */
     .fita-outer {
@@ -186,12 +197,13 @@
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
   <header class="top">
     <span class="mark"><b>Observatório de Taxas</b> · rebobinar</span>
     <a class="back" href="index.html">voltar ao painel &nbsp;›</a>
   </header>
 
-  <main>
+  <main id="conteudo">
     <div id="palco">
       <p class="estado" id="estado">Carregando os commits da economia…</p>
     </div>
@@ -199,7 +211,7 @@
 
   <div class="fita-outer" id="fita" hidden>
     <div class="fita-legenda">o rebobinador · arraste, clique ou use ← →</div>
-    <div class="trilho" id="trilho" role="slider" tabindex="0"
+    <div class="trilho" id="trilho" role="slider" tabindex="0" aria-orientation="horizontal"
          aria-label="Linha do tempo mensal" aria-valuemin="1" aria-valuemax="24" aria-valuenow="24">
       <div class="fio"></div>
       <div class="nos" id="nos"></div>
@@ -463,7 +475,7 @@
             <span class="cap">${cap(META[ed.headCod].copy)} · 24 meses</span>
           </div>
           <div class="acoes">
-            <button class="copiar" id="copiar" type="button">copiar link deste mês</button>
+            <button class="copiar" id="copiar" type="button" aria-live="polite">copiar link deste mês</button>
           </div>
         </div>`;
       document.getElementById("copiar").addEventListener("click", copiarLink);

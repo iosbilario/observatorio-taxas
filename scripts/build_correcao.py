@@ -35,7 +35,7 @@ DATA_DIR = ROOT / "data"
 DOCS_DIR = ROOT / "docs"
 OUT_DIR = DOCS_DIR / "correcao"
 
-BASE_URL = "https://iosbilario.github.io/observatorio-taxas"
+BASE_URL = "https://observatoriodetaxas.tec.br"
 
 
 def goatcounter_beacon() -> str:
@@ -85,8 +85,12 @@ CSS = """
 @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/ibmplexmono-400.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/ibmplexmono-500.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/ibmplexmono-600.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-:root{--cofre:#0E1210;--papel:#E9E6DC;--carimbo:#D9B54A;--alta:#3FD68F;--queda:#E4574F;--neutro:#5A625D;--papel-70:rgba(233,230,220,.70);--papel-45:rgba(233,230,220,.45);--linha:rgba(233,230,220,.14);--campo:#0d1210;--maxw:860px}
+:root{--cofre:#0E1210;--papel:#E9E6DC;--carimbo:#D9B54A;--alta:#3FD68F;--queda:#E4574F;--neutro:#5A625D;--papel-70:rgba(233,230,220,.70);--papel-45:rgba(233,230,220,.55);--linha:rgba(233,230,220,.14);--campo:#0d1210;--maxw:860px;color-scheme:dark}
 *{box-sizing:border-box}
+/* Foco visível e consistente (WCAG 2.4.7) + link "pular para o conteúdo" */
+:focus-visible{outline:2px solid var(--carimbo);outline-offset:2px}
+.skip-link{position:absolute;left:-9999px;top:0;z-index:100;font-family:"IBM Plex Mono",monospace;font-size:.82rem;font-weight:600;color:var(--cofre);background:var(--carimbo);padding:.6rem 1rem;border-radius:0 0 8px 0;text-decoration:none;border-bottom:0}
+.skip-link:focus{left:0;outline:2px solid var(--papel);outline-offset:-4px}
 body{margin:0;background:var(--cofre);color:var(--papel);font-family:"Archivo",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:24px clamp(1rem,4vw,2rem) 64px}
 a{color:var(--carimbo);text-decoration:none;border-bottom:1px solid rgba(217,181,74,.4)}a:hover{border-bottom-color:var(--carimbo)}
@@ -106,7 +110,8 @@ input,select{background:var(--campo);border:1px solid var(--linha);border-radius
 input:focus-visible,select:focus-visible{outline:2px solid var(--carimbo);outline-offset:1px}
 label{display:block;margin:12px 0 4px;color:var(--papel-45);font-family:"IBM Plex Mono",monospace;font-size:.64rem;letter-spacing:.1em;text-transform:uppercase}
 button{font-family:"IBM Plex Mono",monospace;background:var(--carimbo);color:var(--cofre);border:0;border-radius:8px;padding:.72rem 1rem;font-size:.95rem;font-weight:600;letter-spacing:.02em;cursor:pointer;margin-top:14px;width:100%;transition:filter .15s}
-button:hover,button:focus-visible{filter:brightness(1.06);outline:none}
+button:hover{filter:brightness(1.06)}
+button:focus-visible{outline:2px solid var(--papel);outline-offset:2px}
 .res{margin-top:14px;font-size:1.1rem;color:var(--papel-70)}.res b{color:var(--papel);font-family:"Fraunces",Georgia,serif;font-weight:700}
 .mut{color:var(--papel-45);font-size:.84rem}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
@@ -177,12 +182,14 @@ def head(title: str, desc: str, canonical: str, jsonld: str = "") -> str:
 <style>{CSS}</style>
 {GOATCOUNTER_BEACON}
 </head>
-<body><div class="wrap">
-<p class="crumb"><a href="{BASE_URL}/">Observatório de Taxas</a> › <a href="{BASE_URL}/correcao/">Correção monetária</a></p>
+<body><a class="skip-link" href="#conteudo">Pular para o conteúdo</a><div class="wrap">
+<nav class="crumb" aria-label="Você está em"><a href="{BASE_URL}/">Observatório de Taxas</a> › <a href="{BASE_URL}/correcao/">Correção monetária</a></nav>
+<main id="conteudo">
 """
 
 
 FOOTER = f"""
+</main>
 <footer>Fonte primária: API pública do SGS/Banco Central do Brasil. Série histórica versionada e auditável no
 <a href="https://github.com/iosbilario/observatorio-taxas">GitHub</a>. Conteúdo informativo; confira o índice e a
 convenção de correção previstos no seu contrato ou decisão. Projeto <a href="{BASE_URL}/">Observatório de Taxas</a>, LBP Tecnologia.</footer>
@@ -244,19 +251,21 @@ def calc_card(default_key: str, com_seletor: bool) -> str:
         opts = "".join(
             f'<option value="{k}">{info["nome"]}</option>' for k, info in INDICES.items()
         )
-        seletor = f'<label>Índice</label><select id="indice">{opts}</select>'
+        seletor = f'<label for="indice">Índice</label><select id="indice">{opts}</select>'
     return f"""
 <div class="card">
 <h2>Calcule a correção</h2>
+<form onsubmit="calc();return false">
 {seletor}
-<label>Valor a corrigir (R$)</label>
+<label for="valor">Valor a corrigir (R$)</label>
 <input id="valor" type="text" inputmode="decimal" placeholder="1.000,00"/>
 <div class="grid">
-<div><label>Do mês</label><select id="de"></select></div>
-<div><label>Até o mês</label><select id="ate"></select></div>
+<div><label for="de">Do mês</label><select id="de"></select></div>
+<div><label for="ate">Até o mês</label><select id="ate"></select></div>
 </div>
-<button onclick="calc()">Corrigir valor</button>
-<p class="res" id="res"></p>
+<button type="submit">Corrigir valor</button>
+</form>
+<p class="res" id="res" aria-live="polite"></p>
 <p class="mut">A correção aplica, de forma composta, a variação mensal do índice dos meses posteriores ao inicial até o final.</p>
 </div>"""
 

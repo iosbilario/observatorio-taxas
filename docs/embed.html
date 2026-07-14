@@ -21,7 +21,7 @@
     --plaq-bg: rgba(233,230,220,.08);
   }
   body.claro {
-    --bg: #FFFFFF; --tx: #1A1A1A; --mut: rgba(26,26,26,.55);
+    --bg: #FFFFFF; --tx: #1A1A1A; --mut: rgba(26,26,26,.66); /* 5,6:1 (WCAG AA) */
     --line: rgba(26,26,26,.12); --chart: rgba(26,26,26,.78); --dot: #1A1A1A;
     --plaq-bg: rgba(26,26,26,.06);
   }
@@ -173,7 +173,7 @@
       var xDe = rotuloData(pontos[0].d), xAte = rotuloData(pontos[last].d);
 
       var svg =
-        '<svg viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="none" role="img" aria-label="Gráfico de ' + esc(m.nome) + '">' +
+        '<svg viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="none" role="img" aria-label="Gráfico de ' + esc(m.nome) + ': de ' + esc(xDe) + ' a ' + esc(xAte) + ', último valor ' + esc(fmt(pontos[last].v)) + '">' +
         '<line class="grid" x1="' + padL + '" y1="' + Y(max).toFixed(1) + '" x2="' + (W - padR) + '" y2="' + Y(max).toFixed(1) + '"/>' +
         '<line class="grid" x1="' + padL + '" y1="' + Y(min).toFixed(1) + '" x2="' + (W - padR) + '" y2="' + Y(min).toFixed(1) + '"/>' +
         (pontos.length > 1 ? '<polyline class="serie" points="' + pts + '"/>' : '') +
