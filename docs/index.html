@@ -396,7 +396,7 @@
           <input id="c-website" name="website" type="text" tabindex="-1" autocomplete="off" />
         </div>
         <button type="submit" id="c-btn">Escrever para a redação →</button>
-        <p class="carta-alt">Prefere escrever do seu jeito? <a class="mail" href="mailto:lbptech@icloud.com?subject=Observat%C3%B3rio%20de%20Taxas%2C%20contato%20da%20reda%C3%A7%C3%A3o">lbptech@icloud.com</a></p>
+        <p class="carta-alt">Prefere escrever do seu jeito? <a class="mail" href="mailto:contato@observatoriodetaxas.tec.br?subject=Observat%C3%B3rio%20de%20Taxas%2C%20contato%20da%20reda%C3%A7%C3%A3o">contato@observatoriodetaxas.tec.br</a></p>
       </form>
     </section>
   </div>
@@ -474,7 +474,7 @@
         if (nome) cab.push("Nome: " + nome);
         if (veic) cab.push("Veículo: " + veic);
         const corpo = cab.length ? cab.join("\n") + "\n\n" + msg : msg;
-        window.location.href = "mailto:lbptech@icloud.com?subject=" +
+        window.location.href = "mailto:contato@observatoriodetaxas.tec.br?subject=" +
           encodeURIComponent(assunto) + "&body=" + encodeURIComponent(corpo);
         btn.textContent = "Abrindo seu e-mail…";
         setTimeout(() => { btn.textContent = "Escrever para a redação →"; }, 2500);
