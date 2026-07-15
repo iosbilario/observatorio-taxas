@@ -257,3 +257,7 @@
     ↳ Câmbio USD/BRL - venda: caiu de 5,1183 para 5,0742.
 [2026-07-15 01:21:43 +0000] Câmbio USD/BRL - compra: 5.1177 -> 5.0736
     ↳ Câmbio USD/BRL - compra: caiu de 5,1177 para 5,0736.
+[2026-07-15 13:11:00 +0000] TR - Taxa Referencial (%): 0.1731 -> 0.1730
+    ↳ TR - Taxa Referencial (%): caiu de 0,1731 para 0,173.
+[2026-07-15 13:11:00 +0000] Poupança - rendimento (%): 0.6740 -> 0.6739
+    ↳ Poupança - rendimento (%): caiu de 0,674 para 0,6739.
