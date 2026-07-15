@@ -10,10 +10,10 @@
   },
   {
     "codigo": 1178,
-    "data_referencia": "13/07/2026",
+    "data_referencia": "14/07/2026",
     "grupo": "Juros",
     "nome": "Selic anualizada (% a.a.)",
-    "pontos": 2891,
+    "pontos": 2892,
     "ultima_mudanca": "18/06/2026",
     "valor_atual": "14.15"
   },
@@ -24,7 +24,7 @@
     "nome": "CDI - acumulado no mês (%)",
     "pontos": 139,
     "ultima_mudanca": "01/07/2026",
-    "valor_atual": "0.47"
+    "valor_atual": "0.53"
   },
   {
     "codigo": 226,
@@ -91,21 +91,21 @@
   },
   {
     "codigo": 1,
-    "data_referencia": "13/07/2026",
+    "data_referencia": "14/07/2026",
     "grupo": "Câmbio",
     "nome": "Câmbio USD/BRL - venda",
-    "pontos": 2891,
-    "ultima_mudanca": "13/07/2026",
-    "valor_atual": "5.1183"
+    "pontos": 2892,
+    "ultima_mudanca": "14/07/2026",
+    "valor_atual": "5.0742"
   },
   {
     "codigo": 10813,
-    "data_referencia": "13/07/2026",
+    "data_referencia": "14/07/2026",
     "grupo": "Câmbio",
     "nome": "Câmbio USD/BRL - compra",
-    "pontos": 2891,
-    "ultima_mudanca": "13/07/2026",
-    "valor_atual": "5.1177"
+    "pontos": 2892,
+    "ultima_mudanca": "14/07/2026",
+    "valor_atual": "5.0736"
   },
   {
     "codigo": 21619,
