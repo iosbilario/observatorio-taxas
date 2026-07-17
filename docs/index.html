@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- ===================== Segurança (site estático, sem headers HTTP) ===================== -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data: https://observatoriotaxas.goatcounter.com; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self' 'unsafe-inline' https://gc.zgo.at; connect-src 'self' https://observatoriotaxas.goatcounter.com; frame-src 'self'" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data: https://observatoriotaxas.goatcounter.com https://selovivo.vercel.app; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self' 'unsafe-inline' https://gc.zgo.at; connect-src 'self' https://observatoriotaxas.goatcounter.com; frame-src 'self'" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <script>if (top !== self) { try { top.location = self.location; } catch (e) { document.documentElement.style.display = "none"; } }</script>
 
@@ -437,6 +437,7 @@
       </nav>
       <p>Fonte: <a href="https://www3.bcb.gov.br/sgspub/" target="_blank" rel="noopener noreferrer">SGS / Banco Central do Brasil</a> · <a href="https://github.com/iosbilario/observatorio-taxas" target="_blank" rel="noopener noreferrer">código-fonte no GitHub</a></p>
       <p>Desenvolvido por LBP Tecnologia · <span id="ano"></span>. Conteúdo informativo, sem caráter de recomendação financeira.</p>
+      <p><a href="https://selovivo.vercel.app/v/06b298ed90917423faa5b229f1d994b5" target="_blank" rel="noopener noreferrer" title="Ver o recibo público desta auditoria" style="border:0;display:inline-block"><img src="https://selovivo.vercel.app/api/selo/06b298ed90917423faa5b229f1d994b5.svg" alt="Selo de qualidade técnica — clique para ler o recibo público da auditoria" width="348" height="118" loading="lazy" decoding="async" style="border:0;max-width:100%;height:auto"></a></p>
     </div>
   </footer>
 
