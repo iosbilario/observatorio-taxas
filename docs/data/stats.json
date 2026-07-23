@@ -1,6 +1,6 @@
 {
-  "gerado_em": "2026-07-22T15:57:09-03:00",
-  "gerado_em_fmt": "22/07/2026 às 15:57",
+  "gerado_em": "2026-07-22T22:50:18-03:00",
+  "gerado_em_fmt": "22/07/2026 às 22:50",
   "grupos": {
     "Admin": {
       "acessos": 0,
@@ -16,16 +16,16 @@
       }
     },
     "Home": {
-      "acessos": 56,
+      "acessos": 57,
       "sub": {}
     },
     "Reajuste": {
-      "acessos": 4,
+      "acessos": 5,
       "sub": {
         "IGP-DI": 1,
         "IGP-M": 1,
         "INPC": 0,
-        "IPCA": 0
+        "IPCA": 1
       }
     }
   },
@@ -151,7 +151,7 @@
       "data": "2026-07-21"
     },
     {
-      "acessos": 1,
+      "acessos": 4,
       "data": "2026-07-22"
     }
   ],
@@ -159,11 +159,11 @@
   "timezone": "America/Sao_Paulo (UTC-3)",
   "top_paginas": [
     {
-      "count": 52,
+      "count": 53,
       "path": "/"
     },
     {
-      "count": 41,
+      "count": 42,
       "path": "/rebobinar.html"
     },
     {
@@ -188,6 +188,10 @@
     },
     {
       "count": 1,
+      "path": "/reajuste/ipca-junho-2025"
+    },
+    {
+      "count": 1,
       "path": "/correcao"
     },
     {
@@ -201,12 +205,12 @@
   ],
   "totais": {
     "all_time": {
-      "acessos": 111,
-      "visitantes": 111
+      "acessos": 114,
+      "visitantes": 114
     },
     "ultimos_30d": {
-      "acessos": 111,
-      "visitantes": 111
+      "acessos": 114,
+      "visitantes": 114
     }
   }
 }
