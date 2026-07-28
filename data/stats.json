@@ -1,6 +1,6 @@
 {
-  "gerado_em": "2026-07-27T16:11:46-03:00",
-  "gerado_em_fmt": "27/07/2026 às 16:11",
+  "gerado_em": "2026-07-27T22:30:02-03:00",
+  "gerado_em_fmt": "27/07/2026 às 22:30",
   "grupos": {
     "Admin": {
       "acessos": 0,
@@ -209,7 +209,7 @@
       "visitantes": 122
     },
     "ultimos_30d": {
-      "acessos": 0,
+      "acessos": 122,
       "visitantes": 122
     }
   }
