@@ -363,3 +363,9 @@
     ↳ TR - Taxa Referencial (%): caiu de 0,1732 para 0,173.
 [2026-07-29 13:44:41 +0000] Poupança - rendimento (%): 0.6741 -> 0.6739
     ↳ Poupança - rendimento (%): caiu de 0,6741 para 0,6739.
+[2026-07-29 18:56:27 +0000] Câmbio USD/BRL - venda: 5.1177 -> 5.1217
+    ↳ Câmbio USD/BRL - venda: subiu de 5,1177 para 5,1217.
+[2026-07-29 18:56:27 +0000] Câmbio USD/BRL - compra: 5.1171 -> 5.1211
+    ↳ Câmbio USD/BRL - compra: subiu de 5,1171 para 5,1211.
+[2026-07-29 18:56:27 +0000] Câmbio EUR/BRL - venda: 5.8347000 -> 5.8305000
+    ↳ Câmbio EUR/BRL - venda: caiu de 5,8347 para 5,8305.
