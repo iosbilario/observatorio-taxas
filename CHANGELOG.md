@@ -371,3 +371,13 @@
     ↳ Câmbio EUR/BRL - venda: caiu de 5,8347 para 5,8305.
 [2026-07-30 13:26:07 +0000] TR - Taxa Referencial (%): 0.1730 -> 0.1729
     ↳ TR - Taxa Referencial (%): caiu de 0,173 para 0,1729.
+[2026-07-30 19:09:03 +0000] IGP-M - variação mensal (%): -0.50 -> -1.16
+    ↳ IGP-M - variação mensal (%): caiu de -0,5 para -1,16.
+[2026-07-30 19:09:03 +0000] Câmbio USD/BRL - venda: 5.1217 -> 5.0739
+    ↳ Câmbio USD/BRL - venda: caiu de 5,1217 para 5,0739.
+[2026-07-30 19:09:03 +0000] Câmbio USD/BRL - compra: 5.1211 -> 5.0733
+    ↳ Câmbio USD/BRL - compra: caiu de 5,1211 para 5,0733.
+[2026-07-30 19:09:03 +0000] Câmbio EUR/BRL - venda: 5.8305000 -> 5.8467000
+    ↳ Câmbio EUR/BRL - venda: subiu de 5,8305 para 5,8467.
+[2026-07-30 19:09:03 +0000] Taxa de desocupação - PNAD (%): 5.6 -> 5.4
+    ↳ Taxa de desocupação - PNAD (%): caiu de 5,6 para 5,4.
