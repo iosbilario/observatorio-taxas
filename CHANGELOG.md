@@ -369,3 +369,5 @@
     ↳ Câmbio USD/BRL - compra: subiu de 5,1171 para 5,1211.
 [2026-07-29 18:56:27 +0000] Câmbio EUR/BRL - venda: 5.8347000 -> 5.8305000
     ↳ Câmbio EUR/BRL - venda: caiu de 5,8347 para 5,8305.
+[2026-07-30 13:26:07 +0000] TR - Taxa Referencial (%): 0.1730 -> 0.1729
+    ↳ TR - Taxa Referencial (%): caiu de 0,173 para 0,1729.
