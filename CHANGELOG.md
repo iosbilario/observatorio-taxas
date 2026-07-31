@@ -381,3 +381,5 @@
     ↳ Câmbio EUR/BRL - venda: subiu de 5,8305 para 5,8467.
 [2026-07-30 19:09:03 +0000] Taxa de desocupação - PNAD (%): 5.6 -> 5.4
     ↳ Taxa de desocupação - PNAD (%): caiu de 5,6 para 5,4.
+[2026-07-31 13:38:48 +0000] TR - Taxa Referencial (%): 0.1729 -> 0.1710
+    ↳ TR - Taxa Referencial (%): caiu de 0,1729 para 0,171.
