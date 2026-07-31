@@ -383,3 +383,9 @@
     ↳ Taxa de desocupação - PNAD (%): caiu de 5,6 para 5,4.
 [2026-07-31 13:38:48 +0000] TR - Taxa Referencial (%): 0.1729 -> 0.1710
     ↳ TR - Taxa Referencial (%): caiu de 0,1729 para 0,171.
+[2026-07-31 19:07:14 +0000] Câmbio USD/BRL - venda: 5.0739 -> 5.0773
+    ↳ Câmbio USD/BRL - venda: subiu de 5,0739 para 5,0773.
+[2026-07-31 19:07:14 +0000] Câmbio USD/BRL - compra: 5.0733 -> 5.0767
+    ↳ Câmbio USD/BRL - compra: subiu de 5,0733 para 5,0767.
+[2026-07-31 19:07:14 +0000] Câmbio EUR/BRL - venda: 5.8467000 -> 5.8490000
+    ↳ Câmbio EUR/BRL - venda: subiu de 5,8467 para 5,849.
