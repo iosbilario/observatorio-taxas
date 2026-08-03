@@ -91,21 +91,21 @@
   },
   {
     "codigo": 1,
-    "data_referencia": "31/07/2026",
+    "data_referencia": "03/08/2026",
     "grupo": "Câmbio",
     "nome": "Câmbio USD/BRL - venda",
-    "pontos": 2905,
-    "ultima_mudanca": "31/07/2026",
-    "valor_atual": "5.0773"
+    "pontos": 2906,
+    "ultima_mudanca": "03/08/2026",
+    "valor_atual": "5.0723"
   },
   {
     "codigo": 10813,
-    "data_referencia": "31/07/2026",
+    "data_referencia": "03/08/2026",
     "grupo": "Câmbio",
     "nome": "Câmbio USD/BRL - compra",
-    "pontos": 2905,
-    "ultima_mudanca": "31/07/2026",
-    "valor_atual": "5.0767"
+    "pontos": 2906,
+    "ultima_mudanca": "03/08/2026",
+    "valor_atual": "5.0717"
   },
   {
     "codigo": 21619,
