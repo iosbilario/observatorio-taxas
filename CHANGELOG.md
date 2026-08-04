@@ -395,3 +395,7 @@
     ↳ Câmbio USD/BRL - venda: caiu de 5,0773 para 5,0723.
 [2026-08-03 19:18:09 +0000] Câmbio USD/BRL - compra: 5.0767 -> 5.0717
     ↳ Câmbio USD/BRL - compra: caiu de 5,0767 para 5,0717.
+[2026-08-04 01:25:26 +0000] CDI - acumulado no mês (%): 1.22 -> 0.05
+    ↳ CDI - acumulado no mês (%): caiu de 1,22 para 0,05.
+[2026-08-04 01:25:26 +0000] Câmbio EUR/BRL - venda: 5.8490000 -> 5.8382000
+    ↳ Câmbio EUR/BRL - venda: caiu de 5,849 para 5,8382.
