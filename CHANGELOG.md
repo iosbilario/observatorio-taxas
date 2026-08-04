@@ -399,3 +399,9 @@
     ↳ CDI - acumulado no mês (%): caiu de 1,22 para 0,05.
 [2026-08-04 01:25:26 +0000] Câmbio EUR/BRL - venda: 5.8490000 -> 5.8382000
     ↳ Câmbio EUR/BRL - venda: caiu de 5,849 para 5,8382.
+[2026-08-04 13:46:25 +0000] Poupança - rendimento (%): 0.6739 -> 0.6701
+    ↳ Poupança - rendimento (%): caiu de 0,6739 para 0,6701.
+[2026-08-04 13:46:25 +0000] Poupança - rendimento (%): 0.6701 -> 0.6720
+    ↳ Poupança - rendimento (%): subiu de 0,6701 para 0,672.
+[2026-08-04 13:46:25 +0000] Poupança - rendimento (%): 0.6720 -> 0.6738
+    ↳ Poupança - rendimento (%): subiu de 0,672 para 0,6738.
