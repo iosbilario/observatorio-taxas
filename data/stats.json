@@ -1,6 +1,6 @@
 {
-  "gerado_em": "2026-08-05T10:41:57-03:00",
-  "gerado_em_fmt": "05/08/2026 às 10:41",
+  "gerado_em": "2026-08-05T16:14:01-03:00",
+  "gerado_em_fmt": "05/08/2026 às 16:14",
   "grupos": {
     "Admin": {
       "acessos": 0,
@@ -16,7 +16,7 @@
       }
     },
     "Home": {
-      "acessos": 79,
+      "acessos": 80,
       "sub": {}
     },
     "Reajuste": {
@@ -151,7 +151,7 @@
       "data": "2026-08-04"
     },
     {
-      "acessos": 2,
+      "acessos": 3,
       "data": "2026-08-05"
     }
   ],
@@ -159,7 +159,7 @@
   "timezone": "America/Sao_Paulo (UTC-3)",
   "top_paginas": [
     {
-      "count": 75,
+      "count": 76,
       "path": "/"
     },
     {
@@ -205,12 +205,12 @@
   ],
   "totais": {
     "all_time": {
-      "acessos": 141,
-      "visitantes": 141
+      "acessos": 142,
+      "visitantes": 142
     },
     "ultimos_30d": {
-      "acessos": 141,
-      "visitantes": 141
+      "acessos": 142,
+      "visitantes": 142
     }
   }
 }
