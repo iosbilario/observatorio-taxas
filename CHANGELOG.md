@@ -431,3 +431,11 @@
     ↳ TR - Taxa Referencial (%): caiu de 0,1728 para 0,1725.
 [2026-08-06 13:40:19 +0000] Poupança - rendimento (%): 0.6737 -> 0.6734
     ↳ Poupança - rendimento (%): caiu de 0,6737 para 0,6734.
+[2026-08-06 23:49:24 +0000] Selic anualizada (% a.a.): 14.15 -> 13.90
+    ↳ Selic anualizada (% a.a.): caiu de 14,15 para 13,9.
+[2026-08-06 23:49:24 +0000] Câmbio USD/BRL - venda: 5.1154 -> 5.1017
+    ↳ Câmbio USD/BRL - venda: caiu de 5,1154 para 5,1017.
+[2026-08-06 23:49:24 +0000] Câmbio USD/BRL - compra: 5.1148 -> 5.1011
+    ↳ Câmbio USD/BRL - compra: caiu de 5,1148 para 5,1011.
+[2026-08-06 23:49:24 +0000] Câmbio EUR/BRL - venda: 5.9062000 -> 5.8782000
+    ↳ Câmbio EUR/BRL - venda: caiu de 5,9062 para 5,8782.
