@@ -461,3 +461,19 @@
     ↳ Câmbio USD/BRL - compra: subiu de 5,0902 para 5,0957.
 [2026-08-10 18:41:44 +0000] Câmbio EUR/BRL - venda: 5.8845000 -> 5.8872000
     ↳ Câmbio EUR/BRL - venda: subiu de 5,8845 para 5,8872.
+[2026-08-11 12:39:41 +0000] TR - Taxa Referencial (%): 0.1690 -> 0.1453
+    ↳ TR - Taxa Referencial (%): caiu de 0,169 para 0,1453.
+[2026-08-11 12:39:41 +0000] TR - Taxa Referencial (%): 0.1453 -> 0.1691
+    ↳ TR - Taxa Referencial (%): subiu de 0,1453 para 0,1691.
+[2026-08-11 12:39:41 +0000] TR - Taxa Referencial (%): 0.1691 -> 0.1709
+    ↳ TR - Taxa Referencial (%): subiu de 0,1691 para 0,1709.
+[2026-08-11 12:39:41 +0000] Poupança - rendimento (%): 0.6698 -> 0.6460
+    ↳ Poupança - rendimento (%): caiu de 0,6698 para 0,646.
+[2026-08-11 12:39:41 +0000] Poupança - rendimento (%): 0.6460 -> 0.6699
+    ↳ Poupança - rendimento (%): subiu de 0,646 para 0,6699.
+[2026-08-11 12:39:41 +0000] Poupança - rendimento (%): 0.6699 -> 0.6718
+    ↳ Poupança - rendimento (%): subiu de 0,6699 para 0,6718.
+[2026-08-11 12:39:41 +0000] IPCA - variação mensal (%): 0.16 -> 0.07
+    ↳ IPCA - variação mensal (%): caiu de 0,16 para 0,07.
+[2026-08-11 12:39:41 +0000] IPCA - acumulado 12 meses (%): 4.64 -> 4.44
+    ↳ IPCA - acumulado 12 meses (%): caiu de 4,64 para 4,44.
