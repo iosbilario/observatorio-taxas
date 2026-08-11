@@ -1,6 +1,6 @@
 {
-  "gerado_em": "2026-08-10T15:41:55-03:00",
-  "gerado_em_fmt": "10/08/2026 às 15:41",
+  "gerado_em": "2026-08-10T21:55:36-03:00",
+  "gerado_em_fmt": "10/08/2026 às 21:55",
   "grupos": {
     "Admin": {
       "acessos": 0,
@@ -20,12 +20,12 @@
       "sub": {}
     },
     "Reajuste": {
-      "acessos": 7,
+      "acessos": 8,
       "sub": {
         "IGP-DI": 1,
         "IGP-M": 3,
         "INPC": 0,
-        "IPCA": 1
+        "IPCA": 2
       }
     }
   },
@@ -151,7 +151,7 @@
       "data": "2026-08-09"
     },
     {
-      "acessos": 0,
+      "acessos": 1,
       "data": "2026-08-10"
     }
   ],
@@ -192,6 +192,10 @@
     },
     {
       "count": 1,
+      "path": "/reajuste/ipca-maio-2026"
+    },
+    {
+      "count": 1,
       "path": "/reajuste/ipca-junho-2025"
     },
     {
@@ -209,12 +213,12 @@
   ],
   "totais": {
     "all_time": {
-      "acessos": 146,
-      "visitantes": 146
+      "acessos": 147,
+      "visitantes": 147
     },
     "ultimos_30d": {
-      "acessos": 146,
-      "visitantes": 146
+      "acessos": 147,
+      "visitantes": 147
     }
   }
 }
