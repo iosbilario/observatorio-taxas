@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data: https://observatoriotaxas.goatcounter.com; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self' 'unsafe-inline' https://gc.zgo.at; connect-src 'self' https://observatoriotaxas.goatcounter.com" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <script>if (top !== self) { try { top.location = self.location; } catch (e) { document.documentElement.style.display = "none"; } }</script>
+
+  <title>Metodologia — Radar de Recomendação</title>
+  <meta name="description" content="O que o Radar pergunta, quantas vezes, a quais modelos, quando roda — e o que ele não mede. Todo número é reproduzível a partir dos JSONs públicos." />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#16191E" />
+  <link rel="canonical" href="https://observatoriodetaxas.tec.br/radar/metodologia.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:site_name" content="Observatório de Taxas" />
+  <meta property="og:title" content="Metodologia do Radar de Recomendação" />
+
+  <script data-goatcounter="https://observatoriotaxas.goatcounter.com/count"
+          async src="https://gc.zgo.at/count.js"></script>
+
+  <link rel="stylesheet" href="radar.css" />
+</head>
+<body>
+  <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="topo">
+    <div class="wrap">
+      <span class="marca"><b>Observatório de Taxas</b><span class="sep">·</span>Radar de Recomendação</span>
+      <nav aria-label="Seções do Radar">
+        <a href="index.html">Radar</a>
+        <a href="metodologia.html" aria-current="page">Metodologia</a>
+        <a href="../index.html">Painel de taxas</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo" class="wrap">
+    <section class="demo" aria-labelledby="t-met">
+      <p class="rotulo">Metodologia</p>
+      <h1 class="titulo" id="t-met">Como o Radar conta.</h1>
+      <p class="tagline">Toda afirmação nesta página tem recibo. Se um número aqui
+      não puder ser recontado a partir dos arquivos públicos, é um defeito nosso.</p>
+    </section>
+
+    <div class="prosa">
+
+      <h2>O que é perguntado</h2>
+      <p>A unidade de medida do Radar é a <strong>sonda</strong>: um par de nicho e
+      localidade, com um conjunto fixo de perguntas em linguagem natural. As perguntas
+      são escritas como uma pessoa perguntaria, não como consulta de busca — é isso que
+      o canal de recomendação por IA recebe de verdade.</p>
+      <p>A sonda de referência hoje é <em>clínicas odontológicas em Pinheiros, São
+      Paulo</em>, com três perguntas:</p>
+      <ul>
+        <li><span class="prompt-cit">me indica um dentista bom em Pinheiros</span></li>
+        <li><span class="prompt-cit">qual a melhor clínica odontológica em Pinheiros SP?</span></li>
+        <li><span class="prompt-cit">preciso de dentista perto de Pinheiros, quem você recomenda?</span></li>
+      </ul>
+      <p>As perguntas de uma sonda não mudam entre rodadas. Se mudarem, a série é
+      quebrada e a sonda recomeça na rodada 1 — comparar semanas com perguntas
+      diferentes seria comparar coisas diferentes.</p>
+
+      <h2>Quantas vezes, a quais modelos</h2>
+      <p>Cada pergunta é feita <strong>5 vezes</strong> a cada modelo, em requisições
+      independentes. A repetição não é desperdício: a mesma pergunta, ao mesmo modelo,
+      no mesmo dia, devolve listas diferentes. Uma pergunta feita uma vez mede sorte;
+      feita cinco vezes, mede tendência.</p>
+      <p>Uma rodada é o produto <em>perguntas × modelos × repetições</em>. Na sonda de
+      referência: 3 × 1 × 5 = <strong>15 execuções</strong> por rodada.</p>
+
+      <dl class="ficha">
+        <div><dt>Modelo</dt><dd>gemini-flash-grounding (Gemini com busca ativada)</dd></div>
+        <div><dt>Repetições</dt><dd>5 por pergunta, por modelo</dd></div>
+        <div><dt>Frequência</dt><dd>semanal, apuração aos domingos</dd></div>
+        <div><dt>Temperatura</dt><dd>padrão da API, sem ajuste</dd></div>
+        <div><dt>Personalização</dt><dd>nenhuma: sem conta, sem histórico, sem localização do usuário</dd></div>
+      </dl>
+
+      <h2>Como a citação é contada</h2>
+      <p>De cada resposta bruta extraímos os estabelecimentos citados e a ordem em que
+      aparecem. Um estabelecimento conta <strong>no máximo uma vez por execução</strong>,
+      mesmo que a resposta o mencione três vezes — a unidade é "apareceu ou não naquela
+      resposta".</p>
+      <p>A partir daí, tudo é derivado:</p>
+      <ul>
+        <li><strong>Share de menções</strong> — execuções em que foi citado, dividido
+        pelo total de execuções da rodada.</li>
+        <li><strong>Posição média</strong> — média da posição em que apareceu, contando
+        só as execuções em que foi citado.</li>
+        <li><strong>Delta</strong> — diferença de menções contra a rodada anterior.
+        <em>Entrou</em> é ir de zero a alguma; <em>saiu</em> é o contrário.</li>
+      </ul>
+      <p>O casamento de nome usa a razão social e os apelidos registrados na sonda,
+      ignorando acento e caixa. Quando o modelo escreve "Sorriso Odontologia" e a
+      clínica está cadastrada como "Clínica Sorriso Pinheiros", conta como a mesma.</p>
+
+      <h2>O recibo</h2>
+      <p>Cada execução gera um recibo com a resposta bruta inteira, o horário, o modelo,
+      a pergunta exata e as fontes que o modelo citou. O recibo é o que separa este
+      Radar de uma captura de tela: no placar, cada quadradinho aceso abre o recibo
+      daquela execução específica.</p>
+      <p class="destaque">Se você discorda de um número, não precisa acreditar em nós:
+      recontar é abrir os JSONs e somar. É o mesmo espírito do
+      <a href="../var.html">VAR da Economia</a>, aplicado a um canal onde ainda não
+      existe estatística pública.</p>
+
+      <h2>O que isto não mede</h2>
+      <p>As limitações abaixo não são ressalvas de rodapé. São o tamanho real do que
+      medimos.</p>
+
+      <h3>API não é o app do consumidor</h3>
+      <p>O Radar consulta a API do modelo. A pessoa que pergunta "me indica um dentista"
+      normalmente usa o aplicativo, que tem histórico de conversa, conta logada,
+      localização e uma camada de produto que a API não tem. Os resultados se
+      parecem, mas não são o mesmo objeto. Tratar um como o outro seria mentira.</p>
+
+      <h3>Amostra, não espelho</h3>
+      <p>Quinze execuções por rodada descrevem uma tendência, não a totalidade das
+      respostas possíveis. Um estabelecimento citado em 12 de 15 execuções é
+      consistentemente recomendado; um citado em 1 de 15 pode ser ruído. Diferenças de
+      uma ou duas menções entre rodadas raramente significam alguma coisa — olhe a
+      direção ao longo de várias rodadas, não o degrau de uma semana.</p>
+
+      <h3>Por enquanto, só o Gemini</h3>
+      <p>Medimos hoje um único modelo, com busca ativada. ChatGPT e Claude entram em
+      fase futura, e quando entrarem serão colunas separadas, não uma média — juntar
+      modelos diferentes num índice único esconderia justamente a informação
+      interessante, que é onde eles discordam.</p>
+
+      <h3>Não medimos qualidade</h3>
+      <p>Ser citado pela IA não significa ser bom, e não ser citado não significa ser
+      ruim. O Radar mede visibilidade num canal de recomendação, e só. Nenhum número
+      aqui é avaliação de serviço odontológico, nem recomendação de consumo.</p>
+
+      <h3>Correlação com o mundo real</h3>
+      <p>Não sabemos ainda quanta gente de fato pergunta isso à IA, nem quantas dessas
+      perguntas viram cliente. O Radar mede o que a IA responde — não o tamanho do
+      canal. Qualquer promessa de faturamento derivada desses números seria inventada.</p>
+
+      <h2>Os dados</h2>
+      <p>Todos os arquivos que alimentam estas páginas são públicos e versionados junto
+      com o site. Cada commit é um estado auditável do placar: dá para conferir o que o
+      Radar publicava em qualquer semana passada.</p>
+      <p><a href="https://github.com/iosbilario/observatorio-taxas/tree/main/docs/radar/data" target="_blank" rel="noopener noreferrer">Diretório de dados no GitHub &nbsp;›</a><br />
+      <a href="https://github.com/iosbilario/observatorio-taxas/blob/main/docs/radar/README.md" target="_blank" rel="noopener noreferrer">Schema dos arquivos, o contrato do coletor &nbsp;›</a></p>
+
+      <h2>Estado atual: demonstração</h2>
+      <p>O coletor automático ainda não está no ar. Os números publicados hoje vêm de
+      uma <strong>rodada de demonstração</strong> gerada localmente, com
+      estabelecimentos fictícios, para exercitar a superfície do produto antes da
+      primeira coleta real. Toda página que mostra esses dados carrega o selo
+      <span class="selo-demo">dados de demonstração</span>, e os endereços de fonte nos
+      recibos usam o domínio reservado <span class="dado">exemplo.invalid</span>,
+      que por definição não resolve. Quando a primeira rodada real for apurada, o selo
+      sai e a série recomeça na rodada 1.</p>
+    </div>
+  </main>
+
+  <footer class="institucional">
+    <div class="wrap">
+      <nav aria-label="Seções do site">
+        <a href="index.html">Radar</a>
+        <a href="../index.html">Painel de taxas</a>
+        <a href="../rebobinar.html">Rebobinar</a>
+        <a href="../var.html">Verificar afirmação</a>
+        <a href="../reajuste/">Reajuste</a>
+        <a href="../correcao/">Correção monetária</a>
+      </nav>
+      <p>Dados do Radar versionados em aberto em <a href="https://github.com/iosbilario/observatorio-taxas/tree/main/docs/radar/data" target="_blank" rel="noopener noreferrer">docs/radar/data</a> · <a href="https://github.com/iosbilario/observatorio-taxas" target="_blank" rel="noopener noreferrer">código-fonte no GitHub</a></p>
+      <p>Desenvolvido por LBP Tecnologia · <span id="ano"></span>. O Radar mede o que assistentes de IA respondem; não avalia a qualidade dos negócios citados nem constitui recomendação.</p>
+    </div>
+  </footer>
+
+  <script src="radar.js"></script>
+</body>
+</html>

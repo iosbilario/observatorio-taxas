@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data: https://observatoriotaxas.goatcounter.com; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self' 'unsafe-inline' https://gc.zgo.at; connect-src 'self' https://observatoriotaxas.goatcounter.com" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <script>if (top !== self) { try { top.location = self.location; } catch (e) { document.documentElement.style.display = "none"; } }</script>
+
+  <title>Veredito do negócio — Radar de Recomendação</title>
+  <meta name="description" content="Quantas vezes a IA citou este estabelecimento na rodada da semana, em que posição, e o recibo de cada citação." />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#16191E" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:site_name" content="Observatório de Taxas" />
+  <meta property="og:title" content="Veredito do negócio — Radar de Recomendação" />
+
+  <script data-goatcounter="https://observatoriotaxas.goatcounter.com/count"
+          async src="https://gc.zgo.at/count.js"></script>
+
+  <link rel="stylesheet" href="radar.css" />
+</head>
+<body>
+  <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="topo">
+    <div class="wrap">
+      <span class="marca"><b>Observatório de Taxas</b><span class="sep">·</span>Radar de Recomendação</span>
+      <nav aria-label="Seções do Radar">
+        <a href="index.html">Radar</a>
+        <a href="metodologia.html">Metodologia</a>
+        <a href="../index.html">Painel de taxas</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo" class="wrap">
+    <p class="estado" id="estado">carregando o veredito…</p>
+
+    <section class="veredito-hero" id="hero" hidden aria-labelledby="t-negocio">
+      <p class="rotulo" id="contexto">—</p>
+      <h1 class="titulo" id="t-negocio">—</h1>
+
+      <div class="demo-cab" style="margin-top:22px">
+        <span class="faixa-rodada" id="faixa">—</span>
+        <span class="selo-demo" id="seloDemo" hidden>dados de demonstração</span>
+      </div>
+
+      <p class="numerao" id="numerao">—</p>
+
+      <dl class="metricas" id="metricas"></dl>
+    </section>
+
+    <section id="blocoBlips" hidden aria-labelledby="t-blips">
+      <h2 class="rotulo" id="t-blips" style="margin-top:44px">Onde apareceu nesta rodada</h2>
+      <div id="blipsGrandes"></div>
+      <p class="estado">Cada quadradinho é uma execução da rodada, na ordem em que
+      rodou. Aceso = citado; clique para abrir o recibo.</p>
+    </section>
+
+    <section id="blocoHistorico" hidden aria-labelledby="t-hist">
+      <h2 class="rotulo" id="t-hist" style="margin-top:36px">Histórico de rodadas</h2>
+      <ul class="historico" id="historico"></ul>
+    </section>
+
+    <section id="blocoRecibos" hidden aria-labelledby="t-rec">
+      <h2 class="rotulo" id="t-rec" style="margin-top:36px">Recibos desta rodada</h2>
+      <ul class="recibos-lista" id="recibos"></ul>
+      <p class="estado" id="semRecibos" hidden>Nenhuma citação nesta rodada — logo,
+      nenhum recibo. Os recibos das rodadas anteriores estão no
+      <a href="#" id="linkSonda">placar da sonda</a>.</p>
+    </section>
+
+    <section class="alerta" id="blocoAlerta" hidden aria-labelledby="t-alerta">
+      <h2 class="rotulo rotulo--fosforo" id="t-alerta">Alerta</h2>
+      <p class="tagline" style="font-size:19px;max-width:44ch">A próxima rodada roda
+      domingo. Se a sua posição mudar, você fica sabendo antes do seu concorrente.</p>
+      <form class="alerta-form" id="formAlerta">
+        <label class="oculto" for="emailAlerta">Seu e-mail</label>
+        <input type="email" id="emailAlerta" placeholder="seu@email.com" required />
+        <button class="botao" type="submit">Me avise quando isso mudar</button>
+      </form>
+      <p class="aviso">Só o aviso da rodada. Sem newsletter, sem repasse a terceiros.</p>
+    </section>
+  </main>
+
+  <footer class="institucional">
+    <div class="wrap">
+      <nav aria-label="Seções do site">
+        <a href="index.html">Radar</a>
+        <a href="../index.html">Painel de taxas</a>
+        <a href="../rebobinar.html">Rebobinar</a>
+        <a href="../var.html">Verificar afirmação</a>
+        <a href="../reajuste/">Reajuste</a>
+        <a href="metodologia.html">Metodologia do Radar</a>
+      </nav>
+      <p>Dados do Radar versionados em aberto em <a href="https://github.com/iosbilario/observatorio-taxas/tree/main/docs/radar/data" target="_blank" rel="noopener noreferrer">docs/radar/data</a>.</p>
+      <p>Desenvolvido por LBP Tecnologia · <span id="ano"></span>. O Radar mede o que assistentes de IA respondem; não avalia a qualidade dos negócios citados nem constitui recomendação.</p>
+    </div>
+  </footer>
+
+  <script src="radar.js"></script>
+  <script>
+  "use strict";
+  (function () {
+    var alvo = Radar.qs("e");
+    if (!alvo) {
+      Radar.erroNa(document.getElementById("estado"),
+        "Faltou dizer qual negócio: use negocio.html?e=slug-do-negocio.");
+      return;
+    }
+
+    var PROMPT_ROTULO = ["prompt 1", "prompt 2", "prompt 3", "prompt 4", "prompt 5"];
+
+    Radar.Dados.busca().then(function (b) {
+      var reg = b.estabelecimentos.filter(function (e) { return e.slug === alvo; })[0];
+      if (!reg) throw new Error("negócio não encontrado no índice");
+      return Radar.Dados.sonda(reg.sonda).then(function (s) { return [reg, s]; });
+    }).then(function (par) {
+      pinta(par[0], par[1]);
+    }).catch(function (e) {
+      Radar.erroNa(document.getElementById("estado"),
+        "Não consegui montar o veredito: " + e.message);
+    });
+
+    function pinta(reg, sonda) {
+      var meta = sonda.estabelecimentos[alvo] || { nome: reg.nome, aliases: [] };
+      var rodada = Radar.acharRodada(sonda, null);
+      var placar = Radar.apurar(rodada, sonda.estabelecimentos);
+      var linha = placar.linhas.filter(function (l) { return l.slug === alvo; })[0];
+
+      document.getElementById("estado").hidden = true;
+      document.getElementById("hero").hidden = false;
+      document.title = meta.nome + " — Radar de Recomendação";
+
+      document.getElementById("contexto").innerHTML =
+        Radar.esc(reg.nicho) + " · " + Radar.esc(reg.localidade) +
+        ' · <a href="sonda.html?s=' + Radar.esc(reg.sonda) + '">ver o placar</a>';
+      document.getElementById("t-negocio").textContent = meta.nome;
+      if (sonda.sonda.demonstracao) document.getElementById("seloDemo").hidden = false;
+
+      document.getElementById("faixa").innerHTML =
+        "Rodada <b>" + rodada.numero + "</b> · apurada em " +
+        Radar.esc(Radar.fmtDataCurta(rodada.apurada_em)) + " · " +
+        placar.total + " execuções";
+
+      // ------------------------------------------------------- o veredito
+      var numerao = document.getElementById("numerao");
+      if (linha) {
+        numerao.innerHTML = "Citado em <b>" + linha.mencoes + "</b> de <b>" +
+          linha.total + "</b> execuções.";
+      } else {
+        numerao.className = "numerao mudo";
+        numerao.textContent = "Não citado nesta rodada.";
+      }
+
+      // -------------------------------------------------------- métricas
+      var rs = Radar.rodadasOrdenadas(sonda);
+      var anterior = rs.length > 1 ? rs[1] : null;
+      var antes = Radar.mencoesPorSlug(anterior);
+      var agora = linha ? linha.mencoes : 0;
+      var d = anterior ? Radar.delta(agora, antes[alvo] || 0)
+                       : { tipo: "novo", rotulo: "primeira rodada" };
+
+      document.getElementById("metricas").innerHTML =
+        "<div><dt>Posição no placar</dt><dd>" +
+          (linha ? linha.posicao + "º de " + placar.linhas.length : "fora") + "</dd></div>" +
+        "<div><dt>Posição média</dt><dd>" +
+          (linha && linha.posicaoMedia ? Radar.umaCasa(linha.posicaoMedia) + "ª" : "—") + "</dd></div>" +
+        "<div><dt>Share da rodada</dt><dd>" +
+          Math.round((agora / placar.total) * 100) + "%</dd></div>" +
+        '<div><dt>vs. rodada anterior</dt><dd><span class="delta delta--' + d.tipo + '">' +
+          Radar.esc(d.rotulo) + "</span></dd></div>";
+
+      // ----------------------------------------------------------- blips
+      if (linha) {
+        document.getElementById("blocoBlips").hidden = false;
+        var caixa = document.getElementById("blipsGrandes");
+        caixa.innerHTML = Radar.blipsHTML(linha, "blips--grande");
+        Radar.ligarRecibos(caixa, sonda.estabelecimentos);
+      }
+
+      // ------------------------------------------------------- histórico
+      document.getElementById("blocoHistorico").hidden = false;
+      document.getElementById("historico").innerHTML = rs.map(function (r) {
+        var p = Radar.apurar(r, sonda.estabelecimentos);
+        var l = p.linhas.filter(function (x) { return x.slug === alvo; })[0];
+        return "<li>" +
+          '<span class="rd"><a href="sonda.html?s=' + Radar.esc(reg.sonda) +
+            "#rodada-" + r.numero + '">Rodada ' + r.numero + "</a> · " +
+            Radar.esc(Radar.fmtDataCurta(r.apurada_em)) + "</span>" +
+          "<span>" + (l ? l.posicao + "º no placar · posição média " +
+            Radar.umaCasa(l.posicaoMedia) + "ª" : "não citado") + "</span>" +
+          '<span class="qt">' + (l ? l.mencoes : 0) + " / " + p.total + "</span>" +
+        "</li>";
+      }).join("");
+
+      // --------------------------------------------------------- recibos
+      document.getElementById("blocoRecibos").hidden = false;
+      document.getElementById("linkSonda").href = "sonda.html?s=" + reg.sonda;
+
+      if (!linha) {
+        document.getElementById("semRecibos").hidden = false;
+      } else {
+        var ul = document.getElementById("recibos");
+        ul.innerHTML = linha.execucoes.map(function (e) {
+          return "<li><button type=\"button\" data-recibo=\"" + Radar.esc(e.id) +
+            '" data-estab="' + Radar.esc(alvo) + '">' +
+            '<span class="rid">' + Radar.esc(e.id) + "</span>" +
+            '<span class="rpr">' + Radar.esc(PROMPT_ROTULO[e.prompt_idx] || "prompt") +
+              " · " + Radar.esc(sonda.sonda.prompts[e.prompt_idx] || "") + "</span>" +
+            '<span class="rps">posição ' + e.posicao + "</span>" +
+          "</button></li>";
+        }).join("");
+        Radar.ligarRecibos(ul, sonda.estabelecimentos);
+      }
+
+      // ---------------------------------------------------------- alerta
+      document.getElementById("blocoAlerta").hidden = false;
+      Radar.ligarAlerta(document.getElementById("formAlerta"));
+    }
+  })();
+  </script>
+</body>
+</html>

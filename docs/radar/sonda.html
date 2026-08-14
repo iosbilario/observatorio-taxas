@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data: https://observatoriotaxas.goatcounter.com; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self' 'unsafe-inline' https://gc.zgo.at; connect-src 'self' https://observatoriotaxas.goatcounter.com" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <script>if (top !== self) { try { top.location = self.location; } catch (e) { document.documentElement.style.display = "none"; } }</script>
+
+  <title>Placar da sonda — Radar de Recomendação</title>
+  <meta name="description" content="Placar semanal de quem os assistentes de IA citam neste nicho e nesta localidade, com o recibo de cada citação." />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#16191E" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:site_name" content="Observatório de Taxas" />
+  <meta property="og:title" content="Placar da sonda — Radar de Recomendação" />
+
+  <script data-goatcounter="https://observatoriotaxas.goatcounter.com/count"
+          async src="https://gc.zgo.at/count.js"></script>
+
+  <link rel="stylesheet" href="radar.css" />
+</head>
+<body>
+  <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="topo">
+    <div class="wrap">
+      <span class="marca"><b>Observatório de Taxas</b><span class="sep">·</span>Radar de Recomendação</span>
+      <nav aria-label="Seções do Radar">
+        <a href="index.html">Radar</a>
+        <a href="metodologia.html">Metodologia</a>
+        <a href="../index.html">Painel de taxas</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo" class="wrap">
+    <section class="demo" aria-labelledby="t-sonda">
+      <p class="rotulo" id="rotuloLoc">sonda</p>
+      <h1 class="titulo" id="t-sonda">Carregando…</h1>
+
+      <div class="demo-cab" style="margin-top:22px">
+        <span class="faixa-rodada" id="faixa">—</span>
+        <span class="selo-demo" id="seloDemo" hidden>dados de demonstração</span>
+      </div>
+
+      <div id="perguntas" class="prosa" style="margin-top:22px"></div>
+
+      <nav class="rodadas-nav" id="navRodadas" aria-label="Rodadas apuradas"></nav>
+    </section>
+
+    <p class="estado" id="estado">carregando o placar…</p>
+
+    <section id="blocoPlacar" hidden aria-labelledby="t-placar">
+      <h2 class="oculto" id="t-placar">Placar da rodada</h2>
+      <div class="placar-bloco" id="placarBloco">
+        <div class="rolagem" tabindex="0" role="region" aria-label="Placar da rodada, rolável na horizontal">
+          <table class="placar">
+            <caption id="legendaPlacar"></caption>
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Estabelecimento</th>
+                <th scope="col">Execuções</th>
+                <th scope="col">Share</th>
+                <th scope="col" class="col-media">Pos. média</th>
+                <th scope="col">vs. anterior</th>
+              </tr>
+            </thead>
+            <tbody id="corpoPlacar"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <p class="estado">Cada quadradinho é uma execução da rodada. Aceso = citado
+      naquela execução; clique para abrir o recibo com a resposta bruta.</p>
+
+      <div class="grafico" id="blocoGrafico">
+        <p class="rotulo">Share ao longo das rodadas · 5 primeiros</p>
+        <div id="grafico"></div>
+      </div>
+    </section>
+
+    <section id="blocoVazio" hidden>
+      <div class="convite">
+        <h2>Primeira rodada roda domingo.</h2>
+        <p>Esta sonda já está no ar, mas ainda não teve rodada apurada. Deixe seu
+        e-mail para receber o placar assim que a primeira apuração sair.</p>
+        <form class="alerta-form" id="formVazio">
+          <label class="oculto" for="emailVazio">Seu e-mail</label>
+          <input type="email" id="emailVazio" placeholder="seu@email.com" required />
+          <button class="botao" type="submit">Me avise quando isso mudar</button>
+        </form>
+        <p class="aviso"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="institucional">
+    <div class="wrap">
+      <nav aria-label="Seções do site">
+        <a href="index.html">Radar</a>
+        <a href="../index.html">Painel de taxas</a>
+        <a href="../rebobinar.html">Rebobinar</a>
+        <a href="../var.html">Verificar afirmação</a>
+        <a href="../reajuste/">Reajuste</a>
+        <a href="metodologia.html">Metodologia do Radar</a>
+      </nav>
+      <p>Dados do Radar versionados em aberto em <a href="https://github.com/iosbilario/observatorio-taxas/tree/main/docs/radar/data" target="_blank" rel="noopener noreferrer">docs/radar/data</a>.</p>
+      <p>Desenvolvido por LBP Tecnologia · <span id="ano"></span>. O Radar mede o que assistentes de IA respondem; não avalia a qualidade dos negócios citados nem constitui recomendação.</p>
+    </div>
+  </footer>
+
+  <script src="radar.js"></script>
+  <script>
+  "use strict";
+  (function () {
+    var slug = Radar.qs("s") || "odontologia-pinheiros-sp";
+    var sonda = null;
+
+    var quieto = window.matchMedia &&
+                 window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    function numeroDoHash() {
+      var m = /^#rodada-(\d+)$/.exec(window.location.hash);
+      return m ? Number(m[1]) : null;
+    }
+
+    function pintaCabecalho() {
+      var s = sonda.sonda;
+      document.title = s.nicho + " em " + s.localidade + " — Radar de Recomendação";
+      document.getElementById("rotuloLoc").textContent =
+        "sonda · " + s.localidade;
+      document.getElementById("t-sonda").textContent = s.nicho;
+      if (s.demonstracao) document.getElementById("seloDemo").hidden = false;
+
+      document.getElementById("perguntas").innerHTML =
+        "<p>Perguntas feitas a <strong>" + Radar.esc(s.modelos.join(", ")) +
+        "</strong>, <strong>" + s.repeticoes + "×</strong> cada, por rodada:</p><ul>" +
+        s.prompts.map(function (p) {
+          return '<li><span class="prompt-cit">' + Radar.esc(p) + "</span></li>";
+        }).join("") + "</ul>";
+    }
+
+    function pintaNav(atual) {
+      var rs = Radar.rodadasOrdenadas(sonda);
+      document.getElementById("navRodadas").innerHTML = rs.map(function (r) {
+        return '<a href="#rodada-' + r.numero + '"' +
+          (r.numero === atual ? ' aria-current="true"' : "") +
+          ">Rodada " + r.numero + "</a>";
+      }).join("");
+    }
+
+    function pintaPlacar(rodada) {
+      var placar = Radar.apurar(rodada, sonda.estabelecimentos);
+      var rs = Radar.rodadasOrdenadas(sonda);
+      var idx = rs.findIndex(function (r) { return r.numero === rodada.numero; });
+      var anterior = idx >= 0 && idx + 1 < rs.length ? rs[idx + 1] : null;
+      var antes = Radar.mencoesPorSlug(anterior);
+
+      document.getElementById("faixa").innerHTML =
+        "Rodada <b>" + rodada.numero + "</b> · apurada em " +
+        Radar.esc(Radar.fmtDataCurta(rodada.apurada_em)) + " · " +
+        placar.total + " execuções";
+
+      document.getElementById("legendaPlacar").textContent =
+        "Rodada " + rodada.numero + ", apurada em " +
+        Radar.fmtDataLonga(rodada.apurada_em) + ". Share é o número de execuções " +
+        "em que o estabelecimento foi citado, sobre " + placar.total + ".";
+
+      document.getElementById("corpoPlacar").innerHTML = placar.linhas.map(function (l) {
+        var d = anterior ? Radar.delta(l.mencoes, antes[l.slug] || 0)
+                         : { tipo: "novo", rotulo: "—" };
+        return "<tr>" +
+          '<td class="col-pos">' + l.posicao + "</td>" +
+          '<td class="col-nome"><a href="negocio.html?e=' + Radar.esc(l.slug) + '">' +
+            Radar.esc(l.nome) + "</a></td>" +
+          '<td class="col-blips">' + Radar.blipsHTML(l) + "</td>" +
+          '<td class="col-share">' + l.mencoes +
+            '<span class="de"> / ' + l.total + "</span></td>" +
+          '<td class="col-media">' + (l.posicaoMedia ? Radar.umaCasa(l.posicaoMedia) + "ª" : "—") + "</td>" +
+          '<td class="col-delta"><span class="delta delta--' + d.tipo + '">' +
+            Radar.esc(d.rotulo) + "</span></td>" +
+        "</tr>";
+      }).join("");
+
+      // Quem saiu não tem linha (não foi citado nenhuma vez), mas a saída é
+      // informação: entra como linha muda no fim do placar.
+      var sumidos = Object.keys(antes).filter(function (s) {
+        return !placar.linhas.some(function (l) { return l.slug === s; });
+      });
+      if (sumidos.length) {
+        document.getElementById("corpoPlacar").innerHTML += sumidos.map(function (s) {
+          var meta = sonda.estabelecimentos[s] || { nome: s };
+          return "<tr>" +
+            '<td class="col-pos">—</td>' +
+            '<td class="col-nome"><a href="negocio.html?e=' + Radar.esc(s) + '">' +
+              Radar.esc(meta.nome) + "</a></td>" +
+            '<td class="col-blips"><span class="estado" style="padding:0">' +
+              "não citado nesta rodada</span></td>" +
+            '<td class="col-share">0<span class="de"> / ' + placar.total + "</span></td>" +
+            '<td class="col-media">—</td>' +
+            '<td class="col-delta"><span class="delta delta--saiu">saiu</span></td>' +
+          "</tr>";
+        }).join("");
+      }
+
+      varre();
+    }
+
+    /** O único movimento do site: a linha de varredura acende os blips. */
+    function varre() {
+      if (quieto) return;
+      var bloco = document.getElementById("placarBloco");
+      var antiga = bloco.querySelector(".scanline");
+      if (antiga) antiga.remove();
+
+      bloco.classList.remove("varrendo");
+      void bloco.offsetWidth;                      // reinicia a animação
+      bloco.classList.add("varrendo");
+
+      var linhas = bloco.querySelectorAll("tbody tr");
+      linhas.forEach(function (tr, i) {
+        var atraso = Math.round((i / Math.max(linhas.length, 1)) * 260) + "ms";
+        tr.querySelectorAll("button.blip").forEach(function (b) {
+          b.style.animationDelay = atraso;
+        });
+      });
+
+      var linha = document.createElement("div");
+      linha.className = "scanline";
+      linha.style.setProperty("--altura", bloco.offsetHeight + "px");
+      bloco.appendChild(linha);
+      setTimeout(function () { linha.remove(); }, 500);
+    }
+
+    function mostra(numero) {
+      var rodada = Radar.acharRodada(sonda, numero);
+      if (!rodada) return;
+      pintaNav(rodada.numero);
+      pintaPlacar(rodada);
+    }
+
+    Radar.Dados.sonda(slug).then(function (s) {
+      sonda = s;
+      document.getElementById("estado").hidden = true;
+      pintaCabecalho();
+
+      if (!Radar.rodadasOrdenadas(sonda).length) {
+        document.getElementById("blocoVazio").hidden = false;
+        document.getElementById("faixa").textContent = "nenhuma rodada apurada";
+        Radar.ligarAlerta(document.getElementById("formVazio"));
+        return;
+      }
+
+      document.getElementById("blocoPlacar").hidden = false;
+      mostra(numeroDoHash());
+      Radar.grafico(document.getElementById("grafico"), sonda, 5);
+      Radar.ligarRecibos(document.getElementById("blocoPlacar"), sonda.estabelecimentos);
+
+      window.addEventListener("hashchange", function () { mostra(numeroDoHash()); });
+    }).catch(function (e) {
+      Radar.erroNa(document.getElementById("estado"),
+        "Não consegui carregar a sonda “" + slug + "”: " + e.message);
+    });
+  })();
+  </script>
+</body>
+</html>
