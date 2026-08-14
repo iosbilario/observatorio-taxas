@@ -22,20 +22,27 @@
           async src="https://gc.zgo.at/count.js"></script>
 
   <link rel="stylesheet" href="radar.css" />
+  <link rel="stylesheet" href="../nav.css" />
 </head>
-<body>
+<body class="tema-radar">
   <a class="pular" href="#conteudo">Pular para o conteúdo</a>
 
-  <header class="topo">
-    <div class="wrap">
-      <span class="marca"><b>Observatório de Taxas</b><span class="sep">·</span>Radar de Recomendação</span>
-      <nav aria-label="Seções do Radar">
-        <a href="index.html">Radar</a>
-        <a href="metodologia.html" aria-current="page">Metodologia</a>
-        <a href="../index.html">Painel de taxas</a>
-      </nav>
-    </div>
-  </header>
+<!-- nav:start -->
+<!-- Header replicado de partials/nav.html por scripts/sync_nav.py. Não edite aqui: edite o partial e rode o script. -->
+<header class="nav-site">
+  <div class="nav-caixa">
+    <a class="nav-marca" href="../index.html">Observatório de Taxas</a>
+    <nav class="nav-itens" aria-label="Navegação principal">
+      <a href="../index.html" data-nav="painel">Painel</a>
+      <a href="../rebobinar.html" data-nav="rebobinador">Rebobinador</a>
+      <a href="../var.html" data-nav="var">VAR</a>
+      <a href="../reajuste/index.html" data-nav="reajuste">Reajuste</a>
+      <a href="../radar/index.html" data-nav="radar" aria-current="page">Radar</a>
+      <a href="../retransmissora.html" data-nav="embeds">Embeds</a>
+    </nav>
+  </div>
+</header>
+<!-- nav:end -->
 
   <main id="conteudo" class="wrap">
     <section class="demo" aria-labelledby="t-met">

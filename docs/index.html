@@ -296,9 +296,26 @@
 
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   </style>
+  <link rel="stylesheet" href="nav.css" />
 </head>
 <body>
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+<!-- nav:start -->
+<!-- Header replicado de partials/nav.html por scripts/sync_nav.py. Não edite aqui: edite o partial e rode o script. -->
+<header class="nav-site">
+  <div class="nav-caixa">
+    <a class="nav-marca" href="index.html">Observatório de Taxas</a>
+    <nav class="nav-itens" aria-label="Navegação principal">
+      <a href="index.html" data-nav="painel" aria-current="page">Painel</a>
+      <a href="rebobinar.html" data-nav="rebobinador">Rebobinador</a>
+      <a href="var.html" data-nav="var">VAR</a>
+      <a href="reajuste/index.html" data-nav="reajuste">Reajuste</a>
+      <a href="radar/index.html" data-nav="radar">Radar</a>
+      <a href="retransmissora.html" data-nav="embeds">Embeds</a>
+    </nav>
+  </div>
+</header>
+<!-- nav:end -->
   <header class="masthead">
     <div class="wrap">
       <p class="kicker">A primeira página que se reescreve sozinha</p>
