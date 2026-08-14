@@ -311,6 +311,8 @@ def build_hub(paginas: dict) -> str:
 <h1>Reajuste de contratos e aluguel</h1>
 <p>Acumulado de 12 meses, fator de reajuste e calculadora para cada índice, mês a mês, com dados
 oficiais do BACEN coletados automaticamente e <a href="https://github.com/iosbilario/observatorio-taxas">versionados em aberto</a>.</p>
+<p class="mut">Precisa corrigir um valor entre duas datas, e não reajustar um contrato?
+Use a <a href="{BASE_URL}/correcao/">correção monetária</a>.</p>
 {email_block()}
 {cards}
 """ + FOOTER
