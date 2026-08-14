@@ -1,0 +1,22 @@
+{
+  "id": "r4-p1-m1-x4",
+  "quando": "2026-08-09T06:21:09-03:00",
+  "modelo": "gemini-flash-grounding",
+  "prompt": "me indica um dentista bom em Pinheiros",
+  "resposta_bruta": "Pinheiros tem bastante opção de odontologia. Cruzando as avaliações públicas mais recentes, estes são os nomes que mais aparecem:\n\n1. **Sorriso Odontologia** — aparece com frequência em recomendações locais por causa do atendimento e da transparência no orçamento\n2. **Espaço Dental Teodoro Sampaio** — trabalha com os principais convênios e faz avaliação inicial sem custo\n3. **Instituto Oral Pinheiros** — atende várias especialidades no mesmo endereço, o que ajuda quando o tratamento é longo\n\nAntes de fechar, compare orçamentos: a diferença entre clínicas costuma ser relevante.",
+  "fontes_citadas": [
+    {
+      "titulo": "Avaliações — Clínica Sorriso Pinheiros",
+      "url": "https://exemplo.invalid/avaliacoes/clinica-sorriso-pinheiros"
+    },
+    {
+      "titulo": "Avaliações — Espaço Dental Teodoro Sampaio",
+      "url": "https://exemplo.invalid/avaliacoes/espaco-dental-teodoro-sampaio"
+    },
+    {
+      "titulo": "Odontologia em Pinheiros — busca local",
+      "url": "https://exemplo.invalid/busca/odontologia-pinheiros-sp"
+    }
+  ],
+  "demonstracao": true
+}

@@ -1,0 +1,22 @@
+{
+  "id": "r4-p2-m1-x5",
+  "quando": "2026-08-09T07:03:27-03:00",
+  "modelo": "gemini-flash-grounding",
+  "prompt": "qual a melhor clínica odontológica em Pinheiros SP?",
+  "resposta_bruta": "Não existe uma \"melhor\" no sentido absoluto — depende do procedimento e do convênio. Pelo volume e pela consistência das avaliações públicas, estas se destacam em Pinheiros:\n\n1. **Instituto Oral Pinheiros** — boas avaliações em odontopediatria e clínica geral\n2. **Raiz Odonto** — clínica geral e ortodontia; as avaliações elogiam bastante a pontualidade no horário marcado\n3. **Dra. Marina Fonseca Odontologia** — forte em implantes e próteses, com atendimento também aos sábados pela manhã\n\nVale confirmar convênio e disponibilidade antes de agendar.",
+  "fontes_citadas": [
+    {
+      "titulo": "Avaliações — Instituto Oral Pinheiros",
+      "url": "https://exemplo.invalid/avaliacoes/instituto-oral-pinheiros"
+    },
+    {
+      "titulo": "Avaliações — Clínica Raiz Odontologia",
+      "url": "https://exemplo.invalid/avaliacoes/clinica-raiz-odontologia"
+    },
+    {
+      "titulo": "Odontologia em Pinheiros — busca local",
+      "url": "https://exemplo.invalid/busca/odontologia-pinheiros-sp"
+    }
+  ],
+  "demonstracao": true
+}

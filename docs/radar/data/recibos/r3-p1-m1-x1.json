@@ -1,0 +1,22 @@
+{
+  "id": "r3-p1-m1-x1",
+  "quando": "2026-08-02T06:00:00-03:00",
+  "modelo": "gemini-flash-grounding",
+  "prompt": "me indica um dentista bom em Pinheiros",
+  "resposta_bruta": "Encontrei algumas opções na região com boa reputação. Destaco:\n\n1. **Instituto Oral Pinheiros** — atende várias especialidades no mesmo endereço, o que ajuda quando o tratamento é longo\n2. **Clínica Sorriso Pinheiros** — bem falada em estética dental e clareamento\n3. **Clínica Raiz Odontologia** — forte em implantes e próteses, com atendimento também aos sábados pela manhã\n4. **OdontoCenter** — estrutura pequena mas bem avaliada; costuma ter encaixe para urgência\n\nComo sempre, confira as avaliações atualizadas — a qualidade pode variar com a equipe do momento.",
+  "fontes_citadas": [
+    {
+      "titulo": "Avaliações — Instituto Oral Pinheiros",
+      "url": "https://exemplo.invalid/avaliacoes/instituto-oral-pinheiros"
+    },
+    {
+      "titulo": "Avaliações — Clínica Sorriso Pinheiros",
+      "url": "https://exemplo.invalid/avaliacoes/clinica-sorriso-pinheiros"
+    },
+    {
+      "titulo": "Odontologia em Pinheiros — busca local",
+      "url": "https://exemplo.invalid/busca/odontologia-pinheiros-sp"
+    }
+  ],
+  "demonstracao": true
+}

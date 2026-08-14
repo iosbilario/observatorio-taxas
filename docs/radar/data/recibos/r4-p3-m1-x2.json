@@ -1,0 +1,22 @@
+{
+  "id": "r4-p3-m1-x2",
+  "quando": "2026-08-09T07:17:13-03:00",
+  "modelo": "gemini-flash-grounding",
+  "prompt": "preciso de dentista perto de Pinheiros, quem você recomenda?",
+  "resposta_bruta": "Perto de Pinheiros, algumas clínicas com boa reputação e agenda razoavelmente flexível:\n\n1. **Clínica Sorriso Pinheiros** — bem falada em estética dental e clareamento\n2. **Raiz Odonto** — aparece com frequência em recomendações locais por causa do atendimento e da transparência no orçamento\n\nComo sempre, confira as avaliações atualizadas — a qualidade pode variar com a equipe do momento.",
+  "fontes_citadas": [
+    {
+      "titulo": "Avaliações — Clínica Sorriso Pinheiros",
+      "url": "https://exemplo.invalid/avaliacoes/clinica-sorriso-pinheiros"
+    },
+    {
+      "titulo": "Avaliações — Clínica Raiz Odontologia",
+      "url": "https://exemplo.invalid/avaliacoes/clinica-raiz-odontologia"
+    },
+    {
+      "titulo": "Odontologia em Pinheiros — busca local",
+      "url": "https://exemplo.invalid/busca/odontologia-pinheiros-sp"
+    }
+  ],
+  "demonstracao": true
+}

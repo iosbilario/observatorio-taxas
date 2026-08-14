@@ -1,0 +1,19 @@
+{
+  "sonda": {
+    "slug": "barbearias-vila-madalena-sp",
+    "nicho": "Barbearias",
+    "localidade": "Vila Madalena, São Paulo",
+    "prompts": [
+      "me indica uma barbearia boa na Vila Madalena",
+      "qual a melhor barbearia da Vila Madalena?",
+      "preciso cortar o cabelo perto da Vila Madalena, alguma indicação?"
+    ],
+    "modelos": [
+      "gemini-flash-grounding"
+    ],
+    "repeticoes": 5,
+    "demonstracao": true
+  },
+  "rodadas": [],
+  "estabelecimentos": {}
+}

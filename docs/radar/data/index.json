@@ -1,0 +1,27 @@
+{
+  "gerado_em": "2026-08-09",
+  "sondas": [
+    {
+      "slug": "odontologia-pinheiros-sp",
+      "nicho": "Clínicas odontológicas",
+      "localidade": "Pinheiros, São Paulo",
+      "rodada_atual": 4,
+      "apurada_em": "2026-08-09",
+      "total_execucoes": 15,
+      "lider": {
+        "slug": "clinica-sorriso-pinheiros",
+        "nome": "Clínica Sorriso Pinheiros",
+        "mencoes": 12
+      }
+    },
+    {
+      "slug": "barbearias-vila-madalena-sp",
+      "nicho": "Barbearias",
+      "localidade": "Vila Madalena, São Paulo",
+      "rodada_atual": null,
+      "apurada_em": null,
+      "total_execucoes": 0,
+      "lider": null
+    }
+  ]
+}

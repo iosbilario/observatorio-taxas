@@ -1,0 +1,22 @@
+{
+  "id": "r4-p1-m1-x3",
+  "quando": "2026-08-09T06:14:46-03:00",
+  "modelo": "gemini-flash-grounding",
+  "prompt": "me indica um dentista bom em Pinheiros",
+  "resposta_bruta": "Encontrei algumas opções na região com boa reputação. Destaco:\n\n1. **Instituto Oral** — estrutura pequena mas bem avaliada; costuma ter encaixe para urgência\n2. **OdontoCenter Fradique Coutinho** — forte em implantes e próteses, com atendimento também aos sábados pela manhã\n3. **Clínica Sorriso Pinheiros** — bem falada em estética dental e clareamento\n4. **Espaço Dental Teodoro** — boas avaliações em odontopediatria e clínica geral\n\nVale confirmar convênio e disponibilidade antes de agendar.",
+  "fontes_citadas": [
+    {
+      "titulo": "Avaliações — Instituto Oral Pinheiros",
+      "url": "https://exemplo.invalid/avaliacoes/instituto-oral-pinheiros"
+    },
+    {
+      "titulo": "Avaliações — OdontoCenter Fradique Coutinho",
+      "url": "https://exemplo.invalid/avaliacoes/odontocenter-fradique-coutinho"
+    },
+    {
+      "titulo": "Odontologia em Pinheiros — busca local",
+      "url": "https://exemplo.invalid/busca/odontologia-pinheiros-sp"
+    }
+  ],
+  "demonstracao": true
+}

@@ -1,0 +1,22 @@
+{
+  "id": "r3-p2-m1-x5",
+  "quando": "2026-08-02T07:03:27-03:00",
+  "modelo": "gemini-flash-grounding",
+  "prompt": "qual a melhor clínica odontológica em Pinheiros SP?",
+  "resposta_bruta": "Considerando avaliações recentes e reputação na região de Pinheiros:\n\n1. **Sorriso Odontologia** — estrutura pequena mas bem avaliada; costuma ter encaixe para urgência\n2. **Dra. Marina Fonseca Odontologia** — trabalha com os principais convênios e faz avaliação inicial sem custo\n\nVale confirmar convênio e disponibilidade antes de agendar.",
+  "fontes_citadas": [
+    {
+      "titulo": "Avaliações — Clínica Sorriso Pinheiros",
+      "url": "https://exemplo.invalid/avaliacoes/clinica-sorriso-pinheiros"
+    },
+    {
+      "titulo": "Avaliações — Dra. Marina Fonseca Odontologia",
+      "url": "https://exemplo.invalid/avaliacoes/dra--marina-fonseca-odontologia"
+    },
+    {
+      "titulo": "Odontologia em Pinheiros — busca local",
+      "url": "https://exemplo.invalid/busca/odontologia-pinheiros-sp"
+    }
+  ],
+  "demonstracao": true
+}
