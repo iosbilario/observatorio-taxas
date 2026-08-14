@@ -1,6 +1,6 @@
 {
-  "gerado_em": "2026-08-14T09:40:00-03:00",
-  "gerado_em_fmt": "14/08/2026 às 09:40",
+  "gerado_em": "2026-08-14T15:40:37-03:00",
+  "gerado_em_fmt": "14/08/2026 às 15:40",
   "grupos": {
     "Admin": {
       "acessos": 0,
@@ -16,11 +16,11 @@
       }
     },
     "Home": {
-      "acessos": 88,
+      "acessos": 90,
       "sub": {}
     },
     "Reajuste": {
-      "acessos": 15,
+      "acessos": 16,
       "sub": {
         "IGP-DI": 1,
         "IGP-M": 4,
@@ -31,7 +31,7 @@
   },
   "serie_diaria": [
     {
-      "acessos": 4,
+      "acessos": 1,
       "data": "2026-07-15"
     },
     {
@@ -151,7 +151,7 @@
       "data": "2026-08-13"
     },
     {
-      "acessos": 5,
+      "acessos": 11,
       "data": "2026-08-14"
     }
   ],
@@ -159,7 +159,7 @@
   "timezone": "America/Sao_Paulo (UTC-3)",
   "top_paginas": [
     {
-      "count": 84,
+      "count": 86,
       "path": "/"
     },
     {
@@ -175,12 +175,16 @@
       "path": "/var.html"
     },
     {
-      "count": 3,
-      "path": "/reajuste/ipca-maio-2026"
+      "count": 4,
+      "path": "/reajuste"
     },
     {
       "count": 3,
-      "path": "/reajuste"
+      "path": "/radar"
+    },
+    {
+      "count": 3,
+      "path": "/reajuste/ipca-maio-2026"
     },
     {
       "count": 2,
@@ -193,6 +197,10 @@
     {
       "count": 2,
       "path": "/observatorio-taxas"
+    },
+    {
+      "count": 1,
+      "path": "/radar/negocio.html?e=odontocenter-fradique"
     },
     {
       "count": 1,
@@ -209,24 +217,16 @@
     {
       "count": 1,
       "path": "/radar/sonda.html?s=barbearias-vila-madalena-sp"
-    },
-    {
-      "count": 1,
-      "path": "/radar/metodologia.html"
-    },
-    {
-      "count": 1,
-      "path": "/radar"
     }
   ],
   "totais": {
     "all_time": {
-      "acessos": 167,
-      "visitantes": 167
+      "acessos": 173,
+      "visitantes": 173
     },
     "ultimos_30d": {
-      "acessos": 100,
-      "visitantes": 100
+      "acessos": 103,
+      "visitantes": 103
     }
   }
 }
