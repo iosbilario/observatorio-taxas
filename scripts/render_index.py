@@ -314,9 +314,13 @@ def inject(html: str, nome: str, conteudo: str) -> str:
 def rebuild_sitemap() -> int:
     hoje = datetime.now().strftime("%Y-%m-%d")
     docs = ROOT / "docs"
+    # Só URLs canônicas: sonda.html e negocio.html do Radar dependem de query
+    # string (?s= / ?e=) e por isso ficam fora — quem as descobre é o índice
+    # de sondas na home do Radar, não o sitemap.
     urls = [f"{BASE_URL}/", f"{BASE_URL}/rebobinar.html",
             f"{BASE_URL}/var.html", f"{BASE_URL}/retransmissora.html",
-            f"{BASE_URL}/reajuste/", f"{BASE_URL}/correcao/"]
+            f"{BASE_URL}/reajuste/", f"{BASE_URL}/correcao/",
+            f"{BASE_URL}/radar/", f"{BASE_URL}/radar/metodologia.html"]
     for sub in ("reajuste", "correcao"):
         for idx in sorted((docs / sub).glob("*/index.html")):
             urls.append(f"{BASE_URL}/{sub}/{idx.parent.name}/")

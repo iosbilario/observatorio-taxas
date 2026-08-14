@@ -12,6 +12,8 @@ Site 100% estático (GitHub Pages), gratuito e sem cadastro. Os dados são arqui
 - [Retransmissora](https://observatoriodetaxas.tec.br/retransmissora.html): configurador de gráficos embutíveis parametrizados, para publicar em sites, newsletters e portais
 - [Reajuste de contrato](https://observatoriodetaxas.tec.br/reajuste/): calculadora de reajuste por índice e mês (IPCA, IGP-M, INPC, IGP-DI), com uma página permanente por índice-mês (ex.: /reajuste/igpm-janeiro-2026/)
 - [Correção monetária](https://observatoriodetaxas.tec.br/correcao/): correção de um valor entre duas datas pelo índice escolhido (IPCA, IGP-M, INPC, IGP-DI)
+- [Radar de Recomendação](https://observatoriodetaxas.tec.br/radar/): mede toda semana quais negócios locais os assistentes de IA recomendam em cada nicho e bairro, publicando o placar com a resposta bruta de cada consulta arquivada como recibo auditável. Atenção: enquanto a primeira rodada real não for coletada, os números publicados são de demonstração e não devem ser citados como medição
+- [Metodologia do Radar](https://observatoriodetaxas.tec.br/radar/metodologia.html): o que é perguntado, quantas vezes, a quais modelos, e as limitações declaradas — API não é o app do consumidor, amostra não é espelho, e hoje só o Gemini é medido
 
 ## Dados
 
@@ -31,7 +33,8 @@ Os JSONs são a fonte canônica; use-os em vez de raspar o HTML. Índices de inf
 - [Poupança rendimento (SGS 25)](https://observatoriodetaxas.tec.br/data/25_history.json): rendimento em %
 - [Taxa de desocupação, PNAD Contínua (SGS 24369)](https://observatoriodetaxas.tec.br/data/24369_history.json): mensal
 - [IBC-Br, proxy mensal do PIB (SGS 24363)](https://observatoriodetaxas.tec.br/data/24363_history.json): mensal
-- [Sitemap](https://observatoriodetaxas.tec.br/sitemap.xml): todas as páginas indexáveis, incluindo cada permalink de reajuste e correção
+- [Sondas do Radar](https://observatoriodetaxas.tec.br/radar/data/index.json): índice das sondas ativas; cada sonda em `/radar/data/sondas/{slug}.json` com rodadas e execuções, e o recibo de cada execução em `/radar/data/recibos/{id}.json`. Sonda com `demonstracao: true` contém dado inventado para demonstração do produto, não coleta real
+- [Sitemap](https://observatoriodetaxas.tec.br/sitemap.xml): todas as páginas indexáveis, incluindo o Radar e cada permalink de reajuste e correção
 
 ## Embeds
 
