@@ -1,0 +1,37 @@
+<!--
+  FONTE DA VERDADE da navegação do site.
+
+  Este arquivo é o bloco canônico do header. Mora fora de docs/ de propósito:
+  docs/ é o que o GitHub Pages serve, e um fragmento de HTML solto lá viraria
+  uma página pública sem cabeça nem corpo.
+
+  Ele é replicado dentro de cada página de docs/, entre os marcadores
+  "nav:start" e "nav:end", por:
+
+      python scripts/sync_nav.py
+
+  Não edite o header dentro das páginas — a próxima sincronização desfaz.
+  Edite aqui e rode o script.
+
+  O placeholder de prefixo é substituído pelo caminho relativo da página
+  ("", "../", "../../"), para os links funcionarem em qualquer profundidade
+  e também com o site aberto via file://. O item da página atual recebe
+  aria-current="page" automaticamente, a partir do data-nav correspondente.
+
+  Máximo de 6 itens, por decisão de projeto. Reajuste está no menu por ser a
+  propriedade principal (513 páginas permanentes); Correção monetária é
+  alcançada de dentro do hub de Reajuste.
+-->
+<header class="nav-site">
+  <div class="nav-caixa">
+    <a class="nav-marca" href="{{P}}index.html">Observatório de Taxas</a>
+    <nav class="nav-itens" aria-label="Navegação principal">
+      <a href="{{P}}index.html" data-nav="painel">Painel</a>
+      <a href="{{P}}rebobinar.html" data-nav="rebobinador">Rebobinador</a>
+      <a href="{{P}}var.html" data-nav="var">VAR</a>
+      <a href="{{P}}reajuste/index.html" data-nav="reajuste">Reajuste</a>
+      <a href="{{P}}radar/index.html" data-nav="radar">Radar</a>
+      <a href="{{P}}retransmissora.html" data-nav="embeds">Embeds</a>
+    </nav>
+  </div>
+</header>
