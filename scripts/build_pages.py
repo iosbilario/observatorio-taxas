@@ -177,7 +177,10 @@ def head(title: str, desc: str, canonical: str, jsonld: str = "") -> str:
 <style>{CSS}</style>
 {GOATCOUNTER_BEACON}
 </head>
-<body><a class="skip-link" href="#conteudo">Pular para o conteúdo</a><div class="wrap">
+<body><a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+<!-- nav:start -->
+<!-- nav:end -->
+<div class="wrap">
 <nav class="crumb" aria-label="Você está em"><a href="{BASE_URL}/">Observatório de Taxas</a> › <a href="{BASE_URL}/reajuste/">Reajuste de contratos</a></nav>
 <main id="conteudo">
 """

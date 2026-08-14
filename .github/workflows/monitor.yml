@@ -61,6 +61,12 @@ jobs:
       - name: Assar boletim no HTML da landing e regenerar o sitemap
         run: python scripts/render_index.py
 
+      # Depois dos geradores: build_pages.py e build_correcao.py reescrevem
+      # as páginas de reajuste e correção do zero a cada coleta, então o
+      # header precisa ser reaplicado aqui, senão some.
+      - name: Replicar o header de navegação em todas as páginas
+        run: python scripts/sync_nav.py
+
       - name: Gerar card social (og-image) com os números do dia
         run: python scripts/build_og.py
 
