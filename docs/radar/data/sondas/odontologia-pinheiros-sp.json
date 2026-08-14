@@ -1,0 +1,1332 @@
+{
+  "sonda": {
+    "slug": "odontologia-pinheiros-sp",
+    "nicho": "Clínicas odontológicas",
+    "localidade": "Pinheiros, São Paulo",
+    "prompts": [
+      "me indica um dentista bom em Pinheiros",
+      "qual a melhor clínica odontológica em Pinheiros SP?",
+      "preciso de dentista perto de Pinheiros, quem você recomenda?"
+    ],
+    "modelos": [
+      "gemini-flash-grounding"
+    ],
+    "repeticoes": 5,
+    "demonstracao": true
+  },
+  "rodadas": [
+    {
+      "numero": 4,
+      "apurada_em": "2026-08-09",
+      "execucoes": [
+        {
+          "id": "r4-p1-m1-x1",
+          "prompt_idx": 0,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 1,
+          "citados": [
+            {
+              "estabelecimento": "instituto-oral-pinheiros",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "clinica-sorriso-pinheiros",
+              "posicao": 2
+            },
+            {
+              "estabelecimento": "odontocenter-fradique",
+              "posicao": 3
+            }
+          ],
+          "recibo": "recibos/r4-p1-m1-x1.json"
+        },
+        {
+          "id": "r4-p1-m1-x2",
+          "prompt_idx": 0,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 2,
+          "citados": [
+            {
+              "estabelecimento": "clinica-sorriso-pinheiros",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "odontocenter-fradique",
+              "posicao": 2
+            },
+            {
+              "estabelecimento": "instituto-oral-pinheiros",
+              "posicao": 3
+            }
+          ],
+          "recibo": "recibos/r4-p1-m1-x2.json"
+        },
+        {
+          "id": "r4-p1-m1-x3",
+          "prompt_idx": 0,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 3,
+          "citados": [
+            {
+              "estabelecimento": "instituto-oral-pinheiros",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "odontocenter-fradique",
+              "posicao": 2
+            },
+            {
+              "estabelecimento": "clinica-sorriso-pinheiros",
+              "posicao": 3
+            },
+            {
+              "estabelecimento": "espaco-dental-teodoro",
+              "posicao": 4
+            }
+          ],
+          "recibo": "recibos/r4-p1-m1-x3.json"
+        },
+        {
+          "id": "r4-p1-m1-x4",
+          "prompt_idx": 0,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 4,
+          "citados": [
+            {
+              "estabelecimento": "clinica-sorriso-pinheiros",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "espaco-dental-teodoro",
+              "posicao": 2
+            },
+            {
+              "estabelecimento": "instituto-oral-pinheiros",
+              "posicao": 3
+            }
+          ],
+          "recibo": "recibos/r4-p1-m1-x4.json"
+        },
+        {
+          "id": "r4-p1-m1-x5",
+          "prompt_idx": 0,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 5,
+          "citados": [
+            {
+              "estabelecimento": "clinica-sorriso-pinheiros",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "instituto-oral-pinheiros",
+              "posicao": 2
+            }
+          ],
+          "recibo": "recibos/r4-p1-m1-x5.json"
+        },
+        {
+          "id": "r4-p2-m1-x1",
+          "prompt_idx": 1,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 1,
+          "citados": [
+            {
+              "estabelecimento": "instituto-oral-pinheiros",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "espaco-dental-teodoro",
+              "posicao": 2
+            },
+            {
+              "estabelecimento": "odontocenter-fradique",
+              "posicao": 3
+            },
+            {
+              "estabelecimento": "clinica-sorriso-pinheiros",
+              "posicao": 4
+            }
+          ],
+          "recibo": "recibos/r4-p2-m1-x1.json"
+        },
+        {
+          "id": "r4-p2-m1-x2",
+          "prompt_idx": 1,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 2,
+          "citados": [
+            {
+              "estabelecimento": "clinica-sorriso-pinheiros",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "instituto-oral-pinheiros",
+              "posicao": 2
+            }
+          ],
+          "recibo": "recibos/r4-p2-m1-x2.json"
+        },
+        {
+          "id": "r4-p2-m1-x3",
+          "prompt_idx": 1,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 3,
+          "citados": [
+            {
+              "estabelecimento": "clinica-sorriso-pinheiros",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "instituto-oral-pinheiros",
+              "posicao": 2
+            },
+            {
+              "estabelecimento": "odontocenter-fradique",
+              "posicao": 3
+            }
+          ],
+          "recibo": "recibos/r4-p2-m1-x3.json"
+        },
+        {
+          "id": "r4-p2-m1-x4",
+          "prompt_idx": 1,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 4,
+          "citados": [
+            {
+              "estabelecimento": "clinica-sorriso-pinheiros",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "odontocenter-fradique",
+              "posicao": 2
+            },
+            {
+              "estabelecimento": "clinica-raiz-odontologia",
+              "posicao": 3
+            }
+          ],
+          "recibo": "recibos/r4-p2-m1-x4.json"
+        },
+        {
+          "id": "r4-p2-m1-x5",
+          "prompt_idx": 1,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 5,
+          "citados": [
+            {
+              "estabelecimento": "instituto-oral-pinheiros",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "clinica-raiz-odontologia",
+              "posicao": 2
+            },
+            {
+              "estabelecimento": "dra-marina-fonseca-odontologia",
+              "posicao": 3
+            }
+          ],
+          "recibo": "recibos/r4-p2-m1-x5.json"
+        },
+        {
+          "id": "r4-p3-m1-x1",
+          "prompt_idx": 2,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 1,
+          "citados": [
+            {
+              "estabelecimento": "clinica-sorriso-pinheiros",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "instituto-oral-pinheiros",
+              "posicao": 2
+            },
+            {
+              "estabelecimento": "espaco-dental-teodoro",
+              "posicao": 3
+            },
+            {
+              "estabelecimento": "dra-marina-fonseca-odontologia",
+              "posicao": 4
+            }
+          ],
+          "recibo": "recibos/r4-p3-m1-x1.json"
+        },
+        {
+          "id": "r4-p3-m1-x2",
+          "prompt_idx": 2,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 2,
+          "citados": [
+            {
+              "estabelecimento": "clinica-sorriso-pinheiros",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "clinica-raiz-odontologia",
+              "posicao": 2
+            }
+          ],
+          "recibo": "recibos/r4-p3-m1-x2.json"
+        },
+        {
+          "id": "r4-p3-m1-x3",
+          "prompt_idx": 2,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 3,
+          "citados": [
+            {
+              "estabelecimento": "odontocenter-fradique",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "espaco-dental-teodoro",
+              "posicao": 2
+            },
+            {
+              "estabelecimento": "dra-marina-fonseca-odontologia",
+              "posicao": 3
+            }
+          ],
+          "recibo": "recibos/r4-p3-m1-x3.json"
+        },
+        {
+          "id": "r4-p3-m1-x4",
+          "prompt_idx": 2,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 4,
+          "citados": [
+            {
+              "estabelecimento": "odontocenter-fradique",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "espaco-dental-teodoro",
+              "posicao": 2
+            },
+            {
+              "estabelecimento": "odonto-largo-da-batata",
+              "posicao": 3
+            }
+          ],
+          "recibo": "recibos/r4-p3-m1-x4.json"
+        },
+        {
+          "id": "r4-p3-m1-x5",
+          "prompt_idx": 2,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 5,
+          "citados": [
+            {
+              "estabelecimento": "clinica-sorriso-pinheiros",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "instituto-oral-pinheiros",
+              "posicao": 2
+            },
+            {
+              "estabelecimento": "clinica-raiz-odontologia",
+              "posicao": 3
+            }
+          ],
+          "recibo": "recibos/r4-p3-m1-x5.json"
+        }
+      ]
+    },
+    {
+      "numero": 3,
+      "apurada_em": "2026-08-02",
+      "execucoes": [
+        {
+          "id": "r3-p1-m1-x1",
+          "prompt_idx": 0,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 1,
+          "citados": [
+            {
+              "estabelecimento": "instituto-oral-pinheiros",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "clinica-sorriso-pinheiros",
+              "posicao": 2
+            },
+            {
+              "estabelecimento": "clinica-raiz-odontologia",
+              "posicao": 3
+            },
+            {
+              "estabelecimento": "odontocenter-fradique",
+              "posicao": 4
+            }
+          ],
+          "recibo": "recibos/r3-p1-m1-x1.json"
+        },
+        {
+          "id": "r3-p1-m1-x2",
+          "prompt_idx": 0,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 2,
+          "citados": [
+            {
+              "estabelecimento": "clinica-sorriso-pinheiros",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "instituto-oral-pinheiros",
+              "posicao": 2
+            },
+            {
+              "estabelecimento": "odontocenter-fradique",
+              "posicao": 3
+            }
+          ],
+          "recibo": "recibos/r3-p1-m1-x2.json"
+        },
+        {
+          "id": "r3-p1-m1-x3",
+          "prompt_idx": 0,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 3,
+          "citados": [
+            {
+              "estabelecimento": "clinica-sorriso-pinheiros",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "instituto-oral-pinheiros",
+              "posicao": 2
+            }
+          ],
+          "recibo": "recibos/r3-p1-m1-x3.json"
+        },
+        {
+          "id": "r3-p1-m1-x4",
+          "prompt_idx": 0,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 4,
+          "citados": [
+            {
+              "estabelecimento": "clinica-sorriso-pinheiros",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "instituto-oral-pinheiros",
+              "posicao": 2
+            },
+            {
+              "estabelecimento": "odontocenter-fradique",
+              "posicao": 3
+            }
+          ],
+          "recibo": "recibos/r3-p1-m1-x4.json"
+        },
+        {
+          "id": "r3-p1-m1-x5",
+          "prompt_idx": 0,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 5,
+          "citados": [
+            {
+              "estabelecimento": "clinica-sorriso-pinheiros",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "espaco-dental-teodoro",
+              "posicao": 2
+            },
+            {
+              "estabelecimento": "instituto-oral-pinheiros",
+              "posicao": 3
+            }
+          ],
+          "recibo": "recibos/r3-p1-m1-x5.json"
+        },
+        {
+          "id": "r3-p2-m1-x1",
+          "prompt_idx": 1,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 1,
+          "citados": [
+            {
+              "estabelecimento": "clinica-sorriso-pinheiros",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "odontocenter-fradique",
+              "posicao": 2
+            },
+            {
+              "estabelecimento": "clinica-raiz-odontologia",
+              "posicao": 3
+            },
+            {
+              "estabelecimento": "espaco-dental-teodoro",
+              "posicao": 4
+            }
+          ],
+          "recibo": "recibos/r3-p2-m1-x1.json"
+        },
+        {
+          "id": "r3-p2-m1-x2",
+          "prompt_idx": 1,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 2,
+          "citados": [
+            {
+              "estabelecimento": "clinica-sorriso-pinheiros",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "instituto-oral-pinheiros",
+              "posicao": 2
+            },
+            {
+              "estabelecimento": "espaco-dental-teodoro",
+              "posicao": 3
+            }
+          ],
+          "recibo": "recibos/r3-p2-m1-x2.json"
+        },
+        {
+          "id": "r3-p2-m1-x3",
+          "prompt_idx": 1,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 3,
+          "citados": [
+            {
+              "estabelecimento": "clinica-sorriso-pinheiros",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "instituto-oral-pinheiros",
+              "posicao": 2
+            },
+            {
+              "estabelecimento": "clinica-raiz-odontologia",
+              "posicao": 3
+            }
+          ],
+          "recibo": "recibos/r3-p2-m1-x3.json"
+        },
+        {
+          "id": "r3-p2-m1-x4",
+          "prompt_idx": 1,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 4,
+          "citados": [
+            {
+              "estabelecimento": "odontocenter-fradique",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "clinica-raiz-odontologia",
+              "posicao": 2
+            }
+          ],
+          "recibo": "recibos/r3-p2-m1-x4.json"
+        },
+        {
+          "id": "r3-p2-m1-x5",
+          "prompt_idx": 1,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 5,
+          "citados": [
+            {
+              "estabelecimento": "clinica-sorriso-pinheiros",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "dra-marina-fonseca-odontologia",
+              "posicao": 2
+            }
+          ],
+          "recibo": "recibos/r3-p2-m1-x5.json"
+        },
+        {
+          "id": "r3-p3-m1-x1",
+          "prompt_idx": 2,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 1,
+          "citados": [
+            {
+              "estabelecimento": "instituto-oral-pinheiros",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "clinica-vertice-odonto",
+              "posicao": 2
+            },
+            {
+              "estabelecimento": "dra-marina-fonseca-odontologia",
+              "posicao": 3
+            }
+          ],
+          "recibo": "recibos/r3-p3-m1-x1.json"
+        },
+        {
+          "id": "r3-p3-m1-x2",
+          "prompt_idx": 2,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 2,
+          "citados": [
+            {
+              "estabelecimento": "clinica-sorriso-pinheiros",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "clinica-raiz-odontologia",
+              "posicao": 2
+            },
+            {
+              "estabelecimento": "espaco-dental-teodoro",
+              "posicao": 3
+            }
+          ],
+          "recibo": "recibos/r3-p3-m1-x2.json"
+        },
+        {
+          "id": "r3-p3-m1-x3",
+          "prompt_idx": 2,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 3,
+          "citados": [
+            {
+              "estabelecimento": "instituto-oral-pinheiros",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "odontocenter-fradique",
+              "posicao": 2
+            }
+          ],
+          "recibo": "recibos/r3-p3-m1-x3.json"
+        },
+        {
+          "id": "r3-p3-m1-x4",
+          "prompt_idx": 2,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 4,
+          "citados": [
+            {
+              "estabelecimento": "clinica-sorriso-pinheiros",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "instituto-oral-pinheiros",
+              "posicao": 2
+            },
+            {
+              "estabelecimento": "odontocenter-fradique",
+              "posicao": 3
+            }
+          ],
+          "recibo": "recibos/r3-p3-m1-x4.json"
+        },
+        {
+          "id": "r3-p3-m1-x5",
+          "prompt_idx": 2,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 5,
+          "citados": [
+            {
+              "estabelecimento": "clinica-vertice-odonto",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "clinica-raiz-odontologia",
+              "posicao": 2
+            },
+            {
+              "estabelecimento": "dra-marina-fonseca-odontologia",
+              "posicao": 3
+            },
+            {
+              "estabelecimento": "espaco-dental-teodoro",
+              "posicao": 4
+            }
+          ],
+          "recibo": "recibos/r3-p3-m1-x5.json"
+        }
+      ]
+    },
+    {
+      "numero": 2,
+      "apurada_em": "2026-07-26",
+      "execucoes": [
+        {
+          "id": "r2-p1-m1-x1",
+          "prompt_idx": 0,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 1,
+          "citados": [
+            {
+              "estabelecimento": "clinica-sorriso-pinheiros",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "instituto-oral-pinheiros",
+              "posicao": 2
+            }
+          ],
+          "recibo": "recibos/r2-p1-m1-x1.json"
+        },
+        {
+          "id": "r2-p1-m1-x2",
+          "prompt_idx": 0,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 2,
+          "citados": [
+            {
+              "estabelecimento": "clinica-sorriso-pinheiros",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "odontocenter-fradique",
+              "posicao": 2
+            },
+            {
+              "estabelecimento": "clinica-raiz-odontologia",
+              "posicao": 3
+            }
+          ],
+          "recibo": "recibos/r2-p1-m1-x2.json"
+        },
+        {
+          "id": "r2-p1-m1-x3",
+          "prompt_idx": 0,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 3,
+          "citados": [
+            {
+              "estabelecimento": "clinica-sorriso-pinheiros",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "clinica-raiz-odontologia",
+              "posicao": 2
+            },
+            {
+              "estabelecimento": "odontocenter-fradique",
+              "posicao": 3
+            }
+          ],
+          "recibo": "recibos/r2-p1-m1-x3.json"
+        },
+        {
+          "id": "r2-p1-m1-x4",
+          "prompt_idx": 0,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 4,
+          "citados": [
+            {
+              "estabelecimento": "clinica-sorriso-pinheiros",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "clinica-raiz-odontologia",
+              "posicao": 2
+            },
+            {
+              "estabelecimento": "instituto-oral-pinheiros",
+              "posicao": 3
+            }
+          ],
+          "recibo": "recibos/r2-p1-m1-x4.json"
+        },
+        {
+          "id": "r2-p1-m1-x5",
+          "prompt_idx": 0,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 5,
+          "citados": [
+            {
+              "estabelecimento": "instituto-oral-pinheiros",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "clinica-sorriso-pinheiros",
+              "posicao": 2
+            },
+            {
+              "estabelecimento": "odontocenter-fradique",
+              "posicao": 3
+            }
+          ],
+          "recibo": "recibos/r2-p1-m1-x5.json"
+        },
+        {
+          "id": "r2-p2-m1-x1",
+          "prompt_idx": 1,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 1,
+          "citados": [
+            {
+              "estabelecimento": "clinica-sorriso-pinheiros",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "instituto-oral-pinheiros",
+              "posicao": 2
+            },
+            {
+              "estabelecimento": "odontocenter-fradique",
+              "posicao": 3
+            }
+          ],
+          "recibo": "recibos/r2-p2-m1-x1.json"
+        },
+        {
+          "id": "r2-p2-m1-x2",
+          "prompt_idx": 1,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 2,
+          "citados": [
+            {
+              "estabelecimento": "instituto-oral-pinheiros",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "clinica-sorriso-pinheiros",
+              "posicao": 2
+            },
+            {
+              "estabelecimento": "odontocenter-fradique",
+              "posicao": 3
+            }
+          ],
+          "recibo": "recibos/r2-p2-m1-x2.json"
+        },
+        {
+          "id": "r2-p2-m1-x3",
+          "prompt_idx": 1,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 3,
+          "citados": [
+            {
+              "estabelecimento": "clinica-sorriso-pinheiros",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "clinica-vertice-odonto",
+              "posicao": 2
+            }
+          ],
+          "recibo": "recibos/r2-p2-m1-x3.json"
+        },
+        {
+          "id": "r2-p2-m1-x4",
+          "prompt_idx": 1,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 4,
+          "citados": [
+            {
+              "estabelecimento": "clinica-sorriso-pinheiros",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "instituto-oral-pinheiros",
+              "posicao": 2
+            },
+            {
+              "estabelecimento": "clinica-raiz-odontologia",
+              "posicao": 3
+            },
+            {
+              "estabelecimento": "clinica-vertice-odonto",
+              "posicao": 4
+            }
+          ],
+          "recibo": "recibos/r2-p2-m1-x4.json"
+        },
+        {
+          "id": "r2-p2-m1-x5",
+          "prompt_idx": 1,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 5,
+          "citados": [
+            {
+              "estabelecimento": "clinica-raiz-odontologia",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "dra-marina-fonseca-odontologia",
+              "posicao": 2
+            }
+          ],
+          "recibo": "recibos/r2-p2-m1-x5.json"
+        },
+        {
+          "id": "r2-p3-m1-x1",
+          "prompt_idx": 2,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 1,
+          "citados": [
+            {
+              "estabelecimento": "clinica-sorriso-pinheiros",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "dra-marina-fonseca-odontologia",
+              "posicao": 2
+            },
+            {
+              "estabelecimento": "odontocenter-fradique",
+              "posicao": 3
+            }
+          ],
+          "recibo": "recibos/r2-p3-m1-x1.json"
+        },
+        {
+          "id": "r2-p3-m1-x2",
+          "prompt_idx": 2,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 2,
+          "citados": [
+            {
+              "estabelecimento": "clinica-sorriso-pinheiros",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "clinica-vertice-odonto",
+              "posicao": 2
+            },
+            {
+              "estabelecimento": "odontocenter-fradique",
+              "posicao": 3
+            }
+          ],
+          "recibo": "recibos/r2-p3-m1-x2.json"
+        },
+        {
+          "id": "r2-p3-m1-x3",
+          "prompt_idx": 2,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 3,
+          "citados": [
+            {
+              "estabelecimento": "instituto-oral-pinheiros",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "odontocenter-fradique",
+              "posicao": 2
+            },
+            {
+              "estabelecimento": "clinica-raiz-odontologia",
+              "posicao": 3
+            },
+            {
+              "estabelecimento": "odonto-largo-da-batata",
+              "posicao": 4
+            }
+          ],
+          "recibo": "recibos/r2-p3-m1-x3.json"
+        },
+        {
+          "id": "r2-p3-m1-x4",
+          "prompt_idx": 2,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 4,
+          "citados": [
+            {
+              "estabelecimento": "clinica-sorriso-pinheiros",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "dra-marina-fonseca-odontologia",
+              "posicao": 2
+            },
+            {
+              "estabelecimento": "clinica-vertice-odonto",
+              "posicao": 3
+            }
+          ],
+          "recibo": "recibos/r2-p3-m1-x4.json"
+        },
+        {
+          "id": "r2-p3-m1-x5",
+          "prompt_idx": 2,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 5,
+          "citados": [
+            {
+              "estabelecimento": "instituto-oral-pinheiros",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "clinica-raiz-odontologia",
+              "posicao": 2
+            }
+          ],
+          "recibo": "recibos/r2-p3-m1-x5.json"
+        }
+      ]
+    },
+    {
+      "numero": 1,
+      "apurada_em": "2026-07-19",
+      "execucoes": [
+        {
+          "id": "r1-p1-m1-x1",
+          "prompt_idx": 0,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 1,
+          "citados": [
+            {
+              "estabelecimento": "clinica-sorriso-pinheiros",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "odontocenter-fradique",
+              "posicao": 2
+            },
+            {
+              "estabelecimento": "clinica-raiz-odontologia",
+              "posicao": 3
+            }
+          ],
+          "recibo": "recibos/r1-p1-m1-x1.json"
+        },
+        {
+          "id": "r1-p1-m1-x2",
+          "prompt_idx": 0,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 2,
+          "citados": [
+            {
+              "estabelecimento": "odontocenter-fradique",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "clinica-sorriso-pinheiros",
+              "posicao": 2
+            },
+            {
+              "estabelecimento": "clinica-raiz-odontologia",
+              "posicao": 3
+            }
+          ],
+          "recibo": "recibos/r1-p1-m1-x2.json"
+        },
+        {
+          "id": "r1-p1-m1-x3",
+          "prompt_idx": 0,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 3,
+          "citados": [
+            {
+              "estabelecimento": "clinica-sorriso-pinheiros",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "odontocenter-fradique",
+              "posicao": 2
+            }
+          ],
+          "recibo": "recibos/r1-p1-m1-x3.json"
+        },
+        {
+          "id": "r1-p1-m1-x4",
+          "prompt_idx": 0,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 4,
+          "citados": [
+            {
+              "estabelecimento": "instituto-oral-pinheiros",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "clinica-sorriso-pinheiros",
+              "posicao": 2
+            },
+            {
+              "estabelecimento": "clinica-raiz-odontologia",
+              "posicao": 3
+            }
+          ],
+          "recibo": "recibos/r1-p1-m1-x4.json"
+        },
+        {
+          "id": "r1-p1-m1-x5",
+          "prompt_idx": 0,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 5,
+          "citados": [
+            {
+              "estabelecimento": "odontocenter-fradique",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "clinica-sorriso-pinheiros",
+              "posicao": 2
+            }
+          ],
+          "recibo": "recibos/r1-p1-m1-x5.json"
+        },
+        {
+          "id": "r1-p2-m1-x1",
+          "prompt_idx": 1,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 1,
+          "citados": [
+            {
+              "estabelecimento": "instituto-oral-pinheiros",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "clinica-sorriso-pinheiros",
+              "posicao": 2
+            },
+            {
+              "estabelecimento": "clinica-vertice-odonto",
+              "posicao": 3
+            }
+          ],
+          "recibo": "recibos/r1-p2-m1-x1.json"
+        },
+        {
+          "id": "r1-p2-m1-x2",
+          "prompt_idx": 1,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 2,
+          "citados": [
+            {
+              "estabelecimento": "instituto-oral-pinheiros",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "clinica-sorriso-pinheiros",
+              "posicao": 2
+            },
+            {
+              "estabelecimento": "clinica-raiz-odontologia",
+              "posicao": 3
+            }
+          ],
+          "recibo": "recibos/r1-p2-m1-x2.json"
+        },
+        {
+          "id": "r1-p2-m1-x3",
+          "prompt_idx": 1,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 3,
+          "citados": [
+            {
+              "estabelecimento": "clinica-sorriso-pinheiros",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "odontocenter-fradique",
+              "posicao": 2
+            },
+            {
+              "estabelecimento": "clinica-vertice-odonto",
+              "posicao": 3
+            },
+            {
+              "estabelecimento": "clinica-raiz-odontologia",
+              "posicao": 4
+            }
+          ],
+          "recibo": "recibos/r1-p2-m1-x3.json"
+        },
+        {
+          "id": "r1-p2-m1-x4",
+          "prompt_idx": 1,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 4,
+          "citados": [
+            {
+              "estabelecimento": "instituto-oral-pinheiros",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "odontocenter-fradique",
+              "posicao": 2
+            }
+          ],
+          "recibo": "recibos/r1-p2-m1-x4.json"
+        },
+        {
+          "id": "r1-p2-m1-x5",
+          "prompt_idx": 1,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 5,
+          "citados": [
+            {
+              "estabelecimento": "clinica-sorriso-pinheiros",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "clinica-raiz-odontologia",
+              "posicao": 2
+            },
+            {
+              "estabelecimento": "clinica-vertice-odonto",
+              "posicao": 3
+            }
+          ],
+          "recibo": "recibos/r1-p2-m1-x5.json"
+        },
+        {
+          "id": "r1-p3-m1-x1",
+          "prompt_idx": 2,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 1,
+          "citados": [
+            {
+              "estabelecimento": "instituto-oral-pinheiros",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "clinica-raiz-odontologia",
+              "posicao": 2
+            },
+            {
+              "estabelecimento": "dra-marina-fonseca-odontologia",
+              "posicao": 3
+            }
+          ],
+          "recibo": "recibos/r1-p3-m1-x1.json"
+        },
+        {
+          "id": "r1-p3-m1-x2",
+          "prompt_idx": 2,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 2,
+          "citados": [
+            {
+              "estabelecimento": "odontocenter-fradique",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "clinica-vertice-odonto",
+              "posicao": 2
+            }
+          ],
+          "recibo": "recibos/r1-p3-m1-x2.json"
+        },
+        {
+          "id": "r1-p3-m1-x3",
+          "prompt_idx": 2,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 3,
+          "citados": [
+            {
+              "estabelecimento": "clinica-sorriso-pinheiros",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "instituto-oral-pinheiros",
+              "posicao": 2
+            },
+            {
+              "estabelecimento": "dra-marina-fonseca-odontologia",
+              "posicao": 3
+            },
+            {
+              "estabelecimento": "odonto-largo-da-batata",
+              "posicao": 4
+            }
+          ],
+          "recibo": "recibos/r1-p3-m1-x3.json"
+        },
+        {
+          "id": "r1-p3-m1-x4",
+          "prompt_idx": 2,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 4,
+          "citados": [
+            {
+              "estabelecimento": "odontocenter-fradique",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "clinica-sorriso-pinheiros",
+              "posicao": 2
+            },
+            {
+              "estabelecimento": "dra-marina-fonseca-odontologia",
+              "posicao": 3
+            }
+          ],
+          "recibo": "recibos/r1-p3-m1-x4.json"
+        },
+        {
+          "id": "r1-p3-m1-x5",
+          "prompt_idx": 2,
+          "modelo": "gemini-flash-grounding",
+          "repeticao": 5,
+          "citados": [
+            {
+              "estabelecimento": "clinica-vertice-odonto",
+              "posicao": 1
+            },
+            {
+              "estabelecimento": "clinica-raiz-odontologia",
+              "posicao": 2
+            }
+          ],
+          "recibo": "recibos/r1-p3-m1-x5.json"
+        }
+      ]
+    }
+  ],
+  "estabelecimentos": {
+    "clinica-sorriso-pinheiros": {
+      "nome": "Clínica Sorriso Pinheiros",
+      "aliases": [
+        "Sorriso Odontologia",
+        "Sorriso Pinheiros"
+      ]
+    },
+    "instituto-oral-pinheiros": {
+      "nome": "Instituto Oral Pinheiros",
+      "aliases": [
+        "Instituto Oral"
+      ]
+    },
+    "odontocenter-fradique": {
+      "nome": "OdontoCenter Fradique Coutinho",
+      "aliases": [
+        "OdontoCenter",
+        "Odonto Center Fradique"
+      ]
+    },
+    "espaco-dental-teodoro": {
+      "nome": "Espaço Dental Teodoro Sampaio",
+      "aliases": [
+        "Espaço Dental Teodoro"
+      ]
+    },
+    "clinica-raiz-odontologia": {
+      "nome": "Clínica Raiz Odontologia",
+      "aliases": [
+        "Raiz Odonto"
+      ]
+    },
+    "dra-marina-fonseca-odontologia": {
+      "nome": "Dra. Marina Fonseca Odontologia",
+      "aliases": [
+        "Marina Fonseca",
+        "Consultório Marina Fonseca"
+      ]
+    },
+    "clinica-vertice-odonto": {
+      "nome": "Clínica Vértice Odonto",
+      "aliases": [
+        "Vértice Odonto"
+      ]
+    },
+    "odonto-largo-da-batata": {
+      "nome": "Odonto Largo da Batata",
+      "aliases": [
+        "Largo da Batata Odontologia"
+      ]
+    }
+  }
+}

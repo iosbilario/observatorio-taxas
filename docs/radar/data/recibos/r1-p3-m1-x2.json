@@ -1,0 +1,22 @@
+{
+  "id": "r1-p3-m1-x2",
+  "quando": "2026-07-19T07:17:13-03:00",
+  "modelo": "gemini-flash-grounding",
+  "prompt": "preciso de dentista perto de Pinheiros, quem você recomenda?",
+  "resposta_bruta": "Na região de Pinheiros e arredores, estas costumam ser bem recomendadas:\n\n1. **OdontoCenter Fradique Coutinho** — clínica geral e ortodontia; as avaliações elogiam bastante a pontualidade no horário marcado\n2. **Vértice Odonto** — forte em implantes e próteses, com atendimento também aos sábados pela manhã\n\nAntes de fechar, compare orçamentos: a diferença entre clínicas costuma ser relevante.",
+  "fontes_citadas": [
+    {
+      "titulo": "Avaliações — OdontoCenter Fradique Coutinho",
+      "url": "https://exemplo.invalid/avaliacoes/odontocenter-fradique-coutinho"
+    },
+    {
+      "titulo": "Avaliações — Clínica Vértice Odonto",
+      "url": "https://exemplo.invalid/avaliacoes/clinica-vertice-odonto"
+    },
+    {
+      "titulo": "Odontologia em Pinheiros — busca local",
+      "url": "https://exemplo.invalid/busca/odontologia-pinheiros-sp"
+    }
+  ],
+  "demonstracao": true
+}

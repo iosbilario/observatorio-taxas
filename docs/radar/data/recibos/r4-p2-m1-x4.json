@@ -1,0 +1,22 @@
+{
+  "id": "r4-p2-m1-x4",
+  "quando": "2026-08-09T06:56:04-03:00",
+  "modelo": "gemini-flash-grounding",
+  "prompt": "qual a melhor clínica odontológica em Pinheiros SP?",
+  "resposta_bruta": "Considerando avaliações recentes e reputação na região de Pinheiros:\n\n1. **Clínica Sorriso Pinheiros** — estrutura pequena mas bem avaliada; costuma ter encaixe para urgência\n2. **OdontoCenter Fradique Coutinho** — clínica geral e ortodontia; as avaliações elogiam bastante a pontualidade no horário marcado\n3. **Clínica Raiz Odontologia** — forte em implantes e próteses, com atendimento também aos sábados pela manhã\n\nVale confirmar convênio e disponibilidade antes de agendar.",
+  "fontes_citadas": [
+    {
+      "titulo": "Avaliações — Clínica Sorriso Pinheiros",
+      "url": "https://exemplo.invalid/avaliacoes/clinica-sorriso-pinheiros"
+    },
+    {
+      "titulo": "Avaliações — OdontoCenter Fradique Coutinho",
+      "url": "https://exemplo.invalid/avaliacoes/odontocenter-fradique-coutinho"
+    },
+    {
+      "titulo": "Odontologia em Pinheiros — busca local",
+      "url": "https://exemplo.invalid/busca/odontologia-pinheiros-sp"
+    }
+  ],
+  "demonstracao": true
+}

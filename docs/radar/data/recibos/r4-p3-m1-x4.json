@@ -1,0 +1,22 @@
+{
+  "id": "r4-p3-m1-x4",
+  "quando": "2026-08-09T07:31:59-03:00",
+  "modelo": "gemini-flash-grounding",
+  "prompt": "preciso de dentista perto de Pinheiros, quem você recomenda?",
+  "resposta_bruta": "Perto de Pinheiros, algumas clínicas com boa reputação e agenda razoavelmente flexível:\n\n1. **OdontoCenter Fradique Coutinho** — boas avaliações em odontopediatria e clínica geral\n2. **Espaço Dental Teodoro Sampaio** — aparece com frequência em recomendações locais por causa do atendimento e da transparência no orçamento\n3. **Largo da Batata Odontologia** — estrutura pequena mas bem avaliada; costuma ter encaixe para urgência\n\nSugiro checar as avaliações mais recentes e ligar para confirmar o atendimento pelo seu plano.",
+  "fontes_citadas": [
+    {
+      "titulo": "Avaliações — OdontoCenter Fradique Coutinho",
+      "url": "https://exemplo.invalid/avaliacoes/odontocenter-fradique-coutinho"
+    },
+    {
+      "titulo": "Avaliações — Espaço Dental Teodoro Sampaio",
+      "url": "https://exemplo.invalid/avaliacoes/espaco-dental-teodoro-sampaio"
+    },
+    {
+      "titulo": "Odontologia em Pinheiros — busca local",
+      "url": "https://exemplo.invalid/busca/odontologia-pinheiros-sp"
+    }
+  ],
+  "demonstracao": true
+}

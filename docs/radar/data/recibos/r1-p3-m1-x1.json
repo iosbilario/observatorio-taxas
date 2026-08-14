@@ -1,0 +1,22 @@
+{
+  "id": "r1-p3-m1-x1",
+  "quando": "2026-07-19T07:10:50-03:00",
+  "modelo": "gemini-flash-grounding",
+  "prompt": "preciso de dentista perto de Pinheiros, quem você recomenda?",
+  "resposta_bruta": "Na região de Pinheiros e arredores, estas costumam ser bem recomendadas:\n\n1. **Instituto Oral Pinheiros** — forte em implantes e próteses, com atendimento também aos sábados pela manhã\n2. **Clínica Raiz Odontologia** — bem falada em estética dental e clareamento\n3. **Dra. Marina Fonseca Odontologia** — boas avaliações em odontopediatria e clínica geral\n\nVale confirmar convênio e disponibilidade antes de agendar.",
+  "fontes_citadas": [
+    {
+      "titulo": "Avaliações — Instituto Oral Pinheiros",
+      "url": "https://exemplo.invalid/avaliacoes/instituto-oral-pinheiros"
+    },
+    {
+      "titulo": "Avaliações — Clínica Raiz Odontologia",
+      "url": "https://exemplo.invalid/avaliacoes/clinica-raiz-odontologia"
+    },
+    {
+      "titulo": "Odontologia em Pinheiros — busca local",
+      "url": "https://exemplo.invalid/busca/odontologia-pinheiros-sp"
+    }
+  ],
+  "demonstracao": true
+}

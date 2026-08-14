@@ -1,0 +1,87 @@
+{
+  "estabelecimentos": [
+    {
+      "slug": "clinica-sorriso-pinheiros",
+      "nome": "Clínica Sorriso Pinheiros",
+      "aliases": [
+        "Sorriso Odontologia",
+        "Sorriso Pinheiros"
+      ],
+      "sonda": "odontologia-pinheiros-sp",
+      "nicho": "Clínicas odontológicas",
+      "localidade": "Pinheiros, São Paulo"
+    },
+    {
+      "slug": "instituto-oral-pinheiros",
+      "nome": "Instituto Oral Pinheiros",
+      "aliases": [
+        "Instituto Oral"
+      ],
+      "sonda": "odontologia-pinheiros-sp",
+      "nicho": "Clínicas odontológicas",
+      "localidade": "Pinheiros, São Paulo"
+    },
+    {
+      "slug": "odontocenter-fradique",
+      "nome": "OdontoCenter Fradique Coutinho",
+      "aliases": [
+        "OdontoCenter",
+        "Odonto Center Fradique"
+      ],
+      "sonda": "odontologia-pinheiros-sp",
+      "nicho": "Clínicas odontológicas",
+      "localidade": "Pinheiros, São Paulo"
+    },
+    {
+      "slug": "espaco-dental-teodoro",
+      "nome": "Espaço Dental Teodoro Sampaio",
+      "aliases": [
+        "Espaço Dental Teodoro"
+      ],
+      "sonda": "odontologia-pinheiros-sp",
+      "nicho": "Clínicas odontológicas",
+      "localidade": "Pinheiros, São Paulo"
+    },
+    {
+      "slug": "clinica-raiz-odontologia",
+      "nome": "Clínica Raiz Odontologia",
+      "aliases": [
+        "Raiz Odonto"
+      ],
+      "sonda": "odontologia-pinheiros-sp",
+      "nicho": "Clínicas odontológicas",
+      "localidade": "Pinheiros, São Paulo"
+    },
+    {
+      "slug": "dra-marina-fonseca-odontologia",
+      "nome": "Dra. Marina Fonseca Odontologia",
+      "aliases": [
+        "Marina Fonseca",
+        "Consultório Marina Fonseca"
+      ],
+      "sonda": "odontologia-pinheiros-sp",
+      "nicho": "Clínicas odontológicas",
+      "localidade": "Pinheiros, São Paulo"
+    },
+    {
+      "slug": "clinica-vertice-odonto",
+      "nome": "Clínica Vértice Odonto",
+      "aliases": [
+        "Vértice Odonto"
+      ],
+      "sonda": "odontologia-pinheiros-sp",
+      "nicho": "Clínicas odontológicas",
+      "localidade": "Pinheiros, São Paulo"
+    },
+    {
+      "slug": "odonto-largo-da-batata",
+      "nome": "Odonto Largo da Batata",
+      "aliases": [
+        "Largo da Batata Odontologia"
+      ],
+      "sonda": "odontologia-pinheiros-sp",
+      "nicho": "Clínicas odontológicas",
+      "localidade": "Pinheiros, São Paulo"
+    }
+  ]
+}

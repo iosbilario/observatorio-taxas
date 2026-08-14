@@ -1,0 +1,22 @@
+{
+  "id": "r4-p1-m1-x1",
+  "quando": "2026-08-09T06:00:00-03:00",
+  "modelo": "gemini-flash-grounding",
+  "prompt": "me indica um dentista bom em Pinheiros",
+  "resposta_bruta": "Procurei clínicas bem avaliadas na região de Pinheiros. As que aparecem com mais consistência são:\n\n1. **Instituto Oral** — aparece com frequência em recomendações locais por causa do atendimento e da transparência no orçamento\n2. **Clínica Sorriso Pinheiros** — trabalha com os principais convênios e faz avaliação inicial sem custo\n3. **OdontoCenter** — clínica geral e ortodontia; as avaliações elogiam bastante a pontualidade no horário marcado\n\nAntes de fechar, compare orçamentos: a diferença entre clínicas costuma ser relevante.",
+  "fontes_citadas": [
+    {
+      "titulo": "Avaliações — Instituto Oral Pinheiros",
+      "url": "https://exemplo.invalid/avaliacoes/instituto-oral-pinheiros"
+    },
+    {
+      "titulo": "Avaliações — Clínica Sorriso Pinheiros",
+      "url": "https://exemplo.invalid/avaliacoes/clinica-sorriso-pinheiros"
+    },
+    {
+      "titulo": "Odontologia em Pinheiros — busca local",
+      "url": "https://exemplo.invalid/busca/odontologia-pinheiros-sp"
+    }
+  ],
+  "demonstracao": true
+}

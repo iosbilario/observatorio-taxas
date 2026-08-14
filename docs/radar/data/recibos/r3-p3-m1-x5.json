@@ -1,0 +1,22 @@
+{
+  "id": "r3-p3-m1-x5",
+  "quando": "2026-08-02T07:38:22-03:00",
+  "modelo": "gemini-flash-grounding",
+  "prompt": "preciso de dentista perto de Pinheiros, quem você recomenda?",
+  "resposta_bruta": "Perto de Pinheiros, algumas clínicas com boa reputação e agenda razoavelmente flexível:\n\n1. **Clínica Vértice Odonto** — trabalha com os principais convênios e faz avaliação inicial sem custo\n2. **Clínica Raiz Odontologia** — boas avaliações em odontopediatria e clínica geral\n3. **Marina Fonseca** — bem falada em estética dental e clareamento\n4. **Espaço Dental Teodoro Sampaio** — atende várias especialidades no mesmo endereço, o que ajuda quando o tratamento é longo\n\nSugiro checar as avaliações mais recentes e ligar para confirmar o atendimento pelo seu plano.",
+  "fontes_citadas": [
+    {
+      "titulo": "Avaliações — Clínica Vértice Odonto",
+      "url": "https://exemplo.invalid/avaliacoes/clinica-vertice-odonto"
+    },
+    {
+      "titulo": "Avaliações — Clínica Raiz Odontologia",
+      "url": "https://exemplo.invalid/avaliacoes/clinica-raiz-odontologia"
+    },
+    {
+      "titulo": "Odontologia em Pinheiros — busca local",
+      "url": "https://exemplo.invalid/busca/odontologia-pinheiros-sp"
+    }
+  ],
+  "demonstracao": true
+}

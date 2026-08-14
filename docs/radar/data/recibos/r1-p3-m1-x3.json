@@ -1,0 +1,22 @@
+{
+  "id": "r1-p3-m1-x3",
+  "quando": "2026-07-19T07:24:36-03:00",
+  "modelo": "gemini-flash-grounding",
+  "prompt": "preciso de dentista perto de Pinheiros, quem você recomenda?",
+  "resposta_bruta": "Separei opções próximas a Pinheiros que aparecem bem avaliadas:\n\n1. **Clínica Sorriso Pinheiros** — clínica geral e ortodontia; as avaliações elogiam bastante a pontualidade no horário marcado\n2. **Instituto Oral** — boas avaliações em odontopediatria e clínica geral\n3. **Marina Fonseca** — forte em implantes e próteses, com atendimento também aos sábados pela manhã\n4. **Odonto Largo da Batata** — atende várias especialidades no mesmo endereço, o que ajuda quando o tratamento é longo\n\nAntes de fechar, compare orçamentos: a diferença entre clínicas costuma ser relevante.",
+  "fontes_citadas": [
+    {
+      "titulo": "Avaliações — Clínica Sorriso Pinheiros",
+      "url": "https://exemplo.invalid/avaliacoes/clinica-sorriso-pinheiros"
+    },
+    {
+      "titulo": "Avaliações — Instituto Oral Pinheiros",
+      "url": "https://exemplo.invalid/avaliacoes/instituto-oral-pinheiros"
+    },
+    {
+      "titulo": "Odontologia em Pinheiros — busca local",
+      "url": "https://exemplo.invalid/busca/odontologia-pinheiros-sp"
+    }
+  ],
+  "demonstracao": true
+}

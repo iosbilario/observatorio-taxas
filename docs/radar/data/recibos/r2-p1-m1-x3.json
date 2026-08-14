@@ -1,0 +1,22 @@
+{
+  "id": "r2-p1-m1-x3",
+  "quando": "2026-07-26T06:14:46-03:00",
+  "modelo": "gemini-flash-grounding",
+  "prompt": "me indica um dentista bom em Pinheiros",
+  "resposta_bruta": "Procurei clínicas bem avaliadas na região de Pinheiros. As que aparecem com mais consistência são:\n\n1. **Clínica Sorriso Pinheiros** — forte em implantes e próteses, com atendimento também aos sábados pela manhã\n2. **Raiz Odonto** — aparece com frequência em recomendações locais por causa do atendimento e da transparência no orçamento\n3. **OdontoCenter Fradique Coutinho** — clínica geral e ortodontia; as avaliações elogiam bastante a pontualidade no horário marcado\n\nSugiro checar as avaliações mais recentes e ligar para confirmar o atendimento pelo seu plano.",
+  "fontes_citadas": [
+    {
+      "titulo": "Avaliações — Clínica Sorriso Pinheiros",
+      "url": "https://exemplo.invalid/avaliacoes/clinica-sorriso-pinheiros"
+    },
+    {
+      "titulo": "Avaliações — Clínica Raiz Odontologia",
+      "url": "https://exemplo.invalid/avaliacoes/clinica-raiz-odontologia"
+    },
+    {
+      "titulo": "Odontologia em Pinheiros — busca local",
+      "url": "https://exemplo.invalid/busca/odontologia-pinheiros-sp"
+    }
+  ],
+  "demonstracao": true
+}
