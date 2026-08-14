@@ -42,7 +42,11 @@ observatorio-taxas/
 ├── scripts/fetch.py                # coletor SGS/BACEN + resumo grátis das mudanças
 ├── scripts/backfill.py             # carga inicial do histórico (N anos; padrão 2)
 ├── scripts/diff_summary.py         # upgrade opcional/pago: resumo via API da Anthropic
+├── partials/nav.html               # bloco canônico do header (fora de docs/: não é servido)
+├── scripts/sync_nav.py             # replica o header em todas as páginas de docs/
+├── docs/nav.css                    # estilo do header, compartilhado por todas as páginas
 ├── docs/index.html                 # landing page + dashboard interativo (Chart.js) — via Pages
+├── docs/radar/                     # Radar de Recomendação (produto próprio; ver docs/radar/README.md)
 ├── docs/data/                      # espelho dos JSONs que a página lê (servido por /docs)
 ├── docs/og-image.png               # imagem de compartilhamento (Open Graph / Twitter)
 ├── docs/robots.txt, sitemap.xml    # SEO / indexação
@@ -53,6 +57,38 @@ observatorio-taxas/
 ├── .gitignore                      # padrão Python + .claude/ (config local de preview)
 └── README.md
 ```
+
+## Navegação do site
+
+O header é **HTML estático dentro de cada página**, nunca injetado por
+JavaScript: crawler de LLM em geral não executa JS, e ser legível por máquina é
+estratégia central deste site. Também é o que faz o menu funcionar com JS
+desligado e com o site aberto do disco (`file://`).
+
+A fonte da verdade é [`partials/nav.html`](partials/nav.html) — fora de `docs/`
+porque `docs/` é o que o Pages serve. Ele é replicado em cada página entre os
+marcadores `nav:start` e `nav:end` por:
+
+```bash
+python scripts/sync_nav.py
+```
+
+O script ajusta por página o prefixo relativo dos links (`../`), o item ativo
+(`aria-current="page"`), a classe `tema-radar` nas páginas do Radar e o `<link>`
+para `nav.css`. É idempotente.
+
+**Página nova:** não precisa fazer nada além de rodar o script — ele insere os
+marcadores sozinho, logo depois do skip link. Se quiser controlar a posição,
+coloque `<!-- nav:start -->` e `<!-- nav:end -->` onde o header deve ficar.
+
+**Não edite o header dentro das páginas**: a próxima sincronização desfaz. Edite
+o partial e rode o script. `python scripts/sync_nav.py --conferir` falha se
+alguma página estiver fora de sincronia (útil em CI).
+
+O passo roda no workflow **depois** de `build_pages.py` e `build_correcao.py`,
+que reescrevem as ~518 páginas de reajuste e correção a cada coleta — sem isso o
+header sumiria delas. Ficam de fora, de propósito, `docs/embed.html` (payload de
+iframe em sites de terceiros) e `docs/admin/index.html` (painel interno).
 
 ## Rodando localmente
 
