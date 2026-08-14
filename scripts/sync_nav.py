@@ -60,12 +60,11 @@ def chave_ativa(rel: str) -> str | None:
         return "var"
     if rel == "retransmissora.html":
         return "embeds"
-    if rel.startswith("radar/"):
-        return "radar"
     if rel.startswith("reajuste/"):
         return "reajuste"
-    # correcao/**: alcançada de dentro do hub de Reajuste, sem item próprio
-    # no menu (teto de 6). Sem item, sem aria-current — mentir seria pior.
+    # correcao/** e radar/**: sem item próprio no menu. Correção é alcançada
+    # de dentro do hub de Reajuste; o Radar saiu do menu enquanto o coletor
+    # não está no ar. Sem item, sem aria-current — mentir seria pior.
     return None
 
 
