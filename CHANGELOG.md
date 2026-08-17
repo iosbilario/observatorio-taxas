@@ -517,3 +517,9 @@
     ↳ Poupança - rendimento (%): caiu de 0,6699 para 0,6446.
 [2026-08-17 12:21:26 +0000] IBC-Br - índice (proxy do PIB): 109.53002 -> 109.89427
     ↳ IBC-Br - índice (proxy do PIB): subiu de 109,53 para 109,8943.
+[2026-08-17 18:22:34 +0000] Câmbio USD/BRL - venda: 5.2236 -> 5.2014
+    ↳ Câmbio USD/BRL - venda: caiu de 5,2236 para 5,2014.
+[2026-08-17 18:22:34 +0000] Câmbio USD/BRL - compra: 5.2230 -> 5.2008
+    ↳ Câmbio USD/BRL - compra: caiu de 5,223 para 5,2008.
+[2026-08-17 18:22:34 +0000] Câmbio EUR/BRL - venda: 6.0500000 -> 6.0289000
+    ↳ Câmbio EUR/BRL - venda: caiu de 6,05 para 6,0289.

@@ -1,6 +1,6 @@
 {
-  "gerado_em": "2026-08-17T09:21:42-03:00",
-  "gerado_em_fmt": "17/08/2026 às 09:21",
+  "gerado_em": "2026-08-17T15:22:51-03:00",
+  "gerado_em_fmt": "17/08/2026 às 15:22",
   "grupos": {
     "Admin": {
       "acessos": 0,
@@ -20,12 +20,12 @@
       "sub": {}
     },
     "Reajuste": {
-      "acessos": 16,
+      "acessos": 17,
       "sub": {
         "IGP-DI": 1,
         "IGP-M": 4,
         "INPC": 0,
-        "IPCA": 7
+        "IPCA": 8
       }
     }
   },
@@ -151,7 +151,7 @@
       "data": "2026-08-16"
     },
     {
-      "acessos": 0,
+      "acessos": 1,
       "data": "2026-08-17"
     }
   ],
@@ -200,6 +200,10 @@
     },
     {
       "count": 1,
+      "path": "/reajuste/ipca-junho-2026"
+    },
+    {
+      "count": 1,
       "path": "/radar/negocio.html?e=odontocenter-fradique"
     },
     {
@@ -213,20 +217,16 @@
     {
       "count": 1,
       "path": "/radar/sonda.html?s=odontologia-pinheiros-sp"
-    },
-    {
-      "count": 1,
-      "path": "/radar/sonda.html?s=barbearias-vila-madalena-sp"
     }
   ],
   "totais": {
     "all_time": {
-      "acessos": 175,
-      "visitantes": 175
+      "acessos": 176,
+      "visitantes": 176
     },
     "ultimos_30d": {
-      "acessos": 71,
-      "visitantes": 71
+      "acessos": 72,
+      "visitantes": 72
     }
   }
 }
