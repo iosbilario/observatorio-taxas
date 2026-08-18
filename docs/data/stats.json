@@ -1,6 +1,6 @@
 {
-  "gerado_em": "2026-08-17T15:22:51-03:00",
-  "gerado_em_fmt": "17/08/2026 às 15:22",
+  "gerado_em": "2026-08-17T21:37:31-03:00",
+  "gerado_em_fmt": "17/08/2026 às 21:37",
   "grupos": {
     "Admin": {
       "acessos": 0,
@@ -20,11 +20,11 @@
       "sub": {}
     },
     "Reajuste": {
-      "acessos": 17,
+      "acessos": 19,
       "sub": {
         "IGP-DI": 1,
-        "IGP-M": 4,
-        "INPC": 0,
+        "IGP-M": 5,
+        "INPC": 1,
         "IPCA": 8
       }
     }
@@ -151,7 +151,7 @@
       "data": "2026-08-16"
     },
     {
-      "acessos": 1,
+      "acessos": 3,
       "data": "2026-08-17"
     }
   ],
@@ -187,7 +187,7 @@
       "path": "/reajuste/ipca-maio-2026"
     },
     {
-      "count": 2,
+      "count": 3,
       "path": "/reajuste/igpm-julho-2026"
     },
     {
@@ -197,6 +197,10 @@
     {
       "count": 2,
       "path": "/observatorio-taxas"
+    },
+    {
+      "count": 1,
+      "path": "/reajuste/inpc-outubro-2023"
     },
     {
       "count": 1,
@@ -213,20 +217,16 @@
     {
       "count": 1,
       "path": "/reajuste/ipca-dezembro-2015"
-    },
-    {
-      "count": 1,
-      "path": "/radar/sonda.html?s=odontologia-pinheiros-sp"
     }
   ],
   "totais": {
     "all_time": {
-      "acessos": 176,
-      "visitantes": 176
+      "acessos": 178,
+      "visitantes": 178
     },
     "ultimos_30d": {
-      "acessos": 72,
-      "visitantes": 72
+      "acessos": 74,
+      "visitantes": 74
     }
   }
 }
