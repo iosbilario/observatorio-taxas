@@ -37,10 +37,10 @@
   },
   {
     "codigo": 25,
-    "data_referencia": "17/08/2026",
+    "data_referencia": "18/08/2026",
     "grupo": "Juros",
     "nome": "Poupança - rendimento (%)",
-    "pontos": 3909,
+    "pontos": 3910,
     "ultima_mudanca": "17/08/2026",
     "valor_atual": "0.6717"
   },
@@ -91,30 +91,30 @@
   },
   {
     "codigo": 1,
-    "data_referencia": "18/08/2026",
+    "data_referencia": "19/08/2026",
     "grupo": "Câmbio",
     "nome": "Câmbio USD/BRL - venda",
-    "pontos": 2917,
-    "ultima_mudanca": "18/08/2026",
-    "valor_atual": "5.2043"
+    "pontos": 2918,
+    "ultima_mudanca": "19/08/2026",
+    "valor_atual": "5.1714"
   },
   {
     "codigo": 10813,
-    "data_referencia": "18/08/2026",
+    "data_referencia": "19/08/2026",
     "grupo": "Câmbio",
     "nome": "Câmbio USD/BRL - compra",
-    "pontos": 2917,
-    "ultima_mudanca": "18/08/2026",
-    "valor_atual": "5.2037"
+    "pontos": 2918,
+    "ultima_mudanca": "19/08/2026",
+    "valor_atual": "5.1708"
   },
   {
     "codigo": 21619,
-    "data_referencia": "18/08/2026",
+    "data_referencia": "19/08/2026",
     "grupo": "Câmbio",
     "nome": "Câmbio EUR/BRL - venda",
-    "pontos": 2915,
-    "ultima_mudanca": "18/08/2026",
-    "valor_atual": "6.0271000"
+    "pontos": 2916,
+    "ultima_mudanca": "19/08/2026",
+    "valor_atual": "6.0324000"
   },
   {
     "codigo": 24363,
