@@ -1,6 +1,6 @@
 {
-  "gerado_em": "2026-08-21T15:21:49-03:00",
-  "gerado_em_fmt": "21/08/2026 às 15:21",
+  "gerado_em": "2026-08-21T21:37:48-03:00",
+  "gerado_em_fmt": "21/08/2026 às 21:37",
   "grupos": {
     "Admin": {
       "acessos": 0,
@@ -20,18 +20,18 @@
       "sub": {}
     },
     "Reajuste": {
-      "acessos": 21,
+      "acessos": 22,
       "sub": {
         "IGP-DI": 1,
         "IGP-M": 5,
-        "INPC": 3,
+        "INPC": 4,
         "IPCA": 8
       }
     }
   },
   "serie_diaria": [
     {
-      "acessos": 3,
+      "acessos": 0,
       "data": "2026-07-22"
     },
     {
@@ -151,7 +151,7 @@
       "data": "2026-08-20"
     },
     {
-      "acessos": 0,
+      "acessos": 1,
       "data": "2026-08-21"
     }
   ],
@@ -204,6 +204,10 @@
     },
     {
       "count": 1,
+      "path": "/reajuste/inpc-outubro-2022"
+    },
+    {
+      "count": 1,
       "path": "/reajuste/inpc-outubro-2023"
     },
     {
@@ -213,20 +217,16 @@
     {
       "count": 1,
       "path": "/radar/negocio.html?e=odontocenter-fradique"
-    },
-    {
-      "count": 1,
-      "path": "/reajuste/ipca-maio-2016"
     }
   ],
   "totais": {
     "all_time": {
-      "acessos": 183,
-      "visitantes": 183
+      "acessos": 184,
+      "visitantes": 184
     },
     "ultimos_30d": {
-      "acessos": 72,
-      "visitantes": 72
+      "acessos": 70,
+      "visitantes": 70
     }
   }
 }
