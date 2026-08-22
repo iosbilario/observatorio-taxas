@@ -1,6 +1,6 @@
 {
-  "gerado_em": "2026-08-22T09:18:11-03:00",
-  "gerado_em_fmt": "22/08/2026 às 09:18",
+  "gerado_em": "2026-08-22T15:14:47-03:00",
+  "gerado_em_fmt": "22/08/2026 às 15:14",
   "grupos": {
     "Admin": {
       "acessos": 0,
@@ -31,7 +31,7 @@
   },
   "serie_diaria": [
     {
-      "acessos": 2,
+      "acessos": 1,
       "data": "2026-07-23"
     },
     {
@@ -225,8 +225,8 @@
       "visitantes": 188
     },
     "ultimos_30d": {
-      "acessos": 74,
-      "visitantes": 74
+      "acessos": 73,
+      "visitantes": 73
     }
   }
 }
