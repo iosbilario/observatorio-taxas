@@ -1,6 +1,6 @@
 {
-  "gerado_em": "2026-08-21T21:37:48-03:00",
-  "gerado_em_fmt": "21/08/2026 às 21:37",
+  "gerado_em": "2026-08-22T03:21:24-03:00",
+  "gerado_em_fmt": "22/08/2026 às 03:21",
   "grupos": {
     "Admin": {
       "acessos": 0,
@@ -16,24 +16,20 @@
       }
     },
     "Home": {
-      "acessos": 95,
+      "acessos": 97,
       "sub": {}
     },
     "Reajuste": {
-      "acessos": 22,
+      "acessos": 24,
       "sub": {
         "IGP-DI": 1,
         "IGP-M": 5,
         "INPC": 4,
-        "IPCA": 8
+        "IPCA": 9
       }
     }
   },
   "serie_diaria": [
-    {
-      "acessos": 0,
-      "data": "2026-07-22"
-    },
     {
       "acessos": 2,
       "data": "2026-07-23"
@@ -151,15 +147,19 @@
       "data": "2026-08-20"
     },
     {
-      "acessos": 1,
+      "acessos": 4,
       "data": "2026-08-21"
+    },
+    {
+      "acessos": 1,
+      "data": "2026-08-22"
     }
   ],
   "site": "observatoriotaxas",
   "timezone": "America/Sao_Paulo (UTC-3)",
   "top_paginas": [
     {
-      "count": 91,
+      "count": 93,
       "path": "/"
     },
     {
@@ -172,11 +172,11 @@
     },
     {
       "count": 5,
-      "path": "/var.html"
+      "path": "/reajuste"
     },
     {
-      "count": 4,
-      "path": "/reajuste"
+      "count": 5,
+      "path": "/var.html"
     },
     {
       "count": 3,
@@ -204,6 +204,10 @@
     },
     {
       "count": 1,
+      "path": "/reajuste/ipca-outubro-2025"
+    },
+    {
+      "count": 1,
       "path": "/reajuste/inpc-outubro-2022"
     },
     {
@@ -213,20 +217,16 @@
     {
       "count": 1,
       "path": "/reajuste/ipca-junho-2026"
-    },
-    {
-      "count": 1,
-      "path": "/radar/negocio.html?e=odontocenter-fradique"
     }
   ],
   "totais": {
     "all_time": {
-      "acessos": 184,
-      "visitantes": 184
+      "acessos": 188,
+      "visitantes": 188
     },
     "ultimos_30d": {
-      "acessos": 70,
-      "visitantes": 70
+      "acessos": 74,
+      "visitantes": 74
     }
   }
 }
