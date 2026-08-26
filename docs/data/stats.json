@@ -1,6 +1,6 @@
 {
-  "gerado_em": "2026-08-25T21:39:47-03:00",
-  "gerado_em_fmt": "25/08/2026 às 21:39",
+  "gerado_em": "2026-08-26T03:29:39-03:00",
+  "gerado_em_fmt": "26/08/2026 às 03:29",
   "grupos": {
     "Admin": {
       "acessos": 0,
@@ -20,20 +20,16 @@
       "sub": {}
     },
     "Reajuste": {
-      "acessos": 26,
+      "acessos": 27,
       "sub": {
         "IGP-DI": 1,
-        "IGP-M": 5,
+        "IGP-M": 6,
         "INPC": 4,
         "IPCA": 9
       }
     }
   },
   "serie_diaria": [
-    {
-      "acessos": 0,
-      "data": "2026-07-26"
-    },
     {
       "acessos": 1,
       "data": "2026-07-27"
@@ -151,8 +147,12 @@
       "data": "2026-08-24"
     },
     {
-      "acessos": 5,
+      "acessos": 6,
       "data": "2026-08-25"
+    },
+    {
+      "acessos": 0,
+      "data": "2026-08-26"
     }
   ],
   "site": "observatoriotaxas",
@@ -179,16 +179,16 @@
       "path": "/var.html"
     },
     {
+      "count": 4,
+      "path": "/reajuste/igpm-julho-2026"
+    },
+    {
       "count": 3,
       "path": "/radar"
     },
     {
       "count": 3,
       "path": "/reajuste/ipca-maio-2026"
-    },
-    {
-      "count": 3,
-      "path": "/reajuste/igpm-julho-2026"
     },
     {
       "count": 2,
@@ -221,12 +221,12 @@
   ],
   "totais": {
     "all_time": {
-      "acessos": 198,
-      "visitantes": 198
+      "acessos": 199,
+      "visitantes": 199
     },
     "ultimos_30d": {
-      "acessos": 77,
-      "visitantes": 77
+      "acessos": 78,
+      "visitantes": 78
     }
   }
 }
