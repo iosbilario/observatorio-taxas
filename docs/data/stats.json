@@ -1,6 +1,6 @@
 {
-  "gerado_em": "2026-08-26T16:31:40-03:00",
-  "gerado_em_fmt": "26/08/2026 às 16:31",
+  "gerado_em": "2026-08-27T02:41:57-03:00",
+  "gerado_em_fmt": "27/08/2026 às 02:41",
   "grupos": {
     "Admin": {
       "acessos": 0,
@@ -16,7 +16,7 @@
       }
     },
     "Home": {
-      "acessos": 99,
+      "acessos": 100,
       "sub": {}
     },
     "Reajuste": {
@@ -30,10 +30,6 @@
     }
   },
   "serie_diaria": [
-    {
-      "acessos": 0,
-      "data": "2026-07-27"
-    },
     {
       "acessos": 3,
       "data": "2026-07-28"
@@ -151,15 +147,19 @@
       "data": "2026-08-25"
     },
     {
-      "acessos": 0,
+      "acessos": 2,
       "data": "2026-08-26"
+    },
+    {
+      "acessos": 0,
+      "data": "2026-08-27"
     }
   ],
   "site": "observatoriotaxas",
   "timezone": "America/Sao_Paulo (UTC-3)",
   "top_paginas": [
     {
-      "count": 95,
+      "count": 96,
       "path": "/"
     },
     {
@@ -180,11 +180,11 @@
     },
     {
       "count": 4,
-      "path": "/reajuste/igpm-julho-2026"
+      "path": "/radar"
     },
     {
-      "count": 3,
-      "path": "/radar"
+      "count": 4,
+      "path": "/reajuste/igpm-julho-2026"
     },
     {
       "count": 3,
@@ -221,12 +221,12 @@
   ],
   "totais": {
     "all_time": {
-      "acessos": 199,
-      "visitantes": 199
+      "acessos": 201,
+      "visitantes": 201
     },
     "ultimos_30d": {
-      "acessos": 77,
-      "visitantes": 77
+      "acessos": 79,
+      "visitantes": 79
     }
   }
 }
