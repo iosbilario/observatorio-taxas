@@ -28,21 +28,21 @@
   },
   {
     "codigo": 226,
-    "data_referencia": "26/08/2026",
+    "data_referencia": "27/08/2026",
     "grupo": "Juros",
     "nome": "TR - Taxa Referencial (%)",
-    "pontos": 4256,
-    "ultima_mudanca": "24/08/2026",
-    "valor_atual": "0.1709"
+    "pontos": 4257,
+    "ultima_mudanca": "27/08/2026",
+    "valor_atual": "0.1692"
   },
   {
     "codigo": 25,
-    "data_referencia": "26/08/2026",
+    "data_referencia": "27/08/2026",
     "grupo": "Juros",
     "nome": "Poupança - rendimento (%)",
-    "pontos": 3918,
-    "ultima_mudanca": "24/08/2026",
-    "valor_atual": "0.6718"
+    "pontos": 3919,
+    "ultima_mudanca": "27/08/2026",
+    "valor_atual": "0.6700"
   },
   {
     "codigo": 433,
@@ -73,12 +73,12 @@
   },
   {
     "codigo": 189,
-    "data_referencia": "01/07/2026",
+    "data_referencia": "01/08/2026",
     "grupo": "Inflação",
     "nome": "IGP-M - variação mensal (%)",
-    "pontos": 139,
-    "ultima_mudanca": "01/07/2026",
-    "valor_atual": "-1.16"
+    "pontos": 140,
+    "ultima_mudanca": "01/08/2026",
+    "valor_atual": "-0.22"
   },
   {
     "codigo": 190,
@@ -91,30 +91,30 @@
   },
   {
     "codigo": 1,
-    "data_referencia": "27/08/2026",
+    "data_referencia": "28/08/2026",
     "grupo": "Câmbio",
     "nome": "Câmbio USD/BRL - venda",
-    "pontos": 2924,
-    "ultima_mudanca": "27/08/2026",
-    "valor_atual": "5.1642"
+    "pontos": 2925,
+    "ultima_mudanca": "28/08/2026",
+    "valor_atual": "5.2005"
   },
   {
     "codigo": 10813,
-    "data_referencia": "27/08/2026",
+    "data_referencia": "28/08/2026",
     "grupo": "Câmbio",
     "nome": "Câmbio USD/BRL - compra",
-    "pontos": 2924,
-    "ultima_mudanca": "27/08/2026",
-    "valor_atual": "5.1637"
+    "pontos": 2925,
+    "ultima_mudanca": "28/08/2026",
+    "valor_atual": "5.1999"
   },
   {
     "codigo": 21619,
-    "data_referencia": "27/08/2026",
+    "data_referencia": "28/08/2026",
     "grupo": "Câmbio",
     "nome": "Câmbio EUR/BRL - venda",
-    "pontos": 2922,
-    "ultima_mudanca": "27/08/2026",
-    "valor_atual": "6.0184000"
+    "pontos": 2923,
+    "ultima_mudanca": "28/08/2026",
+    "valor_atual": "6.0315000"
   },
   {
     "codigo": 24363,
