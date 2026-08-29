@@ -619,3 +619,5 @@
     ↳ Câmbio USD/BRL - compra: subiu de 5,1637 para 5,1999.
 [2026-08-28 17:51:56 +0000] Câmbio EUR/BRL - venda: 6.0184000 -> 6.0315000
     ↳ Câmbio EUR/BRL - venda: subiu de 6,0184 para 6,0315.
+[2026-08-29 01:17:52 +0000] Taxa de desocupação - PNAD (%): 5.4 -> 5.3
+    ↳ Taxa de desocupação - PNAD (%): caiu de 5,4 para 5,3.

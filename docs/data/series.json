@@ -10,10 +10,10 @@
   },
   {
     "codigo": 1178,
-    "data_referencia": "27/08/2026",
+    "data_referencia": "28/08/2026",
     "grupo": "Juros",
     "nome": "Selic anualizada (% a.a.)",
-    "pontos": 2924,
+    "pontos": 2925,
     "ultima_mudanca": "06/08/2026",
     "valor_atual": "13.90"
   },
@@ -24,7 +24,7 @@
     "nome": "CDI - acumulado no mês (%)",
     "pontos": 140,
     "ultima_mudanca": "01/08/2026",
-    "valor_atual": "0.99"
+    "valor_atual": "1.04"
   },
   {
     "codigo": 226,
@@ -127,11 +127,11 @@
   },
   {
     "codigo": 24369,
-    "data_referencia": "01/06/2026",
+    "data_referencia": "01/07/2026",
     "grupo": "Atividade & Emprego",
     "nome": "Taxa de desocupação - PNAD (%)",
-    "pontos": 138,
-    "ultima_mudanca": "01/06/2026",
-    "valor_atual": "5.4"
+    "pontos": 139,
+    "ultima_mudanca": "01/07/2026",
+    "valor_atual": "5.3"
   }
 ]
