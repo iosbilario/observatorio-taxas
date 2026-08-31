@@ -344,13 +344,22 @@ var Radar = (function () {
     });
   }
 
+  // fontes_citadas vem de respostas de modelos (conteúdo de terceiros): só
+  // http(s) vira link; qualquer outro esquema (javascript:, data:, …) é
+  // renderizado como texto puro.
+  function urlSegura(u) {
+    return /^https?:\/\//i.test(String(u || "")) ? String(u) : null;
+  }
+
   function fontesHTML(fontes) {
     if (!fontes || !fontes.length) return "";
     return '<div class="recibo-fontes"><p>Fontes citadas na resposta</p><ul>' +
       fontes.map(function (f) {
         if (typeof f === "string") return "<li>" + esc(f) + "</li>";
-        return '<li><a href="' + esc(f.url) + '" target="_blank" rel="noopener noreferrer nofollow">' +
-               esc(f.titulo || f.url) + "</a></li>";
+        var u = urlSegura(f.url);
+        if (!u) return "<li>" + esc(f.titulo || f.url) + "</li>";
+        return '<li><a href="' + esc(u) + '" target="_blank" rel="noopener noreferrer nofollow">' +
+               esc(f.titulo || u) + "</a></li>";
       }).join("") + "</ul></div>";
   }
 

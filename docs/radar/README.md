@@ -113,7 +113,11 @@ nomes do estabelecimento destacados na hora (casamento sem acento e sem caixa,
 usando `nome` + `aliases`). Não pré-processe, não resuma, não limpe markdown:
 o valor do recibo é ser cru.
 
-`fontes_citadas` aceita objetos `{titulo, url}` ou strings simples.
+`fontes_citadas` aceita objetos `{titulo, url}` ou strings simples. `url` só é
+renderizada como link quando começa com `http://` ou `https://`; qualquer outro
+esquema (`javascript:`, `data:`, …) aparece como texto puro. O coletor não
+precisa filtrar — a regra é aplicada na exibição (`fontesHTML` em `radar.js`) —
+mas deve gravar a URL como veio, sem "consertar" esquema.
 
 ### `data/index.json`
 
