@@ -69,6 +69,8 @@ MESES = [
     "janeiro", "fevereiro", "março", "abril", "maio", "junho",
     "julho", "agosto", "setembro", "outubro", "novembro", "dezembro",
 ]
+MES_CURTO = ["jan", "fev", "mar", "abr", "mai", "jun",
+             "jul", "ago", "set", "out", "nov", "dez"]
 
 # Identidade visual do site: sala-cofre (#0E1210), papel-moeda (#E9E6DC), carimbo
 # dourado (#D9B54A); Fraunces (serifa de display), Archivo (texto), IBM Plex Mono
@@ -116,6 +118,27 @@ a.pill{border-bottom:1px solid var(--linha)}a.pill:hover{border-color:rgba(217,1
 footer{margin-top:32px;color:var(--papel-45);font-size:.8rem;border-top:1px solid var(--linha);padding-top:1.2rem}
 footer a{color:var(--papel-70)}
 @media(max-width:520px){.grid{grid-template-columns:1fr}}
+/* --- hub e navegação de meses (menos paredão de links, mais destino) --- */
+a.destaque{display:block;border:1px solid rgba(217,181,74,.35);background:rgba(217,181,74,.05);border-radius:10px;padding:.8rem 1rem;margin:.3rem 0 .9rem;border-bottom:1px solid rgba(217,181,74,.35)}
+a.destaque:hover{border-color:var(--carimbo)}
+.destaque .d-num{display:block;font-family:"Fraunces",Georgia,serif;font-weight:700;font-size:1.55rem;letter-spacing:-.02em;color:var(--carimbo);font-variant-numeric:tabular-nums;line-height:1.15}
+.destaque .d-num.neg{color:var(--queda)}
+.destaque .d-leg{display:block;color:var(--papel-70);font-size:.84rem;margin-top:2px}
+.grupo-rot{font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--papel-45);margin:.9rem 0 .25rem}
+.pills{margin:.2rem 0}
+.pill.mini{padding:3px 9px;font-size:.72rem;margin:2px}
+.pill[aria-current="page"]{border-color:var(--carimbo);color:var(--carimbo);cursor:default}
+details.meses{margin-top:.55rem}
+details.meses summary{cursor:pointer;font-family:"IBM Plex Mono",monospace;font-size:.76rem;color:var(--papel-70);padding:.4rem .1rem;list-style:none}
+details.meses summary::-webkit-details-marker{display:none}
+details.meses summary::before{content:"▸ ";color:var(--carimbo)}
+details.meses[open] summary::before{content:"▾ "}
+details.meses summary:hover{color:var(--papel)}
+.ano-grp{display:flex;align-items:baseline;gap:4px;flex-wrap:wrap;margin:.3rem 0}
+.ano-grp .ano{font-family:"IBM Plex Mono",monospace;font-size:.74rem;color:var(--papel-45);min-width:3.4ch}
+.ir-form{display:grid;grid-template-columns:1fr 1fr auto;gap:10px;align-items:end}
+.ir-form button{width:auto;margin-top:0;padding:.62rem 1.1rem}
+@media(max-width:640px){.ir-form{grid-template-columns:1fr}.ir-form button{width:100%}}
 """
 
 
@@ -209,6 +232,59 @@ def email_block() -> str:
 </div>"""
 
 
+def _pill(slug: str, rotulo: str, titulo: str, base: str = "",
+          atual: bool = False, mini: bool = False) -> str:
+    """Link-pílula. `base` é o prefixo relativo até /reajuste/ ("" no hub,
+    "../" numa página de mês) — links relativos funcionam no Pages, no
+    localhost e via file://, e pesam menos que a URL absoluta."""
+    cls = "pill mini" if mini else "pill"
+    if atual:
+        return f'<span class="{cls}" aria-current="page">{rotulo}</span>'
+    return f'<a class="{cls}" href="{base}{slug}/" title="{titulo}">{rotulo}</a>'
+
+
+def _paginas_do_indice(paginas: dict, key: str) -> list[tuple[str, dict]]:
+    return sorted(((s, p) for s, p in paginas.items() if p["key"] == key),
+                  key=lambda kv: kv[1]["dt"])
+
+
+def bloco_meses(key: str, nome: str, paginas: dict, base: str = "",
+                slug_atual: str = None) -> str:
+    """Navegação de meses de UM índice: últimos 12 como pills + <details>
+    com todos os anos (agrupados, um pill curto por mês). Substitui o antigo
+    paredão de um link por página — os links continuam todos no DOM (SEO),
+    mas colapsados e legíveis."""
+    ordenadas = _paginas_do_indice(paginas, key)
+    if not ordenadas:
+        return ""
+
+    recentes = [kv for kv in ordenadas if kv[0] != slug_atual][-12:][::-1]
+    pills = "".join(
+        _pill(s, f"{MES_CURTO[p['dt'].month - 1]}/{p['dt'].year}",
+              f"{nome} · {p['ref']}", base)
+        for s, p in recentes
+    )
+
+    por_ano: dict[int, list] = {}
+    for s, p in ordenadas:
+        por_ano.setdefault(p["dt"].year, []).append((s, p))
+    linhas = "".join(
+        '<p class="ano-grp"><span class="ano">' + str(ano) + "</span>"
+        + "".join(_pill(s, MES_CURTO[p["dt"].month - 1],
+                        f"{nome} · {MES_CURTO[p['dt'].month - 1]}/{ano}", base,
+                        atual=(s == slug_atual), mini=True)
+                  for s, p in por_ano[ano])
+        + "</p>"
+        for ano in sorted(por_ano, reverse=True)
+    )
+    ini, fim = ordenadas[0][1]["dt"].year, ordenadas[-1][1]["dt"].year
+    return (
+        f'<p class="grupo-rot">Últimos 12 meses</p><p class="pills">{pills}</p>'
+        f'<details class="meses"><summary>Todos os meses ({ini}–{fim})</summary>'
+        f"{linhas}</details>"
+    )
+
+
 def build_month_page(key: str, info: dict, janela: list[dict], todas_paginas: dict) -> tuple[str, str]:
     """Gera a página de um índice+mês. Retorna (caminho relativo, html)."""
     ref = janela[-1]["dt"]
@@ -243,9 +319,17 @@ def build_month_page(key: str, info: dict, janela: list[dict], todas_paginas: di
         ],
     }, ensure_ascii=False)
 
-    outros = "".join(
-        f'<a class="pill" href="{BASE_URL}/reajuste/{s}/">{p["nome"]} {p["ref"]}</a>'
-        for s, p in todas_paginas.items() if s != slug
+    # Navegação enxuta: o mesmo mês nos outros índices + os meses do próprio
+    # índice (12 recentes visíveis, resto agrupado por ano num <details>).
+    mesmo_mes = "".join(
+        _pill(s2, todas_paginas[s2]["nome"], f"{todas_paginas[s2]['nome']} · {ref_txt}", "../")
+        for k2 in INDICES if k2 != key
+        and (s2 := f"{k2}-{slug_mes(ref)}") in todas_paginas
+    )
+    outros = (
+        (f'<p class="grupo-rot">{ref_txt.capitalize()} em outros índices</p>'
+         f'<p class="pills">{mesmo_mes}</p>' if mesmo_mes else "")
+        + bloco_meses(key, nome, todas_paginas, "../", slug_atual=slug)
     )
 
     neg = " neg" if ac < 0 else ""
@@ -294,18 +378,54 @@ function calc(){{
     return f"reajuste/{slug}/index.html", html
 
 
-def build_hub(paginas: dict) -> str:
+def _mapa_meses_js(paginas: dict) -> str:
+    """{indice: {ano: [meses...]}} para o seletor 'vá direto ao mês'."""
+    mapa: dict[str, dict[str, list[int]]] = {}
+    for _, p in paginas.items():
+        mapa.setdefault(p["key"], {}).setdefault(str(p["dt"].year), []).append(p["dt"].month)
+    for k in mapa:
+        for a in mapa[k]:
+            mapa[k][a] = sorted(mapa[k][a])
+    return json.dumps(mapa, ensure_ascii=False, sort_keys=True)
+
+
+def build_hub(paginas: dict, resumo: dict) -> str:
     url = f"{BASE_URL}/reajuste/"
     title = "Calculadora de reajuste de contrato: IPCA, IGP-M, INPC e IGP-DI"
     desc = ("Calcule o reajuste anual do seu aluguel ou contrato pelo IPCA, IGP-M, INPC ou IGP-DI, "
             "com acumulado de 12 meses, memória de cálculo e dados oficiais do Banco Central.")
+
+    opcoes_indice = "".join(
+        f'<option value="{key}">{info["nome"]}</option>' for key, info in INDICES.items()
+    )
+    seletor = f"""
+<div class="card">
+<h2>Vá direto ao mês do seu contrato</h2>
+<p class="mut">Escolha o índice e o mês de aniversário do contrato: a página do mês traz
+o acumulado de 12 meses, o fator e a calculadora daquela referência.</p>
+<form class="ir-form" id="ir-form">
+<div><label for="ir-indice">Índice</label><select id="ir-indice">{opcoes_indice}</select></div>
+<div><label for="ir-mes">Mês do reajuste</label><select id="ir-mes"></select></div>
+<button type="submit">Abrir o mês</button>
+</form>
+</div>"""
+
     cards = ""
     for key, info in INDICES.items():
-        links = "".join(
-            f'<a class="pill" href="{BASE_URL}/reajuste/{s}/">{p["ref"]}</a>'
-            for s, p in paginas.items() if s.startswith(key + "-")
-        )
-        cards += f'<div class="card"><h2>{info["nome"]}</h2><p class="mut">Usado em {info["uso"]}.</p>{links}</div>'
+        r = resumo.get(key)
+        if not r:
+            continue
+        neg = " neg" if r["ac"] < 0 else ""
+        cards += f"""
+<div class="card">
+<h2>{info["nome"]}</h2>
+<p class="mut">Usado em {info["uso"]}.</p>
+<a class="destaque" href="{r["slug"]}/">
+<span class="d-num{neg}">{fmt_num(r["ac"])}%</span>
+<span class="d-leg">acumulado 12 meses até {r["refTxt"]} · fator {fmt_num(r["fator"], 6)} — abrir cálculo completo →</span>
+</a>
+{bloco_meses(key, info["nome"], paginas)}
+</div>"""
 
     html = head(title, desc, url) + f"""
 <h1>Reajuste de contratos e aluguel</h1>
@@ -313,8 +433,36 @@ def build_hub(paginas: dict) -> str:
 oficiais do BACEN coletados automaticamente e <a href="https://github.com/iosbilario/observatorio-taxas">versionados em aberto</a>.</p>
 <p class="mut">Precisa corrigir um valor entre duas datas, e não reajustar um contrato?
 Use a <a href="{BASE_URL}/correcao/">correção monetária</a>.</p>
+{seletor}
 {email_block()}
 {cards}
+<script>
+"use strict";
+(function () {{
+  var MESES = {json.dumps(MESES, ensure_ascii=False)};
+  var PAG = {_mapa_meses_js(paginas)};
+  var selI = document.getElementById("ir-indice");
+  var selM = document.getElementById("ir-mes");
+  function popula() {{
+    var anos = PAG[selI.value] || {{}};
+    selM.innerHTML = "";
+    Object.keys(anos).sort().reverse().forEach(function (ano) {{
+      anos[ano].slice().reverse().forEach(function (m) {{
+        var o = document.createElement("option");
+        o.value = selI.value + "-" + MESES[m - 1] + "-" + ano;
+        o.textContent = MESES[m - 1] + " de " + ano;
+        selM.appendChild(o);
+      }});
+    }});
+  }}
+  selI.addEventListener("change", popula);
+  document.getElementById("ir-form").addEventListener("submit", function (ev) {{
+    ev.preventDefault();
+    if (selM.value) window.location.href = selM.value + "/";
+  }});
+  popula();
+}})();
+</script>
 """ + FOOTER
     return html
 
@@ -348,7 +496,19 @@ def main() -> None:
             j = hist[fim - 11 : fim + 1]
             janelas[key].append(j)
             ref = j[-1]["dt"]
-            paginas[f"{key}-{slug_mes(ref)}"] = {"nome": info["nome"], "ref": mes_ano(ref)}
+            paginas[f"{key}-{slug_mes(ref)}"] = {
+                "nome": info["nome"], "ref": mes_ano(ref), "key": key, "dt": ref,
+            }
+
+    # Resumo do mês mais recente de cada índice, para o destaque do hub.
+    resumo: dict[str, dict] = {}
+    for key, info in INDICES.items():
+        if janelas[key]:
+            j = janelas[key][-1]
+            ac = acumulado(j)
+            ref = j[-1]["dt"]
+            resumo[key] = {"slug": f"{key}-{slug_mes(ref)}", "ac": ac,
+                           "fator": 1.0 + ac / 100.0, "refTxt": mes_ano(ref)}
 
     # 2ª passada: gerar páginas.
     paths: list[str] = []
@@ -360,7 +520,7 @@ def main() -> None:
             out.write_text(html, encoding="utf-8")
             paths.append(rel)
 
-    (OUT_DIR / "index.html").write_text(build_hub(paginas), encoding="utf-8")
+    (OUT_DIR / "index.html").write_text(build_hub(paginas, resumo), encoding="utf-8")
     rebuild_sitemap(paths)
     print(f"Geradas {len(paths)} páginas de reajuste + hub + sitemap.")
 
