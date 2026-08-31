@@ -23,12 +23,6 @@ concurrency:
 jobs:
   collect:
     runs-on: ubuntu-latest
-    # Expostos ao job inteiro; vazios se os secrets não estiverem configurados.
-    # (O contexto `secrets` NÃO é acessível em `if:` de step — por isso passamos
-    #  pelo env e testamos `env.*`, como no step opcional de resumo.)
-    env:
-      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-      GOATCOUNTER_TOKEN: ${{ secrets.GOATCOUNTER_TOKEN }}
     steps:
       - name: Checkout
         # Pinado por SHA de commit (supply-chain). Tag: v6.0.3
@@ -40,16 +34,36 @@ jobs:
         with:
           python-version: "3.12"
 
+      # Os secrets NÃO ficam no env do job: cada um só aparece no step que o
+      # usa. O contexto `secrets` não é acessível em `if:` de step, então este
+      # step curto (shell puro, sem código de terceiros) publica flags de
+      # presença como outputs para os `if:` abaixo.
+      - name: Detectar secrets opcionais
+        id: opcionais
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GOATCOUNTER_TOKEN: ${{ secrets.GOATCOUNTER_TOKEN }}
+        run: |
+          echo "has_anthropic=$([ -n "$ANTHROPIC_API_KEY" ] && echo true || echo false)" >> "$GITHUB_OUTPUT"
+          echo "has_goatcounter=$([ -n "$GOATCOUNTER_TOKEN" ] && echo true || echo false)" >> "$GITHUB_OUTPUT"
+
+      # requirements.txt é um lock (versões exatas + hashes, gerado de
+      # requirements.in por pip-compile); --require-hashes falha se qualquer
+      # artefato divergir do esperado — proteção de supply chain, já que este
+      # job tem contents: write.
       - name: Instalar dependências
-        run: pip install -r requirements.txt
+        run: pip install --require-hashes -r requirements.txt
 
       # Dependência opcional do resumo em linguagem natural (diff_summary.py).
-      # Só instala se o secret ANTHROPIC_API_KEY estiver definido.
+      # Só instala se o secret ANTHROPIC_API_KEY estiver definido. Pinada por
+      # versão exata (fora do lock por ser opcional).
       - name: Instalar dependência opcional (resumo NL)
-        if: env.ANTHROPIC_API_KEY != ''
-        run: pip install anthropic
+        if: steps.opcionais.outputs.has_anthropic == 'true'
+        run: pip install anthropic==1.2.0
 
       - name: Coletar séries do SGS/BACEN
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: python scripts/fetch.py
 
       - name: Gerar páginas programáticas de reajuste
@@ -67,11 +81,18 @@ jobs:
       - name: Replicar o header de navegação em todas as páginas
         run: python scripts/sync_nav.py
 
+      # Depois de tudo que reescreve index.html/embed.html: recalcula os
+      # hashes sha256 dos scripts inline na CSP (sem 'unsafe-inline').
+      - name: Atualizar hashes de CSP dos scripts inline
+        run: python scripts/csp_hashes.py
+
       - name: Gerar card social (og-image) com os números do dia
         run: python scripts/build_og.py
 
       - name: Coletar estatísticas de acesso (GoatCounter)
-        if: env.GOATCOUNTER_TOKEN != ''
+        if: steps.opcionais.outputs.has_goatcounter == 'true'
+        env:
+          GOATCOUNTER_TOKEN: ${{ secrets.GOATCOUNTER_TOKEN }}
         run: python scripts/fetch_stats.py
 
       - name: Commit + push se houver mudança
