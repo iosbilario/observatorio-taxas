@@ -1,0 +1,7 @@
+# Dependências diretas do coletor. O requirements.txt é o LOCK derivado
+# (versões exatas + hashes), gerado por:
+#   pip-compile --generate-hashes requirements.in
+# O workflow instala com --require-hashes; o Dependabot propõe os bumps.
+requests
+pyyaml
+pillow

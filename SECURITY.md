@@ -37,11 +37,22 @@ api.github.com e raw.githubusercontent.com conforme o caso), mais
 **Exceção:** `embed.html` é feito para ser embutido — não leva `frame-ancestors`
 nem guard anti-frame.
 
+Em `index.html` e `embed.html`, o `script-src` **não** usa `'unsafe-inline'`:
+os blocos `<script>` inline são autorizados por hash `sha256-…`, recalculado
+por `scripts/csp_hashes.py` (roda no workflow depois dos geradores). Página
+nova nesse regime não pode ter atributos `on*=` nem `href="javascript:…"` —
+hash não cobre event handlers. As demais páginas ainda usam `'unsafe-inline'`;
+a migração é gradual (ver issue #10).
+
 ### 4. Supply chain
 Actions de terceiros são pinadas por **SHA de commit** (não por tag). Scripts de
 CDN são pinados por versão exata com `integrity` (SRI) + `crossorigin` quando há
-hash estável (ex.: Chart.js no painel admin). Dependabot (`.github/dependabot.yml`)
-acompanha `pip` e `github-actions` semanalmente.
+hash estável (ex.: Chart.js no painel admin). As dependências Python são um
+**lock com hashes**: `requirements.in` declara as diretas, `requirements.txt` é
+gerado por `pip-compile --generate-hashes` e o workflow instala com
+`--require-hashes`. Os secrets do Actions só entram no env do step que os usa.
+Dependabot (`.github/dependabot.yml`) acompanha `pip` e `github-actions`
+semanalmente.
 
 ## Regras para o futuro `palpite.html` (com Supabase)
 
