@@ -1,6 +1,6 @@
 {
-  "gerado_em": "2026-08-31T09:07:38-03:00",
-  "gerado_em_fmt": "31/08/2026 às 09:07",
+  "gerado_em": "2026-08-31T19:10:21-03:00",
+  "gerado_em_fmt": "31/08/2026 às 19:10",
   "grupos": {
     "Admin": {
       "acessos": 0,
@@ -16,14 +16,14 @@
       }
     },
     "Home": {
-      "acessos": 101,
+      "acessos": 104,
       "sub": {}
     },
     "Reajuste": {
-      "acessos": 27,
+      "acessos": 32,
       "sub": {
         "IGP-DI": 1,
-        "IGP-M": 6,
+        "IGP-M": 9,
         "INPC": 4,
         "IPCA": 9
       }
@@ -31,7 +31,7 @@
   },
   "serie_diaria": [
     {
-      "acessos": 1,
+      "acessos": 0,
       "data": "2026-08-01"
     },
     {
@@ -151,7 +151,7 @@
       "data": "2026-08-30"
     },
     {
-      "acessos": 0,
+      "acessos": 13,
       "data": "2026-08-31"
     }
   ],
@@ -159,36 +159,40 @@
   "timezone": "America/Sao_Paulo (UTC-3)",
   "top_paginas": [
     {
-      "count": 97,
+      "count": 100,
       "path": "/"
     },
     {
-      "count": 47,
+      "count": 49,
       "path": "/rebobinar.html"
     },
     {
-      "count": 11,
+      "count": 12,
       "path": "/retransmissora.html"
     },
     {
-      "count": 7,
+      "count": 9,
       "path": "/reajuste"
     },
     {
-      "count": 7,
+      "count": 9,
       "path": "/var.html"
+    },
+    {
+      "count": 5,
+      "path": "/reajuste/igpm-julho-2026"
     },
     {
       "count": 4,
       "path": "/radar"
     },
     {
-      "count": 4,
-      "path": "/reajuste/igpm-julho-2026"
+      "count": 3,
+      "path": "/reajuste/ipca-maio-2026"
     },
     {
       "count": 3,
-      "path": "/reajuste/ipca-maio-2026"
+      "path": "/reajuste/igpm-junho-2026"
     },
     {
       "count": 2,
@@ -213,20 +217,16 @@
     {
       "count": 1,
       "path": "/reajuste/inpc-outubro-2023"
-    },
-    {
-      "count": 1,
-      "path": "/reajuste/ipca-junho-2026"
     }
   ],
   "totais": {
     "all_time": {
-      "acessos": 202,
-      "visitantes": 202
+      "acessos": 215,
+      "visitantes": 215
     },
     "ultimos_30d": {
-      "acessos": 65,
-      "visitantes": 65
+      "acessos": 77,
+      "visitantes": 77
     }
   }
 }

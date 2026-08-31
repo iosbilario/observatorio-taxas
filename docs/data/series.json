@@ -10,10 +10,10 @@
   },
   {
     "codigo": 1178,
-    "data_referencia": "28/08/2026",
+    "data_referencia": "31/08/2026",
     "grupo": "Juros",
     "nome": "Selic anualizada (% a.a.)",
-    "pontos": 2925,
+    "pontos": 2926,
     "ultima_mudanca": "06/08/2026",
     "valor_atual": "13.90"
   },
@@ -24,25 +24,25 @@
     "nome": "CDI - acumulado no mês (%)",
     "pontos": 140,
     "ultima_mudanca": "01/08/2026",
-    "valor_atual": "1.04"
+    "valor_atual": "1.09"
   },
   {
     "codigo": 226,
-    "data_referencia": "27/08/2026",
+    "data_referencia": "28/08/2026",
     "grupo": "Juros",
     "nome": "TR - Taxa Referencial (%)",
-    "pontos": 4257,
-    "ultima_mudanca": "27/08/2026",
-    "valor_atual": "0.1692"
+    "pontos": 4258,
+    "ultima_mudanca": "28/08/2026",
+    "valor_atual": "0.1448"
   },
   {
     "codigo": 25,
-    "data_referencia": "27/08/2026",
+    "data_referencia": "28/08/2026",
     "grupo": "Juros",
     "nome": "Poupança - rendimento (%)",
-    "pontos": 3919,
-    "ultima_mudanca": "27/08/2026",
-    "valor_atual": "0.6700"
+    "pontos": 3920,
+    "ultima_mudanca": "28/08/2026",
+    "valor_atual": "0.6455"
   },
   {
     "codigo": 433,
@@ -91,30 +91,30 @@
   },
   {
     "codigo": 1,
-    "data_referencia": "28/08/2026",
+    "data_referencia": "31/08/2026",
     "grupo": "Câmbio",
     "nome": "Câmbio USD/BRL - venda",
-    "pontos": 2925,
-    "ultima_mudanca": "28/08/2026",
-    "valor_atual": "5.2005"
+    "pontos": 2926,
+    "ultima_mudanca": "31/08/2026",
+    "valor_atual": "5.1816"
   },
   {
     "codigo": 10813,
-    "data_referencia": "28/08/2026",
+    "data_referencia": "31/08/2026",
     "grupo": "Câmbio",
     "nome": "Câmbio USD/BRL - compra",
-    "pontos": 2925,
-    "ultima_mudanca": "28/08/2026",
-    "valor_atual": "5.1999"
+    "pontos": 2926,
+    "ultima_mudanca": "31/08/2026",
+    "valor_atual": "5.1810"
   },
   {
     "codigo": 21619,
-    "data_referencia": "28/08/2026",
+    "data_referencia": "31/08/2026",
     "grupo": "Câmbio",
     "nome": "Câmbio EUR/BRL - venda",
-    "pontos": 2923,
-    "ultima_mudanca": "28/08/2026",
-    "valor_atual": "6.0315000"
+    "pontos": 2924,
+    "ultima_mudanca": "31/08/2026",
+    "valor_atual": "6.0189000"
   },
   {
     "codigo": 24363,
