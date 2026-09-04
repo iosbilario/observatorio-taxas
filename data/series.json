@@ -28,21 +28,21 @@
   },
   {
     "codigo": 226,
-    "data_referencia": "02/09/2026",
+    "data_referencia": "03/09/2026",
     "grupo": "Juros",
     "nome": "TR - Taxa Referencial (%)",
-    "pontos": 4263,
-    "ultima_mudanca": "02/09/2026",
-    "valor_atual": "0.1689"
+    "pontos": 4264,
+    "ultima_mudanca": "03/09/2026",
+    "valor_atual": "0.1690"
   },
   {
     "codigo": 25,
-    "data_referencia": "02/09/2026",
+    "data_referencia": "03/09/2026",
     "grupo": "Juros",
     "nome": "Poupança - rendimento (%)",
-    "pontos": 3922,
-    "ultima_mudanca": "02/09/2026",
-    "valor_atual": "0.6697"
+    "pontos": 3923,
+    "ultima_mudanca": "03/09/2026",
+    "valor_atual": "0.6698"
   },
   {
     "codigo": 433,
