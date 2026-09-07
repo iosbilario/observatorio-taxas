@@ -1,6 +1,6 @@
 {
-  "gerado_em": "2026-09-06T16:44:18-03:00",
-  "gerado_em_fmt": "06/09/2026 às 16:44",
+  "gerado_em": "2026-09-06T22:49:05-03:00",
+  "gerado_em_fmt": "06/09/2026 às 22:49",
   "grupos": {
     "Admin": {
       "acessos": 0,
@@ -20,10 +20,10 @@
       "sub": {}
     },
     "Reajuste": {
-      "acessos": 37,
+      "acessos": 38,
       "sub": {
         "IGP-DI": 1,
-        "IGP-M": 10,
+        "IGP-M": 11,
         "INPC": 4,
         "IPCA": 11
       }
@@ -151,7 +151,7 @@
       "data": "2026-09-05"
     },
     {
-      "acessos": 0,
+      "acessos": 1,
       "data": "2026-09-06"
     }
   ],
@@ -179,7 +179,7 @@
       "path": "/var.html"
     },
     {
-      "count": 6,
+      "count": 7,
       "path": "/reajuste/igpm-julho-2026"
     },
     {
@@ -221,12 +221,12 @@
   ],
   "totais": {
     "all_time": {
-      "acessos": 227,
-      "visitantes": 227
+      "acessos": 228,
+      "visitantes": 228
     },
     "ultimos_30d": {
-      "acessos": 82,
-      "visitantes": 82
+      "acessos": 83,
+      "visitantes": 83
     }
   }
 }
