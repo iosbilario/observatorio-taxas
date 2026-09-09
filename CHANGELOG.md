@@ -687,3 +687,19 @@
     ↳ Câmbio EUR/BRL - venda: caiu de 5,9546 para 5,913.
 [2026-09-09 10:21:28 +0000] Meta Selic (% a.a.): 14.25 -> 14.00
     ↳ Meta Selic (% a.a.): caiu de 14,25 para 14.
+[2026-09-09 15:31:57 +0000] TR - Taxa Referencial (%): 0.1467 -> 0.1150
+    ↳ TR - Taxa Referencial (%): caiu de 0,1467 para 0,115.
+[2026-09-09 15:31:57 +0000] TR - Taxa Referencial (%): 0.1150 -> 0.1464
+    ↳ TR - Taxa Referencial (%): subiu de 0,115 para 0,1464.
+[2026-09-09 15:31:57 +0000] TR - Taxa Referencial (%): 0.1464 -> 0.1691
+    ↳ TR - Taxa Referencial (%): subiu de 0,1464 para 0,1691.
+[2026-09-09 15:31:57 +0000] TR - Taxa Referencial (%): 0.1691 -> 0.1708
+    ↳ TR - Taxa Referencial (%): subiu de 0,1691 para 0,1708.
+[2026-09-09 15:31:57 +0000] Poupança - rendimento (%): 0.6474 -> 0.6156
+    ↳ Poupança - rendimento (%): caiu de 0,6474 para 0,6156.
+[2026-09-09 15:31:57 +0000] Poupança - rendimento (%): 0.6156 -> 0.6471
+    ↳ Poupança - rendimento (%): subiu de 0,6156 para 0,6471.
+[2026-09-09 15:31:57 +0000] Poupança - rendimento (%): 0.6471 -> 0.6699
+    ↳ Poupança - rendimento (%): subiu de 0,6471 para 0,6699.
+[2026-09-09 15:31:57 +0000] Poupança - rendimento (%): 0.6699 -> 0.6717
+    ↳ Poupança - rendimento (%): subiu de 0,6699 para 0,6717.
