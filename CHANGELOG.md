@@ -755,3 +755,5 @@
     ↳ Câmbio USD/BRL - compra: caiu de 5,169 para 5,1484.
 [2026-09-15 20:37:39 +0000] Câmbio EUR/BRL - venda: 5.9704000 -> 5.9430000
     ↳ Câmbio EUR/BRL - venda: caiu de 5,9704 para 5,943.
+[2026-09-16 15:44:46 +0000] IBC-Br - índice (proxy do PIB): 109.94156 -> 114.40189
+    ↳ IBC-Br - índice (proxy do PIB): subiu de 109,9416 para 114,4019.
