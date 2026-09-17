@@ -91,30 +91,30 @@
   },
   {
     "codigo": 1,
-    "data_referencia": "16/09/2026",
+    "data_referencia": "17/09/2026",
     "grupo": "Câmbio",
     "nome": "Câmbio USD/BRL - venda",
-    "pontos": 2937,
-    "ultima_mudanca": "16/09/2026",
-    "valor_atual": "5.1527"
+    "pontos": 2938,
+    "ultima_mudanca": "17/09/2026",
+    "valor_atual": "5.1521"
   },
   {
     "codigo": 10813,
-    "data_referencia": "16/09/2026",
+    "data_referencia": "17/09/2026",
     "grupo": "Câmbio",
     "nome": "Câmbio USD/BRL - compra",
-    "pontos": 2937,
-    "ultima_mudanca": "16/09/2026",
-    "valor_atual": "5.1520"
+    "pontos": 2938,
+    "ultima_mudanca": "17/09/2026",
+    "valor_atual": "5.1515"
   },
   {
     "codigo": 21619,
-    "data_referencia": "16/09/2026",
+    "data_referencia": "17/09/2026",
     "grupo": "Câmbio",
     "nome": "Câmbio EUR/BRL - venda",
-    "pontos": 2935,
-    "ultima_mudanca": "16/09/2026",
-    "valor_atual": "5.9457000"
+    "pontos": 2936,
+    "ultima_mudanca": "17/09/2026",
+    "valor_atual": "5.9141000"
   },
   {
     "codigo": 24363,
