@@ -775,3 +775,9 @@
     ↳ Câmbio EUR/BRL - venda: caiu de 5,9457 para 5,9141.
 [2026-09-18 02:06:54 +0000] Selic anualizada (% a.a.): 13.90 -> 13.65
     ↳ Selic anualizada (% a.a.): caiu de 13,9 para 13,65.
+[2026-09-18 20:07:54 +0000] Câmbio USD/BRL - venda: 5.1521 -> 5.1575
+    ↳ Câmbio USD/BRL - venda: subiu de 5,1521 para 5,1575.
+[2026-09-18 20:07:54 +0000] Câmbio USD/BRL - compra: 5.1515 -> 5.1569
+    ↳ Câmbio USD/BRL - compra: subiu de 5,1515 para 5,1569.
+[2026-09-18 20:07:54 +0000] Câmbio EUR/BRL - venda: 5.9141000 -> 5.9126000
+    ↳ Câmbio EUR/BRL - venda: caiu de 5,9141 para 5,9126.
