@@ -803,3 +803,9 @@
     ↳ Poupança - rendimento (%): subiu de 0,6061 para 0,6378.
 [2026-09-22 15:55:20 +0000] Poupança - rendimento (%): 0.6378 -> 0.6694
     ↳ Poupança - rendimento (%): subiu de 0,6378 para 0,6694.
+[2026-09-22 20:38:08 +0000] Câmbio USD/BRL - venda: 5.1117 -> 5.1161
+    ↳ Câmbio USD/BRL - venda: subiu de 5,1117 para 5,1161.
+[2026-09-22 20:38:08 +0000] Câmbio USD/BRL - compra: 5.1111 -> 5.1155
+    ↳ Câmbio USD/BRL - compra: subiu de 5,1111 para 5,1155.
+[2026-09-22 20:38:08 +0000] Câmbio EUR/BRL - venda: 5.8626000 -> 5.8487000
+    ↳ Câmbio EUR/BRL - venda: caiu de 5,8626 para 5,8487.
