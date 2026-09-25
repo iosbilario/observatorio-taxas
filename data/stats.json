@@ -1,22 +1,22 @@
 {
-  "gerado_em": "2026-09-24T17:55:28-03:00",
-  "gerado_em_fmt": "24/09/2026 às 17:55",
+  "gerado_em": "2026-09-24T23:26:48-03:00",
+  "gerado_em_fmt": "24/09/2026 às 23:26",
   "grupos": {
     "Admin": {
       "acessos": 0,
       "sub": {}
     },
     "Correção": {
-      "acessos": 4,
+      "acessos": 5,
       "sub": {
         "IGP-DI": 1,
         "IGP-M": 0,
-        "INPC": 1,
+        "INPC": 2,
         "IPCA": 0
       }
     },
     "Home": {
-      "acessos": 114,
+      "acessos": 115,
       "sub": {}
     },
     "Reajuste": {
@@ -31,7 +31,7 @@
   },
   "serie_diaria": [
     {
-      "acessos": 1,
+      "acessos": 0,
       "data": "2026-08-25"
     },
     {
@@ -151,7 +151,7 @@
       "data": "2026-09-23"
     },
     {
-      "acessos": 1,
+      "acessos": 3,
       "data": "2026-09-24"
     }
   ],
@@ -159,7 +159,7 @@
   "timezone": "America/Sao_Paulo (UTC-3)",
   "top_paginas": [
     {
-      "count": 110,
+      "count": 111,
       "path": "/"
     },
     {
@@ -212,21 +212,21 @@
     },
     {
       "count": 2,
-      "path": "/reajuste/inpc-maio-2026"
+      "path": "/correcao/inpc"
     },
     {
       "count": 2,
-      "path": "/reajuste/inpc-abril-2026"
+      "path": "/reajuste/inpc-maio-2026"
     }
   ],
   "totais": {
     "all_time": {
-      "acessos": 276,
-      "visitantes": 276
+      "acessos": 278,
+      "visitantes": 278
     },
     "ultimos_30d": {
-      "acessos": 78,
-      "visitantes": 78
+      "acessos": 79,
+      "visitantes": 79
     }
   }
 }
