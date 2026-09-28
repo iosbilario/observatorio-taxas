@@ -1,6 +1,6 @@
 {
-  "gerado_em": "2026-09-28T09:20:17-03:00",
-  "gerado_em_fmt": "28/09/2026 às 09:20",
+  "gerado_em": "2026-09-28T19:44:37-03:00",
+  "gerado_em_fmt": "28/09/2026 às 19:44",
   "grupos": {
     "Admin": {
       "acessos": 0,
@@ -16,14 +16,14 @@
       }
     },
     "Home": {
-      "acessos": 115,
+      "acessos": 116,
       "sub": {}
     },
     "Reajuste": {
-      "acessos": 85,
+      "acessos": 86,
       "sub": {
         "IGP-DI": 5,
-        "IGP-M": 27,
+        "IGP-M": 28,
         "INPC": 10,
         "IPCA": 24
       }
@@ -151,7 +151,7 @@
       "data": "2026-09-27"
     },
     {
-      "acessos": 0,
+      "acessos": 2,
       "data": "2026-09-28"
     }
   ],
@@ -159,7 +159,7 @@
   "timezone": "America/Sao_Paulo (UTC-3)",
   "top_paginas": [
     {
-      "count": 111,
+      "count": 112,
       "path": "/"
     },
     {
@@ -183,7 +183,7 @@
       "path": "/var.html"
     },
     {
-      "count": 6,
+      "count": 7,
       "path": "/reajuste/igpm-agosto-2026"
     },
     {
@@ -221,12 +221,12 @@
   ],
   "totais": {
     "all_time": {
-      "acessos": 286,
-      "visitantes": 286
+      "acessos": 288,
+      "visitantes": 288
     },
     "ultimos_30d": {
-      "acessos": 84,
-      "visitantes": 84
+      "acessos": 86,
+      "visitantes": 86
     }
   }
 }
