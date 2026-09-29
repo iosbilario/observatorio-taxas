@@ -28,12 +28,12 @@
   },
   {
     "codigo": 226,
-    "data_referencia": "25/09/2026",
+    "data_referencia": "28/09/2026",
     "grupo": "Juros",
     "nome": "TR - Taxa Referencial (%)",
-    "pontos": 4286,
-    "ultima_mudanca": "25/09/2026",
-    "valor_atual": "0.1332"
+    "pontos": 4289,
+    "ultima_mudanca": "28/09/2026",
+    "valor_atual": "0.1656"
   },
   {
     "codigo": 25,
@@ -73,12 +73,12 @@
   },
   {
     "codigo": 189,
-    "data_referencia": "01/08/2026",
+    "data_referencia": "01/09/2026",
     "grupo": "Inflação",
     "nome": "IGP-M - variação mensal (%)",
-    "pontos": 140,
-    "ultima_mudanca": "01/08/2026",
-    "valor_atual": "-0.22"
+    "pontos": 141,
+    "ultima_mudanca": "01/09/2026",
+    "valor_atual": "1.57"
   },
   {
     "codigo": 190,
@@ -100,21 +100,21 @@
   },
   {
     "codigo": 10813,
-    "data_referencia": "28/09/2026",
+    "data_referencia": "29/09/2026",
     "grupo": "Câmbio",
     "nome": "Câmbio USD/BRL - compra",
-    "pontos": 2945,
-    "ultima_mudanca": "28/09/2026",
-    "valor_atual": "5.2126"
+    "pontos": 2946,
+    "ultima_mudanca": "29/09/2026",
+    "valor_atual": "5.2198"
   },
   {
     "codigo": 21619,
-    "data_referencia": "28/09/2026",
+    "data_referencia": "29/09/2026",
     "grupo": "Câmbio",
     "nome": "Câmbio EUR/BRL - venda",
-    "pontos": 2943,
-    "ultima_mudanca": "28/09/2026",
-    "valor_atual": "5.9253000"
+    "pontos": 2944,
+    "ultima_mudanca": "29/09/2026",
+    "valor_atual": "5.9178000"
   },
   {
     "codigo": 24363,

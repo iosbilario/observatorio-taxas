@@ -849,3 +849,15 @@
     ↳ Câmbio USD/BRL - compra: subiu de 5,1985 para 5,2126.
 [2026-09-28 22:44:22 +0000] Câmbio EUR/BRL - venda: 5.9280000 -> 5.9253000
     ↳ Câmbio EUR/BRL - venda: caiu de 5,928 para 5,9253.
+[2026-09-29 17:14:18 +0000] TR - Taxa Referencial (%): 0.1332 -> 0.1026
+    ↳ TR - Taxa Referencial (%): caiu de 0,1332 para 0,1026.
+[2026-09-29 17:14:18 +0000] TR - Taxa Referencial (%): 0.1026 -> 0.1341
+    ↳ TR - Taxa Referencial (%): subiu de 0,1026 para 0,1341.
+[2026-09-29 17:14:18 +0000] TR - Taxa Referencial (%): 0.1341 -> 0.1656
+    ↳ TR - Taxa Referencial (%): subiu de 0,1341 para 0,1656.
+[2026-09-29 17:14:18 +0000] IGP-M - variação mensal (%): -0.22 -> 1.57
+    ↳ IGP-M - variação mensal (%): subiu de -0,22 para 1,57.
+[2026-09-29 17:14:18 +0000] Câmbio USD/BRL - compra: 5.2126 -> 5.2198
+    ↳ Câmbio USD/BRL - compra: subiu de 5,2126 para 5,2198.
+[2026-09-29 17:14:18 +0000] Câmbio EUR/BRL - venda: 5.9253000 -> 5.9178000
+    ↳ Câmbio EUR/BRL - venda: caiu de 5,9253 para 5,9178.
