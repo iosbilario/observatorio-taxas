@@ -28,12 +28,12 @@
   },
   {
     "codigo": 226,
-    "data_referencia": "29/09/2026",
+    "data_referencia": "30/09/2026",
     "grupo": "Juros",
     "nome": "TR - Taxa Referencial (%)",
-    "pontos": 4290,
-    "ultima_mudanca": "29/09/2026",
-    "valor_atual": "0.1657"
+    "pontos": 4291,
+    "ultima_mudanca": "30/09/2026",
+    "valor_atual": "0.1625"
   },
   {
     "codigo": 25,
