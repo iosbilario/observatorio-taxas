@@ -28,21 +28,21 @@
   },
   {
     "codigo": 226,
-    "data_referencia": "30/09/2026",
+    "data_referencia": "01/10/2026",
     "grupo": "Juros",
     "nome": "TR - Taxa Referencial (%)",
-    "pontos": 4291,
-    "ultima_mudanca": "30/09/2026",
-    "valor_atual": "0.1625"
+    "pontos": 4292,
+    "ultima_mudanca": "01/10/2026",
+    "valor_atual": "0.1616"
   },
   {
     "codigo": 25,
-    "data_referencia": "28/09/2026",
+    "data_referencia": "01/10/2026",
     "grupo": "Juros",
     "nome": "Poupança - rendimento (%)",
-    "pontos": 3948,
-    "ultima_mudanca": "28/09/2026",
-    "valor_atual": "0.6664"
+    "pontos": 3949,
+    "ultima_mudanca": "01/10/2026",
+    "valor_atual": "0.6624"
   },
   {
     "codigo": 433,
@@ -91,30 +91,30 @@
   },
   {
     "codigo": 1,
-    "data_referencia": "01/10/2026",
+    "data_referencia": "02/10/2026",
     "grupo": "Câmbio",
     "nome": "Câmbio USD/BRL - venda",
-    "pontos": 2948,
-    "ultima_mudanca": "01/10/2026",
-    "valor_atual": "5.2079"
+    "pontos": 2949,
+    "ultima_mudanca": "02/10/2026",
+    "valor_atual": "5.2238"
   },
   {
     "codigo": 10813,
-    "data_referencia": "01/10/2026",
+    "data_referencia": "02/10/2026",
     "grupo": "Câmbio",
     "nome": "Câmbio USD/BRL - compra",
-    "pontos": 2948,
-    "ultima_mudanca": "01/10/2026",
-    "valor_atual": "5.2073"
+    "pontos": 2949,
+    "ultima_mudanca": "02/10/2026",
+    "valor_atual": "5.2232"
   },
   {
     "codigo": 21619,
-    "data_referencia": "01/10/2026",
+    "data_referencia": "02/10/2026",
     "grupo": "Câmbio",
     "nome": "Câmbio EUR/BRL - venda",
-    "pontos": 2946,
-    "ultima_mudanca": "01/10/2026",
-    "valor_atual": "5.8495000"
+    "pontos": 2947,
+    "ultima_mudanca": "02/10/2026",
+    "valor_atual": "5.8815000"
   },
   {
     "codigo": 24363,
