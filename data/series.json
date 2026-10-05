@@ -10,10 +10,10 @@
   },
   {
     "codigo": 1178,
-    "data_referencia": "02/10/2026",
+    "data_referencia": "05/10/2026",
     "grupo": "Juros",
     "nome": "Selic anualizada (% a.a.)",
-    "pontos": 2949,
+    "pontos": 2950,
     "ultima_mudanca": "17/09/2026",
     "valor_atual": "13.65"
   },
@@ -24,7 +24,7 @@
     "nome": "CDI - acumulado no mês (%)",
     "pontos": 142,
     "ultima_mudanca": "01/10/2026",
-    "valor_atual": "0.10"
+    "valor_atual": "0.15"
   },
   {
     "codigo": 226,
@@ -91,30 +91,30 @@
   },
   {
     "codigo": 1,
-    "data_referencia": "02/10/2026",
+    "data_referencia": "05/10/2026",
     "grupo": "Câmbio",
     "nome": "Câmbio USD/BRL - venda",
-    "pontos": 2949,
-    "ultima_mudanca": "02/10/2026",
-    "valor_atual": "5.2238"
+    "pontos": 2950,
+    "ultima_mudanca": "05/10/2026",
+    "valor_atual": "4.9859"
   },
   {
     "codigo": 10813,
-    "data_referencia": "02/10/2026",
+    "data_referencia": "05/10/2026",
     "grupo": "Câmbio",
     "nome": "Câmbio USD/BRL - compra",
-    "pontos": 2949,
-    "ultima_mudanca": "02/10/2026",
-    "valor_atual": "5.2232"
+    "pontos": 2950,
+    "ultima_mudanca": "05/10/2026",
+    "valor_atual": "4.9853"
   },
   {
     "codigo": 21619,
-    "data_referencia": "02/10/2026",
+    "data_referencia": "05/10/2026",
     "grupo": "Câmbio",
     "nome": "Câmbio EUR/BRL - venda",
-    "pontos": 2947,
-    "ultima_mudanca": "02/10/2026",
-    "valor_atual": "5.8815000"
+    "pontos": 2948,
+    "ultima_mudanca": "05/10/2026",
+    "valor_atual": "5.5897000"
   },
   {
     "codigo": 24363,
