@@ -927,3 +927,7 @@
     ↳ Câmbio USD/BRL - compra: caiu de 4,9853 para 4,9692.
 [2026-10-07 03:15:07 +0000] Câmbio EUR/BRL - venda: 5.5897000 -> 5.5975000
     ↳ Câmbio EUR/BRL - venda: subiu de 5,5897 para 5,5975.
+[2026-10-07 12:16:44 +0000] Poupança - rendimento (%): 0.6638 -> 0.6617
+    ↳ Poupança - rendimento (%): caiu de 0,6638 para 0,6617.
+[2026-10-07 12:16:44 +0000] IGP-DI - variação mensal (%): 0.06 -> 1.50
+    ↳ IGP-DI - variação mensal (%): subiu de 0,06 para 1,5.
