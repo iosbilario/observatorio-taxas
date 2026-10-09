@@ -1,6 +1,6 @@
 {
-  "gerado_em": "2026-10-08T19:38:31-03:00",
-  "gerado_em_fmt": "08/10/2026 às 19:38",
+  "gerado_em": "2026-10-09T00:37:18-03:00",
+  "gerado_em_fmt": "09/10/2026 às 00:37",
   "grupos": {
     "Admin": {
       "acessos": 0,
@@ -16,24 +16,20 @@
       }
     },
     "Home": {
-      "acessos": 123,
+      "acessos": 124,
       "sub": {}
     },
     "Reajuste": {
-      "acessos": 99,
+      "acessos": 101,
       "sub": {
         "IGP-DI": 6,
         "IGP-M": 29,
         "INPC": 11,
-        "IPCA": 30
+        "IPCA": 31
       }
     }
   },
   "serie_diaria": [
-    {
-      "acessos": 0,
-      "data": "2026-09-08"
-    },
     {
       "acessos": 5,
       "data": "2026-09-09"
@@ -151,15 +147,19 @@
       "data": "2026-10-07"
     },
     {
-      "acessos": 3,
+      "acessos": 6,
       "data": "2026-10-08"
+    },
+    {
+      "acessos": 0,
+      "data": "2026-10-09"
     }
   ],
   "site": "observatoriotaxas",
   "timezone": "America/Sao_Paulo (UTC-3)",
   "top_paginas": [
     {
-      "count": 119,
+      "count": 120,
       "path": "/"
     },
     {
@@ -167,7 +167,7 @@
       "path": "/rebobinar.html"
     },
     {
-      "count": 23,
+      "count": 24,
       "path": "/reajuste"
     },
     {
@@ -204,6 +204,10 @@
     },
     {
       "count": 4,
+      "path": "/reajuste/ipca-agosto-2026"
+    },
+    {
+      "count": 4,
       "path": "/reajuste/ipca-julho-2026"
     },
     {
@@ -212,21 +216,17 @@
     },
     {
       "count": 3,
-      "path": "/reajuste/ipca-agosto-2026"
-    },
-    {
-      "count": 3,
       "path": "/reajuste/igpm-maio-2026"
     }
   ],
   "totais": {
     "all_time": {
-      "acessos": 311,
-      "visitantes": 311
+      "acessos": 314,
+      "visitantes": 314
     },
     "ultimos_30d": {
-      "acessos": 80,
-      "visitantes": 80
+      "acessos": 83,
+      "visitantes": 83
     }
   }
 }
