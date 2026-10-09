@@ -949,3 +949,19 @@
     ↳ Câmbio USD/BRL - compra: subiu de 4,9929 para 5,0113.
 [2026-10-08 22:38:19 +0000] Câmbio EUR/BRL - venda: 5.5867000 -> 5.6093000
     ↳ Câmbio EUR/BRL - venda: subiu de 5,5867 para 5,6093.
+[2026-10-09 21:59:28 +0000] TR - Taxa Referencial (%): 0.1493 -> 0.1212
+    ↳ TR - Taxa Referencial (%): caiu de 0,1493 para 0,1212.
+[2026-10-09 21:59:28 +0000] Poupança - rendimento (%): 0.6500 -> 0.6218
+    ↳ Poupança - rendimento (%): caiu de 0,65 para 0,6218.
+[2026-10-09 21:59:28 +0000] IPCA - variação mensal (%): -0.32 -> 0.82
+    ↳ IPCA - variação mensal (%): subiu de -0,32 para 0,82.
+[2026-10-09 21:59:28 +0000] IPCA - acumulado 12 meses (%): 4.22 -> 4.58
+    ↳ IPCA - acumulado 12 meses (%): subiu de 4,22 para 4,58.
+[2026-10-09 21:59:28 +0000] INPC - variação mensal (%): -0.32 -> 0.82
+    ↳ INPC - variação mensal (%): subiu de -0,32 para 0,82.
+[2026-10-09 21:59:28 +0000] Câmbio USD/BRL - venda: 5.0119 -> 4.9892
+    ↳ Câmbio USD/BRL - venda: caiu de 5,0119 para 4,9892.
+[2026-10-09 21:59:28 +0000] Câmbio USD/BRL - compra: 5.0113 -> 4.9886
+    ↳ Câmbio USD/BRL - compra: caiu de 5,0113 para 4,9886.
+[2026-10-09 21:59:28 +0000] Câmbio EUR/BRL - venda: 5.6093000 -> 5.5844000
+    ↳ Câmbio EUR/BRL - venda: caiu de 5,6093 para 5,5844.
