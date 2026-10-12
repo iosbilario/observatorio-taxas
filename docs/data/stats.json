@@ -1,13 +1,13 @@
 {
-  "gerado_em": "2026-10-12T10:51:21-03:00",
-  "gerado_em_fmt": "12/10/2026 às 10:51",
+  "gerado_em": "2026-10-12T20:56:32-03:00",
+  "gerado_em_fmt": "12/10/2026 às 20:56",
   "grupos": {
     "Admin": {
       "acessos": 0,
       "sub": {}
     },
     "Correção": {
-      "acessos": 8,
+      "acessos": 9,
       "sub": {
         "IGP-DI": 1,
         "IGP-M": 0,
@@ -16,7 +16,7 @@
       }
     },
     "Home": {
-      "acessos": 126,
+      "acessos": 127,
       "sub": {}
     },
     "Reajuste": {
@@ -31,7 +31,7 @@
   },
   "serie_diaria": [
     {
-      "acessos": 1,
+      "acessos": 0,
       "data": "2026-09-12"
     },
     {
@@ -151,7 +151,7 @@
       "data": "2026-10-11"
     },
     {
-      "acessos": 0,
+      "acessos": 2,
       "data": "2026-10-12"
     }
   ],
@@ -159,7 +159,7 @@
   "timezone": "America/Sao_Paulo (UTC-3)",
   "top_paginas": [
     {
-      "count": 122,
+      "count": 123,
       "path": "/"
     },
     {
@@ -187,6 +187,10 @@
       "path": "/reajuste/igpm-agosto-2026"
     },
     {
+      "count": 6,
+      "path": "/correcao"
+    },
+    {
       "count": 5,
       "path": "/reajuste/igpdi-agosto-2026"
     },
@@ -197,10 +201,6 @@
     {
       "count": 5,
       "path": "/reajuste/ipca-maio-2026"
-    },
-    {
-      "count": 5,
-      "path": "/correcao"
     },
     {
       "count": 4,
@@ -221,12 +221,12 @@
   ],
   "totais": {
     "all_time": {
-      "acessos": 316,
-      "visitantes": 316
+      "acessos": 318,
+      "visitantes": 318
     },
     "ultimos_30d": {
-      "acessos": 72,
-      "visitantes": 72
+      "acessos": 73,
+      "visitantes": 73
     }
   }
 }
