@@ -1,37 +1,37 @@
 {
-  "gerado_em": "2026-10-14T13:10:34-03:00",
-  "gerado_em_fmt": "14/10/2026 às 13:10",
+  "gerado_em": "2026-10-14T18:05:46-03:00",
+  "gerado_em_fmt": "14/10/2026 às 18:05",
   "grupos": {
     "Admin": {
       "acessos": 0,
       "sub": {}
     },
     "Correção": {
-      "acessos": 9,
+      "acessos": 10,
       "sub": {
         "IGP-DI": 1,
         "IGP-M": 0,
         "INPC": 2,
-        "IPCA": 0
+        "IPCA": 1
       }
     },
     "Home": {
-      "acessos": 129,
+      "acessos": 130,
       "sub": {}
     },
     "Reajuste": {
-      "acessos": 101,
+      "acessos": 104,
       "sub": {
         "IGP-DI": 6,
         "IGP-M": 29,
-        "INPC": 11,
-        "IPCA": 31
+        "INPC": 13,
+        "IPCA": 32
       }
     }
   },
   "serie_diaria": [
     {
-      "acessos": 2,
+      "acessos": 0,
       "data": "2026-09-14"
     },
     {
@@ -151,7 +151,7 @@
       "data": "2026-10-13"
     },
     {
-      "acessos": 2,
+      "acessos": 7,
       "data": "2026-10-14"
     }
   ],
@@ -159,7 +159,7 @@
   "timezone": "America/Sao_Paulo (UTC-3)",
   "top_paginas": [
     {
-      "count": 125,
+      "count": 126,
       "path": "/"
     },
     {
@@ -221,12 +221,12 @@
   ],
   "totais": {
     "all_time": {
-      "acessos": 320,
-      "visitantes": 320
+      "acessos": 325,
+      "visitantes": 325
     },
     "ultimos_30d": {
-      "acessos": 74,
-      "visitantes": 74
+      "acessos": 77,
+      "visitantes": 77
     }
   }
 }
