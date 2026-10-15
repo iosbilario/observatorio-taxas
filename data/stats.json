@@ -1,6 +1,6 @@
 {
-  "gerado_em": "2026-10-15T12:57:44-03:00",
-  "gerado_em_fmt": "15/10/2026 às 12:57",
+  "gerado_em": "2026-10-15T17:41:33-03:00",
+  "gerado_em_fmt": "15/10/2026 às 17:41",
   "grupos": {
     "Admin": {
       "acessos": 0,
@@ -16,11 +16,11 @@
       }
     },
     "Home": {
-      "acessos": 131,
+      "acessos": 136,
       "sub": {}
     },
     "Reajuste": {
-      "acessos": 104,
+      "acessos": 105,
       "sub": {
         "IGP-DI": 6,
         "IGP-M": 29,
@@ -31,7 +31,7 @@
   },
   "serie_diaria": [
     {
-      "acessos": 3,
+      "acessos": 2,
       "data": "2026-09-15"
     },
     {
@@ -151,7 +151,7 @@
       "data": "2026-10-14"
     },
     {
-      "acessos": 1,
+      "acessos": 10,
       "data": "2026-10-15"
     }
   ],
@@ -159,27 +159,27 @@
   "timezone": "America/Sao_Paulo (UTC-3)",
   "top_paginas": [
     {
-      "count": 127,
+      "count": 132,
       "path": "/"
     },
     {
-      "count": 50,
+      "count": 51,
       "path": "/rebobinar.html"
     },
     {
-      "count": 24,
+      "count": 25,
       "path": "/reajuste"
+    },
+    {
+      "count": 13,
+      "path": "/retransmissora.html"
     },
     {
       "count": 12,
       "path": "/reajuste/igpm-julho-2026"
     },
     {
-      "count": 12,
-      "path": "/retransmissora.html"
-    },
-    {
-      "count": 10,
+      "count": 11,
       "path": "/var.html"
     },
     {
@@ -221,12 +221,12 @@
   ],
   "totais": {
     "all_time": {
-      "acessos": 328,
-      "visitantes": 328
+      "acessos": 337,
+      "visitantes": 337
     },
     "ultimos_30d": {
-      "acessos": 78,
-      "visitantes": 78
+      "acessos": 86,
+      "visitantes": 86
     }
   }
 }
