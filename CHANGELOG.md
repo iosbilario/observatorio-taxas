@@ -1011,3 +1011,11 @@
     ↳ TR - Taxa Referencial (%): caiu de 0,1695 para 0,157.
 [2026-10-16 15:44:57 +0000] IBC-Br - índice (proxy do PIB): 114.48992 -> 111.71919
     ↳ IBC-Br - índice (proxy do PIB): caiu de 114,4899 para 111,7192.
+[2026-10-16 20:13:56 +0000] Poupança - rendimento (%): 0.6703 -> 0.6578
+    ↳ Poupança - rendimento (%): caiu de 0,6703 para 0,6578.
+[2026-10-16 20:13:56 +0000] Câmbio USD/BRL - venda: 5.0521 -> 5.0826
+    ↳ Câmbio USD/BRL - venda: subiu de 5,0521 para 5,0826.
+[2026-10-16 20:13:56 +0000] Câmbio USD/BRL - compra: 5.0515 -> 5.0820
+    ↳ Câmbio USD/BRL - compra: subiu de 5,0515 para 5,082.
+[2026-10-16 20:13:56 +0000] Câmbio EUR/BRL - venda: 5.6609000 -> 5.7088000
+    ↳ Câmbio EUR/BRL - venda: subiu de 5,6609 para 5,7088.
