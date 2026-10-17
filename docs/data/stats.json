@@ -1,13 +1,13 @@
 {
-  "gerado_em": "2026-10-16T23:04:21-03:00",
-  "gerado_em_fmt": "16/10/2026 às 23:04",
+  "gerado_em": "2026-10-17T06:52:44-03:00",
+  "gerado_em_fmt": "17/10/2026 às 06:52",
   "grupos": {
     "Admin": {
       "acessos": 0,
       "sub": {}
     },
     "Correção": {
-      "acessos": 12,
+      "acessos": 13,
       "sub": {
         "IGP-DI": 1,
         "IGP-M": 0,
@@ -30,10 +30,6 @@
     }
   },
   "serie_diaria": [
-    {
-      "acessos": 1,
-      "data": "2026-09-16"
-    },
     {
       "acessos": 5,
       "data": "2026-09-17"
@@ -153,6 +149,10 @@
     {
       "acessos": 1,
       "data": "2026-10-16"
+    },
+    {
+      "acessos": 1,
+      "data": "2026-10-17"
     }
   ],
   "site": "observatoriotaxas",
@@ -183,7 +183,7 @@
       "path": "/var.html"
     },
     {
-      "count": 8,
+      "count": 9,
       "path": "/correcao"
     },
     {
@@ -221,8 +221,8 @@
   ],
   "totais": {
     "all_time": {
-      "acessos": 338,
-      "visitantes": 338
+      "acessos": 339,
+      "visitantes": 339
     },
     "ultimos_30d": {
       "acessos": 80,
