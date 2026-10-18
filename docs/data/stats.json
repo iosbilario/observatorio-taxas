@@ -1,6 +1,6 @@
 {
-  "gerado_em": "2026-10-17T23:03:46-03:00",
-  "gerado_em_fmt": "17/10/2026 às 23:03",
+  "gerado_em": "2026-10-18T07:09:18-03:00",
+  "gerado_em_fmt": "18/10/2026 às 07:09",
   "grupos": {
     "Admin": {
       "acessos": 0,
@@ -16,7 +16,7 @@
       }
     },
     "Home": {
-      "acessos": 138,
+      "acessos": 139,
       "sub": {}
     },
     "Reajuste": {
@@ -30,10 +30,6 @@
     }
   },
   "serie_diaria": [
-    {
-      "acessos": 0,
-      "data": "2026-09-17"
-    },
     {
       "acessos": 1,
       "data": "2026-09-18"
@@ -153,13 +149,17 @@
     {
       "acessos": 3,
       "data": "2026-10-17"
+    },
+    {
+      "acessos": 1,
+      "data": "2026-10-18"
     }
   ],
   "site": "observatoriotaxas",
   "timezone": "America/Sao_Paulo (UTC-3)",
   "top_paginas": [
     {
-      "count": 134,
+      "count": 135,
       "path": "/"
     },
     {
@@ -221,12 +221,12 @@
   ],
   "totais": {
     "all_time": {
-      "acessos": 341,
-      "visitantes": 341
+      "acessos": 342,
+      "visitantes": 342
     },
     "ultimos_30d": {
-      "acessos": 77,
-      "visitantes": 77
+      "acessos": 78,
+      "visitantes": 78
     }
   }
 }
