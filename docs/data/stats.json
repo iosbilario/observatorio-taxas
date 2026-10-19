@@ -1,18 +1,18 @@
 {
-  "gerado_em": "2026-10-19T14:56:19-03:00",
-  "gerado_em_fmt": "19/10/2026 às 14:56",
+  "gerado_em": "2026-10-19T18:53:41-03:00",
+  "gerado_em_fmt": "19/10/2026 às 18:53",
   "grupos": {
     "Admin": {
       "acessos": 0,
       "sub": {}
     },
     "Correção": {
-      "acessos": 15,
+      "acessos": 16,
       "sub": {
         "IGP-DI": 1,
         "IGP-M": 0,
         "INPC": 2,
-        "IPCA": 1
+        "IPCA": 2
       }
     },
     "Home": {
@@ -151,7 +151,7 @@
       "data": "2026-10-18"
     },
     {
-      "acessos": 2,
+      "acessos": 3,
       "data": "2026-10-19"
     }
   ],
@@ -221,12 +221,12 @@
   ],
   "totais": {
     "all_time": {
-      "acessos": 346,
-      "visitantes": 346
+      "acessos": 347,
+      "visitantes": 347
     },
     "ultimos_30d": {
-      "acessos": 81,
-      "visitantes": 81
+      "acessos": 82,
+      "visitantes": 82
     }
   }
 }
