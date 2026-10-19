@@ -1,13 +1,13 @@
 {
-  "gerado_em": "2026-10-19T08:39:13-03:00",
-  "gerado_em_fmt": "19/10/2026 às 08:39",
+  "gerado_em": "2026-10-19T14:56:19-03:00",
+  "gerado_em_fmt": "19/10/2026 às 14:56",
   "grupos": {
     "Admin": {
       "acessos": 0,
       "sub": {}
     },
     "Correção": {
-      "acessos": 14,
+      "acessos": 15,
       "sub": {
         "IGP-DI": 1,
         "IGP-M": 0,
@@ -151,7 +151,7 @@
       "data": "2026-10-18"
     },
     {
-      "acessos": 1,
+      "acessos": 2,
       "data": "2026-10-19"
     }
   ],
@@ -180,11 +180,11 @@
     },
     {
       "count": 11,
-      "path": "/var.html"
+      "path": "/correcao"
     },
     {
-      "count": 10,
-      "path": "/correcao"
+      "count": 11,
+      "path": "/var.html"
     },
     {
       "count": 7,
@@ -221,12 +221,12 @@
   ],
   "totais": {
     "all_time": {
-      "acessos": 345,
-      "visitantes": 345
+      "acessos": 346,
+      "visitantes": 346
     },
     "ultimos_30d": {
-      "acessos": 80,
-      "visitantes": 80
+      "acessos": 81,
+      "visitantes": 81
     }
   }
 }
