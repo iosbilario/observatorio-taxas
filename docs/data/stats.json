@@ -1,6 +1,6 @@
 {
-  "gerado_em": "2026-10-20T23:28:31-03:00",
-  "gerado_em_fmt": "20/10/2026 às 23:28",
+  "gerado_em": "2026-10-21T07:48:39-03:00",
+  "gerado_em_fmt": "21/10/2026 às 07:48",
   "grupos": {
     "Admin": {
       "acessos": 0,
@@ -30,10 +30,6 @@
     }
   },
   "serie_diaria": [
-    {
-      "acessos": 0,
-      "data": "2026-09-20"
-    },
     {
       "acessos": 8,
       "data": "2026-09-21"
@@ -153,6 +149,10 @@
     {
       "acessos": 5,
       "data": "2026-10-20"
+    },
+    {
+      "acessos": 0,
+      "data": "2026-10-21"
     }
   ],
   "site": "observatoriotaxas",
