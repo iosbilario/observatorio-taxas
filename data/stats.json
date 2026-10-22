@@ -1,6 +1,6 @@
 {
-  "gerado_em": "2026-10-21T18:02:36-03:00",
-  "gerado_em_fmt": "21/10/2026 às 18:02",
+  "gerado_em": "2026-10-21T23:24:56-03:00",
+  "gerado_em_fmt": "21/10/2026 às 23:24",
   "grupos": {
     "Admin": {
       "acessos": 0,
@@ -20,7 +20,7 @@
       "sub": {}
     },
     "Reajuste": {
-      "acessos": 108,
+      "acessos": 109,
       "sub": {
         "IGP-DI": 6,
         "IGP-M": 29,
@@ -31,7 +31,7 @@
   },
   "serie_diaria": [
     {
-      "acessos": 1,
+      "acessos": 0,
       "data": "2026-09-21"
     },
     {
@@ -151,7 +151,7 @@
       "data": "2026-10-20"
     },
     {
-      "acessos": 1,
+      "acessos": 2,
       "data": "2026-10-21"
     }
   ],
@@ -167,7 +167,7 @@
       "path": "/rebobinar.html"
     },
     {
-      "count": 28,
+      "count": 29,
       "path": "/reajuste"
     },
     {
@@ -221,8 +221,8 @@
   ],
   "totais": {
     "all_time": {
-      "acessos": 353,
-      "visitantes": 353
+      "acessos": 354,
+      "visitantes": 354
     },
     "ultimos_30d": {
       "acessos": 80,
