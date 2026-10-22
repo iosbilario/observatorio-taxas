@@ -1057,3 +1057,7 @@
     ↳ Câmbio EUR/BRL - venda: subiu de 5,6317 para 5,6411.
 [2026-10-21 21:00:32 +0000] Câmbio USD/BRL - venda: 5.0140 -> 5.0277
     ↳ Câmbio USD/BRL - venda: subiu de 5,014 para 5,0277.
+[2026-10-22 16:15:53 +0000] Poupança - rendimento (%): 0.6706 -> 0.6588
+    ↳ Poupança - rendimento (%): caiu de 0,6706 para 0,6588.
+[2026-10-22 16:15:53 +0000] Câmbio USD/BRL - compra: 5.0270 -> 5.0377
+    ↳ Câmbio USD/BRL - compra: subiu de 5,027 para 5,0377.
