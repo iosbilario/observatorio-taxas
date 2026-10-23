@@ -1067,3 +1067,7 @@
     ↳ Câmbio USD/BRL - venda: subiu de 5,0277 para 5,0383.
 [2026-10-22 20:58:02 +0000] Câmbio EUR/BRL - venda: 5.6411000 -> 5.6494000
     ↳ Câmbio EUR/BRL - venda: subiu de 5,6411 para 5,6494.
+[2026-10-23 16:05:46 +0000] TR - Taxa Referencial (%): 0.1580 -> 0.1261
+    ↳ TR - Taxa Referencial (%): caiu de 0,158 para 0,1261.
+[2026-10-23 16:05:46 +0000] Poupança - rendimento (%): 0.6588 -> 0.6267
+    ↳ Poupança - rendimento (%): caiu de 0,6588 para 0,6267.
