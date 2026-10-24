@@ -1,13 +1,13 @@
 {
-  "gerado_em": "2026-10-24T06:58:18-03:00",
-  "gerado_em_fmt": "24/10/2026 às 06:58",
+  "gerado_em": "2026-10-24T12:02:38-03:00",
+  "gerado_em_fmt": "24/10/2026 às 12:02",
   "grupos": {
     "Admin": {
       "acessos": 0,
       "sub": {}
     },
     "Correção": {
-      "acessos": 19,
+      "acessos": 20,
       "sub": {
         "IGP-DI": 1,
         "IGP-M": 0,
@@ -151,7 +151,7 @@
       "data": "2026-10-23"
     },
     {
-      "acessos": 2,
+      "acessos": 3,
       "data": "2026-10-24"
     }
   ],
@@ -171,7 +171,7 @@
       "path": "/reajuste"
     },
     {
-      "count": 13,
+      "count": 14,
       "path": "/correcao"
     },
     {
@@ -221,12 +221,12 @@
   ],
   "totais": {
     "all_time": {
-      "acessos": 366,
-      "visitantes": 366
+      "acessos": 367,
+      "visitantes": 367
     },
     "ultimos_30d": {
-      "acessos": 0,
-      "visitantes": 91
+      "acessos": 92,
+      "visitantes": 92
     }
   }
 }
