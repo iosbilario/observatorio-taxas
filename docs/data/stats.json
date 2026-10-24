@@ -1,6 +1,6 @@
 {
-  "gerado_em": "2026-10-23T23:28:10-03:00",
-  "gerado_em_fmt": "23/10/2026 às 23:28",
+  "gerado_em": "2026-10-24T06:58:18-03:00",
+  "gerado_em_fmt": "24/10/2026 às 06:58",
   "grupos": {
     "Admin": {
       "acessos": 0,
@@ -16,11 +16,11 @@
       }
     },
     "Home": {
-      "acessos": 147,
+      "acessos": 148,
       "sub": {}
     },
     "Reajuste": {
-      "acessos": 113,
+      "acessos": 114,
       "sub": {
         "IGP-DI": 6,
         "IGP-M": 29,
@@ -30,10 +30,6 @@
     }
   },
   "serie_diaria": [
-    {
-      "acessos": 0,
-      "data": "2026-09-23"
-    },
     {
       "acessos": 3,
       "data": "2026-09-24"
@@ -153,13 +149,17 @@
     {
       "acessos": 2,
       "data": "2026-10-23"
+    },
+    {
+      "acessos": 2,
+      "data": "2026-10-24"
     }
   ],
   "site": "observatoriotaxas",
   "timezone": "America/Sao_Paulo (UTC-3)",
   "top_paginas": [
     {
-      "count": 143,
+      "count": 144,
       "path": "/"
     },
     {
@@ -167,7 +167,7 @@
       "path": "/rebobinar.html"
     },
     {
-      "count": 32,
+      "count": 33,
       "path": "/reajuste"
     },
     {
@@ -221,12 +221,12 @@
   ],
   "totais": {
     "all_time": {
-      "acessos": 364,
-      "visitantes": 364
+      "acessos": 366,
+      "visitantes": 366
     },
     "ultimos_30d": {
-      "acessos": 89,
-      "visitantes": 89
+      "acessos": 0,
+      "visitantes": 91
     }
   }
 }
