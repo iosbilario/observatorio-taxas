@@ -1,18 +1,18 @@
 {
-  "gerado_em": "2026-10-27T08:17:15-03:00",
-  "gerado_em_fmt": "27/10/2026 às 08:17",
+  "gerado_em": "2026-10-27T14:03:14-03:00",
+  "gerado_em_fmt": "27/10/2026 às 14:03",
   "grupos": {
     "Admin": {
       "acessos": 0,
       "sub": {}
     },
     "Correção": {
-      "acessos": 23,
+      "acessos": 26,
       "sub": {
         "IGP-DI": 1,
-        "IGP-M": 0,
+        "IGP-M": 1,
         "INPC": 2,
-        "IPCA": 5
+        "IPCA": 6
       }
     },
     "Home": {
@@ -20,10 +20,10 @@
       "sub": {}
     },
     "Reajuste": {
-      "acessos": 120,
+      "acessos": 122,
       "sub": {
         "IGP-DI": 6,
-        "IGP-M": 29,
+        "IGP-M": 30,
         "INPC": 13,
         "IPCA": 37
       }
@@ -151,7 +151,7 @@
       "data": "2026-10-26"
     },
     {
-      "acessos": 1,
+      "acessos": 6,
       "data": "2026-10-27"
     }
   ],
@@ -167,11 +167,11 @@
       "path": "/rebobinar.html"
     },
     {
-      "count": 35,
+      "count": 36,
       "path": "/reajuste"
     },
     {
-      "count": 15,
+      "count": 16,
       "path": "/correcao"
     },
     {
@@ -192,11 +192,11 @@
     },
     {
       "count": 6,
-      "path": "/reajuste/ipca-setembro-2026"
+      "path": "/correcao/ipca"
     },
     {
-      "count": 5,
-      "path": "/correcao/ipca"
+      "count": 6,
+      "path": "/reajuste/ipca-setembro-2026"
     },
     {
       "count": 5,
@@ -221,12 +221,12 @@
   ],
   "totais": {
     "all_time": {
-      "acessos": 382,
-      "visitantes": 382
+      "acessos": 387,
+      "visitantes": 387
     },
     "ultimos_30d": {
-      "acessos": 96,
-      "visitantes": 96
+      "acessos": 101,
+      "visitantes": 101
     }
   }
 }
