@@ -1107,3 +1107,11 @@
     ↳ TR - Taxa Referencial (%): subiu de 0,1286 para 0,1599.
 [2026-10-28 11:49:01 +0000] Meta Selic (% a.a.): 14.00 -> 13.75
     ↳ Meta Selic (% a.a.): caiu de 14 para 13,75.
+[2026-10-28 17:36:53 +0000] TR - Taxa Referencial (%): 0.1599 -> 0.1692
+    ↳ TR - Taxa Referencial (%): subiu de 0,1599 para 0,1692.
+[2026-10-28 17:36:53 +0000] Poupança - rendimento (%): 0.6607 -> 0.6700
+    ↳ Poupança - rendimento (%): subiu de 0,6607 para 0,67.
+[2026-10-28 17:36:53 +0000] Câmbio USD/BRL - venda: 5.3346 -> 5.3420
+    ↳ Câmbio USD/BRL - venda: subiu de 5,3346 para 5,342.
+[2026-10-28 17:36:53 +0000] Câmbio EUR/BRL - venda: 5.9449000 -> 5.9515000
+    ↳ Câmbio EUR/BRL - venda: subiu de 5,9449 para 5,9515.
