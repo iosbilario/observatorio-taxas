@@ -1117,3 +1117,5 @@
     ↳ Câmbio EUR/BRL - venda: subiu de 5,9449 para 5,9515.
 [2026-10-28 21:59:15 +0000] Câmbio USD/BRL - compra: 5.3340 -> 5.3414
     ↳ Câmbio USD/BRL - compra: subiu de 5,334 para 5,3414.
+[2026-10-29 11:56:44 +0000] IGP-M - variação mensal (%): 1.57 -> 1.47
+    ↳ IGP-M - variação mensal (%): caiu de 1,57 para 1,47.
