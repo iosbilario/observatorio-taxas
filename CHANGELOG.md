@@ -1125,3 +1125,13 @@
     ↳ Câmbio USD/BRL - compra: subiu de 5,3414 para 5,3738.
 [2026-10-29 17:53:52 +0000] Câmbio EUR/BRL - venda: 5.9515000 -> 6.0000000
     ↳ Câmbio EUR/BRL - venda: subiu de 5,9515 para 6.
+[2026-10-30 17:26:02 +0000] TR - Taxa Referencial (%): 0.1692 -> 0.1500
+    ↳ TR - Taxa Referencial (%): caiu de 0,1692 para 0,15.
+[2026-10-30 17:26:02 +0000] Câmbio USD/BRL - venda: 5.3744 -> 5.4212
+    ↳ Câmbio USD/BRL - venda: subiu de 5,3744 para 5,4212.
+[2026-10-30 17:26:02 +0000] Câmbio USD/BRL - compra: 5.3738 -> 5.4206
+    ↳ Câmbio USD/BRL - compra: subiu de 5,3738 para 5,4206.
+[2026-10-30 17:26:02 +0000] Câmbio EUR/BRL - venda: 6.0000000 -> 6.0522000
+    ↳ Câmbio EUR/BRL - venda: subiu de 6 para 6,0522.
+[2026-10-30 17:26:02 +0000] Taxa de desocupação - PNAD (%): 5.3 -> 5.2
+    ↳ Taxa de desocupação - PNAD (%): caiu de 5,3 para 5,2.

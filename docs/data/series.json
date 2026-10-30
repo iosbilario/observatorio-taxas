@@ -28,12 +28,12 @@
   },
   {
     "codigo": 226,
-    "data_referencia": "28/10/2026",
+    "data_referencia": "29/10/2026",
     "grupo": "Juros",
     "nome": "TR - Taxa Referencial (%)",
-    "pontos": 4319,
-    "ultima_mudanca": "27/10/2026",
-    "valor_atual": "0.1692"
+    "pontos": 4320,
+    "ultima_mudanca": "29/10/2026",
+    "valor_atual": "0.1500"
   },
   {
     "codigo": 25,
@@ -91,30 +91,30 @@
   },
   {
     "codigo": 1,
-    "data_referencia": "29/10/2026",
+    "data_referencia": "30/10/2026",
     "grupo": "Câmbio",
     "nome": "Câmbio USD/BRL - venda",
-    "pontos": 2967,
-    "ultima_mudanca": "29/10/2026",
-    "valor_atual": "5.3744"
+    "pontos": 2968,
+    "ultima_mudanca": "30/10/2026",
+    "valor_atual": "5.4212"
   },
   {
     "codigo": 10813,
-    "data_referencia": "29/10/2026",
+    "data_referencia": "30/10/2026",
     "grupo": "Câmbio",
     "nome": "Câmbio USD/BRL - compra",
-    "pontos": 2967,
-    "ultima_mudanca": "29/10/2026",
-    "valor_atual": "5.3738"
+    "pontos": 2968,
+    "ultima_mudanca": "30/10/2026",
+    "valor_atual": "5.4206"
   },
   {
     "codigo": 21619,
-    "data_referencia": "29/10/2026",
+    "data_referencia": "30/10/2026",
     "grupo": "Câmbio",
     "nome": "Câmbio EUR/BRL - venda",
-    "pontos": 2965,
-    "ultima_mudanca": "29/10/2026",
-    "valor_atual": "6.0000000"
+    "pontos": 2966,
+    "ultima_mudanca": "30/10/2026",
+    "valor_atual": "6.0522000"
   },
   {
     "codigo": 24363,
@@ -127,11 +127,11 @@
   },
   {
     "codigo": 24369,
-    "data_referencia": "01/08/2026",
+    "data_referencia": "01/09/2026",
     "grupo": "Atividade & Emprego",
     "nome": "Taxa de desocupação - PNAD (%)",
-    "pontos": 140,
-    "ultima_mudanca": "01/07/2026",
-    "valor_atual": "5.3"
+    "pontos": 141,
+    "ultima_mudanca": "01/09/2026",
+    "valor_atual": "5.2"
   }
 ]
