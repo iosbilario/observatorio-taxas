@@ -1137,3 +1137,11 @@
     ↳ Taxa de desocupação - PNAD (%): caiu de 5,3 para 5,2.
 [2026-11-03 13:14:01 +0000] TR - Taxa Referencial (%): 0.1500 -> 0.1183
     ↳ TR - Taxa Referencial (%): caiu de 0,15 para 0,1183.
+[2026-11-03 22:40:40 +0000] CDI - acumulado no mês (%): 1.07 -> 0.05
+    ↳ CDI - acumulado no mês (%): caiu de 1,07 para 0,05.
+[2026-11-03 22:40:40 +0000] Câmbio USD/BRL - venda: 5.4212 -> 5.4935
+    ↳ Câmbio USD/BRL - venda: subiu de 5,4212 para 5,4935.
+[2026-11-03 22:40:40 +0000] Câmbio USD/BRL - compra: 5.4206 -> 5.4929
+    ↳ Câmbio USD/BRL - compra: subiu de 5,4206 para 5,4929.
+[2026-11-03 22:40:40 +0000] Câmbio EUR/BRL - venda: 6.0522000 -> 6.1500000
+    ↳ Câmbio EUR/BRL - venda: subiu de 6,0522 para 6,15.
