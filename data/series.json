@@ -1,10 +1,10 @@
 [
   {
     "codigo": 432,
-    "data_referencia": "02/11/2026",
+    "data_referencia": "03/11/2026",
     "grupo": "Juros",
     "nome": "Meta Selic (% a.a.)",
-    "pontos": 4234,
+    "pontos": 4235,
     "ultima_mudanca": "28/10/2026",
     "valor_atual": "13.75"
   },
@@ -28,12 +28,12 @@
   },
   {
     "codigo": 226,
-    "data_referencia": "29/10/2026",
+    "data_referencia": "30/10/2026",
     "grupo": "Juros",
     "nome": "TR - Taxa Referencial (%)",
-    "pontos": 4320,
-    "ultima_mudanca": "29/10/2026",
-    "valor_atual": "0.1500"
+    "pontos": 4321,
+    "ultima_mudanca": "30/10/2026",
+    "valor_atual": "0.1183"
   },
   {
     "codigo": 25,

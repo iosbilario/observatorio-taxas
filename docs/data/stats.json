@@ -1,13 +1,13 @@
 {
-  "gerado_em": "2026-11-02T21:11:47-03:00",
-  "gerado_em_fmt": "02/11/2026 às 21:11",
+  "gerado_em": "2026-11-03T10:14:44-03:00",
+  "gerado_em_fmt": "03/11/2026 às 10:14",
   "grupos": {
     "Admin": {
       "acessos": 0,
       "sub": {}
     },
     "Correção": {
-      "acessos": 27,
+      "acessos": 28,
       "sub": {
         "IGP-DI": 1,
         "IGP-M": 1,
@@ -16,24 +16,20 @@
       }
     },
     "Home": {
-      "acessos": 163,
+      "acessos": 164,
       "sub": {}
     },
     "Reajuste": {
-      "acessos": 132,
+      "acessos": 133,
       "sub": {
         "IGP-DI": 7,
-        "IGP-M": 33,
+        "IGP-M": 34,
         "INPC": 13,
         "IPCA": 38
       }
     }
   },
   "serie_diaria": [
-    {
-      "acessos": 0,
-      "data": "2026-10-03"
-    },
     {
       "acessos": 1,
       "data": "2026-10-04"
@@ -153,13 +149,17 @@
     {
       "acessos": 6,
       "data": "2026-11-02"
+    },
+    {
+      "acessos": 3,
+      "data": "2026-11-03"
     }
   ],
   "site": "observatoriotaxas",
   "timezone": "America/Sao_Paulo (UTC-3)",
   "top_paginas": [
     {
-      "count": 159,
+      "count": 160,
       "path": "/"
     },
     {
@@ -171,7 +171,7 @@
       "path": "/reajuste"
     },
     {
-      "count": 17,
+      "count": 18,
       "path": "/correcao"
     },
     {
@@ -221,12 +221,12 @@
   ],
   "totais": {
     "all_time": {
-      "acessos": 407,
-      "visitantes": 407
+      "acessos": 410,
+      "visitantes": 410
     },
     "ultimos_30d": {
-      "acessos": 110,
-      "visitantes": 110
+      "acessos": 113,
+      "visitantes": 113
     }
   }
 }
