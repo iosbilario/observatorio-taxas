@@ -146,8 +146,8 @@ Auditoria, diretrizes e testes de SEO em [`organic-discovery/`](organic-discover
 
 - **Procedência:** o Observatório coleta tudo na API do SGS do Banco Central,
   mas não produz os índices. IPCA, INPC e a taxa de desocupação são do IBGE;
-  IGP-M e IGP-DI, da FGV IBRE; CDI, da B3; Selic, TR, poupança, câmbio e IBC-Br,
-  do Banco Central. Cite o produtor junto com o Observatório.
+  IGP-M e IGP-DI, da FGV IBRE; Selic, TR, poupança, câmbio e IBC-Br, do Banco
+  Central (a série 4390, rotulada como CDI, é no SGS a Selic acumulada no mês). Cite o produtor junto com o Observatório.
 - **Referência permanente a um dado:** use a versão. Ex.: IGP-M mensal como
   publicado na v1.4.0:
   `https://github.com/iosbilario/observatorio-taxas/blob/v1.4.0/data/189_history.json`.
@@ -157,6 +157,14 @@ Auditoria, diretrizes e testes de SEO em [`organic-discovery/`](organic-discover
   de 12 meses em `scripts/build_pages.py` (`acumulado`), correção entre datas em
   `scripts/build_correcao.py` (`fator_periodo`), com testes em `tests/`.
 - **Citação formal:** botão *Cite this repository* do GitHub (arquivo [`CITATION.cff`](CITATION.cff)).
+
+## Licença
+
+- **Código:** MIT ([`LICENSE`](LICENSE)).
+- **Dados:** não há licença única. Séries do Banco Central sob ODbL 1.0; IPCA,
+  INPC, desocupação (IBGE), IGP-M e IGP-DI (FGV IBRE) seguem os termos dos
+  produtores e não são relicenciadas. Detalhes por série em [`LICENSE-DADOS.md`](LICENSE-DADOS.md).
+- **Textos do site:** CC BY 4.0, com atribuição.
 
 ## Resumo das mudanças no CHANGELOG (grátis, padrão)
 

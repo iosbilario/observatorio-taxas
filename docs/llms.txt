@@ -2,7 +2,7 @@
 
 > Indicadores econômicos oficiais do Brasil — Selic, IPCA, dólar, IGP-M, desemprego e outros — coletados da API pública do Sistema Gerenciador de Séries Temporais (SGS) do Banco Central a cada 6 horas. O histórico completo vive versionado em Git desde 2015: cada coleta é um commit, então todo número é auditável ponto a ponto no repositório.
 
-Site 100% estático (GitHub Pages), gratuito e sem cadastro. Os dados são arquivos JSON sob `/data/`, no formato `[{"data": "dd/mm/aaaa", "valor": "14.25"}, ...]` — `valor` é string com ponto decimal, ordenado por data. Os números do dia são "assados" direto no HTML da primeira página (entre os marcadores `<!-- boletim:inicio -->` e `<!-- boletim:fim -->`, reescritos a cada coleta), então funcionam sem JavaScript. Dados em domínio público (CC0 1.0). Código e histórico: https://github.com/iosbilario/observatorio-taxas — mantido por LBP Tecnologia.
+Site 100% estático (GitHub Pages), gratuito e sem cadastro. Os dados são arquivos JSON sob `/data/`, no formato `[{"data": "dd/mm/aaaa", "valor": "14.25"}, ...]` — `valor` é string com ponto decimal, ordenado por data. Os números do dia são "assados" direto no HTML da primeira página (entre os marcadores `<!-- boletim:inicio -->` e `<!-- boletim:fim -->`, reescritos a cada coleta), então funcionam sem JavaScript. Termos de uso por série em https://github.com/iosbilario/observatorio-taxas/blob/main/LICENSE-DADOS.md: séries do Banco Central sob ODbL 1.0; IPCA, INPC, IGP-M e IGP-DI seguem os termos do IBGE e da FGV IBRE (não são relicenciadas). Código sob MIT. Código e histórico: https://github.com/iosbilario/observatorio-taxas — mantido por LBP Tecnologia.
 
 ## Páginas
 
@@ -17,7 +17,7 @@ Site 100% estático (GitHub Pages), gratuito e sem cadastro. Os dados são arqui
 
 Os JSONs são a fonte canônica; use-os em vez de raspar o HTML. Índices de inflação (IPCA, IGP-M, INPC, IGP-DI) trazem a variação mensal com data de referência no primeiro dia do mês; séries diárias (Selic, câmbio) trazem um ponto por dia útil. Acumulado em 12 meses usa composição (produto de 1 + i/100), não soma simples.
 
-Procedência: todos os números vêm da API do SGS do Banco Central, mas o SGS redistribui séries de outros órgãos. IPCA, INPC e a taxa de desocupação (PNAD Contínua) são produzidos pelo IBGE; IGP-M e IGP-DI, pela FGV IBRE; o CDI, pela B3; Selic, TR, poupança, câmbio e IBC-Br são do próprio Banco Central. Ao citar, atribua o índice ao órgão que o produz.
+Procedência: todos os números vêm da API do SGS do Banco Central, mas o SGS redistribui séries de outros órgãos. IPCA, INPC e a taxa de desocupação (PNAD Contínua) são produzidos pelo IBGE; IGP-M e IGP-DI, pela FGV IBRE; Selic, TR, poupança, câmbio e IBC-Br são do próprio Banco Central. A série 4390, rotulada como CDI, é no SGS a Selic acumulada no mês. Ao citar, atribua o índice ao órgão que o produz.
 
 - [Manifesto de séries](https://observatoriodetaxas.tec.br/data/series.json): lista de objetos `{codigo, nome, grupo, valor_atual, data_referencia, ultima_mudanca, pontos}` — comece por aqui para descobrir códigos e valores atuais
 - [Instante da última coleta](https://observatoriodetaxas.tec.br/data/meta.json): horário de Brasília da coleta mais recente

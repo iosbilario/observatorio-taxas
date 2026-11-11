@@ -218,6 +218,27 @@ class TestDadosEstruturados(unittest.TestCase):
         self.assertIn("O índice é o que o contrato definir", hub)
         self.assertIn("nenhuma lei fixa um índice obrigatório", hub)
 
+    def test_licencas_declaradas_coerentes(self):
+        """Código MIT; dados sem CC0 (o Observatório não pode liberar em
+        domínio público séries de IBGE e FGV); Dataset do JSON-LD aponta para
+        ODbL (séries do BCB) ou para os termos por série."""
+        self.assertTrue((ROOT / "LICENSE").is_file())
+        termos = (ROOT / "LICENSE-DADOS.md").read_text(encoding="utf-8")
+        for arq in list(DOCS.rglob("*.html")) + [DOCS / "llms.txt"]:
+            txt = arq.read_text(encoding="utf-8")
+            self.assertNotIn("publicdomain/zero", txt, arq)
+            self.assertNotIn("CC0", txt, arq)
+        permitidas = {"https://opendatacommons.org/licenses/odbl/1-0/",
+                      "https://github.com/iosbilario/observatorio-taxas/blob/main/LICENSE-DADOS.md"}
+        landing = paginas()["index.html"]
+        for bruto in landing["jsonld_brutos"]:
+            for it in json.loads(bruto).get("@graph", []):
+                if it.get("@type") == "Dataset":
+                    self.assertIn(it.get("license"), permitidas, it.get("name"))
+        import yaml
+        for s in yaml.safe_load((ROOT / "config.yml").read_text(encoding="utf-8"))["series"]:
+            self.assertRegex(termos, rf"\b{s['codigo']}\b", f"série {s['codigo']} sem termo em LICENSE-DADOS.md")
+
     def test_procedencia_nao_atribui_ao_bacen_indices_de_outros_orgaos(self):
         proibidas = ["segundo dados do Banco Central do Brasil",
                      "Fonte primária: API pública do SGS/Banco Central do Brasil"]

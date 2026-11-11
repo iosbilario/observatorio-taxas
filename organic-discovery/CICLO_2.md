@@ -64,6 +64,7 @@ fácil de citar e com motivos reais para ser citado.
 
 Feito neste ciclo (no repositório, baixo risco):
 
+- `LICENSE` (MIT, código) e `LICENSE-DADOS.md` (termos por série e textos CC BY 4.0).
 - `CITATION.cff`: ativa o botão *Cite this repository* no GitHub, com a
   orientação de citar também o produtor de cada índice.
 - README: link do site no domínio próprio (apontava para `github.io`), descrição
@@ -74,7 +75,7 @@ Avaliado, para decisão do dono (BACKLOG C2-01 a C2-07):
 
 | Ação | Por quê |
 | --- | --- |
-| **Licença do repositório e dos dados** | Não há `LICENSE`. O JSON-LD e o `llms.txt` declaram os dados como CC0, mas IGP-M/IGP-DI (FGV) e IPCA/INPC (IBGE) têm termos próprios dos produtores. Quem quer citar ou reutilizar precisa saber o que pode. É o bloqueio mais concreto para referências de terceiros |
+| **Licença (resolvida neste ciclo)** | Código MIT (`LICENSE`). Dados em `LICENSE-DADOS.md`: séries do BCB sob ODbL 1.0, como o próprio BCB publica no Portal de Dados Abertos (conferido pela API do portal); IPCA, INPC, desocupação (IBGE), IGP-M e IGP-DI (FGV IBRE) não são relicenciadas e seguem os termos dos produtores; textos do site CC BY 4.0. A declaração CC0 saiu do JSON-LD e do `llms.txt`. Na verificação apareceram dois rótulos a revisar: série 4390 (é Selic acumulada no mês, não CDI) e série 25 (poupança, regra até 2012), BACKLOG C2-08 e C2-09 |
 | Página pública de metodologia | Hoje a metodologia está espalhada (fichas, FAQ, README). Uma página única, estável, é o que jornalistas e pesquisadores linkam |
 | DOI por versão (Zenodo + GitHub) | Referência acadêmica permanente; serviço externo, exige conta do dono |
 | Descrição e tópicos do repositório | A descrição no GitHub ainda diz "indicadores do Banco Central"; sugerido: "Indicadores econômicos do Brasil (IPCA, INPC, IGP-M, Selic, câmbio) coletados do SGS/BCB a cada 6 h, versionados em Git, com reajuste e correção monetária." Tópicos: `igp-m`, `inpc`, `reajuste-aluguel`, `correcao-monetaria`, `indexnow` |

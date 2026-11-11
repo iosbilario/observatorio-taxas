@@ -30,10 +30,12 @@ Ordenado por benefício esperado ÷ (risco + esforço).
 
 | # | Item | Por que não foi feito agora | Benefício | Risco / esforço |
 | --- | --- | --- | --- | --- |
-| C2-01 | Definir licença: código (ex.: MIT) e dados. Revisar a declaração CC0 do JSON-LD e do `llms.txt`, porque IGP-M/IGP-DI (FGV IBRE) e IPCA/INPC (IBGE) seguem os termos dos produtores | Decisão jurídica do dono | Destrava reutilização e citação por terceiros | Baixo esforço, decisão sensível |
+| C2-01 | ~~Definir licença~~ **Feito no ciclo 2:** código MIT (`LICENSE`); dados por série em `LICENSE-DADOS.md` (BCB sob ODbL 1.0, conferido no portal de dados abertos; IBGE e FGV IBRE não relicenciados); textos CC BY 4.0; CC0 removido do JSON-LD e do `llms.txt`. Revisão jurídica do dono continua recomendada | — | — | — |
 | C2-02 | Página pública `/metodologia.html` com fórmulas, procedência por série, periodicidade e limitações | Conteúdo novo; precisa de redação revisada | Página estável para jornalistas e pesquisadores linkarem | Médio / 3 h |
 | C2-03 | DOI por versão via integração Zenodo–GitHub | Serviço externo, conta do dono | Referência acadêmica permanente | Baixo / 30 min do dono |
 | C2-04 | Atualizar descrição e tópicos do repositório (texto sugerido em CICLO_2.md) | Alteração em configuração do GitHub, fora do código | Busca dentro do GitHub e clareza da procedência | Nenhum / 5 min |
 | C2-05 | Crédito visível, com marca e `rel="nofollow"`, no código de embed da Retransmissora | Muda o produto de embed; política de links em widgets | Origem do dado visível em sites de terceiros | Baixo |
 | C2-06 | Decidir a primeira execução real do IndexNow: com ou sem `desde = 2026-11-11` | Decisão do dono (ver INDEXNOW.md) | Avisa as 530 URLs alteradas na v1.4.0 | Nenhum |
 | C2-07 | Divulgação editorial (artigo técnico, comunidades, catálogos de dados abertos) | Ação humana, fora do repositório | Referências externas legítimas | — |
+| C2-08 | Série 4390: no SGS é "Selic acumulada no mês", o site a rotula "CDI - acumulado no mês". Corrigir o rótulo em `config.yml` ou trocar para a 4391 (CDI acumulado no mês) | Muda nome exibido e, na opção 4391, a série coletada; os valores costumam coincidir na 2ª casa | Rótulo correto de um indicador citado | Baixo / decisão do dono |
+| C2-09 | Série 25 é a rentabilidade da poupança para depósitos até 03/05/2012 (regra antiga). Avaliar rótulo explícito ou série da regra nova | Muda rótulo ou série coletada | Evita leitura errada do rendimento atual | Baixo / decisão do dono |
