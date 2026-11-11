@@ -3,6 +3,7 @@
 Duas origens, que não se misturam:
 
 - **§1 Externa (fornecida pelo dono)**: Bing Webmaster Tools, ~3 meses até 11/11/2026. Não reproduzida nesta execução.
+  Atenção: o repositório é público. Estes números agregados ficam visíveis no GitHub (não no site).
 - **§2 Medida nesta execução**: commit `d95a2102`, 11/11/2026, antes das alterações.
 
 ## 1. Visibilidade (Bing Webmaster Tools, fornecido pelo dono)

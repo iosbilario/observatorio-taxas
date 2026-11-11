@@ -19,7 +19,7 @@ são idênticos aos da linha de base (teste `test_valores_publicados_iguais_a_li
 | M9 | Favicon embutido nas páginas geradas (elimina 404 de `/favicon.ico`) | P9 | `scripts/build_pages.py`, `scripts/build_correcao.py` | inspeção |
 | M10 | Hub de reajuste: seção "Qual índice usar no reajuste do aluguel?" (Lei 8.245/1991 art. 17; Lei 10.192/2001 art. 2º; o BCB não define nem calcula os índices) e lista de produtores | C.1, C.3 (consulta "reajuste de aluguel banco central") | `scripts/build_pages.py` | `test_um_h1_no_html_inicial` |
 | M11 | Dataset "Inflação" com as 5 séries em `distribution`; Dataset "Atividade" com IBGE (PNAD) e BCB (IBC-Br) | P2, P13 | `docs/index.html` | `test_jsonld_valido` |
-| M12 | Ferramenta de auditoria do HTML cru e suíte de aceitação | §11 | `scripts/seo_audit.py`, `tests/test_organic_discovery.py`, `tests/fixtures/` | 25 testes |
+| M12 | Ferramenta de auditoria do HTML cru e suíte de aceitação | §11 | `scripts/seo_audit.py`, `tests/test_organic_discovery.py`, `tests/fixtures/` | 28 testes |
 
 ## Títulos e H1 (antes → depois)
 
@@ -51,3 +51,15 @@ uma promessa de posição.
 - `acumulado()`, `fator_periodo()`, JS das calculadoras.
 - Identidade visual (mesmos tokens, fontes e componentes; ver capturas em VALIDATION).
 - Header/menu (`partials/nav.html`), `robots.txt`, workflow.
+
+## Revisão final do PR #15
+
+| # | Mudança | Arquivos |
+| --- | --- | --- |
+| R1 | Relatórios movidos de `docs/organic-discovery/` para `organic-discovery/` (deixam de ser servidos pelo Pages) | `organic-discovery/` |
+| R2 | Workflow de validação de PR, independente da coleta | `.github/workflows/validate.yml` |
+| R3 | Texto jurídico: "nenhuma lei fixa um índice obrigatório"; art. 18 da Lei 8.245/1991 (mudança de cláusula por acordo); Lei 10.192/2001 descrita como nulidade de reajuste com periodicidade inferior a um ano; IGP-M e IPCA apresentados como escolha das partes; aviso de não ser orientação jurídica | `scripts/build_pages.py` |
+| R4 | Removidas afirmações sem fonte: "padrão do mercado imobiliário" e "na maioria dos contratos o valor não é reduzido" (agora: o efeito do acumulado negativo depende do contrato) | `scripts/build_pages.py` |
+| R5 | Ficha técnica explica que o acumulado composto a partir de variações com 2 casas pode diferir em centésimos do divulgado pelo produtor | `scripts/build_pages.py` |
+| R6 | `lastmod`: impressão digital por marcadores de conteúdo / `<body>` limpo; estado semeado de novo | `scripts/render_index.py`, `scripts/build_pages.py`, `data/sitemap_lastmod.json` |
+| R7 | Testes novos: coerência título/H1/canonical/JSON-LD/valores em 522 páginas; texto jurídico; impressão digital | `tests/test_organic_discovery.py` |

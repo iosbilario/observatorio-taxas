@@ -487,7 +487,7 @@ ao fator de reajuste <b>{fmt_num(fator, 6)}</b>.</p>
 <dt>Variação no mês</dt><dd>{fmt_num(mensal)}%</dd>
 <dt>Acumulado em 12 meses</dt><dd>{fmt_num(ac)}% ({ini_txt} a {ref_txt})</dd>
 <dt>Unidade</dt><dd>{UNIDADE_MENSAL}; o acumulado e o fator são calculados pelo Observatório</dd>
-<dt>Critério de acumulação</dt><dd>Composto: produto de (1 + variação mensal ÷ 100) nos 12 meses, menos 1</dd>
+<dt>Critério de acumulação</dt><dd>Composto: produto de (1 + variação mensal ÷ 100) nos 12 meses, menos 1. Como parte das variações mensais publicadas com 2 casas, o resultado pode diferir em centésimos de ponto percentual do acumulado divulgado {fonte['produtor']['pelo']}, calculado com números-índice</dd>
 <dt>Data de divulgação</dt><dd>Não registrada pelo Observatório; consulte o calendário de divulgação {fonte['produtor']['do']}</dd>
 </dl>
 </section>

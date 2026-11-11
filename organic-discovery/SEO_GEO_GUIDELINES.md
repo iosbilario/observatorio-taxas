@@ -67,8 +67,18 @@ Nunca escrever "segundo o Banco Central" para um índice que o BCB só redistrib
 
 - Único escritor: `scripts/render_index.py`. Não escrever sitemap em outros scripts.
 - `lastmod` muda só quando o conteúdo muda (estado em `data/sitemap_lastmod.json`).
+  Página gerada com navegação que muda sozinha deve envolver o conteúdo próprio
+  em `<!-- conteudo:inicio -->` e `<!-- conteudo:fim -->`; sem marcadores, vale o
+  `<body>` sem header, scripts e estilos.
 - Só URLs canônicas, indexáveis, com arquivo existente. `loc` escapado.
 - Página noindex não entra.
+
+## Texto jurídico
+
+- Reajuste de aluguel: o índice é o do contrato. Não escrever "índice
+  obrigatório", "padrão" ou "deve usar" para IGP-M/IPCA.
+- Citar lei só com número e artigo conferidos, e manter o aviso de conteúdo
+  informativo.
 
 ## Conteúdo novo
 
