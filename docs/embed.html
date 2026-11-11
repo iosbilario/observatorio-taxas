@@ -7,7 +7,7 @@
 
 <!-- Segurança: SEM frame-ancestors e SEM guard anti-frame — ser embutível é o
      produto desta página. O CSP abaixo só tranca o resto (self + inline próprio). -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-zZ+2Cn6DRD86gv24IGw7uniNxewtJPUdPFQXnV1Gv8E='; connect-src 'self'" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-/IiBN9TM9rDA2AbZ38U7quMrzJkDM1vbflVWtBTJW1o='; connect-src 'self'" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
 
 <title>Gráfico — Observatório de Taxas</title>
@@ -84,7 +84,7 @@
     <div class="msg" id="msg">Carregando…</div>
   </div>
   <div class="foot">
-    <span class="fonte">Fonte: SGS/Banco Central do Brasil</span>
+    <span class="fonte" id="fonte">Fonte: SGS/Banco Central do Brasil</span>
     <a class="plaq" id="plaq" href="https://observatoriodetaxas.tec.br" target="_blank" rel="noopener noreferrer">dados: <b>Observatório de Taxas</b></a>
   </div>
 
@@ -106,16 +106,16 @@
       4390: { nome: "Selic no mês", suf: "%", casas: 2 },
       226: { nome: "TR", suf: "%", casas: 4 },
       25: { nome: "Poupança (regra até 2012)", suf: "%", casas: 4 },
-      433: { nome: "IPCA no mês", suf: "%", casas: 2 },
-      13522: { nome: "IPCA 12 meses", suf: "%", casas: 2 },
-      188: { nome: "INPC no mês", suf: "%", casas: 2 },
-      189: { nome: "IGP-M no mês", suf: "%", casas: 2 },
-      190: { nome: "IGP-DI no mês", suf: "%", casas: 2 },
+      433: { nome: "IPCA no mês", suf: "%", casas: 2, prod: "IBGE" },
+      13522: { nome: "IPCA 12 meses", suf: "%", casas: 2, prod: "IBGE" },
+      188: { nome: "INPC no mês", suf: "%", casas: 2, prod: "IBGE" },
+      189: { nome: "IGP-M no mês", suf: "%", casas: 2, prod: "FGV IBRE" },
+      190: { nome: "IGP-DI no mês", suf: "%", casas: 2, prod: "FGV IBRE" },
       1: { nome: "Dólar (USD/BRL)", pref: "R$ ", casas: 4 },
       10813: { nome: "Dólar compra", pref: "R$ ", casas: 4 },
       21619: { nome: "Euro (EUR/BRL)", pref: "R$ ", casas: 4 },
       24363: { nome: "IBC-Br", casas: 2 },
-      24369: { nome: "Desemprego (PNAD)", suf: "%", casas: 1 },
+      24369: { nome: "Desemprego (PNAD)", suf: "%", casas: 1, prod: "IBGE" },
     };
     var MES = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"];
 
@@ -139,6 +139,10 @@
 
     var $ = function (id) { return document.getElementById(id); };
     $("titulo").textContent = m.nome;
+    // Quem produz o índice: o SGS do BCB só redistribui IPCA, INPC e PNAD
+    // (IBGE) e IGP-M e IGP-DI (FGV IBRE).
+    $("fonte").textContent = m.prod ? "Fonte: " + m.prod + ", via SGS/Banco Central do Brasil"
+                                    : "Fonte: SGS/Banco Central do Brasil";
 
     var pontos = [], geo = null;
 

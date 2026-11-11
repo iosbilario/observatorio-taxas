@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- ===================== Segurança (site estático, sem headers HTTP) ===================== -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data: https://observatoriotaxas.goatcounter.com https://carimbo.tec.br; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self' https://gc.zgo.at 'sha256-8qh1qN0OU2G9CI0EmVqbdqHd1+x92hZmYO80BSiJgDc=' 'sha256-U/+rtGOKFrJj9T5pGbVkRpvtr/GLa4Hq8cVCRf2c464='; connect-src 'self' https://observatoriotaxas.goatcounter.com; frame-src 'self'" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data: https://observatoriotaxas.goatcounter.com https://carimbo.tec.br; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self' https://gc.zgo.at 'sha256-8qh1qN0OU2G9CI0EmVqbdqHd1+x92hZmYO80BSiJgDc=' 'sha256-+uFA0Bd+9oiZNRvFgKf0WdkfM1kUb+URBWq1+9Cloyg=' 'sha256-U/+rtGOKFrJj9T5pGbVkRpvtr/GLa4Hq8cVCRf2c464='; connect-src 'self' https://observatoriotaxas.goatcounter.com; frame-src 'self'" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <script>if (top !== self) { try { top.location = self.location; } catch (e) { document.documentElement.style.display = "none"; } }</script>
 
@@ -271,6 +271,17 @@
     .frame { border: 1px solid var(--linha); border-radius: 10px; overflow: hidden; background: #000; }
     iframe.demo { width: 100%; height: 300px; border: 0; display: block; }
     pre.snip { background: var(--campo); border: 1px solid var(--linha); border-radius: 8px; padding: .8rem .9rem; font-family: "IBM Plex Mono", monospace; font-size: .74rem; color: var(--papel-70); overflow-x: auto; white-space: pre-wrap; word-break: break-all; margin: .8rem 0 0; }
+    /* Carrossel da Retransmissora: setas + contador. Os controles nascem
+       `hidden` e o JS os mostra; sem JS, o bloco fica no dólar, como antes. */
+    .carro-nav { display: flex; align-items: center; justify-content: space-between; gap: .8rem; margin: 0 0 .6rem; }
+    .carro-nav .carro-serie { font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: 1.05rem; }
+    .carro-nav .carro-pos { font-family: "IBM Plex Mono", monospace; font-size: .72rem; color: var(--papel-45); margin-left: .5rem; }
+    .carro-seta { font-family: "IBM Plex Mono", monospace; background: transparent; color: var(--papel-70); border: 1px solid var(--linha); border-radius: 999px; width: 2.2rem; height: 2.2rem; cursor: pointer; font-size: 1rem; line-height: 1; flex: none; }
+    .carro-seta:hover { border-color: rgba(217,181,74,.5); color: var(--papel); }
+    .carro-pontos { display: flex; gap: 6px; justify-content: center; margin: .7rem 0 0; }
+    .carro-pontos span { width: 7px; height: 7px; border-radius: 50%; border: 1px solid var(--neutro); }
+    .carro-pontos span.ativo { background: var(--carimbo); border-color: var(--carimbo); }
+    .carro-nav[hidden], .carro-pontos[hidden] { display: none; }
 
     /* Fecho redações */
     .redacoes { text-align: center; }
@@ -324,7 +335,7 @@
       <h1>Observatório de Taxas</h1>
       <!-- boletim:inicio -->
 <p class="masthead-data" id="hoje">Quarta-feira, 11 de novembro de 2026</p>
-<p class="carimbo-linha">coletado às 10:10 · commit <a href="https://github.com/iosbilario/observatorio-taxas/commits/main">09a36ace</a> · fonte SGS/BACEN</p>
+<p class="carimbo-linha">coletado às 10:10 · commit <a href="https://github.com/iosbilario/observatorio-taxas/commits/main">c46b875c</a> · fonte SGS/BACEN</p>
 <div class="boletim">
 <article class="num" id="selic"><h2 class="num-tag">Taxa Selic hoje</h2><p class="num-rot">Meta Selic</p><p class="num-val"><span class="v">13,75</span><span class="suf">% a.a.</span></p><p class="num-delta flat">■ 0,00 p.p. no mês</p><p class="num-ref">ref. 04/11/2026</p><div class="spark" data-cod="432" data-casas="2" aria-hidden="true"></div></article>
 <article class="num" id="ipca"><h2 class="num-tag">IPCA acumulado 12 meses hoje</h2><p class="num-rot">IPCA 12 meses</p><p class="num-val"><span class="v">4,58</span><span class="suf">%</span></p><p class="num-delta up">▲ +0,36 p.p. no mês</p><p class="num-ref">ref. 01/09/2026</p><div class="spark" data-cod="13522" data-casas="2" aria-hidden="true"></div></article>
@@ -405,8 +416,16 @@
       <p class="eyebrow">Retransmissora</p>
       <h2 class="tit">Use nossos gráficos no seu site</h2>
       <p class="sub">Um iframe que se atualiza sozinho a cada coleta, credita a fonte e não usa cookies. Escolha, copie e cole.</p>
-      <div class="duas">
-        <div class="frame"><iframe class="demo" src="embed.html?s=1&tema=escuro&h=300" title="Dólar (USD/BRL) — Observatório de Taxas" loading="lazy"></iframe></div>
+      <div class="duas" id="carro">
+        <div>
+          <div class="carro-nav" hidden>
+            <button class="carro-seta" type="button" data-passo="-1" aria-label="Indicador anterior">←</button>
+            <p style="margin:0;text-align:center"><span class="carro-serie" aria-live="polite">Dólar (USD/BRL)</span><span class="carro-pos">1 / 7</span></p>
+            <button class="carro-seta" type="button" data-passo="1" aria-label="Próximo indicador">→</button>
+          </div>
+          <div class="frame"><iframe class="demo" src="embed.html?s=1&tema=escuro&h=300" title="Dólar (USD/BRL) — Observatório de Taxas" loading="lazy"></iframe></div>
+          <div class="carro-pontos" aria-hidden="true" hidden></div>
+        </div>
         <div>
           <pre class="snip">&lt;iframe src="https://observatoriodetaxas.tec.br/embed.html?s=1&amp;tema=escuro&amp;h=300"
   width="100%" height="300" style="border:0;width:100%"
@@ -414,6 +433,51 @@
           <p style="margin-top:1rem"><a class="btn-link" href="retransmissora.html">Configurar outra série →</a></p>
         </div>
       </div>
+      <script>
+      "use strict";
+      // Carrossel da Retransmissora: troca a série do iframe e o código de
+      // incorporação. Sem passagem automática. Sem JS, fica no dólar.
+      (function () {
+        var raiz = document.getElementById("carro");
+        if (!raiz) return;
+        var SERIES = [
+          { s: 1, nome: "Dólar (USD/BRL)" },
+          { s: 432, nome: "Meta Selic" },
+          { s: 13522, nome: "IPCA 12 meses" },
+          { s: 189, nome: "IGP-M no mês" },
+          { s: 188, nome: "INPC no mês" },
+          { s: 24369, nome: "Desocupação (PNAD)" },
+          { s: 21619, nome: "Euro (EUR/BRL)" }
+        ];
+        var nav = raiz.querySelector(".carro-nav"), pontos = raiz.querySelector(".carro-pontos");
+        var iframe = raiz.querySelector("iframe"), pre = raiz.querySelector("pre.snip");
+        var rot = raiz.querySelector(".carro-serie"), pos = raiz.querySelector(".carro-pos");
+        var i = 0;
+        SERIES.forEach(function () { pontos.appendChild(document.createElement("span")); });
+        function ir(k) {
+          i = (k + SERIES.length) % SERIES.length;
+          var x = SERIES[i], q = "embed.html?s=" + x.s + "&tema=escuro&h=300";
+          iframe.src = q;
+          iframe.title = x.nome + " — Observatório de Taxas";
+          pre.textContent = '<iframe src="https://observatoriodetaxas.tec.br/' + q + '"\n' +
+            '  width="100%" height="300" style="border:0;width:100%"\n' +
+            '  loading="lazy" title="' + x.nome + ' — Observatório de Taxas"></iframe>';
+          rot.textContent = x.nome;
+          pos.textContent = (i + 1) + " / " + SERIES.length;
+          Array.prototype.forEach.call(pontos.children, function (p, k2) { p.className = k2 === i ? "ativo" : ""; });
+        }
+        raiz.querySelectorAll(".carro-seta").forEach(function (b) {
+          b.addEventListener("click", function () { ir(i + parseInt(b.getAttribute("data-passo"), 10)); });
+        });
+        nav.addEventListener("keydown", function (ev) {
+          if (ev.key === "ArrowRight") { ir(i + 1); ev.preventDefault(); }
+          if (ev.key === "ArrowLeft") { ir(i - 1); ev.preventDefault(); }
+        });
+        nav.hidden = false;
+        pontos.hidden = false;
+        Array.prototype.forEach.call(pontos.children, function (p, k2) { p.className = k2 === 0 ? "ativo" : ""; });
+      })();
+      </script>
     </section>
 
     <!-- ===================== FECHO REDAÇÕES ===================== -->
