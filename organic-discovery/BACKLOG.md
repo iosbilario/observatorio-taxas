@@ -25,3 +25,15 @@ Ordenado por benefício esperado ÷ (risco + esforço).
   ser confundida com efeito das melhorias.
 - O `lastmod` de 530 URLs vai para 11/11/2026 (verdadeiro: o conteúdo mudou).
   Depois disso, só muda quando o conteúdo muda.
+
+## Ciclo 2 (11/11/2026)
+
+| # | Item | Por que não foi feito agora | Benefício | Risco / esforço |
+| --- | --- | --- | --- | --- |
+| C2-01 | Definir licença: código (ex.: MIT) e dados. Revisar a declaração CC0 do JSON-LD e do `llms.txt`, porque IGP-M/IGP-DI (FGV IBRE) e IPCA/INPC (IBGE) seguem os termos dos produtores | Decisão jurídica do dono | Destrava reutilização e citação por terceiros | Baixo esforço, decisão sensível |
+| C2-02 | Página pública `/metodologia.html` com fórmulas, procedência por série, periodicidade e limitações | Conteúdo novo; precisa de redação revisada | Página estável para jornalistas e pesquisadores linkarem | Médio / 3 h |
+| C2-03 | DOI por versão via integração Zenodo–GitHub | Serviço externo, conta do dono | Referência acadêmica permanente | Baixo / 30 min do dono |
+| C2-04 | Atualizar descrição e tópicos do repositório (texto sugerido em CICLO_2.md) | Alteração em configuração do GitHub, fora do código | Busca dentro do GitHub e clareza da procedência | Nenhum / 5 min |
+| C2-05 | Crédito visível, com marca e `rel="nofollow"`, no código de embed da Retransmissora | Muda o produto de embed; política de links em widgets | Origem do dado visível em sites de terceiros | Baixo |
+| C2-06 | Decidir a primeira execução real do IndexNow: com ou sem `desde = 2026-11-11` | Decisão do dono (ver INDEXNOW.md) | Avisa as 530 URLs alteradas na v1.4.0 | Nenhum |
+| C2-07 | Divulgação editorial (artigo técnico, comunidades, catálogos de dados abertos) | Ação humana, fora do repositório | Referências externas legítimas | — |

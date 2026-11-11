@@ -1,8 +1,8 @@
 # observatorio-taxas
 
-> 📊 **Site:** https://iosbilario.github.io/observatorio-taxas/ · **100% gratuito** (sem servidor, sem banco de dados, sem serviços pagos)
+> 📊 **Site:** https://observatoriodetaxas.tec.br/ · **100% gratuito** (sem servidor, sem banco de dados, sem serviços pagos)
 
-Observatório de baixíssima manutenção que **versiona séries de taxas e indicadores do Banco Central do Brasil (SGS) ao longo do tempo**, usando o próprio **Git como banco de dados temporal** e o **GitHub Actions como motor** — tudo a custo zero. A cada execução agendada, um robô consulta a API pública do SGS/BACEN, grava os valores como snapshots JSON em `data/` e commita as mudanças; o histórico de commits passa a ser, então, a linha do tempo de cada indicador, e uma página estática em `docs/` lê esses JSONs para desenhar os gráficos.
+Observatório de baixíssima manutenção que **versiona séries de taxas e indicadores publicadas no SGS do Banco Central do Brasil ao longo do tempo** (os índices de preços são produzidos pelo IBGE e pela FGV IBRE; o SGS os redistribui), usando o próprio **Git como banco de dados temporal** e o **GitHub Actions como motor** — tudo a custo zero. A cada execução agendada, um robô consulta a API pública do SGS/BACEN, grava os valores como snapshots JSON em `data/` e commita as mudanças; o histórico de commits passa a ser, então, a linha do tempo de cada indicador, e uma página estática em `docs/` lê esses JSONs para desenhar os gráficos.
 
 ## Arquitetura — o loop API → Action → commit → Pages
 
@@ -34,6 +34,8 @@ Os arquivos que a página consome (`series.json`, `meta.json` e cada `<codigo>_h
 ```
 observatorio-taxas/
 ├── .github/workflows/monitor.yml   # workflow agendado (cron 6h) → fetch → commit/push
+├── .github/workflows/validate.yml  # testes em pull request (não toca na coleta)
+├── .github/workflows/indexnow.yml  # avisa buscadores das URLs alteradas, após o deploy
 ├── data/                           # snapshots + histórico (store canônico, versionado)
 │   ├── <codigo>.json               #   último valor bruto de cada série
 │   ├── <codigo>_history.json       #   série temporal [{data, valor}] por data de referência
@@ -132,7 +134,29 @@ A API do SGS é pública e retorna `[{"data": "dd/mm/aaaa", "valor": "x"}]`. A `
 
 A página inclui `title`/`description`/`keywords`, `canonical`, Open Graph, Twitter Card, favicon embutido e **dados estruturados JSON-LD** (`WebSite` + `Organization` + `Dataset`, ótimos para busca tradicional e para motores generativos). Há `docs/robots.txt`, `docs/sitemap.xml` e `docs/.nojekyll`.
 
-Para acelerar a indexação: cadastre o site no **[Google Search Console](https://search.google.com/search-console)** (e no **Bing Webmaster Tools**), confirme a propriedade e envie a sitemap `https://iosbilario.github.io/observatorio-taxas/sitemap.xml`.
+Para acelerar a indexação: cadastre o site no **[Google Search Console](https://search.google.com/search-console)** (e no **Bing Webmaster Tools**), confirme a propriedade e envie a sitemap `https://observatoriodetaxas.tec.br/sitemap.xml`.
+
+O sitemap é escrito só por `scripts/render_index.py`, com `lastmod` por conteúdo
+(`data/sitemap_lastmod.json`). As mudanças de URL são avisadas por **IndexNow**
+(`scripts/indexnow.py` + `.github/workflows/indexnow.yml`) depois que o Pages
+publica a versão nova; detalhes em [`organic-discovery/INDEXNOW.md`](organic-discovery/INDEXNOW.md).
+Auditoria, diretrizes e testes de SEO em [`organic-discovery/`](organic-discovery/).
+
+## Como citar e reutilizar
+
+- **Procedência:** o Observatório coleta tudo na API do SGS do Banco Central,
+  mas não produz os índices. IPCA, INPC e a taxa de desocupação são do IBGE;
+  IGP-M e IGP-DI, da FGV IBRE; CDI, da B3; Selic, TR, poupança, câmbio e IBC-Br,
+  do Banco Central. Cite o produtor junto com o Observatório.
+- **Referência permanente a um dado:** use a versão. Ex.: IGP-M mensal como
+  publicado na v1.4.0:
+  `https://github.com/iosbilario/observatorio-taxas/blob/v1.4.0/data/189_history.json`.
+  A URL do site (`/data/189_history.json`) é a versão mais recente e muda a cada coleta.
+- **Ponto no tempo exato:** cada coleta é um commit; o recibo do VAR traz o commit usado.
+- **Cálculos:** acumulado = produto de (1 + variação mensal ÷ 100) − 1; reajuste
+  de 12 meses em `scripts/build_pages.py` (`acumulado`), correção entre datas em
+  `scripts/build_correcao.py` (`fator_periodo`), com testes em `tests/`.
+- **Citação formal:** botão *Cite this repository* do GitHub (arquivo [`CITATION.cff`](CITATION.cff)).
 
 ## Resumo das mudanças no CHANGELOG (grátis, padrão)
 

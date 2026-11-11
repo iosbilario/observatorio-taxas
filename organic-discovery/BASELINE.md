@@ -107,6 +107,11 @@ séries antes/depois.
 | Data | Versão | O que entrou |
 | --- | --- | --- |
 | 11/11/2026 | `v1.4.0` (merge do PR #15; o commit exato é o da tag) | Primeira intervenção técnica orientada pelos relatórios de IA: procedência dos índices, ficha técnica, FAQ visível, sitemap com lastmod por conteúdo, testes e validação de PR |
+| (data do merge) | `v1.5.0` proposta | Ciclo 2: IndexNow (só URLs alteradas, após o deploy), título de `/correcao/` (73 → 61 caracteres), CITATION.cff, README |
+
+Bing SEO Analysis de 11/11/2026 (fornecido pelo dono, antes do ciclo 2): 3 itens,
+falta de backlinks de domínios reconhecidos (moderada), IndexNow (alta), título
+longo em 1 página (alta).
 
 Para comparar antes/depois, use 11/11/2026 como corte. Nenhuma variação de
 citações ou cliques deve ser atribuída a esta versão sem comparar com a

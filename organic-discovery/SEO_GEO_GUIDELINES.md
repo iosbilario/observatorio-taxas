@@ -107,3 +107,10 @@ python scripts/csp_hashes.py
 python -m unittest discover -s tests -v
 python scripts/seo_audit.py
 ```
+
+## IndexNow
+
+- Não chamar o IndexNow à mão nem em outro script: o `indexnow.yml` cuida disso
+  a partir do `sitemap_lastmod.json`. Página nova entra sozinha quando aparece no sitemap.
+- Página removida: apagar o arquivo, regenerar; o envio só acontece quando a URL já responde 404.
+- Trocar a chave: novo `docs/<chave>.txt`, atualizar `indexnow_key`, apagar o arquivo antigo depois do primeiro envio aceito.
