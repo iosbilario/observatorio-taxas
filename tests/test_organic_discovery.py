@@ -254,6 +254,14 @@ class TestDadosEstruturados(unittest.TestCase):
         for arq in ("index.html", "rebobinar.html", "var.html", "embed.html", "llms.txt"):
             self.assertNotIn("CDI", (DOCS / arq).read_text(encoding="utf-8"), arq)
 
+    def test_embed_atribui_o_produtor_do_indice(self):
+        embed = (DOCS / "embed.html").read_text(encoding="utf-8")
+        for cod, prod in ((433, "IBGE"), (13522, "IBGE"), (188, "IBGE"), (24369, "IBGE"),
+                          (189, "FGV IBRE"), (190, "FGV IBRE")):
+            self.assertRegex(embed, rf'\b{cod}: \{{[^}}]*prod: "{prod}"', cod)
+        for cod in (432, 1, 21619, 24363):
+            self.assertNotRegex(embed, rf'\b{cod}: \{{[^}}]*prod:', cod)
+
     def test_carrossel_da_landing_tem_fallback_e_series_validas(self):
         """Sem JS o bloco mostra o dólar (HTML estático); com JS as séries do
         carrossel precisam existir no embed."""
