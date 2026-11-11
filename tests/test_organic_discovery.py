@@ -239,6 +239,21 @@ class TestDadosEstruturados(unittest.TestCase):
         for s in yaml.safe_load((ROOT / "config.yml").read_text(encoding="utf-8"))["series"]:
             self.assertRegex(termos, rf"\b{s['codigo']}\b", f"série {s['codigo']} sem termo em LICENSE-DADOS.md")
 
+    def test_rotulos_das_series_batem_com_o_sgs(self):
+        """4390 é Selic acumulada no mês (não CDI); 25 é poupança da regra até
+        03/05/2012. Rótulo igual em config.yml e nos series.json publicados."""
+        import yaml
+        cfg = {s["codigo"]: s["nome"] for s in
+               yaml.safe_load((ROOT / "config.yml").read_text(encoding="utf-8"))["series"]}
+        self.assertIn("Selic", cfg[4390])
+        self.assertNotIn("CDI", cfg[4390])
+        self.assertIn("03/05/2012", cfg[25])
+        for f in (DATA / "series.json", DOCS / "data" / "series.json"):
+            pub = {s["codigo"]: s["nome"] for s in json.loads(f.read_text(encoding="utf-8"))}
+            self.assertEqual(pub, cfg, f)
+        for arq in ("index.html", "rebobinar.html", "var.html", "embed.html", "llms.txt"):
+            self.assertNotIn("CDI", (DOCS / arq).read_text(encoding="utf-8"), arq)
+
     def test_procedencia_nao_atribui_ao_bacen_indices_de_outros_orgaos(self):
         proibidas = ["segundo dados do Banco Central do Brasil",
                      "Fonte primária: API pública do SGS/Banco Central do Brasil"]

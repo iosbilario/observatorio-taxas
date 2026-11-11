@@ -16,9 +16,9 @@ CSS e JavaScript das páginas em docs/) está sob a licença MIT (arquivo
 | --- | --- |
 | 432 | Meta Selic |
 | 1178 | Selic anualizada |
-| 4390 | Selic acumulada no mês (rotulada no site como "CDI - acumulado no mês"; ver nota abaixo) |
+| 4390 | Selic acumulada no mês |
 | 226 | TR |
-| 25 | Poupança, rentabilidade (no SGS: depósitos até 03/05/2012, regra antiga) |
+| 25 | Poupança, rentabilidade dos depósitos até 03/05/2012 (regra antiga) |
 | 1, 10813, 21619 | Câmbio USD/BRL venda e compra, EUR/BRL venda |
 | 24363 | IBC-Br |
 
@@ -79,14 +79,6 @@ A marca "Observatório de Taxas" e a identidade visual não estão incluídas.
 
 > Fonte: IBGE (IPCA), via SGS/Banco Central do Brasil, série 433. Cálculo do
 > acumulado: Observatório de Taxas, observatoriodetaxas.tec.br, versão v1.4.0.
-
-## Nota sobre a série 4390
-
-No SGS, a série 4390 é a "Taxa de juros - Selic acumulada no mês". O site a
-apresenta como "CDI - acumulado no mês". Os valores costumam coincidir na
-segunda casa decimal, mas são indicadores distintos (o CDI é calculado pela
-B3; a série SGS do CDI acumulado no mês é a 4391). A correção do rótulo ou do
-código está no BACKLOG (C2-08).
 
 ---
 

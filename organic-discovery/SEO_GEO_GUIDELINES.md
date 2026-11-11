@@ -42,8 +42,8 @@ Procedência por série (fonte da verdade: `scripts/fontes.py` para os índices 
 | --- | --- |
 | 433, 13522 IPCA · 188 INPC · 24369 desocupação (PNAD Contínua) | IBGE |
 | 189 IGP-M · 190 IGP-DI | FGV IBRE |
-| 4390 (rotulada "CDI"; no SGS é a Selic acumulada no mês) | Banco Central do Brasil |
-| 432, 1178 Selic · 226 TR · 25 poupança · 1, 10813, 21619 câmbio · 24363 IBC-Br | Banco Central do Brasil |
+| 4390 Selic acumulada no mês | Banco Central do Brasil |
+| 432, 1178 Selic · 226 TR · 25 poupança (depósitos até 03/05/2012) · 1, 10813, 21619 câmbio · 24363 IBC-Br | Banco Central do Brasil |
 
 Nunca escrever "segundo o Banco Central" para um índice que o BCB só redistribui.
 

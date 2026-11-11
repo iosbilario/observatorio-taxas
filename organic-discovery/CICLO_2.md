@@ -75,7 +75,7 @@ Avaliado, para decisão do dono (BACKLOG C2-01 a C2-07):
 
 | Ação | Por quê |
 | --- | --- |
-| **Licença (resolvida neste ciclo)** | Código MIT (`LICENSE`). Dados em `LICENSE-DADOS.md`: séries do BCB sob ODbL 1.0, como o próprio BCB publica no Portal de Dados Abertos (conferido pela API do portal); IPCA, INPC, desocupação (IBGE), IGP-M e IGP-DI (FGV IBRE) não são relicenciadas e seguem os termos dos produtores; textos do site CC BY 4.0. A declaração CC0 saiu do JSON-LD e do `llms.txt`. Na verificação apareceram dois rótulos a revisar: série 4390 (é Selic acumulada no mês, não CDI) e série 25 (poupança, regra até 2012), BACKLOG C2-08 e C2-09 |
+| **Licença (resolvida neste ciclo)** | Código MIT (`LICENSE`). Dados em `LICENSE-DADOS.md`: séries do BCB sob ODbL 1.0, como o próprio BCB publica no Portal de Dados Abertos (conferido pela API do portal); IPCA, INPC, desocupação (IBGE), IGP-M e IGP-DI (FGV IBRE) não são relicenciadas e seguem os termos dos produtores; textos do site CC BY 4.0. A declaração CC0 saiu do JSON-LD e do `llms.txt`. Na verificação apareceram dois rótulos errados, corrigidos neste ciclo: série 4390 (era "CDI", é Selic acumulada no mês) e série 25 (poupança da regra até 03/05/2012) |
 | Página pública de metodologia | Hoje a metodologia está espalhada (fichas, FAQ, README). Uma página única, estável, é o que jornalistas e pesquisadores linkam |
 | DOI por versão (Zenodo + GitHub) | Referência acadêmica permanente; serviço externo, exige conta do dono |
 | Descrição e tópicos do repositório | A descrição no GitHub ainda diz "indicadores do Banco Central"; sugerido: "Indicadores econômicos do Brasil (IPCA, INPC, IGP-M, Selic, câmbio) coletados do SGS/BCB a cada 6 h, versionados em Git, com reajuste e correção monetária." Tópicos: `igp-m`, `inpc`, `reajuste-aluguel`, `correcao-monetaria`, `indexnow` |
@@ -86,6 +86,19 @@ Avaliado, para decisão do dono (BACKLOG C2-01 a C2-07):
 Não feito, por instrução: publicações em redes sociais, alteração de serviços
 externos, diretórios artificiais, compra ou troca de links, geração automática
 de backlinks.
+
+### Rótulos corrigidos
+
+| Série SGS | Antes | Depois | Base |
+| --- | --- | --- | --- |
+| 4390 | CDI - acumulado no mês (%) | Selic - acumulada no mês (%) | Portal de Dados Abertos do BCB: "Taxa de juros - Selic acumulada no mês" (BCB/Demab). O CDI acumulado no mês é a série 4391 |
+| 25 | Poupança - rendimento (%) | Poupança (depósitos até 03/05/2012) - rentabilidade (%) | Portal de Dados Abertos do BCB: "Depósitos de poupança (até 03.05.2012) - Rentabilidade no período" |
+
+Só os rótulos mudaram: código SGS, valores, arquivos `*_history.json` e URLs
+são os mesmos. O `CHANGELOG.md` mantém o rótulo antigo nas linhas já
+registradas (histórico). Em 11/11/2026 as duas séries tinham os mesmos três
+últimos valores na 4390 e na 4391 (0,31; 1,07; 1,08), então a troca de rótulo
+não muda número publicado.
 
 ## 4. Mensuração mensal
 

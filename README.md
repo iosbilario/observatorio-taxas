@@ -147,7 +147,7 @@ Auditoria, diretrizes e testes de SEO em [`organic-discovery/`](organic-discover
 - **Procedência:** o Observatório coleta tudo na API do SGS do Banco Central,
   mas não produz os índices. IPCA, INPC e a taxa de desocupação são do IBGE;
   IGP-M e IGP-DI, da FGV IBRE; Selic, TR, poupança, câmbio e IBC-Br, do Banco
-  Central (a série 4390, rotulada como CDI, é no SGS a Selic acumulada no mês). Cite o produtor junto com o Observatório.
+  Central. Cite o produtor junto com o Observatório.
 - **Referência permanente a um dado:** use a versão. Ex.: IGP-M mensal como
   publicado na v1.4.0:
   `https://github.com/iosbilario/observatorio-taxas/blob/v1.4.0/data/189_history.json`.

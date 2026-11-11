@@ -21,7 +21,7 @@
     "codigo": 4390,
     "data_referencia": "01/11/2026",
     "grupo": "Juros",
-    "nome": "CDI - acumulado no mês (%)",
+    "nome": "Selic - acumulada no mês (%)",
     "pontos": 143,
     "ultima_mudanca": "01/11/2026",
     "valor_atual": "0.31"
@@ -39,7 +39,7 @@
     "codigo": 25,
     "data_referencia": "10/11/2026",
     "grupo": "Juros",
-    "nome": "Poupança - rendimento (%)",
+    "nome": "Poupança (depósitos até 03/05/2012) - rentabilidade (%)",
     "pontos": 3986,
     "ultima_mudanca": "10/11/2026",
     "valor_atual": "0.6699"
