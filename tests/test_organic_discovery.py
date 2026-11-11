@@ -254,6 +254,19 @@ class TestDadosEstruturados(unittest.TestCase):
         for arq in ("index.html", "rebobinar.html", "var.html", "embed.html", "llms.txt"):
             self.assertNotIn("CDI", (DOCS / arq).read_text(encoding="utf-8"), arq)
 
+    def test_carrossel_da_landing_tem_fallback_e_series_validas(self):
+        """Sem JS o bloco mostra o dólar (HTML estático); com JS as séries do
+        carrossel precisam existir no embed."""
+        html = (DOCS / "index.html").read_text(encoding="utf-8")
+        self.assertIn('<iframe class="demo" src="embed.html?s=1&tema=escuro&h=300"', html)
+        self.assertRegex(html, r'<div class="carro-nav" hidden>')
+        bloco = re.search(r'getElementById\("carro"\).*?\];', html, re.S).group(0)
+        codigos = [int(c) for c in re.findall(r"\{ s: (\d+),", bloco)]
+        embed = (DOCS / "embed.html").read_text(encoding="utf-8")
+        self.assertEqual(len(codigos), 7)
+        for c in codigos:
+            self.assertRegex(embed, rf"\b{c}: \{{ nome:", f"série {c} não existe no embed")
+
     def test_procedencia_nao_atribui_ao_bacen_indices_de_outros_orgaos(self):
         proibidas = ["segundo dados do Banco Central do Brasil",
                      "Fonte primária: API pública do SGS/Banco Central do Brasil"]
