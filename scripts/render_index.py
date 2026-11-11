@@ -325,16 +325,22 @@ _RUIDO = [re.compile(r'commit <a href="[^"]*">[0-9a-f]{6,40}</a>')]
 
 
 def impressao_digital(arquivo: Path) -> str:
+    """Impressão digital de um arquivo de docs/ (ver impressao_digital_html)."""
+    return impressao_digital_html(arquivo.read_text(encoding="utf-8"))
+
+
+def impressao_digital_html(html: str) -> str:
     """Hash do que importa para quem lê a página: <title>, meta description e
     o conteúdo principal. Fica de fora o que não é conteúdo (CSS, CSP, header
     replicado, beacon), para que o lastmod só mude quando a página muda.
+    Também usada por indexnow.py para conferir, no site publicado, que a
+    versão no ar é a mesma do estado (deploy confirmado).
 
     Conteúdo principal = trecho entre <!-- conteudo:inicio --> e
     <!-- conteudo:fim --> quando existe (páginas de mês: o bloco de navegação
     "últimos 12 meses", que muda em TODAS as páginas do índice a cada mês
     novo, fica fora dele e não conta como mudança da página); senão, o
     <body> sem header replicado, scripts e estilos."""
-    html = arquivo.read_text(encoding="utf-8")
     partes = []
     for pat in (r"<title>.*?</title>", r'<meta name="description"[^>]*>'):
         m = re.search(pat, html, re.S)
