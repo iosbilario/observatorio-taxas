@@ -10,24 +10,26 @@ DUAS datas quaisquer (não apenas a janela fixa de 12 meses da reajuste), por
   - uma página por índice (docs/correcao/<indice>/) com a calculadora já
     pré-filtrada, explicação de uso e FAQ (JSON-LD) para SEO;
   - fator de correção, percentual acumulado e memória do período;
-  - links cruzados com as páginas de reajuste.
+  - links cruzados com as páginas de reajuste;
+  - perguntas e respostas visíveis (mesmo texto do FAQPage) e BreadcrumbList.
 
 A série mensal completa de cada índice é embutida no HTML (poucos KB), então a
 página é 100% estática e não faz fetch. Idempotente, só stdlib.
 
-IMPORTANTE (ordem no workflow): rode DEPOIS de build_pages.py. Este script
-FUNDE suas URLs ao docs/sitemap.xml já existente (não sobrescreve), preservando
-as URLs de reajuste geradas antes.
+O sitemap é escrito só por render_index.py, que roda depois deste script no
+workflow.
 """
 
 from __future__ import annotations
 
 import json
-import re
 from datetime import datetime
 from pathlib import Path
 
 import yaml
+
+from build_pages import FAVICON, WEBSITE_ID, jsonld_script, migalhas
+from fontes import FONTES, LINHA_PROCEDENCIA
 
 ROOT = Path(__file__).resolve().parent.parent
 CONFIG_PATH = ROOT / "config.yml"
@@ -120,7 +122,29 @@ a.pill{border-bottom:1px solid var(--linha)}a.pill:hover{border-color:rgba(217,1
 footer{margin-top:32px;color:var(--papel-45);font-size:.8rem;border-top:1px solid var(--linha);padding-top:1.2rem}
 footer a{color:var(--papel-70)}
 @media(max-width:520px){.grid{grid-template-columns:1fr}}
+.faq h3{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:1rem;margin:1rem 0 .3rem}
+.faq p{margin:0 0 .4rem;color:var(--papel-70)}
 """
+
+
+def faq_ld(url: str, title: str, crumb_ld: dict, perguntas: list[tuple[str, str]]) -> str:
+    """FAQPage com o MESMO texto que vai para a seção visível."""
+    return jsonld_script({
+        "@context": "https://schema.org", "@type": "FAQPage",
+        "url": url, "name": title, "inLanguage": "pt-BR",
+        "isPartOf": {"@id": WEBSITE_ID},
+        "breadcrumb": crumb_ld,
+        "mainEntity": [
+            {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}}
+            for q, a in perguntas
+        ],
+    })
+
+
+def faq_html(perguntas: list[tuple[str, str]]) -> str:
+    itens = "".join(f"<h3>{q}</h3><p>{a}</p>" for q, a in perguntas)
+    return (f'<section class="card faq" aria-labelledby="faq-t"><h2 id="faq-t">Perguntas e respostas</h2>'
+            f"{itens}</section>")
 
 
 def parse_date(d: str) -> datetime:
@@ -158,7 +182,9 @@ def serie_js(pts: list[dict]) -> list[dict]:
     return [{"label": mes_ano(p["dt"]).capitalize(), "v": p["valor"]} for p in pts]
 
 
-def head(title: str, desc: str, canonical: str, jsonld: str = "") -> str:
+def head(title: str, desc: str, canonical: str, jsonld: str = "", crumb: str = "") -> str:
+    crumb = crumb or (f'<nav class="crumb" aria-label="Você está em"><a href="{BASE_URL}/">Observatório de Taxas</a> › '
+                      f'<a href="{BASE_URL}/correcao/">Correção monetária</a></nav>')
     return f"""<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -172,6 +198,7 @@ def head(title: str, desc: str, canonical: str, jsonld: str = "") -> str:
 <meta name="robots" content="index, follow"/>
 <meta name="theme-color" content="#0E1210"/>
 <link rel="canonical" href="{canonical}"/>
+{FAVICON}
 <meta property="og:type" content="website"/>
 <meta property="og:locale" content="pt_BR"/>
 <meta property="og:site_name" content="Observatório de Taxas"/>
@@ -186,14 +213,14 @@ def head(title: str, desc: str, canonical: str, jsonld: str = "") -> str:
 <!-- nav:start -->
 <!-- nav:end -->
 <div class="wrap">
-<nav class="crumb" aria-label="Você está em"><a href="{BASE_URL}/">Observatório de Taxas</a> › <a href="{BASE_URL}/correcao/">Correção monetária</a></nav>
+{crumb}
 <main id="conteudo">
 """
 
 
 FOOTER = f"""
 </main>
-<footer>Fonte primária: API pública do SGS/Banco Central do Brasil. Série histórica versionada e auditável no
+<footer>{LINHA_PROCEDENCIA} Série histórica versionada e auditável no
 <a href="https://github.com/iosbilario/observatorio-taxas">GitHub</a>. Conteúdo informativo; confira o índice e a
 convenção de correção previstos no seu contrato ou decisão. Projeto <a href="{BASE_URL}/">Observatório de Taxas</a>, LBP Tecnologia.</footer>
 </div></body></html>
@@ -277,6 +304,7 @@ def build_index_page(key: str, info: dict, pts: list[dict]) -> tuple[str, str]:
     slug = key
     url = f"{BASE_URL}/correcao/{slug}/"
     nome = info["nome"]
+    fonte = FONTES[info["codigo"]]
 
     last = len(pts) - 1
     start = max(0, last - 12)
@@ -287,22 +315,30 @@ def build_index_page(key: str, info: dict, pts: list[dict]) -> tuple[str, str]:
 
     title = f"Correção monetária pelo {nome}: atualize valores entre datas"
     desc = (f"Calculadora de correção monetária pelo {nome}: atualize um valor entre duas datas com "
-            f"dados oficiais do Banco Central (SGS). Nos 12 meses até {ref_fim}, o {nome} acumulou "
-            f"{fmt_num(ac)}% (fator {fmt_num(fator, 6)}).")
+            f"o índice {fonte['produtor']['do']}, obtido no SGS do Banco Central. Nos 12 meses até {ref_fim}, "
+            f"o {nome} acumulou {fmt_num(ac)}% (fator {fmt_num(fator, 6)}).")
 
-    faq = json.dumps({
-        "@context": "https://schema.org", "@type": "FAQPage",
-        "mainEntity": [
-            {"@type": "Question",
-             "name": f"Como corrigir um valor pelo {nome} entre duas datas?",
-             "acceptedAnswer": {"@type": "Answer",
-                                "text": f"Multiplique o valor pelo fator de correção do período, que é o produto composto das variações mensais do {nome} entre o mês inicial e o final. Use a calculadora acima com dados do Banco Central (SGS)."}},
-            {"@type": "Question",
-             "name": f"Quanto o {nome} acumulou nos 12 meses até {ref_fim}?",
-             "acceptedAnswer": {"@type": "Answer",
-                                "text": f"De {ref_ini} a {ref_fim}, o {nome} acumulou {fmt_num(ac)}% (fator {fmt_num(fator, 6)}). Exemplo: R$ 1.000,00 corrigidos passam a R$ {fmt_num(exemplo)}."}},
-        ],
-    }, ensure_ascii=False)
+    perguntas = [
+        (f"Como corrigir um valor pelo {nome} entre duas datas?",
+         f"Multiplique o valor pelo fator de correção do período, que é o produto composto das variações "
+         f"mensais do {nome} dos meses posteriores ao mês inicial até o mês final: fator = (1 + i₁ ÷ 100) × "
+         f"(1 + i₂ ÷ 100) × … × (1 + iₙ ÷ 100). A calculadora acima faz a conta com a série {info['codigo']} "
+         f"do SGS do Banco Central."),
+        (f"Quanto o {nome} acumulou nos 12 meses até {ref_fim}?",
+         f"Do mês seguinte a {ref_ini} até {ref_fim} (12 variações mensais), o {nome} acumulou "
+         f"{fmt_num(ac)}% (fator {fmt_num(fator, 6)}). Exemplo: R$ 1.000,00 corrigidos passam a "
+         f"R$ {fmt_num(exemplo)}."),
+        (f"Quem calcula o {nome}?",
+         f"O {nome} ({fonte['nome_completo']}) é produzido {fonte['produtor']['pelo']}. O Banco Central "
+         f"redistribui a série no SGS, de onde o Observatório coleta as variações mensais."),
+    ]
+    crumb, crumb_ld = migalhas([
+        ("Observatório de Taxas", f"{BASE_URL}/"),
+        ("Correção monetária", f"{BASE_URL}/correcao/"),
+        (nome, url),
+    ])
+    faq = faq_ld(url, title, crumb_ld, perguntas)
+    slug_reaj = f"{key}-{MESES[pts[last]['dt'].month - 1]}-{pts[last]['dt'].year}"
 
     js = (CALC_JS
           .replace("__SERIES_JSON__", json.dumps({key: {"nome": nome, "pts": serie_js(pts)}}, ensure_ascii=False))
@@ -313,15 +349,17 @@ def build_index_page(key: str, info: dict, pts: list[dict]) -> tuple[str, str]:
         for k, i in INDICES.items() if k != key
     )
 
-    html = head(title, desc, url, f'<script type="application/ld+json">{faq}</script>') + f"""
+    html = head(title, desc, url, faq, crumb) + f"""
 <h1>Correção monetária pelo {nome}</h1>
 <div class="card">
 <p class="mut">{nome} acumulado nos 12 meses até {ref_fim}</p>
 <p class="big">{fmt_num(ac)}%</p>
 <p>Fator: <b>{fmt_num(fator, 6)}</b> · Exemplo: R$ 1.000,00 → <b>R$ {fmt_num(exemplo)}</b></p>
-<p class="mut">Índice tipicamente usado em {info['uso']}.</p>
+<p class="mut">Índice tipicamente usado em {info['uso']}. Memória de cálculo mês a mês na página do
+<a href="{BASE_URL}/reajuste/{slug_reaj}/">{nome} de {ref_fim}</a>.</p>
 </div>
 {calc_card(key, com_seletor=False)}
+{faq_html(perguntas)}
 <div class="card"><h2>Precisa reajustar um contrato de 12 meses?</h2>
 <p class="mut">Para o reajuste anual fechado (aluguel, mensalidades), veja a
 <a href="{BASE_URL}/reajuste/">calculadora de reajuste</a>. Esta página corrige entre datas livres.</p></div>
@@ -335,7 +373,8 @@ def build_hub(series_all: dict) -> str:
     url = f"{BASE_URL}/correcao/"
     title = "Calculadora de correção monetária entre datas: IPCA, IGP-M, INPC e IGP-DI"
     desc = ("Corrija (atualize) um valor entre duas datas pelo IPCA, IGP-M, INPC ou IGP-DI, com fator de "
-            "correção, percentual acumulado e dados oficiais do Banco Central. Gratuito e sem cadastro.")
+            "correção, percentual acumulado e dados oficiais do IBGE e da FGV obtidos no SGS do Banco Central. "
+            "Gratuito e sem cadastro.")
 
     js = (CALC_JS
           .replace("__SERIES_JSON__", json.dumps(series_all, ensure_ascii=False))
@@ -345,55 +384,39 @@ def build_hub(series_all: dict) -> str:
         f'<a class="pill" href="{BASE_URL}/correcao/{k}/">{i["nome"]}</a>' for k, i in INDICES.items()
     )
 
-    faq = json.dumps({
-        "@context": "https://schema.org", "@type": "FAQPage",
-        "mainEntity": [
-            {"@type": "Question",
-             "name": "O que é correção monetária?",
-             "acceptedAnswer": {"@type": "Answer",
-                                "text": "É a atualização de um valor ao longo do tempo pela variação de um índice de preços (como IPCA ou IGP-M), preservando o poder de compra entre a data original e a data atual."}},
-            {"@type": "Question",
-             "name": "Qual índice devo usar para corrigir um valor?",
-             "acceptedAnswer": {"@type": "Answer",
-                                "text": "Depende do contrato ou da decisão: IPCA para atualização geral e muitas condenações judiciais, IGP-M em aluguéis, INPC para verbas ligadas a salário, e IGP-DI em contratos públicos e de fornecimento."}},
-        ],
-    }, ensure_ascii=False)
+    perguntas = [
+        ("O que é correção monetária?",
+         "É a atualização de um valor ao longo do tempo pela variação de um índice de preços (como IPCA ou "
+         "IGP-M), preservando o poder de compra entre a data original e a data atual."),
+        ("Qual índice devo usar para corrigir um valor?",
+         "O que estiver previsto no contrato, na lei ou na decisão aplicável. Como referência de uso: IPCA "
+         "para atualização geral e muitas condenações judiciais, IGP-M em aluguéis, INPC para verbas ligadas "
+         "a salário, e IGP-DI em contratos públicos e de fornecimento."),
+        ("Como a calculadora faz a conta?",
+         "Ela multiplica, de forma composta, (1 + variação mensal ÷ 100) de cada mês posterior ao mês inicial "
+         "até o mês final, e aplica esse fator ao valor informado. As variações mensais são as publicadas pelo "
+         "IBGE (IPCA, INPC) e pela FGV IBRE (IGP-M, IGP-DI), obtidas no SGS do Banco Central."),
+    ]
+    crumb, crumb_ld = migalhas([
+        ("Observatório de Taxas", f"{BASE_URL}/"),
+        ("Correção monetária", url),
+    ])
+    faq = faq_ld(url, title, crumb_ld, perguntas)
 
-    html = head(title, desc, url, f'<script type="application/ld+json">{faq}</script>') + f"""
+    html = head(title, desc, url, faq, crumb) + f"""
 <h1>Correção monetária entre datas</h1>
 <p>Atualize qualquer valor entre duas datas por um índice de inflação oficial, com fator de correção e
-percentual acumulado. Dados coletados automaticamente do BACEN e
+percentual acumulado. Dados coletados automaticamente do SGS do Banco Central e
 <a href="https://github.com/iosbilario/observatorio-taxas">versionados em aberto</a>.</p>
 {calc_card(next(iter(INDICES)), com_seletor=True)}
 <div class="card"><h2>Páginas por índice</h2>{cards}</div>
+{faq_html(perguntas)}
 <div class="card"><h2>Reajuste anual de contrato</h2>
 <p class="mut">Para o reajuste fechado de 12 meses (aluguel, mensalidades), use a
 <a href="{BASE_URL}/reajuste/">calculadora de reajuste</a>.</p></div>
 {js}
 """ + FOOTER
     return html
-
-
-def merge_sitemap(novas: list[str]) -> None:
-    """Funde as novas URLs ao sitemap existente (não sobrescreve o de reajuste)."""
-    hoje = datetime.now().strftime("%Y-%m-%d")
-    sitemap = DOCS_DIR / "sitemap.xml"
-    existentes: list[str] = []
-    if sitemap.exists():
-        existentes = re.findall(r"<loc>(.*?)</loc>", sitemap.read_text(encoding="utf-8"))
-    urls: list[str] = []
-    for u in existentes + novas:
-        if u not in urls:
-            urls.append(u)
-    body = "".join(
-        f"  <url><loc>{u}</loc><lastmod>{hoje}</lastmod><changefreq>daily</changefreq></url>\n"
-        for u in urls
-    )
-    sitemap.write_text(
-        '<?xml version="1.0" encoding="UTF-8"?>\n'
-        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + body + "</urlset>\n",
-        encoding="utf-8",
-    )
 
 
 def main() -> None:
@@ -413,12 +436,8 @@ def main() -> None:
         paths.append(rel)
 
     (OUT_DIR / "index.html").write_text(build_hub(series_all), encoding="utf-8")
-
-    novas = [f"{BASE_URL}/correcao/"] + [
-        f"{BASE_URL}/{p.rsplit('/index.html', 1)[0]}/" for p in paths
-    ]
-    merge_sitemap(novas)
-    print(f"Geradas {len(paths)} páginas de correção + hub; sitemap fundido ({len(novas)} URLs novas).")
+    # O sitemap é escrito só por render_index.py (roda depois, no workflow).
+    print(f"Geradas {len(paths)} páginas de correção + hub.")
 
 
 if __name__ == "__main__":

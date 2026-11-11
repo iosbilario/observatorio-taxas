@@ -16,17 +16,20 @@ calculadora), mas todos os números aparecem no HTML cru. Idempotente, só stdli
 
 from __future__ import annotations
 
+import hashlib
 import json
 import math
 import re
 import subprocess
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
+from urllib.parse import quote
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "docs" / "data"
 INDEX = ROOT / "docs" / "index.html"
 SITEMAP = ROOT / "docs" / "sitemap.xml"
+LASTMOD_STATE = ROOT / "data" / "sitemap_lastmod.json"
 BASE_URL = "https://observatoriodetaxas.tec.br"
 REPO_URL = "https://github.com/iosbilario/observatorio-taxas"
 
@@ -311,8 +314,63 @@ def inject(html: str, nome: str, conteudo: str) -> str:
     return pat.sub(lambda m: m.group(1) + "\n" + conteudo + "\n" + m.group(2), html)
 
 
+def _hoje_brt() -> str:
+    """Data de hoje em Brasília (o cron roda em UTC; o site fala em BRT)."""
+    return datetime.now(timezone(timedelta(hours=-3))).strftime("%Y-%m-%d")
+
+
+# Partes do HTML que mudam sem mudar o conteúdo (o hash do commit no carimbo
+# do boletim muda a cada commit do robô, mesmo sem dado novo).
+_RUIDO = [re.compile(r'commit <a href="[^"]*">[0-9a-f]{6,40}</a>')]
+
+
+def impressao_digital(arquivo: Path) -> str:
+    """Hash do que importa para quem lê a página: <title>, meta description e
+    o conteúdo de <main>. Fica de fora o que não é conteúdo (CSS, CSP, header
+    replicado, beacon), para que o lastmod só mude quando a página muda."""
+    html = arquivo.read_text(encoding="utf-8")
+    partes = []
+    for pat in (r"<title>.*?</title>", r'<meta name="description"[^>]*>', r"<main\b.*?</main>"):
+        m = re.search(pat, html, re.S)
+        partes.append(m.group(0) if m else "")
+    if not partes[2]:
+        partes[2] = html
+    texto = "\n".join(partes)
+    for r in _RUIDO:
+        texto = r.sub("", texto)
+    return hashlib.sha256(texto.encode("utf-8")).hexdigest()[:16]
+
+
+def _data_git(arquivo: Path) -> str | None:
+    """Data do último commit do arquivo, SE o arquivo não mudou desde então.
+    Só usada para semear o estado na primeira execução."""
+    try:
+        rel = arquivo.relative_to(ROOT).as_posix()
+        limpo = subprocess.run(["git", "diff", "--quiet", "HEAD", "--", rel], cwd=ROOT,
+                               capture_output=True, timeout=10).returncode == 0
+        if not limpo:
+            return None
+        r = subprocess.run(["git", "log", "-1", "--format=%cs", "--", rel], cwd=ROOT,
+                           capture_output=True, text=True, timeout=10)
+        return r.stdout.strip() or None
+    except Exception:
+        return None
+
+
+def _arquivo_da_url(url: str) -> Path:
+    caminho = url[len(BASE_URL) + 1:]
+    return ROOT / "docs" / (caminho + "index.html" if caminho.endswith("/") or caminho == "" else caminho)
+
+
 def rebuild_sitemap() -> int:
-    hoje = datetime.now().strftime("%Y-%m-%d")
+    """Único escritor de docs/sitemap.xml.
+
+    lastmod por URL = última data em que a impressão digital do conteúdo
+    mudou, guardada em data/sitemap_lastmod.json (versionado junto com os
+    dados). Antes, todas as URLs recebiam a data do dia a cada coleta, o que
+    tornava o lastmod inútil para os buscadores e gerava commit diário.
+    """
+    hoje = _hoje_brt()
     docs = ROOT / "docs"
     # O Radar está fora: as páginas existem em docs/radar/, mas não são
     # divulgadas enquanto o coletor não estiver no ar.
@@ -324,10 +382,35 @@ def rebuild_sitemap() -> int:
             urls.append(f"{BASE_URL}/{sub}/{idx.parent.name}/")
     vistos, unicas = set(), []
     for u in urls:
-        if u not in vistos:
+        if u not in vistos and _arquivo_da_url(u).is_file():
             vistos.add(u); unicas.append(u)
+
+    estado: dict = {}
+    if LASTMOD_STATE.exists():
+        try:
+            estado = json.loads(LASTMOD_STATE.read_text(encoding="utf-8"))
+        except ValueError:
+            estado = {}
+    semear = not estado
+    novo: dict = {}
+    for u in unicas:
+        arq = _arquivo_da_url(u)
+        h = impressao_digital(arq)
+        ant = estado.get(u)
+        if ant and ant.get("hash") == h:
+            novo[u] = ant
+        else:
+            data = (_data_git(arq) if semear else None) or hoje
+            novo[u] = {"hash": h, "lastmod": data}
+
+    texto_estado = json.dumps(novo, ensure_ascii=False, indent=1, sort_keys=True) + "\n"
+    if not LASTMOD_STATE.exists() or LASTMOD_STATE.read_text(encoding="utf-8") != texto_estado:
+        LASTMOD_STATE.write_text(texto_estado, encoding="utf-8")
+
     body = "".join(
-        f"  <url><loc>{u}</loc><lastmod>{hoje}</lastmod><changefreq>daily</changefreq></url>\n"
+        # loc percent-encoded (protocolo de sitemaps exige URL escapada; as
+        # páginas de "março" têm "ç" no caminho). É a MESMA URL, só escapada.
+        f"  <url><loc>{quote(u, safe=':/')}</loc><lastmod>{novo[u]['lastmod']}</lastmod></url>\n"
         for u in unicas
     )
     SITEMAP.write_text(

@@ -7,11 +7,13 @@ e gera, em docs/reajuste/, uma página estática por índice+mês com:
   - acumulado 12 meses (composto) e fator de reajuste;
   - memória de cálculo (tabela dos 12 meses, com fonte BACEN/SGS);
   - calculadora embutida (valor atual -> valor reajustado);
-  - JSON-LD (FAQPage) para SEO;
-  - links cruzados entre índices e meses.
+  - resposta direta, ficha técnica com a procedência (produtor do índice +
+    série do SGS) e perguntas e respostas visíveis;
+  - JSON-LD (FAQPage + BreadcrumbList) com o MESMO texto do conteúdo visível;
+  - links cruzados entre índices e meses (incluindo mês anterior/seguinte).
 
-Também gera o hub docs/reajuste/index.html (calculadora geral) e reescreve
-docs/sitemap.xml com todas as URLs.
+Também gera o hub docs/reajuste/index.html (calculadora geral). O sitemap é
+de render_index.py.
 
 Idempotente e sem dependência externa além do stdlib. Roda depois do fetch
 no workflow (ver .github/workflows/monitor.yml).
@@ -24,6 +26,8 @@ from datetime import datetime
 from pathlib import Path
 
 import yaml
+
+from fontes import FONTES, LINHA_PROCEDENCIA, UNIDADE_MENSAL, sgs_api_url
 
 ROOT = Path(__file__).resolve().parent.parent
 CONFIG_PATH = ROOT / "config.yml"
@@ -139,7 +143,27 @@ details.meses summary:hover{color:var(--papel)}
 .ir-form{display:grid;grid-template-columns:1fr 1fr auto;gap:10px;align-items:end}
 .ir-form button{width:auto;margin-top:0;padding:.62rem 1.1rem}
 @media(max-width:640px){.ir-form{grid-template-columns:1fr}.ir-form button{width:100%}}
+/* --- resposta direta, ficha técnica, FAQ visível e meses vizinhos --- */
+.resposta{font-size:1.05rem;color:var(--papel);margin:.2rem 0 1rem}
+.resposta b{font-variant-numeric:tabular-nums}
+dl.ficha{display:grid;grid-template-columns:minmax(9rem,14rem) 1fr;gap:.35rem 1rem;margin:0;font-size:.9rem}
+dl.ficha dt{color:var(--papel-45);font-family:"IBM Plex Mono",monospace;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;padding-top:.2rem}
+dl.ficha dd{margin:0;color:var(--papel-70)}
+@media(max-width:520px){dl.ficha{grid-template-columns:1fr}dl.ficha dd{margin-bottom:.4rem}}
+caption{caption-side:top;text-align:left;color:var(--papel-45);font-size:.84rem;padding:0 0 .5rem}
+.faq h3{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:1rem;margin:1rem 0 .3rem}
+.faq p{margin:0 0 .4rem;color:var(--papel-70)}
+nav.vizinhos{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin:.2rem 0 .8rem;font-family:"IBM Plex Mono",monospace;font-size:.82rem}
 """
+
+# Ícone embutido (o mesmo de docs/index.html): sem ele o navegador pede
+# /favicon.ico, que não existe, e registra um 404 em cada página gerada.
+FAVICON = ("<link rel=\"icon\" href=\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' "
+           "viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230E1210'/%3E%3Cpolyline "
+           "points='4,22 12,14 18,18 28,6' fill='none' stroke='%23D9B54A' stroke-width='3' "
+           "stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E\" />")
+
+WEBSITE_ID = f"{BASE_URL}/#website"
 
 
 def parse_date(d: str) -> datetime:
@@ -176,7 +200,38 @@ def slug_mes(dt: datetime) -> str:
     return f"{MESES[dt.month - 1]}-{dt.year}"
 
 
-def head(title: str, desc: str, canonical: str, jsonld: str = "") -> str:
+def mes_iso(dt: datetime) -> str:
+    return dt.strftime("%Y-%m")
+
+
+def migalhas(itens: list[tuple[str, str]]) -> tuple[str, dict]:
+    """Breadcrumb visível + BreadcrumbList equivalente (mesmos nomes e URLs).
+
+    `itens` = [(nome, url_absoluta), ...]; o último é a página atual e não
+    vira link (aria-current), mas entra no JSON-LD com a própria URL.
+    """
+    partes = [f'<a href="{u}">{n}</a>' for n, u in itens[:-1]]
+    partes.append(f'<span aria-current="page">{itens[-1][0]}</span>')
+    html = '<nav class="crumb" aria-label="Você está em">' + " › ".join(partes) + "</nav>"
+    ld = {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": i, "name": n, "item": u}
+            for i, (n, u) in enumerate(itens, start=1)
+        ],
+    }
+    return html, ld
+
+
+def jsonld_script(obj: dict) -> str:
+    # "</" escapado: o texto nunca fecha o <script> antes da hora.
+    corpo = json.dumps(obj, ensure_ascii=False).replace("</", "<\\/")
+    return f'<script type="application/ld+json">{corpo}</script>'
+
+
+def head(title: str, desc: str, canonical: str, jsonld: str = "", crumb: str = "") -> str:
+    crumb = crumb or (f'<nav class="crumb" aria-label="Você está em"><a href="{BASE_URL}/">Observatório de Taxas</a> › '
+                      f'<a href="{BASE_URL}/reajuste/">Reajuste de contratos</a></nav>')
     return f"""<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -190,6 +245,7 @@ def head(title: str, desc: str, canonical: str, jsonld: str = "") -> str:
 <meta name="robots" content="index, follow"/>
 <meta name="theme-color" content="#0E1210"/>
 <link rel="canonical" href="{canonical}"/>
+{FAVICON}
 <meta property="og:type" content="article"/>
 <meta property="og:locale" content="pt_BR"/>
 <meta property="og:site_name" content="Observatório de Taxas"/>
@@ -204,14 +260,14 @@ def head(title: str, desc: str, canonical: str, jsonld: str = "") -> str:
 <!-- nav:start -->
 <!-- nav:end -->
 <div class="wrap">
-<nav class="crumb" aria-label="Você está em"><a href="{BASE_URL}/">Observatório de Taxas</a> › <a href="{BASE_URL}/reajuste/">Reajuste de contratos</a></nav>
+{crumb}
 <main id="conteudo">
 """
 
 
 FOOTER = f"""
 </main>
-<footer>Fonte primária: API pública do SGS/Banco Central do Brasil. Série histórica versionada e auditável no
+<footer>{LINHA_PROCEDENCIA} Série histórica versionada e auditável no
 <a href="https://github.com/iosbilario/observatorio-taxas">GitHub</a>. Conteúdo informativo; confira o índice e a
 convenção de defasagem previstos no seu contrato. Projeto <a href="{BASE_URL}/">Observatório de Taxas</a>, LBP Tecnologia.</footer>
 </div></body></html>
@@ -285,19 +341,56 @@ def bloco_meses(key: str, nome: str, paginas: dict, base: str = "",
     )
 
 
+def _vizinho(dt: datetime, passo: int) -> datetime:
+    n = dt.year * 12 + (dt.month - 1) + passo
+    return datetime(n // 12, n % 12 + 1, 1)
+
+
+def faq_month(nome: str, fonte: dict, codigo: int, ref: datetime, ini: datetime,
+              mensal: float, ac: float, fator: float, exemplo: float) -> list[tuple[str, str]]:
+    """Perguntas e respostas da página do mês. O MESMO texto vai para a seção
+    visível e para o FAQPage do JSON-LD (dado estruturado = conteúdo visível)."""
+    ref_txt, ini_txt = mes_ano(ref), mes_ano(ini)
+    prox_txt = MESES[_vizinho(ref, 1).month - 1]
+    reaj = (f"Multiplique o valor atual pelo fator {fmt_num(fator, 6)}. Exemplo: um aluguel de "
+            f"R$ 2.000,00 passa a R$ {fmt_num(exemplo)}.")
+    if ac < 0:
+        reaj += (" Como o acumulado é negativo, muitos contratos preveem apenas a manutenção do valor; "
+                 "verifique a cláusula do seu contrato.")
+    return [
+        (f"Qual foi o {nome} de {ref_txt}?",
+         f"O {nome} de {ref_txt} foi de {fmt_num(mensal)}% no mês. O índice é produzido {fonte['produtor']['pelo']}; "
+         f"o Observatório obtém o valor na série {codigo} do SGS do Banco Central do Brasil."),
+        (f"Qual o {nome} acumulado em 12 meses até {ref_txt}?",
+         f"O {nome} acumulou {fmt_num(ac)}% nos 12 meses de {ini_txt} a {ref_txt}. O acumulado é o "
+         f"produto de (1 + variação mensal ÷ 100) dos 12 meses, menos 1, calculado pelo Observatório "
+         f"a partir das variações mensais publicadas."),
+        (f"Como calcular o reajuste de aluguel pelo {nome} acumulado até {ref_txt}?", reaj),
+        ("Qual mês do índice devo usar no reajuste do meu contrato?",
+         f"Depende da cláusula do contrato. É comum usar o acumulado de 12 meses mais recente já "
+         f"divulgado na data do aniversário, em geral o do mês anterior: para um contrato com aniversário "
+         f"em {prox_txt}, isso corresponde ao acumulado até {ref_txt}. Confira a defasagem prevista no "
+         f"seu contrato."),
+    ]
+
+
 def build_month_page(key: str, info: dict, janela: list[dict], todas_paginas: dict) -> tuple[str, str]:
     """Gera a página de um índice+mês. Retorna (caminho relativo, html)."""
     ref = janela[-1]["dt"]
+    ini = janela[0]["dt"]
     slug = f"{key}-{slug_mes(ref)}"
     url = f"{BASE_URL}/reajuste/{slug}/"
     ac = acumulado(janela)
     fator = 1.0 + ac / 100.0
-    nome, ref_txt = info["nome"], mes_ano(ref)
+    mensal = janela[-1]["valor"]
+    nome, ref_txt, ini_txt = info["nome"], mes_ano(ref), mes_ano(ini)
+    fonte = FONTES[info["codigo"]]
+    produtor = fonte["produtor"]["sigla"]
 
-    title = f"Reajuste {nome} {ref_txt}: acumulado 12 meses de {fmt_num(ac)}%"
-    desc = (f"{nome} acumulado em 12 meses até {ref_txt}: {fmt_num(ac)}% "
-            f"(fator {fmt_num(fator, 6)}). Calculadora de reajuste de aluguel e contratos "
-            f"com memória de cálculo e dados oficiais do BACEN.")
+    title = f"{nome} de {ref_txt}: {fmt_num(mensal)}% no mês e {fmt_num(ac)}% em 12 meses"
+    desc = (f"O {nome} ({produtor}) variou {fmt_num(mensal)}% em {ref_txt} e acumulou {fmt_num(ac)}% "
+            f"nos 12 meses até {ref_txt} (fator {fmt_num(fator, 6)}). Memória de cálculo e calculadora "
+            f"de reajuste de aluguel e contratos.")
 
     linhas = "".join(
         f"<tr><td>{mes_ano(p['dt']).capitalize()}</td><td>{fmt_num(p['valor'])}%</td></tr>"
@@ -305,19 +398,35 @@ def build_month_page(key: str, info: dict, janela: list[dict], todas_paginas: di
     )
 
     exemplo = 2000.0 * fator
-    faq = json.dumps({
+    perguntas = faq_month(nome, fonte, info["codigo"], ref, ini, mensal, ac, fator, exemplo)
+    crumb, crumb_ld = migalhas([
+        ("Observatório de Taxas", f"{BASE_URL}/"),
+        ("Reajuste de contratos", f"{BASE_URL}/reajuste/"),
+        (f"{nome} · {ref_txt}", url),
+    ])
+    faq = {
         "@context": "https://schema.org", "@type": "FAQPage",
+        "url": url, "name": title, "inLanguage": "pt-BR",
+        "isPartOf": {"@id": WEBSITE_ID},
+        "breadcrumb": crumb_ld,
         "mainEntity": [
-            {"@type": "Question",
-             "name": f"Qual o {nome} acumulado de 12 meses até {ref_txt}?",
-             "acceptedAnswer": {"@type": "Answer",
-                                "text": f"O {nome} acumulado nos 12 meses encerrados em {ref_txt} é de {fmt_num(ac)}%, segundo dados do Banco Central do Brasil (SGS)."}},
-            {"@type": "Question",
-             "name": f"Como calcular o reajuste de aluguel pelo {nome} em {ref_txt}?",
-             "acceptedAnswer": {"@type": "Answer",
-                                "text": f"Multiplique o valor atual pelo fator {fmt_num(fator, 6)}. Exemplo: um aluguel de R$ 2.000,00 passa a R$ {fmt_num(exemplo)}."}},
+            {"@type": "Question", "name": q,
+             "acceptedAnswer": {"@type": "Answer", "text": a}}
+            for q, a in perguntas
         ],
-    }, ensure_ascii=False)
+    }
+    faq_html = "".join(f"<h3>{q}</h3><p>{a}</p>" for q, a in perguntas)
+
+    # Meses vizinhos do mesmo índice (só os que têm página).
+    viz = []
+    for passo, rotulo in ((-1, "← "), (1, "")):
+        s_v = f"{key}-{slug_mes(_vizinho(ref, passo))}"
+        if s_v in todas_paginas:
+            txt = f"{nome} de {todas_paginas[s_v]['ref']}"
+            viz.append(f'<a href="../{s_v}/">{rotulo}{txt}{" →" if passo > 0 else ""}</a>')
+        else:
+            viz.append("<span></span>")
+    vizinhos = f'<nav class="vizinhos" aria-label="Meses vizinhos do {nome}">{"".join(viz)}</nav>'
 
     # Navegação enxuta: o mesmo mês nos outros índices + os meses do próprio
     # índice (12 recentes visíveis, resto agrupado por ano num <details>).
@@ -336,8 +445,16 @@ def build_month_page(key: str, info: dict, janela: list[dict], todas_paginas: di
     aviso_neg = ("<p class='mut'>Acumulado negativo: na maioria dos contratos de aluguel o valor "
                  "não é reduzido, apenas mantido. Verifique a cláusula do seu contrato.</p>" if ac < 0 else "")
 
-    html = head(title, desc, url, f'<script type="application/ld+json">{faq}</script>') + f"""
-<h1>Reajuste pelo {nome}: {ref_txt}</h1>
+    html = head(title, desc, url, jsonld_script(faq), crumb) + f"""
+<article>
+<header>
+<h1>{nome} de {ref_txt}: acumulado em 12 meses e reajuste</h1>
+<p class="resposta">O {nome} de <time datetime="{mes_iso(ref)}">{ref_txt}</time> variou
+<b>{fmt_num(mensal)}%</b> no mês. Nos 12 meses de <time datetime="{mes_iso(ini)}">{ini_txt}</time>
+a <time datetime="{mes_iso(ref)}">{ref_txt}</time>, acumulou <b>{fmt_num(ac)}%</b>, o que corresponde
+ao fator de reajuste <b>{fmt_num(fator, 6)}</b>.</p>
+{vizinhos}
+</header>
 <div class="card">
 <p class="mut">{nome} acumulado 12 meses (até {ref_txt})</p>
 <p class="big{neg}">{fmt_num(ac)}%</p>
@@ -354,15 +471,39 @@ def build_month_page(key: str, info: dict, janela: list[dict], todas_paginas: di
 <button type="submit">Calcular reajuste</button>
 </form>
 <p class="res" id="res" aria-live="polite"></p>
+<p class="mut">Precisa atualizar um valor entre duas datas quaisquer? Use a
+<a href="../../correcao/{key}/">correção monetária pelo {nome}</a>.</p>
 </div>
 
-<div class="card">
-<h2>Memória de cálculo (12 meses)</h2>
-<table><thead><tr><th scope="col">Mês</th><th scope="col">{nome} mensal</th></tr></thead>
+<section class="card" aria-labelledby="ficha-t">
+<h2 id="ficha-t">Ficha técnica</h2>
+<dl class="ficha">
+<dt>Indicador</dt><dd>{nome} ({fonte['nome_completo']})</dd>
+<dt>Produzido por</dt><dd><a href="{fonte['produtor_url']}">{fonte['produtor']['nome']}</a></dd>
+<dt>Obtido em</dt><dd>Banco Central do Brasil, SGS, <a href="{sgs_api_url(info['codigo'])}">série {info['codigo']}</a></dd>
+<dt>Competência</dt><dd><time datetime="{mes_iso(ref)}">{ref_txt}</time></dd>
+<dt>Variação no mês</dt><dd>{fmt_num(mensal)}%</dd>
+<dt>Acumulado em 12 meses</dt><dd>{fmt_num(ac)}% ({ini_txt} a {ref_txt})</dd>
+<dt>Unidade</dt><dd>{UNIDADE_MENSAL}; o acumulado e o fator são calculados pelo Observatório</dd>
+<dt>Critério de acumulação</dt><dd>Composto: produto de (1 + variação mensal ÷ 100) nos 12 meses, menos 1</dd>
+<dt>Data de divulgação</dt><dd>Não registrada pelo Observatório; consulte o calendário de divulgação {fonte['produtor']['do']}</dd>
+</dl>
+</section>
+
+<section class="card" aria-labelledby="memoria-t">
+<h2 id="memoria-t">Memória de cálculo (12 meses)</h2>
+<table><caption>Variação mensal do {nome} de {ini_txt} a {ref_txt} e acumulado composto</caption>
+<thead><tr><th scope="col">Mês</th><th scope="col">{nome} mensal</th></tr></thead>
 <tbody>{linhas}</tbody>
 <tfoot><tr><th scope="row">Acumulado composto</th><th>{fmt_num(ac)}%</th></tr></tfoot></table>
-<p class="mut">Acumulado = produto de (1 + variação mensal), não a soma simples. Dados: SGS/BACEN, série {info['codigo']}.</p>
-</div>
+<p class="mut">Acumulado = produto de (1 + variação mensal), não a soma simples. Dados: {produtor}, via SGS/BACEN, série {info['codigo']}.</p>
+</section>
+
+<section class="card faq" aria-labelledby="faq-t">
+<h2 id="faq-t">Perguntas e respostas</h2>
+{faq_html}
+</section>
+</article>
 {email_block()}
 <div class="card"><h2>Outros índices e meses</h2>{outros}</div>
 <script>
@@ -393,7 +534,7 @@ def build_hub(paginas: dict, resumo: dict) -> str:
     url = f"{BASE_URL}/reajuste/"
     title = "Calculadora de reajuste de contrato: IPCA, IGP-M, INPC e IGP-DI"
     desc = ("Calcule o reajuste anual do seu aluguel ou contrato pelo IPCA, IGP-M, INPC ou IGP-DI, "
-            "com acumulado de 12 meses, memória de cálculo e dados oficiais do Banco Central.")
+            "com acumulado de 12 meses, memória de cálculo e dados oficiais do IBGE e da FGV obtidos no SGS do Banco Central.")
 
     opcoes_indice = "".join(
         f'<option value="{key}">{info["nome"]}</option>' for key, info in INDICES.items()
@@ -427,15 +568,42 @@ o acumulado de 12 meses, o fator e a calculadora daquela referência.</p>
 {bloco_meses(key, info["nome"], paginas)}
 </div>"""
 
-    html = head(title, desc, url) + f"""
+    crumb, crumb_ld = migalhas([
+        ("Observatório de Taxas", f"{BASE_URL}/"),
+        ("Reajuste de contratos", url),
+    ])
+    ld = jsonld_script({"@context": "https://schema.org", **crumb_ld})
+    produtores = "".join(
+        f'<li><b>{info["nome"]}</b> ({FONTES[info["codigo"]]["nome_completo"]}): produzido '
+        f'{FONTES[info["codigo"]]["produtor"]["pelo"].split()[0]} '
+        f'<a href="{FONTES[info["codigo"]]["produtor_url"]}">{FONTES[info["codigo"]]["produtor"]["sigla"]}</a>, '
+        f'série {info["codigo"]} do SGS.</li>'
+        for info in INDICES.values()
+    )
+    qual_indice = f"""
+<section class="card" aria-labelledby="qual-t">
+<h2 id="qual-t">Qual índice usar no reajuste do aluguel?</h2>
+<p>O índice é o que o contrato definir. A Lei do Inquilinato (Lei 8.245/1991, art. 17) deixa livre a
+convenção do aluguel, mas proíbe vinculá-lo à variação cambial ou ao salário mínimo, e a Lei 10.192/2001
+(art. 2º) só admite reajuste com periodicidade de pelo menos um ano.</p>
+<p>O IGP-M é o índice tradicional dos contratos de aluguel. O IPCA, medida oficial da inflação usada no
+regime de metas, aparece com frequência em contratos mais recentes. Os dois podem divergir bastante no mesmo
+período, por isso vale conferir o acumulado de cada um nas páginas acima.</p>
+<p>O Banco Central não define o índice do aluguel nem calcula esses índices: ele os redistribui no SGS,
+de onde o Observatório coleta os dados.</p>
+<ul>{produtores}</ul>
+</section>"""
+
+    html = head(title, desc, url, ld, crumb) + f"""
 <h1>Reajuste de contratos e aluguel</h1>
 <p>Acumulado de 12 meses, fator de reajuste e calculadora para cada índice, mês a mês, com dados
-oficiais do BACEN coletados automaticamente e <a href="https://github.com/iosbilario/observatorio-taxas">versionados em aberto</a>.</p>
+oficiais coletados automaticamente do SGS do Banco Central e <a href="https://github.com/iosbilario/observatorio-taxas">versionados em aberto</a>.</p>
 <p class="mut">Precisa corrigir um valor entre duas datas, e não reajustar um contrato?
 Use a <a href="{BASE_URL}/correcao/">correção monetária</a>.</p>
 {seletor}
 {email_block()}
 {cards}
+{qual_indice}
 <script>
 "use strict";
 (function () {{
@@ -465,22 +633,6 @@ Use a <a href="{BASE_URL}/correcao/">correção monetária</a>.</p>
 </script>
 """ + FOOTER
     return html
-
-
-def rebuild_sitemap(paths: list[str]) -> None:
-    hoje = datetime.now().strftime("%Y-%m-%d")
-    urls = [f"{BASE_URL}/", f"{BASE_URL}/reajuste/"] + [
-        f"{BASE_URL}/{p.rsplit('/index.html', 1)[0]}/" for p in paths
-    ]
-    body = "".join(
-        f"  <url><loc>{u}</loc><lastmod>{hoje}</lastmod><changefreq>daily</changefreq></url>\n"
-        for u in urls
-    )
-    (DOCS_DIR / "sitemap.xml").write_text(
-        '<?xml version="1.0" encoding="UTF-8"?>\n'
-        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + body + "</urlset>\n",
-        encoding="utf-8",
-    )
 
 
 def main() -> None:
@@ -521,8 +673,9 @@ def main() -> None:
             paths.append(rel)
 
     (OUT_DIR / "index.html").write_text(build_hub(paginas, resumo), encoding="utf-8")
-    rebuild_sitemap(paths)
-    print(f"Geradas {len(paths)} páginas de reajuste + hub + sitemap.")
+    # O sitemap é escrito só por render_index.py (único dono, com lastmod
+    # por conteúdo), que roda depois deste script no workflow.
+    print(f"Geradas {len(paths)} páginas de reajuste + hub.")
 
 
 if __name__ == "__main__":

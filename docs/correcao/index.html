@@ -7,17 +7,18 @@
 <meta name="referrer" content="strict-origin-when-cross-origin"/>
 <script>if (top !== self) { try { top.location = self.location; } catch (e) { document.documentElement.style.display = "none"; } }</script>
 <title>Calculadora de correção monetária entre datas: IPCA, IGP-M, INPC e IGP-DI</title>
-<meta name="description" content="Corrija (atualize) um valor entre duas datas pelo IPCA, IGP-M, INPC ou IGP-DI, com fator de correção, percentual acumulado e dados oficiais do Banco Central. Gratuito e sem cadastro."/>
+<meta name="description" content="Corrija (atualize) um valor entre duas datas pelo IPCA, IGP-M, INPC ou IGP-DI, com fator de correção, percentual acumulado e dados oficiais do IBGE e da FGV obtidos no SGS do Banco Central. Gratuito e sem cadastro."/>
 <meta name="robots" content="index, follow"/>
 <meta name="theme-color" content="#0E1210"/>
 <link rel="canonical" href="https://observatoriodetaxas.tec.br/correcao/"/>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230E1210'/%3E%3Cpolyline points='4,22 12,14 18,18 28,6' fill='none' stroke='%23D9B54A' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
 <meta property="og:type" content="website"/>
 <meta property="og:locale" content="pt_BR"/>
 <meta property="og:site_name" content="Observatório de Taxas"/>
 <meta property="og:title" content="Calculadora de correção monetária entre datas: IPCA, IGP-M, INPC e IGP-DI"/>
-<meta property="og:description" content="Corrija (atualize) um valor entre duas datas pelo IPCA, IGP-M, INPC ou IGP-DI, com fator de correção, percentual acumulado e dados oficiais do Banco Central. Gratuito e sem cadastro."/>
+<meta property="og:description" content="Corrija (atualize) um valor entre duas datas pelo IPCA, IGP-M, INPC ou IGP-DI, com fator de correção, percentual acumulado e dados oficiais do IBGE e da FGV obtidos no SGS do Banco Central. Gratuito e sem cadastro."/>
 <meta property="og:url" content="https://observatoriodetaxas.tec.br/correcao/"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "O que é correção monetária?", "acceptedAnswer": {"@type": "Answer", "text": "É a atualização de um valor ao longo do tempo pela variação de um índice de preços (como IPCA ou IGP-M), preservando o poder de compra entre a data original e a data atual."}}, {"@type": "Question", "name": "Qual índice devo usar para corrigir um valor?", "acceptedAnswer": {"@type": "Answer", "text": "Depende do contrato ou da decisão: IPCA para atualização geral e muitas condenações judiciais, IGP-M em aluguéis, INPC para verbas ligadas a salário, e IGP-DI em contratos públicos e de fornecimento."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "url": "https://observatoriodetaxas.tec.br/correcao/", "name": "Calculadora de correção monetária entre datas: IPCA, IGP-M, INPC e IGP-DI", "inLanguage": "pt-BR", "isPartOf": {"@id": "https://observatoriodetaxas.tec.br/#website"}, "breadcrumb": {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Observatório de Taxas", "item": "https://observatoriodetaxas.tec.br/"}, {"@type": "ListItem", "position": 2, "name": "Correção monetária", "item": "https://observatoriodetaxas.tec.br/correcao/"}]}, "mainEntity": [{"@type": "Question", "name": "O que é correção monetária?", "acceptedAnswer": {"@type": "Answer", "text": "É a atualização de um valor ao longo do tempo pela variação de um índice de preços (como IPCA ou IGP-M), preservando o poder de compra entre a data original e a data atual."}}, {"@type": "Question", "name": "Qual índice devo usar para corrigir um valor?", "acceptedAnswer": {"@type": "Answer", "text": "O que estiver previsto no contrato, na lei ou na decisão aplicável. Como referência de uso: IPCA para atualização geral e muitas condenações judiciais, IGP-M em aluguéis, INPC para verbas ligadas a salário, e IGP-DI em contratos públicos e de fornecimento."}}, {"@type": "Question", "name": "Como a calculadora faz a conta?", "acceptedAnswer": {"@type": "Answer", "text": "Ela multiplica, de forma composta, (1 + variação mensal ÷ 100) de cada mês posterior ao mês inicial até o mês final, e aplica esse fator ao valor informado. As variações mensais são as publicadas pelo IBGE (IPCA, INPC) e pela FGV IBRE (IGP-M, IGP-DI), obtidas no SGS do Banco Central."}}]}</script>
 <style>
 /* fontes self-hosted (subset latin, SIL OFL) — ver /fonts/LICENSE.txt */
 @font-face{font-family:'Fraunces';font-style:normal;font-weight:500 700;font-display:swap;src:url(/fonts/fraunces.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
@@ -60,6 +61,8 @@ a.pill{border-bottom:1px solid var(--linha)}a.pill:hover{border-color:rgba(217,1
 footer{margin-top:32px;color:var(--papel-45);font-size:.8rem;border-top:1px solid var(--linha);padding-top:1.2rem}
 footer a{color:var(--papel-70)}
 @media(max-width:520px){.grid{grid-template-columns:1fr}}
+.faq h3{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:1rem;margin:1rem 0 .3rem}
+.faq p{margin:0 0 .4rem;color:var(--papel-70)}
 </style>
 <script data-goatcounter="https://observatoriotaxas.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
   <link rel="stylesheet" href="../nav.css" />
@@ -81,12 +84,12 @@ footer a{color:var(--papel-70)}
 </header>
 <!-- nav:end -->
 <div class="wrap">
-<nav class="crumb" aria-label="Você está em"><a href="https://observatoriodetaxas.tec.br/">Observatório de Taxas</a> › <a href="https://observatoriodetaxas.tec.br/correcao/">Correção monetária</a></nav>
+<nav class="crumb" aria-label="Você está em"><a href="https://observatoriodetaxas.tec.br/">Observatório de Taxas</a> › <span aria-current="page">Correção monetária</span></nav>
 <main id="conteudo">
 
 <h1>Correção monetária entre datas</h1>
 <p>Atualize qualquer valor entre duas datas por um índice de inflação oficial, com fator de correção e
-percentual acumulado. Dados coletados automaticamente do BACEN e
+percentual acumulado. Dados coletados automaticamente do SGS do Banco Central e
 <a href="https://github.com/iosbilario/observatorio-taxas">versionados em aberto</a>.</p>
 
 <div class="card">
@@ -105,6 +108,7 @@ percentual acumulado. Dados coletados automaticamente do BACEN e
 <p class="mut">A correção aplica, de forma composta, a variação mensal do índice dos meses posteriores ao inicial até o final.</p>
 </div>
 <div class="card"><h2>Páginas por índice</h2><a class="pill" href="https://observatoriodetaxas.tec.br/correcao/ipca/">IPCA</a><a class="pill" href="https://observatoriodetaxas.tec.br/correcao/igpm/">IGP-M</a><a class="pill" href="https://observatoriodetaxas.tec.br/correcao/inpc/">INPC</a><a class="pill" href="https://observatoriodetaxas.tec.br/correcao/igpdi/">IGP-DI</a></div>
+<section class="card faq" aria-labelledby="faq-t"><h2 id="faq-t">Perguntas e respostas</h2><h3>O que é correção monetária?</h3><p>É a atualização de um valor ao longo do tempo pela variação de um índice de preços (como IPCA ou IGP-M), preservando o poder de compra entre a data original e a data atual.</p><h3>Qual índice devo usar para corrigir um valor?</h3><p>O que estiver previsto no contrato, na lei ou na decisão aplicável. Como referência de uso: IPCA para atualização geral e muitas condenações judiciais, IGP-M em aluguéis, INPC para verbas ligadas a salário, e IGP-DI em contratos públicos e de fornecimento.</p><h3>Como a calculadora faz a conta?</h3><p>Ela multiplica, de forma composta, (1 + variação mensal ÷ 100) de cada mês posterior ao mês inicial até o mês final, e aplica esse fator ao valor informado. As variações mensais são as publicadas pelo IBGE (IPCA, INPC) e pela FGV IBRE (IGP-M, IGP-DI), obtidas no SGS do Banco Central.</p></section>
 <div class="card"><h2>Reajuste anual de contrato</h2>
 <p class="mut">Para o reajuste fechado de 12 meses (aluguel, mensalidades), use a
 <a href="https://observatoriodetaxas.tec.br/reajuste/">calculadora de reajuste</a>.</p></div>
@@ -154,7 +158,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
 
 </main>
-<footer>Fonte primária: API pública do SGS/Banco Central do Brasil. Série histórica versionada e auditável no
+<footer>Dados: IPCA e INPC produzidos pelo IBGE; IGP-M e IGP-DI produzidos pela FGV IBRE. O Observatório obtém as séries na <a href="https://www3.bcb.gov.br/sgspub/">API pública do SGS</a> do Banco Central do Brasil, que as redistribui, e calcula acumulados e fatores a partir das variações mensais publicadas. Série histórica versionada e auditável no
 <a href="https://github.com/iosbilario/observatorio-taxas">GitHub</a>. Conteúdo informativo; confira o índice e a
 convenção de correção previstos no seu contrato ou decisão. Projeto <a href="https://observatoriodetaxas.tec.br/">Observatório de Taxas</a>, LBP Tecnologia.</footer>
 </div></body></html>
