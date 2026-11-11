@@ -17,7 +17,7 @@ texto visível. A partir disso relata:
   - páginas indexáveis fora do sitemap e páginas sem link interno (órfãs).
 
 Só stdlib, sem rede. Usado por tests/test_organic_discovery.py e para gerar a
-linha de base de docs/organic-discovery/BASELINE.md:
+linha de base de organic-discovery/BASELINE.md:
 
     python scripts/seo_audit.py                 # resumo do docs/ atual
     python scripts/seo_audit.py --docs <dir>    # outro diretório (ex.: snapshot)

@@ -326,15 +326,22 @@ _RUIDO = [re.compile(r'commit <a href="[^"]*">[0-9a-f]{6,40}</a>')]
 
 def impressao_digital(arquivo: Path) -> str:
     """Hash do que importa para quem lê a página: <title>, meta description e
-    o conteúdo de <main>. Fica de fora o que não é conteúdo (CSS, CSP, header
-    replicado, beacon), para que o lastmod só mude quando a página muda."""
+    o conteúdo principal. Fica de fora o que não é conteúdo (CSS, CSP, header
+    replicado, beacon), para que o lastmod só mude quando a página muda.
+
+    Conteúdo principal = trecho entre <!-- conteudo:inicio --> e
+    <!-- conteudo:fim --> quando existe (páginas de mês: o bloco de navegação
+    "últimos 12 meses", que muda em TODAS as páginas do índice a cada mês
+    novo, fica fora dele e não conta como mudança da página); senão, <main>;
+    senão, o HTML inteiro."""
     html = arquivo.read_text(encoding="utf-8")
     partes = []
-    for pat in (r"<title>.*?</title>", r'<meta name="description"[^>]*>', r"<main\b.*?</main>"):
+    for pat in (r"<title>.*?</title>", r'<meta name="description"[^>]*>'):
         m = re.search(pat, html, re.S)
         partes.append(m.group(0) if m else "")
-    if not partes[2]:
-        partes[2] = html
+    corpo = (re.search(r"<!-- conteudo:inicio -->.*?<!-- conteudo:fim -->", html, re.S)
+             or re.search(r"<main\b.*?</main>", html, re.S))
+    partes.append(corpo.group(0) if corpo else html)
     texto = "\n".join(partes)
     for r in _RUIDO:
         texto = r.sub("", texto)

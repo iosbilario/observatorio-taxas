@@ -64,7 +64,7 @@ EMAIL_FORM_ACTION = ""
 # Índices usados em reajuste de contratos (aluguel, serviços, mensalidades).
 INDICES = {
     "ipca": {"codigo": 433, "nome": "IPCA", "uso": "contratos de serviços, mensalidades e aluguéis mais recentes"},
-    "igpm": {"codigo": 189, "nome": "IGP-M", "uso": "contratos de aluguel (índice historicamente padrão do mercado imobiliário)"},
+    "igpm": {"codigo": 189, "nome": "IGP-M", "uso": "contratos de aluguel (historicamente o índice mais adotado nesses contratos, por escolha das partes)"},
     "inpc": {"codigo": 188, "nome": "INPC", "uso": "dissídios, pensões e contratos atrelados à renda de famílias de menor faixa"},
     "igpdi": {"codigo": 190, "nome": "IGP-DI", "uso": "contratos públicos e de fornecimento"},
 }
@@ -355,8 +355,8 @@ def faq_month(nome: str, fonte: dict, codigo: int, ref: datetime, ini: datetime,
     reaj = (f"Multiplique o valor atual pelo fator {fmt_num(fator, 6)}. Exemplo: um aluguel de "
             f"R$ 2.000,00 passa a R$ {fmt_num(exemplo)}.")
     if ac < 0:
-        reaj += (" Como o acumulado é negativo, muitos contratos preveem apenas a manutenção do valor; "
-                 "verifique a cláusula do seu contrato.")
+        reaj += (" Como o acumulado é negativo, o efeito depende do contrato: há contratos que aplicam a "
+                 "redução e outros que preveem apenas a manutenção do valor.")
     return [
         (f"Qual foi o {nome} de {ref_txt}?",
          f"O {nome} de {ref_txt} foi de {fmt_num(mensal)}% no mês. O índice é produzido {fonte['produtor']['pelo']}; "
@@ -442,10 +442,12 @@ def build_month_page(key: str, info: dict, janela: list[dict], todas_paginas: di
     )
 
     neg = " neg" if ac < 0 else ""
-    aviso_neg = ("<p class='mut'>Acumulado negativo: na maioria dos contratos de aluguel o valor "
-                 "não é reduzido, apenas mantido. Verifique a cláusula do seu contrato.</p>" if ac < 0 else "")
+    aviso_neg = ("<p class='mut'>Acumulado negativo: o efeito depende do contrato. Há contratos que aplicam "
+                 "a redução e outros que preveem apenas a manutenção do valor. Verifique a cláusula do seu "
+                 "contrato.</p>" if ac < 0 else "")
 
     html = head(title, desc, url, jsonld_script(faq), crumb) + f"""
+<!-- conteudo:inicio -->
 <article>
 <header>
 <h1>{nome} de {ref_txt}: acumulado em 12 meses e reajuste</h1>
@@ -504,6 +506,7 @@ ao fator de reajuste <b>{fmt_num(fator, 6)}</b>.</p>
 {faq_html}
 </section>
 </article>
+<!-- conteudo:fim -->
 {email_block()}
 <div class="card"><h2>Outros índices e meses</h2>{outros}</div>
 <script>
@@ -583,14 +586,17 @@ o acumulado de 12 meses, o fator e a calculadora daquela referência.</p>
     qual_indice = f"""
 <section class="card" aria-labelledby="qual-t">
 <h2 id="qual-t">Qual índice usar no reajuste do aluguel?</h2>
-<p>O índice é o que o contrato definir. A Lei do Inquilinato (Lei 8.245/1991, art. 17) deixa livre a
-convenção do aluguel, mas proíbe vinculá-lo à variação cambial ou ao salário mínimo, e a Lei 10.192/2001
-(art. 2º) só admite reajuste com periodicidade de pelo menos um ano.</p>
-<p>O IGP-M é o índice tradicional dos contratos de aluguel. O IPCA, medida oficial da inflação usada no
-regime de metas, aparece com frequência em contratos mais recentes. Os dois podem divergir bastante no mesmo
-período, por isso vale conferir o acumulado de cada um nas páginas acima.</p>
+<p>O índice é o que o contrato definir: nenhuma lei fixa um índice obrigatório para o reajuste do
+aluguel. A Lei do Inquilinato (Lei 8.245/1991, art. 17) deixa livre a convenção do aluguel, mas proíbe
+vinculá-lo à variação cambial ou ao salário mínimo; o art. 18 permite que as partes, de comum acordo,
+fixem novo valor ou insiram e modifiquem a cláusula de reajuste. A Lei 10.192/2001 (art. 2º) considera
+nula a cláusula de reajuste com periodicidade inferior a um ano.</p>
+<p>Na prática, o IGP-M foi por muito tempo o índice mais adotado nesses contratos, e o IPCA, medida oficial
+da inflação usada no regime de metas, aparece com frequência em contratos mais recentes. São escolhas das
+partes, não exigências legais. Os dois podem divergir bastante no mesmo período, por isso vale conferir o
+acumulado de cada um nas páginas acima.</p>
 <p>O Banco Central não define o índice do aluguel nem calcula esses índices: ele os redistribui no SGS,
-de onde o Observatório coleta os dados.</p>
+de onde o Observatório coleta os dados. Conteúdo informativo, não é orientação jurídica.</p>
 <ul>{produtores}</ul>
 </section>"""
 

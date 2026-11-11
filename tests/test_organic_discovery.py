@@ -103,6 +103,25 @@ class TestRastreamento(unittest.TestCase):
         for u in seo_audit.sitemap_urls(DOCS):
             self.assertEqual(estado[u["loc"]]["lastmod"], u["lastmod"])
 
+    def test_impressao_digital_ignora_navegacao_e_hash_do_commit(self):
+        import tempfile
+        import render_index
+        base = ("<title>T</title><meta name=\"description\" content=\"D\"/><main>"
+                "<!-- conteudo:inicio --><p>2,77%</p><!-- conteudo:fim -->{nav}</main>")
+        with tempfile.TemporaryDirectory() as d:
+            f = Path(d) / "p.html"
+            f.write_text(base.format(nav="<p>últimos 12: jan</p>"), encoding="utf-8")
+            h1 = render_index.impressao_digital(f)
+            f.write_text(base.format(nav="<p>últimos 12: fev</p>"), encoding="utf-8")
+            self.assertEqual(render_index.impressao_digital(f), h1, "navegação fora do conteúdo mudou o hash")
+            f.write_text(base.replace("2,77%", "2,78%").format(nav=""), encoding="utf-8")
+            self.assertNotEqual(render_index.impressao_digital(f), h1, "mudança de valor não mudou o hash")
+            g = Path(d) / "landing.html"
+            g.write_text('<main>commit <a href="x">abc1234</a> 13,75</main>', encoding="utf-8")
+            h2 = render_index.impressao_digital(g)
+            g.write_text('<main>commit <a href="x">def5678</a> 13,75</main>', encoding="utf-8")
+            self.assertEqual(render_index.impressao_digital(g), h2, "hash do commit mudou o lastmod")
+
     def test_robots_nao_bloqueia_conteudo_publico(self):
         robots = (DOCS / "robots.txt").read_text(encoding="utf-8")
         disallow = [ln.split(":", 1)[1].strip() for ln in robots.splitlines()
@@ -171,6 +190,19 @@ class TestDadosEstruturados(unittest.TestCase):
                     self.assertEqual(itens[-1]["item"], pg["canonicals"][0], rel)
                     for it in itens:
                         self.assertIn(it["name"], pg["texto"], rel)
+
+    def test_texto_juridico_nao_indica_indice_obrigatorio(self):
+        """Reajuste de aluguel: o índice é escolha do contrato. Nenhuma página
+        pode sugerir índice obrigatório ou padrão legal."""
+        proibidas = re.compile(r"índice (?:obrigatório|oficial do aluguel|legal)|"
+                               r"padrão do mercado imobiliário|deve(?:m)? usar o (?:IGP-M|IPCA|INPC|IGP-DI)|"
+                               r"na maioria dos contratos", re.I)
+        for rel, pg in indexaveis().items():
+            texto = pg["texto"].replace("nenhuma lei fixa um índice obrigatório", "")
+            self.assertIsNone(proibidas.search(texto), f"{rel}: {proibidas.search(texto)}")
+        hub = indexaveis()["reajuste/index.html"]["texto"]
+        self.assertIn("O índice é o que o contrato definir", hub)
+        self.assertIn("nenhuma lei fixa um índice obrigatório", hub)
 
     def test_procedencia_nao_atribui_ao_bacen_indices_de_outros_orgaos(self):
         proibidas = ["segundo dados do Banco Central do Brasil",
@@ -246,6 +278,31 @@ class TestDadosEFormulas(unittest.TestCase):
                 self.assertIn(f"{build_pages.mes_ano(j[0]['dt'])} a {ref_txt}", txt, rel)
                 total += 1
         self.assertEqual(total, sum(1 for r in pags if re.match(r"reajuste/[a-z]+-", r)))
+
+    def test_coerencia_titulo_h1_canonical_jsonld_e_valores(self):
+        """Em TODA página de mês: título, og:title, H1, canonical, breadcrumb e
+        FAQ falam do mesmo índice e mês, com os mesmos números dos dados."""
+        pags = indexaveis()
+        for key, info in build_pages.INDICES.items():
+            hist = build_pages.load_history(info["codigo"])
+            for fim in range(11, len(hist)):
+                j = hist[fim - 11: fim + 1]
+                ref_txt = build_pages.mes_ano(j[-1]["dt"])
+                rel = f"reajuste/{key}-{build_pages.slug_mes(j[-1]['dt'])}/index.html"
+                pg = pags[rel]
+                ac, m = fmt(build_pages.acumulado(j)), fmt(j[-1]["valor"])
+                rotulo = f"{info['nome']} de {ref_txt}"
+                self.assertEqual(pg["title"], f"{rotulo}: {m}% no mês e {ac}% em 12 meses", rel)
+                html = (DOCS / rel).read_text(encoding="utf-8")
+                self.assertIn(f'<meta property="og:title" content="{pg["title"]}"/>', html, rel)
+                self.assertTrue(pg["h1"][0].startswith(rotulo), rel)
+                self.assertEqual(pg["canonicals"], [seo_audit.url_de(rel)], rel)
+                faq = next(json.loads(b) for b in pg["jsonld_brutos"] if '"FAQPage"' in b)
+                respostas = " ".join(q["acceptedAnswer"]["text"] for q in faq["mainEntity"])
+                self.assertIn(f"{m}% no mês", respostas, rel)
+                self.assertIn(f"acumulou {ac}%", respostas, rel)
+                self.assertEqual(faq["breadcrumb"]["itemListElement"][-1]["name"],
+                                 f"{info['nome']} · {ref_txt}", rel)
 
     def test_correcao_12_meses_igual_ao_reajuste_do_ultimo_mes(self):
         for key in build_pages.INDICES:
