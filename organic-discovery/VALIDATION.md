@@ -68,10 +68,10 @@ fica para o navegador do dono.
 
 ## Limitações
 
-- O IBGE responde 403 a requisições automatizadas (curl e fetch). Os links
-  `ibge.gov.br/.../9256-...` (IPCA) e `9258-...` (INPC) são as páginas
-  oficiais conhecidas dos índices, mas não foram confirmados por HTTP nesta
-  execução. Abrir no navegador antes de publicar.
+- O IBGE responde 403 a curl e fetch. Os links `ibge.gov.br/.../9256-...` (IPCA)
+  e `9258-...` (INPC) foram conferidos em 11/11/2026 com Chrome headless: os
+  títulos são "Índice Nacional de Preços ao Consumidor Amplo | IBGE" e
+  "Índice Nacional de Preços ao Consumidor | IBGE".
 - A série 13522 não respondeu na conferência ao vivo (timeout); ela foi validada contra o histórico local.
 - Lighthouse rodou só na produção atual (antes). Depois do deploy, repetir nas mesmas URLs.
 - Os testes leem `docs/` como está no disco: rode o pipeline antes.

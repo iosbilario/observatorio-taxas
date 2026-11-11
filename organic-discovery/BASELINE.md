@@ -99,8 +99,18 @@ cache curto de fontes (fixo do Pages), `/favicon.ico` 404 nas páginas geradas
 | Referência de buscadores e de plataformas de IA (`copilot.microsoft.com`, `bing.com`, `chatgpt.com`, `perplexity.ai`, `gemini.google.com`) | GoatCounter, campo referrer. Muitas plataformas não enviam referrer: o número é um piso. |
 
 Regras: nunca somar citações com cliques ou visitas; comparar sempre o mesmo
-período e a mesma origem; registrar a data de cada deploy relevante (11/11/2026
-para este ciclo) para ler as séries antes/depois.
+período e a mesma origem; registrar a data de cada deploy relevante para ler as
+séries antes/depois.
+
+### Marcos de publicação
+
+| Data | Versão | O que entrou |
+| --- | --- | --- |
+| 11/11/2026 | `v1.4.0` (merge do PR #15; o commit exato é o da tag) | Primeira intervenção técnica orientada pelos relatórios de IA: procedência dos índices, ficha técnica, FAQ visível, sitemap com lastmod por conteúdo, testes e validação de PR |
+
+Para comparar antes/depois, use 11/11/2026 como corte. Nenhuma variação de
+citações ou cliques deve ser atribuída a esta versão sem comparar com a
+sazonalidade dos índices (o IGP-M sai no fim de cada mês).
 
 ### Importação manual (sem API/credencial nesta execução)
 
