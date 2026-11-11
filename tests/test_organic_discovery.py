@@ -117,10 +117,15 @@ class TestRastreamento(unittest.TestCase):
             f.write_text(base.replace("2,77%", "2,78%").format(nav=""), encoding="utf-8")
             self.assertNotEqual(render_index.impressao_digital(f), h1, "mudança de valor não mudou o hash")
             g = Path(d) / "landing.html"
-            g.write_text('<main>commit <a href="x">abc1234</a> 13,75</main>', encoding="utf-8")
+            g.write_text('<body><p class="boletim">commit <a href="x">abc1234</a> 13,75</p><main>m</main></body>',
+                         encoding="utf-8")
             h2 = render_index.impressao_digital(g)
-            g.write_text('<main>commit <a href="x">def5678</a> 13,75</main>', encoding="utf-8")
+            g.write_text('<body><p class="boletim">commit <a href="x">def5678</a> 13,75</p><main>m</main></body>',
+                         encoding="utf-8")
             self.assertEqual(render_index.impressao_digital(g), h2, "hash do commit mudou o lastmod")
+            g.write_text('<body><p class="boletim">commit <a href="x">def5678</a> 14,25</p><main>m</main></body>',
+                         encoding="utf-8")
+            self.assertNotEqual(render_index.impressao_digital(g), h2, "número fora do <main> não mudou o hash")
 
     def test_robots_nao_bloqueia_conteudo_publico(self):
         robots = (DOCS / "robots.txt").read_text(encoding="utf-8")

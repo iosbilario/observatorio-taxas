@@ -332,16 +332,24 @@ def impressao_digital(arquivo: Path) -> str:
     Conteúdo principal = trecho entre <!-- conteudo:inicio --> e
     <!-- conteudo:fim --> quando existe (páginas de mês: o bloco de navegação
     "últimos 12 meses", que muda em TODAS as páginas do índice a cada mês
-    novo, fica fora dele e não conta como mudança da página); senão, <main>;
-    senão, o HTML inteiro."""
+    novo, fica fora dele e não conta como mudança da página); senão, o
+    <body> sem header replicado, scripts e estilos."""
     html = arquivo.read_text(encoding="utf-8")
     partes = []
     for pat in (r"<title>.*?</title>", r'<meta name="description"[^>]*>'):
         m = re.search(pat, html, re.S)
         partes.append(m.group(0) if m else "")
-    corpo = (re.search(r"<!-- conteudo:inicio -->.*?<!-- conteudo:fim -->", html, re.S)
-             or re.search(r"<main\b.*?</main>", html, re.S))
-    partes.append(corpo.group(0) if corpo else html)
+    corpo = re.search(r"<!-- conteudo:inicio -->.*?<!-- conteudo:fim -->", html, re.S)
+    if corpo:
+        partes.append(corpo.group(0))
+    else:
+        # Sem marcadores: o <body> inteiro menos header replicado, scripts e
+        # estilos. (Na landing o boletim do dia fica FORA do <main>.)
+        m = re.search(r"<body\b.*</body>", html, re.S)
+        b = m.group(0) if m else html
+        b = re.sub(r"<!-- nav:start -->.*?<!-- nav:end -->", "", b, flags=re.S)
+        b = re.sub(r"<(script|style)\b.*?</\1>", "", b, flags=re.S)
+        partes.append(b)
     texto = "\n".join(partes)
     for r in _RUIDO:
         texto = r.sub("", texto)
