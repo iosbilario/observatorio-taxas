@@ -81,7 +81,15 @@ jobs:
         env:
           DRY: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run && '1' || '' }}
           DESDE: ${{ github.event_name == 'workflow_dispatch' && inputs.desde || '' }}
+          EVENTO: ${{ github.event_name }}
         run: |
+          # Primeira execução (sem estado) só por disparo manual: é ali que se
+          # decide semear do zero ou usar `desde`. Execuções automáticas antes
+          # disso não fazem nada.
+          if [ ! -s "$RUNNER_TEMP/anterior.json" ] && [ "$EVENTO" != "workflow_dispatch" ]; then
+            echo "IndexNow ainda não ativado: rode o workflow manualmente (ver organic-discovery/INDEXNOW.md)."
+            exit 0
+          fi
           args=(--saida "$RUNNER_TEMP/novo.json" --log "$RUNNER_TEMP/envio.jsonl"
                 --commit "$(git rev-parse HEAD)" --tentativas-deploy 10 --intervalo-deploy 30)
           [ -s "$RUNNER_TEMP/anterior.json" ] && args+=(--anterior "$RUNNER_TEMP/anterior.json")

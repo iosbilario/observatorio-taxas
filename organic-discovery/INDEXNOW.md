@@ -75,6 +75,9 @@ junto com `--dry-run`.
 
 ## Ativação (depois do merge)
 
+Enquanto não existe a branch `indexnow-state`, as execuções automáticas (push,
+fim do monitor, agenda) não fazem nada: a primeira execução é sempre manual.
+
 1. Confirmar que `https://observatoriodetaxas.tec.br/<chave>.txt` responde com a chave.
 2. Rodar o workflow **indexnow** manualmente com `dry_run = true` e ler o log.
 3. Decidir a primeira execução real:
