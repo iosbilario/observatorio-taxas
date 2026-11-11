@@ -13,6 +13,14 @@ fonte: "BACEN SGS"
 #   - a URL da API de estatísticas (scripts/fetch_stats.py).
 # Deixe "" para desativar a coleta e não injetar nenhum beacon.
 goatcounter_code: "observatoriotaxas"
+
+# IndexNow — avisa buscadores participantes (Bing, Yandex, Seznam, Naver...)
+# quando uma URL é criada, alterada ou removida. A chave NÃO é segredo: o
+# protocolo exige publicá-la em https://<host>/<chave>.txt (docs/<chave>.txt).
+# Trocar a chave = gerar outra (8 a 128 caracteres [a-zA-Z0-9-]), renomear o
+# arquivo e atualizar aqui. Deixe "" para desligar. Ver scripts/indexnow.py.
+indexnow_key: "f38e6e174b4a83156de2bf6385271334"
+indexnow_endpoint: "https://api.indexnow.org/indexnow"
 # Base sem sufixo: o código monta /ultimos/N (coleta) ou ?dataInicial=&dataFinal=
 # (backfill histórico). Ver scripts/fetch.py e scripts/backfill.py.
 base_url: "https://api.bcb.gov.br/dados/serie/bcdata.sgs.{codigo}/dados"
@@ -29,13 +37,17 @@ series:
     nome: "Selic anualizada (% a.a.)"
     grupo: "Juros"
   - codigo: 4390
-    nome: "CDI - acumulado no mês (%)"
+    # No SGS, 4390 é "Taxa de juros - Selic acumulada no mês" (BCB/Demab).
+    # O CDI acumulado no mês é a série 4391. Rótulo corrigido em 11/11/2026.
+    nome: "Selic - acumulada no mês (%)"
     grupo: "Juros"
   - codigo: 226
     nome: "TR - Taxa Referencial (%)"
     grupo: "Juros"
   - codigo: 25
-    nome: "Poupança - rendimento (%)"
+    # No SGS, 25 é a rentabilidade da poupança para depósitos até 03/05/2012
+    # (regra antiga). Rótulo corrigido em 11/11/2026.
+    nome: "Poupança (depósitos até 03/05/2012) - rentabilidade (%)"
     grupo: "Juros"
   # --- Inflação ---
   - codigo: 433

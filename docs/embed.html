@@ -7,7 +7,7 @@
 
 <!-- Segurança: SEM frame-ancestors e SEM guard anti-frame — ser embutível é o
      produto desta página. O CSP abaixo só tranca o resto (self + inline próprio). -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-4/emSyBIDWLe9AKR/CHzgtErS7bL83BsTSh/z7cRUKI='; connect-src 'self'" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-zZ+2Cn6DRD86gv24IGw7uniNxewtJPUdPFQXnV1Gv8E='; connect-src 'self'" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
 
 <title>Gráfico — Observatório de Taxas</title>
@@ -103,9 +103,9 @@
     var META = {
       432: { nome: "Meta Selic", suf: "% a.a.", casas: 2 },
       1178: { nome: "Selic anualizada", suf: "%", casas: 2 },
-      4390: { nome: "CDI no mês", suf: "%", casas: 2 },
+      4390: { nome: "Selic no mês", suf: "%", casas: 2 },
       226: { nome: "TR", suf: "%", casas: 4 },
-      25: { nome: "Poupança", suf: "%", casas: 4 },
+      25: { nome: "Poupança (regra até 2012)", suf: "%", casas: 4 },
       433: { nome: "IPCA no mês", suf: "%", casas: 2 },
       13522: { nome: "IPCA 12 meses", suf: "%", casas: 2 },
       188: { nome: "INPC no mês", suf: "%", casas: 2 },

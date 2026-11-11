@@ -1,0 +1,126 @@
+# ============================================================================
+# indexnow.yml — Avisa os buscadores (IndexNow) das URLs novas, alteradas ou
+# removidas, DEPOIS que o GitHub Pages publicou a versão nova.
+#
+# Independente do monitor.yml: roda quando ele termina (workflow_run), quando
+# alguém faz push na main, e de 6 em 6 horas como repescagem. Se o IndexNow
+# falhar, a coleta de indicadores não é afetada; as URLs não aceitas ficam
+# para a próxima execução.
+#
+# Estado do último envio: branch `indexnow-state` (arquivo estado.json +
+# histórico envios.jsonl). Fica fora da main de propósito: não disputa push
+# com o robô de coleta nem gera commit no site.
+# ============================================================================
+name: indexnow
+
+on:
+  workflow_run:
+    workflows: ["monitor"]
+    types: [completed]
+  push:
+    branches: [main]
+    paths:
+      - "docs/**"
+      - "data/sitemap_lastmod.json"
+  schedule:
+    - cron: "40 */6 * * *"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Só planejar e conferir o deploy, sem enviar"
+        type: boolean
+        default: true
+      desde:
+        description: "Só na primeira execução: tratar como novas as URLs com lastmod >= AAAA-MM-DD"
+        type: string
+        default: ""
+
+permissions:
+  contents: write            # gravar o estado na branch indexnow-state
+
+# Nunca dois envios ao mesmo tempo; o que estiver na fila espera.
+concurrency:
+  group: indexnow
+  cancel-in-progress: false
+
+jobs:
+  notificar:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout (main publicada)
+        # Pinado por SHA de commit (supply-chain). Tag: v6.0.3
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: main
+          fetch-depth: 1
+
+      - name: Setup Python
+        # Mesmo SHA do monitor.yml.
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: "3.12"
+
+      - name: Instalar dependências
+        run: pip install --require-hashes -r requirements.txt
+
+      - name: Ler o estado do último envio
+        id: estado
+        run: |
+          if git fetch --depth=1 origin indexnow-state 2>/dev/null; then
+            git show FETCH_HEAD:estado.json > "$RUNNER_TEMP/anterior.json"
+            echo "sha=$(git rev-parse FETCH_HEAD)" >> "$GITHUB_OUTPUT"
+          else
+            echo "Sem branch indexnow-state: primeira execução."
+            echo "sha=" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Notificar URLs alteradas
+        id: notificar
+        env:
+          DRY: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run && '1' || '' }}
+          DESDE: ${{ github.event_name == 'workflow_dispatch' && inputs.desde || '' }}
+          EVENTO: ${{ github.event_name }}
+        run: |
+          # Primeira execução (sem estado) só por disparo manual: é ali que se
+          # decide semear do zero ou usar `desde`. Execuções automáticas antes
+          # disso não fazem nada.
+          if [ ! -s "$RUNNER_TEMP/anterior.json" ] && [ "$EVENTO" != "workflow_dispatch" ]; then
+            echo "IndexNow ainda não ativado: rode o workflow manualmente (ver organic-discovery/INDEXNOW.md)."
+            exit 0
+          fi
+          args=(--saida "$RUNNER_TEMP/novo.json" --log "$RUNNER_TEMP/envio.jsonl"
+                --commit "$(git rev-parse HEAD)" --tentativas-deploy 10 --intervalo-deploy 30)
+          [ -s "$RUNNER_TEMP/anterior.json" ] && args+=(--anterior "$RUNNER_TEMP/anterior.json")
+          [ -n "$DRY" ] && args+=(--dry-run)
+          [ -n "$DESDE" ] && args+=(--desde "$DESDE")
+          python scripts/indexnow.py "${args[@]}"
+
+      - name: Gravar o estado na branch indexnow-state
+        if: always() && steps.notificar.outcome != 'skipped'
+        env:
+          DRY: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run && '1' || '' }}
+          SHA_ESTADO: ${{ steps.estado.outputs.sha }}
+        run: |
+          [ -n "$DRY" ] && { echo "dry-run: estado não gravado."; exit 0; }
+          [ -f "$RUNNER_TEMP/novo.json" ] || { echo "sem estado novo."; exit 0; }
+          if [ -s "$RUNNER_TEMP/anterior.json" ] && cmp -s "$RUNNER_TEMP/anterior.json" "$RUNNER_TEMP/novo.json" \
+             && [ ! -s "$RUNNER_TEMP/envio.jsonl" ]; then
+            echo "estado inalterado."; exit 0
+          fi
+          W="$RUNNER_TEMP/estado"
+          if [ -n "$SHA_ESTADO" ]; then
+            git worktree add --detach "$W" "$SHA_ESTADO"
+          else
+            git worktree add --detach "$W" HEAD
+            git -C "$W" checkout --orphan indexnow-state
+            git -C "$W" rm -rqf .
+          fi
+          cp "$RUNNER_TEMP/novo.json" "$W/estado.json"
+          [ -s "$RUNNER_TEMP/envio.jsonl" ] && cat "$RUNNER_TEMP/envio.jsonl" >> "$W/envios.jsonl"
+          git -C "$W" add estado.json $( [ -f "$W/envios.jsonl" ] && echo envios.jsonl )
+          git -C "$W" -c user.name="github-actions[bot]" \
+            -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+            commit -m "indexnow: estado após main $(git rev-parse --short HEAD)"
+          git -C "$W" push origin HEAD:refs/heads/indexnow-state

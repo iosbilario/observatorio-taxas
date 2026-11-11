@@ -25,3 +25,17 @@ Ordenado por benefício esperado ÷ (risco + esforço).
   ser confundida com efeito das melhorias.
 - O `lastmod` de 530 URLs vai para 11/11/2026 (verdadeiro: o conteúdo mudou).
   Depois disso, só muda quando o conteúdo muda.
+
+## Ciclo 2 (11/11/2026)
+
+| # | Item | Por que não foi feito agora | Benefício | Risco / esforço |
+| --- | --- | --- | --- | --- |
+| C2-01 | ~~Definir licença~~ **Feito no ciclo 2:** código MIT (`LICENSE`); dados por série em `LICENSE-DADOS.md` (BCB sob ODbL 1.0, conferido no portal de dados abertos; IBGE e FGV IBRE não relicenciados); textos CC BY 4.0; CC0 removido do JSON-LD e do `llms.txt`. Revisão jurídica do dono continua recomendada | — | — | — |
+| C2-02 | Página pública `/metodologia.html` com fórmulas, procedência por série, periodicidade e limitações | Conteúdo novo; precisa de redação revisada | Página estável para jornalistas e pesquisadores linkarem | Médio / 3 h |
+| C2-03 | DOI por versão via integração Zenodo–GitHub | Serviço externo, conta do dono | Referência acadêmica permanente | Baixo / 30 min do dono |
+| C2-04 | Atualizar descrição e tópicos do repositório (texto sugerido em CICLO_2.md) | Alteração em configuração do GitHub, fora do código | Busca dentro do GitHub e clareza da procedência | Nenhum / 5 min |
+| C2-05 | Crédito visível, com marca e `rel="nofollow"`, no código de embed da Retransmissora | Muda o produto de embed; política de links em widgets | Origem do dado visível em sites de terceiros | Baixo |
+| C2-06 | Decidir a primeira execução real do IndexNow: com ou sem `desde = 2026-11-11` | Decisão do dono (ver INDEXNOW.md) | Avisa as 530 URLs alteradas na v1.4.0 | Nenhum |
+| C2-07 | Divulgação editorial (artigo técnico, comunidades, catálogos de dados abertos) | Ação humana, fora do repositório | Referências externas legítimas | — |
+| C2-08 | ~~Rótulo da série 4390~~ **Feito no ciclo 2:** rotulada "Selic - acumulada no mês (%)" em `config.yml`, `series.json`, landing (JSON-LD), Rebobinar, VAR, embed e `llms.txt`. Código e valores mantidos. Se o site quiser exibir o CDI, a série é a 4391 (exige backfill) | — | — | — |
+| C2-09 | ~~Rótulo da série 25~~ **Feito no ciclo 2:** "Poupança (depósitos até 03/05/2012) - rentabilidade (%)". Código e valores mantidos. A série da regra nova é outra (avaliar se interessa ao site) | — | — | — |

@@ -31,7 +31,7 @@ Toda página de indicador responde, em texto e sem JavaScript:
 | Competência | Mês de referência, com `<time datetime="AAAA-MM">` |
 | Valor | Com unidade explícita (% no mês, % a.a., R$) e casas decimais da fonte |
 | Acumulado | Dizer a janela (mês inicial a final) e o critério (composto) |
-| Produtor | Órgão que calcula o índice (IBGE, FGV IBRE, BCB, B3) |
+| Produtor | Órgão que calcula o índice (IBGE, FGV IBRE, BCB) |
 | Canal | Série do SGS e link para ela, quando o dado vem do SGS |
 | Datas | Data de divulgação só se coletada; caso contrário, dizer que não é registrada |
 | Derivados | Todo número calculado pelo Observatório é identificado como tal, com fórmula |
@@ -42,8 +42,8 @@ Procedência por série (fonte da verdade: `scripts/fontes.py` para os índices 
 | --- | --- |
 | 433, 13522 IPCA · 188 INPC · 24369 desocupação (PNAD Contínua) | IBGE |
 | 189 IGP-M · 190 IGP-DI | FGV IBRE |
-| 4390 CDI | B3 |
-| 432, 1178 Selic · 226 TR · 25 poupança · 1, 10813, 21619 câmbio · 24363 IBC-Br | Banco Central do Brasil |
+| 4390 Selic acumulada no mês | Banco Central do Brasil |
+| 432, 1178 Selic · 226 TR · 25 poupança (depósitos até 03/05/2012) · 1, 10813, 21619 câmbio · 24363 IBC-Br | Banco Central do Brasil |
 
 Nunca escrever "segundo o Banco Central" para um índice que o BCB só redistribui.
 
@@ -107,3 +107,10 @@ python scripts/csp_hashes.py
 python -m unittest discover -s tests -v
 python scripts/seo_audit.py
 ```
+
+## IndexNow
+
+- Não chamar o IndexNow à mão nem em outro script: o `indexnow.yml` cuida disso
+  a partir do `sitemap_lastmod.json`. Página nova entra sozinha quando aparece no sitemap.
+- Página removida: apagar o arquivo, regenerar; o envio só acontece quando a URL já responde 404.
+- Trocar a chave: novo `docs/<chave>.txt`, atualizar `indexnow_key`, apagar o arquivo antigo depois do primeiro envio aceito.

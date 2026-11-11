@@ -243,16 +243,16 @@
     // ----------------------------------------------------------------- //
     // Metadados por série. `uni` = entra na eleição da manchete (z-score).
     // Só indicadores de NÍVEL entram: em séries de fluxo (variação/acumulado
-    // no mês: CDI, IPCA mensal, INPC, IGP-M/DI) o mês corrente é parcial e o
+    // no mês: Selic no mês, IPCA mensal, INPC, IGP-M/DI) o mês corrente é parcial e o
     // delta mês-a-mês vira ruído. Elas seguem no diff, mas não viram manchete.
     // `copy` traz artigo p/ o texto; pref/suf/casas formatam o número.
     // ----------------------------------------------------------------- //
     const META = {
       432:   { curto: "Meta Selic",  copy: "a Selic",                suf: "%",   casas: 2, uni: true,  prio: 0, fam: "juros" },
       1178:  { curto: "Selic anual", copy: "a Selic anualizada",     suf: "%",   casas: 2, uni: false },
-      4390:  { curto: "CDI mês",     copy: "o CDI",                  suf: "%",   casas: 2, uni: false },
+      4390:  { curto: "Selic no mês", copy: "a Selic acumulada no mês", suf: "%",  casas: 2, uni: false },
       226:   { curto: "TR",          copy: "a TR",                   suf: "%",   casas: 4, uni: false },
-      25:    { curto: "Poupança",    copy: "a poupança",             suf: "%",   casas: 4, uni: false },
+      25:    { curto: "Poupança (até 2012)", copy: "a poupança (regra até 2012)", suf: "%", casas: 4, uni: false },
       433:   { curto: "IPCA mês",    copy: "o IPCA do mês",          suf: "%",   casas: 2, uni: false },
       13522: { curto: "IPCA 12m",    copy: "a inflação em 12 meses", suf: "%",   casas: 2, uni: true,  prio: 2, fam: "ipca" },
       188:   { curto: "INPC",        copy: "o INPC",                 suf: "%",   casas: 2, uni: false },

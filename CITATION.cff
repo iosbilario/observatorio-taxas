@@ -1,0 +1,33 @@
+cff-version: 1.2.0
+message: >-
+  Se usar estes dados ou cálculos, cite o Observatório de Taxas e também o
+  produtor de cada índice (IBGE para IPCA e INPC; FGV IBRE para IGP-M e IGP-DI;
+  Banco Central do Brasil para Selic, TR, poupança, câmbio e IBC-Br). Para
+  referência permanente, use a versão (tag) e o caminho do arquivo de dados,
+  por exemplo data/189_history.json na tag v1.4.0. Termos de uso dos dados por
+  série em LICENSE-DADOS.md (o código é MIT; os dados não têm licença única).
+title: "Observatório de Taxas"
+abstract: >-
+  Séries de indicadores econômicos brasileiros coletadas da API pública do SGS
+  do Banco Central do Brasil a cada 6 horas e versionadas em Git, com páginas
+  estáticas de reajuste de contratos (acumulado de 12 meses) e correção
+  monetária entre datas. Acumulados e fatores são calculados por composição
+  das variações mensais publicadas.
+type: dataset
+authors:
+  - name: "LBP Tecnologia"
+    website: "https://lbptecnologia.com.br/"
+repository-code: "https://github.com/iosbilario/observatorio-taxas"
+url: "https://observatoriodetaxas.tec.br/"
+version: "1.4.0"
+date-released: "2026-11-11"
+keywords:
+  - IPCA
+  - INPC
+  - IGP-M
+  - IGP-DI
+  - Selic
+  - reajuste de aluguel
+  - correção monetária
+  - SGS
+  - dados abertos
