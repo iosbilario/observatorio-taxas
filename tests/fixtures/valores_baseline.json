@@ -1,0 +1,2628 @@
+{
+ "correcao/igpdi": {
+  "acumulado": "5,00%",
+  "fator": "1,050040"
+ },
+ "correcao/igpm": {
+  "acumulado": "5,25%",
+  "fator": "1,052465"
+ },
+ "correcao/inpc": {
+  "acumulado": "4,29%",
+  "fator": "1,042936"
+ },
+ "correcao/ipca": {
+  "acumulado": "4,58%",
+  "fator": "1,045761"
+ },
+ "reajuste/igpdi-abril-2016": {
+  "acumulado": "10,43%",
+  "fator": "1,104341",
+  "fator_js": "1.1043410477830076"
+ },
+ "reajuste/igpdi-abril-2017": {
+  "acumulado": "2,71%",
+  "fator": "1,027120",
+  "fator_js": "1.0271201768776579"
+ },
+ "reajuste/igpdi-abril-2018": {
+  "acumulado": "2,97%",
+  "fator": "1,029711",
+  "fator_js": "1.0297108070496386"
+ },
+ "reajuste/igpdi-abril-2019": {
+  "acumulado": "8,24%",
+  "fator": "1,082436",
+  "fator_js": "1.0824356182913046"
+ },
+ "reajuste/igpdi-abril-2020": {
+  "acumulado": "6,08%",
+  "fator": "1,060789",
+  "fator_js": "1.0607885494673301"
+ },
+ "reajuste/igpdi-abril-2021": {
+  "acumulado": "33,47%",
+  "fator": "1,334692",
+  "fator_js": "1.334692461613105"
+ },
+ "reajuste/igpdi-abril-2022": {
+  "acumulado": "13,52%",
+  "fator": "1,135187",
+  "fator_js": "1.135186870609335"
+ },
+ "reajuste/igpdi-abril-2023": {
+  "acumulado": "-2,57%",
+  "fator": "0,974312",
+  "fator_js": "0.9743122827925611"
+ },
+ "reajuste/igpdi-abril-2024": {
+  "acumulado": "-2,31%",
+  "fator": "0,976883",
+  "fator_js": "0.9768830596796456"
+ },
+ "reajuste/igpdi-abril-2025": {
+  "acumulado": "8,12%",
+  "fator": "1,081199",
+  "fator_js": "1.0811992794364809"
+ },
+ "reajuste/igpdi-abril-2026": {
+  "acumulado": "0,77%",
+  "fator": "1,007732",
+  "fator_js": "1.0077323950860753"
+ },
+ "reajuste/igpdi-agosto-2016": {
+  "acumulado": "11,24%",
+  "fator": "1,112370",
+  "fator_js": "1.1123700489936517"
+ },
+ "reajuste/igpdi-agosto-2017": {
+  "acumulado": "-1,63%",
+  "fator": "0,983737",
+  "fator_js": "0.9837374476520927"
+ },
+ "reajuste/igpdi-agosto-2018": {
+  "acumulado": "9,06%",
+  "fator": "1,090647",
+  "fator_js": "1.0906465195537407"
+ },
+ "reajuste/igpdi-agosto-2019": {
+  "acumulado": "4,30%",
+  "fator": "1,043048",
+  "fator_js": "1.0430478530406737"
+ },
+ "reajuste/igpdi-agosto-2020": {
+  "acumulado": "15,21%",
+  "fator": "1,152081",
+  "fator_js": "1.1520813766180125"
+ },
+ "reajuste/igpdi-agosto-2021": {
+  "acumulado": "28,22%",
+  "fator": "1,282246",
+  "fator_js": "1.2822458521795335"
+ },
+ "reajuste/igpdi-agosto-2022": {
+  "acumulado": "8,65%",
+  "fator": "1,086545",
+  "fator_js": "1.0865450183882235"
+ },
+ "reajuste/igpdi-agosto-2023": {
+  "acumulado": "-6,90%",
+  "fator": "0,931045",
+  "fator_js": "0.9310445164609058"
+ },
+ "reajuste/igpdi-agosto-2024": {
+  "acumulado": "4,23%",
+  "fator": "1,042286",
+  "fator_js": "1.042286281050426"
+ },
+ "reajuste/igpdi-agosto-2025": {
+  "acumulado": "3,00%",
+  "fator": "1,029994",
+  "fator_js": "1.0299944205530678"
+ },
+ "reajuste/igpdi-agosto-2026": {
+  "acumulado": "2,61%",
+  "fator": "1,026134",
+  "fator_js": "1.026134497017065"
+ },
+ "reajuste/igpdi-dezembro-2015": {
+  "acumulado": "10,68%",
+  "fator": "1,106786",
+  "fator_js": "1.1067860741756395"
+ },
+ "reajuste/igpdi-dezembro-2016": {
+  "acumulado": "7,15%",
+  "fator": "1,071533",
+  "fator_js": "1.0715331897684925"
+ },
+ "reajuste/igpdi-dezembro-2017": {
+  "acumulado": "-0,42%",
+  "fator": "0,995769",
+  "fator_js": "0.9957692889427101"
+ },
+ "reajuste/igpdi-dezembro-2018": {
+  "acumulado": "7,10%",
+  "fator": "1,071021",
+  "fator_js": "1.071020623903502"
+ },
+ "reajuste/igpdi-dezembro-2019": {
+  "acumulado": "7,68%",
+  "fator": "1,076776",
+  "fator_js": "1.0767758854139784"
+ },
+ "reajuste/igpdi-dezembro-2020": {
+  "acumulado": "23,07%",
+  "fator": "1,230743",
+  "fator_js": "1.2307433448072198"
+ },
+ "reajuste/igpdi-dezembro-2021": {
+  "acumulado": "17,74%",
+  "fator": "1,177439",
+  "fator_js": "1.17743916267971"
+ },
+ "reajuste/igpdi-dezembro-2022": {
+  "acumulado": "5,01%",
+  "fator": "1,050051",
+  "fator_js": "1.0500506523103965"
+ },
+ "reajuste/igpdi-dezembro-2023": {
+  "acumulado": "-3,28%",
+  "fator": "0,967245",
+  "fator_js": "0.9672451045919649"
+ },
+ "reajuste/igpdi-dezembro-2024": {
+  "acumulado": "6,86%",
+  "fator": "1,068650",
+  "fator_js": "1.0686495949693575"
+ },
+ "reajuste/igpdi-dezembro-2025": {
+  "acumulado": "-1,19%",
+  "fator": "0,988095",
+  "fator_js": "0.9880945723488126"
+ },
+ "reajuste/igpdi-fevereiro-2016": {
+  "acumulado": "11,91%",
+  "fator": "1,119128",
+  "fator_js": "1.1191280119501934"
+ },
+ "reajuste/igpdi-fevereiro-2017": {
+  "acumulado": "5,22%",
+  "fator": "1,052247",
+  "fator_js": "1.0522471480074356"
+ },
+ "reajuste/igpdi-fevereiro-2018": {
+  "acumulado": "-0,18%",
+  "fator": "0,998154",
+  "fator_js": "0.998153540360903"
+ },
+ "reajuste/igpdi-fevereiro-2019": {
+  "acumulado": "7,73%",
+  "fator": "1,077294",
+  "fator_js": "1.077293850007934"
+ },
+ "reajuste/igpdi-fevereiro-2020": {
+  "acumulado": "6,38%",
+  "fator": "1,063801",
+  "fator_js": "1.0638012731425999"
+ },
+ "reajuste/igpdi-fevereiro-2021": {
+  "acumulado": "29,96%",
+  "fator": "1,299582",
+  "fator_js": "1.2995819983338204"
+ },
+ "reajuste/igpdi-fevereiro-2022": {
+  "acumulado": "15,34%",
+  "fator": "1,153392",
+  "fator_js": "1.1533920646479963"
+ },
+ "reajuste/igpdi-fevereiro-2023": {
+  "acumulado": "1,52%",
+  "fator": "1,015163",
+  "fator_js": "1.015162673585912"
+ },
+ "reajuste/igpdi-fevereiro-2024": {
+  "acumulado": "-4,03%",
+  "fator": "0,959719",
+  "fator_js": "0.9597185963552292"
+ },
+ "reajuste/igpdi-fevereiro-2025": {
+  "acumulado": "8,79%",
+  "fator": "1,087909",
+  "fator_js": "1.0879090993408502"
+ },
+ "reajuste/igpdi-fevereiro-2026": {
+  "acumulado": "-2,90%",
+  "fator": "0,970966",
+  "fator_js": "0.9709657664657634"
+ },
+ "reajuste/igpdi-janeiro-2016": {
+  "acumulado": "11,62%",
+  "fator": "1,116241",
+  "fator_js": "1.1162410858354292"
+ },
+ "reajuste/igpdi-janeiro-2017": {
+  "acumulado": "5,99%",
+  "fator": "1,059924",
+  "fator_js": "1.059923946109029"
+ },
+ "reajuste/igpdi-janeiro-2018": {
+  "acumulado": "-0,27%",
+  "fator": "0,997257",
+  "fator_js": "0.9972565476636239"
+ },
+ "reajuste/igpdi-janeiro-2019": {
+  "acumulado": "6,56%",
+  "fator": "1,065590",
+  "fator_js": "1.0655899168226632"
+ },
+ "reajuste/igpdi-janeiro-2020": {
+  "acumulado": "7,70%",
+  "fator": "1,076991",
+  "fator_js": "1.0769910899478878"
+ },
+ "reajuste/igpdi-janeiro-2021": {
+  "acumulado": "26,54%",
+  "fator": "1,265419",
+  "fator_js": "1.265419098952053"
+ },
+ "reajuste/igpdi-janeiro-2022": {
+  "acumulado": "16,71%",
+  "fator": "1,167142",
+  "fator_js": "1.1671418616748348"
+ },
+ "reajuste/igpdi-janeiro-2023": {
+  "acumulado": "3,00%",
+  "fator": "1,029978",
+  "fator_js": "1.0299781224407243"
+ },
+ "reajuste/igpdi-janeiro-2024": {
+  "acumulado": "-3,59%",
+  "fator": "0,964055",
+  "fator_js": "0.9640551097437203"
+ },
+ "reajuste/igpdi-janeiro-2025": {
+  "acumulado": "7,27%",
+  "fator": "1,072721",
+  "fator_js": "1.0727214574589632"
+ },
+ "reajuste/igpdi-janeiro-2026": {
+  "acumulado": "-1,10%",
+  "fator": "0,988983",
+  "fator_js": "0.9889828803251522"
+ },
+ "reajuste/igpdi-julho-2016": {
+  "acumulado": "11,20%",
+  "fator": "1,112038",
+  "fator_js": "1.1120377667924193"
+ },
+ "reajuste/igpdi-julho-2017": {
+  "acumulado": "-1,44%",
+  "fator": "0,985602",
+  "fator_js": "0.9856020737001163"
+ },
+ "reajuste/igpdi-julho-2018": {
+  "acumulado": "8,59%",
+  "fator": "1,085880",
+  "fator_js": "1.0858800866117104"
+ },
+ "reajuste/igpdi-julho-2019": {
+  "acumulado": "5,55%",
+  "fator": "1,055524",
+  "fator_js": "1.0555237495641272"
+ },
+ "reajuste/igpdi-julho-2020": {
+  "acumulado": "10,35%",
+  "fator": "1,103500",
+  "fator_js": "1.1035002999877357"
+ },
+ "reajuste/igpdi-julho-2021": {
+  "acumulado": "33,37%",
+  "fator": "1,333736",
+  "fator_js": "1.3337359970547578"
+ },
+ "reajuste/igpdi-julho-2022": {
+  "acumulado": "9,10%",
+  "fator": "1,091024",
+  "fator_js": "1.0910244900577981"
+ },
+ "reajuste/igpdi-julho-2023": {
+  "acumulado": "-7,45%",
+  "fator": "0,925461",
+  "fator_js": "0.9254610410998209"
+ },
+ "reajuste/igpdi-julho-2024": {
+  "acumulado": "4,16%",
+  "fator": "1,041558",
+  "fator_js": "1.041557555124802"
+ },
+ "reajuste/igpdi-julho-2025": {
+  "acumulado": "2,92%",
+  "fator": "1,029172",
+  "fator_js": "1.0291720697182947"
+ },
+ "reajuste/igpdi-julho-2026": {
+  "acumulado": "2,76%",
+  "fator": "1,027570",
+  "fator_js": "1.0275702238767732"
+ },
+ "reajuste/igpdi-junho-2016": {
+  "acumulado": "12,29%",
+  "fator": "1,122867",
+  "fator_js": "1.1228667662281047"
+ },
+ "reajuste/igpdi-junho-2017": {
+  "acumulado": "-1,53%",
+  "fator": "0,984712",
+  "fator_js": "0.9847123627007882"
+ },
+ "reajuste/igpdi-junho-2018": {
+  "acumulado": "7,79%",
+  "fator": "1,077880",
+  "fator_js": "1.0778797753403775"
+ },
+ "reajuste/igpdi-junho-2019": {
+  "acumulado": "6,03%",
+  "fator": "1,060274",
+  "fator_js": "1.0602740814703568"
+ },
+ "reajuste/igpdi-junho-2020": {
+  "acumulado": "7,82%",
+  "fator": "1,078161",
+  "fator_js": "1.0781609829565533"
+ },
+ "reajuste/igpdi-junho-2021": {
+  "acumulado": "34,54%",
+  "fator": "1,345437",
+  "fator_js": "1.34543658884755"
+ },
+ "reajuste/igpdi-junho-2022": {
+  "acumulado": "11,11%",
+  "fator": "1,111066",
+  "fator_js": "1.1110663974740373"
+ },
+ "reajuste/igpdi-junho-2023": {
+  "acumulado": "-7,44%",
+  "fator": "0,925647",
+  "fator_js": "0.9256468766502425"
+ },
+ "reajuste/igpdi-junho-2024": {
+  "acumulado": "2,89%",
+  "fator": "1,028852",
+  "fator_js": "1.0288518545118537"
+ },
+ "reajuste/igpdi-junho-2025": {
+  "acumulado": "3,84%",
+  "fator": "1,038441",
+  "fator_js": "1.0384411066716264"
+ },
+ "reajuste/igpdi-junho-2026": {
+  "acumulado": "3,58%",
+  "fator": "1,035758",
+  "fator_js": "1.035758447367419"
+ },
+ "reajuste/igpdi-maio-2016": {
+  "acumulado": "11,24%",
+  "fator": "1,112371",
+  "fator_js": "1.11237061914637"
+ },
+ "reajuste/igpdi-maio-2017": {
+  "acumulado": "1,05%",
+  "fator": "1,010464",
+  "fator_js": "1.010463625012935"
+ },
+ "reajuste/igpdi-maio-2018": {
+  "acumulado": "5,20%",
+  "fator": "1,051963",
+  "fator_js": "1.0519630759727139"
+ },
+ "reajuste/igpdi-maio-2019": {
+  "acumulado": "6,92%",
+  "fator": "1,069230",
+  "fator_js": "1.0692299889457593"
+ },
+ "reajuste/igpdi-maio-2020": {
+  "acumulado": "6,79%",
+  "fator": "1,067868",
+  "fator_js": "1.0678675168791134"
+ },
+ "reajuste/igpdi-maio-2021": {
+  "acumulado": "36,55%",
+  "fator": "1,365462",
+  "fator_js": "1.3654615665459102"
+ },
+ "reajuste/igpdi-maio-2022": {
+  "acumulado": "10,54%",
+  "fator": "1,105435",
+  "fator_js": "1.105434874290657"
+ },
+ "reajuste/igpdi-maio-2023": {
+  "acumulado": "-5,49%",
+  "fator": "0,945090",
+  "fator_js": "0.9450896877579644"
+ },
+ "reajuste/igpdi-maio-2024": {
+  "acumulado": "0,89%",
+  "fator": "1,008889",
+  "fator_js": "1.0088890573347584"
+ },
+ "reajuste/igpdi-maio-2025": {
+  "acumulado": "6,28%",
+  "fator": "1,062763",
+  "fator_js": "1.0627630470519187"
+ },
+ "reajuste/igpdi-maio-2026": {
+  "acumulado": "2,52%",
+  "fator": "1,025214",
+  "fator_js": "1.0252139858026466"
+ },
+ "reajuste/igpdi-março-2016": {
+  "acumulado": "11,05%",
+  "fator": "1,110503",
+  "fator_js": "1.110503173996225"
+ },
+ "reajuste/igpdi-março-2017": {
+  "acumulado": "4,38%",
+  "fator": "1,043760",
+  "fator_js": "1.0437604389574897"
+ },
+ "reajuste/igpdi-março-2018": {
+  "acumulado": "0,76%",
+  "fator": "1,007572",
+  "fator_js": "1.0075719736869349"
+ },
+ "reajuste/igpdi-março-2019": {
+  "acumulado": "8,28%",
+  "fator": "1,082757",
+  "fator_js": "1.0827574524691916"
+ },
+ "reajuste/igpdi-março-2020": {
+  "acumulado": "6,98%",
+  "fator": "1,069801",
+  "fator_js": "1.0698007460395158"
+ },
+ "reajuste/igpdi-março-2021": {
+  "acumulado": "30,64%",
+  "fator": "1,306359",
+  "fator_js": "1.3063586459048244"
+ },
+ "reajuste/igpdi-março-2022": {
+  "acumulado": "15,56%",
+  "fator": "1,155650",
+  "fator_js": "1.1556498547324596"
+ },
+ "reajuste/igpdi-março-2023": {
+  "acumulado": "-1,17%",
+  "fator": "0,988289",
+  "fator_js": "0.9882886788079708"
+ },
+ "reajuste/igpdi-março-2024": {
+  "acumulado": "-3,99%",
+  "fator": "0,960104",
+  "fator_js": "0.9601037934639407"
+ },
+ "reajuste/igpdi-março-2025": {
+  "acumulado": "8,57%",
+  "fator": "1,085727",
+  "fator_js": "1.0857267340462844"
+ },
+ "reajuste/igpdi-março-2026": {
+  "acumulado": "-1,30%",
+  "fator": "0,986970",
+  "fator_js": "0.9869696243250986"
+ },
+ "reajuste/igpdi-novembro-2016": {
+  "acumulado": "6,74%",
+  "fator": "1,067389",
+  "fator_js": "1.0673886103376713"
+ },
+ "reajuste/igpdi-novembro-2017": {
+  "acumulado": "-0,33%",
+  "fator": "0,996659",
+  "fator_js": "0.9966588981942964"
+ },
+ "reajuste/igpdi-novembro-2018": {
+  "acumulado": "8,38%",
+  "fator": "1,083823",
+  "fator_js": "1.08382338173821"
+ },
+ "reajuste/igpdi-novembro-2019": {
+  "acumulado": "5,36%",
+  "fator": "1,053598",
+  "fator_js": "1.0535977923428506"
+ },
+ "reajuste/igpdi-novembro-2020": {
+  "acumulado": "24,27%",
+  "fator": "1,242714",
+  "fator_js": "1.2427136552271385"
+ },
+ "reajuste/igpdi-novembro-2021": {
+  "acumulado": "17,17%",
+  "fator": "1,171741",
+  "fator_js": "1.1717409385837785"
+ },
+ "reajuste/igpdi-novembro-2022": {
+  "acumulado": "5,99%",
+  "fator": "1,059891",
+  "fator_js": "1.059890624528239"
+ },
+ "reajuste/igpdi-novembro-2023": {
+  "acumulado": "-3,59%",
+  "fator": "0,964073",
+  "fator_js": "0.9640734940542529"
+ },
+ "reajuste/igpdi-novembro-2024": {
+  "acumulado": "6,62%",
+  "fator": "1,066213",
+  "fator_js": "1.0662129001458922"
+ },
+ "reajuste/igpdi-novembro-2025": {
+  "acumulado": "-0,43%",
+  "fator": "0,995695",
+  "fator_js": "0.995695299828419"
+ },
+ "reajuste/igpdi-outubro-2016": {
+  "acumulado": "7,96%",
+  "fator": "1,079551",
+  "fator_js": "1.0795507594209792"
+ },
+ "reajuste/igpdi-outubro-2017": {
+  "acumulado": "-1,08%",
+  "fator": "0,989243",
+  "fator_js": "0.9892432813922557"
+ },
+ "reajuste/igpdi-outubro-2018": {
+  "acumulado": "10,51%",
+  "fator": "1,105092",
+  "fator_js": "1.1050920177949783"
+ },
+ "reajuste/igpdi-outubro-2019": {
+  "acumulado": "3,28%",
+  "fator": "1,032808",
+  "fator_js": "1.032807910272823"
+ },
+ "reajuste/igpdi-outubro-2020": {
+  "acumulado": "22,10%",
+  "fator": "1,221041",
+  "fator_js": "1.221041232751919"
+ },
+ "reajuste/igpdi-outubro-2021": {
+  "acumulado": "20,97%",
+  "fator": "1,209691",
+  "fator_js": "1.2096911077875578"
+ },
+ "reajuste/igpdi-outubro-2022": {
+  "acumulado": "5,56%",
+  "fator": "1,055643",
+  "fator_js": "1.055643417056677"
+ },
+ "reajuste/igpdi-outubro-2023": {
+  "acumulado": "-4,24%",
+  "fator": "0,957550",
+  "fator_js": "0.9575504097163734"
+ },
+ "reajuste/igpdi-outubro-2024": {
+  "acumulado": "5,90%",
+  "fator": "1,059047",
+  "fator_js": "1.059047207596977"
+ },
+ "reajuste/igpdi-outubro-2025": {
+  "acumulado": "0,73%",
+  "fator": "1,007344",
+  "fator_js": "1.0073437699893952"
+ },
+ "reajuste/igpdi-outubro-2026": {
+  "acumulado": "5,00%",
+  "fator": "1,050040",
+  "fator_js": "1.0500400711970792"
+ },
+ "reajuste/igpdi-setembro-2016": {
+  "acumulado": "9,71%",
+  "fator": "1,097125",
+  "fator_js": "1.097124590818724"
+ },
+ "reajuste/igpdi-setembro-2017": {
+  "acumulado": "-1,05%",
+  "fator": "0,989540",
+  "fator_js": "0.9895397579001655"
+ },
+ "reajuste/igpdi-setembro-2018": {
+  "acumulado": "10,33%",
+  "fator": "1,103328",
+  "fator_js": "1.1033284558276215"
+ },
+ "reajuste/igpdi-setembro-2019": {
+  "acumulado": "2,98%",
+  "fator": "1,029829",
+  "fator_js": "1.0298291505117176"
+ },
+ "reajuste/igpdi-setembro-2020": {
+  "acumulado": "18,42%",
+  "fator": "1,184179",
+  "fator_js": "1.1841791662153307"
+ },
+ "reajuste/igpdi-setembro-2021": {
+  "acumulado": "23,45%",
+  "fator": "1,234456",
+  "fator_js": "1.2344564375532872"
+ },
+ "reajuste/igpdi-setembro-2022": {
+  "acumulado": "7,92%",
+  "fator": "1,079225",
+  "fator_js": "1.0792249061477002"
+ },
+ "reajuste/igpdi-setembro-2023": {
+  "acumulado": "-5,32%",
+  "fator": "0,946785",
+  "fator_js": "0.9467849937082198"
+ },
+ "reajuste/igpdi-setembro-2024": {
+  "acumulado": "4,83%",
+  "fator": "1,048304",
+  "fator_js": "1.0483044596767002"
+ },
+ "reajuste/igpdi-setembro-2025": {
+  "acumulado": "2,32%",
+  "fator": "1,023164",
+  "fator_js": "1.023163813191189"
+ },
+ "reajuste/igpdi-setembro-2026": {
+  "acumulado": "3,78%",
+  "fator": "1,037790",
+  "fator_js": "1.0377904687846964"
+ },
+ "reajuste/igpm-abril-2016": {
+  "acumulado": "10,64%",
+  "fator": "1,106419",
+  "fator_js": "1.1064190591892833"
+ },
+ "reajuste/igpm-abril-2017": {
+  "acumulado": "3,37%",
+  "fator": "1,033678",
+  "fator_js": "1.0336777674436564"
+ },
+ "reajuste/igpm-abril-2018": {
+  "acumulado": "1,90%",
+  "fator": "1,018953",
+  "fator_js": "1.0189533630146772"
+ },
+ "reajuste/igpm-abril-2019": {
+  "acumulado": "8,66%",
+  "fator": "1,086555",
+  "fator_js": "1.086554631573816"
+ },
+ "reajuste/igpm-abril-2020": {
+  "acumulado": "6,69%",
+  "fator": "1,066908",
+  "fator_js": "1.0669082564672456"
+ },
+ "reajuste/igpm-abril-2021": {
+  "acumulado": "32,03%",
+  "fator": "1,320334",
+  "fator_js": "1.3203343264527312"
+ },
+ "reajuste/igpm-abril-2022": {
+  "acumulado": "14,65%",
+  "fator": "1,146548",
+  "fator_js": "1.1465484848883303"
+ },
+ "reajuste/igpm-abril-2023": {
+  "acumulado": "-2,16%",
+  "fator": "0,978412",
+  "fator_js": "0.9784122789939685"
+ },
+ "reajuste/igpm-abril-2024": {
+  "acumulado": "-3,04%",
+  "fator": "0,969591",
+  "fator_js": "0.9695912926095317"
+ },
+ "reajuste/igpm-abril-2025": {
+  "acumulado": "8,51%",
+  "fator": "1,085104",
+  "fator_js": "1.0851041753272337"
+ },
+ "reajuste/igpm-abril-2026": {
+  "acumulado": "0,62%",
+  "fator": "1,006196",
+  "fator_js": "1.0061962296066225"
+ },
+ "reajuste/igpm-agosto-2016": {
+  "acumulado": "11,51%",
+  "fator": "1,115062",
+  "fator_js": "1.1150616202446915"
+ },
+ "reajuste/igpm-agosto-2017": {
+  "acumulado": "-1,72%",
+  "fator": "0,982758",
+  "fator_js": "0.9827582504437204"
+ },
+ "reajuste/igpm-agosto-2018": {
+  "acumulado": "8,91%",
+  "fator": "1,089114",
+  "fator_js": "1.0891136450563834"
+ },
+ "reajuste/igpm-agosto-2019": {
+  "acumulado": "4,96%",
+  "fator": "1,049636",
+  "fator_js": "1.0496363255892005"
+ },
+ "reajuste/igpm-agosto-2020": {
+  "acumulado": "13,02%",
+  "fator": "1,130205",
+  "fator_js": "1.1302054422294838"
+ },
+ "reajuste/igpm-agosto-2021": {
+  "acumulado": "31,13%",
+  "fator": "1,311321",
+  "fator_js": "1.3113208453012033"
+ },
+ "reajuste/igpm-agosto-2022": {
+  "acumulado": "8,59%",
+  "fator": "1,085875",
+  "fator_js": "1.0858754966348692"
+ },
+ "reajuste/igpm-agosto-2023": {
+  "acumulado": "-7,19%",
+  "fator": "0,928065",
+  "fator_js": "0.9280649069761187"
+ },
+ "reajuste/igpm-agosto-2024": {
+  "acumulado": "4,26%",
+  "fator": "1,042594",
+  "fator_js": "1.0425938733467246"
+ },
+ "reajuste/igpm-agosto-2025": {
+  "acumulado": "3,03%",
+  "fator": "1,030332",
+  "fator_js": "1.0303323287395223"
+ },
+ "reajuste/igpm-agosto-2026": {
+  "acumulado": "2,18%",
+  "fator": "1,021782",
+  "fator_js": "1.0217824294689175"
+ },
+ "reajuste/igpm-dezembro-2015": {
+  "acumulado": "10,54%",
+  "fator": "1,105443",
+  "fator_js": "1.1054429461294262"
+ },
+ "reajuste/igpm-dezembro-2016": {
+  "acumulado": "7,19%",
+  "fator": "1,071907",
+  "fator_js": "1.0719070750962767"
+ },
+ "reajuste/igpm-dezembro-2017": {
+  "acumulado": "-0,53%",
+  "fator": "0,994674",
+  "fator_js": "0.9946741096337652"
+ },
+ "reajuste/igpm-dezembro-2018": {
+  "acumulado": "7,55%",
+  "fator": "1,075521",
+  "fator_js": "1.0755213563365922"
+ },
+ "reajuste/igpm-dezembro-2019": {
+  "acumulado": "7,32%",
+  "fator": "1,073179",
+  "fator_js": "1.073179082806147"
+ },
+ "reajuste/igpm-dezembro-2020": {
+  "acumulado": "23,14%",
+  "fator": "1,231391",
+  "fator_js": "1.2313905404048033"
+ },
+ "reajuste/igpm-dezembro-2021": {
+  "acumulado": "17,79%",
+  "fator": "1,177925",
+  "fator_js": "1.1779252083973901"
+ },
+ "reajuste/igpm-dezembro-2022": {
+  "acumulado": "5,46%",
+  "fator": "1,054584",
+  "fator_js": "1.054584215697543"
+ },
+ "reajuste/igpm-dezembro-2023": {
+  "acumulado": "-3,18%",
+  "fator": "0,968217",
+  "fator_js": "0.9682171608622683"
+ },
+ "reajuste/igpm-dezembro-2024": {
+  "acumulado": "6,54%",
+  "fator": "1,065362",
+  "fator_js": "1.0653617393596753"
+ },
+ "reajuste/igpm-dezembro-2025": {
+  "acumulado": "-1,04%",
+  "fator": "0,989578",
+  "fator_js": "0.9895783341871893"
+ },
+ "reajuste/igpm-fevereiro-2016": {
+  "acumulado": "12,09%",
+  "fator": "1,120900",
+  "fator_js": "1.1208995103455175"
+ },
+ "reajuste/igpm-fevereiro-2017": {
+  "acumulado": "5,39%",
+  "fator": "1,053866",
+  "fator_js": "1.0538663600647105"
+ },
+ "reajuste/igpm-fevereiro-2018": {
+  "acumulado": "-0,42%",
+  "fator": "0,995761",
+  "fator_js": "0.9957606216397993"
+ },
+ "reajuste/igpm-fevereiro-2019": {
+  "acumulado": "7,62%",
+  "fator": "1,076157",
+  "fator_js": "1.0761566177859512"
+ },
+ "reajuste/igpm-fevereiro-2020": {
+  "acumulado": "6,84%",
+  "fator": "1,068389",
+  "fator_js": "1.0683894043849536"
+ },
+ "reajuste/igpm-fevereiro-2021": {
+  "acumulado": "28,94%",
+  "fator": "1,289447",
+  "fator_js": "1.28944728257628"
+ },
+ "reajuste/igpm-fevereiro-2022": {
+  "acumulado": "16,12%",
+  "fator": "1,161216",
+  "fator_js": "1.161215703867625"
+ },
+ "reajuste/igpm-fevereiro-2023": {
+  "acumulado": "1,86%",
+  "fator": "1,018645",
+  "fator_js": "1.0186449525876204"
+ },
+ "reajuste/igpm-fevereiro-2024": {
+  "acumulado": "-3,76%",
+  "fator": "0,962414",
+  "fator_js": "0.9624142505939873"
+ },
+ "reajuste/igpm-fevereiro-2025": {
+  "acumulado": "8,44%",
+  "fator": "1,084445",
+  "fator_js": "1.084445493247348"
+ },
+ "reajuste/igpm-fevereiro-2026": {
+  "acumulado": "-2,66%",
+  "fator": "0,973408",
+  "fator_js": "0.9734078816783526"
+ },
+ "reajuste/igpm-janeiro-2016": {
+  "acumulado": "10,96%",
+  "fator": "1,109612",
+  "fator_js": "1.1096119449338044"
+ },
+ "reajuste/igpm-janeiro-2017": {
+  "acumulado": "6,66%",
+  "fator": "1,066608",
+  "fator_js": "1.0666079497497456"
+ },
+ "reajuste/igpm-janeiro-2018": {
+  "acumulado": "-0,41%",
+  "fator": "0,995860",
+  "fator_js": "0.9958601280474779"
+ },
+ "reajuste/igpm-janeiro-2019": {
+  "acumulado": "6,75%",
+  "fator": "1,067516",
+  "fator_js": "1.06751578847978"
+ },
+ "reajuste/igpm-janeiro-2020": {
+  "acumulado": "7,82%",
+  "fator": "1,078223",
+  "fator_js": "1.0782225201516018"
+ },
+ "reajuste/igpm-janeiro-2021": {
+  "acumulado": "25,71%",
+  "fator": "1,257126",
+  "fator_js": "1.2571262105366714"
+ },
+ "reajuste/igpm-janeiro-2022": {
+  "acumulado": "16,92%",
+  "fator": "1,169198",
+  "fator_js": "1.1691981352994956"
+ },
+ "reajuste/igpm-janeiro-2023": {
+  "acumulado": "3,79%",
+  "fator": "1,037909",
+  "fator_js": "1.0379089005603102"
+ },
+ "reajuste/igpm-janeiro-2024": {
+  "acumulado": "-3,31%",
+  "fator": "0,966864",
+  "fator_js": "0.9668644974302683"
+ },
+ "reajuste/igpm-janeiro-2025": {
+  "acumulado": "6,75%",
+  "fator": "1,067491",
+  "fator_js": "1.067490972375284"
+ },
+ "reajuste/igpm-janeiro-2026": {
+  "acumulado": "-0,90%",
+  "fator": "0,990960",
+  "fator_js": "0.9909600133213895"
+ },
+ "reajuste/igpm-julho-2016": {
+  "acumulado": "11,65%",
+  "fator": "1,116509",
+  "fator_js": "1.1165090292375204"
+ },
+ "reajuste/igpm-julho-2017": {
+  "acumulado": "-1,68%",
+  "fator": "0,983249",
+  "fator_js": "0.9832491386807052"
+ },
+ "reajuste/igpm-julho-2018": {
+  "acumulado": "8,26%",
+  "fator": "1,082624",
+  "fator_js": "1.0826243879855415"
+ },
+ "reajuste/igpm-julho-2019": {
+  "acumulado": "6,41%",
+  "fator": "1,064113",
+  "fator_js": "1.0641133392412414"
+ },
+ "reajuste/igpm-julho-2020": {
+  "acumulado": "9,27%",
+  "fator": "1,092693",
+  "fator_js": "1.0926932701640508"
+ },
+ "reajuste/igpm-julho-2021": {
+  "acumulado": "33,84%",
+  "fator": "1,338417",
+  "fator_js": "1.3384174810872802"
+ },
+ "reajuste/igpm-julho-2022": {
+  "acumulado": "10,07%",
+  "fator": "1,100748",
+  "fator_js": "1.1007475074649138"
+ },
+ "reajuste/igpm-julho-2023": {
+  "acumulado": "-7,71%",
+  "fator": "0,922860",
+  "fator_js": "0.9228604572674605"
+ },
+ "reajuste/igpm-julho-2024": {
+  "acumulado": "3,81%",
+  "fator": "1,038124",
+  "fator_js": "1.038123683242636"
+ },
+ "reajuste/igpm-julho-2025": {
+  "acumulado": "2,96%",
+  "fator": "1,029614",
+  "fator_js": "1.029613683233228"
+ },
+ "reajuste/igpm-julho-2026": {
+  "acumulado": "2,77%",
+  "fator": "1,027722",
+  "fator_js": "1.0277218342503567"
+ },
+ "reajuste/igpm-junho-2016": {
+  "acumulado": "12,22%",
+  "fator": "1,122193",
+  "fator_js": "1.12219299414979"
+ },
+ "reajuste/igpm-junho-2017": {
+  "acumulado": "-0,78%",
+  "fator": "0,992163",
+  "fator_js": "0.9921625575446523"
+ },
+ "reajuste/igpm-junho-2018": {
+  "acumulado": "6,94%",
+  "fator": "1,069376",
+  "fator_js": "1.0693756764421904"
+ },
+ "reajuste/igpm-junho-2019": {
+  "acumulado": "6,53%",
+  "fator": "1,065279",
+  "fator_js": "1.0652792004694933"
+ },
+ "reajuste/igpm-junho-2020": {
+  "acumulado": "7,31%",
+  "fator": "1,073133",
+  "fator_js": "1.073133173476188"
+ },
+ "reajuste/igpm-junho-2021": {
+  "acumulado": "35,77%",
+  "fator": "1,357674",
+  "fator_js": "1.3576743311326915"
+ },
+ "reajuste/igpm-junho-2022": {
+  "acumulado": "10,70%",
+  "fator": "1,107009",
+  "fator_js": "1.1070086199213052"
+ },
+ "reajuste/igpm-junho-2023": {
+  "acumulado": "-6,85%",
+  "fator": "0,931505",
+  "fator_js": "0.9315053024050383"
+ },
+ "reajuste/igpm-junho-2024": {
+  "acumulado": "2,44%",
+  "fator": "1,024400",
+  "fator_js": "1.0244003505847223"
+ },
+ "reajuste/igpm-junho-2025": {
+  "acumulado": "4,39%",
+  "fator": "1,043933",
+  "fator_js": "1.0439326077808626"
+ },
+ "reajuste/igpm-junho-2026": {
+  "acumulado": "3,18%",
+  "fator": "1,031777",
+  "fator_js": "1.0317769892013648"
+ },
+ "reajuste/igpm-maio-2016": {
+  "acumulado": "11,09%",
+  "fator": "1,110937",
+  "fator_js": "1.1109368543717109"
+ },
+ "reajuste/igpm-maio-2017": {
+  "acumulado": "1,57%",
+  "fator": "1,015736",
+  "fator_js": "1.0157355328371656"
+ },
+ "reajuste/igpm-maio-2018": {
+  "acumulado": "4,27%",
+  "fator": "1,042712",
+  "fator_js": "1.0427121423481176"
+ },
+ "reajuste/igpm-maio-2019": {
+  "acumulado": "7,66%",
+  "fator": "1,076587",
+  "fator_js": "1.0765872237284455"
+ },
+ "reajuste/igpm-maio-2020": {
+  "acumulado": "6,51%",
+  "fator": "1,065103",
+  "fator_js": "1.0651026377156334"
+ },
+ "reajuste/igpm-maio-2021": {
+  "acumulado": "37,06%",
+  "fator": "1,370630",
+  "fator_js": "1.370630269083859"
+ },
+ "reajuste/igpm-maio-2022": {
+  "acumulado": "10,71%",
+  "fator": "1,107119",
+  "fator_js": "1.1071186714791066"
+ },
+ "reajuste/igpm-maio-2023": {
+  "acumulado": "-4,46%",
+  "fator": "0,955441",
+  "fator_js": "0.9554411988265812"
+ },
+ "reajuste/igpm-maio-2024": {
+  "acumulado": "-0,34%",
+  "fator": "0,996557",
+  "fator_js": "0.9965573096105913"
+ },
+ "reajuste/igpm-maio-2025": {
+  "acumulado": "7,03%",
+  "fator": "1,070262",
+  "fator_js": "1.0702618345407175"
+ },
+ "reajuste/igpm-maio-2026": {
+  "acumulado": "1,96%",
+  "fator": "1,019645",
+  "fator_js": "1.0196445361625146"
+ },
+ "reajuste/igpm-março-2016": {
+  "acumulado": "11,57%",
+  "fator": "1,115682",
+  "fator_js": "1.1156824102280454"
+ },
+ "reajuste/igpm-março-2017": {
+  "acumulado": "4,86%",
+  "fator": "1,048624",
+  "fator_js": "1.0486237654966837"
+ },
+ "reajuste/igpm-março-2018": {
+  "acumulado": "0,20%",
+  "fator": "1,002033",
+  "fator_js": "1.002033286289665"
+ },
+ "reajuste/igpm-março-2019": {
+  "acumulado": "8,28%",
+  "fator": "1,082786",
+  "fator_js": "1.0827863584758095"
+ },
+ "reajuste/igpm-março-2020": {
+  "acumulado": "6,82%",
+  "fator": "1,068178",
+  "fator_js": "1.0681783853439926"
+ },
+ "reajuste/igpm-março-2021": {
+  "acumulado": "31,11%",
+  "fator": "1,311099",
+  "fator_js": "1.3110994001225038"
+ },
+ "reajuste/igpm-março-2022": {
+  "acumulado": "14,77%",
+  "fator": "1,147679",
+  "fator_js": "1.1476790918155446"
+ },
+ "reajuste/igpm-março-2023": {
+  "acumulado": "0,17%",
+  "fator": "1,001724",
+  "fator_js": "1.0017242727186102"
+ },
+ "reajuste/igpm-março-2024": {
+  "acumulado": "-4,26%",
+  "fator": "0,957412",
+  "fator_js": "0.957412197517437"
+ },
+ "reajuste/igpm-março-2025": {
+  "acumulado": "8,59%",
+  "fator": "1,085862",
+  "fator_js": "1.085861929639613"
+ },
+ "reajuste/igpm-março-2026": {
+  "acumulado": "-1,82%",
+  "fator": "0,981808",
+  "fator_js": "0.9818077490097132"
+ },
+ "reajuste/igpm-novembro-2016": {
+  "acumulado": "7,14%",
+  "fator": "1,071374",
+  "fator_js": "1.0713740001633663"
+ },
+ "reajuste/igpm-novembro-2017": {
+  "acumulado": "-0,88%",
+  "fator": "0,991223",
+  "fator_js": "0.9912234610226854"
+ },
+ "reajuste/igpm-novembro-2018": {
+  "acumulado": "9,69%",
+  "fator": "1,096940",
+  "fator_js": "1.0969404533036673"
+ },
+ "reajuste/igpm-novembro-2019": {
+  "acumulado": "3,99%",
+  "fator": "1,039856",
+  "fator_js": "1.039855763259713"
+ },
+ "reajuste/igpm-novembro-2020": {
+  "acumulado": "24,52%",
+  "fator": "1,245173",
+  "fator_js": "1.2451729424517268"
+ },
+ "reajuste/igpm-novembro-2021": {
+  "acumulado": "17,90%",
+  "fator": "1,178976",
+  "fator_js": "1.1789761974799298"
+ },
+ "reajuste/igpm-novembro-2022": {
+  "acumulado": "5,90%",
+  "fator": "1,058994",
+  "fator_js": "1.0589936270523754"
+ },
+ "reajuste/igpm-novembro-2023": {
+  "acumulado": "-3,46%",
+  "fator": "0,965430",
+  "fator_js": "0.9654299564087238"
+ },
+ "reajuste/igpm-novembro-2024": {
+  "acumulado": "6,33%",
+  "fator": "1,063251",
+  "fator_js": "1.0632508581641935"
+ },
+ "reajuste/igpm-novembro-2025": {
+  "acumulado": "-0,10%",
+  "fator": "0,998980",
+  "fator_js": "0.9989802685554046"
+ },
+ "reajuste/igpm-outubro-2016": {
+  "acumulado": "8,80%",
+  "fator": "1,087985",
+  "fator_js": "1.0879852805500145"
+ },
+ "reajuste/igpm-outubro-2017": {
+  "acumulado": "-1,42%",
+  "fator": "0,985800",
+  "fator_js": "0.9857999343258842"
+ },
+ "reajuste/igpm-outubro-2018": {
+  "acumulado": "10,81%",
+  "fator": "1,108074",
+  "fator_js": "1.1080741067840891"
+ },
+ "reajuste/igpm-outubro-2019": {
+  "acumulado": "3,17%",
+  "fator": "1,031665",
+  "fator_js": "1.0316654735989437"
+ },
+ "reajuste/igpm-outubro-2020": {
+  "acumulado": "20,92%",
+  "fator": "1,209245",
+  "fator_js": "1.2092452181245956"
+ },
+ "reajuste/igpm-outubro-2021": {
+  "acumulado": "21,74%",
+  "fator": "1,217403",
+  "fator_js": "1.217403136130045"
+ },
+ "reajuste/igpm-outubro-2022": {
+  "acumulado": "6,52%",
+  "fator": "1,065170",
+  "fator_js": "1.0651703799052556"
+ },
+ "reajuste/igpm-outubro-2023": {
+  "acumulado": "-4,56%",
+  "fator": "0,954393",
+  "fator_js": "0.9543926321233074"
+ },
+ "reajuste/igpm-outubro-2024": {
+  "acumulado": "5,58%",
+  "fator": "1,055799",
+  "fator_js": "1.0557986557032204"
+ },
+ "reajuste/igpm-outubro-2025": {
+  "acumulado": "0,92%",
+  "fator": "1,009242",
+  "fator_js": "1.0092420584887054"
+ },
+ "reajuste/igpm-outubro-2026": {
+  "acumulado": "5,25%",
+  "fator": "1,052465",
+  "fator_js": "1.0524648668403527"
+ },
+ "reajuste/igpm-setembro-2016": {
+  "acumulado": "10,68%",
+  "fator": "1,106777",
+  "fator_js": "1.1067773585786838"
+ },
+ "reajuste/igpm-setembro-2017": {
+  "acumulado": "-1,46%",
+  "fator": "0,985406",
+  "fator_js": "0.9854064014179695"
+ },
+ "reajuste/igpm-setembro-2018": {
+  "acumulado": "10,05%",
+  "fator": "1,100496",
+  "fator_js": "1.100495842003823"
+ },
+ "reajuste/igpm-setembro-2019": {
+  "acumulado": "3,38%",
+  "fator": "1,033817",
+  "fator_js": "1.0338173384127676"
+ },
+ "reajuste/igpm-setembro-2020": {
+  "acumulado": "17,94%",
+  "fator": "1,179374",
+  "fator_js": "1.1793742958518285"
+ },
+ "reajuste/igpm-setembro-2021": {
+  "acumulado": "24,87%",
+  "fator": "1,248733",
+  "fator_js": "1.248733363898098"
+ },
+ "reajuste/igpm-setembro-2022": {
+  "acumulado": "8,25%",
+  "fator": "1,082488",
+  "fator_js": "1.0824876000572041"
+ },
+ "reajuste/igpm-setembro-2023": {
+  "acumulado": "-5,96%",
+  "fator": "0,940433",
+  "fator_js": "0.9404328592952352"
+ },
+ "reajuste/igpm-setembro-2024": {
+  "acumulado": "4,52%",
+  "fator": "1,045191",
+  "fator_js": "1.0451907495879984"
+ },
+ "reajuste/igpm-setembro-2025": {
+  "acumulado": "2,83%",
+  "fator": "1,028284",
+  "fator_js": "1.028284361479058"
+ },
+ "reajuste/igpm-setembro-2026": {
+  "acumulado": "3,35%",
+  "fator": "1,033484",
+  "fator_js": "1.0334837817283211"
+ },
+ "reajuste/inpc-abril-2016": {
+  "acumulado": "9,83%",
+  "fator": "1,098307",
+  "fator_js": "1.0983074631721501"
+ },
+ "reajuste/inpc-abril-2017": {
+  "acumulado": "3,99%",
+  "fator": "1,039870",
+  "fator_js": "1.039870312563569"
+ },
+ "reajuste/inpc-abril-2018": {
+  "acumulado": "1,69%",
+  "fator": "1,016910",
+  "fator_js": "1.0169103806816029"
+ },
+ "reajuste/inpc-abril-2019": {
+  "acumulado": "5,07%",
+  "fator": "1,050747",
+  "fator_js": "1.050747050365668"
+ },
+ "reajuste/inpc-abril-2020": {
+  "acumulado": "2,46%",
+  "fator": "1,024599",
+  "fator_js": "1.024599275977792"
+ },
+ "reajuste/inpc-abril-2021": {
+  "acumulado": "7,59%",
+  "fator": "1,075911",
+  "fator_js": "1.0759110834417485"
+ },
+ "reajuste/inpc-abril-2022": {
+  "acumulado": "12,47%",
+  "fator": "1,124655",
+  "fator_js": "1.124654690193475"
+ },
+ "reajuste/inpc-abril-2023": {
+  "acumulado": "3,83%",
+  "fator": "1,038343",
+  "fator_js": "1.0383432434875197"
+ },
+ "reajuste/inpc-abril-2024": {
+  "acumulado": "3,23%",
+  "fator": "1,032328",
+  "fator_js": "1.0323278449707673"
+ },
+ "reajuste/inpc-abril-2025": {
+  "acumulado": "5,32%",
+  "fator": "1,053167",
+  "fator_js": "1.053167355599032"
+ },
+ "reajuste/inpc-abril-2026": {
+  "acumulado": "4,11%",
+  "fator": "1,041096",
+  "fator_js": "1.0410960804297857"
+ },
+ "reajuste/inpc-agosto-2016": {
+  "acumulado": "9,62%",
+  "fator": "1,096238",
+  "fator_js": "1.0962381668998566"
+ },
+ "reajuste/inpc-agosto-2017": {
+  "acumulado": "1,73%",
+  "fator": "1,017316",
+  "fator_js": "1.0173156588275938"
+ },
+ "reajuste/inpc-agosto-2018": {
+  "acumulado": "3,64%",
+  "fator": "1,036415",
+  "fator_js": "1.036415199041626"
+ },
+ "reajuste/inpc-agosto-2019": {
+  "acumulado": "3,28%",
+  "fator": "1,032840",
+  "fator_js": "1.0328403814057263"
+ },
+ "reajuste/inpc-agosto-2020": {
+  "acumulado": "2,94%",
+  "fator": "1,029404",
+  "fator_js": "1.0294042083890975"
+ },
+ "reajuste/inpc-agosto-2021": {
+  "acumulado": "10,42%",
+  "fator": "1,104218",
+  "fator_js": "1.1042183186977979"
+ },
+ "reajuste/inpc-agosto-2022": {
+  "acumulado": "8,83%",
+  "fator": "1,088258",
+  "fator_js": "1.0882575099364982"
+ },
+ "reajuste/inpc-agosto-2023": {
+  "acumulado": "4,06%",
+  "fator": "1,040571",
+  "fator_js": "1.0405705446403213"
+ },
+ "reajuste/inpc-agosto-2024": {
+  "acumulado": "3,71%",
+  "fator": "1,037079",
+  "fator_js": "1.0370785157623028"
+ },
+ "reajuste/inpc-agosto-2025": {
+  "acumulado": "5,05%",
+  "fator": "1,050543",
+  "fator_js": "1.0505428321139563"
+ },
+ "reajuste/inpc-agosto-2026": {
+  "acumulado": "3,98%",
+  "fator": "1,039833",
+  "fator_js": "1.0398329699369482"
+ },
+ "reajuste/inpc-dezembro-2015": {
+  "acumulado": "11,28%",
+  "fator": "1,112762",
+  "fator_js": "1.1127616619831329"
+ },
+ "reajuste/inpc-dezembro-2016": {
+  "acumulado": "6,58%",
+  "fator": "1,065800",
+  "fator_js": "1.0657996361338826"
+ },
+ "reajuste/inpc-dezembro-2017": {
+  "acumulado": "2,07%",
+  "fator": "1,020669",
+  "fator_js": "1.0206693096434498"
+ },
+ "reajuste/inpc-dezembro-2018": {
+  "acumulado": "3,43%",
+  "fator": "1,034340",
+  "fator_js": "1.03433953867842"
+ },
+ "reajuste/inpc-dezembro-2019": {
+  "acumulado": "4,48%",
+  "fator": "1,044816",
+  "fator_js": "1.0448158866335409"
+ },
+ "reajuste/inpc-dezembro-2020": {
+  "acumulado": "5,45%",
+  "fator": "1,054473",
+  "fator_js": "1.0544732528052454"
+ },
+ "reajuste/inpc-dezembro-2021": {
+  "acumulado": "10,16%",
+  "fator": "1,101602",
+  "fator_js": "1.101601776728925"
+ },
+ "reajuste/inpc-dezembro-2022": {
+  "acumulado": "5,93%",
+  "fator": "1,059324",
+  "fator_js": "1.0593235627739133"
+ },
+ "reajuste/inpc-dezembro-2023": {
+  "acumulado": "3,71%",
+  "fator": "1,037070",
+  "fator_js": "1.0370698753750878"
+ },
+ "reajuste/inpc-dezembro-2024": {
+  "acumulado": "4,77%",
+  "fator": "1,047679",
+  "fator_js": "1.0476793809251288"
+ },
+ "reajuste/inpc-dezembro-2025": {
+  "acumulado": "3,90%",
+  "fator": "1,038979",
+  "fator_js": "1.0389786648599548"
+ },
+ "reajuste/inpc-fevereiro-2016": {
+  "acumulado": "11,08%",
+  "fator": "1,110780",
+  "fator_js": "1.110779935530979"
+ },
+ "reajuste/inpc-fevereiro-2017": {
+  "acumulado": "4,69%",
+  "fator": "1,046940",
+  "fator_js": "1.046939755499485"
+ },
+ "reajuste/inpc-fevereiro-2018": {
+  "acumulado": "1,81%",
+  "fator": "1,018128",
+  "fator_js": "1.0181283694118477"
+ },
+ "reajuste/inpc-fevereiro-2019": {
+  "acumulado": "3,94%",
+  "fator": "1,039403",
+  "fator_js": "1.0394028472855001"
+ },
+ "reajuste/inpc-fevereiro-2020": {
+  "acumulado": "3,92%",
+  "fator": "1,039208",
+  "fator_js": "1.0392075286287208"
+ },
+ "reajuste/inpc-fevereiro-2021": {
+  "acumulado": "6,22%",
+  "fator": "1,062163",
+  "fator_js": "1.062163139210542"
+ },
+ "reajuste/inpc-fevereiro-2022": {
+  "acumulado": "10,80%",
+  "fator": "1,107971",
+  "fator_js": "1.1079709202128456"
+ },
+ "reajuste/inpc-fevereiro-2023": {
+  "acumulado": "5,47%",
+  "fator": "1,054706",
+  "fator_js": "1.0547064999519322"
+ },
+ "reajuste/inpc-fevereiro-2024": {
+  "acumulado": "3,86%",
+  "fator": "1,038618",
+  "fator_js": "1.038617537625435"
+ },
+ "reajuste/inpc-fevereiro-2025": {
+  "acumulado": "4,87%",
+  "fator": "1,048665",
+  "fator_js": "1.048665041327542"
+ },
+ "reajuste/inpc-fevereiro-2026": {
+  "acumulado": "3,36%",
+  "fator": "1,033575",
+  "fator_js": "1.0335747472114358"
+ },
+ "reajuste/inpc-janeiro-2016": {
+  "acumulado": "11,31%",
+  "fator": "1,113091",
+  "fator_js": "1.1130906218753231"
+ },
+ "reajuste/inpc-janeiro-2017": {
+  "acumulado": "5,44%",
+  "fator": "1,054355",
+  "fator_js": "1.0543552306232347"
+ },
+ "reajuste/inpc-janeiro-2018": {
+  "acumulado": "1,87%",
+  "fator": "1,018738",
+  "fator_js": "1.018738148830541"
+ },
+ "reajuste/inpc-janeiro-2019": {
+  "acumulado": "3,57%",
+  "fator": "1,035681",
+  "fator_js": "1.0356810945003119"
+ },
+ "reajuste/inpc-janeiro-2020": {
+  "acumulado": "4,30%",
+  "fator": "1,043046",
+  "fator_js": "1.0430460709626785"
+ },
+ "reajuste/inpc-janeiro-2021": {
+  "acumulado": "5,53%",
+  "fator": "1,055315",
+  "fator_js": "1.055315231647689"
+ },
+ "reajuste/inpc-janeiro-2022": {
+  "acumulado": "10,60%",
+  "fator": "1,105996",
+  "fator_js": "1.1059963185728625"
+ },
+ "reajuste/inpc-janeiro-2023": {
+  "acumulado": "5,71%",
+  "fator": "1,057114",
+  "fator_js": "1.0571137887778614"
+ },
+ "reajuste/inpc-janeiro-2024": {
+  "acumulado": "3,82%",
+  "fator": "1,038205",
+  "fator_js": "1.038205428692739"
+ },
+ "reajuste/inpc-janeiro-2025": {
+  "acumulado": "4,17%",
+  "fator": "1,041741",
+  "fator_js": "1.041741454633716"
+ },
+ "reajuste/inpc-janeiro-2026": {
+  "acumulado": "4,30%",
+  "fator": "1,043031",
+  "fator_js": "1.0430306816529087"
+ },
+ "reajuste/inpc-julho-2016": {
+  "acumulado": "9,56%",
+  "fator": "1,095582",
+  "fator_js": "1.0955824567013317"
+ },
+ "reajuste/inpc-julho-2017": {
+  "acumulado": "2,08%",
+  "fator": "1,020776",
+  "fator_js": "1.020775570040972"
+ },
+ "reajuste/inpc-julho-2018": {
+  "acumulado": "3,61%",
+  "fator": "1,036104",
+  "fator_js": "1.0361042744819131"
+ },
+ "reajuste/inpc-julho-2019": {
+  "acumulado": "3,16%",
+  "fator": "1,031602",
+  "fator_js": "1.0316024584555796"
+ },
+ "reajuste/inpc-julho-2020": {
+  "acumulado": "2,69%",
+  "fator": "1,026943",
+  "fator_js": "1.0269425004375896"
+ },
+ "reajuste/inpc-julho-2021": {
+  "acumulado": "9,85%",
+  "fator": "1,098526",
+  "fator_js": "1.098526471694201"
+ },
+ "reajuste/inpc-julho-2022": {
+  "acumulado": "10,12%",
+  "fator": "1,101248",
+  "fator_js": "1.1012480449633253"
+ },
+ "reajuste/inpc-julho-2023": {
+  "acumulado": "3,53%",
+  "fator": "1,035274",
+  "fator_js": "1.0352742274969422"
+ },
+ "reajuste/inpc-julho-2024": {
+  "acumulado": "4,06%",
+  "fator": "1,040610",
+  "fator_js": "1.0406095261304098"
+ },
+ "reajuste/inpc-julho-2025": {
+  "acumulado": "5,13%",
+  "fator": "1,051280",
+  "fator_js": "1.0512797596442498"
+ },
+ "reajuste/inpc-julho-2026": {
+  "acumulado": "4,10%",
+  "fator": "1,040980",
+  "fator_js": "1.0409804581662128"
+ },
+ "reajuste/inpc-junho-2016": {
+  "acumulado": "9,49%",
+  "fator": "1,094929",
+  "fator_js": "1.0949292875101344"
+ },
+ "reajuste/inpc-junho-2017": {
+  "acumulado": "2,56%",
+  "fator": "1,025565",
+  "fator_js": "1.0255650730650234"
+ },
+ "reajuste/inpc-junho-2018": {
+  "acumulado": "3,53%",
+  "fator": "1,035277",
+  "fator_js": "1.035277458103274"
+ },
+ "reajuste/inpc-junho-2019": {
+  "acumulado": "3,31%",
+  "fator": "1,033148",
+  "fator_js": "1.0331483162854331"
+ },
+ "reajuste/inpc-junho-2020": {
+  "acumulado": "2,35%",
+  "fator": "1,023466",
+  "fator_js": "1.0234661916945704"
+ },
+ "reajuste/inpc-junho-2021": {
+  "acumulado": "9,22%",
+  "fator": "1,092219",
+  "fator_js": "1.0922193507915814"
+ },
+ "reajuste/inpc-junho-2022": {
+  "acumulado": "11,92%",
+  "fator": "1,119196",
+  "fator_js": "1.119195950726309"
+ },
+ "reajuste/inpc-junho-2023": {
+  "acumulado": "3,00%",
+  "fator": "1,029990",
+  "fator_js": "1.0299895727474333"
+ },
+ "reajuste/inpc-junho-2024": {
+  "acumulado": "3,70%",
+  "fator": "1,036977",
+  "fator_js": "1.0369768377786681"
+ },
+ "reajuste/inpc-junho-2025": {
+  "acumulado": "5,18%",
+  "fator": "1,051804",
+  "fator_js": "1.051804297993538"
+ },
+ "reajuste/inpc-junho-2026": {
+  "acumulado": "4,33%",
+  "fator": "1,043271",
+  "fator_js": "1.0432708442127827"
+ },
+ "reajuste/inpc-maio-2016": {
+  "acumulado": "9,82%",
+  "fator": "1,098199",
+  "fator_js": "1.0981987090912337"
+ },
+ "reajuste/inpc-maio-2017": {
+  "acumulado": "3,35%",
+  "fator": "1,033486",
+  "fator_js": "1.0334856859663277"
+ },
+ "reajuste/inpc-maio-2018": {
+  "acumulado": "1,76%",
+  "fator": "1,017620",
+  "fator_js": "1.017619664526239"
+ },
+ "reajuste/inpc-maio-2019": {
+  "acumulado": "4,78%",
+  "fator": "1,047818",
+  "fator_js": "1.0478175554527698"
+ },
+ "reajuste/inpc-maio-2020": {
+  "acumulado": "2,05%",
+  "fator": "1,020507",
+  "fator_js": "1.0205070172619546"
+ },
+ "reajuste/inpc-maio-2021": {
+  "acumulado": "8,90%",
+  "fator": "1,088962",
+  "fator_js": "1.0889622354313675"
+ },
+ "reajuste/inpc-maio-2022": {
+  "acumulado": "11,90%",
+  "fator": "1,118973",
+  "fator_js": "1.1189734907877826"
+ },
+ "reajuste/inpc-maio-2023": {
+  "acumulado": "3,74%",
+  "fator": "1,037413",
+  "fator_js": "1.0374129210194871"
+ },
+ "reajuste/inpc-maio-2024": {
+  "acumulado": "3,34%",
+  "fator": "1,033356",
+  "fator_js": "1.0333564697664734"
+ },
+ "reajuste/inpc-maio-2025": {
+  "acumulado": "5,20%",
+  "fator": "1,052014",
+  "fator_js": "1.052014176133415"
+ },
+ "reajuste/inpc-maio-2026": {
+  "acumulado": "4,42%",
+  "fator": "1,044208",
+  "fator_js": "1.0442084752890675"
+ },
+ "reajuste/inpc-março-2016": {
+  "acumulado": "9,91%",
+  "fator": "1,099071",
+  "fator_js": "1.0990713892693487"
+ },
+ "reajuste/inpc-março-2017": {
+  "acumulado": "4,57%",
+  "fator": "1,045689",
+  "fator_js": "1.0456889314188413"
+ },
+ "reajuste/inpc-março-2018": {
+  "acumulado": "1,56%",
+  "fator": "1,015591",
+  "fator_js": "1.0155911675343257"
+ },
+ "reajuste/inpc-março-2019": {
+  "acumulado": "4,67%",
+  "fator": "1,046674",
+  "fator_js": "1.0466735777052045"
+ },
+ "reajuste/inpc-março-2020": {
+  "acumulado": "3,31%",
+  "fator": "1,033123",
+  "fator_js": "1.033123054659375"
+ },
+ "reajuste/inpc-março-2021": {
+  "acumulado": "6,94%",
+  "fator": "1,069373",
+  "fator_js": "1.069372871039881"
+ },
+ "reajuste/inpc-março-2022": {
+  "acumulado": "11,73%",
+  "fator": "1,117308",
+  "fator_js": "1.117308370958244"
+ },
+ "reajuste/inpc-março-2023": {
+  "acumulado": "4,36%",
+  "fator": "1,043611",
+  "fator_js": "1.0436108755792197"
+ },
+ "reajuste/inpc-março-2024": {
+  "acumulado": "3,40%",
+  "fator": "1,033973",
+  "fator_js": "1.033973480670631"
+ },
+ "reajuste/inpc-março-2025": {
+  "acumulado": "5,20%",
+  "fator": "1,052014",
+  "fator_js": "1.052014405667544"
+ },
+ "reajuste/inpc-março-2026": {
+  "acumulado": "3,77%",
+  "fator": "1,037688",
+  "fator_js": "1.0376880682629188"
+ },
+ "reajuste/inpc-novembro-2016": {
+  "acumulado": "7,39%",
+  "fator": "1,073888",
+  "fator_js": "1.0738883891143276"
+ },
+ "reajuste/inpc-novembro-2017": {
+  "acumulado": "1,94%",
+  "fator": "1,019448",
+  "fator_js": "1.0194476827019252"
+ },
+ "reajuste/inpc-novembro-2018": {
+  "acumulado": "3,56%",
+  "fator": "1,035579",
+  "fator_js": "1.035579010863775"
+ },
+ "reajuste/inpc-novembro-2019": {
+  "acumulado": "3,37%",
+  "fator": "1,033668",
+  "fator_js": "1.0336678807299229"
+ },
+ "reajuste/inpc-novembro-2020": {
+  "acumulado": "5,20%",
+  "fator": "1,051979",
+  "fator_js": "1.0519789340523056"
+ },
+ "reajuste/inpc-novembro-2021": {
+  "acumulado": "10,96%",
+  "fator": "1,109585",
+  "fator_js": "1.1095851907764993"
+ },
+ "reajuste/inpc-novembro-2022": {
+  "acumulado": "5,97%",
+  "fator": "1,059744",
+  "fator_js": "1.059744388501503"
+ },
+ "reajuste/inpc-novembro-2023": {
+  "acumulado": "3,85%",
+  "fator": "1,038514",
+  "fator_js": "1.0385138314422433"
+ },
+ "reajuste/inpc-novembro-2024": {
+  "acumulado": "4,84%",
+  "fator": "1,048409",
+  "fator_js": "1.0484092531053113"
+ },
+ "reajuste/inpc-novembro-2025": {
+  "acumulado": "4,18%",
+  "fator": "1,041778",
+  "fator_js": "1.0417780285912408"
+ },
+ "reajuste/inpc-outubro-2016": {
+  "acumulado": "8,50%",
+  "fator": "1,085049",
+  "fator_js": "1.0850490159223516"
+ },
+ "reajuste/inpc-outubro-2017": {
+  "acumulado": "1,83%",
+  "fator": "1,018328",
+  "fator_js": "1.0183283051305814"
+ },
+ "reajuste/inpc-outubro-2018": {
+  "acumulado": "4,00%",
+  "fator": "1,040043",
+  "fator_js": "1.0400431609857939"
+ },
+ "reajuste/inpc-outubro-2019": {
+  "acumulado": "2,55%",
+  "fator": "1,025546",
+  "fator_js": "1.0255457639030219"
+ },
+ "reajuste/inpc-outubro-2020": {
+  "acumulado": "4,77%",
+  "fator": "1,047706",
+  "fator_js": "1.0477064094068238"
+ },
+ "reajuste/inpc-outubro-2021": {
+  "acumulado": "11,08%",
+  "fator": "1,110796",
+  "fator_js": "1.1107955673233596"
+ },
+ "reajuste/inpc-outubro-2022": {
+  "acumulado": "6,46%",
+  "fator": "1,064601",
+  "fator_js": "1.0646007584826807"
+ },
+ "reajuste/inpc-outubro-2023": {
+  "acumulado": "4,14%",
+  "fator": "1,041419",
+  "fator_js": "1.0414187652364875"
+ },
+ "reajuste/inpc-outubro-2024": {
+  "acumulado": "4,60%",
+  "fator": "1,046006",
+  "fator_js": "1.0460058430762647"
+ },
+ "reajuste/inpc-outubro-2025": {
+  "acumulado": "4,49%",
+  "fator": "1,044902",
+  "fator_js": "1.0449024253579846"
+ },
+ "reajuste/inpc-setembro-2016": {
+  "acumulado": "9,15%",
+  "fator": "1,091548",
+  "fator_js": "1.091548261300742"
+ },
+ "reajuste/inpc-setembro-2017": {
+  "acumulado": "1,63%",
+  "fator": "1,016299",
+  "fator_js": "1.016299156370732"
+ },
+ "reajuste/inpc-setembro-2018": {
+  "acumulado": "3,97%",
+  "fator": "1,039732",
+  "fator_js": "1.0397323911169738"
+ },
+ "reajuste/inpc-setembro-2019": {
+  "acumulado": "2,92%",
+  "fator": "1,029236",
+  "fator_js": "1.029236252457651"
+ },
+ "reajuste/inpc-setembro-2020": {
+  "acumulado": "3,89%",
+  "fator": "1,038879",
+  "fator_js": "1.0388794647344495"
+ },
+ "reajuste/inpc-setembro-2021": {
+  "acumulado": "10,78%",
+  "fator": "1,107831",
+  "fator_js": "1.1078308104710728"
+ },
+ "reajuste/inpc-setembro-2022": {
+  "acumulado": "7,19%",
+  "fator": "1,071912",
+  "fator_js": "1.0719121402220366"
+ },
+ "reajuste/inpc-setembro-2023": {
+  "acumulado": "4,51%",
+  "fator": "1,045059",
+  "fator_js": "1.0450593621984607"
+ },
+ "reajuste/inpc-setembro-2024": {
+  "acumulado": "4,09%",
+  "fator": "1,040911",
+  "fator_js": "1.0409114899989627"
+ },
+ "reajuste/inpc-setembro-2025": {
+  "acumulado": "5,10%",
+  "fator": "1,050961",
+  "fator_js": "1.050961041840116"
+ },
+ "reajuste/inpc-setembro-2026": {
+  "acumulado": "4,29%",
+  "fator": "1,042936",
+  "fator_js": "1.0429363313673208"
+ },
+ "reajuste/ipca-abril-2016": {
+  "acumulado": "9,28%",
+  "fator": "1,092783",
+  "fator_js": "1.0927831202535554"
+ },
+ "reajuste/ipca-abril-2017": {
+  "acumulado": "4,08%",
+  "fator": "1,040825",
+  "fator_js": "1.0408253089526351"
+ },
+ "reajuste/ipca-abril-2018": {
+  "acumulado": "2,76%",
+  "fator": "1,027627",
+  "fator_js": "1.027626847278442"
+ },
+ "reajuste/ipca-abril-2019": {
+  "acumulado": "4,94%",
+  "fator": "1,049406",
+  "fator_js": "1.0494057558868348"
+ },
+ "reajuste/ipca-abril-2020": {
+  "acumulado": "2,40%",
+  "fator": "1,023990",
+  "fator_js": "1.0239904484475022"
+ },
+ "reajuste/ipca-abril-2021": {
+  "acumulado": "6,76%",
+  "fator": "1,067592",
+  "fator_js": "1.067591885269033"
+ },
+ "reajuste/ipca-abril-2022": {
+  "acumulado": "12,13%",
+  "fator": "1,121315",
+  "fator_js": "1.1213148113237592"
+ },
+ "reajuste/ipca-abril-2023": {
+  "acumulado": "4,18%",
+  "fator": "1,041847",
+  "fator_js": "1.0418470578206482"
+ },
+ "reajuste/ipca-abril-2024": {
+  "acumulado": "3,69%",
+  "fator": "1,036880",
+  "fator_js": "1.0368801649156532"
+ },
+ "reajuste/ipca-abril-2025": {
+  "acumulado": "5,53%",
+  "fator": "1,055297",
+  "fator_js": "1.0552972858849774"
+ },
+ "reajuste/ipca-abril-2026": {
+  "acumulado": "4,39%",
+  "fator": "1,043917",
+  "fator_js": "1.0439171967147336"
+ },
+ "reajuste/ipca-agosto-2016": {
+  "acumulado": "8,97%",
+  "fator": "1,089750",
+  "fator_js": "1.0897497792515305"
+ },
+ "reajuste/ipca-agosto-2017": {
+  "acumulado": "2,46%",
+  "fator": "1,024558",
+  "fator_js": "1.024558041894743"
+ },
+ "reajuste/ipca-agosto-2018": {
+  "acumulado": "4,19%",
+  "fator": "1,041927",
+  "fator_js": "1.0419268068417014"
+ },
+ "reajuste/ipca-agosto-2019": {
+  "acumulado": "3,43%",
+  "fator": "1,034288",
+  "fator_js": "1.034288072225267"
+ },
+ "reajuste/ipca-agosto-2020": {
+  "acumulado": "2,44%",
+  "fator": "1,024383",
+  "fator_js": "1.024383023474934"
+ },
+ "reajuste/ipca-agosto-2021": {
+  "acumulado": "9,68%",
+  "fator": "1,096797",
+  "fator_js": "1.0967966826889544"
+ },
+ "reajuste/ipca-agosto-2022": {
+  "acumulado": "8,73%",
+  "fator": "1,087271",
+  "fator_js": "1.0872706052500614"
+ },
+ "reajuste/ipca-agosto-2023": {
+  "acumulado": "4,61%",
+  "fator": "1,046082",
+  "fator_js": "1.0460821608752169"
+ },
+ "reajuste/ipca-agosto-2024": {
+  "acumulado": "4,24%",
+  "fator": "1,042376",
+  "fator_js": "1.042375990160565"
+ },
+ "reajuste/ipca-agosto-2025": {
+  "acumulado": "5,13%",
+  "fator": "1,051305",
+  "fator_js": "1.0513050077750392"
+ },
+ "reajuste/ipca-agosto-2026": {
+  "acumulado": "4,22%",
+  "fator": "1,042235",
+  "fator_js": "1.0422345273706828"
+ },
+ "reajuste/ipca-dezembro-2015": {
+  "acumulado": "10,67%",
+  "fator": "1,106735",
+  "fator_js": "1.1067349799562172"
+ },
+ "reajuste/ipca-dezembro-2016": {
+  "acumulado": "6,29%",
+  "fator": "1,062881",
+  "fator_js": "1.0628805505422447"
+ },
+ "reajuste/ipca-dezembro-2017": {
+  "acumulado": "2,95%",
+  "fator": "1,029473",
+  "fator_js": "1.029473499083459"
+ },
+ "reajuste/ipca-dezembro-2018": {
+  "acumulado": "3,75%",
+  "fator": "1,037455",
+  "fator_js": "1.0374548212182735"
+ },
+ "reajuste/ipca-dezembro-2019": {
+  "acumulado": "4,31%",
+  "fator": "1,043060",
+  "fator_js": "1.0430603998411319"
+ },
+ "reajuste/ipca-dezembro-2020": {
+  "acumulado": "4,52%",
+  "fator": "1,045173",
+  "fator_js": "1.0451734150050989"
+ },
+ "reajuste/ipca-dezembro-2021": {
+  "acumulado": "10,06%",
+  "fator": "1,100611",
+  "fator_js": "1.100610548932579"
+ },
+ "reajuste/ipca-dezembro-2022": {
+  "acumulado": "5,78%",
+  "fator": "1,057848",
+  "fator_js": "1.0578484195960776"
+ },
+ "reajuste/ipca-dezembro-2023": {
+  "acumulado": "4,62%",
+  "fator": "1,046211",
+  "fator_js": "1.046211139305668"
+ },
+ "reajuste/ipca-dezembro-2024": {
+  "acumulado": "4,83%",
+  "fator": "1,048313",
+  "fator_js": "1.048312957918596"
+ },
+ "reajuste/ipca-dezembro-2025": {
+  "acumulado": "4,26%",
+  "fator": "1,042644",
+  "fator_js": "1.0426438490456895"
+ },
+ "reajuste/ipca-fevereiro-2016": {
+  "acumulado": "10,36%",
+  "fator": "1,103563",
+  "fator_js": "1.1035630312454705"
+ },
+ "reajuste/ipca-fevereiro-2017": {
+  "acumulado": "4,76%",
+  "fator": "1,047588",
+  "fator_js": "1.0475879335151204"
+ },
+ "reajuste/ipca-fevereiro-2018": {
+  "acumulado": "2,84%",
+  "fator": "1,028448",
+  "fator_js": "1.0284479636624713"
+ },
+ "reajuste/ipca-fevereiro-2019": {
+  "acumulado": "3,89%",
+  "fator": "1,038903",
+  "fator_js": "1.0389030580810774"
+ },
+ "reajuste/ipca-fevereiro-2020": {
+  "acumulado": "4,00%",
+  "fator": "1,040049",
+  "fator_js": "1.0400492731210935"
+ },
+ "reajuste/ipca-fevereiro-2021": {
+  "acumulado": "5,20%",
+  "fator": "1,051953",
+  "fator_js": "1.0519528054826288"
+ },
+ "reajuste/ipca-fevereiro-2022": {
+  "acumulado": "10,54%",
+  "fator": "1,105436",
+  "fator_js": "1.1054359340003879"
+ },
+ "reajuste/ipca-fevereiro-2023": {
+  "acumulado": "5,60%",
+  "fator": "1,055963",
+  "fator_js": "1.0559630193334413"
+ },
+ "reajuste/ipca-fevereiro-2024": {
+  "acumulado": "4,50%",
+  "fator": "1,044963",
+  "fator_js": "1.0449627382126856"
+ },
+ "reajuste/ipca-fevereiro-2025": {
+  "acumulado": "5,06%",
+  "fator": "1,050576",
+  "fator_js": "1.0505763041477876"
+ },
+ "reajuste/ipca-fevereiro-2026": {
+  "acumulado": "3,81%",
+  "fator": "1,038125",
+  "fator_js": "1.0381249696111259"
+ },
+ "reajuste/ipca-janeiro-2016": {
+  "acumulado": "10,71%",
+  "fator": "1,107063",
+  "fator_js": "1.1070629338222653"
+ },
+ "reajuste/ipca-janeiro-2017": {
+  "acumulado": "5,35%",
+  "fator": "1,053540",
+  "fator_js": "1.0535395444201696"
+ },
+ "reajuste/ipca-janeiro-2018": {
+  "acumulado": "2,86%",
+  "fator": "1,028550",
+  "fator_js": "1.028550480405261"
+ },
+ "reajuste/ipca-janeiro-2019": {
+  "acumulado": "3,78%",
+  "fator": "1,037765",
+  "fator_js": "1.0377651576888747"
+ },
+ "reajuste/ipca-janeiro-2020": {
+  "acumulado": "4,19%",
+  "fator": "1,041917",
+  "fator_js": "1.0419166932623587"
+ },
+ "reajuste/ipca-janeiro-2021": {
+  "acumulado": "4,56%",
+  "fator": "1,045591",
+  "fator_js": "1.0455906082652544"
+ },
+ "reajuste/ipca-janeiro-2022": {
+  "acumulado": "10,38%",
+  "fator": "1,103794",
+  "fator_js": "1.103794359996823"
+ },
+ "reajuste/ipca-janeiro-2023": {
+  "acumulado": "5,77%",
+  "fator": "1,057743",
+  "fator_js": "1.0577432029241463"
+ },
+ "reajuste/ipca-janeiro-2024": {
+  "acumulado": "4,51%",
+  "fator": "1,045066",
+  "fator_js": "1.0450663743069244"
+ },
+ "reajuste/ipca-janeiro-2025": {
+  "acumulado": "4,56%",
+  "fator": "1,045599",
+  "fator_js": "1.0455987439267733"
+ },
+ "reajuste/ipca-janeiro-2026": {
+  "acumulado": "4,44%",
+  "fator": "1,044414",
+  "fator_js": "1.0444135121281346"
+ },
+ "reajuste/ipca-julho-2016": {
+  "acumulado": "8,74%",
+  "fator": "1,087363",
+  "fator_js": "1.0873628323037472"
+ },
+ "reajuste/ipca-julho-2017": {
+  "acumulado": "2,71%",
+  "fator": "1,027115",
+  "fator_js": "1.027114579577882"
+ },
+ "reajuste/ipca-julho-2018": {
+  "acumulado": "4,48%",
+  "fator": "1,044847",
+  "fator_js": "1.0448468299216298"
+ },
+ "reajuste/ipca-julho-2019": {
+  "acumulado": "3,22%",
+  "fator": "1,032222",
+  "fator_js": "1.0322217690143485"
+ },
+ "reajuste/ipca-julho-2020": {
+  "acumulado": "2,31%",
+  "fator": "1,023055",
+  "fator_js": "1.0230545139672356"
+ },
+ "reajuste/ipca-julho-2021": {
+  "acumulado": "8,99%",
+  "fator": "1,089946",
+  "fator_js": "1.0899464605208766"
+ },
+ "reajuste/ipca-julho-2022": {
+  "acumulado": "10,07%",
+  "fator": "1,100692",
+  "fator_js": "1.1006923519828753"
+ },
+ "reajuste/ipca-julho-2023": {
+  "acumulado": "3,99%",
+  "fator": "1,039924",
+  "fator_js": "1.0399244388866271"
+ },
+ "reajuste/ipca-julho-2024": {
+  "acumulado": "4,50%",
+  "fator": "1,044982",
+  "fator_js": "1.04498245142822"
+ },
+ "reajuste/ipca-julho-2025": {
+  "acumulado": "5,23%",
+  "fator": "1,052252",
+  "fator_js": "1.0522522242201262"
+ },
+ "reajuste/ipca-julho-2026": {
+  "acumulado": "4,44%",
+  "fator": "1,044430",
+  "fator_js": "1.044430246178346"
+ },
+ "reajuste/ipca-junho-2016": {
+  "acumulado": "8,84%",
+  "fator": "1,088445",
+  "fator_js": "1.088444570099513"
+ },
+ "reajuste/ipca-junho-2017": {
+  "acumulado": "3,00%",
+  "fator": "1,029984",
+  "fator_js": "1.029983614716368"
+ },
+ "reajuste/ipca-junho-2018": {
+  "acumulado": "4,39%",
+  "fator": "1,043910",
+  "fator_js": "1.0439095607629245"
+ },
+ "reajuste/ipca-junho-2019": {
+  "acumulado": "3,37%",
+  "fator": "1,033664",
+  "fator_js": "1.033664138988019"
+ },
+ "reajuste/ipca-junho-2020": {
+  "acumulado": "2,13%",
+  "fator": "1,021322",
+  "fator_js": "1.0213215599280319"
+ },
+ "reajuste/ipca-junho-2021": {
+  "acumulado": "8,35%",
+  "fator": "1,083469",
+  "fator_js": "1.0834689657079553"
+ },
+ "reajuste/ipca-junho-2022": {
+  "acumulado": "11,89%",
+  "fator": "1,118867",
+  "fator_js": "1.1188672961759074"
+ },
+ "reajuste/ipca-junho-2023": {
+  "acumulado": "3,16%",
+  "fator": "1,031615",
+  "fator_js": "1.0316150146845762"
+ },
+ "reajuste/ipca-junho-2024": {
+  "acumulado": "4,23%",
+  "fator": "1,042276",
+  "fator_js": "1.0422757823968258"
+ },
+ "reajuste/ipca-junho-2025": {
+  "acumulado": "5,35%",
+  "fator": "1,053512",
+  "fator_js": "1.053511652375985"
+ },
+ "reajuste/ipca-junho-2026": {
+  "acumulado": "4,64%",
+  "fator": "1,046413",
+  "fator_js": "1.0464132755255415"
+ },
+ "reajuste/ipca-maio-2016": {
+  "acumulado": "9,32%",
+  "fator": "1,093217",
+  "fator_js": "1.0932170226241145"
+ },
+ "reajuste/ipca-maio-2017": {
+  "acumulado": "3,60%",
+  "fator": "1,035971",
+  "fator_js": "1.0359712913379524"
+ },
+ "reajuste/ipca-maio-2018": {
+  "acumulado": "2,85%",
+  "fator": "1,028549",
+  "fator_js": "1.0285488532225653"
+ },
+ "reajuste/ipca-maio-2019": {
+  "acumulado": "4,66%",
+  "fator": "1,046584",
+  "fator_js": "1.0465836487743903"
+ },
+ "reajuste/ipca-maio-2020": {
+  "acumulado": "1,88%",
+  "fator": "1,018775",
+  "fator_js": "1.0187748774027778"
+ },
+ "reajuste/ipca-maio-2021": {
+  "acumulado": "8,06%",
+  "fator": "1,080559",
+  "fator_js": "1.0805590222011296"
+ },
+ "reajuste/ipca-maio-2022": {
+  "acumulado": "11,73%",
+  "fator": "1,117311",
+  "fator_js": "1.1173113070881493"
+ },
+ "reajuste/ipca-maio-2023": {
+  "acumulado": "3,94%",
+  "fator": "1,039358",
+  "fator_js": "1.0393583219405154"
+ },
+ "reajuste/ipca-maio-2024": {
+  "acumulado": "3,93%",
+  "fator": "1,039260",
+  "fator_js": "1.0392595167856582"
+ },
+ "reajuste/ipca-maio-2025": {
+  "acumulado": "5,32%",
+  "fator": "1,053196",
+  "fator_js": "1.0531963555925528"
+ },
+ "reajuste/ipca-maio-2026": {
+  "acumulado": "4,72%",
+  "fator": "1,047249",
+  "fator_js": "1.0472490688766"
+ },
+ "reajuste/ipca-março-2016": {
+  "acumulado": "9,39%",
+  "fator": "1,093869",
+  "fator_js": "1.0938692778126984"
+ },
+ "reajuste/ipca-março-2017": {
+  "acumulado": "4,57%",
+  "fator": "1,045710",
+  "fator_js": "1.0457103488488577"
+ },
+ "reajuste/ipca-março-2018": {
+  "acumulado": "2,68%",
+  "fator": "1,026807",
+  "fator_js": "1.0268065504536334"
+ },
+ "reajuste/ipca-março-2019": {
+  "acumulado": "4,58%",
+  "fator": "1,045754",
+  "fator_js": "1.0457536527292295"
+ },
+ "reajuste/ipca-março-2020": {
+  "acumulado": "3,30%",
+  "fator": "1,033030",
+  "fator_js": "1.033029585719383"
+ },
+ "reajuste/ipca-março-2021": {
+  "acumulado": "6,10%",
+  "fator": "1,060993",
+  "fator_js": "1.060993271283719"
+ },
+ "reajuste/ipca-março-2022": {
+  "acumulado": "11,30%",
+  "fator": "1,112993",
+  "fator_js": "1.11299315974556"
+ },
+ "reajuste/ipca-março-2023": {
+  "acumulado": "4,65%",
+  "fator": "1,046507",
+  "fator_js": "1.046506944273479"
+ },
+ "reajuste/ipca-março-2024": {
+  "acumulado": "3,93%",
+  "fator": "1,039256",
+  "fator_js": "1.039255961268817"
+ },
+ "reajuste/ipca-março-2025": {
+  "acumulado": "5,48%",
+  "fator": "1,054772",
+  "fator_js": "1.0547718964167485"
+ },
+ "reajuste/ipca-março-2026": {
+  "acumulado": "4,14%",
+  "fator": "1,041428",
+  "fator_js": "1.0414284699121956"
+ },
+ "reajuste/ipca-novembro-2016": {
+  "acumulado": "6,99%",
+  "fator": "1,069875",
+  "fator_js": "1.0698745800871892"
+ },
+ "reajuste/ipca-novembro-2017": {
+  "acumulado": "2,80%",
+  "fator": "1,028039",
+  "fator_js": "1.0280385499608813"
+ },
+ "reajuste/ipca-novembro-2018": {
+  "acumulado": "4,05%",
+  "fator": "1,040459",
+  "fator_js": "1.0404589340305879"
+ },
+ "reajuste/ipca-novembro-2019": {
+  "acumulado": "3,27%",
+  "fator": "1,032748",
+  "fator_js": "1.0327483840246103"
+ },
+ "reajuste/ipca-novembro-2020": {
+  "acumulado": "4,31%",
+  "fator": "1,043111",
+  "fator_js": "1.0431109119661146"
+ },
+ "reajuste/ipca-novembro-2021": {
+  "acumulado": "10,74%",
+  "fator": "1,107385",
+  "fator_js": "1.1073848817067102"
+ },
+ "reajuste/ipca-novembro-2022": {
+  "acumulado": "5,90%",
+  "fator": "1,059005",
+  "fator_js": "1.059004882785857"
+ },
+ "reajuste/ipca-novembro-2023": {
+  "acumulado": "4,68%",
+  "fator": "1,046835",
+  "fator_js": "1.0468353702957067"
+ },
+ "reajuste/ipca-novembro-2024": {
+  "acumulado": "4,87%",
+  "fator": "1,048730",
+  "fator_js": "1.0487301138907088"
+ },
+ "reajuste/ipca-novembro-2025": {
+  "acumulado": "4,46%",
+  "fator": "1,044618",
+  "fator_js": "1.0446183564843283"
+ },
+ "reajuste/ipca-outubro-2016": {
+  "acumulado": "7,87%",
+  "fator": "1,078739",
+  "fator_js": "1.0787385838950587"
+ },
+ "reajuste/ipca-outubro-2017": {
+  "acumulado": "2,70%",
+  "fator": "1,027013",
+  "fator_js": "1.0270133818815432"
+ },
+ "reajuste/ipca-outubro-2018": {
+  "acumulado": "4,56%",
+  "fator": "1,045568",
+  "fator_js": "1.0455679116603604"
+ },
+ "reajuste/ipca-outubro-2019": {
+  "acumulado": "2,54%",
+  "fator": "1,025350",
+  "fator_js": "1.0253503257567993"
+ },
+ "reajuste/ipca-outubro-2020": {
+  "acumulado": "3,92%",
+  "fator": "1,039182",
+  "fator_js": "1.0391820573071087"
+ },
+ "reajuste/ipca-outubro-2021": {
+  "acumulado": "10,67%",
+  "fator": "1,106727",
+  "fator_js": "1.1067267034709258"
+ },
+ "reajuste/ipca-outubro-2022": {
+  "acumulado": "6,47%",
+  "fator": "1,064700",
+  "fator_js": "1.0647001585223808"
+ },
+ "reajuste/ipca-outubro-2023": {
+  "acumulado": "4,82%",
+  "fator": "1,048192",
+  "fator_js": "1.0481924564358993"
+ },
+ "reajuste/ipca-outubro-2024": {
+  "acumulado": "4,76%",
+  "fator": "1,047581",
+  "fator_js": "1.0475809923394785"
+ },
+ "reajuste/ipca-outubro-2025": {
+  "acumulado": "4,68%",
+  "fator": "1,046808",
+  "fator_js": "1.0468081134703706"
+ },
+ "reajuste/ipca-setembro-2016": {
+  "acumulado": "8,48%",
+  "fator": "1,084764",
+  "fator_js": "1.0847638542619171"
+ },
+ "reajuste/ipca-setembro-2017": {
+  "acumulado": "2,54%",
+  "fator": "1,025377",
+  "fator_js": "1.0253770331352667"
+ },
+ "reajuste/ipca-setembro-2018": {
+  "acumulado": "4,53%",
+  "fator": "1,045256",
+  "fator_js": "1.0452556464801734"
+ },
+ "reajuste/ipca-setembro-2019": {
+  "acumulado": "2,89%",
+  "fator": "1,028935",
+  "fator_js": "1.0289354667559487"
+ },
+ "reajuste/ipca-setembro-2020": {
+  "acumulado": "3,14%",
+  "fator": "1,031352",
+  "fator_js": "1.0313516154713624"
+ },
+ "reajuste/ipca-setembro-2021": {
+  "acumulado": "10,25%",
+  "fator": "1,102464",
+  "fator_js": "1.1024637561686672"
+ },
+ "reajuste/ipca-setembro-2022": {
+  "acumulado": "7,17%",
+  "fator": "1,071686",
+  "fator_js": "1.0716859633203206"
+ },
+ "reajuste/ipca-setembro-2023": {
+  "acumulado": "5,19%",
+  "fator": "1,051852",
+  "fator_js": "1.0518523462977563"
+ },
+ "reajuste/ipca-setembro-2024": {
+  "acumulado": "4,42%",
+  "fator": "1,044247",
+  "fator_js": "1.0442474012739589"
+ },
+ "reajuste/ipca-setembro-2025": {
+  "acumulado": "5,17%",
+  "fator": "1,051724",
+  "fator_js": "1.0517236875869764"
+ },
+ "reajuste/ipca-setembro-2026": {
+  "acumulado": "4,58%",
+  "fator": "1,045761",
+  "fator_js": "1.0457611967507188"
+ }
+}

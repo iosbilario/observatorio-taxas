@@ -81,19 +81,22 @@
       {
         "@type": "Dataset",
         "name": "Inflação — séries do BACEN/SGS",
-        "description": "Série histórica mensal de IPCA (mensal e acumulado em 12 meses), INPC, IGP-M e IGP-DI, coletada da API pública do SGS/Banco Central do Brasil.",
+        "description": "Série histórica mensal de IPCA (mensal e acumulado em 12 meses) e INPC, produzidos pelo IBGE, e de IGP-M e IGP-DI, produzidos pela FGV IBRE, coletada da API pública do SGS/Banco Central do Brasil, que redistribui essas séries.",
         "license": "https://creativecommons.org/publicdomain/zero/1.0/",
         "isAccessibleForFree": true,
         "inLanguage": "pt-BR",
         "temporalCoverage": "2015-01-01/..",
         "spatialCoverage": { "@type": "Place", "name": "Brasil" },
         "creator": { "@id": "https://observatoriodetaxas.tec.br/#org" },
-        "sourceOrganization": { "@type": "GovernmentOrganization", "name": "Banco Central do Brasil", "url": "https://www.bcb.gov.br/" },
+        "sourceOrganization": [ { "@type": "GovernmentOrganization", "name": "Instituto Brasileiro de Geografia e Estatística (IBGE)", "url": "https://www.ibge.gov.br/" }, { "@type": "Organization", "name": "Fundação Getulio Vargas, Instituto Brasileiro de Economia (FGV IBRE)", "url": "https://portalibre.fgv.br/" } ],
+        "provider": { "@type": "GovernmentOrganization", "name": "Banco Central do Brasil", "url": "https://www.bcb.gov.br/" },
         "variableMeasured": ["IPCA - variação mensal (%)", "IPCA - acumulado 12 meses (%)", "INPC (%)", "IGP-M (%)", "IGP-DI (%)"],
         "distribution": [
           { "@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://observatoriodetaxas.tec.br/data/13522_history.json" },
           { "@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://observatoriodetaxas.tec.br/data/433_history.json" },
-          { "@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://observatoriodetaxas.tec.br/data/189_history.json" }
+          { "@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://observatoriodetaxas.tec.br/data/188_history.json" },
+          { "@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://observatoriodetaxas.tec.br/data/189_history.json" },
+          { "@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://observatoriodetaxas.tec.br/data/190_history.json" }
         ]
       },
       {
@@ -116,14 +119,14 @@
       {
         "@type": "Dataset",
         "name": "Atividade e emprego — séries do BACEN/SGS",
-        "description": "Série histórica mensal do IBC-Br (proxy do PIB) e da taxa de desocupação (PNAD Contínua), coletada da API pública do SGS/Banco Central do Brasil.",
+        "description": "Série histórica mensal do IBC-Br (proxy do PIB, calculado pelo Banco Central) e da taxa de desocupação da PNAD Contínua (produzida pelo IBGE), coletada da API pública do SGS/Banco Central do Brasil.",
         "license": "https://creativecommons.org/publicdomain/zero/1.0/",
         "isAccessibleForFree": true,
         "inLanguage": "pt-BR",
         "temporalCoverage": "2015-01-01/..",
         "spatialCoverage": { "@type": "Place", "name": "Brasil" },
         "creator": { "@id": "https://observatoriodetaxas.tec.br/#org" },
-        "sourceOrganization": { "@type": "GovernmentOrganization", "name": "Banco Central do Brasil", "url": "https://www.bcb.gov.br/" },
+        "sourceOrganization": [ { "@type": "GovernmentOrganization", "name": "Banco Central do Brasil", "url": "https://www.bcb.gov.br/" }, { "@type": "GovernmentOrganization", "name": "Instituto Brasileiro de Geografia e Estatística (IBGE)", "url": "https://www.ibge.gov.br/" } ],
         "variableMeasured": ["IBC-Br", "Taxa de desocupação - PNAD (%)"],
         "distribution": [
           { "@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://observatoriodetaxas.tec.br/data/24363_history.json" },
@@ -321,7 +324,7 @@
       <h1>Observatório de Taxas</h1>
       <!-- boletim:inicio -->
 <p class="masthead-data" id="hoje">Quarta-feira, 11 de novembro de 2026</p>
-<p class="carimbo-linha">coletado às 10:10 · commit <a href="https://github.com/iosbilario/observatorio-taxas/commits/main">c9ef137</a> · fonte SGS/BACEN</p>
+<p class="carimbo-linha">coletado às 10:10 · commit <a href="https://github.com/iosbilario/observatorio-taxas/commits/main">1f8b245c</a> · fonte SGS/BACEN</p>
 <div class="boletim">
 <article class="num" id="selic"><h2 class="num-tag">Taxa Selic hoje</h2><p class="num-rot">Meta Selic</p><p class="num-val"><span class="v">13,75</span><span class="suf">% a.a.</span></p><p class="num-delta flat">■ 0,00 p.p. no mês</p><p class="num-ref">ref. 04/11/2026</p><div class="spark" data-cod="432" data-casas="2" aria-hidden="true"></div></article>
 <article class="num" id="ipca"><h2 class="num-tag">IPCA acumulado 12 meses hoje</h2><p class="num-rot">IPCA 12 meses</p><p class="num-val"><span class="v">4,58</span><span class="suf">%</span></p><p class="num-delta up">▲ +0,36 p.p. no mês</p><p class="num-ref">ref. 01/09/2026</p><div class="spark" data-cod="13522" data-casas="2" aria-hidden="true"></div></article>
