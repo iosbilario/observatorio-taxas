@@ -371,7 +371,7 @@ def build_index_page(key: str, info: dict, pts: list[dict]) -> tuple[str, str]:
 
 def build_hub(series_all: dict) -> str:
     url = f"{BASE_URL}/correcao/"
-    title = "Calculadora de correção monetária entre datas: IPCA, IGP-M, INPC e IGP-DI"
+    title = "Calculadora de correção monetária: IPCA, IGP-M, INPC e IGP-DI"
     desc = ("Corrija (atualize) um valor entre duas datas pelo IPCA, IGP-M, INPC ou IGP-DI, com fator de "
             "correção, percentual acumulado e dados oficiais do IBGE e da FGV obtidos no SGS do Banco Central. "
             "Gratuito e sem cadastro.")

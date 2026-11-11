@@ -148,6 +148,15 @@ class TestRastreamento(unittest.TestCase):
 
 
 class TestMetadados(unittest.TestCase):
+    def test_titulos_ate_70_caracteres(self):
+        """O Bing SEO Analysis de 11/11/2026 apontou 'título longo' em uma
+        página; /correcao/ (73) era o único título acima de 70 e o único
+        acima de 66. Este teste impede a volta do problema. Não é regra de
+        buscador: o Google não fixa limite; 70 é o corte que separou a
+        página sinalizada de todas as outras."""
+        longos = {r: len(p["title"]) for r, p in indexaveis().items() if len(p["title"]) > 70}
+        self.assertEqual(longos, {})
+
     def test_titulos_e_descricoes_unicos(self):
         a = auditoria()["achados"]
         self.assertEqual(a.get("titulo_duplicado", []), [])
