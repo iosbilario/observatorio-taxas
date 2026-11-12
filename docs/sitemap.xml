@@ -4,7 +4,7 @@
   <url><loc>https://observatoriodetaxas.tec.br/rebobinar.html</loc><lastmod>2026-11-11</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/var.html</loc><lastmod>2026-11-11</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/retransmissora.html</loc><lastmod>2026-11-11</lastmod></url>
-  <url><loc>https://observatoriodetaxas.tec.br/reajuste/</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/reajuste/</loc><lastmod>2026-11-12</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/correcao/</loc><lastmod>2026-11-11</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/apoie/</loc><lastmod>2026-11-11</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/sobre/</loc><lastmod>2026-11-12</lastmod></url>
@@ -390,6 +390,7 @@
   <url><loc>https://observatoriodetaxas.tec.br/reajuste/inpc-outubro-2023/</loc><lastmod>2026-11-11</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/reajuste/inpc-outubro-2024/</loc><lastmod>2026-11-11</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/reajuste/inpc-outubro-2025/</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/reajuste/inpc-outubro-2026/</loc><lastmod>2026-11-12</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/reajuste/inpc-setembro-2016/</loc><lastmod>2026-11-11</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/reajuste/inpc-setembro-2017/</loc><lastmod>2026-11-11</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/reajuste/inpc-setembro-2018/</loc><lastmod>2026-11-11</lastmod></url>
@@ -400,7 +401,7 @@
   <url><loc>https://observatoriodetaxas.tec.br/reajuste/inpc-setembro-2023/</loc><lastmod>2026-11-11</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/reajuste/inpc-setembro-2024/</loc><lastmod>2026-11-11</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/reajuste/inpc-setembro-2025/</loc><lastmod>2026-11-11</lastmod></url>
-  <url><loc>https://observatoriodetaxas.tec.br/reajuste/inpc-setembro-2026/</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/reajuste/inpc-setembro-2026/</loc><lastmod>2026-11-12</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/reajuste/ipca-abril-2016/</loc><lastmod>2026-11-11</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/reajuste/ipca-abril-2017/</loc><lastmod>2026-11-11</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/reajuste/ipca-abril-2018/</loc><lastmod>2026-11-11</lastmod></url>
@@ -520,6 +521,7 @@
   <url><loc>https://observatoriodetaxas.tec.br/reajuste/ipca-outubro-2023/</loc><lastmod>2026-11-11</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/reajuste/ipca-outubro-2024/</loc><lastmod>2026-11-11</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/reajuste/ipca-outubro-2025/</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/reajuste/ipca-outubro-2026/</loc><lastmod>2026-11-12</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/reajuste/ipca-setembro-2016/</loc><lastmod>2026-11-11</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/reajuste/ipca-setembro-2017/</loc><lastmod>2026-11-11</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/reajuste/ipca-setembro-2018/</loc><lastmod>2026-11-11</lastmod></url>
@@ -530,9 +532,9 @@
   <url><loc>https://observatoriodetaxas.tec.br/reajuste/ipca-setembro-2023/</loc><lastmod>2026-11-11</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/reajuste/ipca-setembro-2024/</loc><lastmod>2026-11-11</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/reajuste/ipca-setembro-2025/</loc><lastmod>2026-11-11</lastmod></url>
-  <url><loc>https://observatoriodetaxas.tec.br/reajuste/ipca-setembro-2026/</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/reajuste/ipca-setembro-2026/</loc><lastmod>2026-11-12</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/correcao/igpdi/</loc><lastmod>2026-11-11</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/correcao/igpm/</loc><lastmod>2026-11-11</lastmod></url>
-  <url><loc>https://observatoriodetaxas.tec.br/correcao/inpc/</loc><lastmod>2026-11-11</lastmod></url>
-  <url><loc>https://observatoriodetaxas.tec.br/correcao/ipca/</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/correcao/inpc/</loc><lastmod>2026-11-12</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/correcao/ipca/</loc><lastmod>2026-11-12</lastmod></url>
 </urlset>

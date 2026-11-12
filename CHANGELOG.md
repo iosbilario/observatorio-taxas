@@ -1223,3 +1223,9 @@
     ↳ Câmbio EUR/BRL - venda: caiu de 6,2317 para 6,1706.
 [2026-11-12 04:51:01 +0000] Câmbio USD/BRL - venda: 5.5840 -> 5.5606
     ↳ Câmbio USD/BRL - venda: caiu de 5,584 para 5,5606.
+[2026-11-12 14:13:11 +0000] IPCA - variação mensal (%): 0.82 -> 0.14
+    ↳ IPCA - variação mensal (%): caiu de 0,82 para 0,14.
+[2026-11-12 14:13:11 +0000] IPCA - acumulado 12 meses (%): 4.58 -> 4.63
+    ↳ IPCA - acumulado 12 meses (%): subiu de 4,58 para 4,63.
+[2026-11-12 14:13:11 +0000] INPC - variação mensal (%): 0.82 -> 0.22
+    ↳ INPC - variação mensal (%): caiu de 0,82 para 0,22.

@@ -1,6 +1,6 @@
 {
  "https://observatoriodetaxas.tec.br/": {
-  "hash": "778b21b536dec87d",
+  "hash": "31453079b5e0ee1f",
   "lastmod": "2026-11-12"
  },
  "https://observatoriodetaxas.tec.br/apoie/": {
@@ -20,20 +20,20 @@
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/correcao/inpc/": {
-  "hash": "3bb1646ce40ae8ef",
-  "lastmod": "2026-11-11"
+  "hash": "995b79c0de2b2bb3",
+  "lastmod": "2026-11-12"
  },
  "https://observatoriodetaxas.tec.br/correcao/ipca/": {
-  "hash": "3ca5a42e90aa522f",
-  "lastmod": "2026-11-11"
+  "hash": "ccf48c2058eab6de",
+  "lastmod": "2026-11-12"
  },
  "https://observatoriodetaxas.tec.br/privacidade/": {
   "hash": "34c9079f3fb01ebb",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/": {
-  "hash": "34e97dad3348a181",
-  "lastmod": "2026-11-11"
+  "hash": "3fd703d8aa51b675",
+  "lastmod": "2026-11-12"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-abril-2016/": {
   "hash": "cc9e5c170a88cea8",
@@ -1559,6 +1559,10 @@
   "hash": "0a290ded852c557e",
   "lastmod": "2026-11-11"
  },
+ "https://observatoriodetaxas.tec.br/reajuste/inpc-outubro-2026/": {
+  "hash": "37763938d3795620",
+  "lastmod": "2026-11-12"
+ },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-setembro-2016/": {
   "hash": "adeea1ad7e38da2a",
   "lastmod": "2026-11-11"
@@ -1600,8 +1604,8 @@
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-setembro-2026/": {
-  "hash": "d0b0d27eada97e50",
-  "lastmod": "2026-11-11"
+  "hash": "ddcf48792e1eb4e3",
+  "lastmod": "2026-11-12"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-abril-2016/": {
   "hash": "472626b7287cbd76",
@@ -2079,6 +2083,10 @@
   "hash": "fd0e7c0c4c75d528",
   "lastmod": "2026-11-11"
  },
+ "https://observatoriodetaxas.tec.br/reajuste/ipca-outubro-2026/": {
+  "hash": "1e5a46c24a7a3d6a",
+  "lastmod": "2026-11-12"
+ },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-setembro-2016/": {
   "hash": "827c296ba62e4a5b",
   "lastmod": "2026-11-11"
@@ -2120,8 +2128,8 @@
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-setembro-2026/": {
-  "hash": "fb7c8d365c490115",
-  "lastmod": "2026-11-11"
+  "hash": "494708401c8cfc81",
+  "lastmod": "2026-11-12"
  },
  "https://observatoriodetaxas.tec.br/rebobinar.html": {
   "hash": "80f2f9e4a9635d67",
