@@ -76,8 +76,27 @@ footer a{color:var(--papel-70)}
 </div>
 <section class="card" aria-labelledby="end-t">
 <h2 id="end-t">Endereço e situação</h2>
-<p>Situação: <b>em preparação</b>. O endereço público do servidor será publicado nesta página quando o serviço estiver no ar. Transporte: Streamable HTTP, sem login.</p>
+<p>Situação: <b>disponível</b>. Endereço do servidor:</p>
+<p><code>https://observatorio-taxas-mcp.onrender.com/mcp</code></p>
+<p>Transporte: Streamable HTTP, sem login e sem chave de acesso.</p>
 <p>Atualização: os dados são os mesmos que o site publica, coletados do SGS do Banco Central a cada 6 horas. Não são dados em tempo real.</p>
+</section>
+<section class="card" aria-labelledby="usar-t">
+<h2 id="usar-t">Como conectar</h2>
+<h3>ChatGPT</h3>
+<ol class="lista">
+<li>Na versão web, abra <a href="https://chatgpt.com/plugins">Plugins</a>, clique em <b>+</b> e escolha <b>Add custom MCP server</b>.</li>
+<li>Nome: Observatório de Taxas. Server URL: o endereço acima. Autenticação: <b>No authentication</b>.</li>
+<li>Confirme o aviso, clique em <b>Create as a plugin</b> e instale o plugin.</li>
+<li>Numa conversa, digite <b>@</b> e escolha Observatório de Taxas.</li>
+</ol>
+<h3>Claude</h3>
+<ol class="lista">
+<li>Abra <a href="https://claude.ai/customize/connectors">Customize → Connectors</a>, clique em <b>+</b> e escolha <b>Add custom connector</b>.</li>
+<li>Nome: Observatório de Taxas. URL: o endereço acima. Mantenha a autenticação detectada (nenhuma).</li>
+<li>Clique em <b>Add</b> e ative o conector no menu de ferramentas da conversa.</li>
+</ol>
+<p>Os dois serviços avisam que conectores personalizados não são verificados por eles. Este servidor só lê dados públicos; veja o código e os limites abaixo.</p>
 </section>
 <section class="card" aria-labelledby="ferr-t">
 <h2 id="ferr-t">Ferramentas</h2>
@@ -99,7 +118,7 @@ footer a{color:var(--papel-70)}
 <ul class="lista">
 <li>"Qual é a Meta Selic hoje e desde quando ela vale?"</li>
 <li>"Mostre o dólar de venda em janeiro de 2026."</li>
-<li>"Quanto R$ 1.000 corrigidos pela Selic de janeiro a dezembro de 2025 viram?"</li>
+<li>"Quanto R$ 1.000 corrigidos pela Selic de dezembro de 2024 a dezembro de 2025 viram?" (o mês inicial é a base: entram as 12 variações de janeiro a dezembro de 2025)</li>
 <li>"Compare o dólar de compra e o de venda em outubro de 2026."</li>
 </ul>
 </section>

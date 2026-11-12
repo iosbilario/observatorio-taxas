@@ -9,6 +9,7 @@ servidores MCP remotos por HTTPS com o transporte Streamable HTTP.
 Rotas:
   POST /mcp     endpoint MCP (JSON-RPC; respostas JSON, sem sessão)
   GET  /health  verificação de saúde (não consulta dados)
+  GET  /.well-known/openai-apps-challenge  token de verificação de domínio da OpenAI
 
 Variáveis de ambiente (todas opcionais):
   OBS_MCP_DADOS               URL base ou diretório dos JSON (padrão: site público)
@@ -16,6 +17,7 @@ Variáveis de ambiente (todas opcionais):
   OBS_MCP_HOSTS               hosts aceitos, separados por vírgula (proteção DNS rebinding)
   OBS_MCP_LIMITE_POR_MINUTO   requisições por cliente por minuto (padrão 60)
   OBS_MCP_LIBERAR_RESTRITAS   "1" expõe IBGE/FGV (só após confirmar os termos)
+  OBS_MCP_OPENAI_CHALLENGE    token mostrado pela OpenAI na verificação de domínio
 """
 
 from __future__ import annotations
@@ -33,7 +35,7 @@ from mcp.server.mcpserver.exceptions import ToolError
 from mcp.server.transport_security import TransportSecuritySettings
 from mcp.types import ToolAnnotations
 from pydantic import Field
-from starlette.responses import JSONResponse
+from starlette.responses import JSONResponse, PlainTextResponse
 
 from . import __version__
 from . import ferramentas as f
@@ -116,6 +118,15 @@ def compare_indicators(
 @mcp.custom_route("/health", methods=["GET"])
 async def health(_request):
     return JSONResponse({"status": "ok", "versao": __version__, "ferramentas": 4})
+
+
+@mcp.custom_route("/.well-known/openai-apps-challenge", methods=["GET"])
+async def desafio_openai(_request):
+    """Verificação de domínio da submissão à OpenAI: devolve o token em texto puro."""
+    token = os.environ.get("OBS_MCP_OPENAI_CHALLENGE", "").strip()
+    if not token:
+        return PlainTextResponse("not found", status_code=404)
+    return PlainTextResponse(token)
 
 
 @mcp.custom_route("/", methods=["GET"])

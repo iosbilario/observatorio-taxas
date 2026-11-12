@@ -44,6 +44,20 @@ class TestProtocolo(unittest.TestCase):
     def test_health(self):
         self.assertEqual(self.c.get("/health").json()["status"], "ok")
 
+    def test_desafio_openai_sem_token_responde_404(self):
+        os.environ.pop("OBS_MCP_OPENAI_CHALLENGE", None)
+        self.assertEqual(self.c.get("/.well-known/openai-apps-challenge").status_code, 404)
+
+    def test_desafio_openai_devolve_token_em_texto_puro(self):
+        os.environ["OBS_MCP_OPENAI_CHALLENGE"] = "  tok-123abc \n"
+        try:
+            r = self.c.get("/.well-known/openai-apps-challenge")
+        finally:
+            del os.environ["OBS_MCP_OPENAI_CHALLENGE"]
+        self.assertEqual(r.status_code, 200)
+        self.assertEqual(r.text, "tok-123abc")
+        self.assertTrue(r.headers["content-type"].startswith("text/plain"))
+
     def test_initialize_em_versoes_atuais(self):
         for v in ("2025-03-26", "2025-06-18", "2025-11-25"):
             r = rpc(self.c, "initialize", {"protocolVersion": v, "capabilities": {},
