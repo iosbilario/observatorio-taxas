@@ -27,7 +27,7 @@
         "termsOfServiceURL": "https://observatoriodetaxas.tec.br/termos/",
         "defaultPrompt": [
           "Qual é a Meta Selic hoje?",
-          "Corrija R$ 1.000 pela Selic de jan a dez de 2025.",
+          "Corrija R$ 1.000 pela Selic de dez/2024 a dez/2025.",
           "Compare dólar de compra e de venda em outubro de 2026."
         ],
         "brandColor": "#8A6A12",
@@ -84,7 +84,7 @@
             }
           ]
         },
-        "demo_recording_url": "",
+        "demo_recording_url": "https://www.youtube.com/watch?v=knDs-DyEkCU",
         "commerce": false,
         "commerce_description": "Não vende produtos nem processa pagamentos."
       },
