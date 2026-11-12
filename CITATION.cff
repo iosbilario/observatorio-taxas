@@ -1,33 +1,42 @@
 cff-version: 1.2.0
 message: >-
-  Se usar estes dados ou cálculos, cite o Observatório de Taxas e também o
-  produtor de cada índice (IBGE para IPCA e INPC; FGV IBRE para IGP-M e IGP-DI;
-  Banco Central do Brasil para Selic, TR, poupança, câmbio e IBC-Br). Para
-  referência permanente, use a versão (tag) e o caminho do arquivo de dados,
-  por exemplo data/189_history.json na tag v1.4.0. Termos de uso dos dados por
-  série em LICENSE-DADOS.md (o código é MIT; os dados não têm licença única).
+  Se usar este software, cite a versão utilizada conforme abaixo. Se usar os
+  dados, cite também o produtor de cada índice (IBGE para IPCA, INPC e taxa de
+  desocupação; FGV IBRE para IGP-M e IGP-DI; Banco Central do Brasil para
+  Selic, TR, poupança, câmbio e IBC-Br) e consulte os termos por série em
+  LICENSE-DADOS.md: a licença MIT cobre só o código.
 title: "Observatório de Taxas"
 abstract: >-
-  Séries de indicadores econômicos brasileiros coletadas da API pública do SGS
-  do Banco Central do Brasil a cada 6 horas e versionadas em Git, com páginas
-  estáticas de reajuste de contratos (acumulado de 12 meses) e correção
-  monetária entre datas. Acumulados e fatores são calculados por composição
-  das variações mensais publicadas.
-type: dataset
+  Software de engenharia de dados que coleta indicadores econômicos brasileiros
+  na API pública do SGS (Sistema Gerenciador de Séries Temporais) do Banco
+  Central do Brasil a cada 6 horas, versiona as séries históricas em Git (um
+  commit por mudança de valor) e gera um site estático com reajuste de
+  contratos pelo acumulado de 12 meses, correção monetária entre datas e
+  gráficos incorporáveis. Acumulados e fatores são calculados por composição
+  das variações mensais publicadas, com testes que conferem a fórmula contra
+  a série oficial do IPCA em 12 meses (SGS 13522).
+type: software
 authors:
-  - name: "LBP Tecnologia"
-    website: "https://lbptecnologia.com.br/"
+  - given-names: "Leandro Borges"
+    family-names: "Pereira"
+    affiliation: "LBP Tecnologia"
 repository-code: "https://github.com/iosbilario/observatorio-taxas"
 url: "https://observatoriodetaxas.tec.br/"
-version: "1.4.0"
+license: MIT
+version: "1.5.0"
 date-released: "2026-11-11"
 keywords:
+  - indicadores econômicos
+  - séries temporais
+  - engenharia de dados
+  - dados abertos
+  - Git
   - IPCA
   - INPC
   - IGP-M
   - IGP-DI
   - Selic
+  - SGS
+  - Banco Central do Brasil
   - reajuste de aluguel
   - correção monetária
-  - SGS
-  - dados abertos

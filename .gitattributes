@@ -1,0 +1,15 @@
+# Arquivo da release (zip/tar do GitHub, usado pelo Zenodo): só o software.
+#
+# O GitHub gera os arquivos das releases com `git archive`, que respeita
+# `export-ignore`. Os caminhos abaixo contêm valores de séries produzidas
+# por terceiros (IPCA e INPC do IBGE, IGP-M e IGP-DI da FGV IBRE), que não
+# estão sob a licença MIT do código. Eles continuam no repositório, no site
+# e no histórico do Git; ficam só fora do pacote arquivado. Ver
+# desenvolvimento/ZENODO.md e LICENSE-DADOS.md.
+
+data/                           export-ignore
+docs/data/                      export-ignore
+docs/reajuste/                  export-ignore
+docs/correcao/                  export-ignore
+CHANGELOG.md                    export-ignore
+tests/fixtures/valores_baseline.json export-ignore

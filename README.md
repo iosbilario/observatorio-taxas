@@ -176,6 +176,7 @@ O status de cada execução fica na aba [Actions](https://github.com/iosbilario/
   [`blob/v1.4.0/data/189_history.json`](https://github.com/iosbilario/observatorio-taxas/blob/v1.4.0/data/189_history.json).
   A URL do site (`/data/189_history.json`) é sempre a versão mais recente.
 - **Ponto no tempo exato:** cada coleta é um commit; o recibo do VAR traz o commit usado.
+- **Arquivamento (Zenodo):** cada release será arquivada com DOI próprio. O pacote arquivado contém só o software; as séries ficam no repositório e no site. Ver [`desenvolvimento/ZENODO.md`](desenvolvimento/ZENODO.md).
 
 | O quê | Licença |
 | --- | --- |
