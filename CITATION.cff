@@ -23,8 +23,8 @@ authors:
 repository-code: "https://github.com/iosbilario/observatorio-taxas"
 url: "https://observatoriodetaxas.tec.br/"
 license: MIT
-version: "1.5.0"
-date-released: "2026-11-11"
+version: "1.6.0"
+date-released: "2026-11-12"
 keywords:
   - indicadores econômicos
   - séries temporais
