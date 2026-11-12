@@ -52,9 +52,9 @@
             },
             {
               "description": "Correção de um valor pela Selic mensal",
-              "prompt": "Quanto R$ 1.000 corrigidos pela Selic acumulada no mês de janeiro a dezembro de 2025 viram?",
+              "prompt": "Quanto R$ 1.000 corrigidos pela Selic acumulada no mês de dezembro de 2024 a dezembro de 2025 viram?",
               "tools_triggered": "calculate_adjustment",
-              "expected_behavior": "Retorna taxa acumulada, fator, valor final, a fórmula do produto das variações mensais e a memória de cálculo com os meses aplicados."
+              "expected_behavior": "Aplica as 12 variações de janeiro a dezembro de 2025 (o mês inicial é a base) e retorna taxa acumulada, fator, valor final, a fórmula do produto das variações mensais e a memória de cálculo com os meses aplicados."
             },
             {
               "description": "Comparação entre séries de mesma natureza",

@@ -128,50 +128,64 @@ Sem `OBS_MCP_DADOS`, o servidor lê os JSON públicos do site. Para testar no
 MCP Inspector: `npx @modelcontextprotocol/inspector` e conectar em
 `http://127.0.0.1:8000/mcp` (Streamable HTTP).
 
-## Deploy no Render (feito pelo proprietário)
+## Deploy no Render (feito em 12/11/2026)
 
-1. render.com → entrar com o GitHub, **sem cadastrar cartão**.
-2. **New → Blueprint** → repositório `iosbilario/observatorio-taxas` (lê `render.yaml`, plano `free`).
-3. Depois do primeiro deploy: definir `OBS_MCP_HOSTS` com o host gerado (ex.: `observatorio-taxas-mcp.onrender.com`).
-4. `python -m servidor_mcp.conferir_endpoint https://<host>/mcp`.
+No ar em `https://observatorio-taxas-mcp.onrender.com/mcp`, num workspace
+próprio do Render, plano Free e **sem cartão cadastrado** (excedentes suspendem
+o serviço em vez de cobrar). Cartão, horas Free e cota de tráfego são por
+workspace: não criar este serviço num workspace que tenha cartão.
+
+Para refazer do zero:
+
+1. render.com → entrar com o GitHub → criar um workspace novo, sem cartão.
+2. **New → Blueprint** → repositório `iosbilario/observatorio-taxas`, branch `main` (lê `render.yaml`, plano `free`). Deixar `OBS_MCP_HOSTS` e `OBS_MCP_OPENAI_CHALLENGE` vazios.
+3. `python -m servidor_mcp.conferir_endpoint https://<host>/mcp`.
+4. **Environment → Add variable**: `OBS_MCP_HOSTS` = host gerado, sem `https://`. Salvar e conferir de novo.
 5. Se o host não for `observatorio-taxas-mcp.onrender.com`, atualizar `plugin-openai/mcp.json` e `docs/mcp/index.html`.
 
-Domínio próprio (`mcp.observatoriodetaxas.tec.br`) é opcional e gratuito no
-Render; recomendado, porque o ChatGPT verifica o domínio e o Claude pede que o
-domínio do servidor corresponda ao serviço.
+Domínio próprio (`mcp.observatoriodetaxas.tec.br`) é opcional. Antes de
+configurar, conferir se o plano do workspace cobra por domínio próprio.
+
+## Verificação de domínio da OpenAI
+
+A rota `GET /.well-known/openai-apps-challenge` devolve, em texto puro, o valor
+de `OBS_MCP_OPENAI_CHALLENGE` (404 se a variável estiver vazia). Na submissão:
+
+1. Copiar o token mostrado em **MCPs → Connect**.
+2. Render → **Environment → Add variable**: `OBS_MCP_OPENAI_CHALLENGE` = token. Salvar e esperar o deploy.
+3. Conferir: `curl -s https://observatorio-taxas-mcp.onrender.com/.well-known/openai-apps-challenge`.
+4. Voltar ao portal e clicar em verificar. A OpenAI checa a raiz do host do MCP, por isso a rota fica no próprio servidor.
 
 ## Checklist — ChatGPT (diretório de plugins)
 
 Referência: [Upload and submit your plugin](https://developers.openai.com/plugins/deploy/submission) e [plugin guidelines](https://developers.openai.com/plugins/plugin-guidelines).
 
-- [ ] Servidor no ar em HTTPS e `conferir_endpoint.py` verde
+- [x] Servidor no ar em HTTPS e `conferir_endpoint.py` verde
+- [x] Teste no ChatGPT como plugin pessoal ([Plugins](https://chatgpt.com/plugins) → **+** → **Add custom MCP server**, sem autenticação): Meta Selic e correção pela Selic conferidas com o site em 12/11/2026
 - [ ] Verificação de identidade (individual ou empresa "LBP Tecnologia") em platform.openai.com → Organization settings; a submissão é rejeitada sem ela
-- [ ] Conferir/ajustar `plugin-openai/mcp.json` (URL) e gravar o vídeo de demonstração; preencher `review.demo_recording_url` em `plugin.json`
+- [ ] Gravar o vídeo de demonstração (roteiro em `servidor_mcp/ROTEIRO-VIDEO.md`) e preencher `review.demo_recording_url` em `plugin.json`
 - [ ] Gerar o ZIP: `cd servidor_mcp/plugin-openai && zip -r ../observatorio-de-taxas-plugin.zip plugin.json mcp.json assets`
 - [ ] platform.openai.com/plugins → **Upload new or existing plugin** → escolher a identidade verificada → enviar o ZIP
-- [ ] **MCPs → Connect**: publicar o token de verificação em `https://<host-do-mcp>/.well-known/openai-apps-challenge` (texto puro; exige rota no servidor ou domínio próprio — pendência abaixo), autenticação "nenhuma"
+- [ ] **MCPs → Connect**: autenticação "nenhuma"; verificar o domínio conforme a seção acima
 - [ ] Aguardar o scan das 4 ferramentas e resolver os achados
 - [ ] Conferir em **Review details** os 5 casos positivos e 3 negativos importados (não há credenciais: o serviço é público)
 - [ ] **Submit for review**, aceitar as declarações; após aprovação, **Publish plugin**
-- [ ] Antes: testar no ChatGPT em modo desenvolvedor (Settings → Apps → criar app com a URL do MCP)
 
 ## Checklist — Claude (diretório de conectores)
 
-Referência: [Submit a connector](https://claude.com/docs/connectors/building/submission) e [pre-submission checklist](https://claude.com/docs/connectors/building/review-criteria).
+Referência: [Submit a connector](https://claude.com/docs/connectors/building/submission), [pre-submission checklist](https://claude.com/docs/connectors/building/review-criteria) e [Add a connector that isn't in the directory](https://claude.com/docs/connectors/custom/add-unlisted).
 
-- [ ] Servidor no ar em HTTPS, acessível pela internet pública
-- [ ] Cada ferramenta com `title` e `readOnlyHint` (feito; testado em `test_protocolo.py`)
-- [ ] Testar no MCP Inspector e como conector personalizado no Claude (Settings → Connectors → Add custom connector → URL `/mcp`), chamando as 4 ferramentas
-- [ ] Materiais: documentação ([/mcp/](https://observatoriodetaxas.tec.br/mcp/)), política de privacidade ([/privacidade/](https://observatoriodetaxas.tec.br/privacidade/)), contato de suporte, ícone (`docs/mcp/icone.png`)
+- [x] Servidor no ar em HTTPS, acessível pela internet pública
+- [x] Cada ferramenta com `title` e `readOnlyHint` (testado em `test_protocolo.py`)
+- [x] Teste como conector personalizado ([Customize → Connectors](https://claude.ai/customize/connectors) → **+** → **Add custom connector**; funciona também no plano Free): correção pela Selic de 2024-12 a 2025-12 conferida com o site em 12/11/2026
+- [x] Materiais: documentação ([/mcp/](https://observatoriodetaxas.tec.br/mcp/)), política de privacidade ([/privacidade/](https://observatoriodetaxas.tec.br/privacidade/)), contato de suporte, ícone (`docs/mcp/icone.png`)
 - [ ] Credenciais de teste: não se aplica (sem login); declarar no portal que o serviço é público
-- [ ] Conta Claude em plano pago para submeter
-- [ ] Portal de desenvolvedor do Claude → enviar o conector e confirmar o passo **Test & launch**
-- [ ] Domínio do servidor correspondendo ao serviço: preferir `mcp.observatoriodetaxas.tec.br`
+- [ ] Portal de desenvolvedor do Claude → enviar o conector e confirmar o passo **Test & launch**. Conferir no portal se a submissão exige plano pago
+- [ ] Domínio do servidor correspondendo ao serviço: se a revisão pedir, configurar `mcp.observatoriodetaxas.tec.br`
 
-## Pendências antes de abrir ao público
+## Pendências antes de publicar nos diretórios
 
-1. **Deploy** no Render pelo proprietário (sem cartão) e conferência do endpoint.
-2. **Domínio do MCP**: `onrender.com` não é do Observatório. Para a verificação do ChatGPT e o critério de domínio do Claude, configurar `mcp.observatoriodetaxas.tec.br` (CNAME, gratuito) e acrescentar a rota `/.well-known/openai-apps-challenge` com o token que o portal fornecer.
-3. **Vídeo de demonstração** para a revisão do ChatGPT.
-4. **Verificação de identidade** na OpenAI e conta paga no Claude.
-5. **Séries do IBGE e da FGV**: seguem suspensas até confirmação dos termos.
+1. **Vídeo de demonstração** para a revisão do ChatGPT.
+2. **Verificação de identidade** na OpenAI e token de domínio em `OBS_MCP_OPENAI_CHALLENGE`.
+3. **Domínio próprio**, se a revisão de alguma das plataformas pedir.
+4. **Séries do IBGE e da FGV**: seguem suspensas até confirmação dos termos.
