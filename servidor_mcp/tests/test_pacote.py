@@ -105,9 +105,13 @@ class TestMateriaisPublicos(unittest.TestCase):
         self.assertIn("Não são dados em tempo real", h)
 
     def test_privacidade_cobre_o_mcp(self):
+        """Itens mínimos das diretrizes da OpenAI: dados, finalidade, destinatários, retenção e controle."""
         h = (ROOT / "docs" / "privacidade" / "index.html").read_text(encoding="utf-8")
         self.assertIn('id="mcp-t"', h)
         self.assertIn("não são gravados", h)
+        for rotulo in ("Dados recebidos:", "Finalidade:", "Registros técnicos:", "Quem recebe:", "Seu controle:"):
+            self.assertIn(f"<b>{rotulo}</b>", h, rotulo)
+        self.assertIn("por 7 dias", h)
 
     def test_readme_tem_checklists(self):
         r = (ROOT / "servidor_mcp" / "README.md").read_text(encoding="utf-8")
