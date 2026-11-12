@@ -1,0 +1,6 @@
+# Dependências diretas do servidor MCP. O requirements.txt é o LOCK (versões
+# exatas + hashes), gerado por:
+#   pip-compile --generate-hashes servidor_mcp/requirements.in
+mcp==2.3.0
+uvicorn
+pyyaml

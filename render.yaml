@@ -1,0 +1,34 @@
+# Blueprint do Render para o servidor MCP (plano gratuito).
+# Não cria nada sozinho: o Render só lê este arquivo quando o proprietário
+# conecta o repositório em "New > Blueprint". Ver servidor_mcp/README.md.
+#
+# plan: free -> R$ 0. O serviço dorme após 15 min sem tráfego e acorda na
+# próxima requisição (cerca de 1 min). Não cadastrar cartão mantém o custo
+# em zero: sem cartão, excedentes suspendem o serviço em vez de cobrar.
+services:
+  - type: web
+    name: observatorio-taxas-mcp
+    runtime: docker
+    plan: free
+    region: oregon
+    dockerfilePath: ./servidor_mcp/Dockerfile
+    dockerContext: .
+    healthCheckPath: /health
+    autoDeploy: true
+    buildFilter:
+      paths:
+        - servidor_mcp/**
+        - scripts/build_pages.py
+        - scripts/build_correcao.py
+        - scripts/fontes.py
+        - config.yml
+        - render.yaml
+    envVars:
+      - key: OBS_MCP_CACHE_SEG
+        value: "600"
+      - key: OBS_MCP_LIMITE_POR_MINUTO
+        value: "60"
+      # Preencher com o host público depois do primeiro deploy, ex.:
+      # observatorio-taxas-mcp.onrender.com
+      - key: OBS_MCP_HOSTS
+        sync: false

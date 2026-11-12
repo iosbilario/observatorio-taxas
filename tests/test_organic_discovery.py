@@ -316,14 +316,30 @@ class TestDadosEFormulas(unittest.TestCase):
         self.assertGreater(comparados, 100)
 
     def test_valores_publicados_iguais_a_linha_de_base(self):
-        """Nenhuma página mudou acumulado, fator ou o fator usado pela calculadora."""
+        """Nenhuma página mudou acumulado, fator ou o fator usado pela calculadora.
+
+        Só páginas de mês fechado (reajuste/*): os valores delas não mudam com
+        coletas novas. As páginas correcao/* mostram os 12 meses mais recentes e
+        são conferidas contra os dados em test_correcao_mostra_ultimos_12_meses."""
         base = json.loads((FIX / "valores_baseline.json").read_text(encoding="utf-8"))
+        self.assertGreater(len(base), 100)
         for chave, v in base.items():
+            self.assertTrue(chave.startswith("reajuste/"), chave)
             html = (DOCS / chave / "index.html").read_text(encoding="utf-8")
             self.assertRegex(html, r'<p class="big[^"]*">' + re.escape(v["acumulado"]) + "</p>", chave)
             self.assertIn(f"<b>{v['fator']}</b>", html, chave)
             if "fator_js" in v:
                 self.assertIn(f"const FATOR={v['fator_js']};", html, chave)
+
+    def test_correcao_mostra_ultimos_12_meses(self):
+        """O destaque de correcao/<índice> é o acumulado das 12 variações mais
+        recentes de data/, calculado aqui por build_pages.acumulado."""
+        for key in ("ipca", "igpm", "inpc", "igpdi"):
+            hist = build_pages.load_history(build_pages.INDICES[key]["codigo"])
+            ac = build_pages.acumulado(hist[-12:])
+            html = (DOCS / "correcao" / key / "index.html").read_text(encoding="utf-8")
+            self.assertRegex(html, r'<p class="big[^"]*">' + re.escape(f"{fmt(ac)}%") + "</p>", key)
+            self.assertIn(f"<b>{fmt(1 + ac / 100, 6)}</b>", html, key)
 
     def test_dados_centrais_no_html_inicial_de_todas_as_paginas_de_mes(self):
         """Indicador, competência, variação do mês, acumulado, fator, produtor

@@ -1,0 +1,9 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "mcpServers": {
+    "observatorio-taxas": {
+      "type": "streamable-http",
+      "url": "https://observatorio-taxas-mcp.onrender.com/mcp"
+    }
+  }
+}
