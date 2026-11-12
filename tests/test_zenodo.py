@@ -73,3 +73,102 @@ class TestArquivoDaRelease(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+# --------------------------------------------------------------------------
+# Preparação da release v1.6.0 (validade, consistência, links, segurança)
+# --------------------------------------------------------------------------
+DOCS_MD = ["README.md", "organic-discovery/ZENODO.md", "organic-discovery/RELEASE-v1.6.0.md",
+           "desenvolvimento/REPRODUCAO.md", "desenvolvimento/GUIA.md"]
+
+
+def _arquivo() -> list[str]:
+    r = subprocess.run(["git", "archive", "--worktree-attributes", "--format=tar", "HEAD"],
+                       cwd=ROOT, capture_output=True)
+    return [n for n in subprocess.run(["tar", "-t"], input=r.stdout, capture_output=True)
+            .stdout.decode().split("\n") if n and not n.endswith("/")]
+
+
+class TestReleasePreparada(unittest.TestCase):
+    def setUp(self):
+        self.cff = yaml.safe_load((ROOT / "CITATION.cff").read_text(encoding="utf-8"))
+
+    def test_cff_valido_pelo_schema_quando_cffconvert_disponivel(self):
+        try:
+            from cffconvert.cli.create_citation import create_citation
+            from cffconvert.cli.validate_or_write_output import validate_or_write_output
+        except ImportError:
+            self.skipTest("cffconvert não instalado (só desenvolvimento)")
+        citation = create_citation(str(ROOT / "CITATION.cff"), None)
+        validate_or_write_output(None, "zenodo", True, citation)   # levanta exceção se inválido
+
+    def test_versao_consistente_entre_citation_e_notas(self):
+        v = self.cff["version"]
+        notas = ROOT / "organic-discovery" / f"RELEASE-v{v}.md"
+        self.assertTrue(notas.is_file(), f"faltam as notas da release v{v}")
+        self.assertTrue(notas.read_text(encoding="utf-8").startswith(f"# v{v}"))
+        self.assertIn(f"git checkout v{v}", (ROOT / "desenvolvimento" / "REPRODUCAO.md").read_text(encoding="utf-8"))
+
+    def test_nenhum_doi_ficticio_em_documentos(self):
+        for rel in DOCS_MD + ["CITATION.cff"]:
+            t = (ROOT / rel).read_text(encoding="utf-8")
+            self.assertNotRegex(t, r"10\.5281/zenodo\.\d+", rel)
+            self.assertNotRegex(t, r"zenodo\.org/(badge|records?)/\d+", rel)
+            self.assertNotRegex(t, r"(?i)doi\.org/10\.\d{4,}/", rel)
+
+    def test_readme_tem_citacao_academica_sem_placeholder(self):
+        t = (ROOT / "README.md").read_text(encoding="utf-8")
+        self.assertIn("## Citação acadêmica", t)
+        for termo in ("DOI da versão", "DOI conceito", "Commit Git", "Data de referência"):
+            self.assertIn(termo, t)
+        self.assertNotRegex(t, r"XXXX|0000000|<DOI>|DOI_AQUI")
+
+    def test_links_relativos_dos_documentos_existem(self):
+        faltando = []
+        for rel in DOCS_MD:
+            base = (ROOT / rel).parent
+            for alvo in re.findall(r"\]\(([^)#:\s]+)(?:#[^)]*)?\)", (ROOT / rel).read_text(encoding="utf-8")):
+                if not (base / alvo).resolve().exists():
+                    faltando.append(f"{rel} -> {alvo}")
+        self.assertEqual(faltando, [])
+
+    def test_comandos_de_reproducao_apontam_para_scripts_existentes(self):
+        for rel in ("README.md", "desenvolvimento/REPRODUCAO.md", "organic-discovery/RELEASE-v1.6.0.md"):
+            for script in re.findall(r"python\S* (scripts/[a-z_]+\.py)", (ROOT / rel).read_text(encoding="utf-8")):
+                self.assertTrue((ROOT / script).is_file(), f"{rel}: {script}")
+            self.assertNotIn("backfill.py 5", (ROOT / rel).read_text(encoding="utf-8"))
+
+    def test_licencas_consistentes(self):
+        lic = (ROOT / "LICENSE").read_text(encoding="utf-8")
+        self.assertTrue(lic.startswith("MIT License"))
+        self.assertEqual(self.cff["license"], "MIT")
+        dados = (ROOT / "LICENSE-DADOS.md").read_text(encoding="utf-8")
+        for termo in ("ODbL", "IBGE", "FGV IBRE", "não as\nrelicencia"):
+            self.assertIn(termo, dados)
+
+    def test_pacote_sem_credenciais_nem_arquivos_privados(self):
+        nomes = _arquivo()
+        privados = [n for n in nomes if re.search(r"(^|/)(\.env(\..*)?|.*\.pem|.*\.key|id_rsa.*|.*\.p12|\.npmrc|\.pypirc)$", n)]
+        self.assertEqual(privados, [])
+        segredo = re.compile(r"(ghp_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9_]{30,}|AKIA[0-9A-Z]{16}|"
+                             r"sk-ant-[A-Za-z0-9-]{20,}|-----BEGIN [A-Z ]*PRIVATE KEY-----|xox[bap]-[A-Za-z0-9-]{10,})")
+        achados = []
+        for n in nomes:
+            p = ROOT / n
+            if p.suffix.lower() in (".png", ".woff2", ".ttf", ".pdf", ".zip"):
+                continue
+            try:
+                t = p.read_text(encoding="utf-8")
+            except (UnicodeDecodeError, FileNotFoundError):
+                continue
+            if segredo.search(t):
+                achados.append(n)
+        self.assertEqual(achados, [])
+
+    def test_pacote_traz_o_necessario_para_reproduzir(self):
+        nomes = set(_arquivo())
+        for n in ("requirements.txt", "requirements.in", "config.yml", "CITATION.cff", "LICENSE",
+                  "LICENSE-DADOS.md", "desenvolvimento/REPRODUCAO.md", "organic-discovery/ZENODO.md",
+                  "organic-discovery/RELEASE-v1.6.0.md", ".github/workflows/monitor.yml",
+                  "scripts/fetch.py", "scripts/backfill.py", "scripts/build_pages.py", "scripts/build_correcao.py"):
+            self.assertIn(n, nomes)

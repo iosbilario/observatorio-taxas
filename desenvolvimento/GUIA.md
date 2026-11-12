@@ -17,6 +17,8 @@ Detalhes operacionais do Observatório de Taxas. A visão geral está no
 - [Página de apoio (Pix)](#página-de-apoio-pix)
 - [Publicação no GitHub Pages](#publicação-no-github-pages)
 - [Google AdSense](ADSENSE.md) (documento à parte)
+- [Reprodução de uma versão](REPRODUCAO.md) (documento à parte)
+- [Zenodo e DOI](../organic-discovery/ZENODO.md) (documento à parte)
 
 ## Arquivos gerados em `data/`
 

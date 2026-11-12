@@ -176,7 +176,7 @@ O status de cada execução fica na aba [Actions](https://github.com/iosbilario/
   [`blob/v1.4.0/data/189_history.json`](https://github.com/iosbilario/observatorio-taxas/blob/v1.4.0/data/189_history.json).
   A URL do site (`/data/189_history.json`) é sempre a versão mais recente.
 - **Ponto no tempo exato:** cada coleta é um commit; o recibo do VAR traz o commit usado.
-- **Arquivamento (Zenodo):** cada release será arquivada com DOI próprio. O pacote arquivado contém só o software; as séries ficam no repositório e no site. Ver [`desenvolvimento/ZENODO.md`](desenvolvimento/ZENODO.md).
+- **Arquivamento (Zenodo):** cada release será arquivada com DOI próprio. O pacote arquivado contém só o software; as séries ficam no repositório e no site. Ver [Citação acadêmica](#citação-acadêmica).
 
 | O quê | Licença |
 | --- | --- |
@@ -184,6 +184,30 @@ O status de cada execução fica na aba [Actions](https://github.com/iosbilario/
 | Séries do Banco Central | ODbL 1.0, com atribuição ([`LICENSE-DADOS.md`](LICENSE-DADOS.md)) |
 | IPCA, INPC, desocupação (IBGE), IGP-M, IGP-DI (FGV IBRE) | Termos dos produtores; não são relicenciadas ([`LICENSE-DADOS.md`](LICENSE-DADOS.md)) |
 | Textos do site | CC BY 4.0, com atribuição |
+
+## Citação acadêmica
+
+O Observatório é software open source, não um artigo revisado por pares.
+Para citar, use as referências abaixo conforme o que o trabalho precisa
+reproduzir.
+
+| O que citar | Quando usar | Onde obter |
+| --- | --- | --- |
+| **DOI da versão** | Resultado que precisa ser reproduzido com o mesmo código | Registro da versão no Zenodo (a partir da v1.6.0) |
+| **DOI conceito** | Referência ao projeto em geral, sempre na versão mais recente | Registro no Zenodo, "Cite all versions" |
+| **Commit Git** | Estado exato dos dados e das páginas num momento | `git log` ou o recibo do VAR, que traz o commit usado |
+| **Data de referência dos indicadores** | Qual mês ou dia de cada série foi usado | Página do indicador ou `data/<codigo>_history.json` |
+
+Cite também o produtor de cada índice usado (IBGE, FGV IBRE ou Banco Central).
+
+**DOI:** ainda não emitido. Será publicado nesta seção quando o Zenodo arquivar
+a primeira release. Até lá, use o botão *Cite this repository* do GitHub
+(gerado do [`CITATION.cff`](CITATION.cff)) com a versão e o commit.
+
+O pacote arquivado no Zenodo contém só o software; os dados de cada versão
+ficam no histórico do Git. Como refazer os resultados de uma versão:
+[`desenvolvimento/REPRODUCAO.md`](desenvolvimento/REPRODUCAO.md). Como o
+arquivamento funciona e como acompanhar: [`organic-discovery/ZENODO.md`](organic-discovery/ZENODO.md).
 
 ## Apoie o projeto
 
