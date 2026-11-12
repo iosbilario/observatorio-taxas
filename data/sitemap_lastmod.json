@@ -4,8 +4,8 @@
   "lastmod": "2026-11-12"
  },
  "https://observatoriodetaxas.tec.br/apoie/": {
-  "hash": "c2ed02dae67f3c03",
-  "lastmod": "2026-11-11"
+  "hash": "a235d4c5ac817155",
+  "lastmod": "2026-11-12"
  },
  "https://observatoriodetaxas.tec.br/correcao/": {
   "hash": "48b09431a342dda3",
@@ -27,9 +27,13 @@
   "hash": "3ca5a42e90aa522f",
   "lastmod": "2026-11-11"
  },
+ "https://observatoriodetaxas.tec.br/mcp/": {
+  "hash": "4d0b39b71da2d747",
+  "lastmod": "2026-11-12"
+ },
  "https://observatoriodetaxas.tec.br/privacidade/": {
-  "hash": "34c9079f3fb01ebb",
-  "lastmod": "2026-11-11"
+  "hash": "03aee5d161ed3ff9",
+  "lastmod": "2026-11-12"
  },
  "https://observatoriodetaxas.tec.br/reajuste/": {
   "hash": "34e97dad3348a181",
@@ -2132,7 +2136,11 @@
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/sobre/": {
-  "hash": "e12dd3844ef806e2",
+  "hash": "d7659788f4f837c0",
+  "lastmod": "2026-11-12"
+ },
+ "https://observatoriodetaxas.tec.br/termos/": {
+  "hash": "477dbecf5bfaee1b",
   "lastmod": "2026-11-12"
  },
  "https://observatoriodetaxas.tec.br/var.html": {

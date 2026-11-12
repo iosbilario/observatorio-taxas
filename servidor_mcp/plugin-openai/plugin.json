@@ -1,0 +1,97 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "observatorio-de-taxas",
+  "version": "0.1.0",
+  "description": "Indicadores econômicos brasileiros, séries históricas e cálculos verificáveis do Observatório de Taxas, a partir do SGS do Banco Central.",
+  "author": {
+    "name": "LBP Tecnologia",
+    "email": "contato@observatoriodetaxas.tec.br",
+    "url": "https://observatoriodetaxas.tec.br/"
+  },
+  "homepage": "https://observatoriodetaxas.tec.br/mcp/",
+  "repository": "https://github.com/iosbilario/observatorio-taxas",
+  "license": "MIT",
+  "keywords": ["indicadores econômicos", "Selic", "câmbio", "correção monetária", "Banco Central", "SGS"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Observatório de Taxas",
+        "shortDescription": "Indicadores do Brasil",
+        "longDescription": "Consulta indicadores econômicos brasileiros publicados pelo Observatório de Taxas a partir do SGS do Banco Central: último valor, série histórica entre datas, correção de um valor por um índice de variação mensal e comparação entre dois indicadores. Cada resposta informa o produtor do indicador, o distribuidor (SGS), a licença, a unidade, a data de referência e a data da coleta. Os cálculos usam a mesma fórmula das calculadoras do site, com memória de cálculo mês a mês.\n\nPara quem precisa de números oficiais com procedência: jornalistas, estudantes, contadores e quem acompanha juros e câmbio.\n\nLimitações: os dados são coletados a cada 6 horas, não em tempo real; a data de divulgação oficial não é registrada; IPCA, INPC, IGP-M, IGP-DI e taxa de desocupação estão suspensos nesta integração até a confirmação dos termos de redistribuição com o IBGE e a FGV IBRE. Não oferece recomendação financeira nem orientação jurídica. Todas as ferramentas são somente de leitura.",
+        "developerName": "LBP Tecnologia",
+        "category": "Finance",
+        "capabilities": ["Consultar indicadores", "Séries históricas", "Correção monetária", "Comparar indicadores"],
+        "websiteURL": "https://observatoriodetaxas.tec.br/",
+        "supportURL": "https://observatoriodetaxas.tec.br/mcp/",
+        "privacyPolicyURL": "https://observatoriodetaxas.tec.br/privacidade/",
+        "termsOfServiceURL": "https://observatoriodetaxas.tec.br/termos/",
+        "defaultPrompt": [
+          "Qual é a Meta Selic hoje?",
+          "Corrija R$ 1.000 pela Selic de jan a dez de 2025.",
+          "Compare dólar de compra e de venda em outubro de 2026."
+        ],
+        "brandColor": "#8A6A12",
+        "brandColorDark": "#D9B54A",
+        "composerIcon": "./assets/icon.png",
+        "logo": "./assets/logo.png"
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Último valor da Meta Selic com procedência",
+              "prompt": "Qual é a Meta Selic hoje e qual a fonte?",
+              "tools_triggered": "get_latest_indicator",
+              "expected_behavior": "Informa o valor em % a.a., a data de referência, a data da coleta, o produtor (Banco Central), o código SGS 432 e o link da fonte, sem afirmar que é tempo real."
+            },
+            {
+              "description": "Série histórica do dólar num mês",
+              "prompt": "Mostre o dólar de venda em janeiro de 2026.",
+              "tools_triggered": "get_indicator_history",
+              "expected_behavior": "Lista as cotações diárias de janeiro de 2026 em R$ por US$, com a quantidade de observações e a fonte (SGS 1)."
+            },
+            {
+              "description": "Correção de um valor pela Selic mensal",
+              "prompt": "Quanto R$ 1.000 corrigidos pela Selic acumulada no mês de janeiro a dezembro de 2025 viram?",
+              "tools_triggered": "calculate_adjustment",
+              "expected_behavior": "Retorna taxa acumulada, fator, valor final, a fórmula do produto das variações mensais e a memória de cálculo com os meses aplicados."
+            },
+            {
+              "description": "Comparação entre séries de mesma natureza",
+              "prompt": "Compare o dólar de compra e o de venda em outubro de 2026.",
+              "tools_triggered": "compare_indicators",
+              "expected_behavior": "Alinha os pontos nas datas comuns, mostra a diferença entre venda e compra e informa a cobertura de cada série."
+            },
+            {
+              "description": "Recusa de comparação entre naturezas diferentes",
+              "prompt": "Compare a Meta Selic com o dólar em 2026.",
+              "tools_triggered": "compare_indicators",
+              "expected_behavior": "Explica que taxa anual em % e cotação em R$ não são comparáveis ponto a ponto e resume cada série separadamente."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Pedido de previsão",
+              "prompt": "Quanto vai estar a Selic em dezembro de 2027?"
+            },
+            {
+              "description": "Pedido de pagamento ou transferência",
+              "prompt": "Faça um Pix de R$ 100 para o Observatório."
+            },
+            {
+              "description": "Indicador suspenso por licenciamento",
+              "prompt": "Qual foi o IGP-M de outubro de 2026 pelo Observatório?"
+            }
+          ]
+        },
+        "demo_recording_url": "",
+        "commerce": false,
+        "commerce_description": "Não vende produtos nem processa pagamentos."
+      },
+      "publication": {
+        "countries": ["BR"],
+        "release_notes": "Primeira versão: quatro ferramentas de leitura (último valor, série histórica, correção monetária e comparação) sobre séries do Banco Central."
+      }
+    }
+  }
+}
