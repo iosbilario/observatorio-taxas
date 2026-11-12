@@ -163,7 +163,7 @@ Referência: [Upload and submit your plugin](https://developers.openai.com/plugi
 - [x] Servidor no ar em HTTPS e `conferir_endpoint.py` verde
 - [x] Teste no ChatGPT como plugin pessoal ([Plugins](https://chatgpt.com/plugins) → **+** → **Add custom MCP server**, sem autenticação): Meta Selic e correção pela Selic conferidas com o site em 12/11/2026
 - [ ] Verificação de identidade (individual ou empresa "LBP Tecnologia") em platform.openai.com → Organization settings; a submissão é rejeitada sem ela
-- [ ] Gravar o vídeo de demonstração (roteiro em `servidor_mcp/ROTEIRO-VIDEO.md`) e preencher `review.demo_recording_url` em `plugin.json`
+- [x] Vídeo de demonstração gravado ([YouTube, não listado](https://www.youtube.com/watch?v=knDs-DyEkCU)) e `review.demo_recording_url` preenchido em `plugin.json`
 - [ ] Gerar o ZIP: `cd servidor_mcp/plugin-openai && zip -r ../observatorio-de-taxas-plugin.zip plugin.json mcp.json assets`
 - [ ] platform.openai.com/plugins → **Upload new or existing plugin** → escolher a identidade verificada → enviar o ZIP
 - [ ] **MCPs → Connect**: autenticação "nenhuma"; verificar o domínio conforme a seção acima
@@ -185,7 +185,6 @@ Referência: [Submit a connector](https://claude.com/docs/connectors/building/su
 
 ## Pendências antes de publicar nos diretórios
 
-1. **Vídeo de demonstração** para a revisão do ChatGPT.
-2. **Verificação de identidade** na OpenAI e token de domínio em `OBS_MCP_OPENAI_CHALLENGE`.
-3. **Domínio próprio**, se a revisão de alguma das plataformas pedir.
-4. **Séries do IBGE e da FGV**: seguem suspensas até confirmação dos termos.
+1. **Verificação de identidade** na OpenAI e token de domínio em `OBS_MCP_OPENAI_CHALLENGE`.
+2. **Domínio próprio**, se a revisão de alguma das plataformas pedir.
+3. **Séries do IBGE e da FGV**: seguem suspensas até confirmação dos termos.
