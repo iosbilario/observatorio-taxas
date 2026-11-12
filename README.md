@@ -1,197 +1,194 @@
-# observatorio-taxas
+<p align="center">
+  <a href="https://observatoriodetaxas.tec.br/"><img src="assets/readme/banner.svg" width="100%" alt="Observatório de Taxas. Os números mudam. O histórico fica. Indicadores econômicos brasileiros, séries históricas versionadas e ferramentas gratuitas para consulta, comparação e cálculo."></a>
+</p>
 
-> 📊 **Site:** https://observatoriodetaxas.tec.br/ · **100% gratuito** (sem servidor, sem banco de dados, sem serviços pagos)
+<p align="center">
+  <a href="https://observatoriodetaxas.tec.br/"><b>Site</b></a> ·
+  <a href="https://observatoriodetaxas.tec.br/reajuste/">Reajuste</a> ·
+  <a href="https://observatoriodetaxas.tec.br/correcao/">Correção monetária</a> ·
+  <a href="https://observatoriodetaxas.tec.br/var.html">VAR</a> ·
+  <a href="https://observatoriodetaxas.tec.br/data/series.json">Dados (JSON)</a> ·
+  <a href="desenvolvimento/GUIA.md">Guia do desenvolvedor</a> ·
+  <a href="https://observatoriodetaxas.tec.br/apoie/">Apoie</a>
+</p>
 
-Observatório de baixíssima manutenção que **versiona séries de taxas e indicadores publicadas no SGS do Banco Central do Brasil ao longo do tempo** (os índices de preços são produzidos pelo IBGE e pela FGV IBRE; o SGS os redistribui), usando o próprio **Git como banco de dados temporal** e o **GitHub Actions como motor** — tudo a custo zero. A cada execução agendada, um robô consulta a API pública do SGS/BACEN, grava os valores como snapshots JSON em `data/` e commita as mudanças; o histórico de commits passa a ser, então, a linha do tempo de cada indicador, e uma página estática em `docs/` lê esses JSONs para desenhar os gráficos.
+O Observatório de Taxas publica indicadores econômicos do Brasil (Selic,
+IPCA, INPC, IGP-M, câmbio, desemprego e outros) com o histórico completo de
+cada número. Um robô coleta as séries a cada 6 horas e grava cada mudança como
+um commit neste repositório. O site é estático, gratuito e sem cadastro.
 
-## Arquitetura — o loop API → Action → commit → Pages
+## Conheça o Observatório
 
-O sistema é um ciclo fechado e sem servidor:
+Quem precisa reajustar um aluguel, corrigir um valor ou conferir uma
+afirmação sobre a economia costuma encontrar o número do mês, mas não o
+caminho até ele: de onde veio, quando mudou, como foi calculado.
 
-1. **API (SGS/BACEN).** `scripts/fetch.py` lê `config.yml` (lista de séries + `base_url`) e consulta a API de dados abertos do Banco Central para cada código.
-2. **Action (GitHub Actions).** `.github/workflows/monitor.yml` roda por `cron` a cada 6 horas, prepara o Python, instala as dependências e executa o coletor.
-3. **Commit (Git como base temporal).** Os snapshots JSON gerados em `data/` são commitados e enviados (push) automaticamente. Cada commit é um ponto no tempo — versionar é o que cria o histórico, sem precisar de banco de dados.
-4. **Pages (visualização).** A página estática `docs/index.html` lê os JSONs (espelhados em `docs/data/`) e renderiza a série temporal com Chart.js, publicada via GitHub Pages servindo a pasta `/docs`.
+O Observatório guarda esse caminho:
 
-Estado atual: **implementado e em produção.** Coleta (`fetch.py`), workflow agendado (`monitor.yml`) e gráficos (`index.html`) funcionando; o site já está publicado. As mudanças de valor geram uma frase-resumo em PT-BR gerada localmente (grátis). A camada de IA via API da Anthropic (`diff_summary.py`) é um upgrade **opcional e pago**, desligado por padrão.
+- **Dados oficiais.** Os números vêm da API pública do SGS (Sistema
+  Gerenciador de Séries Temporais) do Banco Central, que distribui séries
+  próprias e de outros órgãos. Cada página diz quem produz o índice.
+- **Histórico versionado.** Cada coleta que muda algum valor vira um commit.
+  O histórico do Git é a linha do tempo de cada indicador, e qualquer número
+  publicado pode ser conferido no ponto exato em que entrou.
+- **Disponível em três formas.** Páginas em HTML (legíveis sem JavaScript),
+  arquivos JSON em `/data/` e gráficos para incorporar em outros sites.
+- **Independente e gratuito.** Sem servidor, sem banco de dados, sem anúncios.
+  Projeto mantido pela LBP Tecnologia.
 
-## Arquivos gerados em `data/`
+## Ferramentas
 
-A cada coleta, `fetch.py` produz (chaves ordenadas, UTF-8, indentado — para `git diff` limpo):
+| Ferramenta | O que faz | Link |
+| --- | --- | --- |
+| Painel | Os números do dia (Selic, IPCA 12 meses, dólar, IGP-M, desemprego) com variação no mês | [observatoriodetaxas.tec.br](https://observatoriodetaxas.tec.br/) |
+| Reajuste de contratos | Acumulado de 12 meses, fator e calculadora por índice e mês: uma página para cada mês desde dezembro de 2015 | [/reajuste/](https://observatoriodetaxas.tec.br/reajuste/) |
+| Correção monetária | Atualiza um valor entre duas datas pelo IPCA, IGP-M, INPC ou IGP-DI | [/correcao/](https://observatoriodetaxas.tec.br/correcao/) |
+| Rebobinar | A economia mês a mês, como uma linha do tempo de commits | [/rebobinar.html](https://observatoriodetaxas.tec.br/rebobinar.html) |
+| VAR da Economia | Confere uma afirmação comparando dois períodos de uma série e emite um recibo com link permanente | [/var.html](https://observatoriodetaxas.tec.br/var.html) |
+| Retransmissora | Gera o código para incorporar um gráfico que se atualiza sozinho | [/retransmissora.html](https://observatoriodetaxas.tec.br/retransmissora.html) |
+| Dados abertos | Séries em JSON e manifesto de todas as séries | [/data/series.json](https://observatoriodetaxas.tec.br/data/series.json) |
 
-| Arquivo | Conteúdo |
-| --- | --- |
-| `data/<codigo>.json` | Último ponto bruto da série (`data`, `valor`, `codigo`, `nome`). |
-| `data/<codigo>_history.json` | **Série temporal** acumulada: lista de `{data, valor}` por data de referência do BACEN, ordenada. Fundida por data (sem duplicar) a cada coleta. |
-| `data/series.json` | Manifesto (`codigo`, `nome`, `valor_atual`, `data_referencia`, `ultima_mudanca`, `pontos`) consumido pela página. |
-| `data/meta.json` | Instante da última coleta com mudança (`gerado_em_fmt`, ex.: `15/06/2026 às 15:06`), em **horário de Brasília** (UTC-3). Exibido no rodapé do site. Gravado **só quando há mudança de dados**, para preservar a idempotência do job. |
-| `CHANGELOG.md` | Uma linha por mudança detectada: `[timestamp] <nome>: <antigo> -> <novo>`, seguida de uma frase-resumo em PT-BR (`↳ ... subiu/caiu de X para Y`). |
+## Interface
 
-Os arquivos que a página consome (`series.json`, `meta.json` e cada `<codigo>_history.json`) são **espelhados em `docs/data/`**, porque o GitHub Pages servindo `/docs` só publica o que está dentro de `docs/`. O store canônico continua sendo `data/` na raiz.
+<p align="center">
+  <img src="assets/readme/observatorio-desktop.png" width="100%" alt="Captura da página inicial do Observatório de Taxas em 11/11/2026: título, data, linha de coleta com o commit, cinco indicadores do dia (Meta Selic 13,75% a.a., IPCA 12 meses 4,58%, dólar R$ 5,5840, IGP-M 1,47% no mês, desemprego 5,2%) com minigráficos e, abaixo, o bloco do Rebobinar.">
+</p>
+<p align="center"><sub>Página inicial em 11/11/2026, capturada do site publicado.</sub></p>
 
-## Estrutura
+## Arquitetura
+
+```mermaid
+flowchart TD
+  A["config.yml<br/>séries monitoradas"] --> B["API SGS<br/>Banco Central"]
+  B --> C["scripts/fetch.py<br/>coleta e funde"]
+  C --> D[("data/*.json<br/>histórico versionado")]
+  D --> E["Geradores Python<br/>reajuste, correção,<br/>landing, sitemap"]
+  E --> F["docs/<br/>HTML + JSON"]
+  F --> G["GitHub Pages<br/>observatoriodetaxas.tec.br"]
+  G --> H["IndexNow<br/>URLs alteradas"]
+  M{{"GitHub Actions<br/>monitor.yml, a cada 6 h"}} -.-> C
+  M -.-> E
+  M -. "commit + push" .-> D
+```
+
+Três camadas, com papéis diferentes:
+
+| Camada | Onde | O que é |
+| --- | --- | --- |
+| Origem oficial | API do SGS | O dado como o Banco Central distribui. O Observatório não altera os valores. |
+| Histórico versionado | `data/` | Um arquivo por série, fundido por data a cada coleta. É o armazenamento canônico. |
+| Arquivos gerados | `docs/` | Páginas HTML, espelho dos JSONs e sitemap, reescritos a partir de `data/`. É o que o GitHub Pages publica. |
+
+**Git como histórico temporal.** O `monitor.yml` só commita quando algum
+arquivo muda, e os arquivos de `data/` só mudam quando o SGS traz valor novo
+ou revisado. Assim, `git log -- data/189_history.json` mostra quando cada ponto
+do IGP-M foi coletado ou revisado, e uma tag (`v1.4.0`, `v1.5.0`…) fixa o
+estado de todas as séries numa data.
+
+**Depois da publicação**, o `indexnow.yml` avisa os buscadores apenas das
+URLs que mudaram, conferindo antes que o Pages já serve a versão nova
+(primeira execução manual; ver [`organic-discovery/INDEXNOW.md`](organic-discovery/INDEXNOW.md)).
+
+## Dados e metodologia
+
+| Índice | Produzido por | Série no SGS |
+| --- | --- | --- |
+| IPCA (mensal e 12 meses) | IBGE | 433, 13522 |
+| INPC | IBGE | 188 |
+| Taxa de desocupação (PNAD Contínua) | IBGE | 24369 |
+| IGP-M, IGP-DI | FGV IBRE | 189, 190 |
+| Meta Selic, Selic anualizada, Selic acumulada no mês | Banco Central | 432, 1178, 4390 |
+| TR, poupança (depósitos até 03/05/2012) | Banco Central | 226, 25 |
+| Câmbio USD/BRL e EUR/BRL, IBC-Br | Banco Central | 1, 10813, 21619, 24363 |
+
+O SGS do Banco Central distribui todas essas séries, mas o Banco Central não
+produz o IPCA, o INPC, o IGP-M nem o IGP-DI.
+
+**Acumulados.** O acumulado de um período é composto, não somado:
 
 ```
-observatorio-taxas/
-├── .github/workflows/monitor.yml   # workflow agendado (cron 6h) → fetch → commit/push
-├── .github/workflows/validate.yml  # testes em pull request (não toca na coleta)
-├── .github/workflows/indexnow.yml  # avisa buscadores das URLs alteradas, após o deploy
-├── data/                           # snapshots + histórico (store canônico, versionado)
-│   ├── <codigo>.json               #   último valor bruto de cada série
-│   ├── <codigo>_history.json       #   série temporal [{data, valor}] por data de referência
-│   ├── series.json                 #   manifesto consumido pela página
-│   └── meta.json                   #   horário da última coleta (rodapé do site)
-├── scripts/fetch.py                # coletor SGS/BACEN + resumo grátis das mudanças
-├── scripts/backfill.py             # carga inicial do histórico (N anos; padrão 2)
-├── scripts/diff_summary.py         # upgrade opcional/pago: resumo via API da Anthropic
-├── partials/nav.html               # bloco canônico do header (fora de docs/: não é servido)
-├── scripts/sync_nav.py             # replica o header em todas as páginas de docs/
-├── docs/nav.css                    # estilo do header, compartilhado por todas as páginas
-├── docs/index.html                 # landing page + dashboard interativo (Chart.js) — via Pages
-├── docs/radar/                     # Radar de Recomendação (produto próprio; ver docs/radar/README.md)
-├── docs/data/                      # espelho dos JSONs que a página lê (servido por /docs)
-├── docs/og-image.png               # imagem de compartilhamento (Open Graph / Twitter)
-├── docs/robots.txt, sitemap.xml    # SEO / indexação
-├── docs/.nojekyll                  # desativa o Jekyll no GitHub Pages
-├── CHANGELOG.md                    # log de mudanças de valor (gerado automaticamente)
-├── config.yml                      # séries monitoradas
-├── requirements.txt                # requests, pyyaml
-├── .gitignore                      # padrão Python + .claude/ (config local de preview)
-└── README.md
+acumulado = (1 + i₁/100) × (1 + i₂/100) × … × (1 + iₙ/100) − 1
 ```
 
-## Navegação do site
+O reajuste de 12 meses usa as 12 variações até o mês de referência
+([`acumulado`](scripts/build_pages.py) em `scripts/build_pages.py`). A
+correção entre datas aplica as variações dos meses posteriores ao inicial até
+o final ([`fator_periodo`](scripts/build_correcao.py) em
+`scripts/build_correcao.py`). Os testes em [`tests/`](tests/) conferem a
+fórmula contra a série oficial do IPCA 12 meses (SGS 13522) e garantem que os
+valores publicados não mudam sem querer.
 
-O header é **HTML estático dentro de cada página**, nunca injetado por
-JavaScript: crawler de LLM em geral não executa JS, e ser legível por máquina é
-estratégia central deste site. Também é o que faz o menu funcionar com JS
-desligado e com o site aberto do disco (`file://`).
+## Executando localmente
 
-A fonte da verdade é [`partials/nav.html`](partials/nav.html) — fora de `docs/`
-porque `docs/` é o que o Pages serve. Ele é replicado em cada página entre os
-marcadores `nav:start` e `nav:end` por:
+Requer Python 3.12 ou superior (o workflow usa 3.12).
 
 ```bash
-python scripts/sync_nav.py
-```
-
-O script ajusta por página o prefixo relativo dos links (`../`), o item ativo
-(`aria-current="page"`), a classe `tema-radar` nas páginas do Radar e o `<link>`
-para `nav.css`. É idempotente.
-
-**Página nova:** não precisa fazer nada além de rodar o script — ele insere os
-marcadores sozinho, logo depois do skip link. Se quiser controlar a posição,
-coloque `<!-- nav:start -->` e `<!-- nav:end -->` onde o header deve ficar.
-
-**Não edite o header dentro das páginas**: a próxima sincronização desfaz. Edite
-o partial e rode o script. `python scripts/sync_nav.py --conferir` falha se
-alguma página estiver fora de sincronia (útil em CI).
-
-O passo roda no workflow **depois** de `build_pages.py` e `build_correcao.py`,
-que reescrevem as ~518 páginas de reajuste e correção a cada coleta — sem isso o
-header sumiria delas. Ficam de fora, de propósito, `docs/embed.html` (payload de
-iframe em sites de terceiros) e `docs/admin/index.html` (painel interno).
-
-## Rodando localmente
-
-```bash
-# 1. (opcional) ambiente virtual
+git clone https://github.com/iosbilario/observatorio-taxas.git
+cd observatorio-taxas
 python -m venv .venv
-source .venv/bin/activate        # Windows: .venv\Scripts\activate
-
-# 2. dependências
-pip install -r requirements.txt
-
-# 3. (uma vez) carga inicial do histórico — puxa 2 anos de cada série
-python scripts/backfill.py            # ou: python scripts/backfill.py 5  (5 anos)
-
-# 4. coletar — funde os pontos novos nos JSONs de data/ (e espelho em docs/data/)
-python scripts/fetch.py
-
-# 5. visualizar a página localmente
-python -m http.server -d docs 8000
-# abra http://localhost:8000
+source .venv/bin/activate                 # Windows: .venv\Scripts\activate
+pip install --require-hashes -r requirements.txt
 ```
 
-## Configuração
+```bash
+python scripts/backfill.py                # opcional, uma vez: histórico desde 2015 (ou: backfill.py 2019)
+python scripts/fetch.py                   # coleta os pontos novos em data/ e docs/data/
+python scripts/build_pages.py             # páginas de reajuste
+python scripts/build_correcao.py          # páginas de correção
+python scripts/render_index.py            # boletim da página inicial + sitemap
+python scripts/sync_nav.py                # header em todas as páginas
+python scripts/csp_hashes.py              # hashes da CSP
+python -m unittest discover -s tests -v   # testes
+python -m http.server 8000 --bind 127.0.0.1 --directory docs
+```
 
-Edite `config.yml` para ajustar ou ampliar as séries monitoradas. Os códigos do SGS devem ser validados (referência: https://www3.bcb.gov.br/sgspub/).
+Abra `http://127.0.0.1:8000`. Detalhes de cada script, da estrutura de pastas
+e da configuração das séries estão no [Guia do desenvolvedor](desenvolvimento/GUIA.md).
 
-A API do SGS é pública e retorna `[{"data": "dd/mm/aaaa", "valor": "x"}]`. A `base_url` em `config.yml` é a base sem sufixo; o código monta `/dados/ultimos/N` (coleta) ou `?dataInicial=&dataFinal=` (backfill). Ajuste `anos_historico` para mudar a janela do `backfill.py`.
+## Automações
 
-## Página (landing page + dashboard)
+| Workflow | Quando roda | O que faz |
+| --- | --- | --- |
+| [`monitor.yml`](.github/workflows/monitor.yml) | A cada 6 horas e sob demanda | Coleta as séries, gera as páginas, atualiza CSP e card social, e commita só se algo mudou |
+| [`validate.yml`](.github/workflows/validate.yml) | Em pull requests | Roda os testes, regenera as páginas e confere que o resultado é igual ao commitado. Não toca na coleta |
+| [`indexnow.yml`](.github/workflows/indexnow.yml) | Depois do monitor, em push na `main` e a cada 6 horas | Avisa os buscadores só das URLs alteradas, depois do deploy. Aguarda a primeira execução manual |
 
-`docs/index.html` é uma **landing page** de página única (sem etapa de build), em layout escuro e responsivo, com:
+O status de cada execução fica na aba [Actions](https://github.com/iosbilario/observatorio-taxas/actions).
 
-- **Hero ao vivo** — destaques (Selic, IPCA 12 meses, dólar, desemprego) lidos de `series.json`, cada um com a **tendência de 90 dias** calculada do histórico.
-- **"A história dos dados"** — parágrafo executivo conectando juros, inflação, câmbio e atividade ao dia a dia, e **"Impacto no Brasil real"** explicando o que cada grupo de indicadores move.
-- **Dashboard** — uma série por indicador com **Chart.js**, filtros de período (**7, 15, 30, 60, 90, 120, 365 dias** e *Tudo*) e a **variação percentual no período**. O **ponto de dados mais recente é destacado** em todos os gráficos. O rodapé mostra o **horário da última coleta** (de `meta.json`) e a data da última mudança de valor.
-- **Metodologia & transparência** — métricas dinâmicas (nº de séries, total de pontos) e os pilares do projeto.
+## Como contribuir
 
-> Segurança: todos os valores vindos da API são injetados na página com escape de HTML (`esc()`), como defesa em profundidade contra XSS — mesmo sendo fonte oficial via HTTPS.
-
-## SEO / indexação
-
-A página inclui `title`/`description`/`keywords`, `canonical`, Open Graph, Twitter Card, favicon embutido e **dados estruturados JSON-LD** (`WebSite` + `Organization` + `Dataset`, ótimos para busca tradicional e para motores generativos). Há `docs/robots.txt`, `docs/sitemap.xml` e `docs/.nojekyll`.
-
-Para acelerar a indexação: cadastre o site no **[Google Search Console](https://search.google.com/search-console)** (e no **Bing Webmaster Tools**), confirme a propriedade e envie a sitemap `https://observatoriodetaxas.tec.br/sitemap.xml`.
-
-O sitemap é escrito só por `scripts/render_index.py`, com `lastmod` por conteúdo
-(`data/sitemap_lastmod.json`). As mudanças de URL são avisadas por **IndexNow**
-(`scripts/indexnow.py` + `.github/workflows/indexnow.yml`) depois que o Pages
-publica a versão nova; detalhes em [`organic-discovery/INDEXNOW.md`](organic-discovery/INDEXNOW.md).
-Auditoria, diretrizes e testes de SEO em [`organic-discovery/`](organic-discovery/).
+- **Dado errado ou rótulo impreciso:** abra uma [issue](https://github.com/iosbilario/observatorio-taxas/issues)
+  com a URL da página, a série (código SGS) e a fonte oficial que mostra o valor correto.
+- **Problema no site:** [issue](https://github.com/iosbilario/observatorio-taxas/issues) com o endereço,
+  o navegador e o que aconteceu.
+- **Código:** abra um [pull request](https://github.com/iosbilario/observatorio-taxas/pulls).
+  Altere os geradores em `scripts/` (não o HTML gerado em `docs/reajuste/` e
+  `docs/correcao/`), rode o pipeline e os testes, e commite o resultado. O
+  `validate.yml` confere isso no PR.
+- **Segurança:** veja [`SECURITY.md`](SECURITY.md).
 
 ## Como citar e reutilizar
 
-- **Procedência:** o Observatório coleta tudo na API do SGS do Banco Central,
-  mas não produz os índices. IPCA, INPC e a taxa de desocupação são do IBGE;
-  IGP-M e IGP-DI, da FGV IBRE; Selic, TR, poupança, câmbio e IBC-Br, do Banco
-  Central. Cite o produtor junto com o Observatório.
-- **Referência permanente a um dado:** use a versão. Ex.: IGP-M mensal como
-  publicado na v1.4.0:
-  `https://github.com/iosbilario/observatorio-taxas/blob/v1.4.0/data/189_history.json`.
-  A URL do site (`/data/189_history.json`) é a versão mais recente e muda a cada coleta.
+- **Citação:** botão *Cite this repository* do GitHub, a partir do [`CITATION.cff`](CITATION.cff).
+  Cite também o produtor do índice (IBGE, FGV IBRE ou Banco Central).
+- **Referência permanente a um dado:** use a versão. Ex.: IGP-M mensal como publicado na v1.4.0:
+  [`blob/v1.4.0/data/189_history.json`](https://github.com/iosbilario/observatorio-taxas/blob/v1.4.0/data/189_history.json).
+  A URL do site (`/data/189_history.json`) é sempre a versão mais recente.
 - **Ponto no tempo exato:** cada coleta é um commit; o recibo do VAR traz o commit usado.
-- **Cálculos:** acumulado = produto de (1 + variação mensal ÷ 100) − 1; reajuste
-  de 12 meses em `scripts/build_pages.py` (`acumulado`), correção entre datas em
-  `scripts/build_correcao.py` (`fator_periodo`), com testes em `tests/`.
-- **Citação formal:** botão *Cite this repository* do GitHub (arquivo [`CITATION.cff`](CITATION.cff)).
 
-## Licença
+| O quê | Licença |
+| --- | --- |
+| Código | MIT ([`LICENSE`](LICENSE)) |
+| Séries do Banco Central | ODbL 1.0, com atribuição ([`LICENSE-DADOS.md`](LICENSE-DADOS.md)) |
+| IPCA, INPC, desocupação (IBGE), IGP-M, IGP-DI (FGV IBRE) | Termos dos produtores; não são relicenciadas ([`LICENSE-DADOS.md`](LICENSE-DADOS.md)) |
+| Textos do site | CC BY 4.0, com atribuição |
 
-- **Código:** MIT ([`LICENSE`](LICENSE)).
-- **Dados:** não há licença única. Séries do Banco Central sob ODbL 1.0; IPCA,
-  INPC, desocupação (IBGE), IGP-M e IGP-DI (FGV IBRE) seguem os termos dos
-  produtores e não são relicenciadas. Detalhes por série em [`LICENSE-DADOS.md`](LICENSE-DADOS.md).
-- **Textos do site:** CC BY 4.0, com atribuição.
+## Apoie o projeto
 
-## Resumo das mudanças no CHANGELOG (grátis, padrão)
+O Observatório é gratuito e continua gratuito. Se ele foi útil para você, uma
+contribuição voluntária ajuda a manter a coleta, a infraestrutura e as
+ferramentas: [observatoriodetaxas.tec.br/apoie](https://observatoriodetaxas.tec.br/apoie/).
 
-Ao detectar uma mudança, o `fetch.py` anexa ao `CHANGELOG.md` uma frase em PT-BR (indentada com `↳`) gerada **localmente, em Python puro — sem API, sem chave, sem custo**. É o comportamento padrão e mantém o projeto **100% NoCost**:
+---
 
-```
-[2026-06-15 ...] Câmbio USD/BRL - venda: 5.0827 -> 5.0430
-    ↳ Câmbio USD/BRL - venda: caiu de 5,0827 para 5,043.
-```
-
-### Upgrade OPCIONAL e PAGO via API da Anthropic (`diff_summary.py`)
-
-Quem quiser frases mais "naturais" pode, **por conta própria**, ligar a camada de IA — mas ela **custa por uso** (a API da Anthropic exige conta com créditos) e por isso vem **desligada**. O `fetch.py` só a tenta se a variável `ANTHROPIC_API_KEY` estiver definida; sem ela, usa o resumo grátis acima, em silêncio.
-
-```bash
-pip install anthropic
-export ANTHROPIC_API_KEY="sk-ant-..."     # Windows: $env:ANTHROPIC_API_KEY="..."
-python scripts/diff_summary.py "Meta Selic (% a.a.): 13.75 -> 14.50"
-```
-
-No workflow, basta cadastrar o secret `ANTHROPIC_API_KEY` (`gh secret set ANTHROPIC_API_KEY` ou em *Settings → Secrets*); o `monitor.yml` instala `anthropic` e injeta a chave **só quando o secret existe**. Sem secret, nada de IA e nenhum custo.
-
-> Nunca comite a chave nem a cole em chats/arquivos versionados — o `.gitignore` já bloqueia `.env`. Se uma chave vazar, revogue-a no console da Anthropic e gere outra.
-
-## Publicação no GitHub Pages (servindo `/docs`)
-
-1. **Settings → Actions → General → Workflow permissions** → selecione **Read and write permissions** e salve. Isso permite ao `monitor.yml` commitar os snapshots de volta usando o `GITHUB_TOKEN` padrão.
-2. **Settings → Pages** → em *Build and deployment*, *Source* = **Deploy from a branch**; escolha a branch (`main`) e a pasta **`/docs`**; salve.
-3. Aguarde o deploy; o site fica em `https://<usuario>.github.io/<repo>/`.
-4. Rode o workflow uma vez (aba **Actions → monitor → Run workflow**) para gerar e commitar os primeiros JSONs em `docs/data/`. A partir daí ele roda sozinho a cada 6 h.
+<sub>Observatório de Taxas · LBP Tecnologia · Conteúdo informativo, sem caráter de recomendação financeira.</sub>
