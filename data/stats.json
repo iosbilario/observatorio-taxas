@@ -1,6 +1,6 @@
 {
-  "gerado_em": "2026-11-12T11:13:25-03:00",
-  "gerado_em_fmt": "12/11/2026 às 11:13",
+  "gerado_em": "2026-11-12T19:57:40-03:00",
+  "gerado_em_fmt": "12/11/2026 às 19:57",
   "grupos": {
     "Admin": {
       "acessos": 0,
@@ -16,7 +16,7 @@
       }
     },
     "Home": {
-      "acessos": 178,
+      "acessos": 179,
       "sub": {}
     },
     "Reajuste": {
@@ -151,7 +151,7 @@
       "data": "2026-11-11"
     },
     {
-      "acessos": 9,
+      "acessos": 22,
       "data": "2026-11-12"
     }
   ],
@@ -159,7 +159,7 @@
   "timezone": "America/Sao_Paulo (UTC-3)",
   "top_paginas": [
     {
-      "count": 174,
+      "count": 175,
       "path": "/"
     },
     {
@@ -204,6 +204,10 @@
     },
     {
       "count": 5,
+      "path": "/mcp"
+    },
+    {
+      "count": 5,
       "path": "/reajuste/igpdi-agosto-2026"
     },
     {
@@ -213,20 +217,16 @@
     {
       "count": 5,
       "path": "/reajuste/ipca-maio-2026"
-    },
-    {
-      "count": 4,
-      "path": "/reajuste/ipca-agosto-2026"
     }
   ],
   "totais": {
     "all_time": {
-      "acessos": 451,
-      "visitantes": 451
+      "acessos": 464,
+      "visitantes": 464
     },
     "ultimos_30d": {
-      "acessos": 133,
-      "visitantes": 133
+      "acessos": 146,
+      "visitantes": 146
     }
   }
 }
