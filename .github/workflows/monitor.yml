@@ -81,6 +81,11 @@ jobs:
       - name: Replicar o header de navegação em todas as páginas
         run: python scripts/sync_nav.py
 
+      # ads.txt sempre; anúncios só com adsense.ativo + consentimento em
+      # config.yml (desligado por padrão). Nunca falha a coleta.
+      - name: AdSense (ads.txt e espaços de anúncio)
+        run: python scripts/adsense.py
+
       # Depois de tudo que reescreve index.html/embed.html: recalcula os
       # hashes sha256 dos scripts inline na CSP (sem 'unsafe-inline').
       - name: Atualizar hashes de CSP dos scripts inline

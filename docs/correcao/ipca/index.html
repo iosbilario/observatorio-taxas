@@ -98,7 +98,7 @@ footer a{color:var(--papel-70)}
 
 <div class="card">
 <h2>Calcule a correção</h2>
-<form onsubmit="calc();return false">
+<form id="calc-form">
 
 <label for="valor">Valor a corrigir (R$)</label>
 <input id="valor" type="text" inputmode="decimal" placeholder="1.000,00"/>
@@ -112,6 +112,7 @@ footer a{color:var(--papel-70)}
 <p class="mut">A correção aplica, de forma composta, a variação mensal do índice dos meses posteriores ao inicial até o final.</p>
 </div>
 <section class="card faq" aria-labelledby="faq-t"><h2 id="faq-t">Perguntas e respostas</h2><h3>Como corrigir um valor pelo IPCA entre duas datas?</h3><p>Multiplique o valor pelo fator de correção do período, que é o produto composto das variações mensais do IPCA dos meses posteriores ao mês inicial até o mês final: fator = (1 + i₁ ÷ 100) × (1 + i₂ ÷ 100) × … × (1 + iₙ ÷ 100). A calculadora acima faz a conta com a série 433 do SGS do Banco Central.</p><h3>Quanto o IPCA acumulou nos 12 meses até setembro de 2026?</h3><p>Do mês seguinte a setembro de 2025 até setembro de 2026 (12 variações mensais), o IPCA acumulou 4,58% (fator 1,045761). Exemplo: R$ 1.000,00 corrigidos passam a R$ 1.045,76.</p><h3>Quem calcula o IPCA?</h3><p>O IPCA (Índice Nacional de Preços ao Consumidor Amplo) é produzido pelo IBGE. O Banco Central redistribui a série no SGS, de onde o Observatório coleta as variações mensais.</p></section>
+<!-- anuncio:correcao-indice:inicio --><!-- anuncio:correcao-indice:fim -->
 <div class="card"><h2>Precisa reajustar um contrato de 12 meses?</h2>
 <p class="mut">Para o reajuste anual fechado (aluguel, mensalidades), veja a
 <a href="https://observatoriodetaxas.tec.br/reajuste/">calculadora de reajuste</a>. Esta página corrige entre datas livres.</p></div>
@@ -155,6 +156,7 @@ function calc(){
 }
 document.addEventListener('DOMContentLoaded',function(){
   fillMeses();
+  document.getElementById('calc-form').addEventListener('submit',function(ev){ev.preventDefault();calc();});
   var is=document.getElementById('indice');
   if(is){is.addEventListener('change',fillMeses);}
 });
@@ -164,5 +166,5 @@ document.addEventListener('DOMContentLoaded',function(){
 </main>
 <footer>Dados: IPCA e INPC produzidos pelo IBGE; IGP-M e IGP-DI produzidos pela FGV IBRE. O Observatório obtém as séries na <a href="https://www3.bcb.gov.br/sgspub/">API pública do SGS</a> do Banco Central do Brasil, que as redistribui, e calcula acumulados e fatores a partir das variações mensais publicadas. Série histórica versionada e auditável no
 <a href="https://github.com/iosbilario/observatorio-taxas">GitHub</a>. Conteúdo informativo; confira o índice e a
-convenção de correção previstos no seu contrato ou decisão. Projeto <a href="https://observatoriodetaxas.tec.br/">Observatório de Taxas</a>, LBP Tecnologia. <a href="https://observatoriodetaxas.tec.br/apoie/">Apoie o projeto ♡</a></footer>
+convenção de correção previstos no seu contrato ou decisão. Projeto <a href="https://observatoriodetaxas.tec.br/">Observatório de Taxas</a>, LBP Tecnologia. <a href="https://observatoriodetaxas.tec.br/apoie/">Apoie o projeto ♡</a> · <a href="https://observatoriodetaxas.tec.br/sobre/">Sobre e contato</a> · <a href="https://observatoriodetaxas.tec.br/privacidade/">Privacidade</a></footer>
 </div></body></html>

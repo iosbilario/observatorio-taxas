@@ -16,6 +16,7 @@ Detalhes operacionais do Observatório de Taxas. A visão geral está no
 - [CHANGELOG e resumo opcional por IA](#changelog-e-resumo-opcional-por-ia)
 - [Página de apoio (Pix)](#página-de-apoio-pix)
 - [Publicação no GitHub Pages](#publicação-no-github-pages)
+- [Google AdSense](ADSENSE.md) (documento à parte)
 
 ## Arquivos gerados em `data/`
 
@@ -92,6 +93,7 @@ python scripts/build_pages.py     # páginas de reajuste
 python scripts/build_correcao.py  # páginas de correção
 python scripts/render_index.py    # boletim da landing + sitemap
 python scripts/sync_nav.py        # header em todas as páginas
+python scripts/adsense.py         # ads.txt; anúncios só se ligados (ver ADSENSE.md)
 python scripts/csp_hashes.py      # CSP com os hashes dos scripts inline
 python scripts/build_og.py        # card social
 ```

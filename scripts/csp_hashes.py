@@ -34,7 +34,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 DOCS = ROOT / "docs"
 
-PAGINAS = ["index.html", "embed.html", "apoie/index.html"]
+PAGINAS = ["index.html", "embed.html", "apoie/index.html", "sobre/index.html", "privacidade/index.html"]
 
 RE_SCRIPT = re.compile(r"<script\b([^>]*)>(.*?)</script>", re.S | re.I)
 RE_META_CSP = re.compile(
