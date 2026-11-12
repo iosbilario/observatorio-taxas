@@ -13,6 +13,9 @@ from pathlib import Path
 import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
+DOI_CONCEITO = "10.5281/zenodo.24151062"   # conferido em /api/records/24151063 (conceptdoi)
+DOI_VERSAO_160 = "10.5281/zenodo.24151063"
+DOIS_REAIS = {DOI_CONCEITO, DOI_VERSAO_160}
 FORA = ("data/", "docs/data/", "docs/reajuste/", "docs/correcao/", "CHANGELOG.md",
         "tests/fixtures/valores_baseline.json")
 
@@ -38,8 +41,9 @@ class TestCitation(unittest.TestCase):
         self.assertEqual(self.cff["authors"][0]["family-names"], "Pereira")
         self.assertEqual(self.cff["authors"][0]["given-names"], "Leandro Borges")
         texto = (ROOT / "CITATION.cff").read_text(encoding="utf-8")
-        self.assertNotRegex(texto, r"(?im)^\s*(doi|orcid):|10\.5281/zenodo|orcid\.org")
-        self.assertNotIn("identifiers", self.cff)
+        self.assertNotRegex(texto, r"(?im)orcid")
+        self.assertEqual(set(re.findall(r"10\.5281/zenodo\.\d+", texto)), DOIS_REAIS)
+        self.assertEqual(self.cff["doi"], DOI_CONCEITO)
 
     def test_versao_corresponde_a_uma_tag_existente_ou_a_proxima(self):
         tags = subprocess.run(["git", "tag", "--list", "v*"], cwd=ROOT, capture_output=True, text=True).stdout.split()
@@ -109,12 +113,13 @@ class TestReleasePreparada(unittest.TestCase):
         self.assertTrue(notas.read_text(encoding="utf-8").startswith(f"# v{v}"))
         self.assertIn(f"git checkout v{v}", (ROOT / "desenvolvimento" / "REPRODUCAO.md").read_text(encoding="utf-8"))
 
-    def test_nenhum_doi_ficticio_em_documentos(self):
-        for rel in DOCS_MD + ["CITATION.cff"]:
+    def test_so_os_dois_reais_conferidos_no_zenodo(self):
+        for rel in DOCS_MD + ["CITATION.cff", "docs/sobre/index.html"]:
             t = (ROOT / rel).read_text(encoding="utf-8")
-            self.assertNotRegex(t, r"10\.5281/zenodo\.\d+", rel)
-            self.assertNotRegex(t, r"zenodo\.org/(badge|records?)/\d+", rel)
-            self.assertNotRegex(t, r"(?i)doi\.org/10\.\d{4,}/", rel)
+            self.assertTrue(set(re.findall(r"10\.5281/zenodo\.\d+", t)) <= DOIS_REAIS, rel)
+            self.assertNotRegex(t, r"(?i)doi\.org/10\.(?!5281/zenodo\.2415106[23]\b)", rel)
+            for rec in re.findall(r"zenodo\.org/records?/(\d+)", t):
+                self.assertEqual(rec, "24151063", rel)
 
     def test_readme_tem_citacao_academica_sem_placeholder(self):
         t = (ROOT / "README.md").read_text(encoding="utf-8")
@@ -122,6 +127,8 @@ class TestReleasePreparada(unittest.TestCase):
         for termo in ("DOI da versão", "DOI conceito", "Commit Git", "Data de referência"):
             self.assertIn(termo, t)
         self.assertNotRegex(t, r"XXXX|0000000|<DOI>|DOI_AQUI")
+        self.assertIn(f"https://zenodo.org/badge/DOI/{DOI_CONCEITO}.svg", t)
+        self.assertIn(f"https://doi.org/{DOI_VERSAO_160}", t)
 
     def test_links_relativos_dos_documentos_existem(self):
         faltando = []

@@ -12,6 +12,10 @@
   <a href="https://observatoriodetaxas.tec.br/apoie/">Apoie</a>
 </p>
 
+<p align="center">
+  <a href="https://doi.org/10.5281/zenodo.24151062"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.24151062.svg" alt="DOI 10.5281/zenodo.24151062 (todas as versões, Zenodo)"></a>
+</p>
+
 O Observatório de Taxas publica indicadores econômicos do Brasil (Selic,
 IPCA, INPC, IGP-M, câmbio, desemprego e outros) com o histórico completo de
 cada número. Um robô coleta as séries a cada 6 horas e grava cada mudança como
@@ -193,16 +197,21 @@ reproduzir.
 
 | O que citar | Quando usar | Onde obter |
 | --- | --- | --- |
-| **DOI da versão** | Resultado que precisa ser reproduzido com o mesmo código | Registro da versão no Zenodo (a partir da v1.6.0) |
-| **DOI conceito** | Referência ao projeto em geral, sempre na versão mais recente | Registro no Zenodo, "Cite all versions" |
+| **DOI da versão** | Resultado que precisa ser reproduzido com o mesmo código | v1.6.0: [10.5281/zenodo.24151063](https://doi.org/10.5281/zenodo.24151063). Cada release nova recebe o seu |
+| **DOI conceito** | Referência ao projeto em geral, sempre na versão mais recente | [10.5281/zenodo.24151062](https://doi.org/10.5281/zenodo.24151062) |
 | **Commit Git** | Estado exato dos dados e das páginas num momento | `git log` ou o recibo do VAR, que traz o commit usado |
 | **Data de referência dos indicadores** | Qual mês ou dia de cada série foi usado | Página do indicador ou `data/<codigo>_history.json` |
 
 Cite também o produtor de cada índice usado (IBGE, FGV IBRE ou Banco Central).
 
-**DOI:** ainda não emitido. Será publicado nesta seção quando o Zenodo arquivar
-a primeira release. Até lá, use o botão *Cite this repository* do GitHub
-(gerado do [`CITATION.cff`](CITATION.cff)) com a versão e o commit.
+Como citar a versão v1.6.0 (APA, gerado pelo Zenodo):
+
+> Pereira, L. B. (2026). *Observatório de Taxas* (Version v1.6.0) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.24151063
+
+Para citar o projeto sem fixar a versão, use o DOI conceito
+[10.5281/zenodo.24151062](https://doi.org/10.5281/zenodo.24151062). O botão *Cite this repository* do GitHub usa o
+[`CITATION.cff`](CITATION.cff). Registro no Zenodo:
+[zenodo.org/records/24151063](https://zenodo.org/records/24151063).
 
 O pacote arquivado no Zenodo contém só o software; os dados de cada versão
 ficam no histórico do Git. Como refazer os resultados de uma versão:

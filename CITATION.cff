@@ -20,6 +20,14 @@ authors:
   - given-names: "Leandro Borges"
     family-names: "Pereira"
     affiliation: "LBP Tecnologia"
+doi: "10.5281/zenodo.24151062"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.24151062"
+    description: "DOI conceito: todas as versões (Zenodo)"
+  - type: doi
+    value: "10.5281/zenodo.24151063"
+    description: "DOI da versão v1.6.0 (Zenodo)"
 repository-code: "https://github.com/iosbilario/observatorio-taxas"
 url: "https://observatoriodetaxas.tec.br/"
 license: MIT

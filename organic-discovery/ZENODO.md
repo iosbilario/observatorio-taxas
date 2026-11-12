@@ -7,17 +7,22 @@ O Zenodo arquiva cada release publicada no GitHub e emite dois tipos de DOI:
 - **DOI conceito (todas as versões):** aponta sempre para a versão mais recente.
   Use para citar o projeto de forma geral.
 
-Este documento é atualizado com os identificadores reais depois do primeiro
-depósito. Até lá, **não existe DOI do Observatório**.
+| DOI | Valor | Registro |
+| --- | --- | --- |
+| Conceito (todas as versões) | [10.5281/zenodo.24151062](https://doi.org/10.5281/zenodo.24151062) | sempre resolve para a versão mais recente |
+| Versão v1.6.0 | [10.5281/zenodo.24151063](https://doi.org/10.5281/zenodo.24151063) | [zenodo.org/records/24151063](https://zenodo.org/records/24151063) |
 
 ## Situação (12/11/2026)
 
 | Item | Estado |
 | --- | --- |
-| Integração GitHub–Zenodo | Ligada pelo proprietário (repositório ENABLED no Zenodo) |
-| Depósitos existentes | Nenhum (busca na API pública do Zenodo por "observatorio-taxas" e "Observatório de Taxas": 0 registros) |
-| Releases no GitHub | v1.0.0 a v1.5.0, publicadas antes da integração; o Zenodo não as arquiva retroativamente |
-| Próxima release | v1.6.0 (ver [notas](RELEASE-v1.6.0.md)) |
+| Integração GitHub–Zenodo | Ligada pelo proprietário |
+| Primeira release arquivada | v1.6.0, publicada no GitHub em 12/11/2026 no commit `300c48a4` ([notas](RELEASE-v1.6.0.md)) |
+| Registro no Zenodo | Conferido pela API (`/api/records/24151063`): título "Observatório de Taxas", versão v1.6.0, tipo Software, licença MIT, criador "Pereira, Leandro Borges", um arquivo `iosbilario/observatorio-taxas-v1.6.0.zip` de 1.063.032 bytes, relacionado a `tree/v1.6.0` |
+| Releases anteriores | v1.0.0 a v1.5.0, sem DOI (publicadas antes da integração) |
+
+A busca textual da API (`/api/records?q=...`) demorou a indexar o registro
+novo; a consulta direta pelo id respondeu logo após a publicação.
 
 ## O que é depositado
 
@@ -104,11 +109,8 @@ cffconvert -i CITATION.cff -f zenodo     # prévia do que o Zenodo vai registrar
    draft, não pre-release).
 4. Acompanhar o depósito (seção acima).
 
-## Depois do primeiro DOI
+## Depois de cada nova release
 
-PR próprio com:
-
-- DOI conceito em `identifiers` no `CITATION.cff` (tipo `doi`);
-- badge e link do DOI no README, seção "Citação acadêmica";
-- link do registro no Zenodo na página Sobre do site;
-- esta página atualizada com os dois DOIs.
+- O DOI conceito não muda; o badge do README usa ele.
+- Acrescentar o DOI da versão nova em `identifiers` no `CITATION.cff` e na
+  tabela acima, num PR depois que o Zenodo emitir o registro.
