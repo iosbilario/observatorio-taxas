@@ -1,0 +1,36 @@
+# ============================================================================
+# mcp-acordado.yml — Mantém o servidor MCP acordado durante a revisão dos
+# diretórios (OpenAI e Anthropic).
+#
+# O plano Free do Render dorme após 15 min sem tráfego e leva cerca de 1 min
+# para acordar. Uma chamada ao /health a cada 5 min evita essa espera para o
+# revisor. Custo: zero. O serviço ligado o mês todo usa ~720 das 750 horas
+# Free do workspace, e o GitHub Actions é gratuito em repositório público.
+# O /health não consulta dados, fica fora do limite de taxa e não gera log.
+#
+# Temporário: desligar depois da revisão com
+#   gh workflow disable mcp-acordado
+# ============================================================================
+name: mcp-acordado
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: mcp-acordado
+  cancel-in-progress: true
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Chamar /health
+        run: >-
+          curl --fail --silent --show-error --max-time 90
+          --retry 2 --retry-delay 10 --retry-all-errors
+          https://observatorio-taxas-mcp.onrender.com/health
