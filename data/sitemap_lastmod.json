@@ -1,30 +1,34 @@
 {
  "https://observatoriodetaxas.tec.br/": {
-  "hash": "20660c949e05000c",
+  "hash": "4197e6cee73bb980",
+  "lastmod": "2026-11-11"
+ },
+ "https://observatoriodetaxas.tec.br/apoie/": {
+  "hash": "2a13898390e69246",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/correcao/": {
-  "hash": "872ecdd6c05a7ab3",
+  "hash": "b76b9063abbb6e6a",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/correcao/igpdi/": {
-  "hash": "cd7a3eb9d425c40e",
+  "hash": "9b3ad1163199b821",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/correcao/igpm/": {
-  "hash": "d0072623dde85244",
+  "hash": "62f8243c49c199cc",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/correcao/inpc/": {
-  "hash": "bf9bca6db16ee395",
+  "hash": "46cfe07b9a5335dd",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/correcao/ipca/": {
-  "hash": "b1799e9b96f36e8c",
+  "hash": "7d4badb14bdab829",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/": {
-  "hash": "5fa0308e7324cebf",
+  "hash": "7830f0bfac64485b",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-abril-2016/": {
@@ -2116,15 +2120,15 @@
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/rebobinar.html": {
-  "hash": "5946f54ccd9634d5",
+  "hash": "316264069294b314",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/retransmissora.html": {
-  "hash": "f9628d811748413c",
+  "hash": "c4ca2efdb350240e",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/var.html": {
-  "hash": "c64bcda2410506ac",
-  "lastmod": "2026-08-14"
+  "hash": "8b944b0f34273e34",
+  "lastmod": "2026-11-11"
  }
 }
