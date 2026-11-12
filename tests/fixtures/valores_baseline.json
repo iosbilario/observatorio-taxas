@@ -1,20 +1,4 @@
 {
- "correcao/igpdi": {
-  "acumulado": "5,00%",
-  "fator": "1,050040"
- },
- "correcao/igpm": {
-  "acumulado": "5,25%",
-  "fator": "1,052465"
- },
- "correcao/inpc": {
-  "acumulado": "4,29%",
-  "fator": "1,042936"
- },
- "correcao/ipca": {
-  "acumulado": "4,58%",
-  "fator": "1,045761"
- },
  "reajuste/igpdi-abril-2016": {
   "acumulado": "10,43%",
   "fator": "1,104341",
