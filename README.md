@@ -137,6 +137,7 @@ python scripts/build_pages.py             # páginas de reajuste
 python scripts/build_correcao.py          # páginas de correção
 python scripts/render_index.py            # boletim da página inicial + sitemap
 python scripts/sync_nav.py                # header em todas as páginas
+python scripts/adsense.py                 # ads.txt; anúncios só se ligados em config.yml
 python scripts/csp_hashes.py              # hashes da CSP
 python -m unittest discover -s tests -v   # testes
 python -m http.server 8000 --bind 127.0.0.1 --directory docs

@@ -54,6 +54,7 @@ jobs:
           python scripts/build_correcao.py
           python scripts/render_index.py
           python scripts/sync_nav.py
+          python scripts/adsense.py
           python scripts/csp_hashes.py
 
       - name: Conferir que a regeneração não mudou nada

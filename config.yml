@@ -14,6 +14,23 @@ fonte: "BACEN SGS"
 # Deixe "" para desativar a coleta e não injetar nenhum beacon.
 goatcounter_code: "observatoriotaxas"
 
+# Google AdSense. Fonte única do identificador; lido por scripts/adsense.py,
+# que escreve docs/ads.txt e, só com `ativo: true`, insere o código de
+# anúncio nos espaços marcados das páginas. Ver desenvolvimento/ADSENSE.md.
+adsense:
+  client: "ca-pub-4229313749435489"
+  # Linha fornecida pelo AdSense (verificação de propriedade por ads.txt).
+  ads_txt: "google.com, pub-4229313749435489, DIRECT, f08c47fec0942fa0"
+  # Só ligue depois de: domínio aprovado no AdSense, mensagem de
+  # consentimento (Privacidade e mensagens > CMP do Google) publicada e
+  # unidades de anúncio criadas (ids em `slots`).
+  ativo: false
+  consentimento_configurado: false
+  # nome do espaço -> data-ad-slot (número gerado pelo AdSense ao criar a
+  # unidade). Espaços sem id ficam vazios. Nomes: inicio, reajuste-hub,
+  # reajuste-mes, correcao-hub, correcao-indice.
+  slots: {}
+
 # IndexNow — avisa buscadores participantes (Bing, Yandex, Seznam, Naver...)
 # quando uma URL é criada, alterada ou removida. A chave NÃO é segredo: o
 # protocolo exige publicá-la em https://<host>/<chave>.txt (docs/<chave>.txt).

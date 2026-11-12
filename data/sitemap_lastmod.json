@@ -1,2134 +1,2142 @@
 {
  "https://observatoriodetaxas.tec.br/": {
-  "hash": "4197e6cee73bb980",
+  "hash": "6ae0dc253f635f5a",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/apoie/": {
-  "hash": "2a13898390e69246",
+  "hash": "c2ed02dae67f3c03",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/correcao/": {
-  "hash": "b76b9063abbb6e6a",
+  "hash": "48b09431a342dda3",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/correcao/igpdi/": {
-  "hash": "9b3ad1163199b821",
+  "hash": "80febdc8ca43fbfe",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/correcao/igpm/": {
-  "hash": "62f8243c49c199cc",
+  "hash": "69f0f7450321cc53",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/correcao/inpc/": {
-  "hash": "46cfe07b9a5335dd",
+  "hash": "3bb1646ce40ae8ef",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/correcao/ipca/": {
-  "hash": "7d4badb14bdab829",
+  "hash": "3ca5a42e90aa522f",
+  "lastmod": "2026-11-11"
+ },
+ "https://observatoriodetaxas.tec.br/privacidade/": {
+  "hash": "34c9079f3fb01ebb",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/": {
-  "hash": "7830f0bfac64485b",
+  "hash": "34e97dad3348a181",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-abril-2016/": {
-  "hash": "ea741079cc2cf48d",
+  "hash": "cc9e5c170a88cea8",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-abril-2017/": {
-  "hash": "a6272bdb100a7e53",
+  "hash": "27d374122023b650",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-abril-2018/": {
-  "hash": "be9b72e71fec178c",
+  "hash": "ab3901c7817826f0",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-abril-2019/": {
-  "hash": "a80db22f54a3d4d6",
+  "hash": "152fdf452eb312bf",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-abril-2020/": {
-  "hash": "8d01c5538d963a2b",
+  "hash": "12bfdce68b915d1b",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-abril-2021/": {
-  "hash": "b5ea57c132ce5735",
+  "hash": "eaad6a5467dd9aaa",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-abril-2022/": {
-  "hash": "e951cf60b0cd7f39",
+  "hash": "83af285de854918c",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-abril-2023/": {
-  "hash": "5de77078611e18c5",
+  "hash": "6d40b460f128be14",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-abril-2024/": {
-  "hash": "2d343460d8b3bdbd",
+  "hash": "f112f7146c91297f",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-abril-2025/": {
-  "hash": "34f3a8ba67363325",
+  "hash": "d5b55974202af05d",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-abril-2026/": {
-  "hash": "44e93260d5b79315",
+  "hash": "05aed30a19c79898",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-agosto-2016/": {
-  "hash": "d5608af43c8f7256",
+  "hash": "d45591b05f4e2d29",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-agosto-2017/": {
-  "hash": "65e32f7676a7e9ff",
+  "hash": "600960dca2193a07",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-agosto-2018/": {
-  "hash": "c8a7a789dc8060ba",
+  "hash": "aa463f0b5096d04c",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-agosto-2019/": {
-  "hash": "67b2f0f27cbab3de",
+  "hash": "8d9ff47081d0803d",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-agosto-2020/": {
-  "hash": "50896ee7dbe22fc1",
+  "hash": "a8b9048c39d104ab",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-agosto-2021/": {
-  "hash": "61add42a09308aa5",
+  "hash": "83675dfab40ecdc0",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-agosto-2022/": {
-  "hash": "3a2dbcfa43b21dc9",
+  "hash": "61819d492c719eb1",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-agosto-2023/": {
-  "hash": "b19e9e676497d512",
+  "hash": "2a7485bc60103498",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-agosto-2024/": {
-  "hash": "b7a38b494abd04fc",
+  "hash": "fad0511133d37a08",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-agosto-2025/": {
-  "hash": "9c109e167efd3fb5",
+  "hash": "27d3d6af5f8a5439",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-agosto-2026/": {
-  "hash": "dd50faab550c98b6",
+  "hash": "8ada02dbf5e85552",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-dezembro-2015/": {
-  "hash": "005f485a25676d31",
+  "hash": "f34a3d28e62a873b",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-dezembro-2016/": {
-  "hash": "d4f1de3b74ba7bf0",
+  "hash": "764f3e5ec8d8666a",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-dezembro-2017/": {
-  "hash": "75645c8c12066e40",
+  "hash": "809efda06f0d5373",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-dezembro-2018/": {
-  "hash": "6d1606ca8ebd5874",
+  "hash": "8fc236291f830600",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-dezembro-2019/": {
-  "hash": "8469bd8470ced6c5",
+  "hash": "ce174bbc8b771584",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-dezembro-2020/": {
-  "hash": "e7cbca00512cc003",
+  "hash": "9db9a2f162773be6",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-dezembro-2021/": {
-  "hash": "c813e9e3f45c8a14",
+  "hash": "53f2cee2af6f871b",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-dezembro-2022/": {
-  "hash": "b1edda93bb5634ea",
+  "hash": "1869bfe3c45cf6a7",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-dezembro-2023/": {
-  "hash": "a0993432ed651b34",
+  "hash": "7c837eb117ad7dd6",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-dezembro-2024/": {
-  "hash": "de6aa17019032418",
+  "hash": "e3e1a57e07eb032b",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-dezembro-2025/": {
-  "hash": "4316cd17ca40faab",
+  "hash": "b9fdde844c462ea5",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-fevereiro-2016/": {
-  "hash": "ed2e33532c282389",
+  "hash": "183bb672f645db7c",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-fevereiro-2017/": {
-  "hash": "fd7cfeb69358700d",
+  "hash": "f2398520207f85ac",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-fevereiro-2018/": {
-  "hash": "6cbcc7ca7371f8c5",
+  "hash": "1611769af44617a0",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-fevereiro-2019/": {
-  "hash": "7b06fd60b350b879",
+  "hash": "dfd7529234d4112b",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-fevereiro-2020/": {
-  "hash": "295d96bc9c00bf93",
+  "hash": "314107f94536ab9b",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-fevereiro-2021/": {
-  "hash": "401f2146c8669161",
+  "hash": "7247d44db65ee963",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-fevereiro-2022/": {
-  "hash": "e4196308a8065e79",
+  "hash": "a1c9fc69635c2bbd",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-fevereiro-2023/": {
-  "hash": "233457ab1114ed9c",
+  "hash": "1e13909f581dfd6d",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-fevereiro-2024/": {
-  "hash": "c29f7938fc8f45fd",
+  "hash": "a896db4495191ba9",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-fevereiro-2025/": {
-  "hash": "091e75cc283023a5",
+  "hash": "dfbcf37a922c56b8",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-fevereiro-2026/": {
-  "hash": "5125db4a39c6a135",
+  "hash": "09db0f14dad89c59",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-janeiro-2016/": {
-  "hash": "04df652cb351f073",
+  "hash": "c01076aa205b1046",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-janeiro-2017/": {
-  "hash": "b2a548e01e82b9cf",
+  "hash": "f0a4f5c31d271b5f",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-janeiro-2018/": {
-  "hash": "82e95b3ed1aec888",
+  "hash": "288585fa4004b455",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-janeiro-2019/": {
-  "hash": "926a0a2dfc9ca925",
+  "hash": "0491d2b508e23533",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-janeiro-2020/": {
-  "hash": "fa3ffd1e15011d8a",
+  "hash": "0cee4df797984788",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-janeiro-2021/": {
-  "hash": "7d33ff4046702055",
+  "hash": "c501ddc17bdc048c",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-janeiro-2022/": {
-  "hash": "01bbfcf8dbbd27aa",
+  "hash": "907717eb4c290281",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-janeiro-2023/": {
-  "hash": "11bb6043b5d8465b",
+  "hash": "d2bab36946db6fee",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-janeiro-2024/": {
-  "hash": "3b67ee3796e48ae3",
+  "hash": "af2e02fb1015242a",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-janeiro-2025/": {
-  "hash": "8c642adeeed7543a",
+  "hash": "0d579c0daff34609",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-janeiro-2026/": {
-  "hash": "8cc2f7612843c604",
+  "hash": "17fffa9548be15e6",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-julho-2016/": {
-  "hash": "5ba7f4decd7bde51",
+  "hash": "9131f99e26e2a822",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-julho-2017/": {
-  "hash": "ef802e9f14186f01",
+  "hash": "ff54860b9ef39785",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-julho-2018/": {
-  "hash": "35a73c97c139c95a",
+  "hash": "be977f7b2e3dde7a",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-julho-2019/": {
-  "hash": "b9fe01a2e852163f",
+  "hash": "e439d4dfd3f26361",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-julho-2020/": {
-  "hash": "85a2a45676b8f8df",
+  "hash": "c5bc2f831fbb3b16",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-julho-2021/": {
-  "hash": "8535c4e467192bc8",
+  "hash": "9550cf58e4e80ee0",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-julho-2022/": {
-  "hash": "e057e8f1cd7a9760",
+  "hash": "15aa2009ef5a94c2",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-julho-2023/": {
-  "hash": "76206fbe43deb4a6",
+  "hash": "fd63d0cf72fcaf04",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-julho-2024/": {
-  "hash": "192de2f8681f5ecb",
+  "hash": "42066401d40803f5",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-julho-2025/": {
-  "hash": "0924edbf1aeb1c90",
+  "hash": "8b9f12b4130035e1",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-julho-2026/": {
-  "hash": "1334faf98d7f08d0",
+  "hash": "bf2feb6708eadf95",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-junho-2016/": {
-  "hash": "38e6cf3d73fa3c2e",
+  "hash": "1549f6ce6a38d069",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-junho-2017/": {
-  "hash": "e1cdf0878ef3ce41",
+  "hash": "29c9c157c1c0da09",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-junho-2018/": {
-  "hash": "7b5524d285eb9ded",
+  "hash": "02be4ec78e653576",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-junho-2019/": {
-  "hash": "cd0d60941d2a19b3",
+  "hash": "7885b182f535e557",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-junho-2020/": {
-  "hash": "0ea292817536d793",
+  "hash": "e1ee155276830a3f",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-junho-2021/": {
-  "hash": "aa67a98a0039beef",
+  "hash": "57aa9c747528ba6a",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-junho-2022/": {
-  "hash": "db4c0b724ea1e011",
+  "hash": "a3e36db513cd5a6c",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-junho-2023/": {
-  "hash": "5026b4bcaa98d5a0",
+  "hash": "4fa2900abeeb5260",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-junho-2024/": {
-  "hash": "822694c0c1f71d67",
+  "hash": "44eb874283d98505",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-junho-2025/": {
-  "hash": "60e452f046bedc62",
+  "hash": "4665ad1631b9600c",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-junho-2026/": {
-  "hash": "eebf24879e8227bc",
+  "hash": "f9d53f954a75edaf",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-maio-2016/": {
-  "hash": "9bf1586a3b26e265",
+  "hash": "409668e007aa6e49",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-maio-2017/": {
-  "hash": "009bc65271ab1a39",
+  "hash": "3ee864e43f05ec87",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-maio-2018/": {
-  "hash": "c4850cbaa4353ff1",
+  "hash": "cd4265461429a4c9",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-maio-2019/": {
-  "hash": "6effd7bce33a732b",
+  "hash": "10f7f46408aea258",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-maio-2020/": {
-  "hash": "b523ab5e81f67ffc",
+  "hash": "ad9df40c623e9713",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-maio-2021/": {
-  "hash": "53677234a5917cb0",
+  "hash": "b7e7f84bfec923b3",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-maio-2022/": {
-  "hash": "9e7a079b94464b1e",
+  "hash": "2c835b9065a1a12e",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-maio-2023/": {
-  "hash": "6f71f22c59d645c8",
+  "hash": "b11d6a9c2c874f47",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-maio-2024/": {
-  "hash": "75fc0d6c08702946",
+  "hash": "aad91d8a02713c2d",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-maio-2025/": {
-  "hash": "c291d55ebb130682",
+  "hash": "f3a5004001a91f66",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-maio-2026/": {
-  "hash": "ee20c9c6f76a9ffb",
+  "hash": "f381e2e2c04a1a26",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-março-2016/": {
-  "hash": "72150d172d1dc2da",
+  "hash": "3f0cbe557407ac0d",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-março-2017/": {
-  "hash": "7b3febda4471b000",
+  "hash": "f88203ecac7f257e",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-março-2018/": {
-  "hash": "b36c22a7cbacec86",
+  "hash": "7d56272f5427f470",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-março-2019/": {
-  "hash": "5809b39de02f31a4",
+  "hash": "8773c0d5e0095091",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-março-2020/": {
-  "hash": "023d81ba32663f56",
+  "hash": "f35a37da4f2aa292",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-março-2021/": {
-  "hash": "7659508c46397bf9",
+  "hash": "68a25923e2d13af1",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-março-2022/": {
-  "hash": "d7d1f12338628f2a",
+  "hash": "bb8ec857a9c0779b",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-março-2023/": {
-  "hash": "2607f0f3556b4443",
+  "hash": "6f9380299ca1f18c",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-março-2024/": {
-  "hash": "d60b9f472ba7c7fe",
+  "hash": "76bd3927fa83a939",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-março-2025/": {
-  "hash": "40286ef0ddc12f04",
+  "hash": "c26b842d58d73548",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-março-2026/": {
-  "hash": "b99cdee3f049e81e",
+  "hash": "1eb6224b42a1e4e0",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-novembro-2016/": {
-  "hash": "808fc1f76518205d",
+  "hash": "453c7ae8e593f820",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-novembro-2017/": {
-  "hash": "7e6758d5c0699b73",
+  "hash": "cac4c7c08816dea0",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-novembro-2018/": {
-  "hash": "ed37b7fe5caa487d",
+  "hash": "4feafea802235d21",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-novembro-2019/": {
-  "hash": "752f4b523b573b0b",
+  "hash": "0377fd67e64ffde6",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-novembro-2020/": {
-  "hash": "7ad43b3d8b84c009",
+  "hash": "b66c8eb1b6db0517",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-novembro-2021/": {
-  "hash": "65b5ec01aa1cb560",
+  "hash": "477a3cef254b81bf",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-novembro-2022/": {
-  "hash": "4327420991e4c03d",
+  "hash": "26cb2d329cc9a765",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-novembro-2023/": {
-  "hash": "3dc0b05619502f9c",
+  "hash": "b4e773e104826120",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-novembro-2024/": {
-  "hash": "dbedbc0aede8d9e1",
+  "hash": "88496c01c4a9c1c2",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-novembro-2025/": {
-  "hash": "5f2e88a420bea747",
+  "hash": "d989effe70733e4f",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-outubro-2016/": {
-  "hash": "7ff93d0a3f032e42",
+  "hash": "b5e4ffaa7ee2f68a",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-outubro-2017/": {
-  "hash": "ca33a2e7626c3532",
+  "hash": "cfd361cc9d0c2ead",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-outubro-2018/": {
-  "hash": "4b2818e8f38a1999",
+  "hash": "0ea19edcb66de6fd",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-outubro-2019/": {
-  "hash": "b21aebe1ee7f75c7",
+  "hash": "234682d6983684f7",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-outubro-2020/": {
-  "hash": "7194d200a7bf7d64",
+  "hash": "44be075431072b50",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-outubro-2021/": {
-  "hash": "3fa80147f6149ad1",
+  "hash": "d9d7ee59b725986d",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-outubro-2022/": {
-  "hash": "14149b71e2062a68",
+  "hash": "14fede6a0086369d",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-outubro-2023/": {
-  "hash": "a6102cee94675ee7",
+  "hash": "f7d832aff72fa466",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-outubro-2024/": {
-  "hash": "6aa00e284f9cf653",
+  "hash": "a4397a2321b10c60",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-outubro-2025/": {
-  "hash": "6fb7ecd0154104e4",
+  "hash": "7fa0661ddc4de27b",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-outubro-2026/": {
-  "hash": "2f6f2495e76c5091",
+  "hash": "ceb76171c25da7c7",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-setembro-2016/": {
-  "hash": "844186036668e3ef",
+  "hash": "785a1c554a838c56",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-setembro-2017/": {
-  "hash": "32b2eec072e68d6d",
+  "hash": "f62a4bb0c3ffc777",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-setembro-2018/": {
-  "hash": "a69cb67ba55cc966",
+  "hash": "077792acaf48ddd8",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-setembro-2019/": {
-  "hash": "69accea99cd7754a",
+  "hash": "b34ccd8b6ae9309e",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-setembro-2020/": {
-  "hash": "0e8d640d31c13745",
+  "hash": "1827c7b92596f3e5",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-setembro-2021/": {
-  "hash": "2b5ea413e231c4c5",
+  "hash": "712eaaf0ea0b0199",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-setembro-2022/": {
-  "hash": "fa5a50c79b06914d",
+  "hash": "3d7338a2d297e086",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-setembro-2023/": {
-  "hash": "87eed7b10c40eb6e",
+  "hash": "5dc7ec889a49a1de",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-setembro-2024/": {
-  "hash": "1fbf799d5ea65183",
+  "hash": "e1e2d8d05e64ee92",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-setembro-2025/": {
-  "hash": "fcd9e89881c1f57a",
+  "hash": "fdd6c8479f13f631",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-setembro-2026/": {
-  "hash": "a84077451a68ea6c",
+  "hash": "b12186d43b7f141d",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-abril-2016/": {
-  "hash": "1e7b420e0bf9e1e6",
+  "hash": "410a287a5fd10ae9",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-abril-2017/": {
-  "hash": "48265e09b89d6ba3",
+  "hash": "5db88dfcb482910c",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-abril-2018/": {
-  "hash": "21e55869bac473af",
+  "hash": "9a0c4eafbc6674f4",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-abril-2019/": {
-  "hash": "48d3e1722bfb127b",
+  "hash": "892838ffd30aa9c9",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-abril-2020/": {
-  "hash": "3a5983422f93ee86",
+  "hash": "0eb33a8432068ccb",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-abril-2021/": {
-  "hash": "1eccb2c7ddf785c2",
+  "hash": "50fccd1b5774e18b",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-abril-2022/": {
-  "hash": "ddee6a2b8d1aae1e",
+  "hash": "5f16042564554b3b",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-abril-2023/": {
-  "hash": "b9ecd7508782ced8",
+  "hash": "c327ee706f183be1",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-abril-2024/": {
-  "hash": "efb8c57457eb7e93",
+  "hash": "37a978ad95172cb8",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-abril-2025/": {
-  "hash": "dec5d046b0969033",
+  "hash": "0273cecfef358dcb",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-abril-2026/": {
-  "hash": "cb15998d67d2094b",
+  "hash": "4af29b26984d8db1",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-agosto-2016/": {
-  "hash": "460e980028b948df",
+  "hash": "367bac1000cc8c7e",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-agosto-2017/": {
-  "hash": "6b27f42a3b040acc",
+  "hash": "f0b380392bf853b6",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-agosto-2018/": {
-  "hash": "a2fdbb39920ad2ef",
+  "hash": "d53a24e1e5d9e6a4",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-agosto-2019/": {
-  "hash": "2aec147480c4c151",
+  "hash": "5ef2aa61e01ec754",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-agosto-2020/": {
-  "hash": "a5be30ba4156a3a4",
+  "hash": "e8057532ea8f8987",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-agosto-2021/": {
-  "hash": "7e2c022a811ea05b",
+  "hash": "2735df18e5f37d59",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-agosto-2022/": {
-  "hash": "776330d6230de20a",
+  "hash": "49c1e14ccb1b6fb0",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-agosto-2023/": {
-  "hash": "53af608fd1854388",
+  "hash": "bd612facf35d7db8",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-agosto-2024/": {
-  "hash": "ddc503f16f5f4621",
+  "hash": "05feb75235a28699",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-agosto-2025/": {
-  "hash": "f859091f7b12c872",
+  "hash": "2f10fbc2c83b27e9",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-agosto-2026/": {
-  "hash": "9eb8fc7a921820ff",
+  "hash": "3f7bd5108bb58887",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-dezembro-2015/": {
-  "hash": "f4828e2f5165478b",
+  "hash": "399f6b35b77c3b6f",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-dezembro-2016/": {
-  "hash": "fdd1ad5e63270167",
+  "hash": "e75625e507300009",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-dezembro-2017/": {
-  "hash": "81a4ad6b17493222",
+  "hash": "0fa8a49658cd2290",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-dezembro-2018/": {
-  "hash": "02cc88eb571489a8",
+  "hash": "508bc8e773dcc4ec",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-dezembro-2019/": {
-  "hash": "f19c048734d11a7d",
+  "hash": "b9a495d64b824948",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-dezembro-2020/": {
-  "hash": "f2bc0c3caa5d76e7",
+  "hash": "7707b2aca7d82ae1",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-dezembro-2021/": {
-  "hash": "305119beda8c34e5",
+  "hash": "154b18ef470e137c",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-dezembro-2022/": {
-  "hash": "e1b7075e517f9ba9",
+  "hash": "b729b1bbce632935",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-dezembro-2023/": {
-  "hash": "4aaa010dcd95a1c8",
+  "hash": "1f0b079b7f836f9a",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-dezembro-2024/": {
-  "hash": "53cb6adcfeaa9f7c",
+  "hash": "4a75121d36338f65",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-dezembro-2025/": {
-  "hash": "01f1deb366659f70",
+  "hash": "a588465797f1b411",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-fevereiro-2016/": {
-  "hash": "465c665c60610f90",
+  "hash": "e8154a2f9cfe72ab",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-fevereiro-2017/": {
-  "hash": "073f7fecba6d28e6",
+  "hash": "3083279dc41a77ed",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-fevereiro-2018/": {
-  "hash": "c220ccc4967ff664",
+  "hash": "6665dd77fabf623c",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-fevereiro-2019/": {
-  "hash": "71da52a1d3dacf40",
+  "hash": "b25aa7f14bc1fb1c",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-fevereiro-2020/": {
-  "hash": "dc602f3c3bfb07ea",
+  "hash": "1294871d20846f69",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-fevereiro-2021/": {
-  "hash": "60c2fce7c25cdceb",
+  "hash": "552bc9c4e2716a7d",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-fevereiro-2022/": {
-  "hash": "9e7c502722247feb",
+  "hash": "6047350ebb593b7b",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-fevereiro-2023/": {
-  "hash": "db9e7a92ef8c02d9",
+  "hash": "48f10bbcc0a3a3e0",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-fevereiro-2024/": {
-  "hash": "2bb00730fd782160",
+  "hash": "695e74f47425422d",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-fevereiro-2025/": {
-  "hash": "0340b95cba9b2e63",
+  "hash": "f25c1170fdb42830",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-fevereiro-2026/": {
-  "hash": "e3c1b44ccbcc1f75",
+  "hash": "c0b36618bf4e7c7d",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-janeiro-2016/": {
-  "hash": "ea6f46f20c7fc12f",
+  "hash": "dadd64143a8b6a81",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-janeiro-2017/": {
-  "hash": "ad1e2c5e0b96040d",
+  "hash": "a5b7b66b851b3a2d",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-janeiro-2018/": {
-  "hash": "5020dc77efb6010e",
+  "hash": "ccd26ef6863a05ce",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-janeiro-2019/": {
-  "hash": "65ecf225553c4c51",
+  "hash": "85e39e1404123fc2",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-janeiro-2020/": {
-  "hash": "daad35eba1fc594c",
+  "hash": "8ea7e3f19e00be7d",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-janeiro-2021/": {
-  "hash": "fcc612ccbe113b3f",
+  "hash": "a56907f969140fdb",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-janeiro-2022/": {
-  "hash": "b6e6bbcfa44fd075",
+  "hash": "13041b36e977d692",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-janeiro-2023/": {
-  "hash": "246d685adeb72b08",
+  "hash": "f633ab3b92431993",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-janeiro-2024/": {
-  "hash": "fda4a80d16b15e2b",
+  "hash": "38435a521c766e8f",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-janeiro-2025/": {
-  "hash": "db4d96b301df5df1",
+  "hash": "6a8d329fa24ff251",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-janeiro-2026/": {
-  "hash": "e1877d1f2e614fa6",
+  "hash": "e126fc67527267fb",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-julho-2016/": {
-  "hash": "18cabe83278b9753",
+  "hash": "eb7045430bce6f7e",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-julho-2017/": {
-  "hash": "1f08f219aaa44023",
+  "hash": "e96cdf9e0e3c57fd",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-julho-2018/": {
-  "hash": "bfb3355aac7b585e",
+  "hash": "226bcce769e90ddf",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-julho-2019/": {
-  "hash": "f0af9ba7efc80924",
+  "hash": "c4704511373fceb3",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-julho-2020/": {
-  "hash": "35398cb22e3bb574",
+  "hash": "7ae758211d3d0653",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-julho-2021/": {
-  "hash": "360eb9fc8b8ba324",
+  "hash": "22097e8e0d095f1f",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-julho-2022/": {
-  "hash": "0be65da685892908",
+  "hash": "7270fe6132257953",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-julho-2023/": {
-  "hash": "3a05aa818733fb9d",
+  "hash": "c4d3b5ac41069630",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-julho-2024/": {
-  "hash": "eb75bffe1e6ed1f8",
+  "hash": "678611bafc92e666",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-julho-2025/": {
-  "hash": "5f1d17448fd25ad1",
+  "hash": "28b100a1d9d1c981",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-julho-2026/": {
-  "hash": "9aef4ca6aaf7b305",
+  "hash": "1d75b169f6b343e7",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-junho-2016/": {
-  "hash": "74a59c4ca4ef83c7",
+  "hash": "bd1ba562797e7c8a",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-junho-2017/": {
-  "hash": "aab969d42335343f",
+  "hash": "08810411acf745a8",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-junho-2018/": {
-  "hash": "f20045a9db8ca4b8",
+  "hash": "3aa6a68b8df154e0",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-junho-2019/": {
-  "hash": "b80a4d91bbf82eb5",
+  "hash": "446ebcf5f4bf8189",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-junho-2020/": {
-  "hash": "e2ce9745730aac86",
+  "hash": "5e0c8980ccd6a9dd",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-junho-2021/": {
-  "hash": "cfae807ef0a885e0",
+  "hash": "3b4642d72786c8ce",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-junho-2022/": {
-  "hash": "b21f73c36a208fb3",
+  "hash": "8800061b1db44a54",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-junho-2023/": {
-  "hash": "2d5d271586db30b1",
+  "hash": "042923b4b030e994",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-junho-2024/": {
-  "hash": "96ff0ec9072218f5",
+  "hash": "d70d596149686a22",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-junho-2025/": {
-  "hash": "d5739a206933e9ec",
+  "hash": "aadd9847a9ecdc25",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-junho-2026/": {
-  "hash": "85ca46888049198b",
+  "hash": "ee9f1f1ab0362d02",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-maio-2016/": {
-  "hash": "0518cf93cb683b71",
+  "hash": "5edf0ba46f2369b8",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-maio-2017/": {
-  "hash": "40103b164abc7f47",
+  "hash": "24c79a5cbc1bd8cc",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-maio-2018/": {
-  "hash": "28ae185532c445c9",
+  "hash": "d2182c0166368c85",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-maio-2019/": {
-  "hash": "2be31fc514bd5065",
+  "hash": "9b1a8d3c5426bf57",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-maio-2020/": {
-  "hash": "9bd7356abec014fa",
+  "hash": "b1ab6bd259f6b508",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-maio-2021/": {
-  "hash": "d3811de91e2f5c9f",
+  "hash": "e2c0ad62caf9d6b0",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-maio-2022/": {
-  "hash": "a6d07b157c59035d",
+  "hash": "a647a4d4ee078dda",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-maio-2023/": {
-  "hash": "f15696ff2d5a7ee0",
+  "hash": "35da481929912d57",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-maio-2024/": {
-  "hash": "00e5a1c584faddb9",
+  "hash": "75c4a66417e6b8d7",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-maio-2025/": {
-  "hash": "a04e6c723d9eebe4",
+  "hash": "0cbc185b36c11733",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-maio-2026/": {
-  "hash": "4e565287bdeaa1c0",
+  "hash": "95911b19f6ef8811",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-março-2016/": {
-  "hash": "70160466591f1a03",
+  "hash": "52548a6b62ce2b32",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-março-2017/": {
-  "hash": "b3867e9f0487945a",
+  "hash": "0829fe7f0f79f056",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-março-2018/": {
-  "hash": "efd17d5a52ab204e",
+  "hash": "4990023fee9d8791",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-março-2019/": {
-  "hash": "1e6c85067729c2a1",
+  "hash": "978412d78b8e66fc",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-março-2020/": {
-  "hash": "7595216047e82ef0",
+  "hash": "636042e30e25b6c3",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-março-2021/": {
-  "hash": "c6d4eaa8da1f7b68",
+  "hash": "5e8a23054196e7e2",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-março-2022/": {
-  "hash": "809f3fc7bb50f620",
+  "hash": "7eb28477b1e940c2",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-março-2023/": {
-  "hash": "2fad6ef45e158ddc",
+  "hash": "46a17f0d97077f7c",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-março-2024/": {
-  "hash": "7351bd5bfc34f0e3",
+  "hash": "6d5953c3e806b83b",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-março-2025/": {
-  "hash": "43c5fbd02078563a",
+  "hash": "72ed261801763779",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-março-2026/": {
-  "hash": "855c595c371754d4",
+  "hash": "92f6f0d552ab247f",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-novembro-2016/": {
-  "hash": "309e2410d58eb6b5",
+  "hash": "28d0ebd6064fdd87",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-novembro-2017/": {
-  "hash": "916de64d85ede4eb",
+  "hash": "a924619aa52e7b3e",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-novembro-2018/": {
-  "hash": "7e0da632305367cb",
+  "hash": "4db26e0b05f7160c",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-novembro-2019/": {
-  "hash": "69b50a07d7c3c041",
+  "hash": "134382704814ad2e",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-novembro-2020/": {
-  "hash": "562b539c8d038c0b",
+  "hash": "74bd00b8ffec1911",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-novembro-2021/": {
-  "hash": "2fde762f22f9ccec",
+  "hash": "5bbd482942758e18",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-novembro-2022/": {
-  "hash": "3ebad32784b4296a",
+  "hash": "80cdfb8c5fd41e89",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-novembro-2023/": {
-  "hash": "ad62075d75e638fe",
+  "hash": "0d499d1b60b2d34f",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-novembro-2024/": {
-  "hash": "cac1f8002d8fa529",
+  "hash": "9446a532605ad971",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-novembro-2025/": {
-  "hash": "c735c00e82bd3ddd",
+  "hash": "23df037238cc7639",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-outubro-2016/": {
-  "hash": "ab99bdaeb8af3703",
+  "hash": "ee00cb67b6686f2d",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-outubro-2017/": {
-  "hash": "9f5aa948f4018c1b",
+  "hash": "ac4039f0adc0e978",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-outubro-2018/": {
-  "hash": "9a77ad5876728460",
+  "hash": "839c7c58c61636f7",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-outubro-2019/": {
-  "hash": "006f67a0cba093e5",
+  "hash": "f247ca8f1b7224a9",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-outubro-2020/": {
-  "hash": "9aa67b8c5d06ee37",
+  "hash": "968a2036d00447fe",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-outubro-2021/": {
-  "hash": "c5658a828b6fa24f",
+  "hash": "7674cf4ec4a7a652",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-outubro-2022/": {
-  "hash": "1bef3875ed6f184a",
+  "hash": "da25778a06264615",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-outubro-2023/": {
-  "hash": "736d15d8e9a03245",
+  "hash": "c0a7be173f9eebf2",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-outubro-2024/": {
-  "hash": "c02b435b0e333bd4",
+  "hash": "8436734ea1f14bf5",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-outubro-2025/": {
-  "hash": "753d7d38d63a4dfb",
+  "hash": "228655b5bcf130d2",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-outubro-2026/": {
-  "hash": "40fed1d5db04dbc2",
+  "hash": "fb45783a14da36d3",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-setembro-2016/": {
-  "hash": "510e991477d3eaad",
+  "hash": "db96d8cc05e1d072",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-setembro-2017/": {
-  "hash": "ae9d2d6daf3078f0",
+  "hash": "fc770527efbbf229",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-setembro-2018/": {
-  "hash": "95106b684ca9ef18",
+  "hash": "487f4503c5b565ed",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-setembro-2019/": {
-  "hash": "ba6f17cd1407b77d",
+  "hash": "71679831b57004bf",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-setembro-2020/": {
-  "hash": "a9f9f8833d38b79f",
+  "hash": "2616ed0717c2df6b",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-setembro-2021/": {
-  "hash": "25322ebf33789a66",
+  "hash": "8cfdc2965d336a59",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-setembro-2022/": {
-  "hash": "94f4372d7eef5c10",
+  "hash": "5cc91125a6491b46",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-setembro-2023/": {
-  "hash": "5cc5f8182f62dd76",
+  "hash": "696d2cdc712fabcd",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-setembro-2024/": {
-  "hash": "0e06ddfedb88ee4b",
+  "hash": "a87b1b5fb910376a",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-setembro-2025/": {
-  "hash": "d99701d80a836130",
+  "hash": "560df01bdf8bfec3",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpm-setembro-2026/": {
-  "hash": "3eb8b8545f1fd2f5",
+  "hash": "b4f15797a19d6002",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-abril-2016/": {
-  "hash": "95e36e5a03f3cf56",
+  "hash": "ad19cc77af51b55f",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-abril-2017/": {
-  "hash": "a4d6c0865f2ce5dd",
+  "hash": "6715aa655827d841",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-abril-2018/": {
-  "hash": "69da0a0fc6febb75",
+  "hash": "70b5564808963c36",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-abril-2019/": {
-  "hash": "8c34ee725f5173e8",
+  "hash": "9527134a6b0e7f74",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-abril-2020/": {
-  "hash": "8d69e65c577bac63",
+  "hash": "2d6192aecfa0e61a",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-abril-2021/": {
-  "hash": "1684bd412d95e3d1",
+  "hash": "bcd0e213e8e08894",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-abril-2022/": {
-  "hash": "f67847ff266d8e98",
+  "hash": "9057659b5da95222",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-abril-2023/": {
-  "hash": "57d88899044e8557",
+  "hash": "4abbdb59cb90b49c",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-abril-2024/": {
-  "hash": "7d0d5d6781749c15",
+  "hash": "2c2414ed2efa5d94",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-abril-2025/": {
-  "hash": "13ee873779cca345",
+  "hash": "0ce4549e6801e974",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-abril-2026/": {
-  "hash": "0434013200ae3039",
+  "hash": "f4b2152eaa89819b",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-agosto-2016/": {
-  "hash": "a35f4867f8dbf3ae",
+  "hash": "82ca6de047573157",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-agosto-2017/": {
-  "hash": "353f3ba0098620f1",
+  "hash": "4bc7a18ada120643",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-agosto-2018/": {
-  "hash": "9c7c5f9a11025262",
+  "hash": "6432fc92629809fe",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-agosto-2019/": {
-  "hash": "7f20b83857ea3380",
+  "hash": "768c1ae1c24fa21c",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-agosto-2020/": {
-  "hash": "2d8708a81cba0405",
+  "hash": "3fed64872bb5ad0f",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-agosto-2021/": {
-  "hash": "cc655bf4e9eb4c44",
+  "hash": "50b072f5f4755be2",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-agosto-2022/": {
-  "hash": "e6b8eb0c4eb4884e",
+  "hash": "0a289e4188a1e351",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-agosto-2023/": {
-  "hash": "b966c38b118f99af",
+  "hash": "340b9bb4c7cc9ebb",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-agosto-2024/": {
-  "hash": "c318de4756c4da55",
+  "hash": "ad1b8b2ceb4d50b4",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-agosto-2025/": {
-  "hash": "5c6701f73b0fda65",
+  "hash": "3753f5ef207186c0",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-agosto-2026/": {
-  "hash": "ca53734a62d99837",
+  "hash": "068b1f901f26383c",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-dezembro-2015/": {
-  "hash": "1944c82bcf162f0f",
+  "hash": "970722108fff87a8",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-dezembro-2016/": {
-  "hash": "68e4ac0bd44539b2",
+  "hash": "0f9fc05dc0f6d438",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-dezembro-2017/": {
-  "hash": "ffb4aaf44bbaa23f",
+  "hash": "28a39a59a14b5269",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-dezembro-2018/": {
-  "hash": "919b8f0fcbe4d427",
+  "hash": "54fd69efd1872657",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-dezembro-2019/": {
-  "hash": "ae723df0efa42266",
+  "hash": "d04d57ce6c25ce53",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-dezembro-2020/": {
-  "hash": "5c756f7b9fcb0a9a",
+  "hash": "e6216b5ced3657ed",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-dezembro-2021/": {
-  "hash": "b8123fbbc3d825eb",
+  "hash": "8d3c9213ef9a8c9a",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-dezembro-2022/": {
-  "hash": "2153621f96e8e11e",
+  "hash": "f4422165e27cda9d",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-dezembro-2023/": {
-  "hash": "07540ab6937ccfea",
+  "hash": "94ce6cc3d79118f9",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-dezembro-2024/": {
-  "hash": "d24baa02404eef85",
+  "hash": "f16f2e585411631c",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-dezembro-2025/": {
-  "hash": "86d5cea8ab39e2be",
+  "hash": "6c1fed56ecb74472",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-fevereiro-2016/": {
-  "hash": "2a71c9b8cb5c7828",
+  "hash": "6eccb8e1b82cd628",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-fevereiro-2017/": {
-  "hash": "12999711229451ac",
+  "hash": "66d6ca6e595f0971",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-fevereiro-2018/": {
-  "hash": "41d9056b0f3ea138",
+  "hash": "4b2b538ada24c7d5",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-fevereiro-2019/": {
-  "hash": "a8b7f4a68056bd01",
+  "hash": "8317955b957341c1",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-fevereiro-2020/": {
-  "hash": "b8e28f985b1ae98f",
+  "hash": "1787df430a377a07",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-fevereiro-2021/": {
-  "hash": "a7190d07fdce5e5b",
+  "hash": "c77b56601ef7d08a",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-fevereiro-2022/": {
-  "hash": "764126f1834e2bdd",
+  "hash": "7c6cb007c79e499a",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-fevereiro-2023/": {
-  "hash": "b8a84ece1c5f8f22",
+  "hash": "95c8de770bfc4cd5",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-fevereiro-2024/": {
-  "hash": "2cc5d8ef52177660",
+  "hash": "21fd766a2b92ab75",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-fevereiro-2025/": {
-  "hash": "75081ac2bbe086fb",
+  "hash": "d52a347e5b74b9e5",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-fevereiro-2026/": {
-  "hash": "f1cfd0c8e82ffbd1",
+  "hash": "5304f360d8dd4102",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-janeiro-2016/": {
-  "hash": "d821e604668561c3",
+  "hash": "9f4e2cebf12aa900",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-janeiro-2017/": {
-  "hash": "8bf6762201b83870",
+  "hash": "6861c6dd45eb0058",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-janeiro-2018/": {
-  "hash": "34c368739518a64c",
+  "hash": "18d6e9b094d5552e",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-janeiro-2019/": {
-  "hash": "ed31a2a103aca2ae",
+  "hash": "8106da5543adf01f",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-janeiro-2020/": {
-  "hash": "3c4b05f55f2518b9",
+  "hash": "12fc17f05b0f10a6",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-janeiro-2021/": {
-  "hash": "b472ff28e56c926e",
+  "hash": "af9eb2ead128ef3c",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-janeiro-2022/": {
-  "hash": "523e102535fac8a2",
+  "hash": "1e42dff75f7b19b6",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-janeiro-2023/": {
-  "hash": "7293dcd9462da69c",
+  "hash": "d8302d45fa46cae6",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-janeiro-2024/": {
-  "hash": "a77fa9427c709669",
+  "hash": "53d684fd2f58ff69",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-janeiro-2025/": {
-  "hash": "e70919c5f8c9fb59",
+  "hash": "7c75e15029fd54ca",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-janeiro-2026/": {
-  "hash": "4fe0ec571d0fa4f8",
+  "hash": "e85bed82a83bfeba",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-julho-2016/": {
-  "hash": "c2dbe1e5a5d142c8",
+  "hash": "1755a5690c4a1f15",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-julho-2017/": {
-  "hash": "6445f56ed744bb03",
+  "hash": "77c16d64357a251f",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-julho-2018/": {
-  "hash": "86b95a808cc75cfe",
+  "hash": "8245f0f70d30f00d",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-julho-2019/": {
-  "hash": "85f5fd1fb36d3a04",
+  "hash": "21a263e191aae782",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-julho-2020/": {
-  "hash": "c6bbea9f5d51a4e4",
+  "hash": "6e23c081de48f86b",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-julho-2021/": {
-  "hash": "2ff5d00e4e45b39c",
+  "hash": "2fd5736fdbcd8bc6",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-julho-2022/": {
-  "hash": "06ffbbeb193c3856",
+  "hash": "c7184186de62c33e",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-julho-2023/": {
-  "hash": "9e6be563e71c4960",
+  "hash": "241b62a600522e45",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-julho-2024/": {
-  "hash": "24ad74c02ce271de",
+  "hash": "a29395675f53003e",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-julho-2025/": {
-  "hash": "75656f10cb659ed7",
+  "hash": "9c873399093e4638",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-julho-2026/": {
-  "hash": "97a4b68f3e06a1fe",
+  "hash": "240d06b5fdb285f0",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-junho-2016/": {
-  "hash": "b84a040f5a82d223",
+  "hash": "93e6bb0f221a6f96",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-junho-2017/": {
-  "hash": "7d974929c78dfc65",
+  "hash": "59dca7f8a289c02f",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-junho-2018/": {
-  "hash": "e1b8e7abd33cb161",
+  "hash": "8e00f1292709881e",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-junho-2019/": {
-  "hash": "3bb6c5fb7f97df7a",
+  "hash": "dc8f60816c0aeee4",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-junho-2020/": {
-  "hash": "fbeec9cfeb406f6f",
+  "hash": "54da5407b109d12b",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-junho-2021/": {
-  "hash": "17a66733cee329ec",
+  "hash": "23203b68a6280053",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-junho-2022/": {
-  "hash": "437f7678c57ac822",
+  "hash": "af0938f4e1ebc4dc",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-junho-2023/": {
-  "hash": "d943b37ba5df9ebc",
+  "hash": "1611daca00a44dc2",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-junho-2024/": {
-  "hash": "4141aad8ded8892a",
+  "hash": "139fbdf7b9475186",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-junho-2025/": {
-  "hash": "d3d2278aadfd07d3",
+  "hash": "d94034d1160d7367",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-junho-2026/": {
-  "hash": "be4b073867ad009d",
+  "hash": "a7d006321b93cad6",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-maio-2016/": {
-  "hash": "26c29fee99cb20de",
+  "hash": "c8b7b5bda1f4e4ea",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-maio-2017/": {
-  "hash": "86bd5e8bb57b0d1d",
+  "hash": "7169e7b222e7995a",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-maio-2018/": {
-  "hash": "4efebfe7666d1b3d",
+  "hash": "7a1bbd9ac204d0fd",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-maio-2019/": {
-  "hash": "a76c429c436fd27a",
+  "hash": "64901e9ac8f59865",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-maio-2020/": {
-  "hash": "d3d691c71f3f0902",
+  "hash": "339bb518ad119eca",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-maio-2021/": {
-  "hash": "55e82c3314cbe69a",
+  "hash": "0b800067867359fd",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-maio-2022/": {
-  "hash": "1f6ca6fd02f0d5cb",
+  "hash": "819bce43c2b735bc",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-maio-2023/": {
-  "hash": "30726390ce565ae3",
+  "hash": "fbe20375baaa88ed",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-maio-2024/": {
-  "hash": "f5a3bb1434f0d90a",
+  "hash": "dfedda06cfd89b7d",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-maio-2025/": {
-  "hash": "44ad8c49bade002a",
+  "hash": "492fa6bdc04beb39",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-maio-2026/": {
-  "hash": "6ce7ff8f1cf87f96",
+  "hash": "e83fd2b79be2f5c7",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-março-2016/": {
-  "hash": "75355fe64e2ccc8b",
+  "hash": "f5b3676a80523a45",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-março-2017/": {
-  "hash": "eb763d1ee4719173",
+  "hash": "6ff51863be3a2e6a",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-março-2018/": {
-  "hash": "28faabbfdbddae87",
+  "hash": "368e51cb5a99c1a1",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-março-2019/": {
-  "hash": "6a17283a1ceaa833",
+  "hash": "2929fc9a32c248de",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-março-2020/": {
-  "hash": "e38b55a3604c6fb4",
+  "hash": "a9978799dc4087c7",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-março-2021/": {
-  "hash": "943badbb6cb75bd3",
+  "hash": "24d5c797ee5226a1",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-março-2022/": {
-  "hash": "1098690b248ed252",
+  "hash": "482a9073e6699817",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-março-2023/": {
-  "hash": "19c7159d936957f8",
+  "hash": "4f489b7c7392df25",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-março-2024/": {
-  "hash": "c4584f7d34b9d0e3",
+  "hash": "f48330b496815358",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-março-2025/": {
-  "hash": "215f3ac47d698f2c",
+  "hash": "d2191b1237416d49",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-março-2026/": {
-  "hash": "5f992fa1ed980e53",
+  "hash": "d675390a49e55c90",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-novembro-2016/": {
-  "hash": "16c2a231876f0211",
+  "hash": "8b19b15e5ccde8fd",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-novembro-2017/": {
-  "hash": "27f97f8c6110738d",
+  "hash": "1fdf844517435be6",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-novembro-2018/": {
-  "hash": "66cd6ae83383e728",
+  "hash": "dd9a2c4ef6c66341",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-novembro-2019/": {
-  "hash": "536d03ad8a4d2990",
+  "hash": "ad9935a1a255d226",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-novembro-2020/": {
-  "hash": "87f7f4f641aca578",
+  "hash": "69773ae008c8b23b",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-novembro-2021/": {
-  "hash": "85b728e23e7a042a",
+  "hash": "14059f506cfd7b93",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-novembro-2022/": {
-  "hash": "47f0db53e3fbdeee",
+  "hash": "6a5581a493eb875b",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-novembro-2023/": {
-  "hash": "355a10d18803ecef",
+  "hash": "2ec7e7283a273c77",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-novembro-2024/": {
-  "hash": "bcd01e52f4933cec",
+  "hash": "9806cbf2ea64b38f",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-novembro-2025/": {
-  "hash": "a73410f48ff22003",
+  "hash": "a53a332c9f6f9bae",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-outubro-2016/": {
-  "hash": "04c7595144cf4a4f",
+  "hash": "b7339ce3a78d8a68",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-outubro-2017/": {
-  "hash": "297ef7b2f385fc49",
+  "hash": "0505071ed3f2ebee",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-outubro-2018/": {
-  "hash": "aa3dd22a724efe1d",
+  "hash": "5102e6160b813584",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-outubro-2019/": {
-  "hash": "9f5384b5af827577",
+  "hash": "9a2ee1defecbf810",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-outubro-2020/": {
-  "hash": "d4bd46dbfb2d39f4",
+  "hash": "d25fcfa94f2b3b9e",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-outubro-2021/": {
-  "hash": "4eb2be66ca815a16",
+  "hash": "15577fb92c553558",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-outubro-2022/": {
-  "hash": "e35c3c13a6d097f0",
+  "hash": "8aa99b7dab4bbd50",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-outubro-2023/": {
-  "hash": "ddd6bc654c5ed916",
+  "hash": "20cdacf54a60d8d0",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-outubro-2024/": {
-  "hash": "76ab52da0c8cbcd8",
+  "hash": "c9fb4632a5bd015f",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-outubro-2025/": {
-  "hash": "1cffbb836e3444a6",
+  "hash": "0a290ded852c557e",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-setembro-2016/": {
-  "hash": "823952fdb552f876",
+  "hash": "adeea1ad7e38da2a",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-setembro-2017/": {
-  "hash": "3187d90e7bb18f57",
+  "hash": "464925e527e464fb",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-setembro-2018/": {
-  "hash": "2912cbbd4c5bf985",
+  "hash": "3fd553f25a4500ea",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-setembro-2019/": {
-  "hash": "d9b666ca02135727",
+  "hash": "e2856ce0501e6684",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-setembro-2020/": {
-  "hash": "1f4b1877aa69904d",
+  "hash": "cf33e39f8bbe2e83",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-setembro-2021/": {
-  "hash": "f2794bf2cdb6a4f1",
+  "hash": "b33fb12f7d1dbddf",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-setembro-2022/": {
-  "hash": "87623027952d54ef",
+  "hash": "51e1972dae0f5ca6",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-setembro-2023/": {
-  "hash": "4c1ac75822215a79",
+  "hash": "749fb47f62aa1011",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-setembro-2024/": {
-  "hash": "9ed2a9682446af9b",
+  "hash": "6975f09ee8afdfbb",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-setembro-2025/": {
-  "hash": "8da8c65fbc00156f",
+  "hash": "98a1dd1bf9477bdb",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/inpc-setembro-2026/": {
-  "hash": "5a1154ab82ffb450",
+  "hash": "d0b0d27eada97e50",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-abril-2016/": {
-  "hash": "23ad3d1c306dea20",
+  "hash": "472626b7287cbd76",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-abril-2017/": {
-  "hash": "8804137ce4eea5ed",
+  "hash": "839ab66a84942ee3",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-abril-2018/": {
-  "hash": "662ec1fbd179718d",
+  "hash": "9fa59b384775547a",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-abril-2019/": {
-  "hash": "964c01d2be180631",
+  "hash": "70dee9362096e124",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-abril-2020/": {
-  "hash": "8f289eb9933e98f5",
+  "hash": "c9cd9a3371709c9e",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-abril-2021/": {
-  "hash": "8b05bba77559e355",
+  "hash": "efc732a748eb6588",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-abril-2022/": {
-  "hash": "ad747f45b6ba9a9b",
+  "hash": "5676b744ff7c308f",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-abril-2023/": {
-  "hash": "210e426033182d07",
+  "hash": "71e4b5eb07e09ab4",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-abril-2024/": {
-  "hash": "f358424d625ac9f0",
+  "hash": "869b09adbdd24e61",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-abril-2025/": {
-  "hash": "dce87617b91dd9e3",
+  "hash": "dca35d2dfb1a3837",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-abril-2026/": {
-  "hash": "4fb590ba8e2cb928",
+  "hash": "f34999cccfbdf827",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-agosto-2016/": {
-  "hash": "5611c62281895603",
+  "hash": "294dc6686de9574b",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-agosto-2017/": {
-  "hash": "541a34177e7201c8",
+  "hash": "3e76cfdb4ee8838f",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-agosto-2018/": {
-  "hash": "fbed9e8b13a0efab",
+  "hash": "cf40926572aba597",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-agosto-2019/": {
-  "hash": "cf4361085c5b96a7",
+  "hash": "32510c582e383236",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-agosto-2020/": {
-  "hash": "eb98ad2ce2e5ab84",
+  "hash": "61cfdeb0a7662fc4",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-agosto-2021/": {
-  "hash": "38f86e6cf1e75e9f",
+  "hash": "48615a156203c032",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-agosto-2022/": {
-  "hash": "27a48f9f50e5cfc5",
+  "hash": "c5437000efe0a391",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-agosto-2023/": {
-  "hash": "b993e2832261c2ab",
+  "hash": "7a8f531b78c656c4",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-agosto-2024/": {
-  "hash": "f22a036bf8985f65",
+  "hash": "0edca694b47436bd",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-agosto-2025/": {
-  "hash": "a904aa0237935eef",
+  "hash": "697096b9e2214ee3",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-agosto-2026/": {
-  "hash": "1b76b859ac7629d3",
+  "hash": "1b62c3249ec8e2d0",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-dezembro-2015/": {
-  "hash": "95b77cfffae20be3",
+  "hash": "2721eb1708b2b2aa",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-dezembro-2016/": {
-  "hash": "0dbf0ed44418531e",
+  "hash": "445b64d344ca4b85",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-dezembro-2017/": {
-  "hash": "75a24d897490494f",
+  "hash": "d3d62477522f093a",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-dezembro-2018/": {
-  "hash": "d891069a96ce9964",
+  "hash": "9251e89e670c00c0",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-dezembro-2019/": {
-  "hash": "ea6672590df33251",
+  "hash": "49cfd59195ce455d",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-dezembro-2020/": {
-  "hash": "72f0c09d533f32db",
+  "hash": "19693ff8f75f6f4a",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-dezembro-2021/": {
-  "hash": "86a04d62df142d68",
+  "hash": "441737bbbafbfdea",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-dezembro-2022/": {
-  "hash": "fda040dc495810f9",
+  "hash": "3d5d43043c329bbe",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-dezembro-2023/": {
-  "hash": "2b1f26f0edff41f0",
+  "hash": "48c59015972d34f9",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-dezembro-2024/": {
-  "hash": "758f7d5abfa8c18c",
+  "hash": "02a72e0e1400a097",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-dezembro-2025/": {
-  "hash": "5d2b537cb9c0780d",
+  "hash": "ef715894c864d6bc",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-fevereiro-2016/": {
-  "hash": "4dd9832b40df2ab8",
+  "hash": "c7e445029801307d",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-fevereiro-2017/": {
-  "hash": "95cec30cb246bb3e",
+  "hash": "f52152dc11dbef8c",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-fevereiro-2018/": {
-  "hash": "8d9dc969930bda3e",
+  "hash": "5b86c45419603287",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-fevereiro-2019/": {
-  "hash": "97f5405b0821e661",
+  "hash": "0d551ad18f5bdc24",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-fevereiro-2020/": {
-  "hash": "bdafbd930fcd2bf2",
+  "hash": "ee4deb227dfbbc5f",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-fevereiro-2021/": {
-  "hash": "ea675b14250d4b61",
+  "hash": "7796f391774810c3",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-fevereiro-2022/": {
-  "hash": "898ca677b387c60e",
+  "hash": "f40648e63bf42159",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-fevereiro-2023/": {
-  "hash": "50ddb9e49f99ca8a",
+  "hash": "015ef53818e14d35",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-fevereiro-2024/": {
-  "hash": "4de14f18853c8938",
+  "hash": "648443b63b11e2ff",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-fevereiro-2025/": {
-  "hash": "5c5d0c6cdefc757b",
+  "hash": "d986ac80866678ff",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-fevereiro-2026/": {
-  "hash": "a6b08272c6eb755f",
+  "hash": "f916db0a0f5183ce",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-janeiro-2016/": {
-  "hash": "9f22e1539cab5119",
+  "hash": "db7a9fa642bf4c69",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-janeiro-2017/": {
-  "hash": "c85850bc44739238",
+  "hash": "939e93383b38e92c",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-janeiro-2018/": {
-  "hash": "88ba4ea6ffb92a43",
+  "hash": "4a0c7a5335ca4497",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-janeiro-2019/": {
-  "hash": "895fee2824377daf",
+  "hash": "0af928ed81c982f7",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-janeiro-2020/": {
-  "hash": "f5de930f61d9a238",
+  "hash": "b8b59e8af70026fc",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-janeiro-2021/": {
-  "hash": "6728156208cdbc28",
+  "hash": "6bc1fa176b09278c",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-janeiro-2022/": {
-  "hash": "de692f4b85063cb9",
+  "hash": "1e82317bedd9bff6",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-janeiro-2023/": {
-  "hash": "3344dda5357a9fc5",
+  "hash": "048bb1e77ec59927",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-janeiro-2024/": {
-  "hash": "0792cae6815ad403",
+  "hash": "96692cdcd198c192",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-janeiro-2025/": {
-  "hash": "b1e762e7922b46d0",
+  "hash": "959d775fc63b8a0e",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-janeiro-2026/": {
-  "hash": "0e408fb2c0e0443b",
+  "hash": "b7736f831d09a3d9",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-julho-2016/": {
-  "hash": "b90c5d0f9ac49ff4",
+  "hash": "f36d67512eb61694",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-julho-2017/": {
-  "hash": "398a695b3514274a",
+  "hash": "9ae36506170e5f49",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-julho-2018/": {
-  "hash": "a15a9e579a6c933d",
+  "hash": "f3f91dab8e5cd014",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-julho-2019/": {
-  "hash": "df65be7c50a5a974",
+  "hash": "363d10bc95525619",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-julho-2020/": {
-  "hash": "0eb0f1cdbdf69e2b",
+  "hash": "24c57b697ea13f07",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-julho-2021/": {
-  "hash": "01097475aaa87719",
+  "hash": "caa303d2db40eb74",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-julho-2022/": {
-  "hash": "e3109fbf1f583160",
+  "hash": "0880393d7649c704",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-julho-2023/": {
-  "hash": "142a1cee0af3ced1",
+  "hash": "3c45c418a60dd91d",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-julho-2024/": {
-  "hash": "89e4f10764ec853d",
+  "hash": "327680eec9b8c1f1",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-julho-2025/": {
-  "hash": "336d76a2bf000a6a",
+  "hash": "58483b7d0078f100",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-julho-2026/": {
-  "hash": "9e2936246913d177",
+  "hash": "376037aed5f374f9",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-junho-2016/": {
-  "hash": "55603ef771a9c126",
+  "hash": "16d6f0e63eb96234",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-junho-2017/": {
-  "hash": "e7946dae6c8c9697",
+  "hash": "1d3d303a9a55eae8",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-junho-2018/": {
-  "hash": "0f2a940ea9f3568f",
+  "hash": "93b0c797e7b1b155",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-junho-2019/": {
-  "hash": "9738330cbe4d6772",
+  "hash": "e64d26dc7423ed4d",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-junho-2020/": {
-  "hash": "3b2d9b15fdecb4fb",
+  "hash": "714445e85e058419",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-junho-2021/": {
-  "hash": "6f08ce98751e1769",
+  "hash": "cbcb563bad0627a4",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-junho-2022/": {
-  "hash": "9958c1e44d07d175",
+  "hash": "d099f26489570666",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-junho-2023/": {
-  "hash": "a1e0c13352831a61",
+  "hash": "86b30cfb845b84cf",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-junho-2024/": {
-  "hash": "1e4c7d90bb4bfaef",
+  "hash": "3371a349d0f7f326",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-junho-2025/": {
-  "hash": "e2a4c6bf5f5bf946",
+  "hash": "6db4b6fa9a63412c",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-junho-2026/": {
-  "hash": "9c002e6af2b155bd",
+  "hash": "b69211f38732aa47",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-maio-2016/": {
-  "hash": "aa0c76fb2cc0fcb2",
+  "hash": "ab6e85152481b03c",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-maio-2017/": {
-  "hash": "ca3fb7ae7cecfe9b",
+  "hash": "faa5d61b071a1be0",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-maio-2018/": {
-  "hash": "f946c30505bdc73a",
+  "hash": "8dcf38a9b39aa81d",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-maio-2019/": {
-  "hash": "76795ecc846dbb8d",
+  "hash": "80463112fbe30df0",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-maio-2020/": {
-  "hash": "c2884e6c77558091",
+  "hash": "91e38d53fcddd553",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-maio-2021/": {
-  "hash": "fe143000ea6c045c",
+  "hash": "e91fdf82584b8c18",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-maio-2022/": {
-  "hash": "916a503764273431",
+  "hash": "27fcb5b178df97d4",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-maio-2023/": {
-  "hash": "92ad6edd70205b77",
+  "hash": "21d088d334114d3f",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-maio-2024/": {
-  "hash": "9f7f22205beaf41a",
+  "hash": "ce398694b9c37c85",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-maio-2025/": {
-  "hash": "be316b39c53c9c79",
+  "hash": "71c3d722e1557557",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-maio-2026/": {
-  "hash": "e9f844f24377a145",
+  "hash": "3d6e6ff6d0bbe2ab",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-março-2016/": {
-  "hash": "8b55e443c1ddfed9",
+  "hash": "d8a4624e4887f084",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-março-2017/": {
-  "hash": "8b89207b21518d1a",
+  "hash": "bb6e0e64b5f630da",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-março-2018/": {
-  "hash": "29ef54d9ae2f7906",
+  "hash": "6026d4b37d81af11",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-março-2019/": {
-  "hash": "71e51ed03bc2811a",
+  "hash": "f42cda39f99bcb3d",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-março-2020/": {
-  "hash": "1bf43517c3abb23a",
+  "hash": "d293810548f43047",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-março-2021/": {
-  "hash": "af71574fcdc4aeeb",
+  "hash": "c51c977d871b4a98",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-março-2022/": {
-  "hash": "12535c2abcd3370e",
+  "hash": "6aea72811d7711be",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-março-2023/": {
-  "hash": "bd5b045d597db49f",
+  "hash": "a481b864ce24ee47",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-março-2024/": {
-  "hash": "6e4261a687c5dfc8",
+  "hash": "b64a2310336c30b8",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-março-2025/": {
-  "hash": "1982d75415c95f48",
+  "hash": "dc06bd653757e6a7",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-março-2026/": {
-  "hash": "3d1c296d810101ff",
+  "hash": "265bacf2dee20730",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-novembro-2016/": {
-  "hash": "80334e6795446315",
+  "hash": "eff50e80b690b456",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-novembro-2017/": {
-  "hash": "dfe9062b4286ff6d",
+  "hash": "e77db13f36119ed5",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-novembro-2018/": {
-  "hash": "9194dbe44b576123",
+  "hash": "1011abb38d530141",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-novembro-2019/": {
-  "hash": "0f0606187198e3b8",
+  "hash": "157a855b197105b3",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-novembro-2020/": {
-  "hash": "3ecab1a4d7d34fbd",
+  "hash": "7956f862ff16dc23",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-novembro-2021/": {
-  "hash": "f02b0ca60db98126",
+  "hash": "97eeb1f708554871",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-novembro-2022/": {
-  "hash": "9b6aa009abc9a1cb",
+  "hash": "ecb8ef3b75ef471f",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-novembro-2023/": {
-  "hash": "865ebeb9d4f2d977",
+  "hash": "2b500626f7245222",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-novembro-2024/": {
-  "hash": "6f5c2e2a5e9113c2",
+  "hash": "0b3dab6fb7bfbde7",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-novembro-2025/": {
-  "hash": "dc7fb25ddb612fa9",
+  "hash": "54608d2fe8f7f12c",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-outubro-2016/": {
-  "hash": "311c7cb03e26357d",
+  "hash": "f92111cc9c6d85fb",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-outubro-2017/": {
-  "hash": "11eb393e8ebae796",
+  "hash": "dfea6fd71e02110d",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-outubro-2018/": {
-  "hash": "f4313ca4d52bd5a4",
+  "hash": "1099f757a327d35c",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-outubro-2019/": {
-  "hash": "e5e0d3d083db41a7",
+  "hash": "152aff4d7d77f867",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-outubro-2020/": {
-  "hash": "65a959ca6f312caa",
+  "hash": "af7d9f21c507995e",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-outubro-2021/": {
-  "hash": "a48f99c875f4ed9a",
+  "hash": "e4ae70ad3ce846bb",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-outubro-2022/": {
-  "hash": "006cfb91af364cc0",
+  "hash": "bd16378c2a8abd80",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-outubro-2023/": {
-  "hash": "445d0451a2a7f441",
+  "hash": "05d947112ce9932c",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-outubro-2024/": {
-  "hash": "97833e2e7d893ec9",
+  "hash": "f101c4e404edcf17",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-outubro-2025/": {
-  "hash": "94d9431a8015e257",
+  "hash": "fd0e7c0c4c75d528",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-setembro-2016/": {
-  "hash": "c9335621e83aa59e",
+  "hash": "827c296ba62e4a5b",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-setembro-2017/": {
-  "hash": "ef47fb3ac733f2eb",
+  "hash": "07fcb3717e56977a",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-setembro-2018/": {
-  "hash": "2b6c8a457d1d339d",
+  "hash": "dca72e433db41dc8",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-setembro-2019/": {
-  "hash": "d9c2efcec5794200",
+  "hash": "7f568d5867c17ccd",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-setembro-2020/": {
-  "hash": "440003f470ce0fdc",
+  "hash": "e5fa1393ed1a7882",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-setembro-2021/": {
-  "hash": "b83f6565dfdd3a27",
+  "hash": "572d516ca57b1f7b",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-setembro-2022/": {
-  "hash": "ca1211e2aeae70bc",
+  "hash": "c6b3063f563b8e27",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-setembro-2023/": {
-  "hash": "ccef5dbea97623f8",
+  "hash": "c5cf303fcf82241d",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-setembro-2024/": {
-  "hash": "ce5ac0149cad1ed5",
+  "hash": "4b25364fef9d7f92",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-setembro-2025/": {
-  "hash": "93e9c49fb3ad7053",
+  "hash": "4ba41c42e7b9e672",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/reajuste/ipca-setembro-2026/": {
-  "hash": "c95d425d156f4c75",
+  "hash": "fb7c8d365c490115",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/rebobinar.html": {
-  "hash": "316264069294b314",
+  "hash": "80f2f9e4a9635d67",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/retransmissora.html": {
-  "hash": "c4ca2efdb350240e",
+  "hash": "04870ccc53aaff97",
+  "lastmod": "2026-11-11"
+ },
+ "https://observatoriodetaxas.tec.br/sobre/": {
+  "hash": "040c56a3145e5b8a",
   "lastmod": "2026-11-11"
  },
  "https://observatoriodetaxas.tec.br/var.html": {
-  "hash": "8b944b0f34273e34",
+  "hash": "100ab1053c42567e",
   "lastmod": "2026-11-11"
  }
 }

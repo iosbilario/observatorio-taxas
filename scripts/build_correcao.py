@@ -222,7 +222,7 @@ FOOTER = f"""
 </main>
 <footer>{LINHA_PROCEDENCIA} Série histórica versionada e auditável no
 <a href="https://github.com/iosbilario/observatorio-taxas">GitHub</a>. Conteúdo informativo; confira o índice e a
-convenção de correção previstos no seu contrato ou decisão. Projeto <a href="{BASE_URL}/">Observatório de Taxas</a>, LBP Tecnologia. <a href="{BASE_URL}/apoie/">Apoie o projeto ♡</a></footer>
+convenção de correção previstos no seu contrato ou decisão. Projeto <a href="{BASE_URL}/">Observatório de Taxas</a>, LBP Tecnologia. <a href="{BASE_URL}/apoie/">Apoie o projeto ♡</a> · <a href="{BASE_URL}/sobre/">Sobre e contato</a> · <a href="{BASE_URL}/privacidade/">Privacidade</a></footer>
 </div></body></html>
 """
 
@@ -268,6 +268,7 @@ function calc(){
 }
 document.addEventListener('DOMContentLoaded',function(){
   fillMeses();
+  document.getElementById('calc-form').addEventListener('submit',function(ev){ev.preventDefault();calc();});
   var is=document.getElementById('indice');
   if(is){is.addEventListener('change',fillMeses);}
 });
@@ -285,7 +286,7 @@ def calc_card(default_key: str, com_seletor: bool) -> str:
     return f"""
 <div class="card">
 <h2>Calcule a correção</h2>
-<form onsubmit="calc();return false">
+<form id="calc-form">
 {seletor}
 <label for="valor">Valor a corrigir (R$)</label>
 <input id="valor" type="text" inputmode="decimal" placeholder="1.000,00"/>
@@ -360,6 +361,7 @@ def build_index_page(key: str, info: dict, pts: list[dict]) -> tuple[str, str]:
 </div>
 {calc_card(key, com_seletor=False)}
 {faq_html(perguntas)}
+<!-- anuncio:correcao-indice:inicio --><!-- anuncio:correcao-indice:fim -->
 <div class="card"><h2>Precisa reajustar um contrato de 12 meses?</h2>
 <p class="mut">Para o reajuste anual fechado (aluguel, mensalidades), veja a
 <a href="{BASE_URL}/reajuste/">calculadora de reajuste</a>. Esta página corrige entre datas livres.</p></div>
@@ -411,6 +413,7 @@ percentual acumulado. Dados coletados automaticamente do SGS do Banco Central e
 {calc_card(next(iter(INDICES)), com_seletor=True)}
 <div class="card"><h2>Páginas por índice</h2>{cards}</div>
 {faq_html(perguntas)}
+<!-- anuncio:correcao-hub:inicio --><!-- anuncio:correcao-hub:fim -->
 <div class="card"><h2>Reajuste anual de contrato</h2>
 <p class="mut">Para o reajuste fechado de 12 meses (aluguel, mensalidades), use a
 <a href="{BASE_URL}/reajuste/">calculadora de reajuste</a>.</p></div>

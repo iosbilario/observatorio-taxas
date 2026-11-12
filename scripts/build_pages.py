@@ -269,7 +269,7 @@ FOOTER = f"""
 </main>
 <footer>{LINHA_PROCEDENCIA} Série histórica versionada e auditável no
 <a href="https://github.com/iosbilario/observatorio-taxas">GitHub</a>. Conteúdo informativo; confira o índice e a
-convenção de defasagem previstos no seu contrato. Projeto <a href="{BASE_URL}/">Observatório de Taxas</a>, LBP Tecnologia. <a href="{BASE_URL}/apoie/">Apoie o projeto ♡</a></footer>
+convenção de defasagem previstos no seu contrato. Projeto <a href="{BASE_URL}/">Observatório de Taxas</a>, LBP Tecnologia. <a href="{BASE_URL}/apoie/">Apoie o projeto ♡</a> · <a href="{BASE_URL}/sobre/">Sobre e contato</a> · <a href="{BASE_URL}/privacidade/">Privacidade</a></footer>
 </div></body></html>
 """
 
@@ -467,7 +467,7 @@ ao fator de reajuste <b>{fmt_num(fator, 6)}</b>.</p>
 
 <div class="card">
 <h2>Calcule o seu reajuste</h2>
-<form onsubmit="calc();return false">
+<form id="calc-form">
 <label for="valor">Valor atual do contrato (R$)</label>
 <input id="valor" type="number" inputmode="decimal" step="0.01" placeholder="2000,00"/>
 <button type="submit">Calcular reajuste</button>
@@ -507,6 +507,7 @@ ao fator de reajuste <b>{fmt_num(fator, 6)}</b>.</p>
 </section>
 </article>
 <!-- conteudo:fim -->
+<!-- anuncio:reajuste-mes:inicio --><!-- anuncio:reajuste-mes:fim -->
 {email_block()}
 <div class="card"><h2>Outros índices e meses</h2>{outros}</div>
 <script>
@@ -517,6 +518,8 @@ function calc(){{
   const n=v*FATOR;
   document.getElementById('res').innerHTML='Novo valor: <b>R$ '+n.toLocaleString('pt-BR',{{minimumFractionDigits:2,maximumFractionDigits:2}})+'</b> (aumento de R$ '+(n-v).toLocaleString('pt-BR',{{minimumFractionDigits:2,maximumFractionDigits:2}})+')';
 }}
+// Sem onsubmit inline: handler inline não passa numa CSP por hash (ver desenvolvimento/ADSENSE.md).
+document.getElementById('calc-form').addEventListener('submit',function(ev){{ev.preventDefault();calc();}});
 </script>
 """ + FOOTER
     return f"reajuste/{slug}/index.html", html
@@ -610,6 +613,7 @@ Use a <a href="{BASE_URL}/correcao/">correção monetária</a>.</p>
 {email_block()}
 {cards}
 {qual_indice}
+<!-- anuncio:reajuste-hub:inicio --><!-- anuncio:reajuste-hub:fim -->
 <script>
 "use strict";
 (function () {{
