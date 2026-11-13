@@ -252,21 +252,22 @@ reproduzir.
 
 | O que citar | Quando usar | Onde obter |
 | --- | --- | --- |
-| **DOI da versão** | Resultado que precisa ser reproduzido com o mesmo código | v1.6.0: [10.5281/zenodo.24151063](https://doi.org/10.5281/zenodo.24151063). Cada release nova recebe o seu |
+| **DOI da versão** | Resultado que precisa ser reproduzido com o mesmo código | v1.7.0: [10.5281/zenodo.24195784](https://doi.org/10.5281/zenodo.24195784). v1.6.0: [10.5281/zenodo.24151063](https://doi.org/10.5281/zenodo.24151063). Cada release nova recebe o seu |
 | **DOI conceito** | Referência ao projeto em geral, sempre na versão mais recente | [10.5281/zenodo.24151062](https://doi.org/10.5281/zenodo.24151062) |
 | **Commit Git** | Estado exato dos dados e das páginas num momento | `git log` ou o recibo do VAR, que traz o commit usado |
 | **Data de referência dos indicadores** | Qual mês ou dia de cada série foi usado | Página do indicador ou `data/<codigo>_history.json` |
 
 Cite também o produtor de cada índice usado (IBGE, FGV IBRE ou Banco Central).
 
-Como citar a versão v1.6.0 (APA, gerado pelo Zenodo):
+Como citar a versão v1.7.0 (APA, no formato do Zenodo):
 
-> Pereira, L. B. (2026). *Observatório de Taxas* (Version v1.6.0) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.24151063
+> Pereira, L. B. (2026). *Observatório de Taxas* (Version v1.7.0) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.24195784
 
 Para citar o projeto sem fixar a versão, use o DOI conceito
 [10.5281/zenodo.24151062](https://doi.org/10.5281/zenodo.24151062). O botão *Cite this repository* do GitHub usa o
 [`CITATION.cff`](CITATION.cff). Registro no Zenodo:
-[zenodo.org/records/24151063](https://zenodo.org/records/24151063).
+[zenodo.org/records/24195784](https://zenodo.org/records/24195784) (v1.7.0) e
+[zenodo.org/records/24151063](https://zenodo.org/records/24151063) (v1.6.0).
 
 O pacote arquivado no Zenodo contém só o software; os dados de cada versão
 ficam no histórico do Git. Como refazer os resultados de uma versão:
