@@ -59,8 +59,9 @@ mcp = MCPServer(name="observatorio-taxas", title="Observatório de Taxas", instr
 LEITURA = ToolAnnotations(readOnlyHint=True, destructiveHint=False, idempotentHint=True, openWorldHint=False)
 
 Indicador = Annotated[str, Field(min_length=1, max_length=40, description=(
-    "Código SGS (ex.: 432) ou apelido: selic, selic-efetiva, selic-mensal, tr, poupanca, dolar, dolar-compra, "
-    "euro, ibc-br. IPCA, INPC, IGP-M, IGP-DI e desocupação podem estar suspensos por licenciamento."))]
+    "Código SGS (ex.: 432) ou apelido: selic, selic-efetiva, selic-mensal, tr, tjlp, poupanca, poupanca-antiga, "
+    "dolar, dolar-compra, euro, ibc-br, credito, juros-credito, inadimplencia, reservas, divida-liquida. "
+    "CDI, IPCA, IPCA-15, INPC, IGP-M, IGP-DI e desocupação podem estar suspensos por licenciamento."))]
 Data = Annotated[str, Field(min_length=7, max_length=10, description="AAAA-MM-DD ou AAAA-MM")]
 
 
