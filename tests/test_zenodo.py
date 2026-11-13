@@ -85,7 +85,8 @@ if __name__ == "__main__":
 # Preparação da release v1.6.0 (validade, consistência, links, segurança)
 # --------------------------------------------------------------------------
 DOCS_MD = ["README.md", "organic-discovery/ZENODO.md", "organic-discovery/RELEASE-v1.6.0.md",
-           "organic-discovery/RELEASE-v1.7.0.md", "desenvolvimento/REPRODUCAO.md", "desenvolvimento/GUIA.md"]
+           "organic-discovery/RELEASE-v1.7.0.md", "organic-discovery/RELEASE-v1.8.0.md",
+           "desenvolvimento/REPRODUCAO.md", "desenvolvimento/GUIA.md", "desenvolvimento/METODOLOGIA-FERRAMENTAS.md"]
 
 
 def _arquivo() -> list[str]:
@@ -144,7 +145,7 @@ class TestReleasePreparada(unittest.TestCase):
 
     def test_comandos_de_reproducao_apontam_para_scripts_existentes(self):
         for rel in ("README.md", "desenvolvimento/REPRODUCAO.md", "organic-discovery/RELEASE-v1.6.0.md",
-                    "organic-discovery/RELEASE-v1.7.0.md"):
+                    "organic-discovery/RELEASE-v1.7.0.md", "organic-discovery/RELEASE-v1.8.0.md"):
             for script in re.findall(r"python\S* (scripts/[a-z_]+\.py)", (ROOT / rel).read_text(encoding="utf-8")):
                 self.assertTrue((ROOT / script).is_file(), f"{rel}: {script}")
             self.assertNotIn("backfill.py 5", (ROOT / rel).read_text(encoding="utf-8"))
@@ -181,6 +182,7 @@ class TestReleasePreparada(unittest.TestCase):
         for n in ("requirements.txt", "requirements.in", "config.yml", "CITATION.cff", "LICENSE",
                   "LICENSE-DADOS.md", "desenvolvimento/REPRODUCAO.md", "organic-discovery/ZENODO.md",
                   "organic-discovery/RELEASE-v1.6.0.md", "organic-discovery/RELEASE-v1.7.0.md",
+                  "organic-discovery/RELEASE-v1.8.0.md", "docs/calculos.js", "scripts/build_ferramentas.py",
                   "servidor_mcp/servidor.py", "servidor_mcp/requirements.txt", ".github/workflows/monitor.yml",
                   "scripts/fetch.py", "scripts/backfill.py", "scripts/build_pages.py", "scripts/build_correcao.py"):
             self.assertIn(n, nomes)
