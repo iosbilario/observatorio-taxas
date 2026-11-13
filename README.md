@@ -18,7 +18,7 @@
 </p>
 
 O Observatório de Taxas publica indicadores econômicos do Brasil (Selic,
-IPCA, INPC, IGP-M, câmbio, desemprego e outros) com o histórico completo de
+IPCA, INPC, IGP-M, CDI, câmbio, crédito, desemprego e outros, 25 séries) com o histórico completo de
 cada número. Um robô coleta as séries a cada 6 horas e grava cada mudança como
 um commit neste repositório. O site é estático, gratuito e sem cadastro.
 
@@ -73,9 +73,10 @@ fica em [`servidor_mcp/`](servidor_mcp/).
 - **Mesmos números do site.** O servidor lê os JSON publicados em `/data/` e
   importa as funções de cálculo do site (`fator_periodo` e `acumulado`). Não
   existe fórmula paralela.
-- **Séries expostas:** só as do Banco Central (ODbL 1.0). IPCA, INPC e
-  desocupação (IBGE), IGP-M e IGP-DI (FGV IBRE) ficam suspensos no MCP até a
-  confirmação dos termos de redistribuição com os produtores.
+- **Séries expostas:** só as do Banco Central (ODbL 1.0), incluindo crédito,
+  reservas internacionais, dívida líquida e TJLP. IPCA, IPCA-15, INPC e
+  desocupação (IBGE), IGP-M e IGP-DI (FGV IBRE) e CDI (B3) ficam suspensos no
+  MCP até a confirmação dos termos de redistribuição com os produtores.
 - **Privacidade:** recebe só os parâmetros da consulta, não grava parâmetros
   nem IP. Ver a [seção do MCP na política de privacidade](https://observatoriodetaxas.tec.br/privacidade/#mcp-t).
 - **Como conectar:** passo a passo para o ChatGPT (Plugins) e o Claude
@@ -139,13 +140,18 @@ URLs que mudaram, conferindo antes que o Pages já serve a versão nova
 | IPCA (mensal e 12 meses) | IBGE | 433, 13522 |
 | INPC | IBGE | 188 |
 | Taxa de desocupação (PNAD Contínua) | IBGE | 24369 |
+| IPCA-15 | IBGE | 7478 |
 | IGP-M, IGP-DI | FGV IBRE | 189, 190 |
+| CDI (anualizado e acumulado no mês) | B3 | 4389, 4391 |
 | Meta Selic, Selic anualizada, Selic acumulada no mês | Banco Central | 432, 1178, 4390 |
 | TR, poupança (depósitos até 03/05/2012) | Banco Central | 226, 25 |
 | Câmbio USD/BRL e EUR/BRL, IBC-Br | Banco Central | 1, 10813, 21619, 24363 |
+| Poupança (depósitos desde 04/05/2012), TJLP | Banco Central | 195, 256 |
+| Crédito: saldo, taxa média de juros, inadimplência | Banco Central | 20539, 20714, 21082 |
+| Reservas internacionais, dívida líquida do setor público | Banco Central | 13621, 4513 |
 
 O SGS do Banco Central distribui todas essas séries, mas o Banco Central não
-produz o IPCA, o INPC, o IGP-M nem o IGP-DI.
+produz o IPCA, o IPCA-15, o INPC, o IGP-M, o IGP-DI nem o CDI.
 
 **Acumulados.** O acumulado de um período é composto, não somado:
 

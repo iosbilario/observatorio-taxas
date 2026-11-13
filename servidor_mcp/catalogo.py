@@ -28,6 +28,7 @@ SGS_PORTAL = "https://www3.bcb.gov.br/sgspub/"
 BCB = {"sigla": "BCB", "nome": "Banco Central do Brasil", "url": "https://www.bcb.gov.br/"}
 IBGE = {"sigla": "IBGE", "nome": "Instituto Brasileiro de Geografia e Estatística",
         "url": "https://www.ibge.gov.br/"}
+B3 = {"sigla": "B3", "nome": "B3 S.A. — Brasil, Bolsa, Balcão", "url": "https://www.b3.com.br/"}
 FGV = {"sigla": "FGV IBRE", "nome": "Instituto Brasileiro de Economia da Fundação Getulio Vargas",
        "url": "https://portalibre.fgv.br/igp"}
 DISTRIBUIDOR = {"nome": "SGS — Sistema Gerenciador de Séries Temporais do Banco Central do Brasil",
@@ -49,7 +50,8 @@ LIC_RESTRITA = {"situacao": "suspensa",
 #   taxa_periodo     -> % no período que começa na data de referência
 #   cotacao          -> R$ por unidade de moeda estrangeira
 #   indice           -> número-índice
-#   taxa_nivel       -> % de uma população (nível)
+#   taxa_nivel       -> % de um total (nível): força de trabalho, carteira, PIB
+#   estoque          -> saldo em moeda (R$ ou US$ milhões) na data de referência
 SERIES: dict[int, dict] = {
     432: dict(nome="Meta Selic", unidade="% a.a.", periodicidade="diária (pontos nas datas publicadas pelo SGS)",
               natureza="taxa_anual", produtor=BCB, apelidos=["selic", "meta-selic", "selic-meta"], ancora="#selic"),
@@ -61,7 +63,16 @@ SERIES: dict[int, dict] = {
               natureza="taxa_periodo", produtor=BCB, apelidos=["tr", "taxa-referencial"]),
     25: dict(nome="Poupança (depósitos até 03/05/2012) — rentabilidade", unidade="% no período",
              periodicidade="diária (período iniciado na data)", natureza="taxa_periodo", produtor=BCB,
-             apelidos=["poupanca", "poupanca-antiga"]),
+             apelidos=["poupanca-antiga", "poupanca-ate-2012"]),
+    195: dict(nome="Poupança (depósitos a partir de 04/05/2012) — rentabilidade", unidade="% no período",
+              periodicidade="diária (período iniciado na data)", natureza="taxa_periodo", produtor=BCB,
+              apelidos=["poupanca", "poupanca-nova", "poupanca-atual"]),
+    4389: dict(nome="CDI anualizado (base 252)", unidade="% a.a.", periodicidade="diária (dias úteis)",
+               natureza="taxa_anual", produtor=B3, apelidos=["cdi", "cdi-anual", "di"]),
+    4391: dict(nome="CDI acumulado no mês", unidade="% no mês", periodicidade="mensal",
+               natureza="variacao_mensal", produtor=B3, apelidos=["cdi-mensal", "cdi-mes", "cdi-acumulado"]),
+    256: dict(nome="TJLP — Taxa de Juros de Longo Prazo", unidade="% a.a.", periodicidade="mensal (vigência definida pelo CMN)",
+              natureza="taxa_anual", produtor=BCB, apelidos=["tjlp"]),
     433: dict(nome="IPCA — variação mensal", unidade="% no mês", periodicidade="mensal",
               natureza="variacao_mensal", produtor=IBGE, apelidos=["ipca", "ipca-mensal"], chave_reajuste="ipca"),
     13522: dict(nome="IPCA — acumulado em 12 meses", unidade="% em 12 meses", periodicidade="mensal",
@@ -72,6 +83,8 @@ SERIES: dict[int, dict] = {
               natureza="variacao_mensal", produtor=FGV, apelidos=["igpm", "igp-m"], chave_reajuste="igpm"),
     190: dict(nome="IGP-DI — variação mensal", unidade="% no mês", periodicidade="mensal",
               natureza="variacao_mensal", produtor=FGV, apelidos=["igpdi", "igp-di"], chave_reajuste="igpdi"),
+    7478: dict(nome="IPCA-15 — variação mensal", unidade="% no mês", periodicidade="mensal",
+               natureza="variacao_mensal", produtor=IBGE, apelidos=["ipca-15", "ipca15"]),
     1: dict(nome="Dólar (USD/BRL) — venda", unidade="R$ por US$", periodicidade="diária (dias úteis)",
             natureza="cotacao", produtor=BCB, apelidos=["dolar", "usd", "dolar-venda"], ancora="#dolar"),
     10813: dict(nome="Dólar (USD/BRL) — compra", unidade="R$ por US$", periodicidade="diária (dias úteis)",
@@ -83,6 +96,16 @@ SERIES: dict[int, dict] = {
     24369: dict(nome="Taxa de desocupação (PNAD Contínua)", unidade="% da força de trabalho",
                 periodicidade="mensal (trimestre móvel)", natureza="taxa_nivel", produtor=IBGE,
                 apelidos=["desemprego", "desocupacao", "pnad"], ancora="#desemprego"),
+    20539: dict(nome="Saldo da carteira de crédito — total", unidade="R$ milhões", periodicidade="mensal",
+                natureza="estoque", produtor=BCB, apelidos=["credito", "saldo-credito", "carteira-credito"]),
+    20714: dict(nome="Taxa média de juros das operações de crédito — total", unidade="% a.a.", periodicidade="mensal",
+                natureza="taxa_anual", produtor=BCB, apelidos=["juros-credito", "taxa-media-credito"]),
+    21082: dict(nome="Inadimplência da carteira de crédito — total", unidade="% da carteira", periodicidade="mensal",
+                natureza="taxa_nivel", produtor=BCB, apelidos=["inadimplencia", "inadimplencia-credito"]),
+    13621: dict(nome="Reservas internacionais — conceito caixa", unidade="US$ milhões", periodicidade="diária (dias úteis)",
+                natureza="estoque", produtor=BCB, apelidos=["reservas", "reservas-internacionais"]),
+    4513: dict(nome="Dívida líquida do setor público", unidade="% do PIB", periodicidade="mensal",
+               natureza="taxa_nivel", produtor=BCB, apelidos=["divida-liquida", "dlsp", "divida-publica"]),
 }
 
 

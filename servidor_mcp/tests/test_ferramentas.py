@@ -56,6 +56,30 @@ class TestCatalogoEFontes(unittest.TestCase):
             self.assertEqual(cat.SERIES[cod]["produtor"]["sigla"], "FGV IBRE", cod)
         for cod in (432, 1178, 4390, 226, 25, 1, 10813, 21619, 24363):
             self.assertEqual(cat.SERIES[cod]["produtor"]["sigla"], "BCB", cod)
+        for cod in (195, 256, 20539, 20714, 21082, 13621, 4513):
+            self.assertEqual(cat.SERIES[cod]["produtor"]["sigla"], "BCB", cod)
+        self.assertEqual(cat.SERIES[7478]["produtor"]["sigla"], "IBGE")
+        for cod in (4389, 4391):
+            self.assertEqual(cat.SERIES[cod]["produtor"]["sigla"], "B3", cod)
+
+    def test_cdi_e_ipca15_suspensos_series_novas_do_bcb_expostas(self):
+        for cod in (4389, 4391, 7478):
+            self.assertFalse(cat.exposta(cod), cod)
+        for cod in (195, 256, 20539, 20714, 21082, 13621, 4513):
+            self.assertTrue(cat.exposta(cod), cod)
+
+    def test_series_novas_respondem_com_o_valor_publicado(self):
+        for apelido, cod in (("reservas", 13621), ("inadimplencia", 21082), ("divida-liquida", 4513),
+                             ("tjlp", 256), ("poupanca", 195), ("credito", 20539), ("juros-credito", 20714)):
+            bruto = json.loads((ROOT / "data" / f"{cod}_history.json").read_text(encoding="utf-8"))
+            r = f.get_latest_indicator(D, apelido)
+            self.assertEqual(r["codigo_sgs"], cod, apelido)
+            self.assertEqual(r["valor_publicado"], bruto[-1]["valor"], apelido)
+        self.assertEqual(cat.resolver("poupanca-antiga"), 25)
+
+    def test_cdi_suspenso_informa_o_motivo(self):
+        e = erro(f.get_latest_indicator, D, "cdi")
+        self.assertEqual(e["erro"], "indicador_suspenso")
 
     def test_licenciamento_padrao_suspende_ibge_e_fgv(self):
         for cod, m in cat.SERIES.items():

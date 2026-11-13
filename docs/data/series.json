@@ -45,6 +45,42 @@
     "valor_atual": "0.6699"
   },
   {
+    "codigo": 195,
+    "data_referencia": "12/11/2026",
+    "grupo": "Juros",
+    "nome": "Poupança (depósitos a partir de 04/05/2012) - rentabilidade (%)",
+    "pontos": 3988,
+    "ultima_mudanca": "10/11/2026",
+    "valor_atual": "0.6699"
+  },
+  {
+    "codigo": 4389,
+    "data_referencia": "12/11/2026",
+    "grupo": "Juros",
+    "nome": "CDI anualizado base 252 (% a.a.)",
+    "pontos": 2976,
+    "ultima_mudanca": "17/09/2026",
+    "valor_atual": "13.65"
+  },
+  {
+    "codigo": 4391,
+    "data_referencia": "01/11/2026",
+    "grupo": "Juros",
+    "nome": "CDI - acumulado no mês (%)",
+    "pontos": 143,
+    "ultima_mudanca": "01/11/2026",
+    "valor_atual": "0.41"
+  },
+  {
+    "codigo": 256,
+    "data_referencia": "01/11/2026",
+    "grupo": "Juros",
+    "nome": "TJLP - Taxa de Juros de Longo Prazo (% a.a.)",
+    "pontos": 143,
+    "ultima_mudanca": "01/10/2026",
+    "valor_atual": "9.29"
+  },
+  {
     "codigo": 433,
     "data_referencia": "01/10/2026",
     "grupo": "Inflação",
@@ -90,6 +126,15 @@
     "valor_atual": "1.15"
   },
   {
+    "codigo": 7478,
+    "data_referencia": "01/10/2026",
+    "grupo": "Inflação",
+    "nome": "IPCA-15 - variação mensal (%)",
+    "pontos": 142,
+    "ultima_mudanca": "01/10/2026",
+    "valor_atual": "0.32"
+  },
+  {
     "codigo": 1,
     "data_referencia": "12/11/2026",
     "grupo": "Câmbio",
@@ -133,5 +178,50 @@
     "pontos": 141,
     "ultima_mudanca": "01/09/2026",
     "valor_atual": "5.2"
+  },
+  {
+    "codigo": 20539,
+    "data_referencia": "01/09/2026",
+    "grupo": "Crédito",
+    "nome": "Saldo da carteira de crédito - total (R$ milhões)",
+    "pontos": 141,
+    "ultima_mudanca": "01/09/2026",
+    "valor_atual": "7444208"
+  },
+  {
+    "codigo": 20714,
+    "data_referencia": "01/09/2026",
+    "grupo": "Crédito",
+    "nome": "Taxa média de juros das operações de crédito - total (% a.a.)",
+    "pontos": 141,
+    "ultima_mudanca": "01/09/2026",
+    "valor_atual": "32.36"
+  },
+  {
+    "codigo": 21082,
+    "data_referencia": "01/09/2026",
+    "grupo": "Crédito",
+    "nome": "Inadimplência da carteira de crédito - total (%)",
+    "pontos": 141,
+    "ultima_mudanca": "01/09/2026",
+    "valor_atual": "4.98"
+  },
+  {
+    "codigo": 13621,
+    "data_referencia": "12/11/2026",
+    "grupo": "Setor externo e fiscal",
+    "nome": "Reservas internacionais - conceito caixa (US$ milhões)",
+    "pontos": 2976,
+    "ultima_mudanca": "12/11/2026",
+    "valor_atual": "364435"
+  },
+  {
+    "codigo": 4513,
+    "data_referencia": "01/09/2026",
+    "grupo": "Setor externo e fiscal",
+    "nome": "Dívida líquida do setor público (% do PIB)",
+    "pontos": 141,
+    "ultima_mudanca": "01/09/2026",
+    "valor_atual": "69.98"
   }
 ]

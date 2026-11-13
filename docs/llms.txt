@@ -17,7 +17,7 @@ Site 100% estático (GitHub Pages), gratuito e sem cadastro. Os dados são arqui
 
 Os JSONs são a fonte canônica; use-os em vez de raspar o HTML. Índices de inflação (IPCA, IGP-M, INPC, IGP-DI) trazem a variação mensal com data de referência no primeiro dia do mês; séries diárias (Selic, câmbio) trazem um ponto por dia útil. Acumulado em 12 meses usa composição (produto de 1 + i/100), não soma simples.
 
-Procedência: todos os números vêm da API do SGS do Banco Central, mas o SGS redistribui séries de outros órgãos. IPCA, INPC e a taxa de desocupação (PNAD Contínua) são produzidos pelo IBGE; IGP-M e IGP-DI, pela FGV IBRE; Selic, TR, poupança, câmbio e IBC-Br são do próprio Banco Central. Ao citar, atribua o índice ao órgão que o produz.
+Procedência: todos os números vêm da API do SGS do Banco Central, mas o SGS redistribui séries de outros órgãos. IPCA, IPCA-15, INPC e a taxa de desocupação (PNAD Contínua) são produzidos pelo IBGE; IGP-M e IGP-DI, pela FGV IBRE; o CDI, pela B3; Selic, TR, TJLP, poupança, câmbio, IBC-Br, crédito, reservas internacionais e dívida líquida são do próprio Banco Central. Ao citar, atribua o índice ao órgão que o produz.
 
 - [Manifesto de séries](https://observatoriodetaxas.tec.br/data/series.json): lista de objetos `{codigo, nome, grupo, valor_atual, data_referencia, ultima_mudanca, pontos}` — comece por aqui para descobrir códigos e valores atuais
 - [Instante da última coleta](https://observatoriodetaxas.tec.br/data/meta.json): horário de Brasília da coleta mais recente
@@ -33,6 +33,16 @@ Procedência: todos os números vêm da API do SGS do Banco Central, mas o SGS r
 - [Poupança, depósitos até 03/05/2012 (SGS 25)](https://observatoriodetaxas.tec.br/data/25_history.json): rentabilidade em % pela regra antiga
 - [Taxa de desocupação, PNAD Contínua (SGS 24369)](https://observatoriodetaxas.tec.br/data/24369_history.json): mensal
 - [IBC-Br, proxy mensal do PIB (SGS 24363)](https://observatoriodetaxas.tec.br/data/24363_history.json): mensal
+- [Poupança, depósitos a partir de 04/05/2012 (SGS 195)](https://observatoriodetaxas.tec.br/data/195_history.json): rentabilidade em % pela regra atual, diária
+- [CDI anualizado base 252, produzido pela B3 (SGS 4389)](https://observatoriodetaxas.tec.br/data/4389_history.json): diária, % a.a.
+- [CDI acumulado no mês, produzido pela B3 (SGS 4391)](https://observatoriodetaxas.tec.br/data/4391_history.json): mensal
+- [TJLP (SGS 256)](https://observatoriodetaxas.tec.br/data/256_history.json): mensal, % a.a.
+- [IPCA-15 variação mensal, produzido pelo IBGE (SGS 7478)](https://observatoriodetaxas.tec.br/data/7478_history.json): mensal
+- [Saldo da carteira de crédito, total (SGS 20539)](https://observatoriodetaxas.tec.br/data/20539_history.json): mensal, R$ milhões
+- [Taxa média de juros das operações de crédito, total (SGS 20714)](https://observatoriodetaxas.tec.br/data/20714_history.json): mensal, % a.a.
+- [Inadimplência da carteira de crédito, total (SGS 21082)](https://observatoriodetaxas.tec.br/data/21082_history.json): mensal, % da carteira com atraso acima de 90 dias
+- [Reservas internacionais, conceito caixa (SGS 13621)](https://observatoriodetaxas.tec.br/data/13621_history.json): diária, US$ milhões
+- [Dívida líquida do setor público (SGS 4513)](https://observatoriodetaxas.tec.br/data/4513_history.json): mensal, % do PIB
 - [Sitemap](https://observatoriodetaxas.tec.br/sitemap.xml): todas as páginas indexáveis, incluindo cada permalink de reajuste e correção
 
 ## Embeds

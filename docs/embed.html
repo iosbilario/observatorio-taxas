@@ -7,7 +7,7 @@
 
 <!-- Segurança: SEM frame-ancestors e SEM guard anti-frame — ser embutível é o
      produto desta página. O CSP abaixo só tranca o resto (self + inline próprio). -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-/IiBN9TM9rDA2AbZ38U7quMrzJkDM1vbflVWtBTJW1o='; connect-src 'self'" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-aMP8PH6N+qQo27dYp9RmpKRQpVJ5UMUNfrYECfKabn0='; connect-src 'self'" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
 
 <title>Gráfico — Observatório de Taxas</title>
@@ -116,6 +116,16 @@
       21619: { nome: "Euro (EUR/BRL)", pref: "R$ ", casas: 4 },
       24363: { nome: "IBC-Br", casas: 2 },
       24369: { nome: "Desemprego (PNAD)", suf: "%", casas: 1, prod: "IBGE" },
+      195: { nome: "Poupança (regra desde 2012)", suf: "%", casas: 4 },
+      4389: { nome: "CDI anualizado", suf: "% a.a.", casas: 2, prod: "B3" },
+      4391: { nome: "CDI no mês", suf: "%", casas: 2, prod: "B3" },
+      256: { nome: "TJLP", suf: "% a.a.", casas: 2 },
+      7478: { nome: "IPCA-15 no mês", suf: "%", casas: 2, prod: "IBGE" },
+      20539: { nome: "Saldo de crédito", pref: "R$ ", suf: " mi", casas: 0 },
+      20714: { nome: "Juros médios do crédito", suf: "% a.a.", casas: 2 },
+      21082: { nome: "Inadimplência do crédito", suf: "%", casas: 2 },
+      13621: { nome: "Reservas internacionais", pref: "US$ ", suf: " mi", casas: 0 },
+      4513: { nome: "Dívida líquida (% do PIB)", suf: "%", casas: 2 },
     };
     var MES = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"];
 

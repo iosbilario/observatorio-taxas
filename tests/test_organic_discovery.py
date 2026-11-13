@@ -251,15 +251,21 @@ class TestDadosEstruturados(unittest.TestCase):
         for f in (DATA / "series.json", DOCS / "data" / "series.json"):
             pub = {s["codigo"]: s["nome"] for s in json.loads(f.read_text(encoding="utf-8"))}
             self.assertEqual(pub, cfg, f)
+        # "CDI" só pode aparecer nas séries do CDI (4389, 4391), nunca na 4390.
+        self.assertIn("CDI", cfg[4389])
+        self.assertIn("CDI", cfg[4391])
         for arq in ("index.html", "rebobinar.html", "var.html", "embed.html", "llms.txt"):
-            self.assertNotIn("CDI", (DOCS / arq).read_text(encoding="utf-8"), arq)
+            t = (DOCS / arq).read_text(encoding="utf-8")
+            for linha in t.splitlines():
+                if "4390" in linha:
+                    self.assertNotIn("CDI", linha, arq)
 
     def test_embed_atribui_o_produtor_do_indice(self):
         embed = (DOCS / "embed.html").read_text(encoding="utf-8")
-        for cod, prod in ((433, "IBGE"), (13522, "IBGE"), (188, "IBGE"), (24369, "IBGE"),
-                          (189, "FGV IBRE"), (190, "FGV IBRE")):
+        for cod, prod in ((433, "IBGE"), (13522, "IBGE"), (188, "IBGE"), (24369, "IBGE"), (7478, "IBGE"),
+                          (189, "FGV IBRE"), (190, "FGV IBRE"), (4389, "B3"), (4391, "B3")):
             self.assertRegex(embed, rf'\b{cod}: \{{[^}}]*prod: "{prod}"', cod)
-        for cod in (432, 1, 21619, 24363):
+        for cod in (432, 1, 21619, 24363, 195, 256, 20539, 20714, 21082, 13621, 4513):
             self.assertNotRegex(embed, rf'\b{cod}: \{{[^}}]*prod:', cod)
 
     def test_carrossel_da_landing_tem_fallback_e_series_validas(self):

@@ -21,6 +21,11 @@ CSS e JavaScript das páginas em docs/) está sob a licença MIT (arquivo
 | 25 | Poupança, rentabilidade dos depósitos até 03/05/2012 (regra antiga) |
 | 1, 10813, 21619 | Câmbio USD/BRL venda e compra, EUR/BRL venda |
 | 24363 | IBC-Br |
+| 195 | Poupança, rentabilidade dos depósitos a partir de 04/05/2012 (regra atual) |
+| 256 | TJLP |
+| 20539, 20714, 21082 | Crédito: saldo da carteira, taxa média de juros e inadimplência (totais) |
+| 13621 | Reservas internacionais, conceito caixa |
+| 4513 | Dívida líquida do setor público (% do PIB) |
 
 O Banco Central publica essas séries no
 [Portal de Dados Abertos do BCB](https://dadosabertos.bcb.gov.br/) sob a
@@ -29,7 +34,10 @@ O Banco Central publica essas séries no
 11/11/2026 pela API do portal (`license_id: odc-odbl`) nas séries 432, 1178,
 4390, 25, 1, 10813 e 24363. As séries 226 (TR) e 21619 (EUR) não foram
 localizadas na busca do portal; são produzidas pelo BCB e o Observatório as
-trata nos mesmos termos, com atribuição.
+trata nos mesmos termos, com atribuição. Em 13/11/2026, a mesma consulta
+confirmou `odc-odbl` nas séries 195, 20539, 20714, 21082, 13621 e 4513. A TJLP
+(256) é fixada pelo CMN e publicada pelo BCB; não foi localizada no portal e
+segue os mesmos termos, com atribuição.
 
 A cópia dessas séries em `data/` e `docs/data/` é redistribuída nos mesmos
 termos: **ODbL 1.0, com atribuição "Fonte: Banco Central do Brasil (SGS)"**.
@@ -45,11 +53,13 @@ licença.
 | 24369 | Taxa de desocupação (PNAD Contínua) | IBGE |
 | 189 | IGP-M | FGV IBRE |
 | 190 | IGP-DI | FGV IBRE |
+| 7478 | IPCA-15 | IBGE |
+| 4389, 4391 | CDI (anualizado e acumulado no mês) | B3 |
 
 Essas séries **não** aparecem com licença no Portal de Dados Abertos do BCB
 (busca pelos códigos em 11/11/2026 sem resultado). O Observatório **não as
 relicencia**: o uso segue os termos de cada produtor, e qualquer reutilização
-deve citar o produtor (IBGE ou FGV IBRE) e o canal (SGS do Banco Central).
+deve citar o produtor (IBGE, FGV IBRE ou B3) e o canal (SGS do Banco Central).
 
 Os termos de uso do portal da FGV IBRE restringem a reprodução do conteúdo do
 portal sem autorização. O Observatório não copia conteúdo desse portal; obtém

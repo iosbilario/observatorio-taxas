@@ -66,6 +66,22 @@ series:
     # (regra antiga). Rótulo corrigido em 11/11/2026.
     nome: "Poupança (depósitos até 03/05/2012) - rentabilidade (%)"
     grupo: "Juros"
+  - codigo: 195
+    # Portal de Dados Abertos do BCB: "Depósitos de poupança a partir de
+    # 04.05.2012 - Rentabilidade no período" (conferido em 13/11/2026).
+    nome: "Poupança (depósitos a partir de 04/05/2012) - rentabilidade (%)"
+    grupo: "Juros"
+  - codigo: 4389
+    # CDI calculado pela B3 e redistribuído pelo SGS. Valor conferido contra a
+    # Selic anualizada em 13/11/2026 (13,65% x 13,75%).
+    nome: "CDI anualizado base 252 (% a.a.)"
+    grupo: "Juros"
+  - codigo: 4391
+    nome: "CDI - acumulado no mês (%)"
+    grupo: "Juros"
+  - codigo: 256
+    nome: "TJLP - Taxa de Juros de Longo Prazo (% a.a.)"
+    grupo: "Juros"
   # --- Inflação ---
   - codigo: 433
     nome: "IPCA - variação mensal (%)"
@@ -81,6 +97,9 @@ series:
     grupo: "Inflação"
   - codigo: 190
     nome: "IGP-DI - variação mensal (%)"
+    grupo: "Inflação"
+  - codigo: 7478
+    nome: "IPCA-15 - variação mensal (%)"
     grupo: "Inflação"
   # --- Câmbio ---
   - codigo: 1
@@ -99,3 +118,20 @@ series:
   - codigo: 24369
     nome: "Taxa de desocupação - PNAD (%)"
     grupo: "Atividade & Emprego"
+  # --- Crédito --- (nomes conferidos no Portal de Dados Abertos do BCB, 13/11/2026)
+  - codigo: 20539
+    nome: "Saldo da carteira de crédito - total (R$ milhões)"
+    grupo: "Crédito"
+  - codigo: 20714
+    nome: "Taxa média de juros das operações de crédito - total (% a.a.)"
+    grupo: "Crédito"
+  - codigo: 21082
+    nome: "Inadimplência da carteira de crédito - total (%)"
+    grupo: "Crédito"
+  # --- Setor externo e fiscal ---
+  - codigo: 13621
+    nome: "Reservas internacionais - conceito caixa (US$ milhões)"
+    grupo: "Setor externo e fiscal"
+  - codigo: 4513
+    nome: "Dívida líquida do setor público (% do PIB)"
+    grupo: "Setor externo e fiscal"
