@@ -22,6 +22,7 @@
 
   <link rel="stylesheet" href="radar.css" />
   <link rel="stylesheet" href="../nav.css" />
+  <script src="../estrelas.js" defer></script>
 </head>
 <body class="tema-radar">
   <a class="pular" href="#conteudo">Pular para o conteúdo</a>
@@ -38,6 +39,11 @@
       <a href="../reajuste/index.html" data-nav="reajuste">Reajuste</a>
       <a href="../retransmissora.html" data-nav="embeds">Embeds</a>
     </nav>
+    <a class="nav-github" href="https://github.com/iosbilario/observatorio-taxas" aria-label="Código no GitHub">
+      <svg class="nav-github-logo" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+      <span class="nav-github-rotulo"><span aria-hidden="true">☆</span> Estrela</span>
+      <span class="nav-github-total" data-estrelas hidden></span>
+    </a>
   </div>
 </header>
 <!-- nav:end -->
@@ -106,17 +112,68 @@
 
   <footer class="institucional">
     <div class="wrap">
-      <nav aria-label="Seções do site">
-        <a href="index.html">Radar</a>
-        <a href="../index.html">Painel de taxas</a>
-        <a href="../rebobinar.html">Rebobinar</a>
-        <a href="../var.html">Verificar afirmação</a>
-        <a href="../reajuste/">Reajuste</a>
-        <a href="metodologia.html">Metodologia do Radar</a>
-      </nav>
       <p>Dados do Radar versionados em aberto em <a href="https://github.com/iosbilario/observatorio-taxas/tree/main/docs/radar/data" target="_blank" rel="noopener noreferrer">docs/radar/data</a>.</p>
       <p>Desenvolvido por LBP Tecnologia · <span id="ano"></span>. O Radar mede o que assistentes de IA respondem; não avalia a qualidade dos negócios citados nem constitui recomendação.</p>
+    <!-- rodape:start -->
+<!-- Rodapé replicado de partials/rodape.html por scripts/sync_nav.py. Não edite aqui: edite o partial e rode o script. -->
+<div class="rodape-site">
+  <div class="rodape-grade">
+    <div class="rodape-marca">
+      <a class="rodape-nome" href="../index.html">Observatório de Taxas</a>
+      <p>Os números mudam. O histórico fica.</p>
+      <p>Indicadores econômicos do Brasil com histórico versionado e cálculos verificáveis.</p>
     </div>
+    <nav class="rodape-coluna" aria-labelledby="rodape-produto">
+      <h2 id="rodape-produto">Produto</h2>
+      <ul>
+        <li><a href="../index.html">Painel</a></li>
+        <li><a href="../reajuste/">Reajuste de contratos</a></li>
+        <li><a href="../correcao/">Correção monetária</a></li>
+        <li><a href="../rebobinar.html">Rebobinar</a></li>
+        <li><a href="../var.html">VAR da Economia</a></li>
+        <li><a href="../retransmissora.html">Embeds</a></li>
+      </ul>
+    </nav>
+    <nav class="rodape-coluna" aria-labelledby="rodape-docs">
+      <h2 id="rodape-docs">Documentação</h2>
+      <ul>
+        <li><a href="https://github.com/iosbilario/observatorio-taxas#dados-e-metodologia">Metodologia</a></li>
+        <li><a href="../data/series.json">Dados abertos (JSON)</a></li>
+        <li><a href="https://github.com/iosbilario/observatorio-taxas/blob/main/desenvolvimento/GUIA.md">Guia do desenvolvedor</a></li>
+        <li><a href="https://github.com/iosbilario/observatorio-taxas/blob/main/desenvolvimento/REPRODUCAO.md">Reprodução</a></li>
+        <li><a href="https://github.com/iosbilario/observatorio-taxas/releases">Versões</a></li>
+        <li><a href="https://doi.org/10.5281/zenodo.24151062">Como citar (DOI)</a></li>
+      </ul>
+    </nav>
+    <nav class="rodape-coluna" aria-labelledby="rodape-ias">
+      <h2 id="rodape-ias">Para IAs</h2>
+      <ul>
+        <li><a href="../mcp/">Visão geral</a></li>
+        <li><a href="../mcp/#usar-t">Servidor MCP</a></li>
+        <li><a href="../llms.txt">llms.txt</a></li>
+        <li><a href="https://github.com/iosbilario/observatorio-taxas/tree/main/servidor_mcp">Código do servidor</a></li>
+      </ul>
+    </nav>
+    <nav class="rodape-coluna" aria-labelledby="rodape-projeto">
+      <h2 id="rodape-projeto">Projeto</h2>
+      <ul>
+        <li><a href="../sobre/">Sobre e contato</a></li>
+        <li><a href="../apoie/">Apoie o projeto ♡</a></li>
+        <li><a href="https://github.com/iosbilario/observatorio-taxas">Código no GitHub</a></li>
+        <li><a href="https://github.com/iosbilario/observatorio-taxas/blob/main/SECURITY.md">Segurança</a></li>
+        <li><a href="../privacidade/">Privacidade</a></li>
+        <li><a href="../termos/">Termos de uso</a></li>
+        <li><a href="https://github.com/iosbilario/observatorio-taxas/blob/main/LICENSE-DADOS.md">Licenças</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="rodape-base">
+    <p>Feito pela LBP Tecnologia. Conteúdo informativo, sem caráter de recomendação financeira.</p>
+    <p>© 2026 Observatório de Taxas · Código MIT · Dados via SGS do Banco Central</p>
+  </div>
+</div>
+<!-- rodape:end -->
+</div>
   </footer>
 
   <script src="radar.js"></script>
