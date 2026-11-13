@@ -27,6 +27,110 @@
   "hash": "230f88d7eb636726",
   "lastmod": "2026-11-13"
  },
+ "https://observatoriodetaxas.tec.br/indicadores/": {
+  "hash": "e82b560329a0684e",
+  "lastmod": "2026-11-13"
+ },
+ "https://observatoriodetaxas.tec.br/indicadores/cdi-acumulado-no-mes/": {
+  "hash": "0b89dded725f2979",
+  "lastmod": "2026-11-13"
+ },
+ "https://observatoriodetaxas.tec.br/indicadores/cdi/": {
+  "hash": "9fed14f3870baf4d",
+  "lastmod": "2026-11-13"
+ },
+ "https://observatoriodetaxas.tec.br/indicadores/desemprego/": {
+  "hash": "ad06d59480f68bac",
+  "lastmod": "2026-11-13"
+ },
+ "https://observatoriodetaxas.tec.br/indicadores/divida-liquida/": {
+  "hash": "7a903d4a029ffb2b",
+  "lastmod": "2026-11-13"
+ },
+ "https://observatoriodetaxas.tec.br/indicadores/dolar-compra/": {
+  "hash": "1e1354143a44c6b2",
+  "lastmod": "2026-11-13"
+ },
+ "https://observatoriodetaxas.tec.br/indicadores/dolar/": {
+  "hash": "e176a2f9e3c88405",
+  "lastmod": "2026-11-13"
+ },
+ "https://observatoriodetaxas.tec.br/indicadores/euro/": {
+  "hash": "02855053394cae06",
+  "lastmod": "2026-11-13"
+ },
+ "https://observatoriodetaxas.tec.br/indicadores/ibc-br/": {
+  "hash": "977855bff31e1ba8",
+  "lastmod": "2026-11-13"
+ },
+ "https://observatoriodetaxas.tec.br/indicadores/igp-di/": {
+  "hash": "c39801cfd2f4f975",
+  "lastmod": "2026-11-13"
+ },
+ "https://observatoriodetaxas.tec.br/indicadores/igp-m/": {
+  "hash": "f888ccea3e1f8577",
+  "lastmod": "2026-11-13"
+ },
+ "https://observatoriodetaxas.tec.br/indicadores/inadimplencia/": {
+  "hash": "c6fe5ace7746043d",
+  "lastmod": "2026-11-13"
+ },
+ "https://observatoriodetaxas.tec.br/indicadores/inpc/": {
+  "hash": "cd619758d7abdd3a",
+  "lastmod": "2026-11-13"
+ },
+ "https://observatoriodetaxas.tec.br/indicadores/ipca-12-meses/": {
+  "hash": "ea8ad44623d8744e",
+  "lastmod": "2026-11-13"
+ },
+ "https://observatoriodetaxas.tec.br/indicadores/ipca-15/": {
+  "hash": "7af8420dcb32b1e9",
+  "lastmod": "2026-11-13"
+ },
+ "https://observatoriodetaxas.tec.br/indicadores/ipca/": {
+  "hash": "a606f3a102cba05b",
+  "lastmod": "2026-11-13"
+ },
+ "https://observatoriodetaxas.tec.br/indicadores/juros-do-credito/": {
+  "hash": "b93f49c3b5a523f5",
+  "lastmod": "2026-11-13"
+ },
+ "https://observatoriodetaxas.tec.br/indicadores/meta-selic/": {
+  "hash": "f63eb0ddd1d38cf3",
+  "lastmod": "2026-11-13"
+ },
+ "https://observatoriodetaxas.tec.br/indicadores/poupanca-regra-antiga/": {
+  "hash": "d64d4cfe4459b9ae",
+  "lastmod": "2026-11-13"
+ },
+ "https://observatoriodetaxas.tec.br/indicadores/poupanca/": {
+  "hash": "bab0a8b168911f74",
+  "lastmod": "2026-11-13"
+ },
+ "https://observatoriodetaxas.tec.br/indicadores/reservas-internacionais/": {
+  "hash": "259500755342fd03",
+  "lastmod": "2026-11-13"
+ },
+ "https://observatoriodetaxas.tec.br/indicadores/saldo-de-credito/": {
+  "hash": "443b938daadd3384",
+  "lastmod": "2026-11-13"
+ },
+ "https://observatoriodetaxas.tec.br/indicadores/selic-acumulada-no-mes/": {
+  "hash": "3afb99d457d2fbed",
+  "lastmod": "2026-11-13"
+ },
+ "https://observatoriodetaxas.tec.br/indicadores/selic-efetiva/": {
+  "hash": "1b415b98acd43cf4",
+  "lastmod": "2026-11-13"
+ },
+ "https://observatoriodetaxas.tec.br/indicadores/tjlp/": {
+  "hash": "00c548fe90c7f2e8",
+  "lastmod": "2026-11-13"
+ },
+ "https://observatoriodetaxas.tec.br/indicadores/tr/": {
+  "hash": "c3bea7211eb324d4",
+  "lastmod": "2026-11-13"
+ },
  "https://observatoriodetaxas.tec.br/mcp/": {
   "hash": "53135a3194d6f55d",
   "lastmod": "2026-11-13"

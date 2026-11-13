@@ -399,8 +399,8 @@ def rebuild_sitemap() -> int:
     # divulgadas enquanto o coletor não estiver no ar.
     urls = [f"{BASE_URL}/", f"{BASE_URL}/rebobinar.html",
             f"{BASE_URL}/var.html", f"{BASE_URL}/retransmissora.html",
-            f"{BASE_URL}/reajuste/", f"{BASE_URL}/correcao/", f"{BASE_URL}/apoie/", f"{BASE_URL}/sobre/", f"{BASE_URL}/privacidade/", f"{BASE_URL}/termos/", f"{BASE_URL}/mcp/"]
-    for sub in ("reajuste", "correcao"):
+            f"{BASE_URL}/reajuste/", f"{BASE_URL}/correcao/", f"{BASE_URL}/apoie/", f"{BASE_URL}/sobre/", f"{BASE_URL}/privacidade/", f"{BASE_URL}/termos/", f"{BASE_URL}/mcp/", f"{BASE_URL}/indicadores/"]
+    for sub in ("reajuste", "correcao", "indicadores"):
         for idx in sorted((docs / sub).glob("*/index.html")):
             urls.append(f"{BASE_URL}/{sub}/{idx.parent.name}/")
     vistos, unicas = set(), []

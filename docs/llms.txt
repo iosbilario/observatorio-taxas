@@ -13,6 +13,11 @@ Site 100% estático (GitHub Pages), gratuito e sem cadastro. Os dados são arqui
 - [Reajuste de contrato](https://observatoriodetaxas.tec.br/reajuste/): calculadora de reajuste por índice e mês (IPCA, IGP-M, INPC, IGP-DI), com uma página permanente por índice-mês (ex.: /reajuste/igpm-janeiro-2026/)
 - [Correção monetária](https://observatoriodetaxas.tec.br/correcao/): correção de um valor entre duas datas pelo índice escolhido (IPCA, IGP-M, INPC, IGP-DI)
 
+## Indicadores
+
+- [Indicadores econômicos do Brasil hoje](https://observatoriodetaxas.tec.br/indicadores/): tabela com as 25 séries, valor atual, data de referência e produtor, em HTML estático
+- Uma página por indicador em `https://observatoriodetaxas.tec.br/indicadores/<slug>/` (ex.: [meta-selic](https://observatoriodetaxas.tec.br/indicadores/meta-selic/), [ipca](https://observatoriodetaxas.tec.br/indicadores/ipca/), [dolar](https://observatoriodetaxas.tec.br/indicadores/dolar/), [cdi](https://observatoriodetaxas.tec.br/indicadores/cdi/)): a primeira frase traz valor, unidade, referência e produtor; seguem o que o indicador mede, últimos 12 meses, ficha técnica e JSON-LD Dataset e FAQPage
+
 ## Dados
 
 Os JSONs são a fonte canônica; use-os em vez de raspar o HTML. Índices de inflação (IPCA, IGP-M, INPC, IGP-DI) trazem a variação mensal com data de referência no primeiro dia do mês; séries diárias (Selic, câmbio) trazem um ponto por dia útil. Acumulado em 12 meses usa composição (produto de 1 + i/100), não soma simples.
