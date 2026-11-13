@@ -1,29 +1,29 @@
 {
-  "gerado_em": "2026-11-13T10:37:26-03:00",
-  "gerado_em_fmt": "13/11/2026 às 10:37",
+  "gerado_em": "2026-11-13T18:31:18-03:00",
+  "gerado_em_fmt": "13/11/2026 às 18:31",
   "grupos": {
     "Admin": {
       "acessos": 0,
       "sub": {}
     },
     "Correção": {
-      "acessos": 30,
+      "acessos": 32,
       "sub": {
         "IGP-DI": 1,
         "IGP-M": 1,
         "INPC": 2,
-        "IPCA": 6
+        "IPCA": 7
       }
     },
     "Home": {
-      "acessos": 180,
+      "acessos": 182,
       "sub": {}
     },
     "Reajuste": {
-      "acessos": 146,
+      "acessos": 148,
       "sub": {
         "IGP-DI": 8,
-        "IGP-M": 35,
+        "IGP-M": 36,
         "INPC": 15,
         "IPCA": 40
       }
@@ -31,7 +31,7 @@
   },
   "serie_diaria": [
     {
-      "acessos": 8,
+      "acessos": 2,
       "data": "2026-10-14"
     },
     {
@@ -151,7 +151,7 @@
       "data": "2026-11-12"
     },
     {
-      "acessos": 1,
+      "acessos": 18,
       "data": "2026-11-13"
     }
   ],
@@ -159,27 +159,27 @@
   "timezone": "America/Sao_Paulo (UTC-3)",
   "top_paginas": [
     {
-      "count": 176,
+      "count": 178,
       "path": "/"
     },
     {
-      "count": 54,
+      "count": 55,
       "path": "/rebobinar.html"
     },
     {
-      "count": 48,
+      "count": 49,
       "path": "/reajuste"
     },
     {
-      "count": 20,
+      "count": 21,
       "path": "/correcao"
     },
     {
-      "count": 14,
+      "count": 15,
       "path": "/retransmissora.html"
     },
     {
-      "count": 13,
+      "count": 14,
       "path": "/var.html"
     },
     {
@@ -192,18 +192,18 @@
     },
     {
       "count": 7,
+      "path": "/apoie"
+    },
+    {
+      "count": 7,
+      "path": "/correcao/ipca"
+    },
+    {
+      "count": 7,
       "path": "/reajuste/igpm-agosto-2026"
     },
     {
       "count": 6,
-      "path": "/apoie"
-    },
-    {
-      "count": 6,
-      "path": "/correcao/ipca"
-    },
-    {
-      "count": 5,
       "path": "/mcp"
     },
     {
@@ -221,12 +221,12 @@
   ],
   "totais": {
     "all_time": {
-      "acessos": 465,
-      "visitantes": 465
+      "acessos": 482,
+      "visitantes": 482
     },
     "ultimos_30d": {
-      "acessos": 146,
-      "visitantes": 146
+      "acessos": 157,
+      "visitantes": 157
     }
   }
 }
