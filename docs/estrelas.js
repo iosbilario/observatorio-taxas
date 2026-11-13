@@ -6,10 +6,12 @@
    e a política de privacidade não mudam. Sem JavaScript, o link aparece sem o
    número. */
 (function () {
-  var alvo = document.querySelector("[data-estrelas]");
   var script = document.currentScript;
-  if (!alvo || !script || !window.fetch) return;
-  fetch(new URL("data/github.json", script.src), { cache: "no-cache" })
+  var src = script && script.src;
+  function iniciar() {
+  var alvo = document.querySelector("[data-estrelas]");
+  if (!alvo || !src || !window.fetch) return;
+  fetch(new URL("data/github.json", src), { cache: "no-cache" })
     .then(function (r) { return r.ok ? r.json() : null; })
     .then(function (d) {
       if (!d || typeof d.estrelas !== "number" || d.estrelas < 0) return;
@@ -21,4 +23,9 @@
         "Código no GitHub, " + n + (n === 1 ? " estrela" : " estrelas"));
     })
     .catch(function () {});
+  }
+  // Com anúncios ligados, adsense.py carrega este arquivo dinamicamente no
+  // <head>, antes de o corpo existir: espera o DOM nesse caso.
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", iniciar);
+  else iniciar();
 })();

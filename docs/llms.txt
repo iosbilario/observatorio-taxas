@@ -18,6 +18,11 @@ Site 100% estático (GitHub Pages), gratuito e sem cadastro. Os dados são arqui
 - [Indicadores econômicos do Brasil hoje](https://observatoriodetaxas.tec.br/indicadores/): tabela com as 25 séries, valor atual, data de referência e produtor, em HTML estático
 - Uma página por indicador em `https://observatoriodetaxas.tec.br/indicadores/<slug>/` (ex.: [meta-selic](https://observatoriodetaxas.tec.br/indicadores/meta-selic/), [ipca](https://observatoriodetaxas.tec.br/indicadores/ipca/), [dolar](https://observatoriodetaxas.tec.br/indicadores/dolar/), [cdi](https://observatoriodetaxas.tec.br/indicadores/cdi/)): a primeira frase traz valor, unidade, referência e produtor; seguem o que o indicador mede, últimos 12 meses, ficha técnica e JSON-LD Dataset e FAQPage
 
+## Ferramentas de cálculo
+
+- [Comparador Selic, CDI e IPCA](https://observatoriodetaxas.tec.br/comparador/): acumulado por competência mensal das séries de Selic, CDI e IPCA acumulados no mês, gráfico, tabela e metodologia; parâmetros `de`, `ate` (aaaa-mm), `i` (cdi,selic,ipca) e `ver` (pct ou reais)
+- [Simulador de rendimento do CDI](https://observatoriodetaxas.tec.br/simulador-cdi/): X% do CDI com a taxa DI diária (SGS 4389), IR e IOF do CDB, IPCA do período e memória de cálculo em CSV; parâmetros `valor`, `percentual`, `periodo` (6m, 12m, 24m, 36m, 60m) ou `de` e `ate` (aaaa-mm-dd), `modo` (liquido ou bruto)
+
 ## Dados
 
 Os JSONs são a fonte canônica; use-os em vez de raspar o HTML. Índices de inflação (IPCA, IGP-M, INPC, IGP-DI) trazem a variação mensal com data de referência no primeiro dia do mês; séries diárias (Selic, câmbio) trazem um ponto por dia útil. Acumulado em 12 meses usa composição (produto de 1 + i/100), não soma simples.

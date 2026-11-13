@@ -28,7 +28,7 @@ adsense:
   consentimento_configurado: false
   # nome do espaço -> data-ad-slot (número gerado pelo AdSense ao criar a
   # unidade). Espaços sem id ficam vazios. Nomes: inicio, reajuste-hub,
-  # reajuste-mes, correcao-hub, correcao-indice.
+  # reajuste-mes, correcao-hub, correcao-indice, comparador, simulador.
   slots: {}
 
 # IndexNow — avisa buscadores participantes (Bing, Yandex, Seznam, Naver...)

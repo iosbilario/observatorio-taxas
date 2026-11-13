@@ -75,6 +75,9 @@ jobs:
       - name: Gerar a vitrine de indicadores (/indicadores/)
         run: python scripts/build_indicadores.py
 
+      - name: Gerar o comparador e o simulador de CDI
+        run: python scripts/build_ferramentas.py
+
       - name: Assar boletim no HTML da landing e regenerar o sitemap
         run: python scripts/render_index.py
 
