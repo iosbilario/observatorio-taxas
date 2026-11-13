@@ -10,15 +10,18 @@ O Zenodo arquiva cada release publicada no GitHub e emite dois tipos de DOI:
 | DOI | Valor | Registro |
 | --- | --- | --- |
 | Conceito (todas as versões) | [10.5281/zenodo.24151062](https://doi.org/10.5281/zenodo.24151062) | sempre resolve para a versão mais recente |
+| Versão v1.7.0 | [10.5281/zenodo.24195784](https://doi.org/10.5281/zenodo.24195784) | [zenodo.org/records/24195784](https://zenodo.org/records/24195784) |
 | Versão v1.6.0 | [10.5281/zenodo.24151063](https://doi.org/10.5281/zenodo.24151063) | [zenodo.org/records/24151063](https://zenodo.org/records/24151063) |
 
-## Situação (12/11/2026)
+## Situação (13/11/2026)
 
 | Item | Estado |
 | --- | --- |
 | Integração GitHub–Zenodo | Ligada pelo proprietário |
 | Primeira release arquivada | v1.6.0, publicada no GitHub em 12/11/2026 no commit `300c48a4` ([notas](RELEASE-v1.6.0.md)) |
 | Registro no Zenodo | Conferido pela API (`/api/records/24151063`): título "Observatório de Taxas", versão v1.6.0, tipo Software, licença MIT, criador "Pereira, Leandro Borges", um arquivo `iosbilario/observatorio-taxas-v1.6.0.zip` de 1.063.032 bytes, relacionado a `tree/v1.6.0` |
+| Segunda release arquivada | v1.7.0 (servidor MCP), publicada no GitHub em 13/11/2026 no commit `a286ffae` ([notas](RELEASE-v1.7.0.md)) |
+| Registro da v1.7.0 | Conferido pela API (`/api/records/24195784`): título "Observatório de Taxas", versão v1.7.0, tipo Software, licença MIT, criador "Pereira, Leandro Borges", DOI conceito 10.5281/zenodo.24151062, um arquivo `iosbilario/observatorio-taxas-v1.7.0.zip` de 1.169.276 bytes |
 | Releases anteriores | v1.0.0 a v1.5.0, sem DOI (publicadas antes da integração) |
 
 A busca textual da API (`/api/records?q=...`) demorou a indexar o registro
