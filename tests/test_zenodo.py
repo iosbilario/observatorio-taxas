@@ -15,7 +15,9 @@ import yaml
 ROOT = Path(__file__).resolve().parent.parent
 DOI_CONCEITO = "10.5281/zenodo.24151062"   # conferido em /api/records/24151063 (conceptdoi)
 DOI_VERSAO_160 = "10.5281/zenodo.24151063"
-DOIS_REAIS = {DOI_CONCEITO, DOI_VERSAO_160}
+DOI_VERSAO_170 = "10.5281/zenodo.24195784"   # conferido em /api/records/24195784
+DOIS_REAIS = {DOI_CONCEITO, DOI_VERSAO_160, DOI_VERSAO_170}
+REGISTROS_REAIS = {"24151063", "24195784"}
 FORA = ("data/", "docs/data/", "docs/reajuste/", "docs/correcao/", "CHANGELOG.md",
         "tests/fixtures/valores_baseline.json")
 
@@ -117,9 +119,9 @@ class TestReleasePreparada(unittest.TestCase):
         for rel in DOCS_MD + ["CITATION.cff", "docs/sobre/index.html"]:
             t = (ROOT / rel).read_text(encoding="utf-8")
             self.assertTrue(set(re.findall(r"10\.5281/zenodo\.\d+", t)) <= DOIS_REAIS, rel)
-            self.assertNotRegex(t, r"(?i)doi\.org/10\.(?!5281/zenodo\.2415106[23]\b)", rel)
+            self.assertNotRegex(t, r"(?i)doi\.org/10\.(?!5281/zenodo\.(?:2415106[23]|24195784)\b)", rel)
             for rec in re.findall(r"zenodo\.org/records?/(\d+)", t):
-                self.assertEqual(rec, "24151063", rel)
+                self.assertIn(rec, REGISTROS_REAIS, rel)
 
     def test_readme_tem_citacao_academica_sem_placeholder(self):
         t = (ROOT / "README.md").read_text(encoding="utf-8")
@@ -129,6 +131,7 @@ class TestReleasePreparada(unittest.TestCase):
         self.assertNotRegex(t, r"XXXX|0000000|<DOI>|DOI_AQUI")
         self.assertIn(f"https://zenodo.org/badge/DOI/{DOI_CONCEITO}.svg", t)
         self.assertIn(f"https://doi.org/{DOI_VERSAO_160}", t)
+        self.assertIn(f"https://doi.org/{DOI_VERSAO_170}", t)
 
     def test_links_relativos_dos_documentos_existem(self):
         faltando = []
