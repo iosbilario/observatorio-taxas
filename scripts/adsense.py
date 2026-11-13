@@ -31,6 +31,7 @@ from __future__ import annotations
 
 import argparse
 import base64
+import json
 import re
 import sys
 from pathlib import Path
@@ -47,12 +48,22 @@ DOCS = ROOT / "docs"
 RE_CLIENT = re.compile(r"^ca-pub-(\d{16})$")
 RE_ADSTXT = re.compile(r"^google\.com, pub-(\d{16}), DIRECT, f08c47fec0942fa0$")
 RE_SLOT = re.compile(r"^\d{6,20}$")
-ESPACOS = ("inicio", "reajuste-hub", "reajuste-mes", "correcao-hub", "correcao-indice")
+ESPACOS = ("inicio", "reajuste-hub", "reajuste-mes", "correcao-hub", "correcao-indice", "comparador", "simulador")
 
 RE_ESPACO = re.compile(r"(<!-- anuncio:([a-z-]+):inicio -->)(.*?)(<!-- anuncio:\2:fim -->)", re.S)
 RE_BLOCO_HEAD = re.compile(r"\n?<!-- adsense:inicio -->.*?<!-- adsense:fim -->", re.S)
 RE_ORIGINAL = re.compile(r'<!-- adsense:original csp="([A-Za-z0-9+/=]*)" gc="([A-Za-z0-9+/=]*)" -->')
 MARCA_GC = "<!-- adsense:gc -->"
+# Com 'strict-dynamic', <script src> de mesma origem sem hash deixa de rodar.
+# Ao ligar, cada um vira um carregador inline (com hash na CSP), e ao desligar
+# volta a ser a tag original.
+RE_EXTERNO = re.compile(r'<script src="((?!https?:|//)[^"<>]+)" defer></script>')
+RE_CARREGADOR = re.compile(r'<!-- adsense:externo src="([A-Za-z0-9+/=]*)" --><script>.*?</script>', re.S)
+
+
+def carregador(src: str) -> str:
+    return (f'<!-- adsense:externo src="{b64(src)}" --><script>(function(){{var e=document.createElement("script");'
+            f'e.src={json.dumps(src)};e.async=false;document.head.appendChild(e);}})();</script>')
 RE_GOAT = re.compile(r'[ \t]*<script data-goatcounter="([^"]+)"\s+async src="https://gc\.zgo\.at/count\.js"></script>\n?')
 
 
@@ -139,6 +150,7 @@ def csp_estrita(original: str, hashes: list[str]) -> str:
 
 def desligar(html: str) -> str:
     html = RE_ESPACO.sub(lambda m: m.group(1) + m.group(4), html)
+    html = RE_CARREGADOR.sub(lambda m: f'<script src="{de64(m.group(1))}" defer></script>', html)
     m = RE_ORIGINAL.search(html)
     if m:
         csp, goat = de64(m.group(1)), de64(m.group(2))
@@ -163,6 +175,7 @@ def ligar(html: str, c: dict) -> str:
     if g:
         html = html[:g.start()] + MARCA_GC + html[g.end():]
     html = html.replace("</head>", bloco_head(c, csp_m.group(2), goat_original, goat_url) + "</head>", 1)
+    html = RE_EXTERNO.sub(lambda m: carregador(m.group(1)), html)
     if re.search(r"\son[a-z]+=\"", html):
         raise SystemExit("página com handler inline (on*=): incompatível com CSP por hash")
     hashes = hashes_inline(html)

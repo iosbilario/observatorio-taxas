@@ -49,6 +49,8 @@ O Observatório guarda esse caminho:
 | --- | --- | --- |
 | Indicadores | Uma página por série (25) com valor atual, contexto, últimos 12 meses, ficha técnica e JSON-LD Dataset e FAQPage, mais uma tabela com todas | [/indicadores/](https://observatoriodetaxas.tec.br/indicadores/) |
 | Painel | Os números do dia (Selic, IPCA 12 meses, dólar, IGP-M, desemprego) com variação no mês | [observatoriodetaxas.tec.br](https://observatoriodetaxas.tec.br/) |
+| Comparador | Selic, CDI e IPCA acumulados em qualquer período, com gráfico, tabela mês a mês e link compartilhável | [/comparador/](https://observatoriodetaxas.tec.br/comparador/) |
+| Simulador de CDI | Quanto rende X% do CDI com a taxa DI diária, IR e IOF do CDB, inflação do período e memória de cálculo em CSV | [/simulador-cdi/](https://observatoriodetaxas.tec.br/simulador-cdi/) |
 | Reajuste de contratos | Acumulado de 12 meses, fator e calculadora por índice e mês: uma página para cada mês desde dezembro de 2015 | [/reajuste/](https://observatoriodetaxas.tec.br/reajuste/) |
 | Correção monetária | Atualiza um valor entre duas datas pelo IPCA, IGP-M, INPC ou IGP-DI | [/correcao/](https://observatoriodetaxas.tec.br/correcao/) |
 | Rebobinar | A economia mês a mês, como uma linha do tempo de commits | [/rebobinar.html](https://observatoriodetaxas.tec.br/rebobinar.html) |

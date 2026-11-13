@@ -63,6 +63,8 @@ PARCIAL_SE = {4390: 1178, 4391: 4389}
 
 # Séries que o VAR aceita (docs/var.html) e que têm reajuste/correção.
 NO_VAR = {433, 13522, 189, 432, 1, 24369, 25, 4390, 4391, 7478, 256, 20714, 21082, 4513}
+# Séries que alimentam o comparador e o simulador (links nas páginas).
+COM_FERRAMENTAS = {4389, 4391, 4390, 1178, 432, 433, 13522}
 REAJUSTE_POR_CODIGO = {v["codigo"]: k for k, v in REAJUSTE.items()}
 
 # slug, título curto, casas, prefixo, sufixo, o que é, para que serve, outros nomes.
@@ -496,6 +498,10 @@ def pagina(codigo: int, pts: list[dict], grupo: str) -> str:
            else f"termos do produtor ({prod['sigla']}); o Observatório não relicencia a série")
     relacionados = [f'<a class="pill" href="{BASE_URL}/embed.html?s={codigo}">Gráfico para incorporar</a>',
                     f'<a class="pill" href="{BASE_URL}/retransmissora.html">Retransmissora</a>']
+    if codigo in COM_FERRAMENTAS:
+        relacionados.insert(0, f'<a class="pill" href="{BASE_URL}/comparador/">Comparar Selic, CDI e IPCA</a>')
+        if codigo in (4389, 4391):
+            relacionados.insert(0, f'<a class="pill" href="{BASE_URL}/simulador-cdi/">Simular rendimento do CDI</a>')
     if codigo in NO_VAR:
         relacionados.insert(0, f'<a class="pill" href="{BASE_URL}/var.html?s={codigo}">Conferir uma afirmação (VAR)</a>')
     if codigo in REAJUSTE_POR_CODIGO and mensal(codigo):

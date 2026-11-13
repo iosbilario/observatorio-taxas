@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data: https://observatoriotaxas.goatcounter.com; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self' https://gc.zgo.at; connect-src 'self' https://observatoriotaxas.goatcounter.com; frame-src 'self'"/>
+<meta name="referrer" content="strict-origin-when-cross-origin"/>
+<title>Selic, CDI e IPCA: compare juros e inflação no Brasil</title>
+<meta name="description" content="Compare Selic, CDI e IPCA acumulados em qualquer período. De nov/2025 a out/2026: CDI 14,23%, Selic 14,23%, IPCA 4,63%. Dados oficiais, gráfico, tabela e metodologia."/>
+<meta name="robots" content="index, follow, max-snippet:-1"/>
+<meta name="theme-color" content="#0E1210"/>
+<link rel="canonical" href="https://observatoriodetaxas.tec.br/comparador/"/>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230E1210'/%3E%3Cpolyline points='4,22 12,14 18,18 28,6' fill='none' stroke='%23D9B54A' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+<meta property="og:type" content="website"/>
+<meta property="og:locale" content="pt_BR"/>
+<meta property="og:site_name" content="Observatório de Taxas"/>
+<meta property="og:title" content="Selic, CDI e IPCA: compare juros e inflação no Brasil"/>
+<meta property="og:description" content="Compare Selic, CDI e IPCA acumulados em qualquer período. De nov/2025 a out/2026: CDI 14,23%, Selic 14,23%, IPCA 4,63%. Dados oficiais, gráfico, tabela e metodologia."/>
+<meta property="og:url" content="https://observatoriodetaxas.tec.br/comparador/"/>
+<meta property="og:image" content="https://observatoriodetaxas.tec.br/og-image.png"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Comparador Selic, CDI e IPCA", "url": "https://observatoriodetaxas.tec.br/comparador/", "description": "Compare Selic, CDI e IPCA acumulados em qualquer período. De nov/2025 a out/2026: CDI 14,23%, Selic 14,23%, IPCA 4,63%. Dados oficiais, gráfico, tabela e metodologia.", "applicationCategory": "FinanceApplication", "operatingSystem": "Navegador web", "inLanguage": "pt-BR", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "BRL"}, "publisher": {"@type": "Organization", "name": "Observatório de Taxas", "url": "https://observatoriodetaxas.tec.br/"}, "isPartOf": {"@id": "https://observatoriodetaxas.tec.br/#website"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "url": "https://observatoriodetaxas.tec.br/comparador/", "name": "Selic, CDI e IPCA: compare juros e inflação no Brasil", "inLanguage": "pt-BR", "isPartOf": {"@id": "https://observatoriodetaxas.tec.br/#website"}, "breadcrumb": {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Observatório de Taxas", "item": "https://observatoriodetaxas.tec.br/"}, {"@type": "ListItem", "position": 2, "name": "Comparador", "item": "https://observatoriodetaxas.tec.br/comparador/"}]}, "mainEntity": [{"@type": "Question", "name": "CDI rende mais que o IPCA?", "acceptedAnswer": {"@type": "Answer", "text": "Depende do período. De novembro de 2025 a outubro de 2026, o CDI acumulou 14,23% e o IPCA, 4,63%. Em outros períodos a relação pode ser diferente; o comparador mostra cada um. O IPCA mede a variação de preços ao consumidor e não é uma aplicação: a comparação indica se a taxa de referência ficou acima ou abaixo da inflação, não o resultado de um investimento real."}}, {"@type": "Question", "name": "Qual a diferença entre CDI e Selic?", "acceptedAnswer": {"@type": "Answer", "text": "A Selic é a taxa dos empréstimos de um dia entre instituições com lastro em títulos públicos; a meta Selic é definida pelo Copom e a Selic efetiva é a taxa praticada no dia. O CDI (taxa DI) é a taxa média dos empréstimos de um dia entre instituições sem lastro em títulos, calculada pela B3. Na prática, o CDI anda muito perto da Selic efetiva, e as duas ficam um pouco abaixo da meta. Com as taxas diárias, de novembro de 2025 a outubro de 2026, a Selic efetiva e o CDI acumularam o mesmo: 14,2438%. A meta Selic não entra na conta: é uma meta anual, não uma taxa acumulada."}}, {"@type": "Question", "name": "Como comparar CDI e inflação?", "acceptedAnswer": {"@type": "Answer", "text": "Acumule as duas no mesmo período, pelas competências mensais, e calcule a taxa real: (1 + CDI acumulado) ÷ (1 + IPCA acumulado) − 1. Se for positiva, a taxa de referência ficou acima da inflação no período."}}, {"@type": "Question", "name": "O que significa CDI acumulado?", "acceptedAnswer": {"@type": "Answer", "text": "É o produto das taxas de cada período: fator = (1 + taxa₁ ÷ 100) × (1 + taxa₂ ÷ 100) × …, e o acumulado é (fator − 1) × 100. Não é a soma das taxas mensais."}}, {"@type": "Question", "name": "Por que não usar a meta Selic ou o IPCA de 12 meses?", "acceptedAnswer": {"@type": "Answer", "text": "A meta Selic é uma taxa anual definida pelo Copom, não a taxa efetivamente acumulada em cada mês. O IPCA de 12 meses já é um acumulado; compô-lo de novo contaria a inflação mais de uma vez. O comparador usa a Selic e o CDI acumulados no mês e a variação mensal do IPCA."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Observatório de Taxas", "item": "https://observatoriodetaxas.tec.br/"}, {"@type": "ListItem", "position": 2, "name": "Comparador", "item": "https://observatoriodetaxas.tec.br/comparador/"}]}</script>
+<style>
+/* fontes self-hosted (subset latin, SIL OFL) — ver /fonts/LICENSE.txt */
+@font-face{font-family:'Fraunces';font-style:normal;font-weight:500 700;font-display:swap;src:url(/fonts/fraunces.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Archivo';font-style:normal;font-weight:400 600;font-display:swap;src:url(/fonts/archivo.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/ibmplexmono-400.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/ibmplexmono-500.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/ibmplexmono-600.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+:root{--cofre:#0E1210;--papel:#E9E6DC;--carimbo:#D9B54A;--alta:#3FD68F;--queda:#E4574F;--neutro:#5A625D;--papel-70:rgba(233,230,220,.70);--papel-45:rgba(233,230,220,.55);--linha:rgba(233,230,220,.14);--campo:#0d1210;--maxw:860px;color-scheme:dark}
+*{box-sizing:border-box}
+/* Foco visível e consistente (WCAG 2.4.7) + link "pular para o conteúdo" */
+:focus-visible{outline:2px solid var(--carimbo);outline-offset:2px}
+.skip-link{position:absolute;left:-9999px;top:0;z-index:100;font-family:"IBM Plex Mono",monospace;font-size:.82rem;font-weight:600;color:var(--cofre);background:var(--carimbo);padding:.6rem 1rem;border-radius:0 0 8px 0;text-decoration:none;border-bottom:0}
+.skip-link:focus{left:0;outline:2px solid var(--papel);outline-offset:-4px}
+body{margin:0;background:var(--cofre);color:var(--papel);font-family:"Archivo",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:24px clamp(1rem,4vw,2rem) 64px}
+a{color:var(--carimbo);text-decoration:none;border-bottom:1px solid rgba(217,181,74,.4)}a:hover{border-bottom-color:var(--carimbo)}
+::selection{background:rgba(217,181,74,.28)}
+.crumb{font-family:"IBM Plex Mono",monospace;color:var(--papel-45);font-size:.78rem;letter-spacing:.02em;border-bottom:0}
+.crumb a{color:var(--papel-70);border-bottom:0}.crumb a:hover{color:var(--papel)}
+h1{font-family:"Fraunces",Georgia,serif;font-optical-sizing:auto;font-weight:600;font-size:clamp(1.7rem,4.6vw,2.4rem);line-height:1.08;letter-spacing:-.015em;margin:.5em 0 .35em}
+h2{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:1.2rem;letter-spacing:-.01em;margin:0 0 .7rem}
+.card{background:rgba(233,230,220,.02);border:1px solid var(--linha);border-radius:10px;padding:1.1rem 1.2rem 1.3rem;margin:1rem 0}
+.big{font-family:"Fraunces",Georgia,serif;font-weight:700;font-size:clamp(2rem,5.5vw,2.7rem);color:var(--carimbo);letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1}.big.neg{color:var(--queda)}
+table{width:100%;border-collapse:collapse;font-size:.9rem;font-variant-numeric:tabular-nums}
+th,td{padding:8px 10px;text-align:right;border-bottom:1px solid var(--linha)}
+th:first-child,td:first-child{text-align:left}
+thead th{color:var(--papel-45);font-weight:600;font-family:"IBM Plex Mono",monospace;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase}
+tfoot th{color:var(--papel);border-bottom:0;padding-top:12px}
+input,select{background:var(--campo);border:1px solid var(--linha);border-radius:8px;color:var(--papel);padding:.6rem .7rem;font:inherit;font-size:1rem;width:100%}
+input:focus-visible,select:focus-visible{outline:2px solid var(--carimbo);outline-offset:1px}
+label{display:block;margin:12px 0 4px;color:var(--papel-45);font-family:"IBM Plex Mono",monospace;font-size:.64rem;letter-spacing:.1em;text-transform:uppercase}
+button{font-family:"IBM Plex Mono",monospace;background:var(--carimbo);color:var(--cofre);border:0;border-radius:8px;padding:.72rem 1rem;font-size:.95rem;font-weight:600;letter-spacing:.02em;cursor:pointer;margin-top:14px;width:100%;transition:filter .15s}
+button:hover{filter:brightness(1.06)}
+button:focus-visible{outline:2px solid var(--papel);outline-offset:2px}
+.res{margin-top:14px;font-size:1.1rem;color:var(--papel-70)}.res b{color:var(--papel);font-family:"Fraunces",Georgia,serif;font-weight:700}
+.mut{color:var(--papel-45);font-size:.84rem}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.pill{display:inline-block;background:transparent;border:1px solid var(--linha);border-radius:999px;padding:5px 13px;margin:3px;font-size:.8rem;font-family:"IBM Plex Mono",monospace;color:var(--papel-70)}
+a.pill{border-bottom:1px solid var(--linha)}a.pill:hover{border-color:rgba(217,181,74,.5);color:var(--papel)}
+footer{margin-top:32px;color:var(--papel-45);font-size:.8rem;border-top:1px solid var(--linha);padding-top:1.2rem}
+footer a{color:var(--papel-70)}
+@media(max-width:520px){.grid{grid-template-columns:1fr}}
+.faq h3{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:1rem;margin:1rem 0 .3rem}
+.faq p{margin:0 0 .4rem;color:var(--papel-70)}
+
+.lead{font-size:1.12rem;color:var(--papel)}
+.lead b{color:var(--carimbo)}
+main{overflow-wrap:anywhere}
+.rolagem{overflow-x:auto}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(150px,100%),1fr));gap:10px;margin:1rem 0}
+.kpi{border:1px solid var(--linha);border-radius:10px;padding:.8rem 1rem}
+.kpi span{display:block;font-family:"IBM Plex Mono",monospace;font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--papel-45)}
+.kpi b{font-family:"Fraunces",Georgia,serif;font-size:1.25rem;font-variant-numeric:tabular-nums}
+dl.ficha{display:grid;grid-template-columns:minmax(140px,30%) 1fr;gap:.4rem 1rem;margin:0}
+dl.ficha dt{font-family:"IBM Plex Mono",monospace;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--papel-45);padding-top:.2rem}
+dl.ficha dd{margin:0}
+.grafico iframe{width:100%;height:320px;border:0;border-radius:8px;background:var(--campo)}
+.tabela-hub td:nth-child(2){white-space:nowrap}
+.tabela-hub th,.tabela-hub td{text-align:left}
+.tabela-hub td.num{text-align:right}
+h2.grupo{margin-top:1.6rem}
+@media(max-width:520px){dl.ficha{grid-template-columns:1fr}}
+
+.ctrl{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));gap:10px}
+.ctrl fieldset{border:1px solid var(--linha);border-radius:8px;margin:0;padding:.5rem .8rem .7rem}
+.ctrl legend{font-family:"IBM Plex Mono",monospace;font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--papel-45);padding:0 .3rem}
+.ctrl fieldset label{display:inline-flex;align-items:center;gap:.4rem;margin:.3rem .9rem .1rem 0;text-transform:none;letter-spacing:0;font-family:"Archivo",sans-serif;font-size:.92rem;color:var(--papel)}
+.ctrl input[type=checkbox],.ctrl input[type=radio]{width:auto;accent-color:var(--carimbo)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:.6rem 0 0}
+.chips button{width:auto;margin:0;padding:.42rem .8rem;background:transparent;color:var(--papel-70);border:1px solid var(--linha);font-size:.8rem;border-radius:999px}
+.chips button[aria-pressed=true]{background:var(--carimbo);color:var(--cofre);border-color:var(--carimbo)}
+.acoes{display:flex;flex-wrap:wrap;gap:8px;margin-top:.8rem}
+.acoes button{width:auto;margin:0;background:transparent;color:var(--papel);border:1px solid var(--linha);font-size:.82rem}
+.resultado{font-size:1.06rem}
+.resultado b{color:var(--carimbo);font-family:"IBM Plex Mono",monospace}
+.aviso{color:var(--papel-45);font-size:.84rem}
+.erro{color:var(--queda)}
+.num{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}
+.rolagem{overflow-x:auto}
+.rolagem table{min-width:520px}
+.rolagem th,.rolagem td{white-space:nowrap;overflow-wrap:normal}
+.legenda{display:flex;flex-wrap:wrap;gap:14px;font-size:.84rem;color:var(--papel-70);margin:.4rem 0 0}
+.legenda i{display:inline-block;width:18px;height:0;border-top:3px solid;vertical-align:middle;margin-right:6px}
+svg.grafico{width:100%;height:auto;display:block}
+.alta{color:var(--alta)}.queda{color:var(--queda)}
+</style>
+<script src="/calculos.js" defer></script>
+<script src="/comparador.js" defer></script>
+<script data-goatcounter="https://observatoriotaxas.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+  <link rel="stylesheet" href="../nav.css" />
+  <script src="../estrelas.js" defer></script>
+</head>
+<body><a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+<!-- nav:start -->
+<!-- Header replicado de partials/nav.html por scripts/sync_nav.py. Não edite aqui: edite o partial e rode o script. -->
+<header class="nav-site">
+  <div class="nav-caixa">
+    <a class="nav-marca" href="../index.html">Observatório de Taxas</a>
+    <nav class="nav-itens" aria-label="Navegação principal">
+      <a href="../index.html" data-nav="painel">Painel</a>
+      <a href="../rebobinar.html" data-nav="rebobinador">Rebobinador</a>
+      <a href="../var.html" data-nav="var">VAR</a>
+      <a href="../indicadores/" data-nav="indicadores">Indicadores</a>
+      <a href="../reajuste/index.html" data-nav="reajuste">Reajuste</a>
+      <a href="../retransmissora.html" data-nav="embeds">Embeds</a>
+    </nav>
+    <a class="nav-github" href="https://github.com/iosbilario/observatorio-taxas" aria-label="Código no GitHub">
+      <svg class="nav-github-logo" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+      <span class="nav-github-rotulo"><span aria-hidden="true">☆</span> Estrela</span>
+      <span class="nav-github-total" data-estrelas hidden></span>
+    </a>
+  </div>
+</header>
+<!-- nav:end -->
+<div class="wrap">
+<nav class="crumb" aria-label="Você está em"><a href="https://observatoriodetaxas.tec.br/">Observatório de Taxas</a> › <span aria-current="page">Comparador</span></nav>
+<main id="conteudo">
+<article id="comparador" data-padrao="{&quot;de&quot;:&quot;2025-11&quot;,&quot;ate&quot;:&quot;2026-10&quot;,&quot;fechado&quot;:{&quot;cdi&quot;:&quot;2026-10&quot;,&quot;selic&quot;:&quot;2026-10&quot;,&quot;ipca&quot;:&quot;2026-10&quot;}}">
+<h1>Selic, CDI e IPCA: compare juros e inflação no Brasil</h1>
+<p class="lead">Compare a evolução dos indicadores econômicos em períodos equivalentes, com dados oficiais, metodologia
+transparente e histórico verificável.</p>
+<section class="card" aria-labelledby="ctrl-t"><h2 id="ctrl-t">Período e indicadores</h2>
+<form id="form-comp" class="ctrl" novalidate>
+<div><label for="de">Mês inicial</label><input id="de" name="de" type="month" value="2025-11" min="2015-01" max="2026-10"/></div>
+<div><label for="ate">Mês final</label><input id="ate" name="ate" type="month" value="2026-10" min="2015-01" max="2026-10"/></div>
+<fieldset><legend>Indicadores</legend>
+<label><input type="checkbox" name="i" value="cdi" checked/> CDI</label>
+<label><input type="checkbox" name="i" value="selic" checked/> Selic</label>
+<label><input type="checkbox" name="i" value="ipca" checked/> IPCA</label></fieldset>
+<fieldset><legend>Mostrar</legend>
+<label><input type="radio" name="ver" value="pct" checked/> % acumulado</label>
+<label><input type="radio" name="ver" value="reais"/> R$ 1.000 corrigidos</label></fieldset>
+</form>
+<div class="chips" role="group" aria-label="Períodos rápidos">
+<button type="button" data-meses="12" aria-pressed="true">12 meses</button><button type="button" data-meses="24" aria-pressed="false">24 meses</button>
+<button type="button" data-meses="36" aria-pressed="false">36 meses</button><button type="button" data-meses="60" aria-pressed="false">60 meses</button></div>
+<div class="acoes"><button type="button" id="copiar">Copiar link desta comparação</button></div>
+<noscript><p class="aviso">Os controles precisam de JavaScript. Sem ele, a página mostra os últimos 12 meses fechados, abaixo.</p></noscript>
+</section>
+<section class="card" aria-labelledby="res-t"><h2 id="res-t">Resultado</h2>
+<p class="resultado" id="resultado" aria-live="polite">De novembro de 2025 a outubro de 2026 (12 meses), o CDI acumulou <b>14,23%</b>, a Selic acumulou <b>14,23%</b> e o IPCA acumulou <b>4,63%</b>.</p>
+<p class="aviso">Esses números são calculados a partir das séries oficiais e podem diferir do desempenho de
+investimentos reais devido a custos, impostos e características dos produtos. Selic e CDI são taxas de referência,
+não aplicações disponíveis diretamente ao investidor; o IPCA mede a variação de preços.</p>
+</section>
+<section class="card" aria-labelledby="graf-t"><h2 id="graf-t">Gráfico</h2>
+<div id="grafico" role="img" aria-label="Evolução acumulada de CDI, Selic e IPCA no período; os mesmos valores estão na tabela abaixo.">
+<p class="aviso">O gráfico é desenhado com JavaScript. Os valores estão na tabela abaixo.</p></div>
+<div class="legenda" id="legenda"></div>
+</section>
+<section class="card" aria-labelledby="tab-t"><h2 id="tab-t">Mês a mês</h2>
+<div class="rolagem"><table id="tabela"><caption class="aviso" style="caption-side:bottom;text-align:left;padding-top:.6rem">Taxa de cada competência em % e fator acumulado desde o mês inicial.</caption>
+<thead><tr><th scope="col">Mês</th><th scope="col">Selic</th><th scope="col">CDI</th><th scope="col">IPCA</th>
+<th scope="col">Fator Selic</th><th scope="col">Fator CDI</th><th scope="col">Fator IPCA</th></tr></thead>
+<tbody><tr><td>nov/2025</td><td class="num">1,05%</td><td class="num">1,05%</td><td class="num">0,18%</td><td class="num">1,010500</td><td class="num">1,010500</td><td class="num">1,001800</td></tr><tr><td>dez/2025</td><td class="num">1,22%</td><td class="num">1,22%</td><td class="num">0,33%</td><td class="num">1,022828</td><td class="num">1,022828</td><td class="num">1,005106</td></tr><tr><td>jan/2026</td><td class="num">1,16%</td><td class="num">1,16%</td><td class="num">0,33%</td><td class="num">1,034693</td><td class="num">1,034693</td><td class="num">1,008423</td></tr><tr><td>fev/2026</td><td class="num">1,00%</td><td class="num">1,00%</td><td class="num">0,70%</td><td class="num">1,045040</td><td class="num">1,045040</td><td class="num">1,015482</td></tr><tr><td>mar/2026</td><td class="num">1,21%</td><td class="num">1,21%</td><td class="num">0,88%</td><td class="num">1,057685</td><td class="num">1,057685</td><td class="num">1,024418</td></tr><tr><td>abr/2026</td><td class="num">1,09%</td><td class="num">1,09%</td><td class="num">0,67%</td><td class="num">1,069214</td><td class="num">1,069214</td><td class="num">1,031282</td></tr><tr><td>mai/2026</td><td class="num">1,07%</td><td class="num">1,07%</td><td class="num">0,58%</td><td class="num">1,080654</td><td class="num">1,080654</td><td class="num">1,037263</td></tr><tr><td>jun/2026</td><td class="num">1,12%</td><td class="num">1,12%</td><td class="num">0,16%</td><td class="num">1,092757</td><td class="num">1,092757</td><td class="num">1,038923</td></tr><tr><td>jul/2026</td><td class="num">1,22%</td><td class="num">1,22%</td><td class="num">0,07%</td><td class="num">1,106089</td><td class="num">1,106089</td><td class="num">1,039650</td></tr><tr><td>ago/2026</td><td class="num">1,09%</td><td class="num">1,09%</td><td class="num">-0,32%</td><td class="num">1,118146</td><td class="num">1,118146</td><td class="num">1,036323</td></tr><tr><td>set/2026</td><td class="num">1,08%</td><td class="num">1,08%</td><td class="num">0,82%</td><td class="num">1,130221</td><td class="num">1,130221</td><td class="num">1,044821</td></tr><tr><td>out/2026</td><td class="num">1,07%</td><td class="num">1,07%</td><td class="num">0,14%</td><td class="num">1,142315</td><td class="num">1,142315</td><td class="num">1,046284</td></tr></tbody></table></div>
+<p class="aviso">Fontes: Selic acumulada no mês (SGS 4390, Banco Central), CDI acumulado no mês (SGS 4391, B3) e
+IPCA (SGS 433, IBGE). As séries mensais têm 2 casas decimais; por isso o acumulado pode diferir em centésimos do
+calculado com taxas diárias ou com números-índice. O mês corrente, ainda incompleto, não entra.</p>
+</section>
+<!-- anuncio:comparador:inicio --><!-- anuncio:comparador:fim -->
+<section class="card" aria-labelledby="met-t"><h2 id="met-t">Metodologia</h2>
+<p>Para cada indicador escolhido, o comparador multiplica os fatores das competências do mês inicial ao mês final,
+inclusive: <span class="num">fator = Π (1 + taxa do mês ÷ 100)</span> e <span class="num">variação = (fator − 1) × 100</span>.
+A composição vale porque as três séries têm a mesma natureza: taxa ou variação que vale para o próprio mês.</p>
+<ul>
+<li><b>Selic</b>: Selic acumulada no mês (SGS 4390), não a meta Selic, que é uma taxa anual de política monetária.</li>
+<li><b>CDI</b>: CDI acumulado no mês (SGS 4391), não a taxa DI anualizada apresentada como se fosse mensal.</li>
+<li><b>IPCA</b>: variação mensal (SGS 433). O IPCA de 12 meses (SGS 13522) serve só de conferência.</li>
+</ul>
+<p>Em “R$ 1.000 corrigidos”, cada linha mostra R$ 1.000 multiplicados pelo fator do indicador. Para o IPCA, o
+número representa quanto custaria, no fim do período, o que custava R$ 1.000 no início; não é rendimento.</p>
+</section>
+<section class="card faq" aria-labelledby="faq-t"><h2 id="faq-t">Perguntas e respostas</h2><h3>CDI rende mais que o IPCA?</h3><p>Depende do período. De novembro de 2025 a outubro de 2026, o CDI acumulou 14,23% e o IPCA, 4,63%. Em outros períodos a relação pode ser diferente; o comparador mostra cada um. O IPCA mede a variação de preços ao consumidor e não é uma aplicação: a comparação indica se a taxa de referência ficou acima ou abaixo da inflação, não o resultado de um investimento real.</p><h3>Qual a diferença entre CDI e Selic?</h3><p>A Selic é a taxa dos empréstimos de um dia entre instituições com lastro em títulos públicos; a meta Selic é definida pelo Copom e a Selic efetiva é a taxa praticada no dia. O CDI (taxa DI) é a taxa média dos empréstimos de um dia entre instituições sem lastro em títulos, calculada pela B3. Na prática, o CDI anda muito perto da Selic efetiva, e as duas ficam um pouco abaixo da meta. Com as taxas diárias, de novembro de 2025 a outubro de 2026, a Selic efetiva e o CDI acumularam o mesmo: 14,2438%. A meta Selic não entra na conta: é uma meta anual, não uma taxa acumulada.</p><h3>Como comparar CDI e inflação?</h3><p>Acumule as duas no mesmo período, pelas competências mensais, e calcule a taxa real: (1 + CDI acumulado) ÷ (1 + IPCA acumulado) − 1. Se for positiva, a taxa de referência ficou acima da inflação no período.</p><h3>O que significa CDI acumulado?</h3><p>É o produto das taxas de cada período: fator = (1 + taxa₁ ÷ 100) × (1 + taxa₂ ÷ 100) × …, e o acumulado é (fator − 1) × 100. Não é a soma das taxas mensais.</p><h3>Por que não usar a meta Selic ou o IPCA de 12 meses?</h3><p>A meta Selic é uma taxa anual definida pelo Copom, não a taxa efetivamente acumulada em cada mês. O IPCA de 12 meses já é um acumulado; compô-lo de novo contaria a inflação mais de uma vez. O comparador usa a Selic e o CDI acumulados no mês e a variação mensal do IPCA.</p></section>
+<section class="card" aria-labelledby="fontes-t"><h2 id="fontes-t">Fontes oficiais</h2>
+<ul>
+<li><a href="/indicadores/cdi/">CDI (taxa DI) anualizado</a>, série 4389 do SGS (B3), diária: <a href="/data/4389_history.json">JSON</a></li>
+<li><a href="/indicadores/cdi-acumulado-no-mes/">CDI acumulado no mês</a>, série 4391 (B3): <a href="/data/4391_history.json">JSON</a></li>
+<li><a href="/indicadores/selic-acumulada-no-mes/">Selic acumulada no mês</a>, série 4390 (Banco Central): <a href="/data/4390_history.json">JSON</a></li>
+<li><a href="/indicadores/selic-efetiva/">Selic efetiva anualizada</a>, série 1178 (Banco Central): <a href="/data/1178_history.json">JSON</a></li>
+<li><a href="/indicadores/ipca/">IPCA, variação mensal</a>, série 433 (IBGE): <a href="/data/433_history.json">JSON</a></li>
+<li>Conferência: <a href="/indicadores/ipca-12-meses/">IPCA acumulado em 12 meses</a>, série 13522 (IBGE)</li>
+<li>Metodologia completa: <a href="https://github.com/iosbilario/observatorio-taxas/blob/main/desenvolvimento/METODOLOGIA-FERRAMENTAS.md">METODOLOGIA-FERRAMENTAS.md</a></li>
+</ul></section>
+<section class="card" aria-labelledby="rel-t"><h2 id="rel-t">Veja também</h2>
+<p><a class="pill" href="/simulador-cdi/">Simulador de rendimento do CDI</a><a class="pill" href="/correcao/ipca/">Correção monetária pelo IPCA</a>
+<a class="pill" href="/indicadores/">Todos os indicadores</a><a class="pill" href="/var.html">VAR da Economia</a></p></section>
+</article>
+</main>
+<footer>Dados: CDI calculado pela B3; Selic e taxa DI publicadas pelo Banco Central do Brasil; IPCA produzido pelo
+IBGE. O Observatório obtém as séries na <a href="https://www3.bcb.gov.br/sgspub/">API pública do SGS</a> do Banco
+Central e não altera os valores. Simulações e comparações são informativas, não são recomendação de investimento e
+podem diferir de aplicações reais por custos, impostos e características de cada produto.
+<!-- rodape:start -->
+<!-- Rodapé replicado de partials/rodape.html por scripts/sync_nav.py. Não edite aqui: edite o partial e rode o script. -->
+<div class="rodape-site">
+  <div class="rodape-grade">
+    <div class="rodape-marca">
+      <a class="rodape-nome" href="../index.html">Observatório de Taxas</a>
+      <p>Os números mudam. O histórico fica.</p>
+      <p>Indicadores econômicos do Brasil com histórico versionado e cálculos verificáveis.</p>
+    </div>
+    <nav class="rodape-coluna" aria-labelledby="rodape-produto">
+      <h2 id="rodape-produto">Produto</h2>
+      <ul>
+        <li><a href="../index.html">Painel</a></li>
+        <li><a href="../indicadores/">Indicadores</a></li>
+        <li><a href="../comparador/">Comparador Selic, CDI e IPCA</a></li>
+        <li><a href="../simulador-cdi/">Simulador de CDI</a></li>
+        <li><a href="../reajuste/">Reajuste de contratos</a></li>
+        <li><a href="../correcao/">Correção monetária</a></li>
+        <li><a href="../rebobinar.html">Rebobinar</a></li>
+        <li><a href="../var.html">VAR da Economia</a></li>
+        <li><a href="../retransmissora.html">Embeds</a></li>
+      </ul>
+    </nav>
+    <nav class="rodape-coluna" aria-labelledby="rodape-docs">
+      <h2 id="rodape-docs">Documentação</h2>
+      <ul>
+        <li><a href="https://github.com/iosbilario/observatorio-taxas#dados-e-metodologia">Metodologia</a></li>
+        <li><a href="../data/series.json">Dados abertos (JSON)</a></li>
+        <li><a href="https://github.com/iosbilario/observatorio-taxas/blob/main/desenvolvimento/GUIA.md">Guia do desenvolvedor</a></li>
+        <li><a href="https://github.com/iosbilario/observatorio-taxas/blob/main/desenvolvimento/REPRODUCAO.md">Reprodução</a></li>
+        <li><a href="https://github.com/iosbilario/observatorio-taxas/releases">Versões</a></li>
+        <li><a href="https://doi.org/10.5281/zenodo.24151062">Como citar (DOI)</a></li>
+      </ul>
+    </nav>
+    <nav class="rodape-coluna" aria-labelledby="rodape-ias">
+      <h2 id="rodape-ias">Para IAs</h2>
+      <ul>
+        <li><a href="../mcp/">Visão geral</a></li>
+        <li><a href="../mcp/#usar-t">Servidor MCP</a></li>
+        <li><a href="../llms.txt">llms.txt</a></li>
+        <li><a href="https://github.com/iosbilario/observatorio-taxas/tree/main/servidor_mcp">Código do servidor</a></li>
+      </ul>
+    </nav>
+    <nav class="rodape-coluna" aria-labelledby="rodape-projeto">
+      <h2 id="rodape-projeto">Projeto</h2>
+      <ul>
+        <li><a href="../sobre/">Sobre e contato</a></li>
+        <li><a href="../apoie/">Apoie o projeto ♡</a></li>
+        <li><a href="https://github.com/iosbilario/observatorio-taxas">Código no GitHub</a></li>
+        <li><a href="https://github.com/iosbilario/observatorio-taxas/blob/main/SECURITY.md">Segurança</a></li>
+        <li><a href="../privacidade/">Privacidade</a></li>
+        <li><a href="../termos/">Termos de uso</a></li>
+        <li><a href="https://github.com/iosbilario/observatorio-taxas/blob/main/LICENSE-DADOS.md">Licenças</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="rodape-base">
+    <p>Feito pela LBP Tecnologia. Conteúdo informativo, sem caráter de recomendação financeira.</p>
+    <p>© 2026 Observatório de Taxas · Código MIT · Dados via SGS do Banco Central</p>
+  </div>
+</div>
+<!-- rodape:end -->
+</footer>
+</div></body></html>

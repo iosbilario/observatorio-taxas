@@ -7,6 +7,10 @@
   "hash": "36b7c8caf6249415",
   "lastmod": "2026-11-13"
  },
+ "https://observatoriodetaxas.tec.br/comparador/": {
+  "hash": "d4559c12dc368809",
+  "lastmod": "2026-11-13"
+ },
  "https://observatoriodetaxas.tec.br/correcao/": {
   "hash": "6302ecd3a712a281",
   "lastmod": "2026-11-13"
@@ -32,11 +36,11 @@
   "lastmod": "2026-11-13"
  },
  "https://observatoriodetaxas.tec.br/indicadores/cdi-acumulado-no-mes/": {
-  "hash": "0b89dded725f2979",
+  "hash": "10133658fbcf4049",
   "lastmod": "2026-11-13"
  },
  "https://observatoriodetaxas.tec.br/indicadores/cdi/": {
-  "hash": "9fed14f3870baf4d",
+  "hash": "ded09dad472d181e",
   "lastmod": "2026-11-13"
  },
  "https://observatoriodetaxas.tec.br/indicadores/desemprego/": {
@@ -80,7 +84,7 @@
   "lastmod": "2026-11-13"
  },
  "https://observatoriodetaxas.tec.br/indicadores/ipca-12-meses/": {
-  "hash": "ea8ad44623d8744e",
+  "hash": "b4eb8ad450900f84",
   "lastmod": "2026-11-13"
  },
  "https://observatoriodetaxas.tec.br/indicadores/ipca-15/": {
@@ -88,7 +92,7 @@
   "lastmod": "2026-11-13"
  },
  "https://observatoriodetaxas.tec.br/indicadores/ipca/": {
-  "hash": "a606f3a102cba05b",
+  "hash": "bd52b72138322070",
   "lastmod": "2026-11-13"
  },
  "https://observatoriodetaxas.tec.br/indicadores/juros-do-credito/": {
@@ -96,7 +100,7 @@
   "lastmod": "2026-11-13"
  },
  "https://observatoriodetaxas.tec.br/indicadores/meta-selic/": {
-  "hash": "f63eb0ddd1d38cf3",
+  "hash": "ce9f9eaf0c14c66f",
   "lastmod": "2026-11-13"
  },
  "https://observatoriodetaxas.tec.br/indicadores/poupanca-regra-antiga/": {
@@ -116,11 +120,11 @@
   "lastmod": "2026-11-13"
  },
  "https://observatoriodetaxas.tec.br/indicadores/selic-acumulada-no-mes/": {
-  "hash": "3afb99d457d2fbed",
+  "hash": "b7220bb3b29d5a9f",
   "lastmod": "2026-11-13"
  },
  "https://observatoriodetaxas.tec.br/indicadores/selic-efetiva/": {
-  "hash": "1b415b98acd43cf4",
+  "hash": "2a4d2ebe8ca4b832",
   "lastmod": "2026-11-13"
  },
  "https://observatoriodetaxas.tec.br/indicadores/tjlp/": {
@@ -2245,6 +2249,10 @@
  },
  "https://observatoriodetaxas.tec.br/retransmissora.html": {
   "hash": "936bb7454e3fc993",
+  "lastmod": "2026-11-13"
+ },
+ "https://observatoriodetaxas.tec.br/simulador-cdi/": {
+  "hash": "c3044fd797b4852b",
   "lastmod": "2026-11-13"
  },
  "https://observatoriodetaxas.tec.br/sobre/": {
