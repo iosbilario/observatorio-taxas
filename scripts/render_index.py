@@ -355,7 +355,7 @@ def impressao_digital_html(html: str) -> str:
         m = re.search(r"<body\b.*</body>", html, re.S)
         b = m.group(0) if m else html
         b = re.sub(r"<!-- nav:start -->.*?<!-- nav:end -->", "", b, flags=re.S)
-        b = re.sub(r"<!-- rodape:start -->.*?<!-- rodape:end -->", "", b, flags=re.S)
+        b = re.sub(r"<!-- rodape:start -->.*?<!-- rodape:end -->\n?", "", b, flags=re.S)
         b = re.sub(r"<(script|style)\b.*?</\1>", "", b, flags=re.S)
         partes.append(b)
     texto = "\n".join(partes)
