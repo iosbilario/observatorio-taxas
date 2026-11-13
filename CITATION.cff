@@ -17,7 +17,8 @@ abstract: >-
   a série oficial do IPCA em 12 meses (SGS 13522). Inclui um servidor MCP
   (Model Context Protocol) público e somente de leitura, que expõe as séries
   do Banco Central e os mesmos cálculos do site para assistentes como ChatGPT
-  e Claude.
+  e Claude, uma página por indicador, um comparador de Selic, CDI e IPCA e um
+  simulador de rendimento do CDI.
 type: software
 authors:
   - given-names: "Leandro Borges"
@@ -37,7 +38,7 @@ identifiers:
 repository-code: "https://github.com/iosbilario/observatorio-taxas"
 url: "https://observatoriodetaxas.tec.br/"
 license: MIT
-version: "1.7.0"
+version: "1.8.0"
 date-released: "2026-11-13"
 keywords:
   - indicadores econômicos
