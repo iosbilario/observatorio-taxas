@@ -8,6 +8,7 @@
   <a href="https://observatoriodetaxas.tec.br/correcao/">Correção monetária</a> ·
   <a href="https://observatoriodetaxas.tec.br/var.html">VAR</a> ·
   <a href="https://observatoriodetaxas.tec.br/data/series.json">Dados (JSON)</a> ·
+  <a href="https://observatoriodetaxas.tec.br/mcp/">MCP (ChatGPT e Claude)</a> ·
   <a href="desenvolvimento/GUIA.md">Guia do desenvolvedor</a> ·
   <a href="https://observatoriodetaxas.tec.br/apoie/">Apoie</a>
 </p>
@@ -35,10 +36,12 @@ O Observatório guarda esse caminho:
 - **Histórico versionado.** Cada coleta que muda algum valor vira um commit.
   O histórico do Git é a linha do tempo de cada indicador, e qualquer número
   publicado pode ser conferido no ponto exato em que entrou.
-- **Disponível em três formas.** Páginas em HTML (legíveis sem JavaScript),
-  arquivos JSON em `/data/` e gráficos para incorporar em outros sites.
-- **Independente e gratuito.** Sem servidor, sem banco de dados, sem anúncios.
-  Projeto mantido pela LBP Tecnologia.
+- **Disponível em quatro formas.** Páginas em HTML (legíveis sem JavaScript),
+  arquivos JSON em `/data/`, gráficos para incorporar em outros sites e um
+  servidor MCP para assistentes como ChatGPT e Claude.
+- **Independente e gratuito.** O site é estático, sem banco de dados e sem
+  anúncios. O servidor MCP roda à parte, no plano gratuito do Render, e só lê
+  os JSON que o site publica. Projeto mantido pela LBP Tecnologia.
 
 ## Ferramentas
 
@@ -51,6 +54,39 @@ O Observatório guarda esse caminho:
 | VAR da Economia | Confere uma afirmação comparando dois períodos de uma série e emite um recibo com link permanente | [/var.html](https://observatoriodetaxas.tec.br/var.html) |
 | Retransmissora | Gera o código para incorporar um gráfico que se atualiza sozinho | [/retransmissora.html](https://observatoriodetaxas.tec.br/retransmissora.html) |
 | Dados abertos | Séries em JSON e manifesto de todas as séries | [/data/series.json](https://observatoriodetaxas.tec.br/data/series.json) |
+| Servidor MCP | Consulta indicadores, séries e cálculos de dentro do ChatGPT, do Claude e de outros clientes MCP | [/mcp/](https://observatoriodetaxas.tec.br/mcp/) |
+
+## Servidor MCP (ChatGPT e Claude)
+
+Um servidor [MCP](https://modelcontextprotocol.io/) público, gratuito, sem
+login e somente de leitura, em
+`https://observatorio-taxas-mcp.onrender.com/mcp` (Streamable HTTP). O código
+fica em [`servidor_mcp/`](servidor_mcp/).
+
+| Ferramenta | O que faz |
+| --- | --- |
+| `get_latest_indicator` | Último valor publicado, com unidade, data de referência, data da coleta, produtor e código SGS |
+| `get_indicator_history` | Série entre duas datas, até 500 pontos por chamada, com paginação |
+| `calculate_adjustment` | Corrige um valor por um índice mensal entre dois meses, com fórmula e memória de cálculo |
+| `compare_indicators` | Compara dois indicadores; só alinha ponto a ponto séries de mesma natureza e unidade |
+
+- **Mesmos números do site.** O servidor lê os JSON publicados em `/data/` e
+  importa as funções de cálculo do site (`fator_periodo` e `acumulado`). Não
+  existe fórmula paralela.
+- **Séries expostas:** só as do Banco Central (ODbL 1.0). IPCA, INPC e
+  desocupação (IBGE), IGP-M e IGP-DI (FGV IBRE) ficam suspensos no MCP até a
+  confirmação dos termos de redistribuição com os produtores.
+- **Privacidade:** recebe só os parâmetros da consulta, não grava parâmetros
+  nem IP. Ver a [seção do MCP na política de privacidade](https://observatoriodetaxas.tec.br/privacidade/#mcp-t).
+- **Como conectar:** passo a passo para o ChatGPT (Plugins) e o Claude
+  (Customize → Connectors) em [observatoriodetaxas.tec.br/mcp](https://observatoriodetaxas.tec.br/mcp/).
+  Em 13/11/2026, o plugin está em revisão no diretório da OpenAI e o conector,
+  no diretório do Claude.
+- **Custo:** R$ 0. Render Free num workspace sem cartão; o serviço dorme após
+  15 minutos sem uso e leva cerca de 1 minuto para acordar.
+
+Arquitetura, segurança, deploy e checklists de publicação:
+[`servidor_mcp/README.md`](servidor_mcp/README.md).
 
 ## Interface
 
@@ -70,6 +106,8 @@ flowchart TD
   E --> F["docs/<br/>HTML + JSON"]
   F --> G["GitHub Pages<br/>observatoriodetaxas.tec.br"]
   G --> H["IndexNow<br/>URLs alteradas"]
+  G -- "/data/*.json" --> I["servidor_mcp/<br/>Render Free"]
+  I --> J["ChatGPT, Claude<br/>e outros clientes MCP"]
   M{{"GitHub Actions<br/>monitor.yml, a cada 6 h"}} -.-> C
   M -.-> E
   M -. "commit + push" .-> D
@@ -82,6 +120,7 @@ Três camadas, com papéis diferentes:
 | Origem oficial | API do SGS | O dado como o Banco Central distribui. O Observatório não altera os valores. |
 | Histórico versionado | `data/` | Um arquivo por série, fundido por data a cada coleta. É o armazenamento canônico. |
 | Arquivos gerados | `docs/` | Páginas HTML, espelho dos JSONs e sitemap, reescritos a partir de `data/`. É o que o GitHub Pages publica. |
+| Servidor MCP | `servidor_mcp/` | Lê os JSON publicados pelo site (cache de 10 min) e responde aos assistentes. Não consulta o SGS nem guarda estado. |
 
 **Git como histórico temporal.** O `monitor.yml` só commita quando algum
 arquivo muda, e os arquivos de `data/` só mudam quando o SGS traz valor novo
@@ -150,13 +189,29 @@ python -m http.server 8000 --bind 127.0.0.1 --directory docs
 Abra `http://127.0.0.1:8000`. Detalhes de cada script, da estrutura de pastas
 e da configuração das séries estão no [Guia do desenvolvedor](desenvolvimento/GUIA.md).
 
+Servidor MCP local, lendo o `data/` do repositório (ambiente virtual separado):
+
+```bash
+python -m venv .venv-mcp && source .venv-mcp/bin/activate
+pip install --require-hashes -r servidor_mcp/requirements.txt
+python -m unittest discover -s servidor_mcp/tests -t . -v
+OBS_MCP_DADOS=data uvicorn servidor_mcp.servidor:app --host 127.0.0.1 --port 8000
+```
+
+O endpoint fica em `http://127.0.0.1:8000/mcp`. Para conferir um endpoint
+publicado: `python -m servidor_mcp.conferir_endpoint https://observatorio-taxas-mcp.onrender.com/mcp`.
+
 ## Automações
 
 | Workflow | Quando roda | O que faz |
 | --- | --- | --- |
 | [`monitor.yml`](.github/workflows/monitor.yml) | A cada 6 horas e sob demanda | Coleta as séries, gera as páginas, atualiza CSP e card social, e commita só se algo mudou |
-| [`validate.yml`](.github/workflows/validate.yml) | Em pull requests | Roda os testes, regenera as páginas e confere que o resultado é igual ao commitado. Não toca na coleta |
-| [`indexnow.yml`](.github/workflows/indexnow.yml) | Depois do monitor, em push na `main` e a cada 6 horas | Avisa os buscadores só das URLs alteradas, depois do deploy. Aguarda a primeira execução manual |
+| [`validate.yml`](.github/workflows/validate.yml) | Em pull requests | Roda os testes do site e do servidor MCP, regenera as páginas e confere que o resultado é igual ao commitado. Não toca na coleta |
+| [`indexnow.yml`](.github/workflows/indexnow.yml) | Depois do monitor, em push na `main` e a cada 6 horas | Avisa os buscadores só das URLs alteradas, depois do deploy |
+| [`mcp-acordado.yml`](.github/workflows/mcp-acordado.yml) | A cada 5 minutos (temporário) | Chama o `/health` do servidor MCP para ele não dormir durante a revisão dos diretórios. Será desligado depois das aprovações |
+
+O Render publica o servidor MCP sozinho (`render.yaml`) quando um commit na
+`main` muda `servidor_mcp/` ou os scripts de cálculo.
 
 O status de cada execução fica na aba [Actions](https://github.com/iosbilario/observatorio-taxas/actions).
 
@@ -180,7 +235,7 @@ O status de cada execução fica na aba [Actions](https://github.com/iosbilario/
   [`blob/v1.4.0/data/189_history.json`](https://github.com/iosbilario/observatorio-taxas/blob/v1.4.0/data/189_history.json).
   A URL do site (`/data/189_history.json`) é sempre a versão mais recente.
 - **Ponto no tempo exato:** cada coleta é um commit; o recibo do VAR traz o commit usado.
-- **Arquivamento (Zenodo):** cada release será arquivada com DOI próprio. O pacote arquivado contém só o software; as séries ficam no repositório e no site. Ver [Citação acadêmica](#citação-acadêmica).
+- **Arquivamento (Zenodo):** cada release é arquivada com DOI próprio. O pacote arquivado contém só o software; as séries ficam no repositório e no site. Ver [Citação acadêmica](#citação-acadêmica).
 
 | O quê | Licença |
 | --- | --- |
