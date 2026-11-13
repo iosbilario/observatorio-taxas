@@ -1,43 +1,43 @@
 {
  "https://observatoriodetaxas.tec.br/": {
-  "hash": "7dcb67b4fbf74e5d",
+  "hash": "b7851d77464a369e",
   "lastmod": "2026-11-13"
  },
  "https://observatoriodetaxas.tec.br/apoie/": {
-  "hash": "a235d4c5ac817155",
-  "lastmod": "2026-11-12"
+  "hash": "36b7c8caf6249415",
+  "lastmod": "2026-11-13"
  },
  "https://observatoriodetaxas.tec.br/correcao/": {
-  "hash": "48b09431a342dda3",
-  "lastmod": "2026-11-11"
+  "hash": "6302ecd3a712a281",
+  "lastmod": "2026-11-13"
  },
  "https://observatoriodetaxas.tec.br/correcao/igpdi/": {
-  "hash": "80febdc8ca43fbfe",
-  "lastmod": "2026-11-11"
+  "hash": "c6c30a92a15e0036",
+  "lastmod": "2026-11-13"
  },
  "https://observatoriodetaxas.tec.br/correcao/igpm/": {
-  "hash": "69f0f7450321cc53",
-  "lastmod": "2026-11-11"
+  "hash": "694c0272adc37117",
+  "lastmod": "2026-11-13"
  },
  "https://observatoriodetaxas.tec.br/correcao/inpc/": {
-  "hash": "995b79c0de2b2bb3",
-  "lastmod": "2026-11-12"
+  "hash": "2d5a1f60cd9231bf",
+  "lastmod": "2026-11-13"
  },
  "https://observatoriodetaxas.tec.br/correcao/ipca/": {
-  "hash": "ccf48c2058eab6de",
-  "lastmod": "2026-11-12"
+  "hash": "230f88d7eb636726",
+  "lastmod": "2026-11-13"
  },
  "https://observatoriodetaxas.tec.br/mcp/": {
-  "hash": "b8e3d4d7442757ea",
-  "lastmod": "2026-11-12"
+  "hash": "69a4406a49a661a2",
+  "lastmod": "2026-11-13"
  },
  "https://observatoriodetaxas.tec.br/privacidade/": {
-  "hash": "486275a6694dc9c9",
-  "lastmod": "2026-11-12"
+  "hash": "f4a21addde965a77",
+  "lastmod": "2026-11-13"
  },
  "https://observatoriodetaxas.tec.br/reajuste/": {
-  "hash": "3fd703d8aa51b675",
-  "lastmod": "2026-11-12"
+  "hash": "4919da056646fb1f",
+  "lastmod": "2026-11-13"
  },
  "https://observatoriodetaxas.tec.br/reajuste/igpdi-abril-2016/": {
   "hash": "cc9e5c170a88cea8",
@@ -2136,23 +2136,23 @@
   "lastmod": "2026-11-12"
  },
  "https://observatoriodetaxas.tec.br/rebobinar.html": {
-  "hash": "80f2f9e4a9635d67",
-  "lastmod": "2026-11-11"
+  "hash": "eb71d5a12015b97b",
+  "lastmod": "2026-11-13"
  },
  "https://observatoriodetaxas.tec.br/retransmissora.html": {
-  "hash": "04870ccc53aaff97",
-  "lastmod": "2026-11-11"
+  "hash": "936bb7454e3fc993",
+  "lastmod": "2026-11-13"
  },
  "https://observatoriodetaxas.tec.br/sobre/": {
-  "hash": "d7659788f4f837c0",
-  "lastmod": "2026-11-12"
+  "hash": "61c467f09308096b",
+  "lastmod": "2026-11-13"
  },
  "https://observatoriodetaxas.tec.br/termos/": {
-  "hash": "477dbecf5bfaee1b",
-  "lastmod": "2026-11-12"
+  "hash": "ee8314d0ca6843ac",
+  "lastmod": "2026-11-13"
  },
  "https://observatoriodetaxas.tec.br/var.html": {
-  "hash": "100ab1053c42567e",
-  "lastmod": "2026-11-11"
+  "hash": "0fee11526cd9957e",
+  "lastmod": "2026-11-13"
  }
 }

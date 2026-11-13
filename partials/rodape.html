@@ -1,0 +1,71 @@
+<!--
+  FONTE DA VERDADE do rodapé do site.
+
+  Replicado no fim do <footer> de cada página de docs/, entre os marcadores
+  "rodape:start" e "rodape:end", pelo mesmo script do header:
+
+      python scripts/sync_nav.py
+
+  O texto de procedência de cada página (quem produz o índice, avisos de uso)
+  continua no <footer> da própria página, acima deste bloco. Aqui ficam só os
+  links do site, iguais em todas as páginas.
+
+  Placeholders: o de prefixo vira o caminho relativo da página ("", "../",
+  "../../"); o de ano vira o ano da geração.
+-->
+<div class="rodape-site">
+  <div class="rodape-grade">
+    <div class="rodape-marca">
+      <a class="rodape-nome" href="{{P}}index.html">Observatório de Taxas</a>
+      <p>Os números mudam. O histórico fica.</p>
+      <p>Indicadores econômicos do Brasil com histórico versionado e cálculos verificáveis.</p>
+    </div>
+    <nav class="rodape-coluna" aria-labelledby="rodape-produto">
+      <h2 id="rodape-produto">Produto</h2>
+      <ul>
+        <li><a href="{{P}}index.html">Painel</a></li>
+        <li><a href="{{P}}reajuste/">Reajuste de contratos</a></li>
+        <li><a href="{{P}}correcao/">Correção monetária</a></li>
+        <li><a href="{{P}}rebobinar.html">Rebobinar</a></li>
+        <li><a href="{{P}}var.html">VAR da Economia</a></li>
+        <li><a href="{{P}}retransmissora.html">Embeds</a></li>
+      </ul>
+    </nav>
+    <nav class="rodape-coluna" aria-labelledby="rodape-docs">
+      <h2 id="rodape-docs">Documentação</h2>
+      <ul>
+        <li><a href="https://github.com/iosbilario/observatorio-taxas#dados-e-metodologia">Metodologia</a></li>
+        <li><a href="{{P}}data/series.json">Dados abertos (JSON)</a></li>
+        <li><a href="https://github.com/iosbilario/observatorio-taxas/blob/main/desenvolvimento/GUIA.md">Guia do desenvolvedor</a></li>
+        <li><a href="https://github.com/iosbilario/observatorio-taxas/blob/main/desenvolvimento/REPRODUCAO.md">Reprodução</a></li>
+        <li><a href="https://github.com/iosbilario/observatorio-taxas/releases">Versões</a></li>
+        <li><a href="https://doi.org/10.5281/zenodo.24151062">Como citar (DOI)</a></li>
+      </ul>
+    </nav>
+    <nav class="rodape-coluna" aria-labelledby="rodape-ias">
+      <h2 id="rodape-ias">Para IAs</h2>
+      <ul>
+        <li><a href="{{P}}mcp/">Visão geral</a></li>
+        <li><a href="{{P}}mcp/#usar-t">Servidor MCP</a></li>
+        <li><a href="{{P}}llms.txt">llms.txt</a></li>
+        <li><a href="https://github.com/iosbilario/observatorio-taxas/tree/main/servidor_mcp">Código do servidor</a></li>
+      </ul>
+    </nav>
+    <nav class="rodape-coluna" aria-labelledby="rodape-projeto">
+      <h2 id="rodape-projeto">Projeto</h2>
+      <ul>
+        <li><a href="{{P}}sobre/">Sobre e contato</a></li>
+        <li><a href="{{P}}apoie/">Apoie o projeto ♡</a></li>
+        <li><a href="https://github.com/iosbilario/observatorio-taxas">Código no GitHub</a></li>
+        <li><a href="https://github.com/iosbilario/observatorio-taxas/blob/main/SECURITY.md">Segurança</a></li>
+        <li><a href="{{P}}privacidade/">Privacidade</a></li>
+        <li><a href="{{P}}termos/">Termos de uso</a></li>
+        <li><a href="https://github.com/iosbilario/observatorio-taxas/blob/main/LICENSE-DADOS.md">Licenças</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="rodape-base">
+    <p>Feito pela LBP Tecnologia. Conteúdo informativo, sem caráter de recomendação financeira.</p>
+    <p>© {{ANO}} Observatório de Taxas · Código MIT · Dados via SGS do Banco Central</p>
+  </div>
+</div>

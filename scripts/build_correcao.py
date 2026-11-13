@@ -222,7 +222,8 @@ FOOTER = f"""
 </main>
 <footer>{LINHA_PROCEDENCIA} Série histórica versionada e auditável no
 <a href="https://github.com/iosbilario/observatorio-taxas">GitHub</a>. Conteúdo informativo; confira o índice e a
-convenção de correção previstos no seu contrato ou decisão. Projeto <a href="{BASE_URL}/">Observatório de Taxas</a>, LBP Tecnologia. <a href="{BASE_URL}/apoie/">Apoie o projeto ♡</a> · <a href="{BASE_URL}/sobre/">Sobre e contato</a> · <a href="{BASE_URL}/privacidade/">Privacidade</a></footer>
+convenção de correção previstos no seu contrato ou decisão.
+</footer>
 </div></body></html>
 """
 

@@ -139,3 +139,112 @@ body.tema-radar {
     pointer-events: none;
   }
 }
+
+/* -------------------------------------------------------------------------
+   Link do GitHub com contador de estrelas (header).
+   O número vem de data/github.json via estrelas.js; sem JS, só o link.
+   ------------------------------------------------------------------------- */
+.nav-github {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  margin-left: auto;
+  padding: .3rem .65rem;
+  border: 1px solid var(--nav-linha);
+  border-radius: 6px;
+  color: var(--nav-texto);
+  text-decoration: none;
+  font-size: .74rem;
+  letter-spacing: .04em;
+  white-space: nowrap;
+}
+.nav-github:hover { color: var(--nav-texto-ativo); border-color: var(--nav-texto); }
+.nav-github-logo { flex: none; }
+.nav-github-total {
+  padding-left: .5rem;
+  border-left: 1px solid var(--nav-linha);
+  font-variant-numeric: tabular-nums;
+  color: var(--nav-texto-ativo);
+}
+.nav-github-total[hidden] { display: none; }
+
+@media (max-width: 760px) {
+  .nav-github-rotulo { display: none; }
+}
+@media (max-width: 480px) {
+  .nav-github { padding: .25rem .45rem; gap: .35rem; }
+  .nav-github-total { padding-left: .35rem; }
+}
+
+/* -------------------------------------------------------------------------
+   Rodapé do site (partials/rodape.html), no fim do <footer> de cada página.
+   Os seletores com a classe vencem os "footer a"/"footer p" das páginas.
+   ------------------------------------------------------------------------- */
+.rodape-site {
+  margin-top: 1.6rem;
+  padding-top: 1.6rem;
+  border-top: 1px solid var(--nav-linha);
+  font-family: "Archivo", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: .84rem;
+  line-height: 1.5;
+  color: var(--nav-texto);
+  text-align: left;
+}
+.rodape-grade {
+  display: grid;
+  grid-template-columns: minmax(200px, 1.6fr) repeat(4, minmax(120px, 1fr));
+  gap: 1.6rem 2rem;
+}
+.rodape-marca p { margin: .35rem 0 0; max-width: 34ch; }
+.rodape-site a.rodape-nome {
+  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--nav-texto-ativo);
+}
+.rodape-coluna h2 {
+  margin: 0 0 .7rem;
+  font-family: "Archivo", system-ui, sans-serif;
+  font-size: .84rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: var(--nav-texto-ativo);
+}
+.rodape-coluna ul { list-style: none; margin: 0; padding: 0; }
+.rodape-coluna li { margin: 0 0 .55rem; }
+/* Algumas páginas estilizam "footer nav" (flex) e "footer nav a" (mono):
+   as colunas do rodapé neutralizam isso com seletores de classe. */
+.rodape-site .rodape-coluna { display: block; margin: 0; gap: 0; }
+.rodape-site a {
+  color: var(--nav-texto);
+  text-decoration: none;
+  border: 0;
+  font-family: inherit;
+  font-size: inherit;
+  letter-spacing: inherit;
+}
+.rodape-site a:hover { color: var(--nav-texto-ativo); text-decoration: underline; text-underline-offset: 3px; }
+.rodape-site a:focus-visible { outline: 2px solid var(--nav-texto-ativo); outline-offset: 2px; }
+.rodape-base {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: .4rem 1.5rem;
+  margin-top: 1.8rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--nav-linha);
+  font-size: .78rem;
+}
+.rodape-site .rodape-base p { margin: 0; max-width: none; }
+
+/* Páginas estreitas (reajuste, correção) e tablets: marca em cima, 4 colunas. */
+@media (max-width: 960px) {
+  .rodape-grade { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .rodape-marca { grid-column: 1 / -1; }
+}
+@media (max-width: 620px) {
+  .rodape-grade { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}

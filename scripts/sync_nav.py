@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Replica o header de navegação em todas as páginas de docs/.
+"""Replica o header de navegação e o rodapé em todas as páginas de docs/.
+
+Rodapé: `partials/rodape.html`, inserido no fim do <footer> de cada página
+(marcadores `rodape:start` e `rodape:end`). O texto de procedência da página
+fica acima dele. O header ganha também `estrelas.js` (contador do GitHub).
 
 O bloco canônico é `partials/nav.html`, na raiz do repositório — fora de
 docs/ de propósito, porque docs/ é o que o GitHub Pages serve.
@@ -30,16 +34,23 @@ from __future__ import annotations
 
 import re
 import sys
+from datetime import date
 from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parent.parent
 DOCS = RAIZ / "docs"
 PARTIAL = RAIZ / "partials" / "nav.html"
+PARTIAL_RODAPE = RAIZ / "partials" / "rodape.html"
 
 INICIO = "<!-- nav:start -->"
 FIM = "<!-- nav:end -->"
 NOTA = ("<!-- Header replicado de partials/nav.html por scripts/sync_nav.py. "
         "Não edite aqui: edite o partial e rode o script. -->")
+RODAPE_INICIO = "<!-- rodape:start -->"
+RODAPE_FIM = "<!-- rodape:end -->"
+NOTA_RODAPE = ("<!-- Rodapé replicado de partials/rodape.html por scripts/sync_nav.py. "
+               "Não edite aqui: edite o partial e rode o script. -->")
+SCRIPT_ESTRELAS = "estrelas.js"
 
 # Ficam de fora, e por motivo — não por esquecimento.
 IGNORADAS = {
@@ -68,8 +79,8 @@ def chave_ativa(rel: str) -> str | None:
     return None
 
 
-def corpo_do_partial() -> str:
-    bruto = PARTIAL.read_text(encoding="utf-8")
+def corpo_do_partial(caminho: Path = PARTIAL) -> str:
+    bruto = caminho.read_text(encoding="utf-8")
     # O comentário de cabeçalho do partial explica o processo para quem edita
     # o repositório; não precisa viajar para dentro de 528 páginas.
     sem_comentario = re.sub(r"^\s*<!--.*?-->\s*", "", bruto, count=1, flags=re.S)
@@ -123,6 +134,39 @@ def garante_css(html: str, prefixo: str) -> str:
     return html.replace("</head>", link + "</head>", 1)
 
 
+def garante_script_estrelas(html: str, prefixo: str) -> str:
+    """Script externo do contador de estrelas (mesma origem: script-src 'self')."""
+    if SCRIPT_ESTRELAS in html:
+        return html
+    tag = f'  <script src="{prefixo}{SCRIPT_ESTRELAS}" defer></script>\n'
+    if "</head>" not in html:
+        raise SystemExit("página sem </head>")
+    return html.replace("</head>", tag + "</head>", 1)
+
+
+def garante_marcadores_rodape(html: str, rel: str) -> str:
+    """Primeira vez: o par de marcadores entra no fim do último <footer>.
+
+    Se o conteúdo do <footer> está dentro de um <div class="wrap"> (landing,
+    Radar), o bloco entra no fim desse div, para herdar a largura e o recuo."""
+    if RODAPE_INICIO in html and RODAPE_FIM in html:
+        return html
+    pos = html.rfind("</footer>")
+    if pos < 0:
+        raise SystemExit(f"{rel} sem <footer>: crie um antes de sincronizar")
+    abre = html.rfind("<footer", 0, pos)
+    miolo = html[abre:pos]
+    fecha_wrap = re.search(r"</div>\s*$", miolo)
+    if '<div class="wrap">' in miolo and fecha_wrap:
+        pos = abre + fecha_wrap.start()
+    return html[:pos] + f"{RODAPE_INICIO}\n{RODAPE_FIM}\n" + html[pos:]
+
+
+def bloco_rodape(corpo: str, prefixo: str, ano: int) -> str:
+    html = corpo.replace("{{P}}", prefixo).replace("{{ANO}}", str(ano))
+    return f"{RODAPE_INICIO}\n{NOTA_RODAPE}\n{html}\n{RODAPE_FIM}"
+
+
 def garante_tema(html: str, rel: str) -> str:
     """Páginas do Radar carregam a paleta do Radar no mesmo header."""
     if not rel.startswith("radar/"):
@@ -140,7 +184,7 @@ def garante_tema(html: str, rel: str) -> str:
     return html[:m.start()] + f"<body{novo}>" + html[m.end():]
 
 
-def sincroniza(caminho: Path, corpo: str) -> bool:
+def sincroniza(caminho: Path, corpo: str, rodape: str | None = None, ano: int | None = None) -> bool:
     rel = caminho.relative_to(DOCS).as_posix()
     original = caminho.read_text(encoding="utf-8")
 
@@ -148,6 +192,7 @@ def sincroniza(caminho: Path, corpo: str) -> bool:
     html = garante_marcadores(original, rel)
     html = garante_tema(html, rel)
     html = garante_css(html, prefixo)
+    html = garante_script_estrelas(html, prefixo)
 
     novo_bloco = bloco(corpo, prefixo, chave_ativa(rel))
     html = re.sub(
@@ -158,6 +203,17 @@ def sincroniza(caminho: Path, corpo: str) -> bool:
         flags=re.S,
     )
 
+    if rodape is not None:
+        html = garante_marcadores_rodape(html, rel)
+        novo_rodape = bloco_rodape(rodape, prefixo, ano or date.today().year)
+        html = re.sub(
+            re.escape(RODAPE_INICIO) + r".*?" + re.escape(RODAPE_FIM),
+            lambda _: novo_rodape,
+            html,
+            count=1,
+            flags=re.S,
+        )
+
     if html == original:
         return False
     caminho.write_text(html, encoding="utf-8")
@@ -167,6 +223,8 @@ def sincroniza(caminho: Path, corpo: str) -> bool:
 def main() -> None:
     conferir = "--conferir" in sys.argv
     corpo = corpo_do_partial()
+    rodape = corpo_do_partial(PARTIAL_RODAPE)
+    ano = date.today().year
 
     alvos, puladas = [], []
     for caminho in sorted(DOCS.rglob("*.html")):
@@ -180,7 +238,7 @@ def main() -> None:
         pendentes = []
         for caminho in alvos:
             antes = caminho.read_text(encoding="utf-8")
-            if sincroniza(caminho, corpo):
+            if sincroniza(caminho, corpo, rodape, ano):
                 caminho.write_text(antes, encoding="utf-8")
                 pendentes.append(caminho.relative_to(DOCS).as_posix())
         if pendentes:
@@ -191,7 +249,7 @@ def main() -> None:
         print(f"nav em dia nas {len(alvos)} páginas.")
         return
 
-    mudadas = sum(sincroniza(caminho, corpo) for caminho in alvos)
+    mudadas = sum(sincroniza(caminho, corpo, rodape, ano) for caminho in alvos)
     sem_item = sum(1 for c in alvos
                    if chave_ativa(c.relative_to(DOCS).as_posix()) is None)
 

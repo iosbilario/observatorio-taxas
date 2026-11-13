@@ -100,6 +100,13 @@ jobs:
           GOATCOUNTER_TOKEN: ${{ secrets.GOATCOUNTER_TOKEN }}
         run: python scripts/fetch_stats.py
 
+      # Número de estrelas do repositório para o header (docs/estrelas.js).
+      # Só grava quando o número muda; nunca derruba a coleta.
+      - name: Estrelas do repositório (API do GitHub)
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python scripts/fetch_github.py
+
       - name: Commit + push se houver mudança
         run: |
           git config user.name "github-actions[bot]"
