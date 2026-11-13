@@ -73,6 +73,8 @@ def chave_ativa(rel: str) -> str | None:
         return "embeds"
     if rel.startswith("reajuste/"):
         return "reajuste"
+    if rel.startswith("indicadores/"):
+        return "indicadores"
     # correcao/** e radar/**: sem item próprio no menu. Correção é alcançada
     # de dentro do hub de Reajuste; o Radar saiu do menu enquanto o coletor
     # não está no ar. Sem item, sem aria-current — mentir seria pior.
