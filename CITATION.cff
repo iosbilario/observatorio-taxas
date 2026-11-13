@@ -14,7 +14,10 @@ abstract: >-
   contratos pelo acumulado de 12 meses, correção monetária entre datas e
   gráficos incorporáveis. Acumulados e fatores são calculados por composição
   das variações mensais publicadas, com testes que conferem a fórmula contra
-  a série oficial do IPCA em 12 meses (SGS 13522).
+  a série oficial do IPCA em 12 meses (SGS 13522). Inclui um servidor MCP
+  (Model Context Protocol) público e somente de leitura, que expõe as séries
+  do Banco Central e os mesmos cálculos do site para assistentes como ChatGPT
+  e Claude.
 type: software
 authors:
   - given-names: "Leandro Borges"
@@ -31,8 +34,8 @@ identifiers:
 repository-code: "https://github.com/iosbilario/observatorio-taxas"
 url: "https://observatoriodetaxas.tec.br/"
 license: MIT
-version: "1.6.0"
-date-released: "2026-11-12"
+version: "1.7.0"
+date-released: "2026-11-13"
 keywords:
   - indicadores econômicos
   - séries temporais
@@ -48,3 +51,4 @@ keywords:
   - Banco Central do Brasil
   - reajuste de aluguel
   - correção monetária
+  - Model Context Protocol
