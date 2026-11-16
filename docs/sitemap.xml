@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://observatoriodetaxas.tec.br/</loc><lastmod>2026-11-13</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/</loc><lastmod>2026-11-16</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/rebobinar.html</loc><lastmod>2026-11-13</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/var.html</loc><lastmod>2026-11-13</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/retransmissora.html</loc><lastmod>2026-11-13</lastmod></url>
@@ -11,9 +11,9 @@
   <url><loc>https://observatoriodetaxas.tec.br/privacidade/</loc><lastmod>2026-11-13</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/termos/</loc><lastmod>2026-11-13</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/mcp/</loc><lastmod>2026-11-13</lastmod></url>
-  <url><loc>https://observatoriodetaxas.tec.br/indicadores/</loc><lastmod>2026-11-13</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/indicadores/</loc><lastmod>2026-11-16</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/comparador/</loc><lastmod>2026-11-13</lastmod></url>
-  <url><loc>https://observatoriodetaxas.tec.br/simulador-cdi/</loc><lastmod>2026-11-13</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/simulador-cdi/</loc><lastmod>2026-11-16</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/reajuste/igpdi-abril-2016/</loc><lastmod>2026-11-11</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/reajuste/igpdi-abril-2017/</loc><lastmod>2026-11-11</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/reajuste/igpdi-abril-2018/</loc><lastmod>2026-11-11</lastmod></url>
@@ -542,14 +542,14 @@
   <url><loc>https://observatoriodetaxas.tec.br/correcao/igpm/</loc><lastmod>2026-11-13</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/correcao/inpc/</loc><lastmod>2026-11-13</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/correcao/ipca/</loc><lastmod>2026-11-13</lastmod></url>
-  <url><loc>https://observatoriodetaxas.tec.br/indicadores/cdi/</loc><lastmod>2026-11-13</lastmod></url>
-  <url><loc>https://observatoriodetaxas.tec.br/indicadores/cdi-acumulado-no-mes/</loc><lastmod>2026-11-13</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/indicadores/cdi/</loc><lastmod>2026-11-16</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/indicadores/cdi-acumulado-no-mes/</loc><lastmod>2026-11-16</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/indicadores/desemprego/</loc><lastmod>2026-11-13</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/indicadores/divida-liquida/</loc><lastmod>2026-11-13</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/indicadores/dolar/</loc><lastmod>2026-11-13</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/indicadores/dolar-compra/</loc><lastmod>2026-11-13</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/indicadores/euro/</loc><lastmod>2026-11-13</lastmod></url>
-  <url><loc>https://observatoriodetaxas.tec.br/indicadores/ibc-br/</loc><lastmod>2026-11-13</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/indicadores/ibc-br/</loc><lastmod>2026-11-16</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/indicadores/igp-di/</loc><lastmod>2026-11-13</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/indicadores/igp-m/</loc><lastmod>2026-11-13</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/indicadores/inadimplencia/</loc><lastmod>2026-11-13</lastmod></url>
@@ -559,12 +559,12 @@
   <url><loc>https://observatoriodetaxas.tec.br/indicadores/ipca-15/</loc><lastmod>2026-11-13</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/indicadores/juros-do-credito/</loc><lastmod>2026-11-13</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/indicadores/meta-selic/</loc><lastmod>2026-11-13</lastmod></url>
-  <url><loc>https://observatoriodetaxas.tec.br/indicadores/poupanca/</loc><lastmod>2026-11-13</lastmod></url>
-  <url><loc>https://observatoriodetaxas.tec.br/indicadores/poupanca-regra-antiga/</loc><lastmod>2026-11-13</lastmod></url>
-  <url><loc>https://observatoriodetaxas.tec.br/indicadores/reservas-internacionais/</loc><lastmod>2026-11-13</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/indicadores/poupanca/</loc><lastmod>2026-11-16</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/indicadores/poupanca-regra-antiga/</loc><lastmod>2026-11-16</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/indicadores/reservas-internacionais/</loc><lastmod>2026-11-16</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/indicadores/saldo-de-credito/</loc><lastmod>2026-11-13</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/indicadores/selic-acumulada-no-mes/</loc><lastmod>2026-11-13</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/indicadores/selic-efetiva/</loc><lastmod>2026-11-13</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/indicadores/tjlp/</loc><lastmod>2026-11-13</lastmod></url>
-  <url><loc>https://observatoriodetaxas.tec.br/indicadores/tr/</loc><lastmod>2026-11-13</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/indicadores/tr/</loc><lastmod>2026-11-16</lastmod></url>
 </urlset>

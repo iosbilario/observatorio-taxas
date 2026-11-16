@@ -1241,3 +1241,13 @@
     ↳ Câmbio USD/BRL - compra: subiu de 5,6137 para 5,6512.
 [2026-11-13 21:30:58 +0000] Câmbio EUR/BRL - venda: 6.2133000 -> 6.2334000
     ↳ Câmbio EUR/BRL - venda: subiu de 6,2133 para 6,2334.
+[2026-11-16 14:15:11 +0000] TR - Taxa Referencial (%): 0.1691 -> 0.1456
+    ↳ TR - Taxa Referencial (%): caiu de 0,1691 para 0,1456.
+[2026-11-16 14:15:11 +0000] Poupança (depósitos até 03/05/2012) - rentabilidade (%): 0.6699 -> 0.6463
+    ↳ Poupança (depósitos até 03/05/2012) - rentabilidade (%): caiu de 0,6699 para 0,6463.
+[2026-11-16 14:15:11 +0000] Poupança (depósitos a partir de 04/05/2012) - rentabilidade (%): 0.6699 -> 0.6463
+    ↳ Poupança (depósitos a partir de 04/05/2012) - rentabilidade (%): caiu de 0,6699 para 0,6463.
+[2026-11-16 14:15:11 +0000] IBC-Br - índice (proxy do PIB): 111.39747 -> 109.42914
+    ↳ IBC-Br - índice (proxy do PIB): caiu de 111,3975 para 109,4291.
+[2026-11-16 14:15:11 +0000] Reservas internacionais - conceito caixa (US$ milhões): 364435 -> 364006
+    ↳ Reservas internacionais - conceito caixa (US$ milhões): caiu de 364435 para 364006.
