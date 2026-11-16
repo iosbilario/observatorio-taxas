@@ -1,6 +1,6 @@
 {
-  "gerado_em": "2026-11-15T19:16:11-03:00",
-  "gerado_em_fmt": "15/11/2026 às 19:16",
+  "gerado_em": "2026-11-16T00:45:40-03:00",
+  "gerado_em_fmt": "16/11/2026 às 00:45",
   "grupos": {
     "Admin": {
       "acessos": 0,
@@ -30,10 +30,6 @@
     }
   },
   "serie_diaria": [
-    {
-      "acessos": 0,
-      "data": "2026-10-16"
-    },
     {
       "acessos": 3,
       "data": "2026-10-17"
@@ -151,8 +147,12 @@
       "data": "2026-11-14"
     },
     {
-      "acessos": 9,
+      "acessos": 11,
       "data": "2026-11-15"
+    },
+    {
+      "acessos": 0,
+      "data": "2026-11-16"
     }
   ],
   "site": "observatoriotaxas",
@@ -208,25 +208,25 @@
     },
     {
       "count": 5,
+      "path": "/indicadores/cdi"
+    },
+    {
+      "count": 5,
       "path": "/termos"
     },
     {
       "count": 5,
       "path": "/privacidade"
-    },
-    {
-      "count": 5,
-      "path": "/reajuste/igpdi-agosto-2026"
     }
   ],
   "totais": {
     "all_time": {
-      "acessos": 512,
-      "visitantes": 512
+      "acessos": 514,
+      "visitantes": 514
     },
     "ultimos_30d": {
-      "acessos": 174,
-      "visitantes": 174
+      "acessos": 176,
+      "visitantes": 176
     }
   }
 }
