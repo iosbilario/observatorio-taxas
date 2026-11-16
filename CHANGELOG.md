@@ -1251,3 +1251,9 @@
     ↳ IBC-Br - índice (proxy do PIB): caiu de 111,3975 para 109,4291.
 [2026-11-16 14:15:11 +0000] Reservas internacionais - conceito caixa (US$ milhões): 364435 -> 364006
     ↳ Reservas internacionais - conceito caixa (US$ milhões): caiu de 364435 para 364006.
+[2026-11-16 21:25:10 +0000] Câmbio USD/BRL - venda: 5.6518 -> 5.7324
+    ↳ Câmbio USD/BRL - venda: subiu de 5,6518 para 5,7324.
+[2026-11-16 21:25:10 +0000] Câmbio USD/BRL - compra: 5.6512 -> 5.7318
+    ↳ Câmbio USD/BRL - compra: subiu de 5,6512 para 5,7318.
+[2026-11-16 21:25:10 +0000] Câmbio EUR/BRL - venda: 6.2334000 -> 6.3102000
+    ↳ Câmbio EUR/BRL - venda: subiu de 6,2334 para 6,3102.
