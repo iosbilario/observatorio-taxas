@@ -1257,3 +1257,23 @@
     ↳ Câmbio USD/BRL - compra: subiu de 5,6512 para 5,7318.
 [2026-11-16 21:25:10 +0000] Câmbio EUR/BRL - venda: 6.2334000 -> 6.3102000
     ↳ Câmbio EUR/BRL - venda: subiu de 6,2334 para 6,3102.
+[2026-11-17 14:37:50 +0000] TR - Taxa Referencial (%): 0.1456 -> 0.1148
+    ↳ TR - Taxa Referencial (%): caiu de 0,1456 para 0,1148.
+[2026-11-17 14:37:50 +0000] TR - Taxa Referencial (%): 0.1148 -> 0.1471
+    ↳ TR - Taxa Referencial (%): subiu de 0,1148 para 0,1471.
+[2026-11-17 14:37:50 +0000] TR - Taxa Referencial (%): 0.1471 -> 0.1692
+    ↳ TR - Taxa Referencial (%): subiu de 0,1471 para 0,1692.
+[2026-11-17 14:37:50 +0000] Poupança (depósitos até 03/05/2012) - rentabilidade (%): 0.6463 -> 0.6154
+    ↳ Poupança (depósitos até 03/05/2012) - rentabilidade (%): caiu de 0,6463 para 0,6154.
+[2026-11-17 14:37:50 +0000] Poupança (depósitos até 03/05/2012) - rentabilidade (%): 0.6154 -> 0.6478
+    ↳ Poupança (depósitos até 03/05/2012) - rentabilidade (%): subiu de 0,6154 para 0,6478.
+[2026-11-17 14:37:50 +0000] Poupança (depósitos até 03/05/2012) - rentabilidade (%): 0.6478 -> 0.6700
+    ↳ Poupança (depósitos até 03/05/2012) - rentabilidade (%): subiu de 0,6478 para 0,67.
+[2026-11-17 14:37:50 +0000] Poupança (depósitos a partir de 04/05/2012) - rentabilidade (%): 0.6463 -> 0.6154
+    ↳ Poupança (depósitos a partir de 04/05/2012) - rentabilidade (%): caiu de 0,6463 para 0,6154.
+[2026-11-17 14:37:50 +0000] Poupança (depósitos a partir de 04/05/2012) - rentabilidade (%): 0.6154 -> 0.6478
+    ↳ Poupança (depósitos a partir de 04/05/2012) - rentabilidade (%): subiu de 0,6154 para 0,6478.
+[2026-11-17 14:37:50 +0000] Poupança (depósitos a partir de 04/05/2012) - rentabilidade (%): 0.6478 -> 0.6700
+    ↳ Poupança (depósitos a partir de 04/05/2012) - rentabilidade (%): subiu de 0,6478 para 0,67.
+[2026-11-17 14:37:50 +0000] Reservas internacionais - conceito caixa (US$ milhões): 364006 -> 363843
+    ↳ Reservas internacionais - conceito caixa (US$ milhões): caiu de 364006 para 363843.
