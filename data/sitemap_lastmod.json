@@ -1,6 +1,6 @@
 {
  "https://observatoriodetaxas.tec.br/": {
-  "hash": "49af103ad4cf5245",
+  "hash": "f7696556e1453371",
   "lastmod": "2026-11-16"
  },
  "https://observatoriodetaxas.tec.br/apoie/": {
@@ -32,7 +32,7 @@
   "lastmod": "2026-11-13"
  },
  "https://observatoriodetaxas.tec.br/indicadores/": {
-  "hash": "fdc2788ecd5e11a4",
+  "hash": "b46f17edff8712b5",
   "lastmod": "2026-11-16"
  },
  "https://observatoriodetaxas.tec.br/indicadores/cdi-acumulado-no-mes/": {
@@ -120,12 +120,12 @@
   "lastmod": "2026-11-13"
  },
  "https://observatoriodetaxas.tec.br/indicadores/selic-acumulada-no-mes/": {
-  "hash": "149dc74456957bdb",
-  "lastmod": "2026-11-13"
+  "hash": "a74ada15ed8e25a3",
+  "lastmod": "2026-11-16"
  },
  "https://observatoriodetaxas.tec.br/indicadores/selic-efetiva/": {
-  "hash": "64f997d8c5bd7e07",
-  "lastmod": "2026-11-13"
+  "hash": "12d1b0bcdb306832",
+  "lastmod": "2026-11-16"
  },
  "https://observatoriodetaxas.tec.br/indicadores/tjlp/": {
   "hash": "00c548fe90c7f2e8",

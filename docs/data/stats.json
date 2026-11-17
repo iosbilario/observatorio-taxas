@@ -1,6 +1,6 @@
 {
-  "gerado_em": "2026-11-16T18:25:37-03:00",
-  "gerado_em_fmt": "16/11/2026 às 18:25",
+  "gerado_em": "2026-11-16T22:16:13-03:00",
+  "gerado_em_fmt": "16/11/2026 às 22:16",
   "grupos": {
     "Admin": {
       "acessos": 0,
@@ -151,7 +151,7 @@
       "data": "2026-11-15"
     },
     {
-      "acessos": 17,
+      "acessos": 18,
       "data": "2026-11-16"
     }
   ],
@@ -212,21 +212,21 @@
     },
     {
       "count": 5,
-      "path": "/termos"
+      "path": "/indicadores"
     },
     {
       "count": 5,
-      "path": "/privacidade"
+      "path": "/termos"
     }
   ],
   "totais": {
     "all_time": {
-      "acessos": 531,
-      "visitantes": 531
+      "acessos": 532,
+      "visitantes": 532
     },
     "ultimos_30d": {
-      "acessos": 190,
-      "visitantes": 190
+      "acessos": 191,
+      "visitantes": 191
     }
   }
 }
