@@ -28,37 +28,37 @@
   },
   {
     "codigo": 226,
-    "data_referencia": "16/11/2026",
+    "data_referencia": "17/11/2026",
     "grupo": "Juros",
     "nome": "TR - Taxa Referencial (%)",
-    "pontos": 4338,
-    "ultima_mudanca": "16/11/2026",
-    "valor_atual": "0.1692"
+    "pontos": 4339,
+    "ultima_mudanca": "17/11/2026",
+    "valor_atual": "0.1693"
   },
   {
     "codigo": 25,
-    "data_referencia": "16/11/2026",
+    "data_referencia": "17/11/2026",
     "grupo": "Juros",
     "nome": "Poupança (depósitos até 03/05/2012) - rentabilidade (%)",
-    "pontos": 3992,
-    "ultima_mudanca": "16/11/2026",
-    "valor_atual": "0.6700"
+    "pontos": 3993,
+    "ultima_mudanca": "17/11/2026",
+    "valor_atual": "0.6701"
   },
   {
     "codigo": 195,
-    "data_referencia": "16/11/2026",
+    "data_referencia": "17/11/2026",
     "grupo": "Juros",
     "nome": "Poupança (depósitos a partir de 04/05/2012) - rentabilidade (%)",
-    "pontos": 3992,
-    "ultima_mudanca": "16/11/2026",
-    "valor_atual": "0.6700"
+    "pontos": 3993,
+    "ultima_mudanca": "17/11/2026",
+    "valor_atual": "0.6701"
   },
   {
     "codigo": 4389,
-    "data_referencia": "16/11/2026",
+    "data_referencia": "17/11/2026",
     "grupo": "Juros",
     "nome": "CDI anualizado base 252 (% a.a.)",
-    "pontos": 2978,
+    "pontos": 2979,
     "ultima_mudanca": "17/09/2026",
     "valor_atual": "13.65"
   },
@@ -69,7 +69,7 @@
     "nome": "CDI - acumulado no mês (%)",
     "pontos": 143,
     "ultima_mudanca": "01/11/2026",
-    "valor_atual": "0.51"
+    "valor_atual": "0.56"
   },
   {
     "codigo": 256,
@@ -208,12 +208,12 @@
   },
   {
     "codigo": 13621,
-    "data_referencia": "16/11/2026",
+    "data_referencia": "17/11/2026",
     "grupo": "Setor externo e fiscal",
     "nome": "Reservas internacionais - conceito caixa (US$ milhões)",
-    "pontos": 2978,
-    "ultima_mudanca": "16/11/2026",
-    "valor_atual": "363843"
+    "pontos": 2979,
+    "ultima_mudanca": "17/11/2026",
+    "valor_atual": "364074"
   },
   {
     "codigo": 4513,
