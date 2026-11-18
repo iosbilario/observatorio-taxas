@@ -1291,3 +1291,9 @@
     ↳ Poupança (depósitos a partir de 04/05/2012) - rentabilidade (%): subiu de 0,67 para 0,6701.
 [2026-11-18 14:46:32 +0000] Reservas internacionais - conceito caixa (US$ milhões): 363843 -> 364074
     ↳ Reservas internacionais - conceito caixa (US$ milhões): subiu de 363843 para 364074.
+[2026-11-18 23:41:17 +0000] Câmbio USD/BRL - venda: 5.7851 -> 5.8102
+    ↳ Câmbio USD/BRL - venda: subiu de 5,7851 para 5,8102.
+[2026-11-18 23:41:17 +0000] Câmbio USD/BRL - compra: 5.7845 -> 5.8096
+    ↳ Câmbio USD/BRL - compra: subiu de 5,7845 para 5,8096.
+[2026-11-18 23:41:17 +0000] Câmbio EUR/BRL - venda: 6.3659000 -> 6.3720000
+    ↳ Câmbio EUR/BRL - venda: subiu de 6,3659 para 6,372.
