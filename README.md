@@ -4,6 +4,9 @@
 
 <p align="center">
   <a href="https://observatoriodetaxas.tec.br/"><b>Site</b></a> ·
+  <a href="https://observatoriodetaxas.tec.br/indicadores/">Indicadores</a> ·
+  <a href="https://observatoriodetaxas.tec.br/comparador/">Comparador</a> ·
+  <a href="https://observatoriodetaxas.tec.br/simulador-cdi/">Simulador de CDI</a> ·
   <a href="https://observatoriodetaxas.tec.br/reajuste/">Reajuste</a> ·
   <a href="https://observatoriodetaxas.tec.br/correcao/">Correção monetária</a> ·
   <a href="https://observatoriodetaxas.tec.br/var.html">VAR</a> ·
@@ -14,6 +17,13 @@
 </p>
 
 <p align="center">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/c%C3%B3digo-MIT-green" alt="Licença do código: MIT"></a>
+  <a href="https://github.com/iosbilario/observatorio-taxas/actions/workflows/monitor.yml"><img src="https://img.shields.io/github/actions/workflow/status/iosbilario/observatorio-taxas/monitor.yml?label=coleta" alt="Status da coleta automática (monitor.yml)"></a>
+  <a href="https://github.com/iosbilario/observatorio-taxas/actions/workflows/validate.yml"><img src="https://img.shields.io/github/actions/workflow/status/iosbilario/observatorio-taxas/validate.yml?label=testes" alt="Status dos testes (validate.yml)"></a>
+  <a href="https://github.com/iosbilario/observatorio-taxas/releases/latest"><img src="https://img.shields.io/github/v/release/iosbilario/observatorio-taxas?label=release" alt="Versão mais recente"></a>
+  <a href="desenvolvimento/GUIA.md"><img src="https://img.shields.io/badge/python-%E2%89%A53.12-blue" alt="Python 3.12 ou superior"></a>
+  <a href="https://github.com/iosbilario/observatorio-taxas/commits/main"><img src="https://img.shields.io/github/last-commit/iosbilario/observatorio-taxas?label=%C3%BAltimo%20commit" alt="Data do último commit"></a>
+  <a href="https://github.com/iosbilario/observatorio-taxas/stargazers"><img src="https://img.shields.io/github/stars/iosbilario/observatorio-taxas?style=social" alt="Estrelas no GitHub"></a>
   <a href="https://doi.org/10.5281/zenodo.24151062"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.24151062.svg" alt="DOI 10.5281/zenodo.24151062 (todas as versões, Zenodo)"></a>
 </p>
 
@@ -47,8 +57,8 @@ O Observatório guarda esse caminho:
 
 | Ferramenta | O que faz | Link |
 | --- | --- | --- |
-| Indicadores | Uma página por série (25) com valor atual, contexto, últimos 12 meses, ficha técnica e JSON-LD Dataset e FAQPage, mais uma tabela com todas | [/indicadores/](https://observatoriodetaxas.tec.br/indicadores/) |
 | Painel | Os números do dia (Selic, IPCA 12 meses, dólar, IGP-M, desemprego) com variação no mês | [observatoriodetaxas.tec.br](https://observatoriodetaxas.tec.br/) |
+| Indicadores | Uma página por série (25) com valor atual, contexto, últimos 12 meses e ficha técnica, mais uma tabela com todas | [/indicadores/](https://observatoriodetaxas.tec.br/indicadores/) |
 | Comparador | Selic, CDI e IPCA acumulados em qualquer período, com gráfico, tabela mês a mês e link compartilhável | [/comparador/](https://observatoriodetaxas.tec.br/comparador/) |
 | Simulador de CDI | Quanto rende X% do CDI com a taxa DI diária, IR e IOF do CDB, inflação do período e memória de cálculo em CSV | [/simulador-cdi/](https://observatoriodetaxas.tec.br/simulador-cdi/) |
 | Reajuste de contratos | Acumulado de 12 meses, fator e calculadora por índice e mês: uma página para cada mês desde dezembro de 2015 | [/reajuste/](https://observatoriodetaxas.tec.br/reajuste/) |
@@ -106,7 +116,7 @@ flowchart TD
   A["config.yml<br/>séries monitoradas"] --> B["API SGS<br/>Banco Central"]
   B --> C["scripts/fetch.py<br/>coleta e funde"]
   C --> D[("data/*.json<br/>histórico versionado")]
-  D --> E["Geradores Python<br/>reajuste, correção,<br/>landing, sitemap"]
+  D --> E["Geradores Python<br/>reajuste, correção, indicadores,<br/>comparador, simulador, sitemap"]
   E --> F["docs/<br/>HTML + JSON"]
   F --> G["GitHub Pages<br/>observatoriodetaxas.tec.br"]
   G --> H["IndexNow<br/>URLs alteradas"]
@@ -134,7 +144,7 @@ estado de todas as séries numa data.
 
 **Depois da publicação**, o `indexnow.yml` avisa os buscadores apenas das
 URLs que mudaram, conferindo antes que o Pages já serve a versão nova
-(primeira execução manual; ver [`organic-discovery/INDEXNOW.md`](organic-discovery/INDEXNOW.md)).
+(ativo desde 13/11/2026; ver [`organic-discovery/INDEXNOW.md`](organic-discovery/INDEXNOW.md)).
 
 ## Dados e metodologia
 
@@ -166,13 +176,17 @@ O reajuste de 12 meses usa as 12 variações até o mês de referência
 ([`acumulado`](scripts/build_pages.py) em `scripts/build_pages.py`). A
 correção entre datas aplica as variações dos meses posteriores ao inicial até
 o final ([`fator_periodo`](scripts/build_correcao.py) em
-`scripts/build_correcao.py`). Os testes em [`tests/`](tests/) conferem a
+`scripts/build_correcao.py`). O comparador compõe Selic, CDI e IPCA mês a mês,
+e o simulador aplica o percentual do CDI à taxa DI de cada dia útil
+([`docs/calculos.js`](docs/calculos.js); metodologia em
+[`desenvolvimento/METODOLOGIA-FERRAMENTAS.md`](desenvolvimento/METODOLOGIA-FERRAMENTAS.md)). Os testes em [`tests/`](tests/) conferem a
 fórmula contra a série oficial do IPCA 12 meses (SGS 13522) e garantem que os
 valores publicados não mudam sem querer.
 
 ## Executando localmente
 
-Requer Python 3.12 ou superior (o workflow usa 3.12).
+Requer Python 3.12 ou superior (o workflow usa 3.12). Os testes das
+ferramentas de cálculo também usam Node.js, se estiver instalado.
 
 ```bash
 git clone https://github.com/iosbilario/observatorio-taxas.git
@@ -187,6 +201,8 @@ python scripts/backfill.py                # opcional, uma vez: histórico desde 
 python scripts/fetch.py                   # coleta os pontos novos em data/ e docs/data/
 python scripts/build_pages.py             # páginas de reajuste
 python scripts/build_correcao.py          # páginas de correção
+python scripts/build_indicadores.py       # /indicadores/ (uma página por série)
+python scripts/build_ferramentas.py       # /comparador/ e /simulador-cdi/
 python scripts/render_index.py            # boletim da página inicial + sitemap
 python scripts/sync_nav.py                # header em todas as páginas
 python scripts/adsense.py                 # ads.txt; anúncios só se ligados em config.yml
@@ -214,7 +230,7 @@ publicado: `python -m servidor_mcp.conferir_endpoint https://observatorio-taxas-
 
 | Workflow | Quando roda | O que faz |
 | --- | --- | --- |
-| [`monitor.yml`](.github/workflows/monitor.yml) | A cada 6 horas e sob demanda | Coleta as séries, gera as páginas, atualiza CSP e card social, e commita só se algo mudou |
+| [`monitor.yml`](.github/workflows/monitor.yml) | A cada 6 horas e sob demanda | Coleta as séries e as estrelas do repositório, gera as páginas, atualiza CSP e card social, e commita só se algo mudou |
 | [`validate.yml`](.github/workflows/validate.yml) | Em pull requests | Roda os testes do site e do servidor MCP, regenera as páginas e confere que o resultado é igual ao commitado. Não toca na coleta |
 | [`indexnow.yml`](.github/workflows/indexnow.yml) | Depois do monitor, em push na `main` e a cada 6 horas | Avisa os buscadores só das URLs alteradas, depois do deploy |
 | [`mcp-acordado.yml`](.github/workflows/mcp-acordado.yml) | A cada 5 minutos (temporário) | Chama o `/health` do servidor MCP para ele não dormir durante a revisão dos diretórios. Será desligado depois das aprovações |
@@ -239,7 +255,7 @@ O status de cada execução fica na aba [Actions](https://github.com/iosbilario/
 ## Como citar e reutilizar
 
 - **Citação:** botão *Cite this repository* do GitHub, a partir do [`CITATION.cff`](CITATION.cff).
-  Cite também o produtor do índice (IBGE, FGV IBRE ou Banco Central).
+  Cite também o produtor do índice (IBGE, FGV IBRE, B3 ou Banco Central).
 - **Referência permanente a um dado:** use a versão. Ex.: IGP-M mensal como publicado na v1.4.0:
   [`blob/v1.4.0/data/189_history.json`](https://github.com/iosbilario/observatorio-taxas/blob/v1.4.0/data/189_history.json).
   A URL do site (`/data/189_history.json`) é sempre a versão mais recente.
@@ -250,7 +266,7 @@ O status de cada execução fica na aba [Actions](https://github.com/iosbilario/
 | --- | --- |
 | Código | MIT ([`LICENSE`](LICENSE)) |
 | Séries do Banco Central | ODbL 1.0, com atribuição ([`LICENSE-DADOS.md`](LICENSE-DADOS.md)) |
-| IPCA, INPC, desocupação (IBGE), IGP-M, IGP-DI (FGV IBRE) | Termos dos produtores; não são relicenciadas ([`LICENSE-DADOS.md`](LICENSE-DADOS.md)) |
+| IPCA, IPCA-15, INPC, desocupação (IBGE), IGP-M, IGP-DI (FGV IBRE), CDI (B3) | Termos dos produtores; não são relicenciadas ([`LICENSE-DADOS.md`](LICENSE-DADOS.md)) |
 | Textos do site | CC BY 4.0, com atribuição |
 
 ## Citação acadêmica
@@ -266,7 +282,7 @@ reproduzir.
 | **Commit Git** | Estado exato dos dados e das páginas num momento | `git log` ou o recibo do VAR, que traz o commit usado |
 | **Data de referência dos indicadores** | Qual mês ou dia de cada série foi usado | Página do indicador ou `data/<codigo>_history.json` |
 
-Cite também o produtor de cada índice usado (IBGE, FGV IBRE ou Banco Central).
+Cite também o produtor de cada índice usado (IBGE, FGV IBRE, B3 ou Banco Central).
 
 Como citar a versão v1.8.0 (APA, no formato do Zenodo):
 
