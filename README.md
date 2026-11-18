@@ -18,12 +18,17 @@
 
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/badge/c%C3%B3digo-MIT-green" alt="Licença do código: MIT"></a>
+  <a href="LICENSE-DADOS.md"><img src="https://img.shields.io/badge/dados-ODbL%201.0%20(BCB)-blue" alt="Licença das séries do Banco Central: ODbL 1.0"></a>
   <a href="https://github.com/iosbilario/observatorio-taxas/actions/workflows/monitor.yml"><img src="https://img.shields.io/github/actions/workflow/status/iosbilario/observatorio-taxas/monitor.yml?label=coleta" alt="Status da coleta automática (monitor.yml)"></a>
   <a href="https://github.com/iosbilario/observatorio-taxas/actions/workflows/validate.yml"><img src="https://img.shields.io/github/actions/workflow/status/iosbilario/observatorio-taxas/validate.yml?label=testes" alt="Status dos testes (validate.yml)"></a>
   <a href="https://github.com/iosbilario/observatorio-taxas/releases/latest"><img src="https://img.shields.io/github/v/release/iosbilario/observatorio-taxas?label=release" alt="Versão mais recente"></a>
   <a href="desenvolvimento/GUIA.md"><img src="https://img.shields.io/badge/python-%E2%89%A53.12-blue" alt="Python 3.12 ou superior"></a>
   <a href="https://github.com/iosbilario/observatorio-taxas/commits/main"><img src="https://img.shields.io/github/last-commit/iosbilario/observatorio-taxas?label=%C3%BAltimo%20commit" alt="Data do último commit"></a>
   <a href="https://github.com/iosbilario/observatorio-taxas/stargazers"><img src="https://img.shields.io/github/stars/iosbilario/observatorio-taxas?style=social" alt="Estrelas no GitHub"></a>
+  <br>
+  <a href="https://observatoriodetaxas.tec.br/"><img src="https://img.shields.io/website?url=https%3A%2F%2Fobservatoriodetaxas.tec.br&label=site" alt="Situação do site"></a>
+  <a href="https://observatoriodetaxas.tec.br/indicadores/"><img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fobservatoriodetaxas.tec.br%2Fdata%2Fseries.json&query=%24.length&label=s%C3%A9ries&color=D9B54A" alt="Número de séries acompanhadas"></a>
+  <a href="https://observatoriodetaxas.tec.br/data/meta.json"><img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fobservatoriodetaxas.tec.br%2Fdata%2Fmeta.json&query=%24.gerado_em_fmt&label=%C3%BAltima%20coleta&color=0E1210" alt="Horário da última coleta com mudança"></a>
   <a href="https://doi.org/10.5281/zenodo.24151062"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.24151062.svg" alt="DOI 10.5281/zenodo.24151062 (todas as versões, Zenodo)"></a>
 </p>
 
