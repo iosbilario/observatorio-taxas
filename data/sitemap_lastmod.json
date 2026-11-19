@@ -1,7 +1,7 @@
 {
  "https://observatoriodetaxas.tec.br/": {
-  "hash": "7b0e11321a20ee57",
-  "lastmod": "2026-11-18"
+  "hash": "77ce3c36086bfffe",
+  "lastmod": "2026-11-19"
  },
  "https://observatoriodetaxas.tec.br/apoie/": {
   "hash": "36b7c8caf6249415",
@@ -32,16 +32,16 @@
   "lastmod": "2026-11-13"
  },
  "https://observatoriodetaxas.tec.br/indicadores/": {
-  "hash": "eeb7fd23c70b81d2",
-  "lastmod": "2026-11-18"
+  "hash": "181c5ed573eafa69",
+  "lastmod": "2026-11-19"
  },
  "https://observatoriodetaxas.tec.br/indicadores/cdi-acumulado-no-mes/": {
-  "hash": "1974dabdb942871d",
-  "lastmod": "2026-11-18"
+  "hash": "5bc45df88c150208",
+  "lastmod": "2026-11-19"
  },
  "https://observatoriodetaxas.tec.br/indicadores/cdi/": {
-  "hash": "9653abee63ee8ace",
-  "lastmod": "2026-11-18"
+  "hash": "d6426a59906b689c",
+  "lastmod": "2026-11-19"
  },
  "https://observatoriodetaxas.tec.br/indicadores/desemprego/": {
   "hash": "ad06d59480f68bac",
@@ -104,16 +104,16 @@
   "lastmod": "2026-11-13"
  },
  "https://observatoriodetaxas.tec.br/indicadores/poupanca-regra-antiga/": {
-  "hash": "f81cf922d0fe7151",
-  "lastmod": "2026-11-18"
+  "hash": "cbad3c237bd2f145",
+  "lastmod": "2026-11-19"
  },
  "https://observatoriodetaxas.tec.br/indicadores/poupanca/": {
-  "hash": "b69c79501668bbb4",
-  "lastmod": "2026-11-18"
+  "hash": "6f13ced12602fb97",
+  "lastmod": "2026-11-19"
  },
  "https://observatoriodetaxas.tec.br/indicadores/reservas-internacionais/": {
-  "hash": "38e67426286e40b7",
-  "lastmod": "2026-11-18"
+  "hash": "f6156d37124a82d6",
+  "lastmod": "2026-11-19"
  },
  "https://observatoriodetaxas.tec.br/indicadores/saldo-de-credito/": {
   "hash": "443b938daadd3384",
@@ -132,8 +132,8 @@
   "lastmod": "2026-11-13"
  },
  "https://observatoriodetaxas.tec.br/indicadores/tr/": {
-  "hash": "18c98738458daa29",
-  "lastmod": "2026-11-18"
+  "hash": "2632a2eaf48f5d99",
+  "lastmod": "2026-11-19"
  },
  "https://observatoriodetaxas.tec.br/mcp/": {
   "hash": "53135a3194d6f55d",
@@ -2252,8 +2252,8 @@
   "lastmod": "2026-11-13"
  },
  "https://observatoriodetaxas.tec.br/simulador-cdi/": {
-  "hash": "09adf43ae5c00417",
-  "lastmod": "2026-11-18"
+  "hash": "6ec2639b66173acd",
+  "lastmod": "2026-11-19"
  },
  "https://observatoriodetaxas.tec.br/sobre/": {
   "hash": "61c467f09308096b",

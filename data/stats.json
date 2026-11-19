@@ -1,16 +1,16 @@
 {
-  "gerado_em": "2026-11-19T01:58:51-03:00",
-  "gerado_em_fmt": "19/11/2026 às 01:58",
+  "gerado_em": "2026-11-19T11:53:42-03:00",
+  "gerado_em_fmt": "19/11/2026 às 11:53",
   "grupos": {
     "Admin": {
       "acessos": 0,
       "sub": {}
     },
     "Correção": {
-      "acessos": 32,
+      "acessos": 33,
       "sub": {
         "IGP-DI": 1,
-        "IGP-M": 1,
+        "IGP-M": 2,
         "INPC": 2,
         "IPCA": 7
       }
@@ -20,18 +20,18 @@
       "sub": {}
     },
     "Reajuste": {
-      "acessos": 167,
+      "acessos": 172,
       "sub": {
-        "IGP-DI": 12,
+        "IGP-DI": 13,
         "IGP-M": 41,
-        "INPC": 15,
+        "INPC": 18,
         "IPCA": 47
       }
     }
   },
   "serie_diaria": [
     {
-      "acessos": 5,
+      "acessos": 3,
       "data": "2026-10-20"
     },
     {
@@ -151,7 +151,7 @@
       "data": "2026-11-18"
     },
     {
-      "acessos": 1,
+      "acessos": 18,
       "data": "2026-11-19"
     }
   ],
@@ -167,11 +167,11 @@
       "path": "/rebobinar.html"
     },
     {
-      "count": 52,
+      "count": 53,
       "path": "/reajuste"
     },
     {
-      "count": 41,
+      "count": 50,
       "path": "/indicadores/cdi"
     },
     {
@@ -191,7 +191,7 @@
       "path": "/reajuste/igpm-julho-2026"
     },
     {
-      "count": 8,
+      "count": 9,
       "path": "/indicadores"
     },
     {
@@ -221,12 +221,12 @@
   ],
   "totais": {
     "all_time": {
-      "acessos": 595,
-      "visitantes": 595
+      "acessos": 612,
+      "visitantes": 612
     },
     "ultimos_30d": {
-      "acessos": 248,
-      "visitantes": 248
+      "acessos": 263,
+      "visitantes": 263
     }
   }
 }
