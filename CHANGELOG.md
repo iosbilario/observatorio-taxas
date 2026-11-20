@@ -1299,3 +1299,9 @@
     ↳ Câmbio EUR/BRL - venda: subiu de 6,3659 para 6,372.
 [2026-11-19 14:53:21 +0000] Reservas internacionais - conceito caixa (US$ milhões): 364074 -> 363644
     ↳ Reservas internacionais - conceito caixa (US$ milhões): caiu de 364074 para 363644.
+[2026-11-20 00:00:09 +0000] Câmbio USD/BRL - venda: 5.8102 -> 5.8889
+    ↳ Câmbio USD/BRL - venda: subiu de 5,8102 para 5,8889.
+[2026-11-20 00:00:09 +0000] Câmbio USD/BRL - compra: 5.8096 -> 5.8883
+    ↳ Câmbio USD/BRL - compra: subiu de 5,8096 para 5,8883.
+[2026-11-20 00:00:09 +0000] Câmbio EUR/BRL - venda: 6.3720000 -> 6.4672000
+    ↳ Câmbio EUR/BRL - venda: subiu de 6,372 para 6,4672.

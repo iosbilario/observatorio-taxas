@@ -1,6 +1,6 @@
 {
  "https://observatoriodetaxas.tec.br/": {
-  "hash": "77ce3c36086bfffe",
+  "hash": "9d46edf93e40a008",
   "lastmod": "2026-11-19"
  },
  "https://observatoriodetaxas.tec.br/apoie/": {
@@ -32,7 +32,7 @@
   "lastmod": "2026-11-13"
  },
  "https://observatoriodetaxas.tec.br/indicadores/": {
-  "hash": "181c5ed573eafa69",
+  "hash": "b4006627ba0780bc",
   "lastmod": "2026-11-19"
  },
  "https://observatoriodetaxas.tec.br/indicadores/cdi-acumulado-no-mes/": {
@@ -52,16 +52,16 @@
   "lastmod": "2026-11-13"
  },
  "https://observatoriodetaxas.tec.br/indicadores/dolar-compra/": {
-  "hash": "7a7377c963c28cbf",
-  "lastmod": "2026-11-18"
+  "hash": "406cb2959a59d50b",
+  "lastmod": "2026-11-19"
  },
  "https://observatoriodetaxas.tec.br/indicadores/dolar/": {
-  "hash": "adff44ee94470337",
-  "lastmod": "2026-11-18"
+  "hash": "5a2b33b482bd924a",
+  "lastmod": "2026-11-19"
  },
  "https://observatoriodetaxas.tec.br/indicadores/euro/": {
-  "hash": "c71903e2f6c760c8",
-  "lastmod": "2026-11-18"
+  "hash": "6a5848f7e8dec0d6",
+  "lastmod": "2026-11-19"
  },
  "https://observatoriodetaxas.tec.br/indicadores/ibc-br/": {
   "hash": "d155d54f11e83f85",
@@ -120,12 +120,12 @@
   "lastmod": "2026-11-13"
  },
  "https://observatoriodetaxas.tec.br/indicadores/selic-acumulada-no-mes/": {
-  "hash": "1e9e83e1878eaff6",
-  "lastmod": "2026-11-18"
+  "hash": "d90566e0485911f6",
+  "lastmod": "2026-11-19"
  },
  "https://observatoriodetaxas.tec.br/indicadores/selic-efetiva/": {
-  "hash": "b3c8b4f88745ea38",
-  "lastmod": "2026-11-18"
+  "hash": "4b38c7db2b22e5a8",
+  "lastmod": "2026-11-19"
  },
  "https://observatoriodetaxas.tec.br/indicadores/tjlp/": {
   "hash": "00c548fe90c7f2e8",

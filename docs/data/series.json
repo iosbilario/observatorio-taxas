@@ -10,10 +10,10 @@
   },
   {
     "codigo": 1178,
-    "data_referencia": "18/11/2026",
+    "data_referencia": "19/11/2026",
     "grupo": "Juros",
     "nome": "Selic anualizada (% a.a.)",
-    "pontos": 2980,
+    "pontos": 2981,
     "ultima_mudanca": "17/09/2026",
     "valor_atual": "13.65"
   },
@@ -24,7 +24,7 @@
     "nome": "Selic - acumulada no mês (%)",
     "pontos": 143,
     "ultima_mudanca": "01/11/2026",
-    "valor_atual": "0.61"
+    "valor_atual": "0.66"
   },
   {
     "codigo": 226,
@@ -136,30 +136,30 @@
   },
   {
     "codigo": 1,
-    "data_referencia": "18/11/2026",
+    "data_referencia": "19/11/2026",
     "grupo": "Câmbio",
     "nome": "Câmbio USD/BRL - venda",
-    "pontos": 2980,
-    "ultima_mudanca": "18/11/2026",
-    "valor_atual": "5.8102"
+    "pontos": 2981,
+    "ultima_mudanca": "19/11/2026",
+    "valor_atual": "5.8889"
   },
   {
     "codigo": 10813,
-    "data_referencia": "18/11/2026",
+    "data_referencia": "19/11/2026",
     "grupo": "Câmbio",
     "nome": "Câmbio USD/BRL - compra",
-    "pontos": 2980,
-    "ultima_mudanca": "18/11/2026",
-    "valor_atual": "5.8096"
+    "pontos": 2981,
+    "ultima_mudanca": "19/11/2026",
+    "valor_atual": "5.8883"
   },
   {
     "codigo": 21619,
-    "data_referencia": "18/11/2026",
+    "data_referencia": "19/11/2026",
     "grupo": "Câmbio",
     "nome": "Câmbio EUR/BRL - venda",
-    "pontos": 2978,
-    "ultima_mudanca": "18/11/2026",
-    "valor_atual": "6.3720000"
+    "pontos": 2979,
+    "ultima_mudanca": "19/11/2026",
+    "valor_atual": "6.4672000"
   },
   {
     "codigo": 24363,
