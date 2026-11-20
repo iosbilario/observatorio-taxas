@@ -1,6 +1,6 @@
 {
  "urls": {
-  "https://observatoriodetaxas.tec.br/": "9d46edf93e40a008",
+  "https://observatoriodetaxas.tec.br/": "2e2b82069763f430",
   "https://observatoriodetaxas.tec.br/apoie/": "36b7c8caf6249415",
   "https://observatoriodetaxas.tec.br/comparador/": "d4559c12dc368809",
   "https://observatoriodetaxas.tec.br/correcao/": "6302ecd3a712a281",
@@ -8,9 +8,9 @@
   "https://observatoriodetaxas.tec.br/correcao/igpm/": "694c0272adc37117",
   "https://observatoriodetaxas.tec.br/correcao/inpc/": "2d5a1f60cd9231bf",
   "https://observatoriodetaxas.tec.br/correcao/ipca/": "230f88d7eb636726",
-  "https://observatoriodetaxas.tec.br/indicadores/": "b4006627ba0780bc",
-  "https://observatoriodetaxas.tec.br/indicadores/cdi-acumulado-no-mes/": "5bc45df88c150208",
-  "https://observatoriodetaxas.tec.br/indicadores/cdi/": "d6426a59906b689c",
+  "https://observatoriodetaxas.tec.br/indicadores/": "4ac4ef1871e27caf",
+  "https://observatoriodetaxas.tec.br/indicadores/cdi-acumulado-no-mes/": "a1a135d1d1be94a2",
+  "https://observatoriodetaxas.tec.br/indicadores/cdi/": "94cad1f064f303aa",
   "https://observatoriodetaxas.tec.br/indicadores/desemprego/": "ad06d59480f68bac",
   "https://observatoriodetaxas.tec.br/indicadores/divida-liquida/": "cc3efb885b116b42",
   "https://observatoriodetaxas.tec.br/indicadores/dolar-compra/": "406cb2959a59d50b",
@@ -563,7 +563,7 @@
   "https://observatoriodetaxas.tec.br/reajuste/ipca-setembro-2026/": "494708401c8cfc81",
   "https://observatoriodetaxas.tec.br/rebobinar.html": "eb71d5a12015b97b",
   "https://observatoriodetaxas.tec.br/retransmissora.html": "936bb7454e3fc993",
-  "https://observatoriodetaxas.tec.br/simulador-cdi/": "6ec2639b66173acd",
+  "https://observatoriodetaxas.tec.br/simulador-cdi/": "01649b1d8449854b",
   "https://observatoriodetaxas.tec.br/sobre/": "61c467f09308096b",
   "https://observatoriodetaxas.tec.br/termos/": "ee8314d0ca6843ac",
   "https://observatoriodetaxas.tec.br/var.html": "0fee11526cd9957e"
