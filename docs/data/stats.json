@@ -1,6 +1,6 @@
 {
-  "gerado_em": "2026-11-21T10:52:48-03:00",
-  "gerado_em_fmt": "21/11/2026 às 10:52",
+  "gerado_em": "2026-11-21T19:34:10-03:00",
+  "gerado_em_fmt": "21/11/2026 às 19:34",
   "grupos": {
     "Admin": {
       "acessos": 0,
@@ -16,7 +16,7 @@
       }
     },
     "Home": {
-      "acessos": 197,
+      "acessos": 198,
       "sub": {}
     },
     "Reajuste": {
@@ -31,7 +31,7 @@
   },
   "serie_diaria": [
     {
-      "acessos": 5,
+      "acessos": 1,
       "data": "2026-10-22"
     },
     {
@@ -151,7 +151,7 @@
       "data": "2026-11-20"
     },
     {
-      "acessos": 3,
+      "acessos": 8,
       "data": "2026-11-21"
     }
   ],
@@ -159,11 +159,11 @@
   "timezone": "America/Sao_Paulo (UTC-3)",
   "top_paginas": [
     {
-      "count": 193,
+      "count": 194,
       "path": "/"
     },
     {
-      "count": 65,
+      "count": 67,
       "path": "/indicadores/cdi"
     },
     {
@@ -196,15 +196,15 @@
     },
     {
       "count": 8,
+      "path": "/indicadores/cdi-acumulado-no-mes"
+    },
+    {
+      "count": 8,
       "path": "/mcp"
     },
     {
       "count": 8,
       "path": "/reajuste/ipca-setembro-2026"
-    },
-    {
-      "count": 7,
-      "path": "/indicadores/cdi-acumulado-no-mes"
     },
     {
       "count": 7,
@@ -221,12 +221,12 @@
   ],
   "totais": {
     "all_time": {
-      "acessos": 640,
-      "visitantes": 640
+      "acessos": 645,
+      "visitantes": 645
     },
     "ultimos_30d": {
-      "acessos": 283,
-      "visitantes": 283
+      "acessos": 284,
+      "visitantes": 284
     }
   }
 }
