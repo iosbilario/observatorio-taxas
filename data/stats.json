@@ -1,6 +1,6 @@
 {
-  "gerado_em": "2026-11-20T16:24:49-03:00",
-  "gerado_em_fmt": "20/11/2026 às 16:24",
+  "gerado_em": "2026-11-21T01:44:54-03:00",
+  "gerado_em_fmt": "21/11/2026 às 01:44",
   "grupos": {
     "Admin": {
       "acessos": 0,
@@ -30,10 +30,6 @@
     }
   },
   "serie_diaria": [
-    {
-      "acessos": 1,
-      "data": "2026-10-21"
-    },
     {
       "acessos": 8,
       "data": "2026-10-22"
@@ -151,8 +147,12 @@
       "data": "2026-11-19"
     },
     {
-      "acessos": 7,
+      "acessos": 13,
       "data": "2026-11-20"
+    },
+    {
+      "acessos": 1,
+      "data": "2026-11-21"
     }
   ],
   "site": "observatoriotaxas",
@@ -163,7 +163,7 @@
       "path": "/"
     },
     {
-      "count": 61,
+      "count": 64,
       "path": "/indicadores/cdi"
     },
     {
@@ -216,17 +216,17 @@
     },
     {
       "count": 6,
-      "path": "/simulador-cdi"
+      "path": "/indicadores/cdi-acumulado-no-mes"
     }
   ],
   "totais": {
     "all_time": {
-      "acessos": 631,
-      "visitantes": 631
+      "acessos": 638,
+      "visitantes": 638
     },
     "ultimos_30d": {
-      "acessos": 278,
-      "visitantes": 278
+      "acessos": 284,
+      "visitantes": 284
     }
   }
 }
