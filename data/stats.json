@@ -1,6 +1,6 @@
 {
-  "gerado_em": "2026-11-22T00:59:21-03:00",
-  "gerado_em_fmt": "22/11/2026 às 00:59",
+  "gerado_em": "2026-11-22T10:46:03-03:00",
+  "gerado_em_fmt": "22/11/2026 às 10:46",
   "grupos": {
     "Admin": {
       "acessos": 0,
@@ -151,7 +151,7 @@
       "data": "2026-11-21"
     },
     {
-      "acessos": 0,
+      "acessos": 3,
       "data": "2026-11-22"
     }
   ],
@@ -163,7 +163,7 @@
       "path": "/"
     },
     {
-      "count": 69,
+      "count": 71,
       "path": "/indicadores/cdi"
     },
     {
@@ -221,12 +221,12 @@
   ],
   "totais": {
     "all_time": {
-      "acessos": 649,
-      "visitantes": 649
+      "acessos": 652,
+      "visitantes": 652
     },
     "ultimos_30d": {
-      "acessos": 287,
-      "visitantes": 287
+      "acessos": 290,
+      "visitantes": 290
     }
   }
 }
