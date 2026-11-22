@@ -1,6 +1,6 @@
 {
-  "gerado_em": "2026-11-21T19:34:10-03:00",
-  "gerado_em_fmt": "21/11/2026 às 19:34",
+  "gerado_em": "2026-11-22T00:59:21-03:00",
+  "gerado_em_fmt": "22/11/2026 às 00:59",
   "grupos": {
     "Admin": {
       "acessos": 0,
@@ -16,7 +16,7 @@
       }
     },
     "Home": {
-      "acessos": 198,
+      "acessos": 199,
       "sub": {}
     },
     "Reajuste": {
@@ -30,10 +30,6 @@
     }
   },
   "serie_diaria": [
-    {
-      "acessos": 1,
-      "data": "2026-10-22"
-    },
     {
       "acessos": 2,
       "data": "2026-10-23"
@@ -151,19 +147,23 @@
       "data": "2026-11-20"
     },
     {
-      "acessos": 8,
+      "acessos": 12,
       "data": "2026-11-21"
+    },
+    {
+      "acessos": 0,
+      "data": "2026-11-22"
     }
   ],
   "site": "observatoriotaxas",
   "timezone": "America/Sao_Paulo (UTC-3)",
   "top_paginas": [
     {
-      "count": 194,
+      "count": 195,
       "path": "/"
     },
     {
-      "count": 67,
+      "count": 69,
       "path": "/indicadores/cdi"
     },
     {
@@ -208,25 +208,25 @@
     },
     {
       "count": 7,
+      "path": "/simulador-cdi"
+    },
+    {
+      "count": 7,
       "path": "/apoie"
     },
     {
       "count": 7,
       "path": "/correcao/ipca"
-    },
-    {
-      "count": 7,
-      "path": "/reajuste/igpm-agosto-2026"
     }
   ],
   "totais": {
     "all_time": {
-      "acessos": 645,
-      "visitantes": 645
+      "acessos": 649,
+      "visitantes": 649
     },
     "ultimos_30d": {
-      "acessos": 284,
-      "visitantes": 284
+      "acessos": 287,
+      "visitantes": 287
     }
   }
 }
