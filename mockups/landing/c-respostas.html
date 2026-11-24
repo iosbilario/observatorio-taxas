@@ -8,8 +8,8 @@
 <link rel="stylesheet" href="base.css">
 <script src="tema.js"></script>
 <style>
-:root{--primary:#1b5fab;--primary-ink:#1b5fab;--on-primary:#fff}
-[data-theme="dark"]{--primary:#7fb2ec;--primary-ink:#9cc4f2;--on-primary:#0b1a2b}
+html:root[data-theme]{--primary:#1b5fab;--primary-ink:#1b5fab;--on-primary:#fff}
+html:root[data-theme="dark"]{--primary:#7fb2ec;--primary-ink:#9cc4f2;--on-primary:#0b1a2b}
 .grid{display:grid;grid-template-columns:1fr 300px;gap:40px;padding:40px 0}
 @media(max-width:900px){.grid{grid-template-columns:1fr}}
 h1{font-size:clamp(1.8rem,3.6vw,2.4rem);font-weight:800}
