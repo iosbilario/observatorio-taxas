@@ -72,18 +72,13 @@ class PaginaInicial(unittest.TestCase):
             ok = alvo.is_file() or (alvo / "index.html").is_file()
             self.assertTrue(ok, href)
 
-    def test_tema_claro_por_padrao_e_botao_so_na_home(self):
+    def test_tema_claro_por_padrao_e_botao(self):
         html = home()
         self.assertIn('<html lang="pt-BR" data-theme="light">', html)
         self.assertIn('href="refy/tokens.css"', html)
         self.assertTrue((DOCS / "refy" / "tokens.css").is_file())
         self.assertIn("data-tema-botao hidden", html)
-        self.assertIn('localStorage.setItem("tema"', html)
-        # As outras páginas recebem o botão escondido e nenhum script que o mostre.
-        outra = (DOCS / "reajuste" / "index.html").read_text(encoding="utf-8")
-        self.assertIn("data-tema-botao hidden", outra)
-        self.assertNotIn("data-tema-botao]", outra)
-        self.assertNotIn("data-theme=", outra.split("<head>", 1)[0])
+        self.assertIn('<script src="tema.js"></script>', html)
 
     def test_titulo_animado_tem_rotulo_e_respeita_movimento_reduzido(self):
         html = home()

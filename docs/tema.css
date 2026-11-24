@@ -1,0 +1,49 @@
+/* =========================================================================
+   tema.css — Modo claro e escuro do site inteiro, com os tokens do Refy.
+
+   Carregado por todas as páginas (sync_nav.py insere o <link> depois do
+   nav.css), junto com refy/tokens.css e tema.js. O <html> de cada página
+   traz data-theme="light"; tema.js troca para "dark" quando a pessoa
+   escolhe, e lembra a escolha.
+
+   As páginas foram escritas com uma paleta própria em variáveis
+   (--cofre, --papel, --carimbo...). Aqui essas variáveis passam a apontar
+   para os tokens do Refy do tema ativo, então nenhum gerador precisa mudar
+   de cor um por um. html[data-theme] tem especificidade maior que o :root
+   de cada página, por isso vale mesmo carregado antes ou depois do <style>.
+   ========================================================================= */
+
+/* Fontes do tema (SIL OFL 1.1, ver fonts/LICENSE.txt). */
+@font-face{font-family:'IBM Plex Serif';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/ibmplexserif-latin-400.woff2) format('woff2')}
+@font-face{font-family:'IBM Plex Serif';font-style:normal;font-weight:600;font-display:swap;src:url(fonts/ibmplexserif-latin-600.woff2) format('woff2')}
+@font-face{font-family:'Manrope';font-style:normal;font-weight:400 800;font-display:swap;src:url(fonts/manrope-latin-0.woff2) format('woff2')}
+@font-face{font-family:'Source Sans 3';font-style:normal;font-weight:400 700;font-display:swap;src:url(fonts/sourcesans3-latin-0.woff2) format('woff2')}
+
+/* Os CSS das páginas pedem 'Fraunces' (títulos) e 'Archivo' (texto).
+   Estas duas regras têm os MESMOS descritores das declaradas nas páginas
+   (estilo, peso e unicode-range); com descritores iguais vale a última
+   declarada, e este arquivo vem depois do <style> da página. Resultado:
+   títulos em IBM Plex Serif e texto em Source Sans 3 em todo o site, sem
+   reescrever cada seletor. */
+@font-face{font-family:'Fraunces';font-style:normal;font-weight:500 700;font-display:swap;src:url(fonts/ibmplexserif-latin-600.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Archivo';font-style:normal;font-weight:400 600;font-display:swap;src:url(fonts/sourcesans3-latin-0.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+
+/* Cor de destaque e de alta/queda de cada modo (as mesmas da página inicial). */
+html[data-theme="light"]{--obs-destaque:#1b5fab;--obs-destaque-texto:#174f8f;--obs-sobe:#0a7d4f;--obs-cai:#b3261e;color-scheme:light}
+html[data-theme="dark"]{--obs-destaque:#8ab8ee;--obs-destaque-texto:#a9caf3;--obs-sobe:#5fd49b;--obs-cai:#ff8a80;color-scheme:dark}
+
+/* A paleta das páginas, reapontada para o tema. */
+html[data-theme]{
+  --cofre:var(--bg);
+  --papel:var(--ink-1);
+  --papel-70:var(--ink-2);
+  --papel-45:var(--ink-3);
+  --linha:var(--line);
+  --campo:var(--surface);
+  --neutro:var(--ink-3);
+  --carimbo:var(--obs-destaque);
+  --alta:var(--obs-sobe);
+  --queda:var(--obs-cai);
+}
+html[data-theme] body{background:var(--bg);color:var(--ink-2)}
+html[data-theme] ::selection{background:color-mix(in srgb,var(--obs-destaque) 22%,transparent)}

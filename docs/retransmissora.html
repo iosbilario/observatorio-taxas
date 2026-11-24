@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="light">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -12,7 +12,7 @@
   <title>Retransmissora — gráficos do Observatório de Taxas para o seu site</title>
   <meta name="description" content="Publique os gráficos ao vivo do Observatório de Taxas (Selic, IPCA, câmbio e mais) no seu site, newsletter ou portal. Escolha a série, o período e o tema, copie o código e pronto. Dados oficiais coletados no SGS do Banco Central." />
   <meta name="robots" content="index, follow" />
-  <meta name="theme-color" content="#0E1210" />
+  <meta name="theme-color" content="#ffffff" />
   <link rel="canonical" href="https://observatoriodetaxas.tec.br/retransmissora.html" />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="pt_BR" />
@@ -35,8 +35,8 @@
     :root {
       --cofre: #0E1210; --papel: #E9E6DC; --alta: #3FD68F; --queda: #E4574F;
       --carimbo: #D9B54A; --neutro: #5A625D;
-      --papel-70: rgba(233,230,220,.70); --papel-45: rgba(233,230,220,.55);  /* 5,2:1 (WCAG AA) */
-      --linha: rgba(233,230,220,.14); --campo: #0d1210;
+      --papel-70: color-mix(in srgb,var(--papel) 70%,transparent); --papel-45: color-mix(in srgb,var(--papel) 55%,transparent);  /* 5,2:1 (WCAG AA) */
+      --linha: color-mix(in srgb,var(--papel) 14%,transparent); --campo: #0d1210;
       color-scheme: dark;
     }
     * { box-sizing: border-box; }
@@ -51,7 +51,7 @@
     .skip-link:focus { left: 0; outline: 2px solid var(--papel); outline-offset: -4px; }
     body { margin: 0; background: var(--cofre); color: var(--papel); font-family: "Archivo", system-ui, sans-serif; line-height: 1.55; -webkit-font-smoothing: antialiased; }
     a { color: inherit; }
-    ::selection { background: rgba(217,181,74,.28); }
+    ::selection { background: color-mix(in srgb,var(--carimbo) 28%,transparent); }
     header.top { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; padding: 1.1rem clamp(1rem, 4vw, 2.4rem); border-bottom: 1px solid var(--linha); font-family: "IBM Plex Mono", monospace; }
     header .mark { font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; color: var(--papel-70); }
     header .mark b { color: var(--papel); font-weight: 500; }
@@ -87,7 +87,7 @@
 
     .preview-box { }
     .preview-box h2 { font-size: .95rem; margin: 0 0 .7rem; font-family: "IBM Plex Mono", monospace; letter-spacing: .1em; text-transform: uppercase; color: var(--papel-70); font-weight: 500; }
-    .frame { border: 1px solid var(--linha); border-radius: 10px; overflow: hidden; background: #000; }
+    .frame { border: 1px solid var(--linha); border-radius: 10px; overflow: hidden; background: var(--campo); }
     iframe.preview { width: 100%; border: 0; display: block; }
 
     .code { margin-top: 1.4rem; }
@@ -108,7 +108,7 @@
     .redacoes { margin-top: 2.6rem; border-top: 1px solid var(--linha); padding-top: 1.8rem; }
     .redacoes h2 { font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: 1.5rem; margin: 0 0 .6rem; }
     .redacoes p { color: var(--papel-70); max-width: 65ch; margin: 0 0 .6rem; }
-    .redacoes a.mail { color: var(--carimbo); text-decoration: none; border-bottom: 1px solid rgba(217,181,74,.4); font-weight: 600; }
+    .redacoes a.mail { color: var(--carimbo); text-decoration: none; border-bottom: 1px solid color-mix(in srgb,var(--carimbo) 40%,transparent); font-weight: 600; }
     .redacoes a.mail:hover { border-bottom-color: var(--carimbo); }
 
     footer { border-top: 1px solid var(--linha); margin-top: 2.4rem; padding: 1.6rem clamp(1rem, 4vw, 2.4rem) 2rem; color: var(--papel-45); font-size: .82rem; }
@@ -117,6 +117,9 @@
     footer p { margin: .3rem 0; max-width: 72ch; }
   </style>
   <link rel="stylesheet" href="nav.css" />
+  <link rel="stylesheet" href="refy/tokens.css" />
+  <link rel="stylesheet" href="tema.css" />
+  <script src="tema.js"></script>
   <script src="estrelas.js" defer></script>
 </head>
 <body>
@@ -172,7 +175,7 @@
         <div class="row2">
           <div class="campo">
             <label for="tema">Tema</label>
-            <select id="tema"><option value="escuro">Escuro</option><option value="claro">Claro</option></select>
+            <select id="tema"><option value="claro">Claro</option><option value="escuro">Escuro</option></select>
           </div>
           <div class="campo">
             <label for="altura">Altura (px)</label>
@@ -281,7 +284,7 @@
   (function () {
     var BASE = "https://observatoriodetaxas.tec.br";
     var MES = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
-    var st = { s: 432, nome: "Meta Selic", periodo: "24", de: null, ate: null, tema: "escuro", h: 400, ref: null };
+    var st = { s: 432, nome: "Meta Selic", periodo: "24", de: null, ate: null, tema: "claro", h: 400, ref: null };
 
     function $(id) { return document.getElementById(id); }
     function ymNum(ym) { var a = ym.split("-"); return (+a[0]) * 12 + (+a[1]) - 1; }

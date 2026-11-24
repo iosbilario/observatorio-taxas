@@ -5,11 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- ===================== Segurança (site estático, sem headers HTTP) ===================== -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data: https://observatoriotaxas.goatcounter.com https://carimbo.tec.br; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self' https://gc.zgo.at 'sha256-8qh1qN0OU2G9CI0EmVqbdqHd1+x92hZmYO80BSiJgDc=' 'sha256-0eMfx9mzWvxK5ShxlaXZS94lOjAPWrK/n+bqe+FY04Q=' 'sha256-2D0yPViBCVtZ3BwKbogRO2iJy8HeYkshUpJ8803uzQg=' 'sha256-KeLct9RBAkUxSMxhmI9ztuc4dTMNA0iIKlUCauApLbY='; connect-src 'self' https://observatoriotaxas.goatcounter.com; frame-src 'self'" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data: https://observatoriotaxas.goatcounter.com https://carimbo.tec.br; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self' https://gc.zgo.at 'sha256-8qh1qN0OU2G9CI0EmVqbdqHd1+x92hZmYO80BSiJgDc=' 'sha256-2D0yPViBCVtZ3BwKbogRO2iJy8HeYkshUpJ8803uzQg=' 'sha256-U/+rtGOKFrJj9T5pGbVkRpvtr/GLa4Hq8cVCRf2c464='; connect-src 'self' https://observatoriotaxas.goatcounter.com; frame-src 'self'" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <script>if (top !== self) { try { top.location = self.location; } catch (e) { document.documentElement.style.display = "none"; } }</script>
-  <!-- Tema antes da primeira pintura: claro por padrão, escuro se a pessoa escolheu. -->
-  <script>(function(){var r=document.documentElement,s=null;try{s=localStorage.getItem("tema")}catch(e){}r.setAttribute("data-theme",s==="dark"?"dark":"light")})();</script>
 
   <meta name="google-site-verification" content="B1ymo2agmjaqa4m4AJtfpx4bZWTsnIqhPqwHOMwyC4g" />
 
@@ -348,6 +346,8 @@ footer a{color:var(--ink-2)}
 }
   </style>
   <link rel="stylesheet" href="nav.css" />
+  <link rel="stylesheet" href="tema.css" />
+  <script src="tema.js"></script>
   <script src="estrelas.js" defer></script>
 </head>
 <body>
@@ -757,27 +757,6 @@ footer a{color:var(--ink-2)}
     function fmtPct(x) { return (x > 0 ? "+" : "") + x.toLocaleString("pt-BR", { maximumFractionDigits: 2 }) + "%"; }
     function fmtBRL(v) { return v.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
     async function getJSON(path) { const r = await fetch(`${DATA_BASE}/${path}`, { cache: "no-store" }); if (!r.ok) throw new Error(path + " " + r.status); return r.json(); }
-
-    // Botão de tema (no header): alterna claro e escuro e lembra a escolha.
-    (function () {
-      const b = document.querySelector("[data-tema-botao]");
-      if (!b) return;
-      const r = document.documentElement;
-      const rotulo = () => {
-        const escuro = r.getAttribute("data-theme") === "dark";
-        b.setAttribute("aria-label", escuro ? "Mudar para o modo claro" : "Mudar para o modo escuro");
-        b.setAttribute("aria-pressed", String(escuro));
-      };
-      b.hidden = false;
-      rotulo();
-      b.addEventListener("click", () => {
-        const escuro = r.getAttribute("data-theme") !== "dark";
-        r.setAttribute("data-theme", escuro ? "dark" : "light");
-        try { localStorage.setItem("tema", escuro ? "dark" : "light"); } catch (e) { /* modo privado */ }
-        rotulo();
-        document.dispatchEvent(new Event("tema"));
-      });
-    })();
 
     const el = document.getElementById("ano"); if (el) el.textContent = new Date().getFullYear();
 
