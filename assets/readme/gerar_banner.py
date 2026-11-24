@@ -1,14 +1,18 @@
 """
-gerar_banner.py — Gera assets/readme/banner.svg (banner do README).
+gerar_banner.py — Gera os banners do README, claro e escuro.
 
-O texto vira contorno (path) a partir das fontes do próprio site (Fraunces,
-Archivo, IBM Plex Mono), porque o GitHub não carrega fontes dentro de SVG. A
-linha do gráfico é a série real do IPCA acumulado em 12 meses (SGS 13522,
-produzida pelo IBGE), lida de data/13522_history.json.
+  assets/readme/banner.svg         modo claro (padrão)
+  assets/readme/banner-escuro.svg  modo escuro (README com <picture>)
 
-Ferramenta de manutenção, fora do pipeline do site. Exige fonttools e brotli:
+As cores são as do tema do site (tokens do Refy Design, docs/refy/tokens.css,
+e docs/tema.css). O texto vira contorno (path) a partir das fontes do site
+(IBM Plex Serif, Source Sans 3, IBM Plex Mono), porque o GitHub não carrega
+fontes dentro de SVG. A linha do gráfico é a série real do IPCA acumulado em
+12 meses (SGS 13522, produzida pelo IBGE), lida de data/13522_history.json.
 
-    pip install fonttools brotli
+Ferramenta de manutenção, fora do pipeline do site. Exige fonttools:
+
+    pip install fonttools
     python assets/readme/gerar_banner.py
 """
 
@@ -23,9 +27,15 @@ from fontTools.ttLib import TTFont
 from fontTools.varLib.instancer import instantiateVariableFont
 
 ROOT = Path(__file__).resolve().parents[2]
-SAIDA = Path(__file__).resolve().parent / "banner.svg"
+PASTA = Path(__file__).resolve().parent
 
-COFRE, PAPEL, CARIMBO = "#0E1210", "#E9E6DC", "#D9B54A"
+# fundo, borda/linhas, título, texto, texto fraco, destaque
+TEMAS = {
+    "banner.svg": dict(fundo="#FFFFFF", linha="#D9DEDD", titulo="#111113", texto="#3E3E44",
+                       fraco="#68676D", destaque="#1B5FAB"),
+    "banner-escuro.svg": dict(fundo="#12161B", linha="#2E3844", titulo="#E8EDF2", texto="#C6D0DA",
+                              fraco="#ADBDCC", destaque="#8AB8EE"),
+}
 W, H = 1280, 440
 
 
@@ -70,35 +80,37 @@ def serie_ipca() -> tuple[str, str, str]:
 
 
 def main() -> None:
-    fr_t = fonte(ROOT / "assets/fonts/Fraunces-variable.ttf", {"wght": 600, "opsz": 144, "SOFT": 0, "WONK": 0})
-    fr_s = fonte(ROOT / "assets/fonts/Fraunces-variable.ttf", {"wght": 500, "opsz": 72, "SOFT": 0, "WONK": 0})
-    arq = fonte(ROOT / "docs/fonts/archivo.woff2", {"wght": 400})
+    serif = fonte(ROOT / "assets/fonts/IBMPlexSerif-Regular.ttf")
+    sans = fonte(ROOT / "assets/fonts/SourceSans3[wght].ttf", {"wght": 400})
     mono = fonte(ROOT / "assets/fonts/IBMPlexMono-Regular.ttf")
-
     poly, ultimo, periodo = serie_ipca()
-    el = []
-    el.append(texto(mono, "OBSERVATORIODETAXAS.TEC.BR", 64, 74, 13, CARIMBO, espaco=3.2)[0])
-    el.append(texto(fr_t, "Observatório de Taxas", 62, 146, 64, PAPEL)[0])
-    el.append(texto(fr_s, "Os números mudam. O histórico fica.", 64, 196, 32, CARIMBO)[0])
-    el.append(texto(arq, "Indicadores econômicos brasileiros, séries históricas versionadas e", 64, 240, 19, PAPEL, 0.72)[0])
-    el.append(texto(arq, "ferramentas gratuitas para consulta, comparação e cálculo.", 64, 266, 19, PAPEL, 0.72)[0])
-    legenda, lw = texto(mono, f"IPCA ACUMULADO EM 12 MESES · IBGE, VIA SGS/BCB · {periodo}", 64, 420, 11, PAPEL, 0.55, espaco=1.2)
-    el.append(legenda)
 
-    svg = f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" role="img" aria-labelledby="t d">
+    for nome, c in TEMAS.items():
+        el = []
+        el.append(texto(mono, "OBSERVATORIODETAXAS.TEC.BR", 64, 74, 13, c["destaque"], espaco=3.2)[0])
+        tit, tw = texto(serif, "Observatório de Taxas", 62, 148, 68, c["titulo"])
+        el.append(tit)
+        el.append(texto(serif, ".", 62 + tw, 148, 68, c["destaque"])[0])
+        el.append(texto(serif, "Os números mudam. O histórico fica.", 64, 198, 32, c["texto"])[0])
+        el.append(texto(sans, "Indicadores econômicos brasileiros, séries históricas versionadas e", 64, 242, 20, c["fraco"])[0])
+        el.append(texto(sans, "ferramentas gratuitas para consulta, comparação e cálculo.", 64, 268, 20, c["fraco"])[0])
+        el.append(texto(mono, f"IPCA ACUMULADO EM 12 MESES · IBGE, VIA SGS/BCB · {periodo}", 64, 420, 11,
+                        c["fraco"], espaco=1.2)[0])
+        x, y = ultimo.split(",")
+        svg = f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" role="img" aria-labelledby="t d">
 <title id="t">Observatório de Taxas</title>
 <desc id="d">Os números mudam. O histórico fica. Indicadores econômicos brasileiros, séries históricas versionadas e ferramentas gratuitas. Ao fundo, a linha do IPCA acumulado em 12 meses ({periodo}).</desc>
-<rect x="0.5" y="0.5" width="{W - 1}" height="{H - 1}" rx="14" fill="{COFRE}" stroke="{PAPEL}" stroke-opacity="0.14"/>
-<line x1="64" y1="300" x2="{W - 64}" y2="300" stroke="{PAPEL}" stroke-opacity="0.14"/>
-<line x1="64" y1="304" x2="{W - 64}" y2="304" stroke="{PAPEL}" stroke-opacity="0.14"/>
-<line x1="64" y1="398" x2="{W - 64}" y2="398" stroke="{PAPEL}" stroke-opacity="0.14"/>
-<polyline points="{poly}" fill="none" stroke="{PAPEL}" stroke-opacity="0.55" stroke-width="1.4" stroke-linejoin="round"/>
-<circle cx="{ultimo.split(',')[0]}" cy="{ultimo.split(',')[1]}" r="4" fill="{CARIMBO}"/>
+<rect x="0.5" y="0.5" width="{W - 1}" height="{H - 1}" rx="14" fill="{c['fundo']}" stroke="{c['linha']}"/>
+<line x1="64" y1="300" x2="{W - 64}" y2="300" stroke="{c['linha']}"/>
+<line x1="64" y1="398" x2="{W - 64}" y2="398" stroke="{c['linha']}"/>
+<polyline points="{poly}" fill="none" stroke="{c['destaque']}" stroke-width="1.6" stroke-linejoin="round"/>
+<circle cx="{x}" cy="{y}" r="4" fill="{c['destaque']}"/>
 {chr(10).join(el)}
 </svg>
 """
-    SAIDA.write_text(svg, encoding="utf-8")
-    print(f"{SAIDA.relative_to(ROOT)}: {len(svg.encode()) / 1024:.1f} KB")
+        saida = PASTA / nome
+        saida.write_text(svg, encoding="utf-8")
+        print(f"{saida.relative_to(ROOT)}: {len(svg.encode()) / 1024:.1f} KB")
 
 
 if __name__ == "__main__":

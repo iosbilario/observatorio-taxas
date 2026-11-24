@@ -1,5 +1,10 @@
 <p align="center">
-  <a href="https://observatoriodetaxas.tec.br/"><img src="assets/readme/banner.svg" width="100%" alt="Observatório de Taxas. Os números mudam. O histórico fica. Indicadores econômicos brasileiros, séries históricas versionadas e ferramentas gratuitas para consulta, comparação e cálculo."></a>
+  <a href="https://observatoriodetaxas.tec.br/">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="assets/readme/banner-escuro.svg">
+      <img src="assets/readme/banner.svg" width="100%" alt="Observatório de Taxas. Os números mudam. O histórico fica. Indicadores econômicos brasileiros, séries históricas versionadas e ferramentas gratuitas para consulta, comparação e cálculo.">
+    </picture>
+  </a>
 </p>
 
 <p align="center">
@@ -9,9 +14,11 @@
   <a href="https://observatoriodetaxas.tec.br/simulador-cdi/">Simulador de CDI</a> ·
   <a href="https://observatoriodetaxas.tec.br/reajuste/">Reajuste</a> ·
   <a href="https://observatoriodetaxas.tec.br/correcao/">Correção monetária</a> ·
+  <a href="https://observatoriodetaxas.tec.br/guias/">Guias</a> ·
   <a href="https://observatoriodetaxas.tec.br/var.html">VAR</a> ·
   <a href="https://observatoriodetaxas.tec.br/data/series.json">Dados (JSON)</a> ·
-  <a href="https://observatoriodetaxas.tec.br/mcp/">MCP (ChatGPT e Claude)</a> ·
+  <a href="https://chatgpt.com/plugins/plugin_asdk_app_6af615624cb08191ae41993bad0b6279">Plugin no ChatGPT</a> ·
+  <a href="https://observatoriodetaxas.tec.br/mcp/">MCP</a> ·
   <a href="desenvolvimento/GUIA.md">Guia do desenvolvedor</a> ·
   <a href="https://observatoriodetaxas.tec.br/apoie/">Apoie</a>
 </p>
@@ -27,15 +34,17 @@
   <a href="https://github.com/iosbilario/observatorio-taxas/stargazers"><img src="https://img.shields.io/github/stars/iosbilario/observatorio-taxas?style=social" alt="Estrelas no GitHub"></a>
   <br>
   <a href="https://observatoriodetaxas.tec.br/"><img src="https://img.shields.io/website?url=https%3A%2F%2Fobservatoriodetaxas.tec.br&label=site" alt="Situação do site"></a>
-  <a href="https://observatoriodetaxas.tec.br/indicadores/"><img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fobservatoriodetaxas.tec.br%2Fdata%2Fseries.json&query=%24.length&label=s%C3%A9ries&color=D9B54A" alt="Número de séries acompanhadas"></a>
-  <a href="https://observatoriodetaxas.tec.br/data/meta.json"><img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fobservatoriodetaxas.tec.br%2Fdata%2Fmeta.json&query=%24.gerado_em_fmt&label=%C3%BAltima%20coleta&color=0E1210" alt="Horário da última coleta com mudança"></a>
+  <a href="https://observatoriodetaxas.tec.br/indicadores/"><img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fobservatoriodetaxas.tec.br%2Fdata%2Fseries.json&query=%24.length&label=s%C3%A9ries&color=1B5FAB" alt="Número de séries acompanhadas"></a>
+  <a href="https://observatoriodetaxas.tec.br/data/meta.json"><img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fobservatoriodetaxas.tec.br%2Fdata%2Fmeta.json&query=%24.gerado_em_fmt&label=%C3%BAltima%20coleta&color=111113" alt="Horário da última coleta com mudança"></a>
   <a href="https://doi.org/10.5281/zenodo.24151062"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.24151062.svg" alt="DOI 10.5281/zenodo.24151062 (todas as versões, Zenodo)"></a>
+  <a href="https://refy.design/"><img src="https://img.shields.io/badge/design-Refy%20Design-B9431D" alt="Interface feita com o Refy Design"></a>
 </p>
 
 O Observatório de Taxas publica indicadores econômicos do Brasil (Selic,
 IPCA, INPC, IGP-M, CDI, câmbio, crédito, desemprego e outros, 25 séries) com o histórico completo de
 cada número. Um robô coleta as séries a cada 6 horas e grava cada mudança como
-um commit neste repositório. O site é estático, gratuito e sem cadastro.
+um commit neste repositório. O site é estático, gratuito e sem cadastro, com
+modo claro e escuro feitos com o [Refy Design](https://refy.design/).
 
 ## Conheça o Observatório
 
@@ -54,6 +63,10 @@ O Observatório guarda esse caminho:
 - **Disponível em quatro formas.** Páginas em HTML (legíveis sem JavaScript),
   arquivos JSON em `/data/`, gráficos para incorporar em outros sites e um
   servidor MCP para assistentes como ChatGPT e Claude.
+- **Feito para ler.** A página inicial responde as perguntas do dia ("Qual é a
+  Selic hoje?", "Quanto vai subir o aluguel?") em uma frase, com o número, a
+  variação no mês (▲ ▼ ■) e a data de referência. Cada mês de reajuste traz uma
+  leitura própria, e seis guias explicam como usar os números.
 - **Independente e gratuito.** O site é estático, sem banco de dados e sem
   anúncios. O servidor MCP roda à parte, no plano gratuito do Render, e só lê
   os JSON que o site publica. Projeto mantido pela LBP Tecnologia.
@@ -62,12 +75,13 @@ O Observatório guarda esse caminho:
 
 | Ferramenta | O que faz | Link |
 | --- | --- | --- |
-| Painel | Os números do dia (Selic, IPCA 12 meses, dólar, IGP-M, desemprego) com variação no mês | [observatoriodetaxas.tec.br](https://observatoriodetaxas.tec.br/) |
+| Painel | As cinco perguntas do dia (Selic, inflação, dólar, aluguel, desemprego) respondidas em uma frase, com variação no mês, e mais 12 indicadores | [observatoriodetaxas.tec.br](https://observatoriodetaxas.tec.br/) |
 | Indicadores | Uma página por série (25) com valor atual, contexto, últimos 12 meses e ficha técnica, mais uma tabela com todas | [/indicadores/](https://observatoriodetaxas.tec.br/indicadores/) |
 | Comparador | Selic, CDI e IPCA acumulados em qualquer período, com gráfico, tabela mês a mês e link compartilhável | [/comparador/](https://observatoriodetaxas.tec.br/comparador/) |
 | Simulador de CDI | Quanto rende X% do CDI com a taxa DI diária, IR e IOF do CDB, inflação do período e memória de cálculo em CSV | [/simulador-cdi/](https://observatoriodetaxas.tec.br/simulador-cdi/) |
-| Reajuste de contratos | Acumulado de 12 meses, fator e calculadora por índice e mês: uma página para cada mês desde dezembro de 2015 | [/reajuste/](https://observatoriodetaxas.tec.br/reajuste/) |
+| Reajuste de contratos | Acumulado de 12 meses, fator e calculadora por índice e mês: uma página para cada mês desde dezembro de 2015, com a leitura do mês (o que mudou e por quê, posição no histórico, comparação com os outros índices) | [/reajuste/](https://observatoriodetaxas.tec.br/reajuste/) |
 | Correção monetária | Atualiza um valor entre duas datas pelo IPCA, IGP-M, INPC ou IGP-DI | [/correcao/](https://observatoriodetaxas.tec.br/correcao/) |
+| Guias | Reajuste de aluguel, IPCA x INPC x IGP-M x IGP-DI, cálculo do acumulado, correção monetária, Selic e dólar PTAX, com exemplos atualizados a cada coleta | [/guias/](https://observatoriodetaxas.tec.br/guias/) |
 | Rebobinar | A economia mês a mês, como uma linha do tempo de commits | [/rebobinar.html](https://observatoriodetaxas.tec.br/rebobinar.html) |
 | VAR da Economia | Confere uma afirmação comparando dois períodos de uma série e emite um recibo com link permanente | [/var.html](https://observatoriodetaxas.tec.br/var.html) |
 | Retransmissora | Gera o código para incorporar um gráfico que se atualiza sozinho | [/retransmissora.html](https://observatoriodetaxas.tec.br/retransmissora.html) |
@@ -97,10 +111,12 @@ fica em [`servidor_mcp/`](servidor_mcp/).
   MCP até a confirmação dos termos de redistribuição com os produtores.
 - **Privacidade:** recebe só os parâmetros da consulta, não grava parâmetros
   nem IP. Ver a [seção do MCP na política de privacidade](https://observatoriodetaxas.tec.br/privacidade/#mcp-t).
-- **Como conectar:** passo a passo para o ChatGPT (Plugins) e o Claude
-  (Customize → Connectors) em [observatoriodetaxas.tec.br/mcp](https://observatoriodetaxas.tec.br/mcp/).
-  Em 13/11/2026, o plugin está em revisão no diretório da OpenAI e o conector,
-  no diretório do Claude.
+- **No ChatGPT:** o plugin oficial está no diretório desde 24/11/2026:
+  [Observatório de Taxas no ChatGPT](https://chatgpt.com/plugins/plugin_asdk_app_6af615624cb08191ae41993bad0b6279).
+  Guia de uso com telas reais, incluindo um alerta diário do dólar com tarefa
+  agendada: [como usar o Observatório de Taxas no ChatGPT](https://lbptecnologia.com.br/blog/observatorio-de-taxas-no-chatgpt/).
+- **No Claude e em outros clientes MCP:** passo a passo em
+  [observatoriodetaxas.tec.br/mcp](https://observatoriodetaxas.tec.br/mcp/).
 - **Custo:** R$ 0. Render Free num workspace sem cartão; o serviço dorme após
   15 minutos sem uso e leva cerca de 1 minuto para acordar.
 
@@ -110,9 +126,41 @@ Arquitetura, segurança, deploy e checklists de publicação:
 ## Interface
 
 <p align="center">
-  <img src="assets/readme/observatorio-desktop.png" width="100%" alt="Captura da página inicial do Observatório de Taxas em 11/11/2026: título, data, linha de coleta com o commit, cinco indicadores do dia (Meta Selic 13,75% a.a., IPCA 12 meses 4,58%, dólar R$ 5,5840, IGP-M 1,47% no mês, desemprego 5,2%) com minigráficos e, abaixo, o bloco do Rebobinar.">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/readme/observatorio-escuro.png">
+    <img src="assets/readme/observatorio-claro.png" width="100%" alt="Captura da página inicial do Observatório de Taxas em 24/11/2026, modo claro: título Indicadores do Brasil, hoje, linha de coleta com o commit, as perguntas Qual é a Selic hoje (13,75% a.a., ■ 0,00 p.p. no mês), Qual é a inflação acumulada em 12 meses (4,63%, ▲ +0,05 p.p. no mês) e Quanto está o dólar hoje (R$ 5,8573, ▲ +R$ 0,4361 no mês), com minigráficos, e a coluna lateral com calculadoras, guias e atalhos.">
+  </picture>
 </p>
-<p align="center"><sub>Página inicial em 11/11/2026, capturada do site publicado.</sub></p>
+<p align="center"><sub>Página inicial em 24/11/2026, capturada do site publicado. O GitHub mostra a versão clara ou a escura conforme o seu tema.</sub></p>
+
+## Design: feito com o Refy Design
+
+A interface do Observatório usa o [**Refy Design**](https://refy.design/), um
+design system open source (Apache 2.0) criado por
+[Vinicius Coimbra](https://github.com/viniciuscoimbra). O Refy junta
+componentes React e TypeScript, um pacote nativo para celular, templates prontos
+e um catálogo que agentes de IA consultam pelo MCP antes de montar uma tela.
+O tema inteiro (cor, fonte, raio, modo claro e escuro) fica num arquivo de tokens.
+
+O Observatório mostra o Refy num cenário diferente do habitual. O site é HTML
+estático gerado por Python, sem React. Mesmo assim, só os tokens bastaram para
+redesenhar 574 páginas:
+
+- [`docs/refy/tokens.css`](docs/refy/tokens.css) é o arquivo de tokens do
+  `@refy-design/web` 1.11.0, servido pelo próprio site (a CSP continua
+  `style-src 'self'`);
+- [`docs/tema.css`](docs/tema.css) liga a paleta das páginas aos tokens do tema
+  ativo, e [`docs/tema.js`](docs/tema.js) troca o modo claro e o escuro e
+  lembra a escolha;
+- as fontes (IBM Plex Serif, Manrope e Source Sans 3) vêm do pacote do Refy;
+- a animação do título da página inicial, palavra por palavra, segue a do
+  hero do [refy.design](https://refy.design/), feita só com CSS e desligada
+  para quem pede menos movimento.
+
+Para conhecer: [refy.design](https://refy.design/) ·
+[código no GitHub](https://github.com/viniciuscoimbra/refy-design) (deixe uma ⭐) ·
+[tema por arquivo](https://refy.design/docs) ·
+[relato de um app feito com o Refy](https://lbptecnologia.com.br/blog/refy-design-meuconfere/).
 
 ## Arquitetura
 
@@ -121,7 +169,7 @@ flowchart TD
   A["config.yml<br/>séries monitoradas"] --> B["API SGS<br/>Banco Central"]
   B --> C["scripts/fetch.py<br/>coleta e funde"]
   C --> D[("data/*.json<br/>histórico versionado")]
-  D --> E["Geradores Python<br/>reajuste, correção, indicadores,<br/>comparador, simulador, sitemap"]
+  D --> E["Geradores Python<br/>reajuste, correção, indicadores,<br/>comparador, simulador, guias, sitemap"]
   E --> F["docs/<br/>HTML + JSON"]
   F --> G["GitHub Pages<br/>observatoriodetaxas.tec.br"]
   G --> H["IndexNow<br/>URLs alteradas"]
@@ -208,10 +256,12 @@ python scripts/build_pages.py             # páginas de reajuste
 python scripts/build_correcao.py          # páginas de correção
 python scripts/build_indicadores.py       # /indicadores/ (uma página por série)
 python scripts/build_ferramentas.py       # /comparador/ e /simulador-cdi/
-python scripts/render_index.py            # boletim da página inicial + sitemap
-python scripts/sync_nav.py                # header em todas as páginas
+python scripts/build_guias.py             # /guias/
+python scripts/render_index.py            # perguntas do dia na página inicial + sitemap
+python scripts/sync_nav.py                # header, rodapé e tema claro/escuro em todas as páginas
 python scripts/adsense.py                 # ads.txt; anúncios só se ligados em config.yml
 python scripts/csp_hashes.py              # hashes da CSP
+python scripts/build_og.py                # card social (og-image.png)
 python -m unittest discover -s tests -v   # testes
 python -m http.server 8000 --bind 127.0.0.1 --directory docs
 ```
@@ -238,7 +288,7 @@ publicado: `python -m servidor_mcp.conferir_endpoint https://observatorio-taxas-
 | [`monitor.yml`](.github/workflows/monitor.yml) | A cada 6 horas e sob demanda | Coleta as séries e as estrelas do repositório, gera as páginas, atualiza CSP e card social, e commita só se algo mudou |
 | [`validate.yml`](.github/workflows/validate.yml) | Em pull requests | Roda os testes do site e do servidor MCP, regenera as páginas e confere que o resultado é igual ao commitado. Não toca na coleta |
 | [`indexnow.yml`](.github/workflows/indexnow.yml) | Depois do monitor, em push na `main` e a cada 6 horas | Avisa os buscadores só das URLs alteradas, depois do deploy |
-| [`mcp-acordado.yml`](.github/workflows/mcp-acordado.yml) | A cada 5 minutos (temporário) | Chama o `/health` do servidor MCP para ele não dormir durante a revisão dos diretórios. Será desligado depois das aprovações |
+| [`mcp-acordado.yml`](.github/workflows/mcp-acordado.yml) | A cada 5 minutos, pelo agendamento | Chama o `/health` do servidor MCP para ele não dormir. O GitHub pode atrasar esse agendamento em horas, então o servidor às vezes leva cerca de 1 minuto para responder à primeira chamada |
 
 O Render publica o servidor MCP sozinho (`render.yaml`) quando um commit na
 `main` muda `servidor_mcp/` ou os scripts de cálculo.
