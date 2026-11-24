@@ -272,7 +272,7 @@ class TestDadosEstruturados(unittest.TestCase):
         """Sem JS o bloco mostra o dólar (HTML estático); com JS as séries do
         carrossel precisam existir no embed."""
         html = (DOCS / "index.html").read_text(encoding="utf-8")
-        self.assertIn('<iframe class="demo" src="embed.html?s=1&tema=escuro&h=300"', html)
+        self.assertIn('<iframe class="demo" src="embed.html?s=1&tema=claro&h=300"', html)
         self.assertRegex(html, r'<div class="carro-nav" hidden>')
         bloco = re.search(r'getElementById\("carro"\).*?\];', html, re.S).group(0)
         codigos = [int(c) for c in re.findall(r"\{ s: (\d+),", bloco)]

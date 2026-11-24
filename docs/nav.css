@@ -184,6 +184,41 @@ body.tema-radar {
 }
 
 /* -------------------------------------------------------------------------
+   Modo claro e escuro (só nas páginas com data-theme no <html>, hoje a
+   inicial). O header e o rodapé passam a usar os tokens do Refy da página;
+   as demais páginas, sem data-theme, ficam como sempre foram.
+   O botão nasce `hidden` em todas as páginas e só o script de tema da
+   página o mostra.
+   ------------------------------------------------------------------------- */
+html[data-theme] {
+  --nav-fundo: var(--bg);
+  --nav-texto: var(--ink-3);
+  --nav-texto-ativo: var(--ink-1);
+  --nav-linha: var(--line);
+}
+html[data-theme] .nav-site { background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(8px); }
+html[data-theme] .nav-site a:focus-visible, html[data-theme] .rodape-site a:focus-visible { outline-color: var(--primary); }
+.nav-tema {
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  margin-left: .6rem;
+  border: 1px solid var(--nav-linha);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--nav-texto-ativo);
+  cursor: pointer;
+}
+.nav-tema[hidden] { display: none; }
+.nav-tema:hover { border-color: var(--nav-texto); }
+.nav-tema:focus-visible { outline: 2px solid var(--nav-texto-ativo); outline-offset: 2px; }
+.nav-tema .nav-tema-sol { display: none; }
+html[data-theme="dark"] .nav-tema .nav-tema-sol { display: inline; }
+html[data-theme="dark"] .nav-tema .nav-tema-lua { display: none; }
+
+/* -------------------------------------------------------------------------
    Rodapé do site (partials/rodape.html), no fim do <footer> de cada página.
    Os seletores com a classe vencem os "footer a"/"footer p" das páginas.
    ------------------------------------------------------------------------- */
