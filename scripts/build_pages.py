@@ -6,6 +6,9 @@ e gera, em docs/reajuste/, uma página estática por índice+mês com:
 
   - acumulado 12 meses (composto) e fator de reajuste;
   - memória de cálculo (tabela dos 12 meses, com fonte BACEN/SGS);
+  - leitura do mês: análise escrita a partir dos números daquele mês
+    (mudança do acumulado e o motivo, posição no histórico, extremos da
+    janela, comparação com os outros índices);
   - calculadora embutida (valor atual -> valor reajustado);
   - resposta direta, ficha técnica com a procedência (produtor do índice +
     série do SGS) e perguntas e respostas visíveis;
@@ -306,14 +309,30 @@ def _paginas_do_indice(paginas: dict, key: str) -> list[tuple[str, dict]]:
 
 
 def bloco_meses(key: str, nome: str, paginas: dict, base: str = "",
-                slug_atual: str = None) -> str:
+                slug_atual: str = None, completo: bool = True) -> str:
     """Navegação de meses de UM índice: últimos 12 como pills + <details>
     com todos os anos (agrupados, um pill curto por mês). Substitui o antigo
     paredão de um link por página — os links continuam todos no DOM (SEO),
-    mas colapsados e legíveis."""
+    mas colapsados e legíveis.
+
+    Com completo=False (página de mês) mostra o mesmo mês em outros anos e
+    manda para o hub, que guarda a lista completa. Assim a navegação deixa de
+    ser o mesmo bloco de texto repetido nas 500+ páginas."""
     ordenadas = _paginas_do_indice(paginas, key)
     if not ordenadas:
         return ""
+
+    if not completo and slug_atual in paginas:
+        mes = paginas[slug_atual]["dt"].month
+        mesmos = [kv for kv in ordenadas if kv[1]["dt"].month == mes and kv[0] != slug_atual][::-1]
+        pills = "".join(
+            _pill(s, f"{MES_CURTO[mes - 1]}/{p['dt'].year}", f"{nome} · {p['ref']}", base)
+            for s, p in mesmos
+        )
+        return (
+            f'<p class="grupo-rot">{nome} em {MESES[mes - 1]} de outros anos</p><p class="pills">{pills}</p>'
+            f'<p class="mut"><a href="{base}">Todos os meses do {nome} na página de reajuste</a></p>'
+        )
 
     recentes = [kv for kv in ordenadas if kv[0] != slug_atual][-12:][::-1]
     pills = "".join(
@@ -375,7 +394,175 @@ def faq_month(nome: str, fonte: dict, codigo: int, ref: datetime, ini: datetime,
     ]
 
 
-def build_month_page(key: str, info: dict, janela: list[dict], todas_paginas: dict) -> tuple[str, str]:
+def _ym(dt: datetime) -> tuple[int, int]:
+    return (dt.year, dt.month)
+
+
+def _pp(v: float) -> str:
+    """Diferença em pontos percentuais, com singular/plural."""
+    a = abs(v)
+    return f"{fmt_num(a)} ponto percentual" if round(a, 2) == 1.0 else f"{fmt_num(a)} pontos percentuais"
+
+
+def montar_contexto(janelas: dict[str, list[list[dict]]]) -> dict:
+    """Por índice: acumulado 12m e variação mensal indexados por (ano, mês).
+    É a base da leitura do mês, que compara o mês com o anterior, com o mesmo
+    mês de outros anos e com os outros índices."""
+    ctx: dict[str, dict] = {}
+    for key, js in janelas.items():
+        ac, mensal = {}, {}
+        for j in js:
+            ac[_ym(j[-1]["dt"])] = acumulado(j)
+            for p in j:
+                mensal[_ym(p["dt"])] = p["valor"]
+        ctx[key] = {"ac": ac, "mensal": mensal}
+    return ctx
+
+
+def leitura_do_mes(key: str, info: dict, janela: list[dict], ctx: dict) -> tuple[str, list[tuple[str, str]]]:
+    """Análise escrita a partir dos números do próprio mês.
+
+    Cada frase só entra quando o dado existe e diz algo: a mudança do
+    acumulado e o motivo (o mês que entrou x o que saiu da janela), a
+    sequência de altas ou quedas, a comparação com um ano antes, a posição
+    entre os mesmos meses de outros anos, recordes da variação mensal, os
+    extremos da janela e a comparação com os outros índices no mesmo mês.
+    Devolve (html, perguntas extras para o FAQ visível e o JSON-LD)."""
+    nome = info["nome"]
+    ref, ini = janela[-1]["dt"], janela[0]["dt"]
+    ref_txt = mes_ano(ref)
+    c = ctx[key]
+    ac = c["ac"][_ym(ref)]
+    mensal = janela[-1]["valor"]
+    paragrafos: list[str] = []
+    extras: list[tuple[str, str]] = []
+
+    # 1. O que mudou em relação ao mês anterior, e por quê.
+    ant = _vizinho(ref, -1)
+    saiu_dt = _vizinho(ref, -12)
+    if _ym(ant) in c["ac"] and _ym(saiu_dt) in c["mensal"]:
+        ac_ant = c["ac"][_ym(ant)]
+        saiu = c["mensal"][_ym(saiu_dt)]
+        dif = ac - ac_ant
+        entrou_txt = f"{fmt_num(mensal)}% em {mes_ano(ref)}"
+        saiu_txt = f"{fmt_num(saiu)}% em {mes_ano(saiu_dt)}"
+        if abs(dif) < 0.005:
+            frase = (f"O acumulado em 12 meses ficou praticamente estável em {fmt_num(ac)}% na passagem de "
+                     f"{mes_ano(ant)} para {ref_txt}. A variação que entrou na conta, {entrou_txt}, foi quase "
+                     f"igual à que saiu, {saiu_txt}.")
+            pergunta = f"O {nome} acumulado mudou em {ref_txt}?"
+        else:
+            sobe = dif > 0
+            frase = (f"O acumulado em 12 meses {'subiu' if sobe else 'caiu'} de {fmt_num(ac_ant)}% em "
+                     f"{mes_ano(ant)} para {fmt_num(ac)}% em {ref_txt}, {'uma alta' if sobe else 'uma queda'} "
+                     f"de {_pp(dif)}. A conta muda porque a variação que entrou na janela, {entrou_txt}, foi "
+                     f"{'maior' if sobe else 'menor'} do que a que saiu, {saiu_txt}.")
+            pergunta = f"Por que o {nome} acumulado {'subiu' if sobe else 'caiu'} em {ref_txt}?"
+            # Sequência de meses na mesma direção.
+            seq, cur = 1, ant
+            while True:
+                prev = _vizinho(cur, -1)
+                if _ym(prev) not in c["ac"] or _ym(cur) not in c["ac"]:
+                    break
+                d = c["ac"][_ym(cur)] - c["ac"][_ym(prev)]
+                if (d > 0.005) if sobe else (d < -0.005):
+                    seq += 1
+                    cur = prev
+                else:
+                    break
+            if seq >= 2:
+                frase += f" É o {seq}º mês seguido de {'alta' if sobe else 'queda'} do acumulado."
+        paragrafos.append(frase)
+        extras.append((pergunta, frase))
+
+    # 2. Um ano antes.
+    if _ym(saiu_dt) in c["ac"]:
+        ac_ano = c["ac"][_ym(saiu_dt)]
+        dif_ano = ac - ac_ano
+        if abs(dif_ano) < 0.005:
+            comp = "praticamente o mesmo nível de hoje"
+        else:
+            comp = f"{_pp(dif_ano)} {'abaixo' if dif_ano > 0 else 'acima'} do nível atual"
+        paragrafos.append(f"Um ano antes, em {mes_ano(saiu_dt)}, o acumulado em 12 meses era de "
+                          f"{fmt_num(ac_ano)}%, {comp}.")
+
+    # 3. Posição entre os mesmos meses de outros anos.
+    mesmos = sorted(((a, m), v) for (a, m), v in c["ac"].items() if m == ref.month)
+    if len(mesmos) >= 3:
+        valores = sorted((v for _, v in mesmos), reverse=True)
+        pos = valores.index(ac) + 1
+        n, ano0 = len(valores), mesmos[0][0][0]
+        mes_nome = MESES[ref.month - 1]
+        if pos == 1:
+            txt = f"É o maior acumulado para um mês de {mes_nome} entre os {n} anos com dados desde {ano0}."
+        elif pos == n:
+            txt = f"É o menor acumulado para um mês de {mes_nome} entre os {n} anos com dados desde {ano0}."
+        else:
+            txt = (f"Entre os {n} meses de {mes_nome} com dados desde {ano0}, é o {pos}º maior acumulado "
+                   f"em 12 meses.")
+        paragrafos.append(txt)
+
+    # 4. Recorde da variação mensal (só quando passa de 6 meses).
+    for maior in (True, False):
+        k, cur, achou = 0, ref, None
+        while True:
+            cur = _vizinho(cur, -1)
+            v = c["mensal"].get(_ym(cur))
+            if v is None:
+                break
+            if (v >= mensal) if maior else (v <= mensal):
+                achou = cur
+                break
+            k += 1
+        if k >= 6:
+            if achou:
+                paragrafos.append(f"A variação de {fmt_num(mensal)}% no mês é a {'maior' if maior else 'menor'} "
+                                  f"desde {mes_ano(achou)}, quando o {nome} marcou "
+                                  f"{fmt_num(c['mensal'][_ym(achou)])}%.")
+            else:
+                paragrafos.append(f"A variação de {fmt_num(mensal)}% no mês é a {'maior' if maior else 'menor'} "
+                                  f"de todo o histórico guardado pelo Observatório.")
+            break
+
+    # 5. Extremos da janela.
+    vmax = max(janela, key=lambda p: p["valor"])
+    vmin = min(janela, key=lambda p: p["valor"])
+    negs = sum(1 for p in janela if p["valor"] < 0)
+    txt = (f"Na janela de {mes_ano(ini)} a {ref_txt}, o mês de maior variação foi {mes_ano(vmax['dt'])} "
+           f"({fmt_num(vmax['valor'])}%) e o de menor foi {mes_ano(vmin['dt'])} ({fmt_num(vmin['valor'])}%). ")
+    if negs == 0:
+        txt += "Nenhum dos 12 meses teve variação negativa."
+    elif negs == 1:
+        txt += "Só um dos 12 meses teve variação negativa."
+    else:
+        txt += f"{negs} dos 12 meses tiveram variação negativa."
+    paragrafos.append(txt)
+
+    # 6. Os outros índices no mesmo mês.
+    outros = [(INDICES[k2]["nome"], ctx[k2]["ac"][_ym(ref)]) for k2 in INDICES
+              if k2 != key and k2 in ctx and _ym(ref) in ctx[k2]["ac"]]
+    if outros:
+        lista = ", ".join(f"{n2} {fmt_num(v)}%" for n2, v in outros)
+        txt = f"No mesmo mês, o acumulado em 12 meses dos outros índices foi: {lista}."
+        base_nome, base_ac = next(((n2, v) for n2, v in outros if n2 == "IPCA"), outros[0])
+        novo, novo_base = 2000.0 * (1 + ac / 100), 2000.0 * (1 + base_ac / 100)
+        d = novo - novo_base
+        if abs(d) >= 0.005:
+            txt += (f" Num aluguel de R$ 2.000,00, o reajuste pelo {nome} leva a R$ {fmt_num(novo)}, "
+                    f"R$ {fmt_num(abs(d))} {'a mais' if d > 0 else 'a menos'} do que pelo {base_nome} "
+                    f"(R$ {fmt_num(novo_base)}).")
+        paragrafos.append(txt)
+
+    corpo = "".join(f"<p>{p}</p>" for p in paragrafos)
+    html = (f'<section class="card leitura" aria-labelledby="leitura-t">'
+            f'<h2 id="leitura-t">Leitura do mês</h2>{corpo}'
+            f'<p class="mut">Texto gerado a partir das variações mensais da série {info["codigo"]} do SGS. '
+            f'Os números mudam se o produtor revisar algum mês.</p></section>')
+    return html, extras
+
+
+def build_month_page(key: str, info: dict, janela: list[dict], todas_paginas: dict,
+                     ctx: dict | None = None) -> tuple[str, str]:
     """Gera a página de um índice+mês. Retorna (caminho relativo, html)."""
     ref = janela[-1]["dt"]
     ini = janela[0]["dt"]
@@ -400,6 +587,8 @@ def build_month_page(key: str, info: dict, janela: list[dict], todas_paginas: di
 
     exemplo = 2000.0 * fator
     perguntas = faq_month(nome, fonte, info["codigo"], ref, ini, mensal, ac, fator, exemplo)
+    leitura, extras = leitura_do_mes(key, info, janela, ctx) if ctx else ("", [])
+    perguntas = perguntas[:2] + extras + perguntas[2:]
     crumb, crumb_ld = migalhas([
         ("Observatório de Taxas", f"{BASE_URL}/"),
         ("Reajuste de contratos", f"{BASE_URL}/reajuste/"),
@@ -439,7 +628,7 @@ def build_month_page(key: str, info: dict, janela: list[dict], todas_paginas: di
     outros = (
         (f'<p class="grupo-rot">{ref_txt.capitalize()} em outros índices</p>'
          f'<p class="pills">{mesmo_mes}</p>' if mesmo_mes else "")
-        + bloco_meses(key, nome, todas_paginas, "../", slug_atual=slug)
+        + bloco_meses(key, nome, todas_paginas, "../", slug_atual=slug, completo=False)
     )
 
     neg = " neg" if ac < 0 else ""
@@ -465,6 +654,7 @@ ao fator de reajuste <b>{fmt_num(fator, 6)}</b>.</p>
 {aviso_neg}
 <p class="mut">Índice tipicamente usado em {info['uso']}.</p>
 </div>
+{leitura}
 
 <div class="card">
 <h2>Calcule o seu reajuste</h2>
@@ -674,10 +864,11 @@ def main() -> None:
                            "fator": 1.0 + ac / 100.0, "refTxt": mes_ano(ref)}
 
     # 2ª passada: gerar páginas.
+    ctx = montar_contexto(janelas)
     paths: list[str] = []
     for key, info in INDICES.items():
         for j in janelas[key]:
-            rel, html = build_month_page(key, info, j, paginas)
+            rel, html = build_month_page(key, info, j, paginas, ctx)
             out = DOCS_DIR / rel
             out.parent.mkdir(parents=True, exist_ok=True)
             out.write_text(html, encoding="utf-8")
