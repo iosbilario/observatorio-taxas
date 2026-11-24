@@ -78,6 +78,9 @@ jobs:
       - name: Gerar o comparador e o simulador de CDI
         run: python scripts/build_ferramentas.py
 
+      - name: Gerar os guias (/guias/)
+        run: python scripts/build_guias.py
+
       - name: Assar boletim no HTML da landing e regenerar o sitemap
         run: python scripts/render_index.py
 
