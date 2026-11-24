@@ -4,7 +4,9 @@ render_index.py — Assa dados no HTML da landing (docs/index.html).
 Lê docs/data/series.json + os history.json e injeta, entre marcadores no
 index.html, blocos ESTÁTICOS (funcionam sem JavaScript):
 
-  <!-- boletim:inicio -->   linha de carimbo (hora + commit) + os 5 números do dia
+  <!-- carimbo:inicio -->   data, hora da coleta e commit
+  <!-- boletim:inicio -->   as 5 perguntas do dia, com resposta, valor e direcionador
+  <!-- mais:inicio -->      grade com mais 12 indicadores
   <!-- var:inicio -->       recibo do VAR (IPCA 2019-2022 vs 2023-hoje), com veredito
   <!-- rebobinar:inicio -->  fita de 6 meses + a manchete do mês atual
 
@@ -37,14 +39,36 @@ MES = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "no
 MESC = ["janeiro", "fevereiro", "março", "abril", "maio", "junho",
         "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"]
 
-# Os 5 números do dia (ordem = ordem de exibição).
+# As 5 perguntas do dia (ordem = ordem de exibição).
 BOLETIM = [
-    {"cod": 432,   "anchor": "selic",      "h2": "Taxa Selic hoje",              "rot": "Meta Selic",      "suf": "% a.a.", "casas": 2},
-    {"cod": 13522, "anchor": "ipca",       "h2": "IPCA acumulado 12 meses hoje", "rot": "IPCA 12 meses",   "suf": "%",      "casas": 2},
-    {"cod": 1,     "anchor": "dolar",      "h2": "Cotação do dólar hoje",        "rot": "Dólar (venda)",   "pref": "R$ ",  "casas": 4},
-    {"cod": 189,   "anchor": "igpm",       "h2": "IGP-M no mês hoje",            "rot": "IGP-M no mês",    "suf": "%",      "casas": 2},
-    {"cod": 24369, "anchor": "desemprego", "h2": "Taxa de desemprego hoje",      "rot": "Desemprego",      "suf": "%",      "casas": 1},
+    {"cod": 432, "anchor": "selic", "pergunta": "Qual é a Selic hoje?", "rot": "Meta Selic", "suf": "% a.a.",
+     "casas": 2, "link": "indicadores/meta-selic/", "link_txt": "Histórico da Selic"},
+    {"cod": 13522, "anchor": "ipca", "pergunta": "Qual é a inflação acumulada em 12 meses?", "rot": "IPCA 12 meses",
+     "suf": "%", "casas": 2, "link": "indicadores/ipca-12-meses/", "link_txt": "IPCA mês a mês"},
+    {"cod": 1, "anchor": "dolar", "pergunta": "Quanto está o dólar hoje?", "rot": "Dólar (venda)", "pref": "R$ ",
+     "casas": 4, "link": "indicadores/dolar/", "link_txt": "Histórico do dólar"},
+    {"cod": 189, "anchor": "igpm", "pergunta": "Quanto vai subir o aluguel?", "rot": "IGP-M no mês", "suf": "%",
+     "casas": 2, "link": "reajuste/igpm-{mes}/", "link_txt": "Calcular o meu reajuste"},
+    {"cod": 24369, "anchor": "desemprego", "pergunta": "Qual é a taxa de desemprego?", "rot": "Desemprego",
+     "suf": "%", "casas": 1, "link": "indicadores/desemprego/", "link_txt": "Série completa"},
 ]
+
+# Mais indicadores (grade abaixo das perguntas). slug = página em /indicadores/.
+MAIS = [
+    {"cod": 1178, "slug": "selic-efetiva", "rot": "Selic efetiva", "suf": "% a.a.", "casas": 2},
+    {"cod": 4389, "slug": "cdi", "rot": "CDI", "suf": "% a.a.", "casas": 2},
+    {"cod": 195, "slug": "poupanca", "rot": "Poupança no mês", "suf": "%", "casas": 4},
+    {"cod": 226, "slug": "tr", "rot": "TR no mês", "suf": "%", "casas": 4},
+    {"cod": 433, "slug": "ipca", "rot": "IPCA no mês", "suf": "%", "casas": 2},
+    {"cod": 188, "slug": "inpc", "rot": "INPC no mês", "suf": "%", "casas": 2},
+    {"cod": 190, "slug": "igp-di", "rot": "IGP-DI no mês", "suf": "%", "casas": 2},
+    {"cod": 21619, "slug": "euro", "rot": "Euro (venda)", "pref": "R$ ", "casas": 4},
+    {"cod": 20714, "slug": "juros-do-credito", "rot": "Juros do crédito", "suf": "% a.a.", "casas": 2},
+    {"cod": 21082, "slug": "inadimplencia", "rot": "Inadimplência", "suf": "%", "casas": 2},
+    {"cod": 24363, "slug": "ibc-br", "rot": "IBC-Br (prévia do PIB)", "casas": 2, "du": " pontos"},
+    {"cod": 4513, "slug": "divida-liquida", "rot": "Dívida líquida", "suf": "% do PIB", "casas": 2},
+]
+
 # Indicadores de nível para eleger a manchete do Rebobinar (z-score do movimento).
 # Mesmo conjunto do rebobinar.html, para a manchete assada bater com a da página.
 NIVEL = {432: "a Selic", 13522: "a inflação em 12 meses", 1: "o dólar",
@@ -127,48 +151,112 @@ def data_extenso() -> str:
 
 
 # --------------------------------------------------------------------------- #
-def bloco_boletim() -> str:
-    hora, sha = hora_coleta(), git_sha()
-    data_el = f'<p class="masthead-data" id="hoje">{esc(data_extenso())}</p>'
-    carimbo = (f'<p class="carimbo-linha">coletado às {esc(hora)} · '
-               + (f'commit <a href="{REPO_URL}/commits/main">{esc(sha)}</a> · ' if sha else "")
-               + 'fonte SGS/BACEN</p>')
-    carimbo = data_el + "\n" + carimbo
+def _delta(pts: list[dict], dec: int, pref: str, unidade_delta: str = " p.p.") -> tuple[str, str]:
+    """Direcionador do mês: (classe, texto). Compara o último valor com o último
+    do mês anterior. ▲ subiu, ▼ caiu, ■ igual."""
+    ml = mensal_ultimo(pts)
+    if len(ml) < 2:
+        return "flat", "sem base de comparação"
+    d = pts[-1]["v"] - ml[-2][1]
+    if abs(d) < 0.5 * 10 ** -dec:
+        d = 0.0
+    cls = "up" if d > 0 else "down" if d < 0 else "flat"
+    seta = "▲" if cls == "up" else "▼" if cls == "down" else "■"
+    unidade = ("R$ " + fmt_num(abs(d), dec)) if pref == "R$ " else (fmt_num(abs(d), dec) + unidade_delta)
+    return cls, f'{seta} {"+" if d > 0 else "-" if d < 0 else ""}{unidade} no mês'
 
-    cards = []
+
+def _mes(dt: datetime) -> str:
+    return f"{MESC[dt.month - 1]} de {dt.year}"
+
+
+def bloco_carimbo() -> str:
+    """Linha acima do título: data, hora da coleta e commit."""
+    hora, sha = hora_coleta(), git_sha()
+    return (f'<p class="carimbo-linha"><span id="hoje">{esc(data_extenso())}</span> · coletado às {esc(hora)} · '
+            + (f'commit <a href="{REPO_URL}/commits/main">{esc(sha)}</a> · ' if sha else "")
+            + 'fonte SGS/BACEN</p>')
+
+
+def _frase(b: dict, pts: list[dict]) -> str:
+    """Resposta em uma frase, montada com os números da série."""
+    cur, ref = pts[-1]["v"], pts[-1]["dt"]
+    v = fmt_num(cur, b["casas"])
+    if b["cod"] == 432:
+        desde = pts[-1]["dt"]
+        for p in reversed(pts):
+            if p["v"] != cur:
+                break
+            desde = p["dt"]
+        antes = next((p["v"] for p in reversed(pts) if p["dt"] < desde), None)
+        txt = f"A Meta Selic está em <b>{v}% ao ano</b> desde {desde.strftime('%d/%m/%Y')}"
+        if antes is not None:
+            txt += f", quando passou de {fmt_num(antes, 2)}% para {v}%"
+        return txt + ", por decisão do Copom."
+    if b["cod"] == 13522:
+        return (f"O IPCA acumulou <b>{v}%</b> nos 12 meses até {_mes(ref)}, pela série 13522 do Banco Central. "
+                "O índice é do IBGE.")
+    if b["cod"] == 1:
+        return (f"O dólar PTAX de venda ficou em <b>R$ {v}</b> em {ref.strftime('%d/%m/%Y')}. "
+                "É a taxa de referência do Banco Central, calculada todo dia útil.")
+    if b["cod"] == 189:
+        fator = 1.0
+        for p in pts[-12:]:
+            fator *= 1 + p["v"] / 100
+        ac = (fator - 1) * 100
+        return (f"O IGP-M variou <b>{v}%</b> em {_mes(ref)} e acumula {fmt_num(ac, 2)}% em 12 meses. "
+                f"Um aluguel de R$ 2.000,00 reajustado por ele vai a R$ {fmt_num(2000 * fator, 2)}.")
+    if b["cod"] == 24369:
+        return (f"A desocupação ficou em <b>{v}%</b> no trimestre móvel até {_mes(ref)}, "
+                "segundo a PNAD Contínua do IBGE.")
+    return f"<b>{v}</b>"
+
+
+def bloco_boletim() -> str:
+    """As cinco perguntas do dia: pergunta, resposta em uma frase, valor,
+    direcionador do mês, data de referência e minigráfico."""
+    itens = []
     for b in BOLETIM:
         pts = load_history(b["cod"])
         if not pts:
             continue
-        ml = mensal_ultimo(pts)
-        cur = pts[-1]["v"]
-        ref = pts[-1]["dt"]
-        prev = ml[-2][1] if len(ml) >= 2 else None
         pref, suf, dec = b.get("pref", ""), b.get("suf", ""), b["casas"]
-        valor = pref + fmt_num(cur, dec)
-
-        if prev is not None:
-            d = cur - prev
-            cls = "up" if d > 1e-9 else "down" if d < -1e-9 else "flat"
-            seta = "▲" if cls == "up" else "▼" if cls == "down" else "■"
-            unidade = ("R$ " + fmt_num(abs(d), dec)) if pref else (fmt_num(abs(d), dec) + " p.p.")
-            delta = f'{seta} {"+" if d > 0 else "-" if d < 0 else ""}{unidade} no mês'
-        else:
-            cls, delta = "flat", "sem base de comparação"
-
-        cards.append(
-            f'<article class="num" id="{b["anchor"]}">'
-            f'<h2 class="num-tag">{esc(b["h2"])}</h2>'
-            f'<p class="num-rot">{esc(b["rot"])}</p>'
-            f'<p class="num-val"><span class="v">{esc(valor)}</span>'
+        cls, delta = _delta(pts, dec, pref)
+        ref = pts[-1]["dt"]
+        link = b["link"].replace("{mes}", f"{MESC[ref.month - 1]}-{ref.year}")
+        itens.append(
+            f'<article class="resp" id="{b["anchor"]}">'
+            f'<div class="resp-texto"><h2>{esc(b["pergunta"])}</h2>'
+            f'<p>{_frase(b, pts)} <a class="resp-link" href="{link}">{esc(b["link_txt"])} →</a></p></div>'
+            f'<div class="resp-lado"><p class="resp-rot">{esc(b["rot"])}</p>'
+            f'<p class="resp-val"><span class="v">{esc(pref + fmt_num(pts[-1]["v"], dec))}</span>'
             + (f'<span class="suf">{esc(suf)}</span>' if suf else "")
-            + f'</p>'
-            f'<p class="num-delta {cls}">{esc(delta)}</p>'
+            + f'</p><p class="num-delta {cls}">{esc(delta)}</p>'
             f'<p class="num-ref">ref. {ref.strftime("%d/%m/%Y")}</p>'
-            f'<div class="spark" data-cod="{b["cod"]}" data-casas="{dec}" aria-hidden="true"></div>'
+            f'<div class="spark" data-cod="{b["cod"]}" data-casas="{dec}" aria-hidden="true"></div></div>'
             f'</article>'
         )
-    return carimbo + '\n<div class="boletim">\n' + "\n".join(cards) + "\n</div>"
+    return '<div class="respostas">\n' + "\n".join(itens) + "\n</div>"
+
+
+def bloco_mais() -> str:
+    """Mais indicadores: valor atual, direcionador e link para a página da série."""
+    cards = []
+    for m in MAIS:
+        pts = load_history(m["cod"])
+        if not pts:
+            continue
+        pref, suf, dec = m.get("pref", ""), m.get("suf", ""), m["casas"]
+        cls, delta = _delta(pts, dec, pref, m.get("du", " p.p."))
+        cards.append(
+            f'<a class="mais-card" href="indicadores/{m["slug"]}/">'
+            f'<span class="mais-rot">{esc(m["rot"])}</span>'
+            f'<span class="mais-val">{esc(pref + fmt_num(pts[-1]["v"], dec))}'
+            + (f'<small>{esc(suf)}</small>' if suf else "")
+            + f'</span><span class="num-delta {cls}">{esc(delta)}</span>'
+            f'<span class="num-ref">ref. {pts[-1]["dt"].strftime("%d/%m/%Y")}</span></a>'
+        )
+    return '<div class="mais-grade">\n' + "\n".join(cards) + "\n</div>"
 
 
 def acumulado(pts: list[dict], a: str, z: str) -> tuple[float, int]:
@@ -446,12 +534,14 @@ def rebuild_sitemap() -> int:
 
 def main() -> None:
     html = INDEX.read_text(encoding="utf-8")
+    html = inject(html, "carimbo", bloco_carimbo())
     html = inject(html, "boletim", bloco_boletim())
+    html = inject(html, "mais", bloco_mais())
     html = inject(html, "var", bloco_var())
     html = inject(html, "rebobinar", bloco_rebobinar())
     INDEX.write_text(html, encoding="utf-8")
     n = rebuild_sitemap()
-    print(f"index.html: boletim + VAR + rebobinar assados. sitemap.xml: {n} URLs.")
+    print(f"index.html: carimbo + perguntas + mais indicadores + VAR + rebobinar assados. sitemap.xml: {n} URLs.")
 
 
 if __name__ == "__main__":

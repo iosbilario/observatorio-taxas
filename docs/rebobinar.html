@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="light">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -12,7 +12,7 @@
   <title>Rebobinar a economia — Observatório de Taxas</title>
   <meta name="description" content="Uma linha do tempo editorial, mês a mês, da economia brasileira. Cada mês é um commit: arraste a fita e a página faz checkout daquele mês, com a manchete e o diff dos indicadores do BACEN." />
   <meta name="robots" content="index, follow" />
-  <meta name="theme-color" content="#0E1210" />
+  <meta name="theme-color" content="#ffffff" />
   <link rel="canonical" href="https://observatoriodetaxas.tec.br/rebobinar.html" />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="pt_BR" />
@@ -40,9 +40,9 @@
       --queda: #E4574F;      /* SÓ em diffs/deltas */
       --carimbo: #D9B54A;    /* destaque, carimbo */
       --neutro: #5A625D;     /* linhas, apoio */
-      --papel-70: rgba(233,230,220,.70);
-      --papel-45: rgba(233,230,220,.55);  /* alfa .55 = 5,2:1 (WCAG AA) */
-      --linha: rgba(233,230,220,.14);
+      --papel-70: color-mix(in srgb,var(--papel) 70%,transparent);
+      --papel-45: color-mix(in srgb,var(--papel) 55%,transparent);  /* alfa .55 = 5,2:1 (WCAG AA) */
+      --linha: color-mix(in srgb,var(--papel) 14%,transparent);
       --fita-h: 92px;
       color-scheme: dark;
     }
@@ -66,7 +66,7 @@
       min-height: 100vh;
     }
     a { color: inherit; }
-    ::selection { background: rgba(217,181,74,.28); }
+    ::selection { background: color-mix(in srgb,var(--carimbo) 28%,transparent); }
 
     /* ---------------- Cabeçalho ---------------- */
     header.top {
@@ -99,7 +99,7 @@
     /* ---------------- Bloco diff ---------------- */
     .diff {
       position: relative; border: 1px solid var(--linha); border-radius: 3px;
-      background: rgba(233,230,220,.02); padding: 1.05rem 1.15rem 1.15rem; margin: 0 0 1.9rem;
+      background: color-mix(in srgb,var(--papel) 2%,transparent); padding: 1.05rem 1.15rem 1.15rem; margin: 0 0 1.9rem;
     }
     .diff .rot { font-family: "IBM Plex Mono", monospace; font-size: .68rem; letter-spacing: .18em; text-transform: uppercase; color: var(--papel-45); margin: 0 0 .8rem; }
     pre.linhas {
@@ -160,7 +160,7 @@
     }
     .trilho:active { cursor: grabbing; }
     .trilho:focus-visible { outline: none; }
-    .trilho:focus-visible .no.ativo { box-shadow: 0 0 0 3px rgba(217,181,74,.35); }
+    .trilho:focus-visible .no.ativo { box-shadow: 0 0 0 3px color-mix(in srgb,var(--carimbo) 35%,transparent); }
     .trilho .fio { position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--linha); }
     .nos { position: relative; display: flex; justify-content: space-between; width: 100%; }
     .no {
@@ -196,6 +196,9 @@
     }
   </style>
   <link rel="stylesheet" href="nav.css" />
+  <link rel="stylesheet" href="refy/tokens.css" />
+  <link rel="stylesheet" href="tema.css" />
+  <script src="tema.js"></script>
   <script src="estrelas.js" defer></script>
 </head>
 <body>
@@ -218,6 +221,7 @@
       <span class="nav-github-rotulo"><span aria-hidden="true">☆</span> Estrela</span>
       <span class="nav-github-total" data-estrelas hidden></span>
     </a>
+    <button class="nav-tema" type="button" data-tema-botao hidden aria-label="Mudar para o modo escuro"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path class="nav-tema-lua" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/><g class="nav-tema-sol"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></g></svg></button>
   </div>
 </header>
 <!-- nav:end -->

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="light">
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -8,7 +8,7 @@
 <title>Dólar (compra) hoje: R$ 5,8567 (24/11/2026) | Observatório de Taxas</title>
 <meta name="description" content="Dólar (USD/BRL) — compra: R$ 5,8567 na referência de 24/11/2026, segundo o Banco Central do Brasil (série SGS 10813). O que é, histórico desde 2015, últimos 12 meses, gráfico e dados abertos em JSON."/>
 <meta name="robots" content="index, follow, max-snippet:-1"/>
-<meta name="theme-color" content="#0E1210"/>
+<meta name="theme-color" content="#ffffff"/>
 <link rel="canonical" href="https://observatoriodetaxas.tec.br/indicadores/dolar-compra/"/>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230E1210'/%3E%3Cpolyline points='4,22 12,14 18,18 28,6' fill='none' stroke='%23D9B54A' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
 <meta property="og:type" content="website"/>
@@ -28,7 +28,7 @@
 @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/ibmplexmono-400.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/ibmplexmono-500.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/ibmplexmono-600.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-:root{--cofre:#0E1210;--papel:#E9E6DC;--carimbo:#D9B54A;--alta:#3FD68F;--queda:#E4574F;--neutro:#5A625D;--papel-70:rgba(233,230,220,.70);--papel-45:rgba(233,230,220,.55);--linha:rgba(233,230,220,.14);--campo:#0d1210;--maxw:860px;color-scheme:dark}
+:root{--cofre:#0E1210;--papel:#E9E6DC;--carimbo:#D9B54A;--alta:#3FD68F;--queda:#E4574F;--neutro:#5A625D;--papel-70:color-mix(in srgb,var(--papel) 70%,transparent);--papel-45:color-mix(in srgb,var(--papel) 55%,transparent);--linha:color-mix(in srgb,var(--papel) 14%,transparent);--campo:#0d1210;--maxw:860px;color-scheme:dark}
 *{box-sizing:border-box}
 /* Foco visível e consistente (WCAG 2.4.7) + link "pular para o conteúdo" */
 :focus-visible{outline:2px solid var(--carimbo);outline-offset:2px}
@@ -36,13 +36,13 @@
 .skip-link:focus{left:0;outline:2px solid var(--papel);outline-offset:-4px}
 body{margin:0;background:var(--cofre);color:var(--papel);font-family:"Archivo",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:24px clamp(1rem,4vw,2rem) 64px}
-a{color:var(--carimbo);text-decoration:none;border-bottom:1px solid rgba(217,181,74,.4)}a:hover{border-bottom-color:var(--carimbo)}
-::selection{background:rgba(217,181,74,.28)}
+a{color:var(--carimbo);text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--carimbo) 40%,transparent)}a:hover{border-bottom-color:var(--carimbo)}
+::selection{background:color-mix(in srgb,var(--carimbo) 28%,transparent)}
 .crumb{font-family:"IBM Plex Mono",monospace;color:var(--papel-45);font-size:.78rem;letter-spacing:.02em;border-bottom:0}
 .crumb a{color:var(--papel-70);border-bottom:0}.crumb a:hover{color:var(--papel)}
 h1{font-family:"Fraunces",Georgia,serif;font-optical-sizing:auto;font-weight:600;font-size:clamp(1.7rem,4.6vw,2.4rem);line-height:1.08;letter-spacing:-.015em;margin:.5em 0 .35em}
 h2{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:1.2rem;letter-spacing:-.01em;margin:0 0 .7rem}
-.card{background:rgba(233,230,220,.02);border:1px solid var(--linha);border-radius:10px;padding:1.1rem 1.2rem 1.3rem;margin:1rem 0}
+.card{background:color-mix(in srgb,var(--papel) 2%,transparent);border:1px solid var(--linha);border-radius:10px;padding:1.1rem 1.2rem 1.3rem;margin:1rem 0}
 .big{font-family:"Fraunces",Georgia,serif;font-weight:700;font-size:clamp(2rem,5.5vw,2.7rem);color:var(--carimbo);letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1}.big.neg{color:var(--queda)}
 table{width:100%;border-collapse:collapse;font-size:.9rem;font-variant-numeric:tabular-nums}
 th,td{padding:8px 10px;text-align:right;border-bottom:1px solid var(--linha)}
@@ -59,7 +59,7 @@ button:focus-visible{outline:2px solid var(--papel);outline-offset:2px}
 .mut{color:var(--papel-45);font-size:.84rem}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .pill{display:inline-block;background:transparent;border:1px solid var(--linha);border-radius:999px;padding:5px 13px;margin:3px;font-size:.8rem;font-family:"IBM Plex Mono",monospace;color:var(--papel-70)}
-a.pill{border-bottom:1px solid var(--linha)}a.pill:hover{border-color:rgba(217,181,74,.5);color:var(--papel)}
+a.pill{border-bottom:1px solid var(--linha)}a.pill:hover{border-color:color-mix(in srgb,var(--carimbo) 50%,transparent);color:var(--papel)}
 footer{margin-top:32px;color:var(--papel-45);font-size:.8rem;border-top:1px solid var(--linha);padding-top:1.2rem}
 footer a{color:var(--papel-70)}
 @media(max-width:520px){.grid{grid-template-columns:1fr}}
@@ -86,6 +86,9 @@ h2.grupo{margin-top:1.6rem}
 </style>
 <script data-goatcounter="https://observatoriotaxas.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
   <link rel="stylesheet" href="../../nav.css" />
+  <link rel="stylesheet" href="../../refy/tokens.css" />
+  <link rel="stylesheet" href="../../tema.css" />
+  <script src="../../tema.js"></script>
   <script src="../../estrelas.js" defer></script>
 </head>
 <body><a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -107,6 +110,7 @@ h2.grupo{margin-top:1.6rem}
       <span class="nav-github-rotulo"><span aria-hidden="true">☆</span> Estrela</span>
       <span class="nav-github-total" data-estrelas hidden></span>
     </a>
+    <button class="nav-tema" type="button" data-tema-botao hidden aria-label="Mudar para o modo escuro"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path class="nav-tema-lua" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/><g class="nav-tema-sol"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></g></svg></button>
   </div>
 </header>
 <!-- nav:end -->
@@ -122,7 +126,7 @@ h2.grupo{margin-top:1.6rem}
 <p>Taxa de câmbio do dólar americano em reais, na ponta de compra, divulgada pelo Banco Central em cada dia útil (PTAX).</p><p>Complementa a taxa de venda; a diferença entre as duas é o spread da PTAX.</p>
 <p class="mut">Também procurado como: dólar compra PTAX.</p></section>
 <section class="card grafico" aria-labelledby="graf-t"><h2 id="graf-t">Gráfico</h2>
-<iframe src="/embed.html?s=10813&amp;tema=escuro&amp;h=320" title="Dólar (USD/BRL) — compra: gráfico dos últimos 24 meses" loading="lazy"></iframe>
+<iframe data-segue-tema src="/embed.html?s=10813&amp;tema=claro&amp;h=320" title="Dólar (USD/BRL) — compra: gráfico dos últimos 24 meses" loading="lazy"></iframe>
 </section>
 <section class="card" aria-labelledby="tab-t"><h2 id="tab-t">Último valor de cada mês (12 meses)</h2><table><thead><tr><th scope="col">Referência</th><th scope="col">Valor</th></tr></thead><tbody><tr><td>24/11/2026</td><td>R$ 5,8567</td></tr><tr><td>30/10/2026</td><td>R$ 5,4206</td></tr><tr><td>30/09/2026</td><td>R$ 5,1803</td></tr><tr><td>31/08/2026</td><td>R$ 5,1810</td></tr><tr><td>31/07/2026</td><td>R$ 5,0767</td></tr><tr><td>30/06/2026</td><td>R$ 5,1760</td></tr><tr><td>29/05/2026</td><td>R$ 5,0563</td></tr><tr><td>30/04/2026</td><td>R$ 4,9880</td></tr><tr><td>31/03/2026</td><td>R$ 5,2188</td></tr><tr><td>27/02/2026</td><td>R$ 5,1489</td></tr><tr><td>30/01/2026</td><td>R$ 5,2295</td></tr><tr><td>31/12/2025</td><td>R$ 5,5018</td></tr></tbody></table><p class="mut">Histórico completo desde 02/01/2015 em <a href="https://observatoriodetaxas.tec.br/data/10813_history.json">10813_history.json</a>.</p></section>
 <section class="card" aria-labelledby="ficha-t"><h2 id="ficha-t">Ficha técnica</h2>

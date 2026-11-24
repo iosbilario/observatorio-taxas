@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="light">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -12,7 +12,7 @@
   <title>VAR da Economia — recibos verificáveis de alegações econômicas</title>
   <meta name="description" id="meta-desc" content="Monte uma alegação sobre indicadores do BACEN e receba um recibo verificável e permanente: dois períodos comparados, veredito, regra de cálculo, fonte oficial e o commit exato dos dados." />
   <meta name="robots" content="index, follow" />
-  <meta name="theme-color" content="#0E1210" />
+  <meta name="theme-color" content="#ffffff" />
   <link rel="canonical" id="canonical" href="https://observatoriodetaxas.tec.br/var.html" />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="pt_BR" />
@@ -35,8 +35,8 @@
     :root {
       --cofre: #0E1210; --papel: #E9E6DC; --alta: #3FD68F; --queda: #E4574F;
       --carimbo: #D9B54A; --neutro: #5A625D;
-      --papel-70: rgba(233,230,220,.70); --papel-45: rgba(233,230,220,.55);  /* 5,2:1 (WCAG AA) */
-      --linha: rgba(233,230,220,.14);
+      --papel-70: color-mix(in srgb,var(--papel) 70%,transparent); --papel-45: color-mix(in srgb,var(--papel) 55%,transparent);  /* 5,2:1 (WCAG AA) */
+      --linha: color-mix(in srgb,var(--papel) 14%,transparent);
       --cupom: #F4F0E4; --cupom-tx: #1c1a14; --cupom-mut: #6b6656; --cupom-linha: #cfc8b2;
       /* dourado escuro p/ texto sobre o papel do cupom: 5,1:1 (WCAG AA) */
       --cupom-ouro: #7d621a;
@@ -58,7 +58,7 @@
       -webkit-font-smoothing: antialiased; min-height: 100vh;
     }
     a { color: inherit; }
-    ::selection { background: rgba(217,181,74,.28); }
+    ::selection { background: color-mix(in srgb,var(--carimbo) 28%,transparent); }
 
     header.top {
       display: flex; align-items: baseline; justify-content: space-between; gap: 1rem;
@@ -82,7 +82,7 @@
     }
     .slot {
       font: inherit; color: var(--carimbo); background: transparent; border: 0; cursor: pointer;
-      padding: 0 .05em; border-bottom: 2px solid rgba(217,181,74,.45); border-radius: 0;
+      padding: 0 .05em; border-bottom: 2px solid color-mix(in srgb,var(--carimbo) 45%,transparent); border-radius: 0;
       transition: border-color .15s, color .15s;
     }
     .slot:hover { border-bottom-color: var(--carimbo); }
@@ -101,7 +101,7 @@
     /* ---------------- Popover de seleção ---------------- */
     .pop {
       position: absolute; z-index: 60; min-width: 220px; max-width: min(92vw, 320px);
-      background: #141917; border: 1px solid var(--linha); border-radius: 6px;
+      background: var(--campo); border: 1px solid var(--linha); border-radius: 6px;
       box-shadow: 0 18px 40px -18px rgba(0,0,0,.8); padding: .7rem; font-family: "Archivo", sans-serif;
     }
     .pop[hidden] { display: none; }
@@ -110,8 +110,8 @@
       display: block; width: 100%; text-align: left; background: transparent; border: 1px solid transparent;
       color: var(--papel); font: inherit; font-size: .92rem; padding: .4rem .5rem; border-radius: 4px; cursor: pointer;
     }
-    .pop .opt:hover, .pop .opt:focus-visible { background: rgba(233,230,220,.06); }
-    .pop .opt[aria-selected="true"] { color: var(--carimbo); border-color: rgba(217,181,74,.4); }
+    .pop .opt:hover, .pop .opt:focus-visible { background: color-mix(in srgb,var(--papel) 6%,transparent); }
+    .pop .opt[aria-selected="true"] { color: var(--carimbo); border-color: color-mix(in srgb,var(--carimbo) 40%,transparent); }
     .pop .presets { display: flex; flex-wrap: wrap; gap: .35rem; margin-bottom: .6rem; }
     .pop .preset {
       font-family: "IBM Plex Mono", monospace; font-size: .74rem; color: var(--papel-70);
@@ -122,7 +122,7 @@
     .pop .selrow + .selrow { margin-top: .45rem; }
     .pop label { display: block; font-family: "IBM Plex Mono", monospace; font-size: .64rem; letter-spacing: .1em; text-transform: uppercase; color: var(--papel-45); margin: 0 0 .2rem; }
     .pop select {
-      width: 100%; background: #0d1210; color: var(--papel); border: 1px solid var(--linha);
+      width: 100%; background: var(--campo); color: var(--papel); border: 1px solid var(--linha);
       border-radius: 4px; padding: .4rem .45rem; font: inherit; font-size: .86rem;
     }
     .pop select:focus-visible { outline: 2px solid var(--carimbo); outline-offset: 1px; }
@@ -162,7 +162,7 @@
     .recibo .meta-l { font-size: .68rem; color: var(--cupom-mut); line-height: 1.7; }
     .recibo .selo {
       margin-top: .7rem; font-size: .64rem; letter-spacing: .04em; color: var(--cupom-tx);
-      background: rgba(217,181,74,.22); border: 1px solid rgba(180,150,50,.5); border-radius: 3px; padding: .3rem .45rem; text-align: center;
+      background: color-mix(in srgb,var(--carimbo) 22%,transparent); border: 1px solid rgba(180,150,50,.5); border-radius: 3px; padding: .3rem .45rem; text-align: center;
     }
     .recibo .sem-dado { text-align: center; color: var(--queda); font-weight: 600; margin: 1rem 0; }
 
@@ -185,6 +185,9 @@
     @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto; } }
   </style>
   <link rel="stylesheet" href="nav.css" />
+  <link rel="stylesheet" href="refy/tokens.css" />
+  <link rel="stylesheet" href="tema.css" />
+  <script src="tema.js"></script>
   <script src="estrelas.js" defer></script>
 </head>
 <body>
@@ -207,6 +210,7 @@
       <span class="nav-github-rotulo"><span aria-hidden="true">☆</span> Estrela</span>
       <span class="nav-github-total" data-estrelas hidden></span>
     </a>
+    <button class="nav-tema" type="button" data-tema-botao hidden aria-label="Mudar para o modo escuro"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path class="nav-tema-lua" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/><g class="nav-tema-sol"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></g></svg></button>
   </div>
 </header>
 <!-- nav:end -->

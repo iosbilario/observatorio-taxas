@@ -186,6 +186,44 @@ def garante_tema(html: str, rel: str) -> str:
     return html[:m.start()] + f"<body{novo}>" + html[m.end():]
 
 
+# Tema claro/escuro do site (docs/tema.css + docs/tema.js + tokens do Refy).
+# O Radar fica de fora: tem paleta própria (tema-radar) e não está no menu.
+SEM_TEMA_CLARO = ("radar/",)
+COR_TEMA = "#ffffff"
+
+
+def garante_tema_site(html: str, rel: str, prefixo: str) -> str:
+    """Modo claro por padrão em todas as páginas, com botão de tema.
+
+    1. <html> com data-theme="light" (tema.js troca para "dark" se a pessoa
+       escolheu; sem JS a página fica clara);
+    2. tokens do Refy, tema.css e tema.js logo depois do nav.css, ou seja,
+       depois do <style> da página (tema.css precisa vir por último);
+    3. meta theme-color clara."""
+    if rel.startswith(SEM_TEMA_CLARO):
+        return html
+    m = re.search(r"<html([^>]*)>", html)
+    if not m:
+        raise SystemExit(f"{rel} sem <html>")
+    if "data-theme=" not in m.group(1):
+        html = html[:m.start()] + f'<html{m.group(1)} data-theme="light">' + html[m.end():]
+
+    if "tema.css" not in html:
+        tags = ((f'  <link rel="stylesheet" href="{prefixo}refy/tokens.css" />\n'
+                 if "refy/tokens.css" not in html else "")
+                + f'  <link rel="stylesheet" href="{prefixo}tema.css" />\n'
+                f'  <script src="{prefixo}tema.js"></script>\n')
+        nav = re.search(r'[ \t]*<link rel="stylesheet" href="[./]*nav\.css" ?/?>\n?', html)
+        if not nav:
+            raise SystemExit(f"{rel} sem nav.css")
+        fim = nav.end()
+        sep = "" if html[fim - 1] == "\n" else "\n"
+        html = html[:fim] + sep + tags + html[fim:]
+
+    html = re.sub(r'(<meta name="theme-color" content=")[^"]*(")', rf"\g<1>{COR_TEMA}\g<2>", html, count=1)
+    return html
+
+
 def sincroniza(caminho: Path, corpo: str, rodape: str | None = None, ano: int | None = None) -> bool:
     rel = caminho.relative_to(DOCS).as_posix()
     original = caminho.read_text(encoding="utf-8")
@@ -195,6 +233,7 @@ def sincroniza(caminho: Path, corpo: str, rodape: str | None = None, ano: int | 
     html = garante_tema(html, rel)
     html = garante_css(html, prefixo)
     html = garante_script_estrelas(html, prefixo)
+    html = garante_tema_site(html, rel, prefixo)
 
     novo_bloco = bloco(corpo, prefixo, chave_ativa(rel))
     html = re.sub(

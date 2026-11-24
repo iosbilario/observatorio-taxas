@@ -525,7 +525,7 @@ def pagina(codigo: int, pts: list[dict], grupo: str) -> str:
 <p>{e(p['o_que'])}</p><p>{e(p['uso'])}</p>
 <p class="mut">Também procurado como: {e(outros_nomes)}.</p></section>
 <section class="card grafico" aria-labelledby="graf-t"><h2 id="graf-t">Gráfico</h2>
-<iframe src="/embed.html?s={codigo}&amp;tema=escuro&amp;h=320" title="{e(m['nome'])}: gráfico dos últimos 24 meses" loading="lazy"></iframe>
+<iframe data-segue-tema src="/embed.html?s={codigo}&amp;tema=claro&amp;h=320" title="{e(m['nome'])}: gráfico dos últimos 24 meses" loading="lazy"></iframe>
 </section>
 {tabela(codigo, pts)}
 <section class="card" aria-labelledby="ficha-t"><h2 id="ficha-t">Ficha técnica</h2>

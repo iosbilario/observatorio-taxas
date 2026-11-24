@@ -110,9 +110,9 @@ def bloco_espaco(c: dict, nome: str) -> str:
         return ""
     return (
         '<aside class="pub" aria-label="Publicidade" style="margin:1.6rem 0;padding-top:.6rem;'
-        'border-top:1px solid rgba(233,230,220,.14);min-height:300px">'
+        'border-top:1px solid color-mix(in srgb,var(--papel) 14%,transparent);min-height:300px">'
         '<p style="margin:0 0 .4rem;font-family:\'IBM Plex Mono\',monospace;font-size:.62rem;'
-        'letter-spacing:.14em;text-transform:uppercase;color:rgba(233,230,220,.55)">Publicidade</p>'
+        'letter-spacing:.14em;text-transform:uppercase;color:color-mix(in srgb,var(--papel) 55%,transparent)">Publicidade</p>'
         f'<ins class="adsbygoogle" style="display:block;min-height:250px" data-ad-client="{c["client"]}" '
         f'data-ad-slot="{sid}" data-ad-format="auto" data-full-width-responsive="true"></ins>'
         "<script>(adsbygoogle = window.adsbygoogle || []).push({});</script></aside>"

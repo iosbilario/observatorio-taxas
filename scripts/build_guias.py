@@ -41,7 +41,7 @@ GUIA_CSS = """
 .guia li{margin:.3rem 0}
 .guia .nota{font-size:.86rem;color:var(--papel-45)}
 .lista-guias a{display:block;border:1px solid var(--linha);border-radius:10px;padding:.9rem 1rem;margin:.6rem 0;border-bottom:1px solid var(--linha)}
-.lista-guias a:hover{border-color:rgba(217,181,74,.5)}
+.lista-guias a:hover{border-color:color-mix(in srgb,var(--carimbo) 50%,transparent)}
 .lista-guias b{display:block;color:var(--papel);font-family:"Fraunces",Georgia,serif;font-size:1.05rem}
 .lista-guias span{display:block;color:var(--papel-70);font-size:.9rem;margin-top:.2rem}
 """
