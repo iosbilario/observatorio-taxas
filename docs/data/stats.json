@@ -1,6 +1,6 @@
 {
-  "gerado_em": "2026-11-24T00:36:11-03:00",
-  "gerado_em_fmt": "24/11/2026 às 00:36",
+  "gerado_em": "2026-11-24T13:41:34-03:00",
+  "gerado_em_fmt": "24/11/2026 às 13:41",
   "grupos": {
     "Admin": {
       "acessos": 0,
@@ -20,10 +20,10 @@
       "sub": {}
     },
     "Reajuste": {
-      "acessos": 175,
+      "acessos": 176,
       "sub": {
         "IGP-DI": 13,
-        "IGP-M": 42,
+        "IGP-M": 43,
         "INPC": 18,
         "IPCA": 48
       }
@@ -31,7 +31,7 @@
   },
   "serie_diaria": [
     {
-      "acessos": 2,
+      "acessos": 1,
       "data": "2026-10-25"
     },
     {
@@ -151,7 +151,7 @@
       "data": "2026-11-23"
     },
     {
-      "acessos": 0,
+      "acessos": 6,
       "data": "2026-11-24"
     }
   ],
@@ -163,7 +163,7 @@
       "path": "/"
     },
     {
-      "count": 82,
+      "count": 85,
       "path": "/indicadores/cdi"
     },
     {
@@ -199,6 +199,10 @@
       "path": "/indicadores/cdi-acumulado-no-mes"
     },
     {
+      "count": 9,
+      "path": "/indicadores/dolar"
+    },
+    {
       "count": 8,
       "path": "/simulador-cdi"
     },
@@ -212,21 +216,17 @@
     },
     {
       "count": 7,
-      "path": "/indicadores/dolar"
-    },
-    {
-      "count": 7,
       "path": "/apoie"
     }
   ],
   "totais": {
     "all_time": {
-      "acessos": 681,
-      "visitantes": 681
+      "acessos": 687,
+      "visitantes": 687
     },
     "ultimos_30d": {
-      "acessos": 306,
-      "visitantes": 306
+      "acessos": 311,
+      "visitantes": 311
     }
   }
 }

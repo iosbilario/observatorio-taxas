@@ -1313,3 +1313,29 @@
     ↳ Câmbio EUR/BRL - venda: subiu de 6,4672 para 6,5076.
 [2026-11-23 16:48:19 +0000] Reservas internacionais - conceito caixa (US$ milhões): 363644 -> 363058
     ↳ Reservas internacionais - conceito caixa (US$ milhões): caiu de 363644 para 363058.
+[2026-11-24 16:41:15 +0000] TR - Taxa Referencial (%): 0.1693 -> 0.1537
+    ↳ TR - Taxa Referencial (%): caiu de 0,1693 para 0,1537.
+[2026-11-24 16:41:15 +0000] TR - Taxa Referencial (%): 0.1537 -> 0.1696
+    ↳ TR - Taxa Referencial (%): subiu de 0,1537 para 0,1696.
+[2026-11-24 16:41:15 +0000] TR - Taxa Referencial (%): 0.1696 -> 0.1714
+    ↳ TR - Taxa Referencial (%): subiu de 0,1696 para 0,1714.
+[2026-11-24 16:41:15 +0000] Poupança (depósitos até 03/05/2012) - rentabilidade (%): 0.6701 -> 0.6545
+    ↳ Poupança (depósitos até 03/05/2012) - rentabilidade (%): caiu de 0,6701 para 0,6545.
+[2026-11-24 16:41:15 +0000] Poupança (depósitos até 03/05/2012) - rentabilidade (%): 0.6545 -> 0.6704
+    ↳ Poupança (depósitos até 03/05/2012) - rentabilidade (%): subiu de 0,6545 para 0,6704.
+[2026-11-24 16:41:15 +0000] Poupança (depósitos até 03/05/2012) - rentabilidade (%): 0.6704 -> 0.6723
+    ↳ Poupança (depósitos até 03/05/2012) - rentabilidade (%): subiu de 0,6704 para 0,6723.
+[2026-11-24 16:41:15 +0000] Poupança (depósitos a partir de 04/05/2012) - rentabilidade (%): 0.6701 -> 0.6545
+    ↳ Poupança (depósitos a partir de 04/05/2012) - rentabilidade (%): caiu de 0,6701 para 0,6545.
+[2026-11-24 16:41:15 +0000] Poupança (depósitos a partir de 04/05/2012) - rentabilidade (%): 0.6545 -> 0.6704
+    ↳ Poupança (depósitos a partir de 04/05/2012) - rentabilidade (%): subiu de 0,6545 para 0,6704.
+[2026-11-24 16:41:15 +0000] Poupança (depósitos a partir de 04/05/2012) - rentabilidade (%): 0.6704 -> 0.6723
+    ↳ Poupança (depósitos a partir de 04/05/2012) - rentabilidade (%): subiu de 0,6704 para 0,6723.
+[2026-11-24 16:41:15 +0000] Câmbio USD/BRL - venda: 5.9708 -> 5.8573
+    ↳ Câmbio USD/BRL - venda: caiu de 5,9708 para 5,8573.
+[2026-11-24 16:41:15 +0000] Câmbio USD/BRL - compra: 5.9702 -> 5.8567
+    ↳ Câmbio USD/BRL - compra: caiu de 5,9702 para 5,8567.
+[2026-11-24 16:41:15 +0000] Câmbio EUR/BRL - venda: 6.5076000 -> 6.4260000
+    ↳ Câmbio EUR/BRL - venda: caiu de 6,5076 para 6,426.
+[2026-11-24 16:41:15 +0000] Reservas internacionais - conceito caixa (US$ milhões): 363058 -> 362953
+    ↳ Reservas internacionais - conceito caixa (US$ milhões): caiu de 363058 para 362953.
