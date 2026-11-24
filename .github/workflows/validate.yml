@@ -54,6 +54,7 @@ jobs:
           python scripts/build_correcao.py
           python scripts/build_indicadores.py
           python scripts/build_ferramentas.py
+          python scripts/build_guias.py
           python scripts/render_index.py
           python scripts/sync_nav.py
           python scripts/adsense.py
