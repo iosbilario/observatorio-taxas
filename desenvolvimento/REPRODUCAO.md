@@ -38,9 +38,12 @@ O pacote arquivado no Zenodo contém só o código (ver
 cada versão estão no histórico Git do repositório:
 
 ```bash
-git checkout v1.8.0                     # código e data/ exatamente como na tag (ou v1.7.0, v1.6.0)
+git checkout v1.9.0                     # código e data/ exatamente como na tag (ou v1.8.0, v1.7.0, v1.6.0)
 python scripts/build_pages.py           # páginas de reajuste
 python scripts/build_correcao.py        # páginas de correção
+python scripts/build_indicadores.py     # /indicadores/ (a partir da v1.8.0)
+python scripts/build_ferramentas.py     # comparador e simulador (a partir da v1.8.0)
+python scripts/build_guias.py           # /guias/ (a partir da v1.9.0)
 python scripts/render_index.py          # página inicial + sitemap
 python scripts/sync_nav.py
 python scripts/adsense.py
@@ -67,7 +70,7 @@ Não rode `fetch.py` nem `backfill.py` nesse caso: eles buscariam dados novos.
 | Correção entre datas | produto das variações dos meses posteriores ao inicial até o final | `fator_periodo()` em [`scripts/build_correcao.py`](../scripts/build_correcao.py) | `test_correcao_12_meses_igual_ao_reajuste_do_ultimo_mes` |
 | Valores publicados | — | páginas em `docs/reajuste/` e `docs/correcao/` | `test_valores_publicados_iguais_a_linha_de_base` |
 
-Exemplo verificável nas tags v1.6.0, v1.7.0 e v1.8.0: IGP-M acumulado de agosto de 2025 a julho
+Exemplo verificável nas tags v1.6.0, v1.7.0, v1.8.0 e v1.9.0: IGP-M acumulado de agosto de 2025 a julho
 de 2026 = 2,77% (fator 1,027722), em `docs/reajuste/igpm-julho-2026/`.
 
 ## Atualização de dados

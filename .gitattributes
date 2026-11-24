@@ -11,5 +11,7 @@ data/                           export-ignore
 docs/data/                      export-ignore
 docs/reajuste/                  export-ignore
 docs/correcao/                  export-ignore
+docs/indicadores/               export-ignore
+docs/guias/                     export-ignore
 CHANGELOG.md                    export-ignore
 tests/fixtures/valores_baseline.json export-ignore
