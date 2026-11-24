@@ -75,10 +75,10 @@ class PaginaInicial(unittest.TestCase):
     def test_tema_claro_por_padrao_e_botao(self):
         html = home()
         self.assertIn('<html lang="pt-BR" data-theme="light">', html)
-        self.assertIn('href="refy/tokens.css"', html)
+        self.assertRegex(html, r'href="refy/tokens\.css\?v=[0-9a-f]{10}"')
         self.assertTrue((DOCS / "refy" / "tokens.css").is_file())
         self.assertIn("data-tema-botao hidden", html)
-        self.assertIn('<script src="tema.js"></script>', html)
+        self.assertRegex(html, r'<script src="tema\.js\?v=[0-9a-f]{10}"></script>')
 
     def test_titulo_animado_tem_rotulo_e_respeita_movimento_reduzido(self):
         html = home()

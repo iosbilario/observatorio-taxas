@@ -73,7 +73,7 @@ class TestEstrelas(unittest.TestCase):
         for rel, html in paginas():
             self.assertIn('class="nav-github"', html, rel)
             prefixo = "../" * rel.count("/")
-            self.assertIn(f'<script src="{prefixo}estrelas.js" defer></script>', html, rel)
+            self.assertRegex(html, rf'<script src="{re.escape(prefixo)}estrelas\.js\?v=[0-9a-f]{{10}}" defer></script>', rel)
 
     def test_script_nao_fala_com_o_github(self):
         js = (DOCS / "estrelas.js").read_text(encoding="utf-8")

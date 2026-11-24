@@ -6,7 +6,9 @@ Estas fontes são usadas por `scripts/build_og.py` para gerar o card social
 
 | Arquivo | Família | Autoria | Fonte |
 |---------|---------|---------|-------|
-| `Fraunces-variable.ttf` | Fraunces | Undercase (Phaedra Charles, Flavia Zimbardi) | https://github.com/google/fonts/tree/main/ofl/fraunces |
+| `IBMPlexSerif-Regular.ttf` | IBM Plex Serif | IBM / Bold Monday | https://github.com/google/fonts/tree/main/ofl/ibmplexserif |
+| `Manrope[wght].ttf` | Manrope | Mikhail Sharanda | https://github.com/google/fonts/tree/main/ofl/manrope |
+| `SourceSans3[wght].ttf` | Source Sans 3 | Adobe (Paul D. Hunt) | https://github.com/google/fonts/tree/main/ofl/sourcesans3 |
 | `IBMPlexMono-Medium.ttf` | IBM Plex Mono | IBM / Bold Monday | https://github.com/google/fonts/tree/main/ofl/ibmplexmono |
 | `IBMPlexMono-Regular.ttf` | IBM Plex Mono | IBM / Bold Monday | https://github.com/google/fonts/tree/main/ofl/ibmplexmono |
 

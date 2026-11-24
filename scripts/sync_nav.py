@@ -224,6 +224,28 @@ def garante_tema_site(html: str, rel: str, prefixo: str) -> str:
     return html
 
 
+# Arquivos compartilhados por todas as páginas. O endereço leva ?v=<hash do
+# conteúdo>: quando o arquivo muda, a URL muda e o navegador não usa a cópia
+# velha do cache (o GitHub Pages manda max-age=600). Sem isso, uma página
+# nova pode carregar com o nav.css antigo por até 10 minutos.
+VERSIONADOS = ("nav.css", "tema.css", "tema.js", "refy/tokens.css", "estrelas.js")
+
+
+def _versao(nome: str) -> str:
+    import hashlib
+    return hashlib.sha256((DOCS / nome).read_bytes()).hexdigest()[:10]
+
+
+def versiona_arquivos(html: str) -> str:
+    for nome in VERSIONADOS:
+        if not (DOCS / nome).is_file():
+            continue
+        v = _versao(nome)
+        html = re.sub(rf'((?:href|src)="(?:\.\./)*{re.escape(nome)})(?:\?v=[0-9a-f]+)?"',
+                      rf'\g<1>?v={v}"', html)
+    return html
+
+
 def sincroniza(caminho: Path, corpo: str, rodape: str | None = None, ano: int | None = None) -> bool:
     rel = caminho.relative_to(DOCS).as_posix()
     original = caminho.read_text(encoding="utf-8")
@@ -234,6 +256,7 @@ def sincroniza(caminho: Path, corpo: str, rodape: str | None = None, ano: int | 
     html = garante_css(html, prefixo)
     html = garante_script_estrelas(html, prefixo)
     html = garante_tema_site(html, rel, prefixo)
+    html = versiona_arquivos(html)
 
     novo_bloco = bloco(corpo, prefixo, chave_ativa(rel))
     html = re.sub(
