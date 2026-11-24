@@ -188,10 +188,10 @@ h1,h2,h3{color:var(--ink-1);margin:0}
 .btn-pri:hover{filter:brightness(1.06)}
 
 /* ============ Topo: carimbo + título animado ============ */
-.topo{padding:clamp(2rem,5vw,3.4rem) 0 0}
+.topo{padding:0 0 1.6rem}
 .carimbo-linha{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin:0}
 .carimbo-linha a{color:inherit;text-decoration:underline;text-underline-offset:3px}
-.titulo{font-family:var(--serif);font-weight:400;font-size:clamp(2.4rem,6vw,4.2rem);line-height:1.04;letter-spacing:-.025em;margin:.6rem 0 0}
+.titulo{font-family:var(--serif);font-weight:400;font-size:clamp(2.3rem,5vw,3.6rem);line-height:1.04;letter-spacing:-.025em;margin:.6rem 0 0}
 /* Cada palavra sobe de dentro de uma máscara, em sequência (como o hero do Refy). */
 .titulo .mask{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.1em;margin-bottom:-.1em}
 .titulo .w{display:inline-block;transform:translateY(115%);animation:sobe 1s cubic-bezier(.16,1,.3,1) forwards;animation-delay:calc(.05s + var(--i) * .07s)}
@@ -204,7 +204,7 @@ h1,h2,h3{color:var(--ink-1);margin:0}
 .confianca a{color:inherit}
 
 /* ============ Grade principal: perguntas + lateral ============ */
-.principal{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:clamp(1.6rem,4vw,3rem);padding:1.6rem 0 1rem}
+.principal{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:clamp(1.6rem,4vw,3rem);align-items:start;padding:clamp(2rem,5vw,3.4rem) 0 1rem}
 @media(max-width:940px){.principal{grid-template-columns:1fr}}
 .respostas{border-top:1px solid var(--line)}
 .resp{display:grid;grid-template-columns:minmax(0,1fr) 190px;gap:1.2rem;align-items:center;padding:1.25rem 0;border-bottom:1px solid var(--line)}
@@ -374,28 +374,27 @@ footer a{color:var(--ink-2)}
   </div>
 </header>
 <!-- nav:end -->
-  <div class="wrap topo">
-    <!-- carimbo:inicio -->
-<p class="carimbo-linha"><span id="hoje">Terça-feira, 24 de novembro de 2026</span> · coletado às 13:41 · commit <a href="https://github.com/iosbilario/observatorio-taxas/commits/main">f286c0e</a> · fonte SGS/BACEN</p>
-<!-- carimbo:fim -->
-    <h1 class="titulo" aria-label="Indicadores do Brasil, hoje.">
-      <span class="mask" aria-hidden="true"><span class="w" style="--i:0">Indicadores</span></span>
-      <span class="mask" aria-hidden="true"><span class="w" style="--i:1">do</span></span>
-      <span class="mask" aria-hidden="true"><span class="w" style="--i:2">Brasil,</span></span>
-      <span class="mask" aria-hidden="true"><span class="w" style="--i:3">hoje<span class="ponto">.</span></span></span>
-    </h1>
-    <p class="subtitulo">Selic, IPCA, dólar, IGP-M e desemprego direto do Banco Central, com a fonte de cada número e histórico desde 2015.</p>
-    <ul class="confianca">
-      <li>Fonte: <a href="https://www3.bcb.gov.br/sgspub/" target="_blank" rel="noopener noreferrer">SGS do Banco Central</a></li>
-      <li>Atualizado a cada 6 horas</li>
-      <li>Histórico <a href="https://github.com/iosbilario/observatorio-taxas" target="_blank" rel="noopener noreferrer">versionado no Git</a></li>
-      <li>Código aberto, grátis e sem cadastro</li>
-    </ul>
-  </div>
-
   <main id="conteudo">
     <div class="wrap principal">
       <div>
+        <div class="topo">
+          <!-- carimbo:inicio -->
+<p class="carimbo-linha"><span id="hoje">Terça-feira, 24 de novembro de 2026</span> · coletado às 13:41 · commit <a href="https://github.com/iosbilario/observatorio-taxas/commits/main">f286c0e</a> · fonte SGS/BACEN</p>
+<!-- carimbo:fim -->
+          <h1 class="titulo" aria-label="Indicadores do Brasil, hoje.">
+            <span class="mask" aria-hidden="true"><span class="w" style="--i:0">Indicadores</span></span>
+            <span class="mask" aria-hidden="true"><span class="w" style="--i:1">do</span></span>
+            <span class="mask" aria-hidden="true"><span class="w" style="--i:2">Brasil,</span></span>
+            <span class="mask" aria-hidden="true"><span class="w" style="--i:3">hoje<span class="ponto">.</span></span></span>
+          </h1>
+          <p class="subtitulo">Selic, IPCA, dólar, IGP-M e desemprego direto do Banco Central, com a fonte de cada número e histórico desde 2015.</p>
+          <ul class="confianca">
+            <li>Fonte: <a href="https://www3.bcb.gov.br/sgspub/" target="_blank" rel="noopener noreferrer">SGS do Banco Central</a></li>
+            <li>Atualizado a cada 6 horas</li>
+            <li>Histórico <a href="https://github.com/iosbilario/observatorio-taxas" target="_blank" rel="noopener noreferrer">versionado no Git</a></li>
+            <li>Código aberto, grátis e sem cadastro</li>
+          </ul>
+        </div>
         <!-- boletim:inicio -->
 <div class="respostas">
 <article class="resp" id="selic"><div class="resp-texto"><h2>Qual é a Selic hoje?</h2><p>A Meta Selic está em <b>13,75% ao ano</b> desde 28/10/2026, quando passou de 14,00% para 13,75%, por decisão do Copom. <a class="resp-link" href="indicadores/meta-selic/">Histórico da Selic →</a></p></div><div class="resp-lado"><p class="resp-rot">Meta Selic</p><p class="resp-val"><span class="v">13,75</span><span class="suf">% a.a.</span></p><p class="num-delta flat">■ 0,00 p.p. no mês</p><p class="num-ref">ref. 04/11/2026</p><div class="spark" data-cod="432" data-casas="2" aria-hidden="true"></div></div></article>
