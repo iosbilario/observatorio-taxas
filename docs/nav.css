@@ -198,21 +198,25 @@ html[data-theme] {
 }
 html[data-theme] .nav-site { background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(8px); }
 html[data-theme] .nav-site a:focus-visible, html[data-theme] .rodape-site a:focus-visible { outline-color: var(--primary); }
-.nav-tema {
+.nav-site .nav-tema {
   flex: none;
   display: inline-grid;
   place-items: center;
   width: 34px;
   height: 34px;
-  margin-left: .6rem;
+  margin: 0 0 0 .6rem;
+  padding: 0;
   border: 1px solid var(--nav-linha);
   border-radius: 999px;
   background: transparent;
   color: var(--nav-texto-ativo);
+  font: inherit;
+  letter-spacing: 0;
+  filter: none;
   cursor: pointer;
 }
-.nav-tema[hidden] { display: none; }
-.nav-tema:hover { border-color: var(--nav-texto); }
+.nav-site .nav-tema[hidden] { display: none; }
+.nav-site .nav-tema:hover { border-color: var(--nav-texto); filter: none; }
 .nav-tema:focus-visible { outline: 2px solid var(--nav-texto-ativo); outline-offset: 2px; }
 .nav-tema .nav-tema-sol { display: none; }
 html[data-theme="dark"] .nav-tema .nav-tema-sol { display: inline; }
