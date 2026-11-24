@@ -14,6 +14,7 @@
   <url><loc>https://observatoriodetaxas.tec.br/indicadores/</loc><lastmod>2026-11-24</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/comparador/</loc><lastmod>2026-11-13</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/simulador-cdi/</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/guias/</loc><lastmod>2026-11-24</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/reajuste/igpdi-abril-2016/</loc><lastmod>2026-11-24</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/reajuste/igpdi-abril-2017/</loc><lastmod>2026-11-24</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/reajuste/igpdi-abril-2018/</loc><lastmod>2026-11-24</lastmod></url>
@@ -567,4 +568,10 @@
   <url><loc>https://observatoriodetaxas.tec.br/indicadores/selic-efetiva/</loc><lastmod>2026-11-24</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/indicadores/tjlp/</loc><lastmod>2026-11-13</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/indicadores/tr/</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/guias/como-calcular-acumulado/</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/guias/correcao-monetaria/</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/guias/dolar-ptax/</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/guias/ipca-igpm-inpc-igpdi/</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/guias/reajuste-de-aluguel/</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/guias/selic/</loc><lastmod>2026-11-24</lastmod></url>
 </urlset>

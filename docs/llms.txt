@@ -23,6 +23,16 @@ Site 100% estático (GitHub Pages), gratuito e sem cadastro. Os dados são arqui
 - [Comparador Selic, CDI e IPCA](https://observatoriodetaxas.tec.br/comparador/): acumulado por competência mensal das séries de Selic, CDI e IPCA acumulados no mês, gráfico, tabela e metodologia; parâmetros `de`, `ate` (aaaa-mm), `i` (cdi,selic,ipca) e `ver` (pct ou reais)
 - [Simulador de rendimento do CDI](https://observatoriodetaxas.tec.br/simulador-cdi/): X% do CDI com a taxa DI diária (SGS 4389), IR e IOF do CDB, IPCA do período e memória de cálculo em CSV; parâmetros `valor`, `percentual`, `periodo` (6m, 12m, 24m, 36m, 60m) ou `de` e `ate` (aaaa-mm-dd), `modo` (liquido ou bruto)
 
+## Guias
+
+- [Guias](https://observatoriodetaxas.tec.br/guias/): textos práticos com números de exemplo atualizados a cada coleta
+- [Como calcular o reajuste do aluguel](https://observatoriodetaxas.tec.br/guias/reajuste-de-aluguel/): índice e mês a usar, fator, acumulado negativo
+- [IPCA, INPC, IGP-M e IGP-DI](https://observatoriodetaxas.tec.br/guias/ipca-igpm-inpc-igpdi/): quem produz, o que mede e qual usar
+- [Como calcular o acumulado de um índice](https://observatoriodetaxas.tec.br/guias/como-calcular-acumulado/): composição dos fatores e diferença para o oficial
+- [Correção monetária](https://observatoriodetaxas.tec.br/guias/correcao-monetaria/): correção x juros, índice, se o mês inicial entra
+- [Meta Selic, Selic efetiva e Selic do mês](https://observatoriodetaxas.tec.br/guias/selic/): diferenças, qual usar, poupança
+- [Dólar PTAX](https://observatoriodetaxas.tec.br/guias/dolar-ptax/): como é calculada, compra e venda, quando sai
+
 ## Dados
 
 Os JSONs são a fonte canônica; use-os em vez de raspar o HTML. Índices de inflação (IPCA, IGP-M, INPC, IGP-DI) trazem a variação mensal com data de referência no primeiro dia do mês; séries diárias (Selic, câmbio) trazem um ponto por dia útil. Acumulado em 12 meses usa composição (produto de 1 + i/100), não soma simples.
