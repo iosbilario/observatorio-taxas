@@ -324,10 +324,12 @@ pre.snip{background:var(--surface-2);border:1px solid var(--line);border-radius:
 .faq details p{margin:.5rem 0 0;color:var(--ink-2)}
 
 /* Redações */
-.redacoes{text-align:center}
-.redacoes p{color:var(--ink-3);max-width:60ch;margin:.5rem auto 0}
+.redacoes-lista{margin:1rem 0 .4rem;padding:0;list-style:none}
+.redacoes-lista li{padding:.45rem 0;border-top:1px solid var(--line);color:var(--ink-3)}
+.redacoes-lista li:last-child{border-bottom:1px solid var(--line)}
+.redacoes-lista a{font-weight:600}
 .redacoes .mail{font-weight:600;font-family:var(--font-mono)}
-.carta{max-width:480px;margin:1.6rem auto 0;text-align:left;border:1px solid var(--line);border-radius:var(--radius-lg);background:var(--surface);padding:1.2rem 1.3rem 1.3rem}
+.carta{margin:0;border:1px solid var(--line);border-radius:var(--radius-lg);background:var(--surface);padding:1.2rem 1.3rem 1.3rem}
 .carta-sel{font-family:var(--font-mono);font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--primary-ink);margin:0 0 1rem}
 .carta-row{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin-bottom:.8rem}
 @media(max-width:520px){.carta-row{grid-template-columns:1fr}}
@@ -626,22 +628,37 @@ footer a{color:var(--ink-2)}
 
     <!-- ===================== PERGUNTAS FREQUENTES ===================== -->
     <section class="bloco" id="faq-sec" aria-labelledby="faq-t">
-      <div class="wrap faq">
-        <h2 class="tit" id="faq-t">Perguntas frequentes</h2>
+      <div class="wrap">
+        <div class="bloco-cab">
+          <div>
+            <h2 class="tit" id="faq-t">Perguntas frequentes</h2>
+            <p class="sub">O básico sobre a fonte, a atualização e o uso dos números.</p>
+          </div>
+          <a class="btn-link" href="sobre/">Sobre o projeto →</a>
+        </div>
+        <div class="faq">
         <details open><summary>De onde vêm os números?</summary><p>Da API pública do SGS, o Sistema Gerenciador de Séries Temporais do Banco Central. O Banco Central também distribui séries de outros produtores: IPCA, INPC e desemprego são do IBGE, e IGP-M e IGP-DI são da FGV IBRE. Cada página informa o produtor e o código da série.</p></details>
         <details><summary>Com que frequência o site é atualizado?</summary><p>A coleta roda a cada 6 horas. Um número só muda quando o Banco Central ou o produtor publica um valor novo, e cada mudança fica registrada como um commit no repositório.</p></details>
         <details><summary>O que significam ▲, ▼ e ■?</summary><p>É a variação em relação ao último valor do mês anterior: ▲ subiu, ▼ caiu e ■ ficou igual. Para taxas, a diferença é em pontos percentuais; para o dólar, em reais.</p></details>
         <details><summary>Posso usar os números num contrato ou numa matéria?</summary><p>Pode citar, com a fonte. Para um contrato, vale o índice e o mês que o contrato prevê. O conteúdo é informativo e não é recomendação financeira nem orientação jurídica.</p></details>
         <details><summary>O site é gratuito?</summary><p>Sim. Não tem cadastro, o código é aberto e os dados podem ser baixados em JSON.</p></details>
+        </div>
       </div>
     </section>
 
     <!-- ===================== FECHO REDAÇÕES ===================== -->
     <section class="bloco redacoes" id="redacoes" aria-labelledby="redacoes-t">
-      <div class="wrap">
-        <h2 class="tit" id="redacoes-t">Para redações e newsletters</h2>
-        <p>Todos os números vêm direto do Banco Central e se atualizam sozinhos a cada coleta. Código e dados abertos, livres para reutilizar.</p>
-        <p>Precisa de uma série, um recorte ou um formato que não está aqui? Escreva para a redação.</p>
+      <div class="wrap duas">
+        <div>
+          <h2 class="tit" id="redacoes-t">Para redações e newsletters</h2>
+          <p class="sub">Todos os números vêm direto do Banco Central e se atualizam sozinhos a cada coleta. Código e dados abertos, livres para reutilizar.</p>
+          <ul class="redacoes-lista">
+            <li><a href="data/series.json">Dados abertos em JSON</a>, com o histórico de cada série</li>
+            <li><a href="retransmissora.html">Gráficos para incorporar</a>, que se atualizam sozinhos</li>
+            <li><a href="https://doi.org/10.5281/zenodo.24151062">Como citar</a>, com DOI no Zenodo</li>
+          </ul>
+          <p class="sub">Precisa de uma série, um recorte ou um formato que não está aqui? Escreva para a redação.</p>
+        </div>
       <form class="carta" id="carta">
         <p class="carta-sel">Carta à redação</p>
         <div class="carta-row">
