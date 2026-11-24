@@ -65,9 +65,11 @@ body.tema-radar {
   text-transform: uppercase;
   color: var(--nav-texto-ativo);
   text-decoration: none;
+  border-bottom: 0;
   white-space: nowrap;
 }
 
+.nav-marca-logo { flex: none; display: block; }
 .nav-itens {
   display: flex;
   align-items: center;
