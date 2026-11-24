@@ -1,13 +1,13 @@
 {
-  "gerado_em": "2026-11-23T13:48:38-03:00",
-  "gerado_em_fmt": "23/11/2026 às 13:48",
+  "gerado_em": "2026-11-24T00:36:11-03:00",
+  "gerado_em_fmt": "24/11/2026 às 00:36",
   "grupos": {
     "Admin": {
       "acessos": 0,
       "sub": {}
     },
     "Correção": {
-      "acessos": 34,
+      "acessos": 36,
       "sub": {
         "IGP-DI": 1,
         "IGP-M": 2,
@@ -16,7 +16,7 @@
       }
     },
     "Home": {
-      "acessos": 199,
+      "acessos": 200,
       "sub": {}
     },
     "Reajuste": {
@@ -30,10 +30,6 @@
     }
   },
   "serie_diaria": [
-    {
-      "acessos": 8,
-      "data": "2026-10-24"
-    },
     {
       "acessos": 2,
       "data": "2026-10-25"
@@ -151,19 +147,23 @@
       "data": "2026-11-22"
     },
     {
-      "acessos": 10,
+      "acessos": 26,
       "data": "2026-11-23"
+    },
+    {
+      "acessos": 0,
+      "data": "2026-11-24"
     }
   ],
   "site": "observatoriotaxas",
   "timezone": "America/Sao_Paulo (UTC-3)",
   "top_paginas": [
     {
-      "count": 195,
+      "count": 196,
       "path": "/"
     },
     {
-      "count": 77,
+      "count": 82,
       "path": "/indicadores/cdi"
     },
     {
@@ -175,7 +175,7 @@
       "path": "/reajuste"
     },
     {
-      "count": 22,
+      "count": 24,
       "path": "/correcao"
     },
     {
@@ -195,7 +195,7 @@
       "path": "/indicadores"
     },
     {
-      "count": 8,
+      "count": 9,
       "path": "/indicadores/cdi-acumulado-no-mes"
     },
     {
@@ -212,21 +212,21 @@
     },
     {
       "count": 7,
-      "path": "/apoie"
+      "path": "/indicadores/dolar"
     },
     {
       "count": 7,
-      "path": "/correcao/ipca"
+      "path": "/apoie"
     }
   ],
   "totais": {
     "all_time": {
-      "acessos": 665,
-      "visitantes": 665
+      "acessos": 681,
+      "visitantes": 681
     },
     "ultimos_30d": {
-      "acessos": 298,
-      "visitantes": 298
+      "acessos": 306,
+      "visitantes": 306
     }
   }
 }
