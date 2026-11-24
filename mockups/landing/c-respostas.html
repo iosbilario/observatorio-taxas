@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="pt-BR" data-claro="light" data-theme="light">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Opção C · Respostas diretas | Observatório de Taxas</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@refy-design/web@1.11.0/src/tokens/tokens.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@refy-design/web@1.11.0/src/styles/fonts.css">
+<link rel="stylesheet" href="base.css">
+<script src="tema.js"></script>
+<style>
+:root{--primary:#1b5fab;--primary-ink:#1b5fab;--on-primary:#fff}
+[data-theme="dark"]{--primary:#7fb2ec;--primary-ink:#9cc4f2;--on-primary:#0b1a2b}
+.grid{display:grid;grid-template-columns:1fr 300px;gap:40px;padding:40px 0}
+@media(max-width:900px){.grid{grid-template-columns:1fr}}
+h1{font-size:clamp(1.8rem,3.6vw,2.4rem);font-weight:800}
+.lead{font-size:1.05rem;margin:10px 0 24px}
+.resp{display:grid;grid-template-columns:1fr 140px;gap:16px;align-items:center;padding:18px 0;border-top:1px solid var(--line)}
+.resp h2{font-size:1.05rem;font-weight:700}
+.resp p{margin:4px 0 0}
+.resp .num{font-size:1.6rem}
+.resp .spark{height:40px}
+.resp .lado{text-align:right}
+.lateral .card{margin-bottom:14px}
+.lateral h3{font-size:1rem;margin-bottom:8px}
+.lateral ul{list-style:none;padding:0;margin:0}
+.lateral li{padding:7px 0;border-top:1px solid var(--line);font-size:.92rem}
+.lateral li:first-child{border-top:0}
+.chip{display:inline-block;font-size:.75rem;padding:2px 8px;border-radius:var(--radius-pill);background:var(--surface-2);color:var(--ink-3);margin-left:6px}
+</style>
+</head>
+<body>
+<header class="topo"><div class="wrap">
+  <a class="marca" href="#"><svg viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="#161B18"/><polyline points="6,21 12.5,14.5 18,18 26,8" fill="none" stroke="#D9B54A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>Observatório de Taxas</a>
+  <nav class="menu"><a aria-current="page" href="#">Hoje</a><a href="#">Indicadores</a><a href="#">Calculadoras</a><a href="#">Guias</a></nav>
+  <div class="dir"><button class="tema" type="button"></button></div>
+</div></header>
+
+<main class="wrap grid">
+<div>
+  <p class="rot">Atualizado em 24/11/2026 às 13:41 · Banco Central (SGS)</p>
+  <h1>Indicadores econômicos do Brasil hoje</h1>
+  <p class="lead">Cada resposta abaixo vem da série oficial do Banco Central, com a data de referência e o link para o histórico completo.</p>
+
+  <article class="resp"><div><h2>Qual é a Selic hoje?</h2><p>A Meta Selic está em <b>13,75% ao ano</b> desde 28/10/2026, quando o Copom cortou 0,25 ponto. <a href="#">Histórico da Selic →</a></p></div><div class="lado"><div class="num">13,75%</div><svg class="spark" viewBox="0 0 100 30"><path d="M0 8 L20 8 L35 6 L50 6 L65 9 L80 12 L100 14"/></svg></div></article>
+  <article class="resp"><div><h2>Qual é a inflação acumulada em 12 meses?</h2><p>O IPCA acumulou <b>4,63%</b> nos 12 meses até outubro de 2026, 0,05 ponto acima do mês anterior. <a href="#">IPCA mês a mês →</a></p></div><div class="lado"><div class="num">4,63%</div><svg class="spark" viewBox="0 0 100 30"><path d="M0 20 L15 16 L30 18 L45 12 L60 15 L80 10 L100 11"/></svg></div></article>
+  <article class="resp"><div><h2>Quanto está o dólar hoje?</h2><p>O dólar PTAX fechou em <b>R$ 5,8573</b> na venda em 24/11/2026, alta de R$ 0,44 no mês. <a href="#">Dólar PTAX →</a></p></div><div class="lado"><div class="num">R$ 5,86</div><svg class="spark" viewBox="0 0 100 30"><path d="M0 18 L20 22 L40 25 L60 24 L75 20 L90 8 L100 4"/></svg></div></article>
+  <article class="resp"><div><h2>Quanto vai subir o aluguel?</h2><p>O IGP-M acumulou <b>5,25%</b> até outubro: um aluguel de R$ 2.000 vai a R$ 2.104,93. Pelo IPCA, R$ 2.092,60. <a href="#">Calcular o meu →</a></p></div><div class="lado"><div class="num">5,25%</div><svg class="spark" viewBox="0 0 100 30"><path d="M0 25 L20 20 L40 14 L60 12 L80 9 L100 10"/></svg></div></article>
+  <article class="resp"><div><h2>Qual é a taxa de desemprego?</h2><p>A desocupação ficou em <b>5,2%</b> no trimestre até setembro de 2026, segundo a PNAD Contínua do IBGE. <a href="#">Série completa →</a></p></div><div class="lado"><div class="num">5,2%</div><svg class="spark" viewBox="0 0 100 30"><path d="M0 6 L20 9 L40 12 L60 14 L80 17 L100 19"/></svg></div></article>
+</div>
+<aside class="lateral">
+  <div class="card"><h3>Calculadoras</h3><ul><li><a href="#">Reajuste de aluguel</a></li><li><a href="#">Correção monetária</a></li><li><a href="#">Simulador de CDI</a></li><li><a href="#">Comparador Selic, CDI e IPCA</a></li></ul></div>
+  <div class="card"><h3>Guias <span class="chip">novo</span></h3><ul><li><a href="#">Reajuste do aluguel passo a passo</a></li><li><a href="#">IPCA × IGP-M × INPC</a></li><li><a href="#">O que é o dólar PTAX</a></li><li><a href="#">Meta Selic e poupança</a></li></ul></div>
+  <div class="card"><h3>Pergunte no ChatGPT</h3><p class="mut" style="margin:0 0 10px">Plugin oficial, com fonte em cada resposta.</p><a class="btn btn-pri" href="#">Abrir o plugin</a></div>
+</aside>
+</main>
+<footer class="rodape"><div class="wrap">Rodapé atual em quatro colunas (Produto, Documentação, Para IAs, Projeto).</div></footer>
+<span class="etiqueta-mock">Opção C · Respostas diretas</span>
+</body></html>

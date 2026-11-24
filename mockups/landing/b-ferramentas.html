@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="pt-BR" data-claro="light" data-theme="light">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Opção B · Ferramentas primeiro | Observatório de Taxas</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@refy-design/web@1.11.0/src/tokens/tokens.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@refy-design/web@1.11.0/src/styles/fonts.css">
+<link rel="stylesheet" href="base.css">
+<script src="tema.js"></script>
+<style>
+.hero{padding:56px 0;display:grid;grid-template-columns:1.25fr 1fr;gap:40px;align-items:center}
+@media(max-width:900px){.hero{grid-template-columns:1fr}}
+.hero h1{font-size:clamp(2rem,4.4vw,3rem);line-height:1.08;font-weight:800}
+.hero p{font-size:1.08rem;margin:16px 0 24px;max-width:34em}
+.selo{display:inline-flex;gap:8px;align-items:center;background:var(--surface-2);border:1px solid var(--line);border-radius:var(--radius-pill);padding:6px 12px;font-size:.82rem;margin-bottom:18px}
+.selo i{width:8px;height:8px;border-radius:50%;background:var(--primary)}
+.atalhos{grid-template-columns:1fr 1fr}
+.atalhos a{display:flex;gap:12px;align-items:center;padding:14px 16px}
+.atalhos .ic{width:40px;height:40px;border-radius:var(--radius-md);background:color-mix(in srgb,var(--primary) 12%,transparent);display:grid;place-items:center;color:var(--primary);font-weight:800;flex:none}
+.atalhos b{color:var(--ink-1);display:block}
+.painel{padding:0}
+.painel .lin{display:grid;grid-template-columns:1fr auto 90px;gap:12px;align-items:center;padding:14px 18px;border-top:1px solid var(--line)}
+.painel .lin:first-of-type{border-top:0}
+.painel .num{font-size:1.25rem}
+.painel .spark{height:26px;margin:0}
+.painel header{padding:14px 18px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between}
+.faixa{background:var(--surface-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0}
+.faixa .wrap{display:flex;gap:32px;flex-wrap:wrap;justify-content:center;font-size:.9rem}
+.tres{grid-template-columns:repeat(3,1fr)}
+@media(max-width:900px){.tres{grid-template-columns:1fr}}
+h2{font-size:1.6rem;font-weight:800;margin-bottom:18px}
+</style>
+</head>
+<body>
+<header class="topo"><div class="wrap">
+  <a class="marca" href="#"><svg viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="#161B18"/><polyline points="6,21 12.5,14.5 18,18 26,8" fill="none" stroke="#D9B54A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>Observatório de Taxas</a>
+  <nav class="menu"><a href="#">Indicadores</a><a href="#">Calculadoras</a><a href="#">Guias</a><a href="#">Para IAs</a></nav>
+  <div class="dir"><a class="btn btn-pri" href="#">Calcular reajuste</a><button class="tema" type="button"></button></div>
+</div></header>
+
+<main>
+<div class="wrap hero">
+  <div>
+    <span class="selo"><i></i>Atualizado hoje às 13:41 com dados do Banco Central</span>
+    <h1>Reajuste, correção e juros com os números oficiais do Banco Central</h1>
+    <p>Calcule o reajuste do aluguel, corrija valores pela inflação e compare Selic, CDI e IPCA. Grátis, sem cadastro e com a fonte de cada número.</p>
+    <div class="grade atalhos">
+      <a class="card" href="#"><span class="ic">%</span><span><b>Reajuste de aluguel</b><span class="mut">IGP-M, IPCA, INPC</span></span></a>
+      <a class="card" href="#"><span class="ic">R$</span><span><b>Correção monetária</b><span class="mut">entre duas datas</span></span></a>
+      <a class="card" href="#"><span class="ic">CDI</span><span><b>Simulador de CDI</b><span class="mut">bruto e líquido</span></span></a>
+      <a class="card" href="#"><span class="ic">⇄</span><span><b>Comparador</b><span class="mut">Selic × CDI × IPCA</span></span></a>
+    </div>
+  </div>
+  <div class="card painel">
+    <header><b style="color:var(--ink-1)">Indicadores hoje</b><a href="#">ver todos os 25 →</a></header>
+    <div class="lin"><span>Meta Selic</span><span class="num">13,75%</span><svg class="spark" viewBox="0 0 100 30"><path d="M0 8 L20 8 L35 6 L50 6 L65 9 L80 12 L100 14"/></svg></div>
+    <div class="lin"><span>IPCA 12 meses</span><span class="num">4,63%</span><svg class="spark" viewBox="0 0 100 30"><path d="M0 20 L15 16 L30 18 L45 12 L60 15 L80 10 L100 11"/></svg></div>
+    <div class="lin"><span>Dólar PTAX</span><span class="num">R$ 5,8573</span><svg class="spark" viewBox="0 0 100 30"><path d="M0 18 L20 22 L40 25 L60 24 L75 20 L90 8 L100 4"/></svg></div>
+    <div class="lin"><span>IGP-M 12 meses</span><span class="num">5,25%</span><svg class="spark" viewBox="0 0 100 30"><path d="M0 25 L20 20 L40 14 L60 12 L80 9 L100 10"/></svg></div>
+    <div class="lin"><span>Desemprego</span><span class="num">5,2%</span><svg class="spark" viewBox="0 0 100 30"><path d="M0 6 L20 9 L40 12 L60 14 L80 17 L100 19"/></svg></div>
+  </div>
+</div>
+
+<div class="faixa"><div class="wrap"><span>✓ Fonte: SGS/Banco Central</span><span>✓ Atualizado a cada 6 horas</span><span>✓ Histórico desde 2015 no Git</span><span>✓ Código aberto (MIT)</span><span>✓ Plugin no ChatGPT</span></div></div>
+
+<section><div class="wrap">
+  <h2>Guias para usar os números</h2>
+  <div class="grade tres">
+    <a class="card" href="#"><span class="rot">Aluguel</span><h3 style="font-size:1.1rem;margin:6px 0">Como calcular o reajuste do aluguel</h3><p class="mut">Índice, mês certo e a conta do fator.</p></a>
+    <a class="card" href="#"><span class="rot">Inflação</span><h3 style="font-size:1.1rem;margin:6px 0">IPCA, INPC, IGP-M e IGP-DI</h3><p class="mut">Diferenças e qual usar.</p></a>
+    <a class="card" href="#"><span class="rot">Juros</span><h3 style="font-size:1.1rem;margin:6px 0">Meta Selic, Selic efetiva e Selic do mês</h3><p class="mut">E como ela define a poupança.</p></a>
+  </div>
+</div></section>
+</main>
+<footer class="rodape"><div class="wrap">Rodapé atual em quatro colunas (Produto, Documentação, Para IAs, Projeto).</div></footer>
+<span class="etiqueta-mock">Opção B · Ferramentas primeiro</span>
+</body></html>
