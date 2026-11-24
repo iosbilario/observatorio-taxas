@@ -56,15 +56,20 @@ body.tema-radar {
 
 .nav-marca {
   flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
   font-size: .78rem;
   font-weight: 600;
   letter-spacing: .16em;
   text-transform: uppercase;
   color: var(--nav-texto-ativo);
   text-decoration: none;
+  border-bottom: 0;
   white-space: nowrap;
 }
 
+.nav-marca-logo { flex: none; display: block; }
 .nav-itens {
   display: flex;
   align-items: center;
@@ -115,7 +120,8 @@ body.tema-radar {
 @media (max-width: 480px) {
   .nav-caixa { gap: .7rem; padding: 0 1rem; }
 
-  .nav-marca { font-size: .66rem; letter-spacing: .1em; }
+  .nav-marca { font-size: .66rem; letter-spacing: .1em; gap: .4rem; }
+  .nav-marca-logo { width: 18px; height: 18px; }
 
   .nav-itens {
     flex: 1 1 auto;
