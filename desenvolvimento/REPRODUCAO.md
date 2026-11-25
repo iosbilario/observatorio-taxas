@@ -62,6 +62,29 @@ Não rode `fetch.py` nem `backfill.py` nesse caso: eles buscariam dados novos.
 - **Verificação:** o workflow `validate.yml` confere, em todo PR, que regenerar
   as páginas a partir de `data/` reproduz o que está commitado.
 
+## Recibos do VAR
+
+Cada recibo do VAR da Economia leva no link o commit dos dados (`?sha=`). O
+VAR carrega as séries **daquele** commit em
+`raw.githubusercontent.com/iosbilario/observatorio-taxas/<sha>/docs/data/`, então
+um recibo aberto meses depois refaz a conta com os mesmos números, mesmo que o
+produtor tenha revisado algum mês.
+
+- **Recibo novo:** o VAR lê `docs/data/versao.json`, que o `monitor.yml` grava
+  depois de cada coleta com o commit dos dados servidos
+  ([`scripts/versao_dados.py`](../scripts/versao_dados.py)), carrega as séries
+  desse commit e grava o mesmo hash no recibo. Se o GitHub não responder, o
+  recibo sai com os dados do próprio site e sem commit ("dados ao vivo").
+- **Link com `?sha=`:** só aquela versão. Se ela não carregar, a página avisa e
+  oferece conferir a mesma afirmação com os dados atuais; nunca troca de versão
+  sozinha. Links antigos sem `sha` abrem com a versão publicada hoje.
+- **Limitação:** o link fixa os dados, não o código. A regra de cálculo é a do
+  VAR publicado ([`docs/var-nucleo.js`](../docs/var-nucleo.js), função
+  `metrica`); o projeto não versiona a regra à parte.
+- **Teste:** `tests/test_var_versao.py` monta duas versões de uma série num
+  repositório temporário (a segunda revisa uma competência antiga) e confere
+  que o recibo da primeira continua dando o resultado original.
+
 ## Reprodução dos cálculos
 
 | Cálculo | Fórmula | Código | Teste |
