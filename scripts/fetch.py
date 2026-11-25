@@ -39,6 +39,13 @@ CHANGELOG_PATH = ROOT / "CHANGELOG.md"
 
 TIMEOUT = 30   # segundos por requisição
 ULTIMOS = 8    # quantos últimos pontos buscar por execução (cobre dias perdidos)
+# Séries que publicam datas futuras (a Meta Selic, 432, vem dia a dia até a
+# próxima reunião do Copom): os ÚLTIMOS 8 pontos caem todos depois de hoje e
+# são descartados, e a série para de receber os dias que já passaram. Para
+# elas, a coleta pede também o intervalo dos últimos JANELA_FUTURA_DIAS dias
+# até hoje. 180 dias cobrem o intervalo entre reuniões (~45 dias) com folga e
+# preenchem, na primeira coleta, o buraco aberto em jul-nov/2026.
+JANELA_FUTURA_DIAS = 180
 
 # Brasil não adota horário de verão desde 2019 -> offset fixo, sem depender de tzdata.
 BRT = timezone(timedelta(hours=-3))
@@ -100,6 +107,20 @@ def fetch_pontos(base_url: str, codigo, *, ultimos=None,
     if not pontos:
         raise ValueError("resposta vazia")
     return pontos
+
+
+def completa_janela(base_url: str, codigo, novos: list[dict], hoje) -> list[dict]:
+    """Se a série devolveu datas futuras, junta o intervalo dos últimos
+    JANELA_FUTURA_DIAS dias até hoje (ver JANELA_FUTURA_DIAS). Sem data
+    futura, devolve `novos` como veio. Uma data aparece uma vez só."""
+    corte = (hoje.year, hoje.month, hoje.day)
+    if not any(_chave_data(p["data"]) > corte for p in novos):
+        return novos
+    ini = (hoje - timedelta(days=JANELA_FUTURA_DIAS)).strftime("%d/%m/%Y")
+    intervalo = fetch_pontos(base_url, codigo, data_inicial=ini, data_final=hoje.strftime("%d/%m/%Y"))
+    por_data = {p["data"]: p for p in intervalo}
+    por_data.update({p["data"]: p for p in novos})
+    return sorted(por_data.values(), key=lambda p: _chave_data(p["data"]))
 
 
 def merge_history(existing: list[dict], novos: list[dict]) -> list[dict]:
@@ -251,6 +272,7 @@ def main() -> None:
         nome = item.get("nome", str(codigo))
         try:
             novos = fetch_pontos(base_url, codigo, ultimos=ULTIMOS)
+            novos = completa_janela(base_url, codigo, novos, hoje)
         except Exception as exc:
             falhas += 1
             print(f"[ERRO] série {codigo} ({nome}): {exc}", file=sys.stderr)
