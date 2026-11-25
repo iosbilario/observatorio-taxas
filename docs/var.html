@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- ===================== Segurança (site estático, sem headers HTTP) ===================== -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data: https://observatoriotaxas.goatcounter.com; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self' 'unsafe-inline' https://gc.zgo.at; connect-src 'self' https://observatoriotaxas.goatcounter.com https://api.github.com https://raw.githubusercontent.com" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data: https://observatoriotaxas.goatcounter.com; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self' 'unsafe-inline' https://gc.zgo.at; connect-src 'self' https://observatoriotaxas.goatcounter.com https://raw.githubusercontent.com" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <script>if (top !== self) { try { top.location = self.location; } catch (e) { document.documentElement.style.display = "none"; } }</script>
 
@@ -181,6 +181,9 @@
     footer .arb { color: var(--papel-70); }
 
     .estado { font-family: "IBM Plex Mono", monospace; color: var(--papel-45); padding: 1.4rem 0; }
+    .estado b { color: var(--papel); }
+    .estado .btn-atual { display: inline-block; margin-top: .8rem; color: var(--cofre); background: var(--carimbo); border-radius: 8px; padding: .6rem 1rem; text-decoration: none; font-weight: 600; }
+    .recibo .row small { font-size: .72rem; font-weight: 400; color: var(--cupom-mut); }
 
     @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto; } }
   </style>
@@ -303,9 +306,11 @@
 <!-- rodape:end -->
 </footer>
 
+  <script src="var-nucleo.js?v=a986b6180c"></script>
   <script>
   "use strict";
   (function () {
+    const V = window.ObsVar;   // docs/var-nucleo.js: versão dos dados, carga e cálculo
     const REPO = "iosbilario/observatorio-taxas";
     const MES = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"];
     const MESC = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"];
@@ -350,9 +355,7 @@
     // Escapa qualquer valor antes de ir para innerHTML — 2ª camada contra XSS.
     const esc = (s) => String(s ?? "—").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
     const num = (v) => parseFloat(String(v).replace(",", "."));
-    const dataToYm = (s) => { const [, m, a] = s.split("/"); return a + "-" + m; };
-    const ymNum = (ym) => { const [y, m] = ym.split("-").map(Number); return y * 12 + (m - 1); };
-    const ymFromNum = (n) => { const y = Math.floor(n / 12), m = (n % 12) + 1; return y + "-" + String(m).padStart(2, "0"); };
+    const ymNum = V.ymNum, ymFromNum = V.ymFromNum;
     const ymLabel = (ym) => { const [y, m] = ym.split("-").map(Number); return MES[m - 1] + "/" + y; };
     const ymLabelC = (ym) => { const [y, m] = ym.split("-").map(Number); return MESC[m - 1] + " de " + y; };
     function nfmt(x, c) { return x.toLocaleString("pt-BR", { minimumFractionDigits: c, maximumFractionDigits: c }); }
@@ -362,7 +365,8 @@
     // ------------------------------ estado ------------------------------ //
     let DATA = {};       // cod -> [{ym, v}] ordenado
     let RANGE = { min: null, max: null };
-    let shaAtual = null; // sha dos dados (para recibo + permalink)
+    let shaAtual = null; // commit dos dados usados no cálculo (recibo + permalink)
+    let modoDados = null; // "fixado" (link com sha), "versionado" (versao.json) ou "ao_vivo"
     let auditado = false; // aberto via permalink com sha
     const st = { s: 433, op: "acum", a1: null, a2: null, b1: null, b2: null, cmp: "maior" };
     const els = {};
@@ -388,29 +392,17 @@
       const sha = p.get("sha"); if (sha && /^[0-9a-f]{7,40}$/.test(sha)) { st.sha = sha; shaAtual = sha; auditado = true; }
     }
 
-    async function carrega(base) {
-      await Promise.all(CODS.map(async (cod) => {
-        try {
-          const r = await fetch(base + cod + "_history.json", { cache: "no-store" });
-          if (!r.ok) throw new Error("HTTP " + r.status);
-          const arr = await r.json();
-          DATA[cod] = arr.map((p) => ({ ym: dataToYm(p.data), v: num(p.valor) }))
-            .filter((p) => isFinite(p.v)).sort((a, b) => ymNum(a.ym) - ymNum(b.ym));
-        } catch (e) { DATA[cod] = []; }
-      }));
+    // Carga: sempre os dados de UM commit (o do link, ou o publicado em
+    // data/versao.json), e o recibo grava esse mesmo commit. Ver var-nucleo.js.
+    async function lerJson(url) {
+      const r = await fetch(url, { cache: "no-store" });
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      return r.json();
+    }
+    function defineRange() {
       let lo = Infinity, hi = -Infinity;
       for (const cod of CODS) for (const p of DATA[cod]) { const n = ymNum(p.ym); if (n < lo) lo = n; if (n > hi) hi = n; }
       RANGE = { min: ymFromNum(lo), max: ymFromNum(hi) };
-    }
-
-    async function buscaSha() {
-      try {
-        const r = await fetch("https://api.github.com/repos/" + REPO + "/commits?path=docs/data&per_page=1",
-          { headers: { "Accept": "application/vnd.github+json" } });
-        if (!r.ok) throw new Error("HTTP " + r.status);
-        const j = await r.json();
-        return (j[0] && j[0].sha) ? j[0].sha : null;
-      } catch (e) { return null; }
     }
 
     function ensureDefaults() {
@@ -419,27 +411,22 @@
       // silenciosamente a alegação para outra data.
       const hi = ymNum(RANGE.max), lo = ymNum(RANGE.min);
       const clamp = (ym) => ymFromNum(Math.max(lo, Math.min(hi, ymNum(ym))));
-      // Exemplo padrão já mostra a comparação de períodos longos (dados desde 2015).
-      if (!st.a1 || !st.a2) { st.a1 = clamp("2019-01"); st.a2 = clamp("2022-12"); }
-      if (!st.b1 || !st.b2) { st.b1 = clamp("2023-01"); st.b2 = RANGE.max; }
+      // Sem período na URL: dois intervalos seguidos de mesma duração (48 meses),
+      // o segundo terminando no último mês com dado. Períodos diferentes
+      // continuam possíveis pela frase e pelo link.
+      const temA = st.a1 && st.a2, temB = st.b1 && st.b2;
+      if (!temA && !temB) Object.assign(st, V.intervaloComparavel(RANGE.max, 48));
+      else if (!temB) {
+        const n = V.mesesEntre(st.a1, st.a2);
+        st.b2 = RANGE.max; st.b1 = ymFromNum(Math.max(lo, ymNum(RANGE.max) - n + 1));
+      } else if (!temA) {
+        const n = V.mesesEntre(st.b1, st.b2), ini = Math.min(ymNum(st.b1), ymNum(st.b2));
+        st.a2 = clamp(ymFromNum(ini - 1)); st.a1 = clamp(ymFromNum(ini - n));
+      }
     }
 
     // ------------------------------ cálculo ------------------------------ //
-    function metrica(cod, op, p1, p2) {
-      const lo = Math.min(ymNum(p1), ymNum(p2)), hi = Math.max(ymNum(p1), ymNum(p2));
-      const pts = DATA[cod].filter((p) => { const n = ymNum(p.ym); return n >= lo && n <= hi; });
-      if (!pts.length) return { ok: false };
-      const vals = pts.map((p) => p.v);
-      if (op === "acum") { let f = 1; for (const v of vals) f *= 1 + v / 100; return { ok: true, tipo: "pct", metric: (f - 1) * 100 }; }
-      if (op === "media") {
-        const m = vals.reduce((a, b) => a + b, 0) / vals.length;
-        return { ok: true, tipo: SERIES[cod].nat === "cambio" ? "cotacao" : "nivel", metric: m };
-      }
-      // ponta
-      const a = vals[0], z = vals[vals.length - 1];
-      if (SERIES[cod].nat === "cambio") return { ok: true, tipo: "pct", metric: (z / a - 1) * 100, de: a, ate: z };
-      return { ok: true, tipo: "delta", metric: z - a, de: a, ate: z };
-    }
+    function metrica(cod, op, p1, p2) { return V.metrica(DATA[cod], SERIES[cod].nat, op, p1, p2); }
 
     function fmtMetric(cod, op, r) {
       if (r.tipo === "pct") return (op === "ponta" && r.metric >= 0 ? "+" : "") + nfmt(r.metric, 2) + "%";
@@ -571,6 +558,10 @@
       const agora = new Date();
       const dh = agora.toLocaleString("pt-BR", { day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit", timeZone: "America/Sao_Paulo" });
       const hashTxt = shaAtual ? shaAtual.slice(0, 7) : null;
+      const linhaHash = hashTxt
+        ? `dados do commit <a href="https://github.com/${esc(REPO)}/commit/${esc(shaAtual)}">${esc(hashTxt)}</a>`
+        : "dados ao vivo do site, sem commit fixado (o GitHub não respondeu)";
+      const linhaRegra = hashTxt ? "O link fixa os dados deste commit. A regra de cálculo é a do VAR publicado." : "";
 
       if (!mA.ok || !mB.ok) {
         const qual = !mA.ok && !mB.ok ? "nos dois períodos" : (!mA.ok ? "no primeiro período" : "no segundo período");
@@ -590,26 +581,26 @@
       const vA = fmtMetric(cod, op, mA), vB = fmtMetric(cod, op, mB);
 
       const selo = auditado
-        ? `<div class="selo">recibo auditado contra o snapshot ${esc(hashTxt)}</div>`
+        ? `<div class="selo">recibo refeito com os dados do commit ${esc(hashTxt)}</div>`
         : "";
-      const linhaHash = hashTxt ? `commit dos dados: ${esc(hashTxt)}` : "snapshot ao vivo (sem hash)";
+      const durA = V.duracaoTxt(mA), durB = V.duracaoTxt(mB);
 
       els.recibo.innerHTML =
         `<h2>VAR da Economia</h2><p class="sub-h">recibo verificável</p>
          <p class="claim">${esc(claim)}</p>
          <hr>
-         <div class="row"><span class="k">${esc(ymLabel(st.a1))} a ${esc(ymLabel(st.a2))}</span><span class="v metric">${esc(vA)}</span></div>
-         <div class="row"><span class="k">${esc(ymLabel(st.b1))} a ${esc(ymLabel(st.b2))}</span><span class="v metric">${esc(vB)}</span></div>
+         <div class="row"><span class="k">${esc(ymLabel(st.a1))} a ${esc(ymLabel(st.a2))}<br><small>${esc(durA)}</small></span><span class="v metric">${esc(vA)}</span></div>
+         <div class="row"><span class="k">${esc(ymLabel(st.b1))} a ${esc(ymLabel(st.b2))}<br><small>${esc(durB)}</small></span><span class="v metric">${esc(vB)}</span></div>
          <div class="veredito"><span class="carimbo-v ${esc(vClass)}">${esc(vTxt)}</span></div>
          ${iguais ? `<p class="meta-l" style="text-align:center">Os dois valores são iguais.</p>` : ""}
          <hr>
          <p class="meta-l">Regra: ${esc(regraTxt(cod, op))}<br>
          Fonte: ${esc(fonteTxt)} (${esc(S.nome)}).<br>
          Emitido em ${esc(dh)} (Brasília).<br>
-         ${linhaHash}</p>
+         ${linhaHash}${linhaRegra ? "<br>" + esc(linhaRegra) : ""}</p>
          ${selo}`;
 
-      ultimo = { claim, vA, vB, vTxt, conf: (conf && !iguais), regra: regraTxt(cod, op), fonte: fonteTxt, nome: S.nome, dh, hashTxt, auditado, pa: `${ymLabel(st.a1)} a ${ymLabel(st.a2)}`, pb: `${ymLabel(st.b1)} a ${ymLabel(st.b2)}` };
+      ultimo = { claim, vA, vB, vTxt, conf: (conf && !iguais), regra: regraTxt(cod, op), fonte: fonteTxt, nome: S.nome, dh, hashTxt, auditado, regraNota: linhaRegra, pa: `${ymLabel(st.a1)} a ${ymLabel(st.a2)} (${durA})`, pb: `${ymLabel(st.b1)} a ${ymLabel(st.b2)} (${durB})` };
       injetaJsonLd(claim, (conf && !iguais), vTxt);
     }
 
@@ -681,8 +672,9 @@
       wrap(ctx, "Regra: " + ultimo.regra, (W - 2 * PAD) * sc, 9 * sc).forEach((ln) => push(ln, { size: 9, color: "#6b6656", gap: 3 }));
       push("Fonte: " + ultimo.fonte, { size: 9, color: "#6b6656", gap: 3 });
       push("Emitido em " + ultimo.dh + " (Brasília)", { size: 9, color: "#6b6656", gap: 3 });
-      push(ultimo.hashTxt ? "commit dos dados: " + ultimo.hashTxt : "snapshot ao vivo (sem hash)", { size: 9, color: "#6b6656", gap: 3 });
-      if (ultimo.auditado) push("auditado contra o snapshot " + ultimo.hashTxt, { size: 9, color: "#7d621a", gap: 3 });
+      push(ultimo.hashTxt ? "dados do commit " + ultimo.hashTxt : "dados ao vivo, sem commit fixado", { size: 9, color: "#6b6656", gap: 3 });
+      if (ultimo.regraNota) wrap(ctx, ultimo.regraNota, (W - 2 * PAD) * sc, 9 * sc).forEach((ln) => push(ln, { size: 9, color: "#6b6656", gap: 3 }));
+      if (ultimo.auditado) push("refeito com os dados do commit " + ultimo.hashTxt, { size: 9, color: "#7d621a", gap: 3 });
 
       // mede altura
       let y = PAD;
@@ -737,13 +729,12 @@
       els.btnPng = document.getElementById("btnPng");
 
       parseParams();
-      const base = st.sha
-        ? `https://raw.githubusercontent.com/${REPO}/${st.sha}/docs/data/`
-        : "data/";
       try {
-        await carrega(base);
-        if (!CODS.some((c) => DATA[c].length)) throw new Error("sem séries");
-        if (!st.sha) shaAtual = await buscaSha();   // hash p/ recibo + permalink
+        const r = await V.carregaRecibo({ lerJson, repo: REPO, localBase: "data/", cods: CODS, shaPedido: st.sha || null });
+        if (r.erro === "versao_indisponivel") { avisaVersaoIndisponivel(r.sha); return; }
+        if (r.erro) throw new Error("sem séries");
+        DATA = r.dados; shaAtual = r.sha; modoDados = r.modo;
+        defineRange();
         ensureDefaults();
         els.estado.remove();
         renderFrase();
@@ -752,10 +743,22 @@
         els.btnLink.addEventListener("click", copiaLink);
         els.btnPng.addEventListener("click", baixaPng);
       } catch (e) {
-        els.estado.innerHTML = `Não foi possível carregar os dados (${e.message}). ` +
+        els.estado.innerHTML = `Não foi possível carregar os dados (${esc(e.message)}). ` +
           `Sirva a pasta <code>docs/</code> via HTTP (ex.: <code>python -m http.server -d docs</code>).`;
         console.error(e);
       }
+    }
+
+    // Link com ?sha= cuja versão não carregou: avisa e deixa a pessoa decidir.
+    // O recibo histórico nunca troca de versão sozinho.
+    function avisaVersaoIndisponivel(sha) {
+      els.conferir.hidden = true;
+      const p = new URLSearchParams(location.search); p.delete("sha");
+      const atual = location.pathname + (p.toString() ? "?" + p.toString() : "");
+      els.estado.innerHTML =
+        `<b>A versão dos dados deste recibo (commit ${esc(sha.slice(0, 7))}) não está disponível agora.</b> ` +
+        `O GitHub pode estar fora do ar, ou o commit não existe. O recibo original não foi refeito.` +
+        `<br><a class="btn-atual" href="${esc(atual)}">Conferir a mesma afirmação com os dados atuais</a>`;
     }
     if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
   })();

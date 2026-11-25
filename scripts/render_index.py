@@ -170,11 +170,26 @@ def _mes(dt: datetime) -> str:
     return f"{MESC[dt.month - 1]} de {dt.year}"
 
 
+def versao_dados() -> dict | None:
+    """docs/data/versao.json: o commit que gravou os dados servidos pelo site
+    (scripts/versao_dados.py, rodado pelo monitor depois da coleta)."""
+    p = DATA_DIR / "versao.json"
+    try:
+        v = json.loads(p.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return None
+    sha = str(v.get("sha", ""))
+    return v if re.fullmatch(r"[0-9a-f]{40}", sha) else None
+
+
 def bloco_carimbo() -> str:
-    """Linha acima do título: data, hora da coleta e commit."""
-    hora, sha = hora_coleta(), git_sha()
+    """Linha acima do título: data, hora da coleta e o commit dos dados.
+
+    O hash é o do commit que gravou os dados exibidos (versao.json), não o do
+    commit que publicou o HTML; o link abre esse commit no GitHub."""
+    hora, v = hora_coleta(), versao_dados()
     return (f'<p class="carimbo-linha"><span id="hoje">{esc(data_extenso())}</span> · coletado às {esc(hora)} · '
-            + (f'commit <a href="{REPO_URL}/commits/main">{esc(sha)}</a> · ' if sha else "")
+            + (f'dados do commit <a href="{REPO_URL}/commit/{v["sha"]}">{esc(v["curto"])}</a> · ' if v else "")
             + 'fonte SGS/BACEN</p>')
 
 
@@ -270,14 +285,21 @@ def acumulado(pts: list[dict], a: str, z: str) -> tuple[float, int]:
     return (fator - 1.0) * 100.0, n
 
 
+MESES_EXEMPLO_VAR = 48   # duração de cada período no recibo de exemplo da capa
+
+
 def bloco_var() -> str:
     pts = load_history(433)  # IPCA variação mensal
     if not pts:
         return ""
+    # Dois períodos seguidos de mesma duração, o segundo terminando no último
+    # mês com dado (o mesmo default do VAR: var-nucleo.js, intervaloComparavel).
     ult = pts[-1]["dt"].strftime("%Y-%m")
-    a1, a2, b1, b2 = "2019-01", "2022-12", "2023-01", ult
-    ac_a, _ = acumulado(pts, a1, a2)
-    ac_b, _ = acumulado(pts, b1, b2)
+    n = MESES_EXEMPLO_VAR
+    b2n = _ym_num(ult)
+    a1, a2, b1, b2 = _ym_from(b2n - 2 * n + 1), _ym_from(b2n - n), _ym_from(b2n - n + 1), ult
+    ac_a, obs_a = acumulado(pts, a1, a2)
+    ac_b, obs_b = acumulado(pts, b1, b2)
     conf = ac_a > ac_b
     vered = "CONFERE" if conf else "NÃO CONFERE"
     vcls = "ok" if conf else "no"
@@ -288,16 +310,22 @@ def bloco_var() -> str:
 
     claim = (f"O IPCA acumulado entre {rot(a1)} e {rot(a2)} foi maior "
              f"do que entre {rot(b1)} e {rot(b2)}.")
-    perma = (f"var.html?s=433&op=acum&a1={a1}&a2={a2}&b1={b1}&b2={b2}&cmp=maior")
+    v = versao_dados()
+    perma = (f"var.html?s=433&amp;op=acum&amp;a1={a1}&amp;a2={a2}&amp;b1={b1}&amp;b2={b2}&amp;cmp=maior"
+             + (f"&amp;sha={v['sha']}" if v else ""))
+
+    def dur(obs):
+        return f"{n} meses" + (f", {obs} com dado" if obs != n else "")
 
     return (
         '<div class="recibo-mini">'
         '<p class="rc-h">RECIBO · VAR DA ECONOMIA</p>'
         f'<p class="rc-claim">{esc(claim)}</p>'
-        f'<div class="rc-row"><span>{esc(rot(a1))} a {esc(rot(a2))}</span><b>{fmt_num(ac_a)}%</b></div>'
-        f'<div class="rc-row"><span>{esc(rot(b1))} a {esc(rot(b2))}</span><b>{fmt_num(ac_b)}%</b></div>'
+        f'<div class="rc-row"><span>{esc(rot(a1))} a {esc(rot(a2))} · {esc(dur(obs_a))}</span><b>{fmt_num(ac_a)}%</b></div>'
+        f'<div class="rc-row"><span>{esc(rot(b1))} a {esc(rot(b2))} · {esc(dur(obs_b))}</span><b>{fmt_num(ac_b)}%</b></div>'
         f'<p class="rc-vered {vcls}">{vered}</p>'
-        '</div>'
+        + (f'<p class="rc-h">dados do commit {esc(v["curto"])}</p>' if v else "")
+        + '</div>'
         f'<a class="btn-link" href="{perma}">Abrir e auditar este recibo no VAR →</a>'
     )
 
@@ -409,7 +437,9 @@ def _hoje_brt() -> str:
 
 # Partes do HTML que mudam sem mudar o conteúdo (o hash do commit no carimbo
 # do boletim muda a cada commit do robô, mesmo sem dado novo).
-_RUIDO = [re.compile(r'commit <a href="[^"]*">[0-9a-f]{6,40}</a>')]
+_RUIDO = [re.compile(r'commit <a href="[^"]*">[0-9a-f]{6,40}</a>'),
+          re.compile(r'(?:&amp;|&)sha=[0-9a-f]{40}'),
+          re.compile(r'dados do commit [0-9a-f]{7}</p>')]
 
 
 def impressao_digital(arquivo: Path) -> str:
