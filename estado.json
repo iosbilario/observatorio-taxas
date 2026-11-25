@@ -1,6 +1,6 @@
 {
  "urls": {
-  "https://observatoriodetaxas.tec.br/": "3183b0738d3fa88e",
+  "https://observatoriodetaxas.tec.br/": "17866d767ccaf33e",
   "https://observatoriodetaxas.tec.br/apoie/": "36b7c8caf6249415",
   "https://observatoriodetaxas.tec.br/comparador/": "d4559c12dc368809",
   "https://observatoriodetaxas.tec.br/correcao/": "6302ecd3a712a281",
@@ -42,6 +42,7 @@
   "https://observatoriodetaxas.tec.br/indicadores/tjlp/": "a265eed6a00e69f3",
   "https://observatoriodetaxas.tec.br/indicadores/tr/": "b2bec1010bc54576",
   "https://observatoriodetaxas.tec.br/mcp/": "060ea9cf8fcb33d2",
+  "https://observatoriodetaxas.tec.br/mudancas/": "d0efe8be583a622f",
   "https://observatoriodetaxas.tec.br/privacidade/": "f4a21addde965a77",
   "https://observatoriodetaxas.tec.br/reajuste/": "4919da056646fb1f",
   "https://observatoriodetaxas.tec.br/reajuste/igpdi-abril-2016/": "1cf27d7b736a74de",
@@ -573,6 +574,6 @@
   "https://observatoriodetaxas.tec.br/simulador-cdi/": "3fdb20084a5b573e",
   "https://observatoriodetaxas.tec.br/sobre/": "61c467f09308096b",
   "https://observatoriodetaxas.tec.br/termos/": "ee8314d0ca6843ac",
-  "https://observatoriodetaxas.tec.br/var.html": "442915deea850a72"
+  "https://observatoriodetaxas.tec.br/var.html": "f056cbc2366161de"
  }
 }
