@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data: https://observatoriotaxas.goatcounter.com; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self' 'unsafe-inline' https://gc.zgo.at; connect-src 'self' https://observatoriotaxas.goatcounter.com"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data: https://observatoriotaxas.goatcounter.com; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self' 'unsafe-inline' https://gc.zgo.at; connect-src 'self' https://observatoriotaxas.goatcounter.com https://raw.githubusercontent.com"/>
 <meta name="referrer" content="strict-origin-when-cross-origin"/>
 <script>if (top !== self) { try { top.location = self.location; } catch (e) { document.documentElement.style.display = "none"; } }</script>
 <title>INPC de junho de 2018: 1,43% no mês e 3,53% em 12 meses</title>
@@ -92,6 +92,10 @@ dl.ficha dd{margin:0;color:var(--papel-70)}
 caption{caption-side:top;text-align:left;color:var(--papel-45);font-size:.84rem;padding:0 0 .5rem}
 .faq h3{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:1rem;margin:1rem 0 .3rem}
 .faq p{margin:0 0 .4rem;color:var(--papel-70)}
+.copiar-demo{margin-top:10px;background:transparent;color:var(--papel);border:1px solid var(--linha)}
+.copiar-demo:hover{border-color:var(--carimbo)}
+.demo-texto{width:100%;margin-top:8px;background:var(--campo);color:var(--papel);border:1px solid var(--linha);border-radius:8px;padding:.6rem .7rem;font:inherit;font-size:.88rem}
+.conferencia{border-left:3px solid var(--carimbo);padding:.4rem .7rem;margin:.2rem 0 .8rem}
 nav.vizinhos{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin:.2rem 0 .8rem;font-family:"IBM Plex Mono",monospace;font-size:.82rem}
 </style>
 <script data-goatcounter="https://observatoriotaxas.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
@@ -147,14 +151,21 @@ ao fator de reajuste <b>1,035277</b>.</p>
 </div>
 <section class="card leitura" aria-labelledby="leitura-t"><h2 id="leitura-t">Leitura do mês</h2><p>O acumulado em 12 meses subiu de 1,76% em maio de 2018 para 3,53% em junho de 2018, uma alta de 1,77 pontos percentuais. A conta muda porque a variação que entrou na janela, 1,43% em junho de 2018, foi maior do que a que saiu, -0,30% em junho de 2017. É o 3º mês seguido de alta do acumulado.</p><p>Um ano antes, em junho de 2017, o acumulado em 12 meses era de 2,56%, 0,97 pontos percentuais abaixo do nível atual.</p><p>Entre os 11 meses de junho com dados desde 2016, é o 7º maior acumulado em 12 meses.</p><p>A variação de 1,43% no mês é a maior desde janeiro de 2016, quando o INPC marcou 1,51%.</p><p>Na janela de julho de 2017 a junho de 2018, o mês de maior variação foi junho de 2018 (1,43%) e o de menor foi agosto de 2017 (-0,03%). 2 dos 12 meses tiveram variação negativa.</p><p>No mesmo mês, o acumulado em 12 meses dos outros índices foi: IPCA 4,39%, IGP-M 6,94%, IGP-DI 7,79%. Num aluguel de R$ 2.000,00, o reajuste pelo INPC leva a R$ 2.070,55, R$ 17,26 a menos do que pelo IPCA (R$ 2.087,82).</p><p class="mut">Texto gerado a partir das variações mensais da série 188 do SGS. Os números mudam se o produtor revisar algum mês.</p></section>
 
-<div class="card">
+<div class="card" id="calcule">
 <h2>Calcule o seu reajuste</h2>
-<form id="calc-form">
+<p class="mut conferencia" data-demo-conferencia role="status" hidden></p>
+<form id="calc-form" data-demonstrativo data-chave="inpc" data-ref="2018-06" data-indice="INPC"
+ data-produtor="IBGE" data-codigo="188" data-fator="1.035277458103274" data-base="../../">
 <label for="valor">Valor atual do contrato (R$)</label>
-<input id="valor" type="number" inputmode="decimal" step="0.01" placeholder="2000,00"/>
+<input id="valor" type="text" inputmode="decimal" autocomplete="off" placeholder="2.000,00"/>
 <button type="submit">Calcular reajuste</button>
 </form>
-<p class="res" id="res" aria-live="polite"></p>
+<p class="res" id="res" data-demo-res aria-live="polite"></p>
+<button type="button" class="copiar-demo" data-demo-copiar hidden>Copiar demonstrativo</button>
+<p class="mut" data-demo-status role="status" aria-live="polite"></p>
+<textarea class="demo-texto" data-demo-texto rows="9" readonly hidden aria-label="Texto do demonstrativo"></textarea>
+<p class="mut">O demonstrativo traz o link desta página com a versão dos dados, sem o valor do contrato: quem
+recebe digita o valor e confere os centavos.</p>
 <p class="mut">Precisa atualizar um valor entre duas datas quaisquer? Use a
 <a href="../../correcao/inpc/">correção monetária pelo INPC</a>.</p>
 </div>
@@ -192,17 +203,7 @@ ao fator de reajuste <b>1,035277</b>.</p>
 <!-- anuncio:reajuste-mes:inicio --><!-- anuncio:reajuste-mes:fim -->
 
 <div class="card"><h2>Outros índices e meses</h2><p class="grupo-rot">Junho de 2018 em outros índices</p><p class="pills"><a class="pill" href="../ipca-junho-2018/" title="IPCA · junho de 2018">IPCA</a><a class="pill" href="../igpm-junho-2018/" title="IGP-M · junho de 2018">IGP-M</a><a class="pill" href="../igpdi-junho-2018/" title="IGP-DI · junho de 2018">IGP-DI</a></p><p class="grupo-rot">INPC em junho de outros anos</p><p class="pills"><a class="pill" href="../inpc-junho-2026/" title="INPC · junho de 2026">jun/2026</a><a class="pill" href="../inpc-junho-2025/" title="INPC · junho de 2025">jun/2025</a><a class="pill" href="../inpc-junho-2024/" title="INPC · junho de 2024">jun/2024</a><a class="pill" href="../inpc-junho-2023/" title="INPC · junho de 2023">jun/2023</a><a class="pill" href="../inpc-junho-2022/" title="INPC · junho de 2022">jun/2022</a><a class="pill" href="../inpc-junho-2021/" title="INPC · junho de 2021">jun/2021</a><a class="pill" href="../inpc-junho-2020/" title="INPC · junho de 2020">jun/2020</a><a class="pill" href="../inpc-junho-2019/" title="INPC · junho de 2019">jun/2019</a><a class="pill" href="../inpc-junho-2017/" title="INPC · junho de 2017">jun/2017</a><a class="pill" href="../inpc-junho-2016/" title="INPC · junho de 2016">jun/2016</a></p><p class="mut"><a href="../">Todos os meses do INPC na página de reajuste</a></p></div>
-<script>
-const FATOR=1.035277458103274;
-function calc(){
-  const v=parseFloat(document.getElementById('valor').value.replace(',','.'));
-  if(!v){document.getElementById('res').textContent='Informe o valor atual.';return;}
-  const n=v*FATOR;
-  document.getElementById('res').innerHTML='Novo valor: <b>R$ '+n.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})+'</b> (aumento de R$ '+(n-v).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})+')';
-}
-// Sem onsubmit inline: handler inline não passa numa CSP por hash (ver desenvolvimento/ADSENSE.md).
-document.getElementById('calc-form').addEventListener('submit',function(ev){ev.preventDefault();calc();});
-</script>
+<script src="../../demonstrativo.js?v=9e34bd3d38"></script>
 
 </main>
 <footer>Dados: IPCA e INPC produzidos pelo IBGE; IGP-M e IGP-DI produzidos pela FGV IBRE. O Observatório obtém as séries na <a href="https://www3.bcb.gov.br/sgspub/">API pública do SGS</a> do Banco Central do Brasil, que as redistribui, e calcula acumulados e fatores a partir das variações mensais publicadas. Série histórica versionada e auditável no

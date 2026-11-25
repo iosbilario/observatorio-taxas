@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data: https://observatoriotaxas.goatcounter.com; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self' 'unsafe-inline' https://gc.zgo.at; connect-src 'self' https://observatoriotaxas.goatcounter.com"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data: https://observatoriotaxas.goatcounter.com; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self' 'unsafe-inline' https://gc.zgo.at; connect-src 'self' https://observatoriotaxas.goatcounter.com https://raw.githubusercontent.com"/>
 <meta name="referrer" content="strict-origin-when-cross-origin"/>
 <script>if (top !== self) { try { top.location = self.location; } catch (e) { document.documentElement.style.display = "none"; } }</script>
 <title>IGP-M de março de 2019: 1,26% no mês e 8,28% em 12 meses</title>
@@ -92,6 +92,10 @@ dl.ficha dd{margin:0;color:var(--papel-70)}
 caption{caption-side:top;text-align:left;color:var(--papel-45);font-size:.84rem;padding:0 0 .5rem}
 .faq h3{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:1rem;margin:1rem 0 .3rem}
 .faq p{margin:0 0 .4rem;color:var(--papel-70)}
+.copiar-demo{margin-top:10px;background:transparent;color:var(--papel);border:1px solid var(--linha)}
+.copiar-demo:hover{border-color:var(--carimbo)}
+.demo-texto{width:100%;margin-top:8px;background:var(--campo);color:var(--papel);border:1px solid var(--linha);border-radius:8px;padding:.6rem .7rem;font:inherit;font-size:.88rem}
+.conferencia{border-left:3px solid var(--carimbo);padding:.4rem .7rem;margin:.2rem 0 .8rem}
 nav.vizinhos{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin:.2rem 0 .8rem;font-family:"IBM Plex Mono",monospace;font-size:.82rem}
 </style>
 <script data-goatcounter="https://observatoriotaxas.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
@@ -147,14 +151,21 @@ ao fator de reajuste <b>1,082786</b>.</p>
 </div>
 <section class="card leitura" aria-labelledby="leitura-t"><h2 id="leitura-t">Leitura do mês</h2><p>O acumulado em 12 meses subiu de 7,62% em fevereiro de 2019 para 8,28% em março de 2019, uma alta de 0,66 pontos percentuais. A conta muda porque a variação que entrou na janela, 1,26% em março de 2019, foi maior do que a que saiu, 0,64% em março de 2018. É o 2º mês seguido de alta do acumulado.</p><p>Um ano antes, em março de 2018, o acumulado em 12 meses era de 0,20%, 8,08 pontos percentuais abaixo do nível atual.</p><p>Entre os 11 meses de março com dados desde 2016, é o 5º maior acumulado em 12 meses.</p><p>Na janela de abril de 2018 a março de 2019, o mês de maior variação foi junho de 2018 (1,87%) e o de menor foi dezembro de 2018 (-1,08%). 2 dos 12 meses tiveram variação negativa.</p><p>No mesmo mês, o acumulado em 12 meses dos outros índices foi: IPCA 4,58%, INPC 4,67%, IGP-DI 8,28%. Num aluguel de R$ 2.000,00, o reajuste pelo IGP-M leva a R$ 2.165,57, R$ 74,07 a mais do que pelo IPCA (R$ 2.091,51).</p><p class="mut">Texto gerado a partir das variações mensais da série 189 do SGS. Os números mudam se o produtor revisar algum mês.</p></section>
 
-<div class="card">
+<div class="card" id="calcule">
 <h2>Calcule o seu reajuste</h2>
-<form id="calc-form">
+<p class="mut conferencia" data-demo-conferencia role="status" hidden></p>
+<form id="calc-form" data-demonstrativo data-chave="igpm" data-ref="2019-03" data-indice="IGP-M"
+ data-produtor="FGV IBRE" data-codigo="189" data-fator="1.0827863584758095" data-base="../../">
 <label for="valor">Valor atual do contrato (R$)</label>
-<input id="valor" type="number" inputmode="decimal" step="0.01" placeholder="2000,00"/>
+<input id="valor" type="text" inputmode="decimal" autocomplete="off" placeholder="2.000,00"/>
 <button type="submit">Calcular reajuste</button>
 </form>
-<p class="res" id="res" aria-live="polite"></p>
+<p class="res" id="res" data-demo-res aria-live="polite"></p>
+<button type="button" class="copiar-demo" data-demo-copiar hidden>Copiar demonstrativo</button>
+<p class="mut" data-demo-status role="status" aria-live="polite"></p>
+<textarea class="demo-texto" data-demo-texto rows="9" readonly hidden aria-label="Texto do demonstrativo"></textarea>
+<p class="mut">O demonstrativo traz o link desta página com a versão dos dados, sem o valor do contrato: quem
+recebe digita o valor e confere os centavos.</p>
 <p class="mut">Precisa atualizar um valor entre duas datas quaisquer? Use a
 <a href="../../correcao/igpm/">correção monetária pelo IGP-M</a>.</p>
 </div>
@@ -192,17 +203,7 @@ ao fator de reajuste <b>1,082786</b>.</p>
 <!-- anuncio:reajuste-mes:inicio --><!-- anuncio:reajuste-mes:fim -->
 
 <div class="card"><h2>Outros índices e meses</h2><p class="grupo-rot">Março de 2019 em outros índices</p><p class="pills"><a class="pill" href="../ipca-março-2019/" title="IPCA · março de 2019">IPCA</a><a class="pill" href="../inpc-março-2019/" title="INPC · março de 2019">INPC</a><a class="pill" href="../igpdi-março-2019/" title="IGP-DI · março de 2019">IGP-DI</a></p><p class="grupo-rot">IGP-M em março de outros anos</p><p class="pills"><a class="pill" href="../igpm-março-2026/" title="IGP-M · março de 2026">mar/2026</a><a class="pill" href="../igpm-março-2025/" title="IGP-M · março de 2025">mar/2025</a><a class="pill" href="../igpm-março-2024/" title="IGP-M · março de 2024">mar/2024</a><a class="pill" href="../igpm-março-2023/" title="IGP-M · março de 2023">mar/2023</a><a class="pill" href="../igpm-março-2022/" title="IGP-M · março de 2022">mar/2022</a><a class="pill" href="../igpm-março-2021/" title="IGP-M · março de 2021">mar/2021</a><a class="pill" href="../igpm-março-2020/" title="IGP-M · março de 2020">mar/2020</a><a class="pill" href="../igpm-março-2018/" title="IGP-M · março de 2018">mar/2018</a><a class="pill" href="../igpm-março-2017/" title="IGP-M · março de 2017">mar/2017</a><a class="pill" href="../igpm-março-2016/" title="IGP-M · março de 2016">mar/2016</a></p><p class="mut"><a href="../">Todos os meses do IGP-M na página de reajuste</a></p></div>
-<script>
-const FATOR=1.0827863584758095;
-function calc(){
-  const v=parseFloat(document.getElementById('valor').value.replace(',','.'));
-  if(!v){document.getElementById('res').textContent='Informe o valor atual.';return;}
-  const n=v*FATOR;
-  document.getElementById('res').innerHTML='Novo valor: <b>R$ '+n.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})+'</b> (aumento de R$ '+(n-v).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})+')';
-}
-// Sem onsubmit inline: handler inline não passa numa CSP por hash (ver desenvolvimento/ADSENSE.md).
-document.getElementById('calc-form').addEventListener('submit',function(ev){ev.preventDefault();calc();});
-</script>
+<script src="../../demonstrativo.js?v=9e34bd3d38"></script>
 
 </main>
 <footer>Dados: IPCA e INPC produzidos pelo IBGE; IGP-M e IGP-DI produzidos pela FGV IBRE. O Observatório obtém as séries na <a href="https://www3.bcb.gov.br/sgspub/">API pública do SGS</a> do Banco Central do Brasil, que as redistribui, e calcula acumulados e fatores a partir das variações mensais publicadas. Série histórica versionada e auditável no

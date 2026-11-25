@@ -335,7 +335,7 @@ class TestDadosEFormulas(unittest.TestCase):
             self.assertRegex(html, r'<p class="big[^"]*">' + re.escape(v["acumulado"]) + "</p>", chave)
             self.assertIn(f"<b>{v['fator']}</b>", html, chave)
             if "fator_js" in v:
-                self.assertIn(f"const FATOR={v['fator_js']};", html, chave)
+                self.assertIn(f'data-fator="{v["fator_js"]}"', html, chave)
 
     def test_correcao_mostra_ultimos_12_meses(self):
         """O destaque de correcao/<índice> é o acumulado das 12 variações mais
