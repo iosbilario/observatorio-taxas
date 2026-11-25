@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data: https://observatoriotaxas.goatcounter.com; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self' 'unsafe-inline' https://gc.zgo.at; connect-src 'self' https://observatoriotaxas.goatcounter.com"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data: https://observatoriotaxas.goatcounter.com; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self' 'unsafe-inline' https://gc.zgo.at; connect-src 'self' https://observatoriotaxas.goatcounter.com https://raw.githubusercontent.com"/>
 <meta name="referrer" content="strict-origin-when-cross-origin"/>
 <script>if (top !== self) { try { top.location = self.location; } catch (e) { document.documentElement.style.display = "none"; } }</script>
 <title>IPCA de maio de 2021: 0,83% no mês e 8,06% em 12 meses</title>
@@ -92,6 +92,10 @@ dl.ficha dd{margin:0;color:var(--papel-70)}
 caption{caption-side:top;text-align:left;color:var(--papel-45);font-size:.84rem;padding:0 0 .5rem}
 .faq h3{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:1rem;margin:1rem 0 .3rem}
 .faq p{margin:0 0 .4rem;color:var(--papel-70)}
+.copiar-demo{margin-top:10px;background:transparent;color:var(--papel);border:1px solid var(--linha)}
+.copiar-demo:hover{border-color:var(--carimbo)}
+.demo-texto{width:100%;margin-top:8px;background:var(--campo);color:var(--papel);border:1px solid var(--linha);border-radius:8px;padding:.6rem .7rem;font:inherit;font-size:.88rem}
+.conferencia{border-left:3px solid var(--carimbo);padding:.4rem .7rem;margin:.2rem 0 .8rem}
 nav.vizinhos{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin:.2rem 0 .8rem;font-family:"IBM Plex Mono",monospace;font-size:.82rem}
 </style>
 <script data-goatcounter="https://observatoriotaxas.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
@@ -147,14 +151,21 @@ ao fator de reajuste <b>1,080559</b>.</p>
 </div>
 <section class="card leitura" aria-labelledby="leitura-t"><h2 id="leitura-t">Leitura do mês</h2><p>O acumulado em 12 meses subiu de 6,76% em abril de 2021 para 8,06% em maio de 2021, uma alta de 1,30 pontos percentuais. A conta muda porque a variação que entrou na janela, 0,83% em maio de 2021, foi maior do que a que saiu, -0,38% em maio de 2020. É o 12º mês seguido de alta do acumulado.</p><p>Um ano antes, em maio de 2020, o acumulado em 12 meses era de 1,88%, 6,18 pontos percentuais abaixo do nível atual.</p><p>Entre os 11 meses de maio com dados desde 2016, é o 3º maior acumulado em 12 meses.</p><p>Na janela de junho de 2020 a maio de 2021, o mês de maior variação foi dezembro de 2020 (1,35%) e o de menor foi agosto de 2020 (0,24%). Nenhum dos 12 meses teve variação negativa.</p><p>No mesmo mês, o acumulado em 12 meses dos outros índices foi: IGP-M 37,06%, INPC 8,90%, IGP-DI 36,55%. Num aluguel de R$ 2.000,00, o reajuste pelo IPCA leva a R$ 2.161,12, R$ 580,14 a menos do que pelo IGP-M (R$ 2.741,26).</p><p class="mut">Texto gerado a partir das variações mensais da série 433 do SGS. Os números mudam se o produtor revisar algum mês.</p></section>
 
-<div class="card">
+<div class="card" id="calcule">
 <h2>Calcule o seu reajuste</h2>
-<form id="calc-form">
+<p class="mut conferencia" data-demo-conferencia role="status" hidden></p>
+<form id="calc-form" data-demonstrativo data-chave="ipca" data-ref="2021-05" data-indice="IPCA"
+ data-produtor="IBGE" data-codigo="433" data-fator="1.0805590222011296" data-base="../../">
 <label for="valor">Valor atual do contrato (R$)</label>
-<input id="valor" type="number" inputmode="decimal" step="0.01" placeholder="2000,00"/>
+<input id="valor" type="text" inputmode="decimal" autocomplete="off" placeholder="2.000,00"/>
 <button type="submit">Calcular reajuste</button>
 </form>
-<p class="res" id="res" aria-live="polite"></p>
+<p class="res" id="res" data-demo-res aria-live="polite"></p>
+<button type="button" class="copiar-demo" data-demo-copiar hidden>Copiar demonstrativo</button>
+<p class="mut" data-demo-status role="status" aria-live="polite"></p>
+<textarea class="demo-texto" data-demo-texto rows="9" readonly hidden aria-label="Texto do demonstrativo"></textarea>
+<p class="mut">O demonstrativo traz o link desta página com a versão dos dados, sem o valor do contrato: quem
+recebe digita o valor e confere os centavos.</p>
 <p class="mut">Precisa atualizar um valor entre duas datas quaisquer? Use a
 <a href="../../correcao/ipca/">correção monetária pelo IPCA</a>.</p>
 </div>
@@ -192,17 +203,7 @@ ao fator de reajuste <b>1,080559</b>.</p>
 <!-- anuncio:reajuste-mes:inicio --><!-- anuncio:reajuste-mes:fim -->
 
 <div class="card"><h2>Outros índices e meses</h2><p class="grupo-rot">Maio de 2021 em outros índices</p><p class="pills"><a class="pill" href="../igpm-maio-2021/" title="IGP-M · maio de 2021">IGP-M</a><a class="pill" href="../inpc-maio-2021/" title="INPC · maio de 2021">INPC</a><a class="pill" href="../igpdi-maio-2021/" title="IGP-DI · maio de 2021">IGP-DI</a></p><p class="grupo-rot">IPCA em maio de outros anos</p><p class="pills"><a class="pill" href="../ipca-maio-2026/" title="IPCA · maio de 2026">mai/2026</a><a class="pill" href="../ipca-maio-2025/" title="IPCA · maio de 2025">mai/2025</a><a class="pill" href="../ipca-maio-2024/" title="IPCA · maio de 2024">mai/2024</a><a class="pill" href="../ipca-maio-2023/" title="IPCA · maio de 2023">mai/2023</a><a class="pill" href="../ipca-maio-2022/" title="IPCA · maio de 2022">mai/2022</a><a class="pill" href="../ipca-maio-2020/" title="IPCA · maio de 2020">mai/2020</a><a class="pill" href="../ipca-maio-2019/" title="IPCA · maio de 2019">mai/2019</a><a class="pill" href="../ipca-maio-2018/" title="IPCA · maio de 2018">mai/2018</a><a class="pill" href="../ipca-maio-2017/" title="IPCA · maio de 2017">mai/2017</a><a class="pill" href="../ipca-maio-2016/" title="IPCA · maio de 2016">mai/2016</a></p><p class="mut"><a href="../">Todos os meses do IPCA na página de reajuste</a></p></div>
-<script>
-const FATOR=1.0805590222011296;
-function calc(){
-  const v=parseFloat(document.getElementById('valor').value.replace(',','.'));
-  if(!v){document.getElementById('res').textContent='Informe o valor atual.';return;}
-  const n=v*FATOR;
-  document.getElementById('res').innerHTML='Novo valor: <b>R$ '+n.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})+'</b> (aumento de R$ '+(n-v).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})+')';
-}
-// Sem onsubmit inline: handler inline não passa numa CSP por hash (ver desenvolvimento/ADSENSE.md).
-document.getElementById('calc-form').addEventListener('submit',function(ev){ev.preventDefault();calc();});
-</script>
+<script src="../../demonstrativo.js?v=9e34bd3d38"></script>
 
 </main>
 <footer>Dados: IPCA e INPC produzidos pelo IBGE; IGP-M e IGP-DI produzidos pela FGV IBRE. O Observatório obtém as séries na <a href="https://www3.bcb.gov.br/sgspub/">API pública do SGS</a> do Banco Central do Brasil, que as redistribui, e calcula acumulados e fatores a partir das variações mensais publicadas. Série histórica versionada e auditável no

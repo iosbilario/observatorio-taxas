@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- ===================== Segurança (site estático, sem headers HTTP) ===================== -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data: https://observatoriotaxas.goatcounter.com https://carimbo.tec.br; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self' https://gc.zgo.at 'sha256-8qh1qN0OU2G9CI0EmVqbdqHd1+x92hZmYO80BSiJgDc=' 'sha256-2D0yPViBCVtZ3BwKbogRO2iJy8HeYkshUpJ8803uzQg=' 'sha256-U/+rtGOKFrJj9T5pGbVkRpvtr/GLa4Hq8cVCRf2c464='; connect-src 'self' https://observatoriotaxas.goatcounter.com; frame-src 'self'" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data: https://observatoriotaxas.goatcounter.com https://carimbo.tec.br; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self' https://gc.zgo.at 'sha256-8qh1qN0OU2G9CI0EmVqbdqHd1+x92hZmYO80BSiJgDc=' 'sha256-2D0yPViBCVtZ3BwKbogRO2iJy8HeYkshUpJ8803uzQg=' 'sha256-XJvooG45FZiUl+ADNCuE+8gp6VlI9crOQzhnpkUbo7w='; connect-src 'self' https://observatoriotaxas.goatcounter.com; frame-src 'self'" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <script>if (top !== self) { try { top.location = self.location; } catch (e) { document.documentElement.style.display = "none"; } }</script>
 
@@ -142,6 +142,7 @@
 
   <link rel="preload" as="font" type="font/woff2" href="fonts/ibmplexserif-latin-400.woff2" crossorigin />
   <link rel="preload" as="font" type="font/woff2" href="fonts/sourcesans3-latin-0.woff2" crossorigin />
+  <script src="demonstrativo.js?v=9e34bd3d38"></script>
   <link rel="stylesheet" href="refy/tokens.css?v=ee92076019" />
   <style>
 /* Fontes self-hosted (SIL OFL 1.1, ver /fonts/LICENSE.txt). */
@@ -283,6 +284,9 @@ a.rj-card:hover{border-color:var(--primary)}
 .rj-res .novo{font-family:var(--font-heading);font-weight:800;font-size:1.4rem;color:var(--ink-1)}
 .rj-res .memo{display:inline-block;margin-top:.3rem;font-size:.9rem}
 .rj-note{color:var(--ink-3);font-size:.82rem;margin:.8rem 0 0}
+.rj-copiar{margin-top:.8rem;font-family:var(--font-body);font-weight:600;font-size:.92rem;color:var(--ink-1);background:var(--bg);border:1px solid var(--line);border-radius:var(--radius-md);padding:.55rem .9rem;cursor:pointer}
+.rj-copiar:hover{border-color:var(--primary)}
+.rj-texto{width:100%;margin-top:.6rem;background:var(--bg);color:var(--ink-1);border:1px solid var(--line);border-radius:var(--radius-md);padding:.6rem .7rem;font:inherit;font-size:.88rem}
 
 /* Rebobinar */
 .fita-mini{position:relative;display:flex;justify-content:space-between;align-items:center;height:24px;margin:0 0 .6rem;max-width:320px}
@@ -504,6 +508,9 @@ footer a{color:var(--ink-2)}
             <div><label for="rj-ate">Até o mês</label><select id="rj-ate"></select></div>
           </div>
           <p class="rj-res" id="rj-res" aria-live="polite">Informe o valor para ver o resultado.</p>
+          <button type="button" class="rj-copiar" id="rj-copiar" hidden>Copiar demonstrativo</button>
+          <p class="rj-note" id="rj-copiar-status" role="status" aria-live="polite"></p>
+          <textarea class="rj-texto" id="rj-texto" rows="9" readonly hidden aria-label="Texto do demonstrativo"></textarea>
           <p class="rj-note" id="rj-note">Aplica o acumulado de 12 meses mais recente do índice. Confira no contrato o índice pactuado e o mês de referência (defasagem). Conteúdo informativo.</p>
         </div>
       </div>
@@ -817,10 +824,10 @@ footer a{color:var(--ink-2)}
 
     // ---------------- Calculadora de reajuste (mantida do index anterior) ----------------
     const RJ_INDICES = [
-      { key: "ipca", codigo: 433, nome: "IPCA" },
-      { key: "igpm", codigo: 189, nome: "IGP-M" },
-      { key: "inpc", codigo: 188, nome: "INPC" },
-      { key: "igpdi", codigo: 190, nome: "IGP-DI" },
+      { key: "ipca", codigo: 433, nome: "IPCA", produtor: "IBGE" },
+      { key: "igpm", codigo: 189, nome: "IGP-M", produtor: "FGV IBRE" },
+      { key: "inpc", codigo: 188, nome: "INPC", produtor: "IBGE" },
+      { key: "igpdi", codigo: 190, nome: "IGP-DI", produtor: "FGV IBRE" },
     ];
     const RJ_MESES = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"];
 
@@ -845,9 +852,15 @@ footer a{color:var(--ink-2)}
           ix.ac = (fator - 1) * 100;
           ix.refTxt = `${RJ_MESES[ref.getMonth()]} de ${ref.getFullYear()}`;
           ix.url = `reajuste/${ix.key}-${RJ_MESES[ref.getMonth()]}-${ref.getFullYear()}/`;
+          ix.refYm = `${ref.getFullYear()}-${String(ref.getMonth() + 1).padStart(2, "0")}`;
         } catch (e) { console.error(e); }
       }));
       const vivos = RJ_INDICES.filter((ix) => ix.fator);
+      const Demo = window.ObsDemo;
+      const shaDados = Demo ? await Demo.versaoAtual("") : null;
+      const btnCopiar = document.getElementById("rj-copiar");
+      const stCopiar = document.getElementById("rj-copiar-status");
+      const txCopiar = document.getElementById("rj-texto");
 
       for (const ix of vivos) {
         const card = document.querySelector(`.rj-card[data-idx="${ix.key}"]`);
@@ -891,13 +904,20 @@ footer a{color:var(--ink-2)}
       };
       const atualiza = () => {
         const ix = idxAtual();
-        const v = parseValor(inp.value);
-        if (!isFinite(v) || v <= 0) { res.textContent = "Informe o valor para ver o resultado."; return; }
+        const v = Demo ? Demo.parseValor(inp.value) : parseValor(inp.value);
+        btnCopiar.hidden = true; txCopiar.hidden = true; stCopiar.textContent = "";
+        if (v === null || !isFinite(v) || v <= 0) { res.textContent = "Informe o valor para ver o resultado."; return; }
         let fator, rotulo, desc, url, urlTxt;
         if (modo === "anual") {
           fator = ix.fator; rotulo = "Novo valor";
-          desc = `${fmtPct(ix.ac)} · acumulado 12 meses até ${ix.refTxt}`;
+          desc = `${fmtPct(ix.ac)} · acumulado 12 meses até ${ix.refTxt} · fator ${Demo ? Demo.fatorTxt(ix.fator) : ix.fator}`;
           url = ix.url; urlTxt = `Ver a memória de cálculo do ${ix.nome} de ${ix.refTxt}`;
+          if (Demo) {
+            const txt = Demo.texto({ valor: v, fator: ix.fator, indice: ix.nome, refYm: ix.refYm,
+              produtor: ix.produtor, link: Demo.linkConferencia(ix.key, ix.refYm, shaDados) });
+            btnCopiar.hidden = false;
+            btnCopiar.onclick = () => Demo.copiar(txt, btnCopiar, stCopiar, txCopiar);
+          }
         } else {
           const i0 = Number(selDe.value), i1 = Number(selAte.value);
           if (!(i1 > i0)) { res.textContent = "O mês final deve ser posterior ao inicial."; return; }
@@ -908,7 +928,7 @@ footer a{color:var(--ink-2)}
           desc = `${ix.nome} de ${ix.pts[i0].label} a ${ix.pts[i1].label}: ${fmtPct((fator - 1) * 100)} · fator ${f6}`;
           url = `correcao/${ix.key}/`; urlTxt = `Abrir a calculadora completa de correção pelo ${ix.nome}`;
         }
-        const novo = v * fator, dif = novo - v;
+        const novo = modo === "anual" && Demo ? Demo.calcula(v, fator).novo : v * fator, dif = novo - v;
         res.innerHTML = `${rotulo}: <span class="novo">R$ ${fmtBRL(novo)}</span> ` +
           `<span>(${dif < 0 ? "−" : "+"}R$ ${fmtBRL(Math.abs(dif))})</span><br/>` +
           `<span>${esc(desc)}</span><br/>` +

@@ -156,6 +156,10 @@ dl.ficha dd{margin:0;color:var(--papel-70)}
 caption{caption-side:top;text-align:left;color:var(--papel-45);font-size:.84rem;padding:0 0 .5rem}
 .faq h3{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:1rem;margin:1rem 0 .3rem}
 .faq p{margin:0 0 .4rem;color:var(--papel-70)}
+.copiar-demo{margin-top:10px;background:transparent;color:var(--papel);border:1px solid var(--linha)}
+.copiar-demo:hover{border-color:var(--carimbo)}
+.demo-texto{width:100%;margin-top:8px;background:var(--campo);color:var(--papel);border:1px solid var(--linha);border-radius:8px;padding:.6rem .7rem;font:inherit;font-size:.88rem}
+.conferencia{border-left:3px solid var(--carimbo);padding:.4rem .7rem;margin:.2rem 0 .8rem}
 nav.vizinhos{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin:.2rem 0 .8rem;font-family:"IBM Plex Mono",monospace;font-size:.82rem}
 """
 
@@ -240,7 +244,7 @@ def head(title: str, desc: str, canonical: str, jsonld: str = "", crumb: str = "
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data: https://observatoriotaxas.goatcounter.com; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self' 'unsafe-inline' https://gc.zgo.at; connect-src 'self' https://observatoriotaxas.goatcounter.com"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data: https://observatoriotaxas.goatcounter.com; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self' 'unsafe-inline' https://gc.zgo.at; connect-src 'self' https://observatoriotaxas.goatcounter.com https://raw.githubusercontent.com"/>
 <meta name="referrer" content="strict-origin-when-cross-origin"/>
 <script>if (top !== self) {{ try {{ top.location = self.location; }} catch (e) {{ document.documentElement.style.display = "none"; }} }}</script>
 <title>{title}</title>
@@ -656,14 +660,21 @@ ao fator de reajuste <b>{fmt_num(fator, 6)}</b>.</p>
 </div>
 {leitura}
 
-<div class="card">
+<div class="card" id="calcule">
 <h2>Calcule o seu reajuste</h2>
-<form id="calc-form">
+<p class="mut conferencia" data-demo-conferencia role="status" hidden></p>
+<form id="calc-form" data-demonstrativo data-chave="{key}" data-ref="{mes_iso(ref)}" data-indice="{nome}"
+ data-produtor="{fonte['produtor']['sigla']}" data-codigo="{info['codigo']}" data-fator="{fator!r}" data-base="../../">
 <label for="valor">Valor atual do contrato (R$)</label>
-<input id="valor" type="number" inputmode="decimal" step="0.01" placeholder="2000,00"/>
+<input id="valor" type="text" inputmode="decimal" autocomplete="off" placeholder="2.000,00"/>
 <button type="submit">Calcular reajuste</button>
 </form>
-<p class="res" id="res" aria-live="polite"></p>
+<p class="res" id="res" data-demo-res aria-live="polite"></p>
+<button type="button" class="copiar-demo" data-demo-copiar hidden>Copiar demonstrativo</button>
+<p class="mut" data-demo-status role="status" aria-live="polite"></p>
+<textarea class="demo-texto" data-demo-texto rows="9" readonly hidden aria-label="Texto do demonstrativo"></textarea>
+<p class="mut">O demonstrativo traz o link desta página com a versão dos dados, sem o valor do contrato: quem
+recebe digita o valor e confere os centavos.</p>
 <p class="mut">Precisa atualizar um valor entre duas datas quaisquer? Use a
 <a href="../../correcao/{key}/">correção monetária pelo {nome}</a>.</p>
 </div>
@@ -701,17 +712,7 @@ ao fator de reajuste <b>{fmt_num(fator, 6)}</b>.</p>
 <!-- anuncio:reajuste-mes:inicio --><!-- anuncio:reajuste-mes:fim -->
 {email_block()}
 <div class="card"><h2>Outros índices e meses</h2>{outros}</div>
-<script>
-const FATOR={fator!r};
-function calc(){{
-  const v=parseFloat(document.getElementById('valor').value.replace(',','.'));
-  if(!v){{document.getElementById('res').textContent='Informe o valor atual.';return;}}
-  const n=v*FATOR;
-  document.getElementById('res').innerHTML='Novo valor: <b>R$ '+n.toLocaleString('pt-BR',{{minimumFractionDigits:2,maximumFractionDigits:2}})+'</b> (aumento de R$ '+(n-v).toLocaleString('pt-BR',{{minimumFractionDigits:2,maximumFractionDigits:2}})+')';
-}}
-// Sem onsubmit inline: handler inline não passa numa CSP por hash (ver desenvolvimento/ADSENSE.md).
-document.getElementById('calc-form').addEventListener('submit',function(ev){{ev.preventDefault();calc();}});
-</script>
+<script src="../../demonstrativo.js"></script>
 """ + FOOTER
     return f"reajuste/{slug}/index.html", html
 

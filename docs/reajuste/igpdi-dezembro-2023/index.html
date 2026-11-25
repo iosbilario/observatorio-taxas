@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data: https://observatoriotaxas.goatcounter.com; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self' 'unsafe-inline' https://gc.zgo.at; connect-src 'self' https://observatoriotaxas.goatcounter.com"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data: https://observatoriotaxas.goatcounter.com; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self' 'unsafe-inline' https://gc.zgo.at; connect-src 'self' https://observatoriotaxas.goatcounter.com https://raw.githubusercontent.com"/>
 <meta name="referrer" content="strict-origin-when-cross-origin"/>
 <script>if (top !== self) { try { top.location = self.location; } catch (e) { document.documentElement.style.display = "none"; } }</script>
 <title>IGP-DI de dezembro de 2023: 0,64% no mês e -3,28% em 12 meses</title>
@@ -92,6 +92,10 @@ dl.ficha dd{margin:0;color:var(--papel-70)}
 caption{caption-side:top;text-align:left;color:var(--papel-45);font-size:.84rem;padding:0 0 .5rem}
 .faq h3{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:1rem;margin:1rem 0 .3rem}
 .faq p{margin:0 0 .4rem;color:var(--papel-70)}
+.copiar-demo{margin-top:10px;background:transparent;color:var(--papel);border:1px solid var(--linha)}
+.copiar-demo:hover{border-color:var(--carimbo)}
+.demo-texto{width:100%;margin-top:8px;background:var(--campo);color:var(--papel);border:1px solid var(--linha);border-radius:8px;padding:.6rem .7rem;font:inherit;font-size:.88rem}
+.conferencia{border-left:3px solid var(--carimbo);padding:.4rem .7rem;margin:.2rem 0 .8rem}
 nav.vizinhos{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin:.2rem 0 .8rem;font-family:"IBM Plex Mono",monospace;font-size:.82rem}
 </style>
 <script data-goatcounter="https://observatoriotaxas.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
@@ -147,14 +151,21 @@ ao fator de reajuste <b>0,967245</b>.</p>
 </div>
 <section class="card leitura" aria-labelledby="leitura-t"><h2 id="leitura-t">Leitura do mês</h2><p>O acumulado em 12 meses subiu de -3,59% em novembro de 2023 para -3,28% em dezembro de 2023, uma alta de 0,32 pontos percentuais. A conta muda porque a variação que entrou na janela, 0,64% em dezembro de 2023, foi maior do que a que saiu, 0,31% em dezembro de 2022. É o 5º mês seguido de alta do acumulado.</p><p>Um ano antes, em dezembro de 2022, o acumulado em 12 meses era de 5,01%, 8,28 pontos percentuais acima do nível atual.</p><p>É o menor acumulado para um mês de dezembro entre os 11 anos com dados desde 2015.</p><p>A variação de 0,64% no mês é a maior desde maio de 2022, quando o IGP-DI marcou 0,69%.</p><p>Na janela de janeiro de 2023 a dezembro de 2023, o mês de maior variação foi dezembro de 2023 (0,64%) e o de menor foi maio de 2023 (-2,33%). 5 dos 12 meses tiveram variação negativa.</p><p>No mesmo mês, o acumulado em 12 meses dos outros índices foi: IPCA 4,62%, IGP-M -3,18%, INPC 3,71%. Num aluguel de R$ 2.000,00, o reajuste pelo IGP-DI leva a R$ 1.934,49, R$ 157,93 a menos do que pelo IPCA (R$ 2.092,42).</p><p class="mut">Texto gerado a partir das variações mensais da série 190 do SGS. Os números mudam se o produtor revisar algum mês.</p></section>
 
-<div class="card">
+<div class="card" id="calcule">
 <h2>Calcule o seu reajuste</h2>
-<form id="calc-form">
+<p class="mut conferencia" data-demo-conferencia role="status" hidden></p>
+<form id="calc-form" data-demonstrativo data-chave="igpdi" data-ref="2023-12" data-indice="IGP-DI"
+ data-produtor="FGV IBRE" data-codigo="190" data-fator="0.9672451045919649" data-base="../../">
 <label for="valor">Valor atual do contrato (R$)</label>
-<input id="valor" type="number" inputmode="decimal" step="0.01" placeholder="2000,00"/>
+<input id="valor" type="text" inputmode="decimal" autocomplete="off" placeholder="2.000,00"/>
 <button type="submit">Calcular reajuste</button>
 </form>
-<p class="res" id="res" aria-live="polite"></p>
+<p class="res" id="res" data-demo-res aria-live="polite"></p>
+<button type="button" class="copiar-demo" data-demo-copiar hidden>Copiar demonstrativo</button>
+<p class="mut" data-demo-status role="status" aria-live="polite"></p>
+<textarea class="demo-texto" data-demo-texto rows="9" readonly hidden aria-label="Texto do demonstrativo"></textarea>
+<p class="mut">O demonstrativo traz o link desta página com a versão dos dados, sem o valor do contrato: quem
+recebe digita o valor e confere os centavos.</p>
 <p class="mut">Precisa atualizar um valor entre duas datas quaisquer? Use a
 <a href="../../correcao/igpdi/">correção monetária pelo IGP-DI</a>.</p>
 </div>
@@ -192,17 +203,7 @@ ao fator de reajuste <b>0,967245</b>.</p>
 <!-- anuncio:reajuste-mes:inicio --><!-- anuncio:reajuste-mes:fim -->
 
 <div class="card"><h2>Outros índices e meses</h2><p class="grupo-rot">Dezembro de 2023 em outros índices</p><p class="pills"><a class="pill" href="../ipca-dezembro-2023/" title="IPCA · dezembro de 2023">IPCA</a><a class="pill" href="../igpm-dezembro-2023/" title="IGP-M · dezembro de 2023">IGP-M</a><a class="pill" href="../inpc-dezembro-2023/" title="INPC · dezembro de 2023">INPC</a></p><p class="grupo-rot">IGP-DI em dezembro de outros anos</p><p class="pills"><a class="pill" href="../igpdi-dezembro-2025/" title="IGP-DI · dezembro de 2025">dez/2025</a><a class="pill" href="../igpdi-dezembro-2024/" title="IGP-DI · dezembro de 2024">dez/2024</a><a class="pill" href="../igpdi-dezembro-2022/" title="IGP-DI · dezembro de 2022">dez/2022</a><a class="pill" href="../igpdi-dezembro-2021/" title="IGP-DI · dezembro de 2021">dez/2021</a><a class="pill" href="../igpdi-dezembro-2020/" title="IGP-DI · dezembro de 2020">dez/2020</a><a class="pill" href="../igpdi-dezembro-2019/" title="IGP-DI · dezembro de 2019">dez/2019</a><a class="pill" href="../igpdi-dezembro-2018/" title="IGP-DI · dezembro de 2018">dez/2018</a><a class="pill" href="../igpdi-dezembro-2017/" title="IGP-DI · dezembro de 2017">dez/2017</a><a class="pill" href="../igpdi-dezembro-2016/" title="IGP-DI · dezembro de 2016">dez/2016</a><a class="pill" href="../igpdi-dezembro-2015/" title="IGP-DI · dezembro de 2015">dez/2015</a></p><p class="mut"><a href="../">Todos os meses do IGP-DI na página de reajuste</a></p></div>
-<script>
-const FATOR=0.9672451045919649;
-function calc(){
-  const v=parseFloat(document.getElementById('valor').value.replace(',','.'));
-  if(!v){document.getElementById('res').textContent='Informe o valor atual.';return;}
-  const n=v*FATOR;
-  document.getElementById('res').innerHTML='Novo valor: <b>R$ '+n.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})+'</b> (aumento de R$ '+(n-v).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})+')';
-}
-// Sem onsubmit inline: handler inline não passa numa CSP por hash (ver desenvolvimento/ADSENSE.md).
-document.getElementById('calc-form').addEventListener('submit',function(ev){ev.preventDefault();calc();});
-</script>
+<script src="../../demonstrativo.js?v=9e34bd3d38"></script>
 
 </main>
 <footer>Dados: IPCA e INPC produzidos pelo IBGE; IGP-M e IGP-DI produzidos pela FGV IBRE. O Observatório obtém as séries na <a href="https://www3.bcb.gov.br/sgspub/">API pública do SGS</a> do Banco Central do Brasil, que as redistribui, e calcula acumulados e fatores a partir das variações mensais publicadas. Série histórica versionada e auditável no

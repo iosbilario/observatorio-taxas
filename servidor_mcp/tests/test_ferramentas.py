@@ -161,7 +161,7 @@ class TestCalculos(unittest.TestCase):
                     sem_mes_anterior.append(pag.parent.name)
                     continue
                 r = f.calculate_adjustment(D, 2000.0, chave, f"{a0}-{m0:02d}", f"{ano}-{m:02d}")
-                js = float(re.search(r"const FATOR=([0-9.e-]+);", pag.read_text(encoding="utf-8")).group(1))
+                js = float(re.search(r'data-fator="([0-9.e-]+)"', pag.read_text(encoding="utf-8")).group(1))
                 self.assertEqual(r["fator"], js, pag.parent.name)
                 self.assertEqual(r["periodo"]["meses_aplicados"], 12)
                 n += 1
