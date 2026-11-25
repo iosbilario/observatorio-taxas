@@ -1353,3 +1353,7 @@
     ↳ Câmbio EUR/BRL - venda: subiu de 6,426 para 6,4413.
 [2026-11-25 16:25:40 +0000] Reservas internacionais - conceito caixa (US$ milhões): 362953 -> 361903
     ↳ Reservas internacionais - conceito caixa (US$ milhões): caiu de 362953 para 361903.
+[2026-11-25 20:40:26 +0000] Meta Selic (% a.a.): 14.25 -> 14.00
+    ↳ Meta Selic (% a.a.): caiu de 14,25 para 14.
+[2026-11-25 20:40:26 +0000] Meta Selic (% a.a.): 14.00 -> 13.75
+    ↳ Meta Selic (% a.a.): caiu de 14 para 13,75.

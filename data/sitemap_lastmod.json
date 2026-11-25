@@ -1,6 +1,6 @@
 {
  "https://observatoriodetaxas.tec.br/": {
-  "hash": "17866d767ccaf33e",
+  "hash": "4c1abe06cc39f08e",
   "lastmod": "2026-11-25"
  },
  "https://observatoriodetaxas.tec.br/apoie/": {
@@ -56,11 +56,11 @@
   "lastmod": "2026-11-25"
  },
  "https://observatoriodetaxas.tec.br/guias/selic/": {
-  "hash": "740af2bd697a6fad",
+  "hash": "35026179375c788c",
   "lastmod": "2026-11-25"
  },
  "https://observatoriodetaxas.tec.br/indicadores/": {
-  "hash": "1d0382a58e7c496c",
+  "hash": "b50311dd9432c462",
   "lastmod": "2026-11-25"
  },
  "https://observatoriodetaxas.tec.br/indicadores/cdi-acumulado-no-mes/": {
@@ -128,8 +128,8 @@
   "lastmod": "2026-11-24"
  },
  "https://observatoriodetaxas.tec.br/indicadores/meta-selic/": {
-  "hash": "c16b4affad4c9bf5",
-  "lastmod": "2026-11-24"
+  "hash": "e0ca94c42ad7f5a3",
+  "lastmod": "2026-11-25"
  },
  "https://observatoriodetaxas.tec.br/indicadores/poupanca-regra-antiga/": {
   "hash": "c011333941f2899a",
@@ -168,7 +168,7 @@
   "lastmod": "2026-11-24"
  },
  "https://observatoriodetaxas.tec.br/mudancas/": {
-  "hash": "d0efe8be583a622f",
+  "hash": "ae208801db27a25f",
   "lastmod": "2026-11-25"
  },
  "https://observatoriodetaxas.tec.br/privacidade/": {

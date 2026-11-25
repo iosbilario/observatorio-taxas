@@ -1,16 +1,16 @@
 {
-  "gerado_em": "2026-11-25T13:26:05-03:00",
-  "gerado_em_fmt": "25/11/2026 às 13:26",
+  "gerado_em": "2026-11-25T17:40:49-03:00",
+  "gerado_em_fmt": "25/11/2026 às 17:40",
   "grupos": {
     "Admin": {
       "acessos": 0,
       "sub": {}
     },
     "Correção": {
-      "acessos": 36,
+      "acessos": 38,
       "sub": {
         "IGP-DI": 0,
-        "IGP-M": 2,
+        "IGP-M": 3,
         "INPC": 2,
         "IPCA": 7
       }
@@ -20,18 +20,18 @@
       "sub": {}
     },
     "Reajuste": {
-      "acessos": 175,
+      "acessos": 178,
       "sub": {
-        "IGP-DI": 12,
-        "IGP-M": 45,
+        "IGP-DI": 11,
+        "IGP-M": 46,
         "INPC": 14,
-        "IPCA": 42
+        "IPCA": 43
       }
     }
   },
   "serie_diaria": [
     {
-      "acessos": 1,
+      "acessos": 0,
       "data": "2026-10-26"
     },
     {
@@ -151,7 +151,7 @@
       "data": "2026-11-24"
     },
     {
-      "acessos": 23,
+      "acessos": 40,
       "data": "2026-11-25"
     }
   ],
@@ -163,23 +163,23 @@
       "path": "/"
     },
     {
-      "count": 94,
+      "count": 97,
       "path": "/indicadores/cdi"
+    },
+    {
+      "count": 61,
+      "path": "/reajuste"
     },
     {
       "count": 60,
       "path": "/rebobinar.html"
     },
     {
-      "count": 59,
-      "path": "/reajuste"
-    },
-    {
-      "count": 25,
+      "count": 26,
       "path": "/correcao"
     },
     {
-      "count": 18,
+      "count": 19,
       "path": "/var.html"
     },
     {
@@ -191,7 +191,7 @@
       "path": "/retransmissora.html"
     },
     {
-      "count": 14,
+      "count": 16,
       "path": "/indicadores/dolar"
     },
     {
@@ -221,12 +221,12 @@
   ],
   "totais": {
     "all_time": {
-      "acessos": 750,
-      "visitantes": 771
+      "acessos": 764,
+      "visitantes": 788
     },
     "ultimos_30d": {
-      "acessos": 391,
-      "visitantes": 391
+      "acessos": 407,
+      "visitantes": 407
     }
   }
 }
