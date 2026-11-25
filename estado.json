@@ -1,6 +1,6 @@
 {
  "urls": {
-  "https://observatoriodetaxas.tec.br/": "91c420f9d4ee9768",
+  "https://observatoriodetaxas.tec.br/": "d7879584e8b11bc2",
   "https://observatoriodetaxas.tec.br/apoie/": "36b7c8caf6249415",
   "https://observatoriodetaxas.tec.br/comparador/": "d4559c12dc368809",
   "https://observatoriodetaxas.tec.br/correcao/": "6302ecd3a712a281",
@@ -15,7 +15,7 @@
   "https://observatoriodetaxas.tec.br/guias/ipca-igpm-inpc-igpdi/": "cc7a8e05bca2727c",
   "https://observatoriodetaxas.tec.br/guias/reajuste-de-aluguel/": "814ab66d13ef6311",
   "https://observatoriodetaxas.tec.br/guias/selic/": "8be7408f633ab9bc",
-  "https://observatoriodetaxas.tec.br/indicadores/": "df8e17f9111655a7",
+  "https://observatoriodetaxas.tec.br/indicadores/": "7f855e130cf92218",
   "https://observatoriodetaxas.tec.br/indicadores/cdi-acumulado-no-mes/": "58690111db7304a5",
   "https://observatoriodetaxas.tec.br/indicadores/cdi/": "4197c1a567ea0c26",
   "https://observatoriodetaxas.tec.br/indicadores/desemprego/": "2f4b8cae4dfdf3bb",
@@ -37,8 +37,8 @@
   "https://observatoriodetaxas.tec.br/indicadores/poupanca/": "6ed03992c6afeaaa",
   "https://observatoriodetaxas.tec.br/indicadores/reservas-internacionais/": "0ef068eaad87f0e5",
   "https://observatoriodetaxas.tec.br/indicadores/saldo-de-credito/": "be8cb0b2b4e322b3",
-  "https://observatoriodetaxas.tec.br/indicadores/selic-acumulada-no-mes/": "01eadbdf964b337f",
-  "https://observatoriodetaxas.tec.br/indicadores/selic-efetiva/": "8a4dc995b3331e70",
+  "https://observatoriodetaxas.tec.br/indicadores/selic-acumulada-no-mes/": "9dd6bfb79f533ba4",
+  "https://observatoriodetaxas.tec.br/indicadores/selic-efetiva/": "606f568b982bb075",
   "https://observatoriodetaxas.tec.br/indicadores/tjlp/": "a265eed6a00e69f3",
   "https://observatoriodetaxas.tec.br/indicadores/tr/": "babecc995a9c052d",
   "https://observatoriodetaxas.tec.br/mcp/": "060ea9cf8fcb33d2",
