@@ -148,13 +148,13 @@ def write_manifest(manifesto: list[dict]) -> None:
     write_json(DOCS_DATA_DIR / "series.json", manifesto)
 
 
-def write_meta() -> None:
+def write_meta(agora: datetime | None = None) -> None:
     """Registra o instante da coleta (horário de Brasília) para o rodapé do site.
 
     Gravado SOMENTE quando houve mudança de dados (ver main), de modo a não
     quebrar a idempotência do job — sem mudança, nada é commitado.
     """
-    agora = datetime.now(timezone.utc).astimezone(BRT)
+    agora = agora or datetime.now(timezone.utc).astimezone(BRT)
     meta = {
         "gerado_em": agora.isoformat(timespec="seconds"),
         "gerado_em_fmt": agora.strftime("%d/%m/%Y às %H:%M"),
@@ -162,6 +162,45 @@ def write_meta() -> None:
     }
     write_json(DATA_DIR / "meta.json", meta)
     write_json(DOCS_DATA_DIR / "meta.json", meta)
+
+
+# --------------------------------------------------------------------------- #
+# O que mudou em cada coleta (página /mudancas/, scripts/build_mudancas.py)
+# --------------------------------------------------------------------------- #
+MUDANCAS_MAX = 30   # coletas guardadas; a página nunca lê o histórico do Git
+
+
+def versao_anterior() -> str | None:
+    """Commit dos dados publicados ANTES desta coleta (docs/data/versao.json)."""
+    sha = str(read_json(DOCS_DATA_DIR / "versao.json", {}).get("sha", ""))
+    return sha if len(sha) == 40 and all(c in "0123456789abcdef" for c in sha) else None
+
+
+def compara(codigo, nome: str, existing: list[dict], novos: list[dict]) -> tuple[list, list]:
+    """(observações novas, revisões) de uma série nesta coleta.
+
+    Nova = data que não existia. Revisão = data que já existia com outro valor
+    (o SGS reescreve o ponto e merge_history fica com o novo)."""
+    antigos = {p["data"]: str(p["valor"]) for p in existing}
+    obs, rev = [], []
+    for p in sorted(novos, key=lambda p: _chave_data(p["data"])):
+        if p["data"] not in antigos:
+            obs.append({"codigo": codigo, "nome": nome, "data": p["data"], "valor": str(p["valor"])})
+        elif antigos[p["data"]] != str(p["valor"]):
+            rev.append({"codigo": codigo, "nome": nome, "data": p["data"],
+                        "antes": antigos[p["data"]], "depois": str(p["valor"])})
+    return obs, rev
+
+
+def registra_mudancas(coleta: dict) -> None:
+    """Põe a coleta no topo de data/mudancas.json (espelho em docs/data/).
+
+    "commit" fica nulo aqui: o commit da coleta ainda não existe. O
+    versao_dados.py preenche depois do commit, no mesmo job."""
+    atual = read_json(DATA_DIR / "mudancas.json", {})
+    payload = {"coletas": ([coleta] + list(atual.get("coletas", [])))[:MUDANCAS_MAX]}
+    write_json(DATA_DIR / "mudancas.json", payload)
+    write_json(DOCS_DATA_DIR / "mudancas.json", payload)
 
 
 # --------------------------------------------------------------------------- #
@@ -242,6 +281,10 @@ def main() -> None:
     manifesto: list[dict] = []
     ok = falhas = 0
     houve_mudanca = False   # algum arquivo de série mudou? (controla o meta.json)
+    observacoes: list[dict] = []
+    revisoes: list[dict] = []
+    series_novas: list[dict] = []
+    base = versao_anterior()
 
     # Manifesto anterior — preserva entrada em caso de falha transitória da série.
     prev_manifesto = {s["codigo"]: s for s in read_json(DATA_DIR / "series.json", [])}
@@ -267,6 +310,13 @@ def main() -> None:
                   if _chave_data(p["data"]) <= corte_hoje]
         if merged != existing:          # ponto novo ou revisão -> haverá commit
             houve_mudanca = True
+        if not existing:
+            series_novas.append({"codigo": codigo, "nome": nome, "pontos": len(merged)})
+        else:
+            obs, rev = compara(codigo, nome, existing,
+                               [p for p in novos if p["data"] in {m["data"] for m in merged}])
+            observacoes += obs
+            revisoes += rev
         pos = {p["data"]: i for i, p in enumerate(merged)}
 
         # Eventos: pontos novos cujo valor difere do ponto anterior na série.
@@ -293,7 +343,12 @@ def main() -> None:
 
     write_manifest(manifesto)
     if houve_mudanca:
-        write_meta()
+        agora = datetime.now(timezone.utc).astimezone(BRT)
+        write_meta(agora)
+        if observacoes or revisoes or series_novas:
+            registra_mudancas({"gerado_em": agora.isoformat(timespec="seconds"), "base": base,
+                               "commit": None, "novas": observacoes, "revisoes": revisoes,
+                               "series_novas": series_novas})
     append_changelog(eventos)
     print(f"\nResumo: {ok} série(s) OK, {falhas} falha(s), "
           f"{len([e for e in eventos if not e.startswith('    ')])} mudança(s).")

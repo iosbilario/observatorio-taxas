@@ -173,7 +173,7 @@ class CapaEVar(unittest.TestCase):
         if not v:
             self.skipTest("sem docs/data/versao.json")
         html = (DOCS / "index.html").read_text(encoding="utf-8")
-        self.assertIn(f'dados do commit <a href="https://github.com/{REPO}/commit/{v["sha"]}">{v["curto"]}</a>', html)
+        self.assertIn(f' · commit <a href="https://github.com/{REPO}/commit/{v["sha"]}">{v["curto"]}</a>', html)
         var = re.search(r"<!-- var:inicio -->(.*?)<!-- var:fim -->", html, re.S).group(1)
         self.assertIn(f"&amp;sha={v['sha']}", var)
         self.assertNotIn("commits/main", html)

@@ -52,7 +52,7 @@ class PaginaInicial(unittest.TestCase):
             b = bloco.group(0)
             self.assertIn(f"<h2>{pergunta}</h2>", b)
             self.assertRegex(b, r'class="num-delta (up|down|flat)">[▲▼■] ')
-            self.assertRegex(b, r"ref\. \d\d/\d\d/\d{4}")
+            self.assertRegex(b, r'class="num-ref">(competência|trimestre móvel até|cotação de|em vigor desde) ')
             self.assertIn('class="spark" data-cod=', b)
 
     def test_mais_indicadores_ligam_paginas_que_existem(self):

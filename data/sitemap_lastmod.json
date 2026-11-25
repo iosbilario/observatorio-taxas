@@ -1,6 +1,6 @@
 {
  "https://observatoriodetaxas.tec.br/": {
-  "hash": "3183b0738d3fa88e",
+  "hash": "17866d767ccaf33e",
   "lastmod": "2026-11-25"
  },
  "https://observatoriodetaxas.tec.br/apoie/": {
@@ -166,6 +166,10 @@
  "https://observatoriodetaxas.tec.br/mcp/": {
   "hash": "060ea9cf8fcb33d2",
   "lastmod": "2026-11-24"
+ },
+ "https://observatoriodetaxas.tec.br/mudancas/": {
+  "hash": "d0efe8be583a622f",
+  "lastmod": "2026-11-25"
  },
  "https://observatoriodetaxas.tec.br/privacidade/": {
   "hash": "f4a21addde965a77",
@@ -2292,7 +2296,7 @@
   "lastmod": "2026-11-13"
  },
  "https://observatoriodetaxas.tec.br/var.html": {
-  "hash": "442915deea850a72",
+  "hash": "f056cbc2366161de",
   "lastmod": "2026-11-25"
  }
 }

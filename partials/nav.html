@@ -18,9 +18,11 @@
   e também com o site aberto via file://. O item da página atual recebe
   aria-current="page" automaticamente, a partir do data-nav correspondente.
 
-  Máximo de 6 itens, por decisão de projeto (6 desde a vitrine de Indicadores). Reajuste está no menu por ser a
-  propriedade principal (513 páginas permanentes); Correção monetária é
-  alcançada de dentro do hub de Reajuste.
+  Máximo de 6 itens, por decisão de projeto (6 desde a vitrine de Indicadores). "Calculadoras" leva ao
+  hub de Reajuste (a propriedade principal, 513 páginas permanentes), que liga
+  as demais: correção monetária, comparador e simulador de CDI. O item fica
+  ativo em todas elas. "Conferir uma afirmação" é o VAR da Economia: o nome
+  da ferramenta continua no título da página e no title do link.
 
   O Radar saiu do menu: as páginas continuam em docs/radar/, mas nada no
   site leva até elas. Para religar, basta devolver a linha do item aqui e
@@ -32,9 +34,9 @@
     <nav class="nav-itens" aria-label="Navegação principal">
       <a href="{{P}}index.html" data-nav="painel">Painel</a>
       <a href="{{P}}rebobinar.html" data-nav="rebobinador">Rebobinador</a>
-      <a href="{{P}}var.html" data-nav="var">VAR</a>
+      <a href="{{P}}var.html" data-nav="var" title="VAR da Economia">Conferir uma afirmação</a>
       <a href="{{P}}indicadores/" data-nav="indicadores">Indicadores</a>
-      <a href="{{P}}reajuste/index.html" data-nav="reajuste">Reajuste</a>
+      <a href="{{P}}reajuste/index.html" data-nav="calculadoras">Calculadoras</a>
       <a href="{{P}}retransmissora.html" data-nav="embeds">Embeds</a>
     </nav>
     <a class="nav-github" href="https://github.com/iosbilario/observatorio-taxas" aria-label="Código no GitHub">

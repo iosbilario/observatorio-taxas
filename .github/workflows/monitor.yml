@@ -81,6 +81,9 @@ jobs:
       - name: Gerar os guias (/guias/)
         run: python scripts/build_guias.py
 
+      - name: Gerar "O que mudou nesta coleta?" (/mudancas/)
+        run: python scripts/build_mudancas.py
+
       - name: Assar boletim no HTML da landing e regenerar o sitemap
         run: python scripts/render_index.py
 
@@ -133,12 +136,16 @@ jobs:
       # hash: depois de commitar a coleta, grava qual commit tem os dados que o
       # site serve e refaz o carimbo e o recibo de exemplo da capa com ele.
       # O VAR carrega as séries desse commit e grava o mesmo hash no recibo.
+      # Também preenche o commit da coleta em mudancas.json e refaz /mudancas/
+      # com os links para o diff (build_mudancas + sync_nav para o menu).
       - name: Versão dos dados (versao.json) + carimbo da capa
         run: |
           python scripts/versao_dados.py
+          python scripts/build_mudancas.py
           python scripts/render_index.py
+          python scripts/sync_nav.py
           python scripts/csp_hashes.py
-          git add docs/
+          git add data/ docs/
           if git diff --cached --quiet; then
             echo "Versão dos dados já em dia."
           else
