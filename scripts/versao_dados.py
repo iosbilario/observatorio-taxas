@@ -37,7 +37,8 @@ def commit_dos_dados(raiz: Path = ROOT) -> tuple[str, str] | None:
     contar versao.json. None fora de um repositório Git."""
     r = subprocess.run(
         ["git", "log", "-1", "--format=%H%x09%cI", "--", "data", "docs/data",
-         ":(exclude)docs/data/versao.json"],
+         ":(exclude)docs/data/versao.json", ":(exclude)data/mudancas.json",
+         ":(exclude)docs/data/mudancas.json"],
         cwd=raiz, capture_output=True, text=True)
     if r.returncode != 0 or not r.stdout.strip():
         return None
@@ -49,11 +50,31 @@ def conteudo(sha: str, data: str) -> str:
     return json.dumps({"sha": sha, "curto": sha[:7], "data": data}, ensure_ascii=False, indent=1) + "\n"
 
 
+def marca_commit_da_coleta(sha: str, raiz: Path = ROOT) -> bool:
+    """Preenche o "commit" da coleta mais recente de mudancas.json (o fetch.py
+    grava nulo, porque o commit ainda não existia). Só quando o commit é outro
+    que não a base da coleta, ou seja, quando os dados dela já foram commitados."""
+    alterou = False
+    for arq in (raiz / "data" / "mudancas.json", raiz / "docs" / "data" / "mudancas.json"):
+        try:
+            m = json.loads(arq.read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            continue
+        coletas = m.get("coletas") or []
+        if coletas and not coletas[0].get("commit") and coletas[0].get("base") != sha:
+            coletas[0]["commit"] = sha
+            arq.write_text(json.dumps(m, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+            alterou = True
+    return alterou
+
+
 def grava(raiz: Path = ROOT) -> bool:
     achado = commit_dos_dados(raiz)
     if not achado:
         print("versao_dados: nenhum commit de dados no histórico disponível; versao.json mantido.")
         return False
+    if marca_commit_da_coleta(achado[0], raiz):
+        print(f"versao_dados: mudancas.json -> coleta do commit {achado[0][:7]}.")
     texto = conteudo(*achado)
     saida = raiz / "docs" / "data" / "versao.json"
     if saida.exists() and saida.read_text(encoding="utf-8") == texto:

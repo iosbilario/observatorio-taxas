@@ -27,6 +27,10 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from urllib.parse import quote
 
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from tempo_series import rotulo_card, vigencia_meta  # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "docs" / "data"
 INDEX = ROOT / "docs" / "index.html"
@@ -183,14 +187,17 @@ def versao_dados() -> dict | None:
 
 
 def bloco_carimbo() -> str:
-    """Linha acima do título: data, hora da coleta e o commit dos dados.
+    """Linha acima do título: quando os dados foram publicados, o commit dos
+    dados e o link para o que mudou nessa coleta.
 
-    O hash é o do commit que gravou os dados exibidos (versao.json), não o do
-    commit que publicou o HTML; o link abre esse commit no GitHub."""
+    A hora é a da coleta que publicou dados novos (meta.json só muda quando
+    algum dado muda). As datas de referência de cada série ficam nos cards,
+    separadas desta. O hash é o do commit que gravou os dados exibidos
+    (versao.json), não o do commit que publicou o HTML."""
     hora, v = hora_coleta(), versao_dados()
-    return (f'<p class="carimbo-linha"><span id="hoje">{esc(data_extenso())}</span> · coletado às {esc(hora)} · '
-            + (f'dados do commit <a href="{REPO_URL}/commit/{v["sha"]}">{esc(v["curto"])}</a> · ' if v else "")
-            + 'fonte SGS/BACEN</p>')
+    return (f'<p class="carimbo-linha"><span id="hoje">{esc(data_extenso())}</span> · dados publicados às {esc(hora)} · '
+            + (f'commit <a href="{REPO_URL}/commit/{v["sha"]}">{esc(v["curto"])}</a> · ' if v else "")
+            + '<a href="mudancas/">o que mudou nesta coleta?</a> · fonte SGS/BACEN</p>')
 
 
 def _frase(b: dict, pts: list[dict]) -> str:
@@ -198,21 +205,16 @@ def _frase(b: dict, pts: list[dict]) -> str:
     cur, ref = pts[-1]["v"], pts[-1]["dt"]
     v = fmt_num(cur, b["casas"])
     if b["cod"] == 432:
-        desde = pts[-1]["dt"]
-        for p in reversed(pts):
-            if p["v"] != cur:
-                break
-            desde = p["dt"]
-        antes = next((p["v"] for p in reversed(pts) if p["dt"] < desde), None)
-        txt = f"A Meta Selic está em <b>{v}% ao ano</b> desde {desde.strftime('%d/%m/%Y')}"
+        desde, antes = vigencia_meta(pts)
+        txt = f"A Meta Selic definida pelo Copom é de <b>{v}% ao ano</b>, em vigor desde {desde.strftime('%d/%m/%Y')}"
         if antes is not None:
             txt += f", quando passou de {fmt_num(antes, 2)}% para {v}%"
-        return txt + ", por decisão do Copom."
+        return txt + f". Última observação na série 432 do Banco Central: {ref.strftime('%d/%m/%Y')}."
     if b["cod"] == 13522:
         return (f"O IPCA acumulou <b>{v}%</b> nos 12 meses até {_mes(ref)}, pela série 13522 do Banco Central. "
                 "O índice é do IBGE.")
     if b["cod"] == 1:
-        return (f"O dólar PTAX de venda ficou em <b>R$ {v}</b> em {ref.strftime('%d/%m/%Y')}. "
+        return (f"O dólar PTAX de venda ficou em <b>R$ {v}</b> na cotação de {ref.strftime('%d/%m/%Y')}. "
                 "É a taxa de referência do Banco Central, calculada todo dia útil.")
     if b["cod"] == 189:
         fator = 1.0
@@ -247,7 +249,7 @@ def bloco_boletim() -> str:
             f'<p class="resp-val"><span class="v">{esc(pref + fmt_num(pts[-1]["v"], dec))}</span>'
             + (f'<span class="suf">{esc(suf)}</span>' if suf else "")
             + f'</p><p class="num-delta {cls}">{esc(delta)}</p>'
-            f'<p class="num-ref">ref. {ref.strftime("%d/%m/%Y")}</p>'
+            f'<p class="num-ref">{esc(rotulo_card(b["cod"], pts))}</p>'
             f'<div class="spark" data-cod="{b["cod"]}" data-casas="{dec}" aria-hidden="true"></div></div>'
             f'</article>'
         )
@@ -269,7 +271,7 @@ def bloco_mais() -> str:
             f'<span class="mais-val">{esc(pref + fmt_num(pts[-1]["v"], dec))}'
             + (f'<small>{esc(suf)}</small>' if suf else "")
             + f'</span><span class="num-delta {cls}">{esc(delta)}</span>'
-            f'<span class="num-ref">ref. {pts[-1]["dt"].strftime("%d/%m/%Y")}</span></a>'
+            f'<span class="num-ref">{esc(rotulo_card(m["cod"], pts))}</span></a>'
         )
     return '<div class="mais-grade">\n' + "\n".join(cards) + "\n</div>"
 
@@ -517,7 +519,7 @@ def rebuild_sitemap() -> int:
     # divulgadas enquanto o coletor não estiver no ar.
     urls = [f"{BASE_URL}/", f"{BASE_URL}/rebobinar.html",
             f"{BASE_URL}/var.html", f"{BASE_URL}/retransmissora.html",
-            f"{BASE_URL}/reajuste/", f"{BASE_URL}/correcao/", f"{BASE_URL}/apoie/", f"{BASE_URL}/sobre/", f"{BASE_URL}/privacidade/", f"{BASE_URL}/termos/", f"{BASE_URL}/mcp/", f"{BASE_URL}/indicadores/", f"{BASE_URL}/comparador/", f"{BASE_URL}/simulador-cdi/", f"{BASE_URL}/guias/"]
+            f"{BASE_URL}/reajuste/", f"{BASE_URL}/correcao/", f"{BASE_URL}/apoie/", f"{BASE_URL}/sobre/", f"{BASE_URL}/privacidade/", f"{BASE_URL}/termos/", f"{BASE_URL}/mcp/", f"{BASE_URL}/indicadores/", f"{BASE_URL}/comparador/", f"{BASE_URL}/simulador-cdi/", f"{BASE_URL}/guias/", f"{BASE_URL}/mudancas/"]
     for sub in ("reajuste", "correcao", "indicadores", "guias"):
         for idx in sorted((docs / sub).glob("*/index.html")):
             urls.append(f"{BASE_URL}/{sub}/{idx.parent.name}/")
