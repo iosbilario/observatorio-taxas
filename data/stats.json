@@ -1,6 +1,6 @@
 {
-  "gerado_em": "2026-11-24T13:41:34-03:00",
-  "gerado_em_fmt": "24/11/2026 às 13:41",
+  "gerado_em": "2026-11-24T22:43:51-03:00",
+  "gerado_em_fmt": "24/11/2026 às 22:43",
   "grupos": {
     "Admin": {
       "acessos": 0,
@@ -9,29 +9,29 @@
     "Correção": {
       "acessos": 36,
       "sub": {
-        "IGP-DI": 1,
+        "IGP-DI": 0,
         "IGP-M": 2,
         "INPC": 2,
         "IPCA": 7
       }
     },
     "Home": {
-      "acessos": 200,
+      "acessos": 204,
       "sub": {}
     },
     "Reajuste": {
-      "acessos": 176,
+      "acessos": 173,
       "sub": {
-        "IGP-DI": 13,
-        "IGP-M": 43,
-        "INPC": 18,
-        "IPCA": 48
+        "IGP-DI": 12,
+        "IGP-M": 44,
+        "INPC": 15,
+        "IPCA": 42
       }
     }
   },
   "serie_diaria": [
     {
-      "acessos": 1,
+      "acessos": 0,
       "data": "2026-10-25"
     },
     {
@@ -151,7 +151,7 @@
       "data": "2026-11-23"
     },
     {
-      "acessos": 6,
+      "acessos": 63,
       "data": "2026-11-24"
     }
   ],
@@ -159,32 +159,36 @@
   "timezone": "America/Sao_Paulo (UTC-3)",
   "top_paginas": [
     {
-      "count": 196,
+      "count": 200,
       "path": "/"
     },
     {
-      "count": 85,
+      "count": 87,
       "path": "/indicadores/cdi"
     },
     {
-      "count": 57,
+      "count": 59,
       "path": "/rebobinar.html"
     },
     {
-      "count": 54,
+      "count": 57,
       "path": "/reajuste"
     },
     {
-      "count": 24,
+      "count": 25,
       "path": "/correcao"
     },
     {
-      "count": 15,
+      "count": 17,
       "path": "/retransmissora.html"
     },
     {
-      "count": 15,
+      "count": 17,
       "path": "/var.html"
+    },
+    {
+      "count": 15,
+      "path": "/indicadores"
     },
     {
       "count": 12,
@@ -192,41 +196,37 @@
     },
     {
       "count": 11,
-      "path": "/indicadores"
-    },
-    {
-      "count": 9,
-      "path": "/indicadores/cdi-acumulado-no-mes"
-    },
-    {
-      "count": 9,
       "path": "/indicadores/dolar"
     },
     {
-      "count": 8,
+      "count": 10,
+      "path": "/indicadores/cdi-acumulado-no-mes"
+    },
+    {
+      "count": 10,
+      "path": "/mcp"
+    },
+    {
+      "count": 9,
       "path": "/simulador-cdi"
     },
     {
       "count": 8,
-      "path": "/mcp"
+      "path": "/apoie"
     },
     {
       "count": 8,
       "path": "/reajuste/ipca-setembro-2026"
-    },
-    {
-      "count": 7,
-      "path": "/apoie"
     }
   ],
   "totais": {
     "all_time": {
-      "acessos": 687,
-      "visitantes": 687
+      "acessos": 726,
+      "visitantes": 744
     },
     "ultimos_30d": {
-      "acessos": 311,
-      "visitantes": 311
+      "acessos": 367,
+      "visitantes": 367
     }
   }
 }
