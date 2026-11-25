@@ -31,7 +31,7 @@ def js(corpo: str, **dados) -> object:
             + "".join(f"const {k}={json.dumps(v)};" for k, v in dados.items())
             + f"(async()=>{{{corpo}}})().then(r=>process.stdout.write(JSON.stringify(r)))"
             + ".catch(e=>{console.error(e);process.exit(1)});")
-    r = subprocess.run([NODE, "-e", prog], capture_output=True, text=True, timeout=120)
+    r = subprocess.run([NODE, "-"], input=prog, capture_output=True, text=True, timeout=120)
     if r.returncode:
         raise AssertionError(r.stderr)
     return json.loads(r.stdout)
