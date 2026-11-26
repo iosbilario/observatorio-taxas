@@ -1,0 +1,26 @@
+﻿Observatório de Taxas;IPCA de outubro de 2026: taxa mensal desacelera para 0,14% e acumulado em 12 meses sobe para 4,63%
+Série;"IPCA, produzido por IBGE; SGS 433"
+Recorte;outubro de 2026
+Transformação;acumulado em 12 meses = (1 + taxa₁ ÷ 100) × … × (1 + taxa₁₂ ÷ 100) − 1, na janela atual e na anterior
+Unidade;% (variação no mês e acumulado)
+Versão dos dados;317df4940d39ffadab5b8896188c05636c3dc37e
+Regra;leitura-mensal-v1
+Registrado em;2026-11-26T14:28:01Z
+Citar (link permanente);https://observatoriodetaxas.tec.br/divulgacoes/ipca/2026-10/
+Acompanhar (visão atualizada);https://observatoriodetaxas.tec.br/indicadores/ipca/#leitura
+
+Competência;Variação no mês (%);Fator do mês;Janela atual;Janela anterior;Papel na troca
+outubro de 2025;0,09;1,000900;;sim;saiu da janela
+novembro de 2025;0,18;1,001800;sim;sim;
+dezembro de 2025;0,33;1,003300;sim;sim;
+janeiro de 2026;0,33;1,003300;sim;sim;
+fevereiro de 2026;0,70;1,007000;sim;sim;
+março de 2026;0,88;1,008800;sim;sim;
+abril de 2026;0,67;1,006700;sim;sim;
+maio de 2026;0,58;1,005800;sim;sim;
+junho de 2026;0,16;1,001600;sim;sim;
+julho de 2026;0,07;1,000700;sim;sim;
+agosto de 2026;-0,32;0,996800;sim;sim;
+setembro de 2026;0,82;1,008200;sim;sim;
+outubro de 2026;0,14;1,001400;sim;;entrou na janela
+Acumulado em 12 meses (%);;;4,63;4,58;
