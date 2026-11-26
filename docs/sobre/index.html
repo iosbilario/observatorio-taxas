@@ -5,16 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; img-src 'self' data: https://observatoriotaxas.goatcounter.com; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self' https://gc.zgo.at; connect-src 'self' https://observatoriotaxas.goatcounter.com"/>
 <meta name="referrer" content="strict-origin-when-cross-origin"/>
-<title>Sobre o Observatório de Taxas | Quem somos, fontes e contato</title>
-<meta name="description" content="O que é o Observatório de Taxas, de onde vêm os indicadores, quem mantém o projeto e como entrar em contato."/>
+<title>Sobre o Observatório de Taxas | Os números mudam. O histórico fica.</title>
+<meta name="description" content="Por que o Observatório de Taxas guarda a versão dos dados: um aluguel reajustado pelo IGP-M, sete centavos de diferença e o link para conferir a conta."/>
 <meta name="robots" content="index, follow"/>
 <meta name="theme-color" content="#ffffff"/>
 <link rel="canonical" href="https://observatoriodetaxas.tec.br/sobre/"/>
 <meta property="og:type" content="website"/>
 <meta property="og:locale" content="pt_BR"/>
 <meta property="og:site_name" content="Observatório de Taxas"/>
-<meta property="og:title" content="Sobre o Observatório de Taxas | Quem somos, fontes e contato"/>
-<meta property="og:description" content="O que é o Observatório de Taxas, de onde vêm os indicadores, quem mantém o projeto e como entrar em contato."/>
+<meta property="og:title" content="Os números mudam. O histórico fica. | Sobre o Observatório de Taxas"/>
+<meta property="og:description" content="Por que o Observatório de Taxas guarda a versão dos dados: um aluguel reajustado pelo IGP-M, sete centavos de diferença e o link para conferir a conta."/>
 <meta property="og:url" content="https://observatoriodetaxas.tec.br/sobre/"/>
 <style>
 /* fontes self-hosted (subset latin, SIL OFL) — ver /fonts/LICENSE.txt */
@@ -43,6 +43,54 @@ ul.lista,ol.lista{color:var(--papel-70);padding-left:1.2rem;margin:.3rem 0 .8rem
 h3{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:1rem;margin:1rem 0 .3rem}
 footer{margin-top:32px;color:var(--papel-45);font-size:.8rem;border-top:1px solid var(--linha);padding-top:1.2rem}
 footer a{color:var(--papel-70)}
+/* ---- Sobre: abertura com o recibo dos sete centavos ---- */
+:root{--maxw:1040px;--cupom:#F4F0E4;--cupom-tx:#1c1a14;--cupom-mut:#5f5a4b;--cupom-linha:#cfc8b2;--cupom-ouro:#7d621a}
+.abertura{display:grid;gap:1.4rem 3.2rem;align-items:start;margin:1rem 0 3rem}
+@media (min-width:880px){.abertura{grid-template-columns:minmax(0,1fr) minmax(330px,370px)}}
+.abertura .eyebrow{letter-spacing:.14em;color:var(--papel-45)}
+.abertura h1{font-size:clamp(2.1rem,5.6vw,3.25rem);line-height:1.04;max-width:13ch;margin:.25em 0 .55em}
+.abertura .lead{font-size:1.12rem;line-height:1.55}
+.abertura p.segue{color:var(--papel-70);max-width:58ch;margin:0}
+.recibo{position:relative;background:var(--cupom);color:var(--cupom-tx);font-family:"IBM Plex Mono",monospace;font-size:.82rem;line-height:1.55;padding:1.2rem 1.15rem 1.4rem;border-radius:2px 2px 0 0;box-shadow:0 0 0 1px var(--cupom-linha)}
+.recibo::after{content:"";position:absolute;left:0;right:0;bottom:-11px;height:12px;background:var(--cupom);-webkit-mask:conic-gradient(from -45deg at 50% 0,#000 90deg,transparent 0) 0 0/13px 100%;mask:conic-gradient(from -45deg at 50% 0,#000 90deg,transparent 0) 0 0/13px 100%}
+.recibo .selo{margin:0 0 .5rem;text-align:center;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cupom-ouro);font-weight:600}
+.recibo h2{font-family:"IBM Plex Mono",monospace;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;text-align:center;margin:0 0 .9rem;font-weight:600}
+.recibo dl{margin:0}
+.recibo dl div{display:flex;flex-wrap:wrap;justify-content:space-between;gap:0 1rem;padding:.12rem 0}
+.recibo dt{color:var(--cupom-mut)}
+.recibo dd{margin:0 0 0 auto;text-align:right;font-weight:600}
+.recibo dd.n{white-space:nowrap}
+.recibo hr{border:0;border-top:1px dashed var(--cupom-linha);margin:.75rem 0}
+.recibo .total dt{color:var(--cupom-tx);align-self:end}
+.recibo .total dd{font-size:1.5rem;line-height:1.2}
+.recibo .versao{margin:0;font-size:.74rem;color:var(--cupom-mut);display:flex;justify-content:space-between;gap:1rem}
+.recibo a{color:var(--cupom-ouro);border-bottom-color:currentColor;font-weight:600}
+.recibo a:focus-visible{outline-color:var(--cupom-tx)}
+.sete{margin:1.6rem 0 0;border-top:1px solid var(--linha);border-bottom:1px solid var(--linha)}
+.sete summary{cursor:pointer;padding:.75rem 0;font-weight:600;color:var(--papel)}
+.sete[open] summary{padding-bottom:.4rem}
+.sete .corpo{padding:0 0 .9rem;color:var(--papel-70)}
+.sete .corpo p{margin:.4rem 0}
+.contas{list-style:none;padding:0;margin:.5rem 0}
+.contas li{margin:.45rem 0}
+.num{font-family:"IBM Plex Mono",monospace;font-size:.86rem;color:var(--papel);white-space:nowrap}
+.acao{margin:1rem 0 0}
+.botao{display:inline-block;background:var(--carimbo);color:var(--cofre);border:0;border-radius:8px;padding:.62rem 1.05rem;font-weight:600}
+.botao:hover{border:0;filter:brightness(1.08)}
+.acao small{display:block;margin-top:.45rem;color:var(--papel-45);font-size:.8rem;line-height:1.45}
+.relato{max-width:66ch}
+.relato section{border-top:1px solid var(--linha);padding-top:1.4rem;margin-top:2.2rem}
+.relato h2{font-size:1.45rem}
+.relato p,.relato li{color:var(--papel-70)}
+.relato b,.relato strong{color:var(--papel)}
+.passos{padding-left:1.3rem;margin:.6rem 0 1rem}
+.passos li{margin:.7rem 0;padding-left:.2rem}
+.passos li::marker{font-family:"IBM Plex Mono",monospace;color:var(--papel-45)}
+.mono{font-family:"IBM Plex Mono",monospace;font-size:.9em}
+.ref{margin:.6rem 0 .5rem;padding:.8rem 1rem;border-left:3px solid var(--carimbo);background:color-mix(in srgb,var(--papel) 4%,transparent);color:var(--papel);font-size:.95rem;line-height:1.55;overflow-wrap:anywhere;user-select:text}
+.copiar{font-family:"IBM Plex Mono",monospace;font-size:.76rem;color:var(--papel-70);background:transparent;border:1px solid var(--linha);border-radius:4px;padding:.45rem .7rem;cursor:pointer}
+.copiar:hover,.copiar:focus-visible{color:var(--papel);border-color:var(--carimbo)}
+.copiar-status{margin-left:.6rem;font-size:.8rem;color:var(--papel-45)}
 </style>
 <script data-goatcounter="https://observatoriotaxas.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
   <link rel="stylesheet" href="../nav.css?v=eb59306490" />
@@ -50,6 +98,7 @@ footer a{color:var(--papel-70)}
   <link rel="stylesheet" href="../tema.css?v=25c56aab61" />
   <script src="../tema.js?v=02cb43da0a"></script>
   <script src="../estrelas.js?v=b002890fba" defer></script>
+  <script src="../sobre.js?v=b4c0ab64d8" defer></script>
   <!-- icones:start -->
   <link rel="icon" href="../favicon.ico" sizes="48x48" />
   <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
@@ -85,37 +134,81 @@ footer a{color:var(--papel-70)}
 <div class="wrap">
 <main id="conteudo">
 <article>
+<section class="abertura" id="oque-t" aria-label="Abertura">
 <header>
-<p class="eyebrow">Institucional</p>
-<h1>Sobre o Observatório de Taxas</h1>
+<p class="eyebrow">Sobre o Observatório</p>
+<h1>Os números mudam. O histórico fica.</h1>
+<p class="lead">De onde saiu o percentual usado para reajustar um aluguel? Qual era o valor publicado quando uma matéria foi escrita? O Observatório de Taxas reúne indicadores econômicos brasileiros e guarda a versão dos dados para que qualquer pessoa possa conferir a conta.</p>
 </header>
-<div class="intro">
-<p class="lead">O Observatório de Taxas publica indicadores econômicos do Brasil com o histórico completo de cada número, em páginas gratuitas, sem cadastro e sem servidor.</p>
+<div>
+<div class="recibo" role="group" aria-labelledby="recibo-t">
+<p class="selo">Exemplo histórico · dados de 25/11/2026</p>
+<h2 id="recibo-t">Reajuste de um aluguel</h2>
+<dl>
+<div><dt>Valor original</dt><dd class="n">R$ 2.000,00</dd></div>
+<div><dt>Índice</dt><dd>IGP-M</dd></div>
+<div><dt>Período</dt><dd>novembro de 2025 a outubro de 2026</dd></div>
+<div><dt>Acumulado exibido</dt><dd class="n">5,25%</dd></div>
+<div><dt>Fator usado</dt><dd class="n">1,0524648668</dd></div>
+</dl>
+<hr/>
+<dl><div class="total"><dt>Valor reajustado</dt><dd class="n">R$ 2.104,93</dd></div></dl>
+<hr/>
+<p class="versao"><span>Versão dos dados</span><a href="https://github.com/iosbilario/observatorio-taxas/commit/3e6cee9c17494370e58a3d8716e31cae9d5f08ac" aria-label="Versão dos dados 3e6cee9, ver no GitHub">3e6cee9</a></p>
 </div>
-<section class="card" aria-labelledby="oque-t">
-<h2 id="oque-t">O que o site faz</h2>
-<p>Um robô consulta a API pública do SGS do Banco Central a cada 6 horas. Cada mudança de valor vira um commit no <a href="https://github.com/iosbilario/observatorio-taxas">repositório público</a>, que guarda a linha do tempo de cada série. A partir desses dados o site gera o painel do dia, as páginas de <a href="https://observatoriodetaxas.tec.br/reajuste/">reajuste de contratos</a>, a <a href="https://observatoriodetaxas.tec.br/correcao/">correção monetária</a>, o <a href="https://observatoriodetaxas.tec.br/rebobinar.html">Rebobinar</a>, o <a href="https://observatoriodetaxas.tec.br/var.html">VAR da Economia</a> e os <a href="https://observatoriodetaxas.tec.br/retransmissora.html">gráficos para incorporar</a>.</p>
+<details class="sete">
+<summary>Por que deu R$ 2.104,93 se 5,25% daria R$ 2.105,00?</summary>
+<div class="corpo">
+<ul class="contas">
+<li>Com o percentual exibido: <span class="num">R$ 2.000,00 × 1,0525 = R$ 2.105,00</span></li>
+<li>Com o fator usado no demonstrativo: <span class="num">R$ 2.000,00 × 1,0524648668</span> dá <span class="num">R$ 2.104,93</span> depois do arredondamento para centavos.</li>
+</ul>
+<p>Os R$ 0,07 de diferença vêm só da precisão: o percentual aparece com duas casas (5,25%), enquanto a conta usa o fator completo, de 5,24648668%.</p>
+</div>
+</details>
+<p class="acao"><a class="botao" href="https://observatoriodetaxas.tec.br/reajuste/igpm-outubro-2026/?dados=3e6cee9c17494370e58a3d8716e31cae9d5f08ac">Conferir este cálculo</a>
+<small>Abre o demonstrativo do IGP-M com a versão 3e6cee9 dos dados. Informe R$ 2.000,00 para refazer a conta.</small></p>
+</div>
 </section>
-<section class="card" aria-labelledby="fontes-t">
-<h2 id="fontes-t">De onde vêm os números</h2>
-<p>O Observatório não produz os índices. IPCA, INPC e a taxa de desocupação são do IBGE; IGP-M e IGP-DI, da FGV IBRE; Selic, TR, poupança, câmbio e IBC-Br, do Banco Central. Todas as séries são obtidas no SGS do Banco Central. Acumulados e fatores são calculados pelo Observatório por composição das variações mensais, com a fórmula e o código publicados.</p>
-<p>Os termos de reutilização de cada série estão em <a href="https://github.com/iosbilario/observatorio-taxas/blob/main/LICENSE-DADOS.md">LICENSE-DADOS.md</a>. O conteúdo é informativo e não é recomendação financeira nem orientação jurídica.</p>
+
+<div class="relato">
+<section aria-labelledby="fontes-t">
+<h2 id="fontes-t">De onde veio esse número?</h2>
+<p>O mesmo aluguel passou por três mãos antes de chegar ao recibo.</p>
+<ol class="passos">
+<li><b>A FGV IBRE produz o IGP-M.</b> Todo mês o instituto mede a variação dos preços e <a href="https://portalibre.fgv.br/igp">publica o índice</a>.</li>
+<li><b>O Banco Central distribui a série.</b> O IGP-M mensal está no SGS, o sistema de séries do Banco Central, como <a href="https://api.bcb.gov.br/dados/serie/bcdata.sgs.189/dados?formato=json">série 189</a>. O Observatório consulta o SGS a cada seis horas. Essa é a frequência de consulta do Observatório, não a de publicação: o IGP-M sai uma vez por mês.</li>
+<li><b>O Observatório faz a conta e guarda a versão.</b> Ele multiplica as doze variações mensais, de novembro de 2025 a outubro de 2026, e chega ao fator 1,0524648668. Os valores do SGS não são alterados.</li>
+</ol>
+<p>Guardar a versão significa manter uma cópia datada dos dados tal como estavam naquele dia, sem sobrescrever a anterior. Se a FGV revisar um mês ou o Banco Central corrigir a série, a cópia antiga continua lá. Cada cópia tem um código curto de identificação, que no Git, o sistema que guarda o histórico do projeto, se chama <em>commit</em>. O recibo acima usa o commit <a class="mono" href="https://github.com/iosbilario/observatorio-taxas/commit/3e6cee9c17494370e58a3d8716e31cae9d5f08ac">3e6cee9</a>, gravado em 25/11/2026. Nele está o arquivo da <a href="https://github.com/iosbilario/observatorio-taxas/blob/3e6cee9c17494370e58a3d8716e31cae9d5f08ac/data/189_history.json">série 189 naquele dia</a>.</p>
+<p>Por isso o link de conferência continua dando R$ 2.104,93 depois das próximas coletas: ele refaz a conta com aquela versão, não com a mais recente. A ficha do indicador mostra o valor atual e a <a href="https://observatoriodetaxas.tec.br/indicadores/igp-m/">fonte de cada série</a>. Os outros índices seguem o mesmo caminho: IPCA, INPC e taxa de desocupação vêm do IBGE; IGP-M e IGP-DI, da FGV IBRE; Selic, TR, poupança, câmbio e IBC-Br, do Banco Central. Todos são obtidos no SGS.</p>
 </section>
-<section class="card" aria-labelledby="quem-t">
-<h2 id="quem-t">Quem mantém</h2>
-<p>O projeto é independente e mantido pela <a href="https://lbptecnologia.com.br/">LBP Tecnologia</a>, de São Paulo. O código está sob licença MIT.</p>
+
+<section aria-labelledby="quem-t">
+<h2 id="quem-t">Quem faz o Observatório</h2>
+<p>O Observatório de Taxas é um projeto independente da <a href="https://lbptecnologia.com.br/">LBP Tecnologia</a>, de São Paulo. A LBP desenvolve o código e mantém a coleta. Os textos e os cálculos são decididos pelo próprio projeto, com a fórmula e o código publicados.</p>
 <p>O site pode exibir anúncios do Google AdSense em páginas informativas. Anúncios não influenciam os números, os textos nem os cálculos, e não são colocados dentro de calculadoras, formulários ou resultados. Contribuições voluntárias podem ser feitas na página <a href="https://observatoriodetaxas.tec.br/apoie/">Apoie</a>.</p>
+<p>O código está sob licença MIT. Os dados seguem os termos de cada produtor, listados em <a href="https://github.com/iosbilario/observatorio-taxas/blob/main/LICENSE-DADOS.md">LICENSE-DADOS.md</a>. O conteúdo é informativo e não é recomendação financeira nem orientação jurídica.</p>
 </section>
-<section class="card" aria-labelledby="citar-t">
-<h2 id="citar-t">Citação acadêmica</h2>
-<p>O software está arquivado no Zenodo. Para citar o projeto, use o DOI <a href="https://doi.org/10.5281/zenodo.24151062">10.5281/zenodo.24151062</a>, que reúne todas as versões. Para citar uma versão reproduzível, use o DOI da versão: a v1.6.0 é <a href="https://doi.org/10.5281/zenodo.24151063">10.5281/zenodo.24151063</a>.</p>
-<p>Cite também o produtor de cada índice usado (IBGE, FGV IBRE ou Banco Central) e a data de referência do dado.</p>
+
+<section aria-labelledby="citar-t">
+<h2 id="citar-t">Usar e citar</h2>
+<h3 id="citar-projeto">Citar o projeto</h3>
+<p>O software está arquivado no Zenodo. O DOI geral, <a href="https://doi.org/10.5281/zenodo.24151062">10.5281/zenodo.24151062</a>, reúne todas as versões e aponta sempre para a mais recente. Para um resultado que precisa ser reproduzido com o mesmo código, use o DOI da versão. A v1.9.0, de 24/11/2026, é <a href="https://doi.org/10.5281/zenodo.24517515">10.5281/zenodo.24517515</a>.</p>
+<p class="ref" id="ref-projeto">Pereira, L. B. (2026). <i>Observatório de Taxas</i> (Version v1.9.0) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.24517515</p>
+<p><button class="copiar" type="button" data-copiar="ref-projeto" hidden>Copiar referência</button><span class="copiar-status" role="status"></span></p>
+<h3 id="citar-numero">Citar este número</h3>
+<p>Para usar o exemplo do aluguel, cite o produtor, a série, o período e a versão dos dados:</p>
+<p class="ref" id="ref-numero">IGP-M acumulado de novembro de 2025 a outubro de 2026: 5,25% (fator 1,0524648668). Produtor: FGV IBRE. Série 189 do SGS do Banco Central do Brasil. Cálculo e versão dos dados (3e6cee9): Observatório de Taxas, https://observatoriodetaxas.tec.br/reajuste/igpm-outubro-2026/?dados=3e6cee9c17494370e58a3d8716e31cae9d5f08ac</p>
+<p><button class="copiar" type="button" data-copiar="ref-numero" hidden>Copiar referência</button><span class="copiar-status" role="status"></span></p>
 </section>
-<section class="card" aria-labelledby="contato-t">
-<h2 id="contato-t">Contato</h2>
-<p>E-mail: <a href="mailto:contato@observatoriodetaxas.tec.br">contato@observatoriodetaxas.tec.br</a></p>
-<p>Encontrou um número errado? Abra uma <a href="https://github.com/iosbilario/observatorio-taxas/issues">issue no GitHub</a> com a URL da página, o código da série e a fonte oficial, ou escreva para o e-mail acima.</p>
+
+<section aria-labelledby="contato-t">
+<h2 id="contato-t">Encontrou uma divergência?</h2>
+<p>Mande três coisas: <b>a URL da página</b>, <b>o valor que você encontrou</b> e <b>a fonte com que comparou</b> (por exemplo, a publicação da FGV ou a série no SGS). Com isso dá para refazer a conta na mesma versão dos dados e responder.</p>
+<p>Escreva para <a href="mailto:contato@observatoriodetaxas.tec.br">contato@observatoriodetaxas.tec.br</a> ou abra uma <a href="https://github.com/iosbilario/observatorio-taxas/issues">issue no GitHub</a>.</p>
 </section>
+</div>
 </article>
 </main>
 <footer>
