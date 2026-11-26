@@ -220,6 +220,7 @@ h2.grupo{margin-top:1.6rem}
 .tabela-rolagem:focus-visible{outline:2px solid var(--carimbo);outline-offset:2px}
 .tabela-rolagem table{min-width:560px}
 .tabela-rolagem caption{caption-side:bottom;text-align:left;padding-top:.5rem}
+.estado{font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--linha);border-radius:999px;padding:1px 8px;margin-left:.4rem;white-space:nowrap}
 """
 
 CSP = ("default-src 'self'; base-uri 'self'; object-src 'none'; "
@@ -464,6 +465,30 @@ def bloco_leitura(codigo: int, pts: list[dict]) -> str:
             f'{D.conta_de(lt, chave, "../../", "leitura-conta-t", h="h3")}{perm}{anteriores}</section>')
 
 
+CALENDARIO_POR_CODIGO = {433: "ipca", 7478: "ipca15", 432: "copom"}
+
+
+def bloco_proximo_evento(codigo: int) -> str:
+    """Próximo evento do calendário (build_calendario.py) para IPCA, IPCA-15 e
+    Meta Selic."""
+    fam = CALENDARIO_POR_CODIGO.get(codigo)
+    if not fam:
+        return ""
+    import build_calendario as K
+    evs, cob, hoje, _, _ = K.carregar()
+    ev = K.proximo_da_familia(evs, fam, hoje)
+    if not ev:
+        fim = cob.get(fam)
+        return ('<section class="card" aria-labelledby="agenda-t"><h2 id="agenda-t">Próxima divulgação</h2>'
+                f'<p>A agenda verificada termina em {e(K.dia_txt(fim))}; ainda não há próximo evento na fonte consultada. '
+                f'<a href="{BASE_URL}/calendario/">Calendário</a>.</p></section>')
+    return ('<section class="card" aria-labelledby="agenda-t"><h2 id="agenda-t">Próxima divulgação</h2>'
+            f'<p><a href="{BASE_URL}/calendario/{ev["id"]}/">{K.resumo_evento(ev)}</a></p>'
+            f'<p class="mut">Data prevista na agenda oficial ({e(ev["fonte"]["nome"])}, conferida em '
+            f'{e(K.dia_txt(ev["fonte"]["conferido_em"]))}). <a href="{BASE_URL}/calendario/">Calendário completo</a>.</p>'
+            '</section>')
+
+
 def bloco_mudancas(codigo: int, n: int = 5) -> str:
     """As últimas mudanças desta série registradas em mudancas.json, com a
     mesma classificação de /mudancas/ (tempo_series.classificar)."""
@@ -591,6 +616,7 @@ def pagina(codigo: int, pts: list[dict], grupo: str) -> str:
 <p class="lead">{resposta}</p>
 {nota_parcial}<div class="kpis">{kpi_html}</div>
 {"".join(f"<p>{e(f)}</p>" for f in frases)}
+{bloco_proximo_evento(codigo)}
 {bloco_leitura(codigo, pts)}
 {bloco_mudancas(codigo)}
 <section class="card" aria-labelledby="oque-t"><h2 id="oque-t">O que é</h2>

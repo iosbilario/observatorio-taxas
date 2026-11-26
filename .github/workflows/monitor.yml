@@ -66,6 +66,11 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: python scripts/fetch.py
 
+      # Agendas oficiais do IBGE e do BC (data/calendario_fontes.json). Em
+      # falha, mantém a última agenda válida e não derruba a coleta.
+      - name: Agenda de divulgações (IBGE e Banco Central)
+        run: python scripts/fetch_calendario.py
+
       - name: Gerar páginas programáticas de reajuste
         run: python scripts/build_pages.py
 
@@ -88,6 +93,9 @@ jobs:
       # novos nascem no passo da versão dos dados, quando o commit existe.
       - name: Divulgações e RSS (/divulgacoes/, /feed.xml)
         run: python scripts/build_divulgacoes.py
+
+      - name: Calendário de divulgações (/calendario/)
+        run: python scripts/build_calendario.py
 
       - name: Assar boletim no HTML da landing e regenerar o sitemap
         run: python scripts/render_index.py
@@ -150,6 +158,7 @@ jobs:
           python scripts/versao_dados.py
           python scripts/build_mudancas.py
           python scripts/build_divulgacoes.py --registrar
+          python scripts/build_calendario.py
           python scripts/build_indicadores.py
           python scripts/render_index.py
           python scripts/sync_nav.py

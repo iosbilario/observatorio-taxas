@@ -1,0 +1,1053 @@
+{
+ "cobertura": {
+  "copom": "2027-12-08",
+  "ipca": "2027-01-12",
+  "ipca15": "2026-12-23"
+ },
+ "eventos": [
+  {
+   "analise": null,
+   "competencia": "2026-01",
+   "data_prevista": "2026-01-27",
+   "datas_anteriores": [],
+   "detectado_em": null,
+   "divulgacao_oficial": null,
+   "estado": "publicado",
+   "familia": "ipca15",
+   "fonte": {
+    "conferido_em": "2026-11-26",
+    "id_fonte": 4209,
+    "nome": "Calendário de divulgações do IBGE (API)",
+    "url": "https://servicodados.ibge.gov.br/api/v3/calendario/"
+   },
+   "horario": null,
+   "horario_nota": "A agenda do IBGE traz 12:00:00 em todos os itens; o horário não é tratado como confirmado.",
+   "id": "ipca15-2026-01",
+   "publicado": true,
+   "titulo": "IPCA-15 de janeiro de 2026"
+  },
+  {
+   "analise": null,
+   "data_prevista": "2026-01-28",
+   "datas_anteriores": [],
+   "decisao": "276ª reunião - Copom mantém a taxa Selic em 15,00% a.a.",
+   "detectado_em": null,
+   "divulgacao_oficial": "2026-01-28",
+   "estado": "publicado",
+   "familia": "copom",
+   "fonte": {
+    "conferido_em": "2026-11-26",
+    "decisoes_conferidas_em": "2026-11-26",
+    "nome": "Calendário de reuniões (notas oficiais do BC) e comunicados do Copom (API do BC)",
+    "url": "https://www.bcb.gov.br/api/servico/sitebcb/notasimprensa/20739",
+    "url_decisoes": "https://www.bcb.gov.br/api/servico/sitebcb/copom/comunicados?quantidade=20"
+   },
+   "horario": null,
+   "horario_nota": "O comunicado da decisão sai no segundo dia da reunião; a fonte usada não confirma o horário.",
+   "id": "copom-2026-1",
+   "publicado": true,
+   "reuniao": {
+    "ano": 2026,
+    "dias": [
+     "2026-01-27",
+     "2026-01-28"
+    ],
+    "numero": 276,
+    "ordem": 1
+   },
+   "titulo": "Copom, 276ª reunião",
+   "vigencia": {
+    "detectado_em": null,
+    "inicio": "2026-01-29",
+    "meta": 15.0
+   }
+  },
+  {
+   "analise": null,
+   "competencia": "2026-01",
+   "data_prevista": "2026-02-10",
+   "datas_anteriores": [],
+   "detectado_em": null,
+   "divulgacao_oficial": null,
+   "estado": "publicado",
+   "familia": "ipca",
+   "fonte": {
+    "conferido_em": "2026-11-26",
+    "id_fonte": 4211,
+    "nome": "Calendário de divulgações do IBGE (API)",
+    "url": "https://servicodados.ibge.gov.br/api/v3/calendario/"
+   },
+   "horario": null,
+   "horario_nota": "A agenda do IBGE traz 12:00:00 em todos os itens; o horário não é tratado como confirmado.",
+   "id": "ipca-2026-01",
+   "publicado": true,
+   "titulo": "IPCA de janeiro de 2026"
+  },
+  {
+   "analise": null,
+   "competencia": "2026-02",
+   "data_prevista": "2026-02-27",
+   "datas_anteriores": [],
+   "detectado_em": null,
+   "divulgacao_oficial": null,
+   "estado": "publicado",
+   "familia": "ipca15",
+   "fonte": {
+    "conferido_em": "2026-11-26",
+    "id_fonte": 4214,
+    "nome": "Calendário de divulgações do IBGE (API)",
+    "url": "https://servicodados.ibge.gov.br/api/v3/calendario/"
+   },
+   "horario": null,
+   "horario_nota": "A agenda do IBGE traz 12:00:00 em todos os itens; o horário não é tratado como confirmado.",
+   "id": "ipca15-2026-02",
+   "publicado": true,
+   "titulo": "IPCA-15 de fevereiro de 2026"
+  },
+  {
+   "analise": null,
+   "competencia": "2026-02",
+   "data_prevista": "2026-03-12",
+   "datas_anteriores": [],
+   "detectado_em": null,
+   "divulgacao_oficial": null,
+   "estado": "publicado",
+   "familia": "ipca",
+   "fonte": {
+    "conferido_em": "2026-11-26",
+    "id_fonte": 4220,
+    "nome": "Calendário de divulgações do IBGE (API)",
+    "url": "https://servicodados.ibge.gov.br/api/v3/calendario/"
+   },
+   "horario": null,
+   "horario_nota": "A agenda do IBGE traz 12:00:00 em todos os itens; o horário não é tratado como confirmado.",
+   "id": "ipca-2026-02",
+   "publicado": true,
+   "titulo": "IPCA de fevereiro de 2026"
+  },
+  {
+   "analise": null,
+   "data_prevista": "2026-03-18",
+   "datas_anteriores": [],
+   "decisao": "277ª reunião - Copom reduz a taxa Selic para 14,75% a.a.",
+   "detectado_em": null,
+   "divulgacao_oficial": "2026-03-18",
+   "estado": "publicado",
+   "familia": "copom",
+   "fonte": {
+    "conferido_em": "2026-11-26",
+    "decisoes_conferidas_em": "2026-11-26",
+    "nome": "Calendário de reuniões (notas oficiais do BC) e comunicados do Copom (API do BC)",
+    "url": "https://www.bcb.gov.br/api/servico/sitebcb/notasimprensa/20739",
+    "url_decisoes": "https://www.bcb.gov.br/api/servico/sitebcb/copom/comunicados?quantidade=20"
+   },
+   "horario": null,
+   "horario_nota": "O comunicado da decisão sai no segundo dia da reunião; a fonte usada não confirma o horário.",
+   "id": "copom-2026-2",
+   "publicado": true,
+   "reuniao": {
+    "ano": 2026,
+    "dias": [
+     "2026-03-17",
+     "2026-03-18"
+    ],
+    "numero": 277,
+    "ordem": 2
+   },
+   "titulo": "Copom, 277ª reunião",
+   "vigencia": {
+    "detectado_em": null,
+    "inicio": "2026-03-19",
+    "meta": 14.75
+   }
+  },
+  {
+   "analise": null,
+   "competencia": "2026-03",
+   "data_prevista": "2026-03-26",
+   "datas_anteriores": [],
+   "detectado_em": null,
+   "divulgacao_oficial": null,
+   "estado": "publicado",
+   "familia": "ipca15",
+   "fonte": {
+    "conferido_em": "2026-11-26",
+    "id_fonte": 4225,
+    "nome": "Calendário de divulgações do IBGE (API)",
+    "url": "https://servicodados.ibge.gov.br/api/v3/calendario/"
+   },
+   "horario": null,
+   "horario_nota": "A agenda do IBGE traz 12:00:00 em todos os itens; o horário não é tratado como confirmado.",
+   "id": "ipca15-2026-03",
+   "publicado": true,
+   "titulo": "IPCA-15 de março de 2026"
+  },
+  {
+   "analise": null,
+   "competencia": "2026-03",
+   "data_prevista": "2026-04-10",
+   "datas_anteriores": [],
+   "detectado_em": null,
+   "divulgacao_oficial": null,
+   "estado": "publicado",
+   "familia": "ipca",
+   "fonte": {
+    "conferido_em": "2026-11-26",
+    "id_fonte": 4232,
+    "nome": "Calendário de divulgações do IBGE (API)",
+    "url": "https://servicodados.ibge.gov.br/api/v3/calendario/"
+   },
+   "horario": null,
+   "horario_nota": "A agenda do IBGE traz 12:00:00 em todos os itens; o horário não é tratado como confirmado.",
+   "id": "ipca-2026-03",
+   "publicado": true,
+   "titulo": "IPCA de março de 2026"
+  },
+  {
+   "analise": null,
+   "competencia": "2026-04",
+   "data_prevista": "2026-04-28",
+   "datas_anteriores": [],
+   "detectado_em": null,
+   "divulgacao_oficial": null,
+   "estado": "publicado",
+   "familia": "ipca15",
+   "fonte": {
+    "conferido_em": "2026-11-26",
+    "id_fonte": 4237,
+    "nome": "Calendário de divulgações do IBGE (API)",
+    "url": "https://servicodados.ibge.gov.br/api/v3/calendario/"
+   },
+   "horario": null,
+   "horario_nota": "A agenda do IBGE traz 12:00:00 em todos os itens; o horário não é tratado como confirmado.",
+   "id": "ipca15-2026-04",
+   "publicado": true,
+   "titulo": "IPCA-15 de abril de 2026"
+  },
+  {
+   "analise": null,
+   "data_prevista": "2026-04-29",
+   "datas_anteriores": [],
+   "decisao": "278ª reunião - Copom reduz a taxa Selic para 14,50% a.a.",
+   "detectado_em": null,
+   "divulgacao_oficial": "2026-04-29",
+   "estado": "publicado",
+   "familia": "copom",
+   "fonte": {
+    "conferido_em": "2026-11-26",
+    "decisoes_conferidas_em": "2026-11-26",
+    "nome": "Calendário de reuniões (notas oficiais do BC) e comunicados do Copom (API do BC)",
+    "url": "https://www.bcb.gov.br/api/servico/sitebcb/notasimprensa/20739",
+    "url_decisoes": "https://www.bcb.gov.br/api/servico/sitebcb/copom/comunicados?quantidade=20"
+   },
+   "horario": null,
+   "horario_nota": "O comunicado da decisão sai no segundo dia da reunião; a fonte usada não confirma o horário.",
+   "id": "copom-2026-3",
+   "publicado": true,
+   "reuniao": {
+    "ano": 2026,
+    "dias": [
+     "2026-04-28",
+     "2026-04-29"
+    ],
+    "numero": 278,
+    "ordem": 3
+   },
+   "titulo": "Copom, 278ª reunião",
+   "vigencia": {
+    "detectado_em": null,
+    "inicio": "2026-04-30",
+    "meta": 14.5
+   }
+  },
+  {
+   "analise": null,
+   "competencia": "2026-04",
+   "data_prevista": "2026-05-12",
+   "datas_anteriores": [],
+   "detectado_em": null,
+   "divulgacao_oficial": null,
+   "estado": "publicado",
+   "familia": "ipca",
+   "fonte": {
+    "conferido_em": "2026-11-26",
+    "id_fonte": 4242,
+    "nome": "Calendário de divulgações do IBGE (API)",
+    "url": "https://servicodados.ibge.gov.br/api/v3/calendario/"
+   },
+   "horario": null,
+   "horario_nota": "A agenda do IBGE traz 12:00:00 em todos os itens; o horário não é tratado como confirmado.",
+   "id": "ipca-2026-04",
+   "publicado": true,
+   "titulo": "IPCA de abril de 2026"
+  },
+  {
+   "analise": null,
+   "competencia": "2026-05",
+   "data_prevista": "2026-05-27",
+   "datas_anteriores": [],
+   "detectado_em": null,
+   "divulgacao_oficial": null,
+   "estado": "publicado",
+   "familia": "ipca15",
+   "fonte": {
+    "conferido_em": "2026-11-26",
+    "id_fonte": 4250,
+    "nome": "Calendário de divulgações do IBGE (API)",
+    "url": "https://servicodados.ibge.gov.br/api/v3/calendario/"
+   },
+   "horario": null,
+   "horario_nota": "A agenda do IBGE traz 12:00:00 em todos os itens; o horário não é tratado como confirmado.",
+   "id": "ipca15-2026-05",
+   "publicado": true,
+   "titulo": "IPCA-15 de maio de 2026"
+  },
+  {
+   "analise": null,
+   "competencia": "2026-05",
+   "data_prevista": "2026-06-12",
+   "datas_anteriores": [],
+   "detectado_em": null,
+   "divulgacao_oficial": null,
+   "estado": "publicado",
+   "familia": "ipca",
+   "fonte": {
+    "conferido_em": "2026-11-26",
+    "id_fonte": 4260,
+    "nome": "Calendário de divulgações do IBGE (API)",
+    "url": "https://servicodados.ibge.gov.br/api/v3/calendario/"
+   },
+   "horario": null,
+   "horario_nota": "A agenda do IBGE traz 12:00:00 em todos os itens; o horário não é tratado como confirmado.",
+   "id": "ipca-2026-05",
+   "publicado": true,
+   "titulo": "IPCA de maio de 2026"
+  },
+  {
+   "analise": null,
+   "data_prevista": "2026-06-17",
+   "datas_anteriores": [],
+   "decisao": "279ª reunião - Copom reduz a taxa Selic para 14,25% a.a.",
+   "detectado_em": null,
+   "divulgacao_oficial": "2026-06-17",
+   "estado": "publicado",
+   "familia": "copom",
+   "fonte": {
+    "conferido_em": "2026-11-26",
+    "decisoes_conferidas_em": "2026-11-26",
+    "nome": "Calendário de reuniões (notas oficiais do BC) e comunicados do Copom (API do BC)",
+    "url": "https://www.bcb.gov.br/api/servico/sitebcb/notasimprensa/20739",
+    "url_decisoes": "https://www.bcb.gov.br/api/servico/sitebcb/copom/comunicados?quantidade=20"
+   },
+   "horario": null,
+   "horario_nota": "O comunicado da decisão sai no segundo dia da reunião; a fonte usada não confirma o horário.",
+   "id": "copom-2026-4",
+   "publicado": true,
+   "reuniao": {
+    "ano": 2026,
+    "dias": [
+     "2026-06-16",
+     "2026-06-17"
+    ],
+    "numero": 279,
+    "ordem": 4
+   },
+   "titulo": "Copom, 279ª reunião",
+   "vigencia": {
+    "detectado_em": null,
+    "inicio": "2026-06-18",
+    "meta": 14.25
+   }
+  },
+  {
+   "analise": null,
+   "competencia": "2026-06",
+   "data_prevista": "2026-06-25",
+   "datas_anteriores": [],
+   "detectado_em": null,
+   "divulgacao_oficial": null,
+   "estado": "publicado",
+   "familia": "ipca15",
+   "fonte": {
+    "conferido_em": "2026-11-26",
+    "id_fonte": 4264,
+    "nome": "Calendário de divulgações do IBGE (API)",
+    "url": "https://servicodados.ibge.gov.br/api/v3/calendario/"
+   },
+   "horario": null,
+   "horario_nota": "A agenda do IBGE traz 12:00:00 em todos os itens; o horário não é tratado como confirmado.",
+   "id": "ipca15-2026-06",
+   "publicado": true,
+   "titulo": "IPCA-15 de junho de 2026"
+  },
+  {
+   "analise": null,
+   "competencia": "2026-06",
+   "data_prevista": "2026-07-10",
+   "datas_anteriores": [],
+   "detectado_em": null,
+   "divulgacao_oficial": null,
+   "estado": "publicado",
+   "familia": "ipca",
+   "fonte": {
+    "conferido_em": "2026-11-26",
+    "id_fonte": 4270,
+    "nome": "Calendário de divulgações do IBGE (API)",
+    "url": "https://servicodados.ibge.gov.br/api/v3/calendario/"
+   },
+   "horario": null,
+   "horario_nota": "A agenda do IBGE traz 12:00:00 em todos os itens; o horário não é tratado como confirmado.",
+   "id": "ipca-2026-06",
+   "publicado": true,
+   "titulo": "IPCA de junho de 2026"
+  },
+  {
+   "analise": null,
+   "competencia": "2026-07",
+   "data_prevista": "2026-07-28",
+   "datas_anteriores": [],
+   "detectado_em": null,
+   "divulgacao_oficial": null,
+   "estado": "publicado",
+   "familia": "ipca15",
+   "fonte": {
+    "conferido_em": "2026-11-26",
+    "id_fonte": 4276,
+    "nome": "Calendário de divulgações do IBGE (API)",
+    "url": "https://servicodados.ibge.gov.br/api/v3/calendario/"
+   },
+   "horario": null,
+   "horario_nota": "A agenda do IBGE traz 12:00:00 em todos os itens; o horário não é tratado como confirmado.",
+   "id": "ipca15-2026-07",
+   "publicado": true,
+   "titulo": "IPCA-15 de julho de 2026"
+  },
+  {
+   "analise": null,
+   "data_prevista": "2026-08-05",
+   "datas_anteriores": [],
+   "decisao": "280ª reunião - Copom reduz a taxa Selic para 14,00% a.a.",
+   "detectado_em": null,
+   "divulgacao_oficial": "2026-08-05",
+   "estado": "publicado",
+   "familia": "copom",
+   "fonte": {
+    "conferido_em": "2026-11-26",
+    "decisoes_conferidas_em": "2026-11-26",
+    "nome": "Calendário de reuniões (notas oficiais do BC) e comunicados do Copom (API do BC)",
+    "url": "https://www.bcb.gov.br/api/servico/sitebcb/notasimprensa/20739",
+    "url_decisoes": "https://www.bcb.gov.br/api/servico/sitebcb/copom/comunicados?quantidade=20"
+   },
+   "horario": null,
+   "horario_nota": "O comunicado da decisão sai no segundo dia da reunião; a fonte usada não confirma o horário.",
+   "id": "copom-2026-5",
+   "publicado": true,
+   "reuniao": {
+    "ano": 2026,
+    "dias": [
+     "2026-08-04",
+     "2026-08-05"
+    ],
+    "numero": 280,
+    "ordem": 5
+   },
+   "titulo": "Copom, 280ª reunião",
+   "vigencia": {
+    "detectado_em": "2026-11-25T17:40:47-03:00",
+    "inicio": "2026-08-06",
+    "meta": 14.0
+   }
+  },
+  {
+   "analise": null,
+   "competencia": "2026-07",
+   "data_prevista": "2026-08-11",
+   "datas_anteriores": [],
+   "detectado_em": null,
+   "divulgacao_oficial": null,
+   "estado": "publicado",
+   "familia": "ipca",
+   "fonte": {
+    "conferido_em": "2026-11-26",
+    "id_fonte": 4282,
+    "nome": "Calendário de divulgações do IBGE (API)",
+    "url": "https://servicodados.ibge.gov.br/api/v3/calendario/"
+   },
+   "horario": null,
+   "horario_nota": "A agenda do IBGE traz 12:00:00 em todos os itens; o horário não é tratado como confirmado.",
+   "id": "ipca-2026-07",
+   "publicado": true,
+   "titulo": "IPCA de julho de 2026"
+  },
+  {
+   "analise": null,
+   "competencia": "2026-08",
+   "data_prevista": "2026-08-26",
+   "datas_anteriores": [],
+   "detectado_em": null,
+   "divulgacao_oficial": null,
+   "estado": "publicado",
+   "familia": "ipca15",
+   "fonte": {
+    "conferido_em": "2026-11-26",
+    "id_fonte": 4289,
+    "nome": "Calendário de divulgações do IBGE (API)",
+    "url": "https://servicodados.ibge.gov.br/api/v3/calendario/"
+   },
+   "horario": null,
+   "horario_nota": "A agenda do IBGE traz 12:00:00 em todos os itens; o horário não é tratado como confirmado.",
+   "id": "ipca15-2026-08",
+   "publicado": true,
+   "titulo": "IPCA-15 de agosto de 2026"
+  },
+  {
+   "analise": null,
+   "competencia": "2026-08",
+   "data_prevista": "2026-09-11",
+   "datas_anteriores": [],
+   "detectado_em": null,
+   "divulgacao_oficial": null,
+   "estado": "publicado",
+   "familia": "ipca",
+   "fonte": {
+    "conferido_em": "2026-11-26",
+    "id_fonte": 4297,
+    "nome": "Calendário de divulgações do IBGE (API)",
+    "url": "https://servicodados.ibge.gov.br/api/v3/calendario/"
+   },
+   "horario": null,
+   "horario_nota": "A agenda do IBGE traz 12:00:00 em todos os itens; o horário não é tratado como confirmado.",
+   "id": "ipca-2026-08",
+   "publicado": true,
+   "titulo": "IPCA de agosto de 2026"
+  },
+  {
+   "analise": null,
+   "data_prevista": "2026-09-16",
+   "datas_anteriores": [],
+   "decisao": "281ª reunião - Copom reduz a taxa Selic para 13,75% a.a.",
+   "detectado_em": null,
+   "divulgacao_oficial": "2026-09-16",
+   "estado": "publicado",
+   "familia": "copom",
+   "fonte": {
+    "conferido_em": "2026-11-26",
+    "decisoes_conferidas_em": "2026-11-26",
+    "nome": "Calendário de reuniões (notas oficiais do BC) e comunicados do Copom (API do BC)",
+    "url": "https://www.bcb.gov.br/api/servico/sitebcb/notasimprensa/20739",
+    "url_decisoes": "https://www.bcb.gov.br/api/servico/sitebcb/copom/comunicados?quantidade=20"
+   },
+   "horario": null,
+   "horario_nota": "O comunicado da decisão sai no segundo dia da reunião; a fonte usada não confirma o horário.",
+   "id": "copom-2026-6",
+   "publicado": true,
+   "reuniao": {
+    "ano": 2026,
+    "dias": [
+     "2026-09-15",
+     "2026-09-16"
+    ],
+    "numero": 281,
+    "ordem": 6
+   },
+   "titulo": "Copom, 281ª reunião",
+   "vigencia": {
+    "detectado_em": "2026-11-25T17:40:47-03:00",
+    "inicio": "2026-09-17",
+    "meta": 13.75
+   }
+  },
+  {
+   "analise": null,
+   "competencia": "2026-09",
+   "data_prevista": "2026-09-25",
+   "datas_anteriores": [],
+   "detectado_em": null,
+   "divulgacao_oficial": null,
+   "estado": "publicado",
+   "familia": "ipca15",
+   "fonte": {
+    "conferido_em": "2026-11-26",
+    "id_fonte": 4302,
+    "nome": "Calendário de divulgações do IBGE (API)",
+    "url": "https://servicodados.ibge.gov.br/api/v3/calendario/"
+   },
+   "horario": null,
+   "horario_nota": "A agenda do IBGE traz 12:00:00 em todos os itens; o horário não é tratado como confirmado.",
+   "id": "ipca15-2026-09",
+   "publicado": true,
+   "titulo": "IPCA-15 de setembro de 2026"
+  },
+  {
+   "analise": null,
+   "competencia": "2026-09",
+   "data_prevista": "2026-10-09",
+   "datas_anteriores": [],
+   "detectado_em": null,
+   "divulgacao_oficial": null,
+   "estado": "publicado",
+   "familia": "ipca",
+   "fonte": {
+    "conferido_em": "2026-11-26",
+    "id_fonte": 4309,
+    "nome": "Calendário de divulgações do IBGE (API)",
+    "url": "https://servicodados.ibge.gov.br/api/v3/calendario/"
+   },
+   "horario": null,
+   "horario_nota": "A agenda do IBGE traz 12:00:00 em todos os itens; o horário não é tratado como confirmado.",
+   "id": "ipca-2026-09",
+   "publicado": true,
+   "titulo": "IPCA de setembro de 2026"
+  },
+  {
+   "analise": null,
+   "competencia": "2026-10",
+   "data_prevista": "2026-10-23",
+   "datas_anteriores": [],
+   "detectado_em": null,
+   "divulgacao_oficial": null,
+   "estado": "publicado",
+   "familia": "ipca15",
+   "fonte": {
+    "conferido_em": "2026-11-26",
+    "id_fonte": 4314,
+    "nome": "Calendário de divulgações do IBGE (API)",
+    "url": "https://servicodados.ibge.gov.br/api/v3/calendario/"
+   },
+   "horario": null,
+   "horario_nota": "A agenda do IBGE traz 12:00:00 em todos os itens; o horário não é tratado como confirmado.",
+   "id": "ipca15-2026-10",
+   "publicado": true,
+   "titulo": "IPCA-15 de outubro de 2026"
+  },
+  {
+   "analise": null,
+   "data_prevista": "2026-11-04",
+   "datas_anteriores": [],
+   "decisao": "282ª reunião - Copom mantém a taxa Selic em 13,75% a.a.",
+   "detectado_em": null,
+   "divulgacao_oficial": "2026-11-04",
+   "estado": "publicado",
+   "familia": "copom",
+   "fonte": {
+    "conferido_em": "2026-11-26",
+    "decisoes_conferidas_em": "2026-11-26",
+    "nome": "Calendário de reuniões (notas oficiais do BC) e comunicados do Copom (API do BC)",
+    "url": "https://www.bcb.gov.br/api/servico/sitebcb/notasimprensa/20739",
+    "url_decisoes": "https://www.bcb.gov.br/api/servico/sitebcb/copom/comunicados?quantidade=20"
+   },
+   "horario": null,
+   "horario_nota": "O comunicado da decisão sai no segundo dia da reunião; a fonte usada não confirma o horário.",
+   "id": "copom-2026-7",
+   "publicado": true,
+   "reuniao": {
+    "ano": 2026,
+    "dias": [
+     "2026-11-03",
+     "2026-11-04"
+    ],
+    "numero": 282,
+    "ordem": 7
+   },
+   "titulo": "Copom, 282ª reunião",
+   "vigencia": {
+    "detectado_em": "2026-11-25T17:40:47-03:00",
+    "inicio": "2026-11-05",
+    "meta": 13.75
+   }
+  },
+  {
+   "analise": "https://observatoriodetaxas.tec.br/divulgacoes/ipca/2026-10/",
+   "competencia": "2026-10",
+   "data_prevista": "2026-11-12",
+   "datas_anteriores": [],
+   "detectado_em": null,
+   "divulgacao_oficial": null,
+   "estado": "publicado",
+   "familia": "ipca",
+   "fonte": {
+    "conferido_em": "2026-11-26",
+    "id_fonte": 4321,
+    "nome": "Calendário de divulgações do IBGE (API)",
+    "url": "https://servicodados.ibge.gov.br/api/v3/calendario/"
+   },
+   "horario": null,
+   "horario_nota": "A agenda do IBGE traz 12:00:00 em todos os itens; o horário não é tratado como confirmado.",
+   "id": "ipca-2026-10",
+   "publicado": true,
+   "titulo": "IPCA de outubro de 2026"
+  },
+  {
+   "analise": null,
+   "competencia": "2026-11",
+   "data_prevista": "2026-11-26",
+   "datas_anteriores": [],
+   "detectado_em": "2026-11-26T11:27:52-03:00",
+   "divulgacao_oficial": null,
+   "estado": "publicado",
+   "familia": "ipca15",
+   "fonte": {
+    "conferido_em": "2026-11-26",
+    "id_fonte": 4330,
+    "nome": "Calendário de divulgações do IBGE (API)",
+    "url": "https://servicodados.ibge.gov.br/api/v3/calendario/"
+   },
+   "horario": null,
+   "horario_nota": "A agenda do IBGE traz 12:00:00 em todos os itens; o horário não é tratado como confirmado.",
+   "id": "ipca15-2026-11",
+   "publicado": true,
+   "titulo": "IPCA-15 de novembro de 2026"
+  },
+  {
+   "analise": null,
+   "data_prevista": "2026-12-09",
+   "datas_anteriores": [],
+   "decisao": null,
+   "detectado_em": null,
+   "divulgacao_oficial": null,
+   "estado": "previsto",
+   "familia": "copom",
+   "fonte": {
+    "conferido_em": "2026-11-26",
+    "decisoes_conferidas_em": "2026-11-26",
+    "nome": "Calendário de reuniões (notas oficiais do BC) e comunicados do Copom (API do BC)",
+    "url": "https://www.bcb.gov.br/api/servico/sitebcb/notasimprensa/20739",
+    "url_decisoes": "https://www.bcb.gov.br/api/servico/sitebcb/copom/comunicados?quantidade=20"
+   },
+   "horario": null,
+   "horario_nota": "O comunicado da decisão sai no segundo dia da reunião; a fonte usada não confirma o horário.",
+   "id": "copom-2026-8",
+   "publicado": false,
+   "reuniao": {
+    "ano": 2026,
+    "dias": [
+     "2026-12-08",
+     "2026-12-09"
+    ],
+    "numero": null,
+    "ordem": 8
+   },
+   "titulo": "Copom, 8ª reunião de 2026",
+   "vigencia": null
+  },
+  {
+   "analise": null,
+   "competencia": "2026-11",
+   "data_prevista": "2026-12-11",
+   "datas_anteriores": [],
+   "detectado_em": null,
+   "divulgacao_oficial": null,
+   "estado": "previsto",
+   "familia": "ipca",
+   "fonte": {
+    "conferido_em": "2026-11-26",
+    "id_fonte": 4338,
+    "nome": "Calendário de divulgações do IBGE (API)",
+    "url": "https://servicodados.ibge.gov.br/api/v3/calendario/"
+   },
+   "horario": null,
+   "horario_nota": "A agenda do IBGE traz 12:00:00 em todos os itens; o horário não é tratado como confirmado.",
+   "id": "ipca-2026-11",
+   "publicado": false,
+   "titulo": "IPCA de novembro de 2026"
+  },
+  {
+   "analise": null,
+   "competencia": "2026-12",
+   "data_prevista": "2026-12-23",
+   "datas_anteriores": [],
+   "detectado_em": null,
+   "divulgacao_oficial": null,
+   "estado": "previsto",
+   "familia": "ipca15",
+   "fonte": {
+    "conferido_em": "2026-11-26",
+    "id_fonte": 4343,
+    "nome": "Calendário de divulgações do IBGE (API)",
+    "url": "https://servicodados.ibge.gov.br/api/v3/calendario/"
+   },
+   "horario": null,
+   "horario_nota": "A agenda do IBGE traz 12:00:00 em todos os itens; o horário não é tratado como confirmado.",
+   "id": "ipca15-2026-12",
+   "publicado": false,
+   "titulo": "IPCA-15 de dezembro de 2026"
+  },
+  {
+   "analise": null,
+   "competencia": "2026-12",
+   "data_prevista": "2027-01-12",
+   "datas_anteriores": [],
+   "detectado_em": null,
+   "divulgacao_oficial": null,
+   "estado": "previsto",
+   "familia": "ipca",
+   "fonte": {
+    "conferido_em": "2026-11-26",
+    "id_fonte": 4349,
+    "nome": "Calendário de divulgações do IBGE (API)",
+    "url": "https://servicodados.ibge.gov.br/api/v3/calendario/"
+   },
+   "horario": null,
+   "horario_nota": "A agenda do IBGE traz 12:00:00 em todos os itens; o horário não é tratado como confirmado.",
+   "id": "ipca-2026-12",
+   "publicado": false,
+   "titulo": "IPCA de dezembro de 2026"
+  },
+  {
+   "analise": null,
+   "data_prevista": "2027-01-27",
+   "datas_anteriores": [],
+   "decisao": null,
+   "detectado_em": null,
+   "divulgacao_oficial": null,
+   "estado": "previsto",
+   "familia": "copom",
+   "fonte": {
+    "conferido_em": "2026-11-26",
+    "decisoes_conferidas_em": "2026-11-26",
+    "nome": "Calendário de reuniões (notas oficiais do BC) e comunicados do Copom (API do BC)",
+    "url": "https://www.bcb.gov.br/api/servico/sitebcb/notasimprensa/21173",
+    "url_decisoes": "https://www.bcb.gov.br/api/servico/sitebcb/copom/comunicados?quantidade=20"
+   },
+   "horario": null,
+   "horario_nota": "O comunicado da decisão sai no segundo dia da reunião; a fonte usada não confirma o horário.",
+   "id": "copom-2027-1",
+   "publicado": false,
+   "reuniao": {
+    "ano": 2027,
+    "dias": [
+     "2027-01-26",
+     "2027-01-27"
+    ],
+    "numero": null,
+    "ordem": 1
+   },
+   "titulo": "Copom, 1ª reunião de 2027",
+   "vigencia": null
+  },
+  {
+   "analise": null,
+   "data_prevista": "2027-03-17",
+   "datas_anteriores": [],
+   "decisao": null,
+   "detectado_em": null,
+   "divulgacao_oficial": null,
+   "estado": "previsto",
+   "familia": "copom",
+   "fonte": {
+    "conferido_em": "2026-11-26",
+    "decisoes_conferidas_em": "2026-11-26",
+    "nome": "Calendário de reuniões (notas oficiais do BC) e comunicados do Copom (API do BC)",
+    "url": "https://www.bcb.gov.br/api/servico/sitebcb/notasimprensa/21173",
+    "url_decisoes": "https://www.bcb.gov.br/api/servico/sitebcb/copom/comunicados?quantidade=20"
+   },
+   "horario": null,
+   "horario_nota": "O comunicado da decisão sai no segundo dia da reunião; a fonte usada não confirma o horário.",
+   "id": "copom-2027-2",
+   "publicado": false,
+   "reuniao": {
+    "ano": 2027,
+    "dias": [
+     "2027-03-16",
+     "2027-03-17"
+    ],
+    "numero": null,
+    "ordem": 2
+   },
+   "titulo": "Copom, 2ª reunião de 2027",
+   "vigencia": null
+  },
+  {
+   "analise": null,
+   "data_prevista": "2027-04-28",
+   "datas_anteriores": [],
+   "decisao": null,
+   "detectado_em": null,
+   "divulgacao_oficial": null,
+   "estado": "previsto",
+   "familia": "copom",
+   "fonte": {
+    "conferido_em": "2026-11-26",
+    "decisoes_conferidas_em": "2026-11-26",
+    "nome": "Calendário de reuniões (notas oficiais do BC) e comunicados do Copom (API do BC)",
+    "url": "https://www.bcb.gov.br/api/servico/sitebcb/notasimprensa/21173",
+    "url_decisoes": "https://www.bcb.gov.br/api/servico/sitebcb/copom/comunicados?quantidade=20"
+   },
+   "horario": null,
+   "horario_nota": "O comunicado da decisão sai no segundo dia da reunião; a fonte usada não confirma o horário.",
+   "id": "copom-2027-3",
+   "publicado": false,
+   "reuniao": {
+    "ano": 2027,
+    "dias": [
+     "2027-04-27",
+     "2027-04-28"
+    ],
+    "numero": null,
+    "ordem": 3
+   },
+   "titulo": "Copom, 3ª reunião de 2027",
+   "vigencia": null
+  },
+  {
+   "analise": null,
+   "data_prevista": "2027-06-16",
+   "datas_anteriores": [],
+   "decisao": null,
+   "detectado_em": null,
+   "divulgacao_oficial": null,
+   "estado": "previsto",
+   "familia": "copom",
+   "fonte": {
+    "conferido_em": "2026-11-26",
+    "decisoes_conferidas_em": "2026-11-26",
+    "nome": "Calendário de reuniões (notas oficiais do BC) e comunicados do Copom (API do BC)",
+    "url": "https://www.bcb.gov.br/api/servico/sitebcb/notasimprensa/21173",
+    "url_decisoes": "https://www.bcb.gov.br/api/servico/sitebcb/copom/comunicados?quantidade=20"
+   },
+   "horario": null,
+   "horario_nota": "O comunicado da decisão sai no segundo dia da reunião; a fonte usada não confirma o horário.",
+   "id": "copom-2027-4",
+   "publicado": false,
+   "reuniao": {
+    "ano": 2027,
+    "dias": [
+     "2027-06-15",
+     "2027-06-16"
+    ],
+    "numero": null,
+    "ordem": 4
+   },
+   "titulo": "Copom, 4ª reunião de 2027",
+   "vigencia": null
+  },
+  {
+   "analise": null,
+   "data_prevista": "2027-08-04",
+   "datas_anteriores": [],
+   "decisao": null,
+   "detectado_em": null,
+   "divulgacao_oficial": null,
+   "estado": "previsto",
+   "familia": "copom",
+   "fonte": {
+    "conferido_em": "2026-11-26",
+    "decisoes_conferidas_em": "2026-11-26",
+    "nome": "Calendário de reuniões (notas oficiais do BC) e comunicados do Copom (API do BC)",
+    "url": "https://www.bcb.gov.br/api/servico/sitebcb/notasimprensa/21173",
+    "url_decisoes": "https://www.bcb.gov.br/api/servico/sitebcb/copom/comunicados?quantidade=20"
+   },
+   "horario": null,
+   "horario_nota": "O comunicado da decisão sai no segundo dia da reunião; a fonte usada não confirma o horário.",
+   "id": "copom-2027-5",
+   "publicado": false,
+   "reuniao": {
+    "ano": 2027,
+    "dias": [
+     "2027-08-03",
+     "2027-08-04"
+    ],
+    "numero": null,
+    "ordem": 5
+   },
+   "titulo": "Copom, 5ª reunião de 2027",
+   "vigencia": null
+  },
+  {
+   "analise": null,
+   "data_prevista": "2027-09-22",
+   "datas_anteriores": [],
+   "decisao": null,
+   "detectado_em": null,
+   "divulgacao_oficial": null,
+   "estado": "previsto",
+   "familia": "copom",
+   "fonte": {
+    "conferido_em": "2026-11-26",
+    "decisoes_conferidas_em": "2026-11-26",
+    "nome": "Calendário de reuniões (notas oficiais do BC) e comunicados do Copom (API do BC)",
+    "url": "https://www.bcb.gov.br/api/servico/sitebcb/notasimprensa/21173",
+    "url_decisoes": "https://www.bcb.gov.br/api/servico/sitebcb/copom/comunicados?quantidade=20"
+   },
+   "horario": null,
+   "horario_nota": "O comunicado da decisão sai no segundo dia da reunião; a fonte usada não confirma o horário.",
+   "id": "copom-2027-6",
+   "publicado": false,
+   "reuniao": {
+    "ano": 2027,
+    "dias": [
+     "2027-09-21",
+     "2027-09-22"
+    ],
+    "numero": null,
+    "ordem": 6
+   },
+   "titulo": "Copom, 6ª reunião de 2027",
+   "vigencia": null
+  },
+  {
+   "analise": null,
+   "data_prevista": "2027-10-27",
+   "datas_anteriores": [],
+   "decisao": null,
+   "detectado_em": null,
+   "divulgacao_oficial": null,
+   "estado": "previsto",
+   "familia": "copom",
+   "fonte": {
+    "conferido_em": "2026-11-26",
+    "decisoes_conferidas_em": "2026-11-26",
+    "nome": "Calendário de reuniões (notas oficiais do BC) e comunicados do Copom (API do BC)",
+    "url": "https://www.bcb.gov.br/api/servico/sitebcb/notasimprensa/21173",
+    "url_decisoes": "https://www.bcb.gov.br/api/servico/sitebcb/copom/comunicados?quantidade=20"
+   },
+   "horario": null,
+   "horario_nota": "O comunicado da decisão sai no segundo dia da reunião; a fonte usada não confirma o horário.",
+   "id": "copom-2027-7",
+   "publicado": false,
+   "reuniao": {
+    "ano": 2027,
+    "dias": [
+     "2027-10-26",
+     "2027-10-27"
+    ],
+    "numero": null,
+    "ordem": 7
+   },
+   "titulo": "Copom, 7ª reunião de 2027",
+   "vigencia": null
+  },
+  {
+   "analise": null,
+   "data_prevista": "2027-12-08",
+   "datas_anteriores": [],
+   "decisao": null,
+   "detectado_em": null,
+   "divulgacao_oficial": null,
+   "estado": "previsto",
+   "familia": "copom",
+   "fonte": {
+    "conferido_em": "2026-11-26",
+    "decisoes_conferidas_em": "2026-11-26",
+    "nome": "Calendário de reuniões (notas oficiais do BC) e comunicados do Copom (API do BC)",
+    "url": "https://www.bcb.gov.br/api/servico/sitebcb/notasimprensa/21173",
+    "url_decisoes": "https://www.bcb.gov.br/api/servico/sitebcb/copom/comunicados?quantidade=20"
+   },
+   "horario": null,
+   "horario_nota": "O comunicado da decisão sai no segundo dia da reunião; a fonte usada não confirma o horário.",
+   "id": "copom-2027-8",
+   "publicado": false,
+   "reuniao": {
+    "ano": 2027,
+    "dias": [
+     "2027-12-07",
+     "2027-12-08"
+    ],
+    "numero": null,
+    "ordem": 8
+   },
+   "titulo": "Copom, 8ª reunião de 2027",
+   "vigencia": null
+  }
+ ]
+}

@@ -1,0 +1,29 @@
+{
+ "aviso": "Calendário editorial das reuniões ordinárias do Copom, conferido à mão nas notas oficiais do Banco Central. Não há interface estável para as reuniões futuras. Como atualizar: desenvolvimento/CALENDARIO.md.",
+ "conferido_em": "2026-11-26",
+ "cobertura": {"inicio": "2026-01-27", "fim": "2027-12-08"},
+ "fontes": [
+  {"ano": 2026, "titulo": "BC publica calendário de reuniões do Copom em 2026 (Comunicado nº 43.383)", "publicado_em": "2025-06-24",
+   "url": "https://www.bcb.gov.br/api/servico/sitebcb/notasimprensa/20739"},
+  {"ano": 2027, "titulo": "BC publica calendário de reuniões do Copom em 2027 (Comunicado nº 45.452)", "publicado_em": "2026-06-23",
+   "url": "https://www.bcb.gov.br/api/servico/sitebcb/notasimprensa/21173"}
+ ],
+ "reunioes": [
+  {"ano": 2026, "ordem": 1, "dias": ["2026-01-27", "2026-01-28"]},
+  {"ano": 2026, "ordem": 2, "dias": ["2026-03-17", "2026-03-18"]},
+  {"ano": 2026, "ordem": 3, "dias": ["2026-04-28", "2026-04-29"]},
+  {"ano": 2026, "ordem": 4, "dias": ["2026-06-16", "2026-06-17"]},
+  {"ano": 2026, "ordem": 5, "dias": ["2026-08-04", "2026-08-05"]},
+  {"ano": 2026, "ordem": 6, "dias": ["2026-09-15", "2026-09-16"]},
+  {"ano": 2026, "ordem": 7, "dias": ["2026-11-03", "2026-11-04"]},
+  {"ano": 2026, "ordem": 8, "dias": ["2026-12-08", "2026-12-09"]},
+  {"ano": 2027, "ordem": 1, "dias": ["2027-01-26", "2027-01-27"]},
+  {"ano": 2027, "ordem": 2, "dias": ["2027-03-16", "2027-03-17"]},
+  {"ano": 2027, "ordem": 3, "dias": ["2027-04-27", "2027-04-28"]},
+  {"ano": 2027, "ordem": 4, "dias": ["2027-06-15", "2027-06-16"]},
+  {"ano": 2027, "ordem": 5, "dias": ["2027-08-03", "2027-08-04"]},
+  {"ano": 2027, "ordem": 6, "dias": ["2027-09-21", "2027-09-22"]},
+  {"ano": 2027, "ordem": 7, "dias": ["2027-10-26", "2027-10-27"]},
+  {"ano": 2027, "ordem": 8, "dias": ["2027-12-07", "2027-12-08"]}
+ ]
+}

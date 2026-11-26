@@ -1,0 +1,1801 @@
+{
+ "copom_decisoes": {
+  "conferido_em": "2026-11-26",
+  "itens": [
+   {
+    "data": "2024-06-19",
+    "reuniao": 263,
+    "titulo": "263ª reunião - Copom mantém a taxa Selic em 10,50% a.a."
+   },
+   {
+    "data": "2024-07-31",
+    "reuniao": 264,
+    "titulo": "264ª reunião - Copom mantém a taxa Selic em 10,50% a.a."
+   },
+   {
+    "data": "2024-09-18",
+    "reuniao": 265,
+    "titulo": "265ª reunião - Copom eleva a taxa Selic para 10,75% a.a."
+   },
+   {
+    "data": "2024-11-06",
+    "reuniao": 266,
+    "titulo": "266ª reunião - Copom eleva a taxa Selic para 11,25% a.a."
+   },
+   {
+    "data": "2024-12-11",
+    "reuniao": 267,
+    "titulo": "267ª reunião - Copom eleva a taxa Selic para 12,25% a.a."
+   },
+   {
+    "data": "2025-01-29",
+    "reuniao": 268,
+    "titulo": "268ª reunião - Copom eleva a taxa Selic para 13,25% a.a."
+   },
+   {
+    "data": "2025-03-19",
+    "reuniao": 269,
+    "titulo": "269ª reunião - Copom eleva a taxa Selic para 14,25% a.a."
+   },
+   {
+    "data": "2025-05-07",
+    "reuniao": 270,
+    "titulo": "270ª reunião - Copom eleva a taxa Selic para 14,75% a.a."
+   },
+   {
+    "data": "2025-06-18",
+    "reuniao": 271,
+    "titulo": "271ª reunião - Copom eleva a taxa Selic para 15,00% a.a."
+   },
+   {
+    "data": "2025-07-30",
+    "reuniao": 272,
+    "titulo": "272ª reunião - Copom mantém a taxa Selic em 15,00% a.a."
+   },
+   {
+    "data": "2025-09-17",
+    "reuniao": 273,
+    "titulo": "273ª reunião - Copom mantém a taxa Selic em 15,00% a.a."
+   },
+   {
+    "data": "2025-11-05",
+    "reuniao": 274,
+    "titulo": "274ª reunião - Copom mantém a taxa Selic em 15,00% a.a."
+   },
+   {
+    "data": "2025-12-10",
+    "reuniao": 275,
+    "titulo": "275ª reunião - Copom mantém a taxa Selic em 15,00% a.a."
+   },
+   {
+    "data": "2026-01-28",
+    "reuniao": 276,
+    "titulo": "276ª reunião - Copom mantém a taxa Selic em 15,00% a.a."
+   },
+   {
+    "data": "2026-03-18",
+    "reuniao": 277,
+    "titulo": "277ª reunião - Copom reduz a taxa Selic para 14,75% a.a."
+   },
+   {
+    "data": "2026-04-29",
+    "reuniao": 278,
+    "titulo": "278ª reunião - Copom reduz a taxa Selic para 14,50% a.a."
+   },
+   {
+    "data": "2026-06-17",
+    "reuniao": 279,
+    "titulo": "279ª reunião - Copom reduz a taxa Selic para 14,25% a.a."
+   },
+   {
+    "data": "2026-08-05",
+    "reuniao": 280,
+    "titulo": "280ª reunião - Copom reduz a taxa Selic para 14,00% a.a."
+   },
+   {
+    "data": "2026-09-16",
+    "reuniao": 281,
+    "titulo": "281ª reunião - Copom reduz a taxa Selic para 13,75% a.a."
+   },
+   {
+    "data": "2026-11-04",
+    "reuniao": 282,
+    "titulo": "282ª reunião - Copom mantém a taxa Selic em 13,75% a.a."
+   }
+  ],
+  "url": "https://www.bcb.gov.br/api/servico/sitebcb/copom/comunicados?quantidade=20"
+ },
+ "ibge": {
+  "conferido_em": "2026-11-26",
+  "itens": [
+   {
+    "competencia": "2016-12",
+    "data_divulgacao": "11/01/2017 11:00:00",
+    "familia": "ipca",
+    "id_ibge": 249,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2017-01",
+    "data_divulgacao": "08/02/2017 11:00:00",
+    "familia": "ipca",
+    "id_ibge": 240,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2017-02",
+    "data_divulgacao": "10/03/2017 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 227,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2017-03",
+    "data_divulgacao": "07/04/2017 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 212,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2017-04",
+    "data_divulgacao": "10/05/2017 03:00:00",
+    "familia": "ipca",
+    "id_ibge": 67,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2017-05",
+    "data_divulgacao": "09/06/2017 03:00:00",
+    "familia": "ipca",
+    "id_ibge": 81,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2017-06",
+    "data_divulgacao": "07/07/2017 03:00:00",
+    "familia": "ipca",
+    "id_ibge": 92,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2017-07",
+    "data_divulgacao": "09/08/2017 03:00:00",
+    "familia": "ipca",
+    "id_ibge": 103,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2017-08",
+    "data_divulgacao": "06/09/2017 03:00:00",
+    "familia": "ipca",
+    "id_ibge": 115,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2017-09",
+    "data_divulgacao": "06/10/2017 03:00:00",
+    "familia": "ipca",
+    "id_ibge": 126,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2017-10",
+    "data_divulgacao": "10/11/2017 02:00:00",
+    "familia": "ipca",
+    "id_ibge": 140,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2017-11",
+    "data_divulgacao": "08/12/2017 02:00:00",
+    "familia": "ipca",
+    "id_ibge": 151,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2017-12",
+    "data_divulgacao": "10/01/2018 00:00:00",
+    "familia": "ipca",
+    "id_ibge": 301,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2018-01",
+    "data_divulgacao": "08/02/2018 00:00:00",
+    "familia": "ipca",
+    "id_ibge": 310,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2018-02",
+    "data_divulgacao": "09/03/2018 00:00:00",
+    "familia": "ipca",
+    "id_ibge": 323,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2018-03",
+    "data_divulgacao": "10/04/2018 00:00:00",
+    "familia": "ipca",
+    "id_ibge": 334,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2018-04",
+    "data_divulgacao": "10/05/2018 00:00:00",
+    "familia": "ipca",
+    "id_ibge": 346,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2018-05",
+    "data_divulgacao": "08/06/2018 00:00:00",
+    "familia": "ipca",
+    "id_ibge": 357,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2018-06",
+    "data_divulgacao": "06/07/2018 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 370,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2018-07",
+    "data_divulgacao": "08/08/2018 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 380,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2018-08",
+    "data_divulgacao": "06/09/2018 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 393,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2018-09",
+    "data_divulgacao": "05/10/2018 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 405,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2018-10",
+    "data_divulgacao": "07/11/2018 11:00:00",
+    "familia": "ipca",
+    "id_ibge": 415,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2018-11",
+    "data_divulgacao": "07/12/2018 11:00:00",
+    "familia": "ipca",
+    "id_ibge": 429,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2018-12",
+    "data_divulgacao": "11/01/2019 11:00:00",
+    "familia": "ipca",
+    "id_ibge": 442,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2019-01",
+    "data_divulgacao": "08/02/2019 11:00:00",
+    "familia": "ipca",
+    "id_ibge": 750,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2019-02",
+    "data_divulgacao": "12/03/2019 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 752,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2019-03",
+    "data_divulgacao": "10/04/2019 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 754,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2019-04",
+    "data_divulgacao": "10/05/2019 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 756,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2019-05",
+    "data_divulgacao": "07/06/2019 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 758,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2019-06",
+    "data_divulgacao": "10/07/2019 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 760,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2019-07",
+    "data_divulgacao": "08/08/2019 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 762,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2019-08",
+    "data_divulgacao": "06/09/2019 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 764,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2019-09",
+    "data_divulgacao": "09/10/2019 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 766,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2019-10",
+    "data_divulgacao": "07/11/2019 11:00:00",
+    "familia": "ipca",
+    "id_ibge": 768,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2019-11",
+    "data_divulgacao": "06/12/2019 11:00:00",
+    "familia": "ipca",
+    "id_ibge": 770,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2019-12",
+    "data_divulgacao": "10/01/2020 11:00:00",
+    "familia": "ipca",
+    "id_ibge": 772,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2020-01",
+    "data_divulgacao": "07/02/2020 11:00:00",
+    "familia": "ipca",
+    "id_ibge": 1112,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2020-02",
+    "data_divulgacao": "11/03/2020 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 1122,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2020-03",
+    "data_divulgacao": "09/04/2020 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 1135,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2020-04",
+    "data_divulgacao": "08/05/2020 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 1142,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2020-05",
+    "data_divulgacao": "10/06/2020 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 1158,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2020-06",
+    "data_divulgacao": "10/07/2020 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 1171,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2020-07",
+    "data_divulgacao": "07/08/2020 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 1178,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2020-08",
+    "data_divulgacao": "09/09/2020 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 1191,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2020-09",
+    "data_divulgacao": "09/10/2020 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 1206,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2020-10",
+    "data_divulgacao": "06/11/2020 11:00:00",
+    "familia": "ipca",
+    "id_ibge": 1213,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2020-11",
+    "data_divulgacao": "08/12/2020 11:00:00",
+    "familia": "ipca",
+    "id_ibge": 1228,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2020-12",
+    "data_divulgacao": "12/01/2021 11:00:00",
+    "familia": "ipca",
+    "id_ibge": 1241,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2021-01",
+    "data_divulgacao": "09/02/2021 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 1399,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2021-02",
+    "data_divulgacao": "11/03/2021 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 1409,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2021-03",
+    "data_divulgacao": "09/04/2021 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 1420,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2021-04",
+    "data_divulgacao": "11/05/2021 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 1431,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2021-05",
+    "data_divulgacao": "09/06/2021 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 1447,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2021-06",
+    "data_divulgacao": "08/07/2021 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 1461,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2021-07",
+    "data_divulgacao": "10/08/2021 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 1469,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2021-08",
+    "data_divulgacao": "09/09/2021 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 1483,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2021-09",
+    "data_divulgacao": "08/10/2021 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 1499,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2021-10",
+    "data_divulgacao": "10/11/2021 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 1507,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2021-11",
+    "data_divulgacao": "10/12/2021 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 1528,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2021-12",
+    "data_divulgacao": "11/01/2022 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 1537,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2022-01",
+    "data_divulgacao": "09/02/2022 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 2188,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2022-02",
+    "data_divulgacao": "11/03/2022 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 2189,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2022-03",
+    "data_divulgacao": "08/04/2022 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 2190,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2022-04",
+    "data_divulgacao": "11/05/2022 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 2191,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2022-05",
+    "data_divulgacao": "09/06/2022 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 2192,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2022-06",
+    "data_divulgacao": "08/07/2022 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 2193,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2022-07",
+    "data_divulgacao": "09/08/2022 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 2194,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2022-08",
+    "data_divulgacao": "09/09/2022 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 2195,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2022-09",
+    "data_divulgacao": "11/10/2022 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 2196,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2022-10",
+    "data_divulgacao": "10/11/2022 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 2197,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2022-11",
+    "data_divulgacao": "09/12/2022 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 2198,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2022-12",
+    "data_divulgacao": "10/01/2023 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 2199,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2023-01",
+    "data_divulgacao": "09/02/2023 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 2697,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2023-02",
+    "data_divulgacao": "10/03/2023 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 2703,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2023-03",
+    "data_divulgacao": "11/04/2023 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 2713,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2023-04",
+    "data_divulgacao": "12/05/2023 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 2729,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2023-05",
+    "data_divulgacao": "07/06/2023 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 2743,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2023-06",
+    "data_divulgacao": "11/07/2023 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 2756,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2023-07",
+    "data_divulgacao": "11/08/2023 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 2772,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2023-08",
+    "data_divulgacao": "12/09/2023 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 2784,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2023-09",
+    "data_divulgacao": "11/10/2023 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 2797,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2023-10",
+    "data_divulgacao": "10/11/2023 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 2812,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2023-11",
+    "data_divulgacao": "12/12/2023 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 2827,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2023-12",
+    "data_divulgacao": "11/01/2024 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 2839,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2024-01",
+    "data_divulgacao": "08/02/2024 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 3176,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2024-02",
+    "data_divulgacao": "12/03/2024 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 3184,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2024-03",
+    "data_divulgacao": "10/04/2024 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 3196,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2024-04",
+    "data_divulgacao": "10/05/2024 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 3209,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2024-05",
+    "data_divulgacao": "11/06/2024 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 3221,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2024-06",
+    "data_divulgacao": "10/07/2024 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 3234,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2024-07",
+    "data_divulgacao": "09/08/2024 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 3246,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2024-08",
+    "data_divulgacao": "10/09/2024 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 3260,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2024-09",
+    "data_divulgacao": "09/10/2024 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 3273,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2024-10",
+    "data_divulgacao": "08/11/2024 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 3284,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2024-11",
+    "data_divulgacao": "10/12/2024 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 3300,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2024-12",
+    "data_divulgacao": "10/01/2025 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 3314,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2025-01",
+    "data_divulgacao": "11/02/2025 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 3735,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2025-02",
+    "data_divulgacao": "12/03/2025 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 3742,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2025-03",
+    "data_divulgacao": "11/04/2025 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 3759,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2025-04",
+    "data_divulgacao": "09/05/2025 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 3766,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2025-05",
+    "data_divulgacao": "10/06/2025 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 3780,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2025-06",
+    "data_divulgacao": "10/07/2025 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 3795,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2025-07",
+    "data_divulgacao": "12/08/2025 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 3806,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2025-08",
+    "data_divulgacao": "10/09/2025 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 3819,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2025-09",
+    "data_divulgacao": "09/10/2025 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 3831,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2025-10",
+    "data_divulgacao": "11/11/2025 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 3843,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2025-11",
+    "data_divulgacao": "10/12/2025 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 3860,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2025-12",
+    "data_divulgacao": "09/01/2026 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 3872,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2026-01",
+    "data_divulgacao": "10/02/2026 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 4211,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2026-02",
+    "data_divulgacao": "12/03/2026 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 4220,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2026-03",
+    "data_divulgacao": "10/04/2026 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 4232,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2026-04",
+    "data_divulgacao": "12/05/2026 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 4242,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2026-05",
+    "data_divulgacao": "12/06/2026 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 4260,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2026-06",
+    "data_divulgacao": "10/07/2026 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 4270,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2026-07",
+    "data_divulgacao": "11/08/2026 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 4282,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2026-08",
+    "data_divulgacao": "11/09/2026 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 4297,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2026-09",
+    "data_divulgacao": "09/10/2026 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 4309,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2026-10",
+    "data_divulgacao": "12/11/2026 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 4321,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2026-11",
+    "data_divulgacao": "11/12/2026 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 4338,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2026-12",
+    "data_divulgacao": "12/01/2027 12:00:00",
+    "familia": "ipca",
+    "id_ibge": 4349,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo"
+   },
+   {
+    "competencia": "2017-01",
+    "data_divulgacao": "19/01/2017 11:00:00",
+    "familia": "ipca15",
+    "id_ibge": 246,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2017-02",
+    "data_divulgacao": "22/02/2017 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 235,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2017-03",
+    "data_divulgacao": "22/03/2017 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 219,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2017-04",
+    "data_divulgacao": "20/04/2017 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 206,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2017-05",
+    "data_divulgacao": "23/05/2017 03:00:00",
+    "familia": "ipca15",
+    "id_ibge": 73,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2017-06",
+    "data_divulgacao": "23/06/2017 03:00:00",
+    "familia": "ipca15",
+    "id_ibge": 89,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2017-07",
+    "data_divulgacao": "20/07/2017 03:00:00",
+    "familia": "ipca15",
+    "id_ibge": 98,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2017-08",
+    "data_divulgacao": "23/08/2017 03:00:00",
+    "familia": "ipca15",
+    "id_ibge": 109,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2017-09",
+    "data_divulgacao": "21/09/2017 03:00:00",
+    "familia": "ipca15",
+    "id_ibge": 122,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2017-10",
+    "data_divulgacao": "20/10/2017 02:00:00",
+    "familia": "ipca15",
+    "id_ibge": 132,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2017-11",
+    "data_divulgacao": "23/11/2017 02:00:00",
+    "familia": "ipca15",
+    "id_ibge": 145,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2017-12",
+    "data_divulgacao": "21/12/2017 02:00:00",
+    "familia": "ipca15",
+    "id_ibge": 159,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2018-01",
+    "data_divulgacao": "23/01/2018 00:00:00",
+    "familia": "ipca15",
+    "id_ibge": 306,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2018-02",
+    "data_divulgacao": "23/02/2018 00:00:00",
+    "familia": "ipca15",
+    "id_ibge": 316,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2018-03",
+    "data_divulgacao": "23/03/2018 00:00:00",
+    "familia": "ipca15",
+    "id_ibge": 329,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2018-04",
+    "data_divulgacao": "20/04/2018 00:00:00",
+    "familia": "ipca15",
+    "id_ibge": 340,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2018-05",
+    "data_divulgacao": "23/05/2018 00:00:00",
+    "familia": "ipca15",
+    "id_ibge": 352,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2018-06",
+    "data_divulgacao": "21/06/2018 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 365,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2018-07",
+    "data_divulgacao": "20/07/2018 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 376,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2018-08",
+    "data_divulgacao": "23/08/2018 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 388,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2018-09",
+    "data_divulgacao": "21/09/2018 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 400,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2018-10",
+    "data_divulgacao": "23/10/2018 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 411,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2018-11",
+    "data_divulgacao": "23/11/2018 11:00:00",
+    "familia": "ipca15",
+    "id_ibge": 424,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2018-12",
+    "data_divulgacao": "21/12/2018 11:00:00",
+    "familia": "ipca15",
+    "id_ibge": 436,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2019-01",
+    "data_divulgacao": "23/01/2019 11:00:00",
+    "familia": "ipca15",
+    "id_ibge": 737,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2019-02",
+    "data_divulgacao": "21/02/2019 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 738,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2019-03",
+    "data_divulgacao": "26/03/2019 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 739,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2019-04",
+    "data_divulgacao": "25/04/2019 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 740,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2019-05",
+    "data_divulgacao": "24/05/2019 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 741,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2019-06",
+    "data_divulgacao": "25/06/2019 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 742,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2019-07",
+    "data_divulgacao": "23/07/2019 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 743,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2019-08",
+    "data_divulgacao": "22/08/2019 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 744,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2019-09",
+    "data_divulgacao": "24/09/2019 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 745,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2019-10",
+    "data_divulgacao": "22/10/2019 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 746,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2019-11",
+    "data_divulgacao": "22/11/2019 11:00:00",
+    "familia": "ipca15",
+    "id_ibge": 747,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2019-12",
+    "data_divulgacao": "20/12/2019 11:00:00",
+    "familia": "ipca15",
+    "id_ibge": 748,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2020-01",
+    "data_divulgacao": "23/01/2020 11:00:00",
+    "familia": "ipca15",
+    "id_ibge": 1111,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2020-02",
+    "data_divulgacao": "20/02/2020 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 1117,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2020-03",
+    "data_divulgacao": "25/03/2020 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 1128,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2020-04",
+    "data_divulgacao": "28/04/2020 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 1138,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2020-05",
+    "data_divulgacao": "26/05/2020 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 1150,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2020-06",
+    "data_divulgacao": "25/06/2020 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 1163,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2020-07",
+    "data_divulgacao": "24/07/2020 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 1174,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2020-08",
+    "data_divulgacao": "25/08/2020 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 1186,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2020-09",
+    "data_divulgacao": "23/09/2020 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 1198,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2020-10",
+    "data_divulgacao": "23/10/2020 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 1209,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2020-11",
+    "data_divulgacao": "24/11/2020 11:00:00",
+    "familia": "ipca15",
+    "id_ibge": 1223,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2020-12",
+    "data_divulgacao": "22/12/2020 11:00:00",
+    "familia": "ipca15",
+    "id_ibge": 1236,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2021-01",
+    "data_divulgacao": "26/01/2021 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 1398,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2021-02",
+    "data_divulgacao": "24/02/2021 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 1403,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2021-03",
+    "data_divulgacao": "25/03/2021 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 1413,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2021-04",
+    "data_divulgacao": "27/04/2021 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 1426,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2021-05",
+    "data_divulgacao": "25/05/2021 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 1439,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2021-06",
+    "data_divulgacao": "25/06/2021 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 1453,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2021-07",
+    "data_divulgacao": "23/07/2021 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 1465,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2021-08",
+    "data_divulgacao": "25/08/2021 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 1478,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2021-09",
+    "data_divulgacao": "24/09/2021 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 1491,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2021-10",
+    "data_divulgacao": "26/10/2021 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 1503,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2021-11",
+    "data_divulgacao": "25/11/2021 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 1518,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2021-12",
+    "data_divulgacao": "23/12/2021 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 1532,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2022-01",
+    "data_divulgacao": "26/01/2022 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 2200,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2022-02",
+    "data_divulgacao": "23/02/2022 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 2201,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2022-03",
+    "data_divulgacao": "25/03/2022 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 2202,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2022-04",
+    "data_divulgacao": "27/04/2022 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 2203,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2022-05",
+    "data_divulgacao": "24/05/2022 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 2204,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2022-06",
+    "data_divulgacao": "24/06/2022 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 2205,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2022-07",
+    "data_divulgacao": "26/07/2022 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 2206,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2022-08",
+    "data_divulgacao": "24/08/2022 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 2207,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2022-09",
+    "data_divulgacao": "27/09/2022 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 2208,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2022-10",
+    "data_divulgacao": "25/10/2022 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 2209,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2022-11",
+    "data_divulgacao": "24/11/2022 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 2210,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2022-12",
+    "data_divulgacao": "23/12/2022 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 2211,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2023-01",
+    "data_divulgacao": "24/01/2023 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 2695,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2023-02",
+    "data_divulgacao": "24/02/2023 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 2700,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2023-03",
+    "data_divulgacao": "24/03/2023 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 2707,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2023-04",
+    "data_divulgacao": "26/04/2023 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 2721,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2023-05",
+    "data_divulgacao": "25/05/2023 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 2736,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2023-06",
+    "data_divulgacao": "27/06/2023 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 2751,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2023-07",
+    "data_divulgacao": "25/07/2023 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 2763,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2023-08",
+    "data_divulgacao": "25/08/2023 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 2776,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2023-09",
+    "data_divulgacao": "26/09/2023 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 2790,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2023-10",
+    "data_divulgacao": "26/10/2023 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 2803,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2023-11",
+    "data_divulgacao": "28/11/2023 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 2817,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2023-12",
+    "data_divulgacao": "28/12/2023 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 2832,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2024-01",
+    "data_divulgacao": "26/01/2024 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 3174,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2024-02",
+    "data_divulgacao": "27/02/2024 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 3179,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2024-03",
+    "data_divulgacao": "26/03/2024 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 3190,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2024-04",
+    "data_divulgacao": "26/04/2024 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 3202,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2024-05",
+    "data_divulgacao": "28/05/2024 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 3215,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2024-06",
+    "data_divulgacao": "26/06/2024 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 3229,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2024-07",
+    "data_divulgacao": "25/07/2024 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 3241,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2024-08",
+    "data_divulgacao": "27/08/2024 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 3254,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2024-09",
+    "data_divulgacao": "25/09/2024 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 3267,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2024-10",
+    "data_divulgacao": "24/10/2024 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 3279,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2024-11",
+    "data_divulgacao": "26/11/2024 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 3294,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2024-12",
+    "data_divulgacao": "27/12/2024 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 3308,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2025-01",
+    "data_divulgacao": "24/01/2025 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 3734,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2025-02",
+    "data_divulgacao": "25/02/2025 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 3739,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2025-03",
+    "data_divulgacao": "27/03/2025 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 3750,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2025-04",
+    "data_divulgacao": "25/04/2025 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 3762,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2025-05",
+    "data_divulgacao": "27/05/2025 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 3775,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2025-06",
+    "data_divulgacao": "26/06/2025 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 3789,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2025-07",
+    "data_divulgacao": "25/07/2025 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 3801,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2025-08",
+    "data_divulgacao": "26/08/2025 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 3814,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2025-09",
+    "data_divulgacao": "25/09/2025 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 3827,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2025-10",
+    "data_divulgacao": "24/10/2025 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 3839,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2025-11",
+    "data_divulgacao": "26/11/2025 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 3854,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2025-12",
+    "data_divulgacao": "23/12/2025 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 3868,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2026-01",
+    "data_divulgacao": "27/01/2026 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 4209,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2026-02",
+    "data_divulgacao": "27/02/2026 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 4214,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2026-03",
+    "data_divulgacao": "26/03/2026 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 4225,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2026-04",
+    "data_divulgacao": "28/04/2026 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 4237,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2026-05",
+    "data_divulgacao": "27/05/2026 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 4250,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2026-06",
+    "data_divulgacao": "25/06/2026 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 4264,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2026-07",
+    "data_divulgacao": "28/07/2026 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 4276,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2026-08",
+    "data_divulgacao": "26/08/2026 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 4289,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2026-09",
+    "data_divulgacao": "25/09/2026 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 4302,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2026-10",
+    "data_divulgacao": "23/10/2026 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 4314,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2026-11",
+    "data_divulgacao": "26/11/2026 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 4330,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   },
+   {
+    "competencia": "2026-12",
+    "data_divulgacao": "23/12/2026 12:00:00",
+    "familia": "ipca15",
+    "id_ibge": 4343,
+    "titulo": "Índice Nacional de Preços ao Consumidor Amplo 15"
+   }
+  ],
+  "url": "https://servicodados.ibge.gov.br/api/v3/calendario/"
+ }
+}

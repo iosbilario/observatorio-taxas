@@ -246,6 +246,13 @@ section.bloco{padding:clamp(2rem,5vw,3rem) 0;border-top:1px solid var(--line)}
 .duas{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;align-items:start}
 @media(max-width:800px){.duas{grid-template-columns:1fr}}
 
+/* ============ Próximas divulgações (scripts/build_calendario.py) ============ */
+.cal-lista{list-style:none;margin:.6rem 0 0;padding:0;border-top:1px solid var(--line)}
+.cal-lista li{border-bottom:1px solid var(--line)}
+.cal-lista a{display:block;padding:.6rem .2rem;color:var(--ink-2);text-decoration:none}
+.cal-lista a:hover{background:var(--surface)}
+.cal-lista b{color:var(--ink-1);font-family:var(--font-heading)}
+.cal-lista .estado{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);border:1px solid var(--line);border-radius:999px;padding:1px 8px;margin-left:.3rem;white-space:nowrap}
 /* ============ Indicadores por tema (scripts/catalogo_home.py + docs/catalogo.js) ============ */
 .cat-janela{font-size:.86rem;color:var(--ink-3);margin:0 0 .9rem}
 .cat-temas{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.4rem}
@@ -506,6 +513,11 @@ footer a{color:var(--ink-2)}
         <!-- divulgacoes:inicio -->
 <div class="guias-grade"><a class="guia-card" href="divulgacoes/dolar/2026-W47/"><span class="rot">Dólar PTAX (venda) · semana de 16/11 a 20/11/2026</span><h3>Dólar PTAX na semana de 16/11 a 20/11/2026: R$ 5,8889, +4,20% na semana</h3><p>Na cotação de 19/11/2026, a PTAX de venda ficou em R$ 5,8889, +R$ 0,0787 (+1,35%) em relação à observação anterior, de 18/11/2026 (R$ 5,8102).</p></a><a class="guia-card" href="divulgacoes/ipca/2026-10/"><span class="rot">IPCA · outubro de 2026</span><h3>IPCA de outubro de 2026: taxa mensal desacelera para 0,14% e acumulado em 12 meses sobe para 4,63%</h3><p>A taxa mensal do IPCA desacelerou de 0,82% em setembro de 2026 para 0,14% em outubro de 2026, uma diferença de 0,68 pontos percentuais.</p></a><a class="guia-card" href="divulgacoes/cdi/2026-10/"><span class="rot">CDI · novembro de 2025 a outubro de 2026</span><h3>CDI de novembro de 2025 a outubro de 2026: 14,23% no período, 9,18% acima da inflação</h3><p>De novembro de 2025 a outubro de 2026 (12 competências fechadas), o CDI acumulou 14,23% e o IPCA, 4,63%.</p></a></div><p class="sub" style="margin-top:1rem"><a href="feed.xml">Assinar o RSS das divulgações</a></p>
 <!-- divulgacoes:fim -->
+        <h3 class="tit" id="agenda-t" style="font-size:1.15rem;margin-top:1.6rem">Próximas divulgações</h3>
+        <p class="sub">IPCA, IPCA-15 e Copom, pela agenda oficial do IBGE e do Banco Central.</p>
+        <!-- agenda:inicio -->
+<ul class="cal-lista"><li><a href="calendario/ipca15-2026-11/"><b>IPCA-15 de novembro de 2026</b> · 26/11/2026 <span class="estado">publicado</span></a></li><li><a href="calendario/copom-2026-8/"><b>Copom, 8ª reunião de 2026</b> · 09/12/2026 <span class="estado">previsto</span></a></li><li><a href="calendario/ipca-2026-11/"><b>IPCA de novembro de 2026</b> · 11/12/2026 <span class="estado">previsto</span></a></li><li><a href="calendario/ipca15-2026-12/"><b>IPCA-15 de dezembro de 2026</b> · 23/12/2026 <span class="estado">previsto</span></a></li></ul><p><a href="calendario/">Calendário completo</a></p>
+<!-- agenda:fim -->
       </div>
     </section>
 

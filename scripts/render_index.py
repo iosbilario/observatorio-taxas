@@ -419,6 +419,13 @@ def bloco_divulgacoes(n: int = 3) -> str:
             '<p class="sub" style="margin-top:1rem"><a href="feed.xml">Assinar o RSS das divulgações</a></p>')
 
 
+def bloco_agenda() -> str:
+    """Próximas divulgações (build_calendario.py), ao lado das últimas."""
+    import build_calendario as K
+    evs, _, hoje, _, _ = K.carregar()
+    return K.bloco_proximos(evs, hoje)
+
+
 def inject(html: str, nome: str, conteudo: str) -> str:
     pat = re.compile(rf"(<!-- {nome}:inicio -->).*?(<!-- {nome}:fim -->)", re.S)
     if not pat.search(html):
@@ -513,10 +520,12 @@ def rebuild_sitemap() -> int:
     # divulgadas enquanto o coletor não estiver no ar.
     urls = [f"{BASE_URL}/", f"{BASE_URL}/rebobinar.html",
             f"{BASE_URL}/var.html", f"{BASE_URL}/retransmissora.html",
-            f"{BASE_URL}/reajuste/", f"{BASE_URL}/correcao/", f"{BASE_URL}/apoie/", f"{BASE_URL}/sobre/", f"{BASE_URL}/privacidade/", f"{BASE_URL}/termos/", f"{BASE_URL}/mcp/", f"{BASE_URL}/indicadores/", f"{BASE_URL}/comparador/", f"{BASE_URL}/simulador-cdi/", f"{BASE_URL}/guias/", f"{BASE_URL}/mudancas/", f"{BASE_URL}/divulgacoes/"]
+            f"{BASE_URL}/reajuste/", f"{BASE_URL}/correcao/", f"{BASE_URL}/apoie/", f"{BASE_URL}/sobre/", f"{BASE_URL}/privacidade/", f"{BASE_URL}/termos/", f"{BASE_URL}/mcp/", f"{BASE_URL}/indicadores/", f"{BASE_URL}/comparador/", f"{BASE_URL}/simulador-cdi/", f"{BASE_URL}/guias/", f"{BASE_URL}/mudancas/", f"{BASE_URL}/divulgacoes/", f"{BASE_URL}/calendario/"]
     for sub in ("reajuste", "correcao", "indicadores", "guias"):
         for idx in sorted((docs / sub).glob("*/index.html")):
             urls.append(f"{BASE_URL}/{sub}/{idx.parent.name}/")
+    for idx in sorted((docs / "calendario").glob("*/index.html")):
+        urls.append(f"{BASE_URL}/calendario/{idx.parent.name}/")
     for idx in sorted((docs / "divulgacoes").glob("*/*/**/index.html")):
         urls.append(f"{BASE_URL}/{idx.parent.relative_to(docs).as_posix()}/")
     vistos, unicas = set(), []
@@ -566,6 +575,7 @@ def main() -> None:
     html = inject(html, "boletim", bloco_boletim())
     html = inject(html, "mais", bloco_mais())
     html = inject(html, "divulgacoes", bloco_divulgacoes())
+    html = inject(html, "agenda", bloco_agenda())
     html = inject(html, "var", bloco_var())
     html = inject(html, "rebobinar", bloco_rebobinar())
     INDEX.write_text(html, encoding="utf-8")

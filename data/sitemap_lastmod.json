@@ -1,11 +1,175 @@
 {
  "https://observatoriodetaxas.tec.br/": {
-  "hash": "70d2f18fbd7c0013",
+  "hash": "1da1077ad8d7f400",
   "lastmod": "2026-11-26"
  },
  "https://observatoriodetaxas.tec.br/apoie/": {
   "hash": "36b7c8caf6249415",
   "lastmod": "2026-11-13"
+ },
+ "https://observatoriodetaxas.tec.br/calendario/": {
+  "hash": "6692f09bb2337902",
+  "lastmod": "2026-11-26"
+ },
+ "https://observatoriodetaxas.tec.br/calendario/copom-2026-1/": {
+  "hash": "8f945bce8e12e77d",
+  "lastmod": "2026-11-26"
+ },
+ "https://observatoriodetaxas.tec.br/calendario/copom-2026-2/": {
+  "hash": "7cb20ab694cd5d9a",
+  "lastmod": "2026-11-26"
+ },
+ "https://observatoriodetaxas.tec.br/calendario/copom-2026-3/": {
+  "hash": "446bf95955ac603c",
+  "lastmod": "2026-11-26"
+ },
+ "https://observatoriodetaxas.tec.br/calendario/copom-2026-4/": {
+  "hash": "cf91c1f69cf6af03",
+  "lastmod": "2026-11-26"
+ },
+ "https://observatoriodetaxas.tec.br/calendario/copom-2026-5/": {
+  "hash": "034e092ed7ca1031",
+  "lastmod": "2026-11-26"
+ },
+ "https://observatoriodetaxas.tec.br/calendario/copom-2026-6/": {
+  "hash": "03003b65cfeb922e",
+  "lastmod": "2026-11-26"
+ },
+ "https://observatoriodetaxas.tec.br/calendario/copom-2026-7/": {
+  "hash": "a064f4bff50e679d",
+  "lastmod": "2026-11-26"
+ },
+ "https://observatoriodetaxas.tec.br/calendario/copom-2026-8/": {
+  "hash": "57021a9f72b74297",
+  "lastmod": "2026-11-26"
+ },
+ "https://observatoriodetaxas.tec.br/calendario/copom-2027-1/": {
+  "hash": "232da98a8ed1252f",
+  "lastmod": "2026-11-26"
+ },
+ "https://observatoriodetaxas.tec.br/calendario/copom-2027-2/": {
+  "hash": "9dac5b425ac8495d",
+  "lastmod": "2026-11-26"
+ },
+ "https://observatoriodetaxas.tec.br/calendario/copom-2027-3/": {
+  "hash": "5e13b230ef6b4cae",
+  "lastmod": "2026-11-26"
+ },
+ "https://observatoriodetaxas.tec.br/calendario/copom-2027-4/": {
+  "hash": "9bcaeb0f57c0be1e",
+  "lastmod": "2026-11-26"
+ },
+ "https://observatoriodetaxas.tec.br/calendario/copom-2027-5/": {
+  "hash": "ae080883252b7bdb",
+  "lastmod": "2026-11-26"
+ },
+ "https://observatoriodetaxas.tec.br/calendario/copom-2027-6/": {
+  "hash": "f6f86bca4989f9db",
+  "lastmod": "2026-11-26"
+ },
+ "https://observatoriodetaxas.tec.br/calendario/copom-2027-7/": {
+  "hash": "16815d622bcb816f",
+  "lastmod": "2026-11-26"
+ },
+ "https://observatoriodetaxas.tec.br/calendario/copom-2027-8/": {
+  "hash": "f705e157b7b260f7",
+  "lastmod": "2026-11-26"
+ },
+ "https://observatoriodetaxas.tec.br/calendario/ipca-2026-01/": {
+  "hash": "0ebc2e27d6d7dfa3",
+  "lastmod": "2026-11-26"
+ },
+ "https://observatoriodetaxas.tec.br/calendario/ipca-2026-02/": {
+  "hash": "19dd5e2561eb3d10",
+  "lastmod": "2026-11-26"
+ },
+ "https://observatoriodetaxas.tec.br/calendario/ipca-2026-03/": {
+  "hash": "e7b151cc61cda53d",
+  "lastmod": "2026-11-26"
+ },
+ "https://observatoriodetaxas.tec.br/calendario/ipca-2026-04/": {
+  "hash": "cf214681a323cb3f",
+  "lastmod": "2026-11-26"
+ },
+ "https://observatoriodetaxas.tec.br/calendario/ipca-2026-05/": {
+  "hash": "52c36e88a13a4f0c",
+  "lastmod": "2026-11-26"
+ },
+ "https://observatoriodetaxas.tec.br/calendario/ipca-2026-06/": {
+  "hash": "50e970af2a08e821",
+  "lastmod": "2026-11-26"
+ },
+ "https://observatoriodetaxas.tec.br/calendario/ipca-2026-07/": {
+  "hash": "e107d458a3e03d65",
+  "lastmod": "2026-11-26"
+ },
+ "https://observatoriodetaxas.tec.br/calendario/ipca-2026-08/": {
+  "hash": "6c570c359feaf41e",
+  "lastmod": "2026-11-26"
+ },
+ "https://observatoriodetaxas.tec.br/calendario/ipca-2026-09/": {
+  "hash": "8f105b50f37eea94",
+  "lastmod": "2026-11-26"
+ },
+ "https://observatoriodetaxas.tec.br/calendario/ipca-2026-10/": {
+  "hash": "73310c05ecbb4506",
+  "lastmod": "2026-11-26"
+ },
+ "https://observatoriodetaxas.tec.br/calendario/ipca-2026-11/": {
+  "hash": "71ce6ef7497e0758",
+  "lastmod": "2026-11-26"
+ },
+ "https://observatoriodetaxas.tec.br/calendario/ipca-2026-12/": {
+  "hash": "ad31f904a89faa2a",
+  "lastmod": "2026-11-26"
+ },
+ "https://observatoriodetaxas.tec.br/calendario/ipca15-2026-01/": {
+  "hash": "9e6cd59ab999ebed",
+  "lastmod": "2026-11-26"
+ },
+ "https://observatoriodetaxas.tec.br/calendario/ipca15-2026-02/": {
+  "hash": "aba1cdbba7bace8f",
+  "lastmod": "2026-11-26"
+ },
+ "https://observatoriodetaxas.tec.br/calendario/ipca15-2026-03/": {
+  "hash": "30e3af9c8be6284b",
+  "lastmod": "2026-11-26"
+ },
+ "https://observatoriodetaxas.tec.br/calendario/ipca15-2026-04/": {
+  "hash": "f40f8058940bf710",
+  "lastmod": "2026-11-26"
+ },
+ "https://observatoriodetaxas.tec.br/calendario/ipca15-2026-05/": {
+  "hash": "8803281966318dc5",
+  "lastmod": "2026-11-26"
+ },
+ "https://observatoriodetaxas.tec.br/calendario/ipca15-2026-06/": {
+  "hash": "97e0b6bce51dcf85",
+  "lastmod": "2026-11-26"
+ },
+ "https://observatoriodetaxas.tec.br/calendario/ipca15-2026-07/": {
+  "hash": "61ba65dc81f87e11",
+  "lastmod": "2026-11-26"
+ },
+ "https://observatoriodetaxas.tec.br/calendario/ipca15-2026-08/": {
+  "hash": "0e2cb700f0027573",
+  "lastmod": "2026-11-26"
+ },
+ "https://observatoriodetaxas.tec.br/calendario/ipca15-2026-09/": {
+  "hash": "58b49bf65e00410f",
+  "lastmod": "2026-11-26"
+ },
+ "https://observatoriodetaxas.tec.br/calendario/ipca15-2026-10/": {
+  "hash": "4c86682c18ffa736",
+  "lastmod": "2026-11-26"
+ },
+ "https://observatoriodetaxas.tec.br/calendario/ipca15-2026-11/": {
+  "hash": "c502535557c0cd47",
+  "lastmod": "2026-11-26"
+ },
+ "https://observatoriodetaxas.tec.br/calendario/ipca15-2026-12/": {
+  "hash": "bfef6472aef79f59",
+  "lastmod": "2026-11-26"
  },
  "https://observatoriodetaxas.tec.br/comparador/": {
   "hash": "d4559c12dc368809",
@@ -80,103 +244,103 @@
   "lastmod": "2026-11-26"
  },
  "https://observatoriodetaxas.tec.br/indicadores/cdi-acumulado-no-mes/": {
-  "hash": "c55c4ca64ac39c33",
+  "hash": "3a39185dc7976966",
   "lastmod": "2026-11-26"
  },
  "https://observatoriodetaxas.tec.br/indicadores/cdi/": {
-  "hash": "2d6c78ea262861f8",
+  "hash": "13171f68e6283fc4",
   "lastmod": "2026-11-26"
  },
  "https://observatoriodetaxas.tec.br/indicadores/desemprego/": {
-  "hash": "0a437d7821276454",
+  "hash": "8e7e171998acb6ee",
   "lastmod": "2026-11-26"
  },
  "https://observatoriodetaxas.tec.br/indicadores/divida-liquida/": {
-  "hash": "56bf734aeed0b030",
+  "hash": "e334be56d2bc22da",
   "lastmod": "2026-11-26"
  },
  "https://observatoriodetaxas.tec.br/indicadores/dolar-compra/": {
-  "hash": "c4f109e07c803fc7",
+  "hash": "075bf43a01c9200c",
   "lastmod": "2026-11-26"
  },
  "https://observatoriodetaxas.tec.br/indicadores/dolar/": {
-  "hash": "9fe85ee30a901ae5",
+  "hash": "1b67ef9f4a06f66b",
   "lastmod": "2026-11-26"
  },
  "https://observatoriodetaxas.tec.br/indicadores/euro/": {
-  "hash": "6ea2e823f80fcf6f",
+  "hash": "f5ea07cccfbc0015",
   "lastmod": "2026-11-26"
  },
  "https://observatoriodetaxas.tec.br/indicadores/ibc-br/": {
-  "hash": "20c7698808e131dd",
+  "hash": "a7b6683156841a19",
   "lastmod": "2026-11-26"
  },
  "https://observatoriodetaxas.tec.br/indicadores/igp-di/": {
-  "hash": "ef3c3a3a03b40526",
+  "hash": "86784f6a770ebc69",
   "lastmod": "2026-11-26"
  },
  "https://observatoriodetaxas.tec.br/indicadores/igp-m/": {
-  "hash": "bca8aebbe596fcd1",
+  "hash": "ef42fa8d70c9e737",
   "lastmod": "2026-11-26"
  },
  "https://observatoriodetaxas.tec.br/indicadores/inadimplencia/": {
-  "hash": "74c6aa305027050b",
+  "hash": "b4fdd33ae6da5b7a",
   "lastmod": "2026-11-26"
  },
  "https://observatoriodetaxas.tec.br/indicadores/inpc/": {
-  "hash": "d26e944c06857ff8",
+  "hash": "e728bbffa85718af",
   "lastmod": "2026-11-26"
  },
  "https://observatoriodetaxas.tec.br/indicadores/ipca-12-meses/": {
-  "hash": "88f6d445ebddb5db",
+  "hash": "8758e35cb2ba29bb",
   "lastmod": "2026-11-26"
  },
  "https://observatoriodetaxas.tec.br/indicadores/ipca-15/": {
-  "hash": "bc3beee2e784e6ba",
+  "hash": "6370c517819829d3",
   "lastmod": "2026-11-26"
  },
  "https://observatoriodetaxas.tec.br/indicadores/ipca/": {
-  "hash": "7fb7c767e097a99f",
+  "hash": "58b3f248d2c89ff9",
   "lastmod": "2026-11-26"
  },
  "https://observatoriodetaxas.tec.br/indicadores/juros-do-credito/": {
-  "hash": "035049d4d8559898",
+  "hash": "06f335010a43c816",
   "lastmod": "2026-11-26"
  },
  "https://observatoriodetaxas.tec.br/indicadores/meta-selic/": {
-  "hash": "96827d9425fe41bf",
+  "hash": "d80f432aae1cd3ff",
   "lastmod": "2026-11-26"
  },
  "https://observatoriodetaxas.tec.br/indicadores/poupanca-regra-antiga/": {
-  "hash": "78f8d92669563589",
+  "hash": "4a1dba172ba37c7e",
   "lastmod": "2026-11-26"
  },
  "https://observatoriodetaxas.tec.br/indicadores/poupanca/": {
-  "hash": "7e5409400d9b842d",
+  "hash": "b6acad84096e1b91",
   "lastmod": "2026-11-26"
  },
  "https://observatoriodetaxas.tec.br/indicadores/reservas-internacionais/": {
-  "hash": "e56f3e445e4ed3e1",
+  "hash": "e9c4782fb541227d",
   "lastmod": "2026-11-26"
  },
  "https://observatoriodetaxas.tec.br/indicadores/saldo-de-credito/": {
-  "hash": "4beeda0783110d51",
+  "hash": "90115ab2b9c452d4",
   "lastmod": "2026-11-26"
  },
  "https://observatoriodetaxas.tec.br/indicadores/selic-acumulada-no-mes/": {
-  "hash": "8f3cda9f67a6a4aa",
+  "hash": "8b15485defc198fb",
   "lastmod": "2026-11-26"
  },
  "https://observatoriodetaxas.tec.br/indicadores/selic-efetiva/": {
-  "hash": "836debfae1095da5",
+  "hash": "d3c690135ab651f8",
   "lastmod": "2026-11-26"
  },
  "https://observatoriodetaxas.tec.br/indicadores/tjlp/": {
-  "hash": "ea2b748937d6535a",
+  "hash": "f430148264d7e171",
   "lastmod": "2026-11-26"
  },
  "https://observatoriodetaxas.tec.br/indicadores/tr/": {
-  "hash": "065658b2f0e1c5ba",
+  "hash": "0bde2b27b2f0ed19",
   "lastmod": "2026-11-26"
  },
  "https://observatoriodetaxas.tec.br/mcp/": {
