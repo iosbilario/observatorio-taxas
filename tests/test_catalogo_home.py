@@ -61,6 +61,24 @@ class Catalogo(unittest.TestCase):
         self.assertEqual([t["referencia"]["codigo"] for t in self.temas], [13522, 432, 1, 21082, 24369, 13621])
         self.assertIn('data-inicial="inflacao"', self.html)
 
+    def test_resumo_do_tema_curto_e_sem_unidade_repetida(self):
+        cabs = dict(re.findall(r'data-tema="([a-z]+)"><span class="cat-tema-nome">.*?<span class="cat-tema-ref">(.*?)</span>', self.html))
+        texto = {k: re.sub(r"<[^>]+>", "", v) for k, v in cabs.items()}
+        self.assertRegex(texto["inflacao"], r"^IPCA em 12 meses · \d+,\d\d%$")
+        self.assertRegex(texto["juros"], r"^Meta Selic · \d+,\d\d% a\.a\.$")
+        self.assertRegex(texto["cambio"], r"^Dólar PTAX de venda · R\$ \d+,\d{4}$")
+        self.assertRegex(texto["credito"], r"^Inadimplência · ")
+        self.assertRegex(texto["atividade"], r"^Desemprego · ")
+        self.assertRegex(texto["externo"], r"^Reservas internacionais · US\$ ")
+        self.assertIn(">Dólar PTAX de venda<small>", self.html)
+        self.assertIn(">Dólar PTAX de compra<small>", self.html)
+
+    def test_troca_de_tema_entra_no_historico(self):
+        js = (DOCS / "catalogo.js").read_text(encoding="utf-8")
+        self.assertIn("history.pushState", js)
+        self.assertNotIn("history.replaceState(", js)
+        self.assertIn('addEventListener("popstate"', js)
+
     def test_formatos_unidades_e_rotulos_de_periodo(self):
         li = {x["codigo"]: x for t in self.temas for x in t["linhas"]}
         self.assertRegex(li[4389]["valor"], r"^\d+,\d\d% a\.a\.$")             # CDI anualizado
