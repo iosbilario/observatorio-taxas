@@ -1,6 +1,6 @@
 {
-  "gerado_em": "2026-11-26T11:27:56-03:00",
-  "gerado_em_fmt": "26/11/2026 às 11:27",
+  "gerado_em": "2026-11-26T12:59:58-03:00",
+  "gerado_em_fmt": "26/11/2026 às 12:59",
   "grupos": {
     "Admin": {
       "acessos": 0,
@@ -16,22 +16,22 @@
       }
     },
     "Home": {
-      "acessos": 211,
+      "acessos": 213,
       "sub": {}
     },
     "Reajuste": {
-      "acessos": 181,
+      "acessos": 182,
       "sub": {
-        "IGP-DI": 11,
+        "IGP-DI": 10,
         "IGP-M": 48,
-        "INPC": 14,
-        "IPCA": 43
+        "INPC": 15,
+        "IPCA": 42
       }
     }
   },
   "serie_diaria": [
     {
-      "acessos": 5,
+      "acessos": 4,
       "data": "2026-10-27"
     },
     {
@@ -151,7 +151,7 @@
       "data": "2026-11-25"
     },
     {
-      "acessos": 12,
+      "acessos": 27,
       "data": "2026-11-26"
     }
   ],
@@ -159,19 +159,19 @@
   "timezone": "America/Sao_Paulo (UTC-3)",
   "top_paginas": [
     {
-      "count": 207,
+      "count": 209,
       "path": "/"
     },
     {
-      "count": 103,
+      "count": 104,
       "path": "/indicadores/cdi"
     },
     {
-      "count": 62,
+      "count": 64,
       "path": "/reajuste"
     },
     {
-      "count": 60,
+      "count": 61,
       "path": "/rebobinar.html"
     },
     {
@@ -179,20 +179,20 @@
       "path": "/correcao"
     },
     {
-      "count": 19,
+      "count": 20,
       "path": "/var.html"
+    },
+    {
+      "count": 19,
+      "path": "/retransmissora.html"
     },
     {
       "count": 18,
       "path": "/indicadores/dolar"
     },
     {
-      "count": 17,
+      "count": 18,
       "path": "/indicadores"
-    },
-    {
-      "count": 17,
-      "path": "/retransmissora.html"
     },
     {
       "count": 12,
@@ -204,15 +204,15 @@
     },
     {
       "count": 10,
+      "path": "/simulador-cdi"
+    },
+    {
+      "count": 10,
       "path": "/mcp"
     },
     {
       "count": 9,
       "path": "/indicadores/euro"
-    },
-    {
-      "count": 9,
-      "path": "/simulador-cdi"
     },
     {
       "count": 8,
@@ -221,12 +221,12 @@
   ],
   "totais": {
     "all_time": {
-      "acessos": 781,
-      "visitantes": 806
+      "acessos": 793,
+      "visitantes": 821
     },
     "ultimos_30d": {
-      "acessos": 424,
-      "visitantes": 424
+      "acessos": 438,
+      "visitantes": 438
     }
   }
 }
