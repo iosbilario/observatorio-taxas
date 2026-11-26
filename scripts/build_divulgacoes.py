@@ -78,10 +78,27 @@ caption{caption-side:bottom;text-align:left;padding-top:.5rem}
 """
 
 # Séries com divulgação. "leitura" escolhe a função de scripts/leituras.py.
+# "series" = códigos SGS que a leitura usa (todos conferidos com o Git antes
+# de registrar). Cadência: IPCA e CDI por competência mensal; PTAX pelo
+# fechamento semanal (a ficha acompanha também a variação diária).
 SERIES: dict[str, dict] = {
     "ipca": {"codigo": 433, "nome": "IPCA", "leitura": "mensal", "ficha": "indicadores/ipca/",
-             "produtor": "IBGE", "reajuste": "ipca"},
+             "produtor": "IBGE", "reajuste": "ipca", "series": [433]},
+    "cdi": {"codigo": 4391, "nome": "CDI", "leitura": "cdi", "ficha": "indicadores/cdi/",
+            "produtor": "B3 (taxa DI)", "series": [4391, 433, 4389]},
+    "dolar": {"codigo": 1, "nome": "Dólar PTAX (venda)", "leitura": "ptax", "ficha": "indicadores/dolar/",
+              "produtor": "Banco Central do Brasil", "series": [1]},
 }
+FICHA_POR_CODIGO = {433: "ipca", 4389: "cdi", 1: "dolar"}   # página /indicadores/ que mostra a leitura
+
+
+def hoje_da_versao(versao: dict):
+    """Data de referência de uma leitura que depende de "hoje" (semana aberta
+    ou encerrada): a data do commit dos dados, em Brasília. Mesmas entradas,
+    mesma leitura."""
+    from datetime import timedelta
+    d = datetime.fromisoformat(versao["data"].replace("Z", "+00:00"))
+    return d.astimezone(timezone(timedelta(hours=-3))).date()
 
 
 # ── arquivo ───────────────────────────────────────────────────────────────
@@ -98,10 +115,15 @@ def grava_json(p: Path, obj) -> None:
     p.write_text(json.dumps(obj, ensure_ascii=False, indent=1, sort_keys=True) + "\n", encoding="utf-8")
 
 
-def leitura_de(chave: str, historicos: dict[int, list[dict]], competencia: str | None = None, **kw) -> dict:
-    s = SERIES[chave]
+def leitura_de(chave: str, historicos: dict[int, list[dict]], competencia: str | None = None,
+               hoje=None) -> dict:
+    s, h = SERIES[chave], historicos
     if s["leitura"] == "mensal":
-        return L.leitura_mensal(s["codigo"], s["nome"], historicos[s["codigo"]], competencia)
+        return L.leitura_mensal(s["codigo"], s["nome"], h[s["codigo"]], competencia)
+    if s["leitura"] == "cdi":
+        return L.leitura_cdi(h[4391], h[433], h.get(4389, []), competencia)
+    if s["leitura"] == "ptax":
+        return L.leitura_ptax(h[1], hoje, competencia)
     raise ValueError(s["leitura"])
 
 
@@ -109,19 +131,26 @@ def url_registro(chave: str, competencia: str, revisao: int) -> str:
     return f"{BASE_URL}/divulgacoes/{chave}/{competencia}/" + (f"revisao-{revisao}/" if revisao else "")
 
 
-def _data_sgs(competencia: str) -> str:
-    return f"01/{competencia[5:7]}/{competencia[:4]}"
+def observacao(chave: str, entrada: str) -> tuple[int, str]:
+    """(código SGS, data no formato do SGS) de uma chave de `entradas`:
+    "2026-10" (mês), "cdi:2026-10" / "ipca:2026-10" (série:mês) ou
+    "2026-11-19" (dia)."""
+    cod = SERIES[chave]["codigo"]
+    if ":" in entrada:
+        nome, entrada = entrada.split(":", 1)
+        cod = {"cdi": 4391, "ipca": 433}[nome]
+    if len(entrada) == 7:
+        return cod, f"01/{entrada[5:7]}/{entrada[:4]}"
+    return cod, f"{entrada[8:10]}/{entrada[5:7]}/{entrada[:4]}"
 
 
-def identificado_em(mudancas: dict, codigo: int, competencias: list[str], primeira: bool) -> dict | None:
-    """Coleta (mudancas.json) que trouxe a observação nova ou a revisão de uma
-    das competências: a mais antiga para uma publicação nova, a mais recente
-    para uma revisão."""
-    datas = {_data_sgs(c) for c in competencias}
+def identificado_em(mudancas: dict, alvo: set[tuple[int, str]], primeira: bool) -> dict | None:
+    """Coleta (mudancas.json) que trouxe a observação nova ou a revisão: a mais
+    antiga para uma publicação nova, a mais recente para uma revisão."""
     achadas = []
     for col in mudancas.get("coletas", []):
         itens = col.get("novas", []) + col.get("revisoes", [])
-        if any(int(i.get("codigo", 0)) == codigo and i.get("data") in datas for i in itens):
+        if any((int(i.get("codigo", 0)), i.get("data")) in alvo for i in itens):
             achadas.append(col)
     if not achadas:
         return None
@@ -134,14 +163,19 @@ def registrar(arquivo: dict, historicos: dict[int, list[dict]], mudancas: dict, 
     Determinístico: mesmas entradas, nenhum registro novo."""
     pubs = arquivo.setdefault("publicacoes", [])
     novos: list[dict] = []
+    hoje = hoje_da_versao(versao)
     for chave, s in SERIES.items():
-        if not historicos.get(s["codigo"]):
+        if not all(historicos.get(c) for c in s["series"] if c != 4389):
             continue
-        atual = leitura_de(chave, historicos)
+        atual = leitura_de(chave, historicos, hoje=hoje)
+        if not atual["competencia"] or not atual["entradas"]:
+            continue
         da_serie = [p for p in pubs if p["serie"] == chave]
         competencias = sorted({p["competencia"] for p in da_serie} | {atual["competencia"]})
         for comp in competencias:
-            lt = atual if comp == atual["competencia"] else leitura_de(chave, historicos, comp)
+            # Sempre com a competência explícita: o registro é a leitura DAQUELE
+            # período (na PTAX, a semana encerrada, sem o parcial da seguinte).
+            lt = leitura_de(chave, historicos, comp, hoje)
             mesmas = [p for p in da_serie if p["competencia"] == comp]
             if not mesmas:
                 if comp != atual["competencia"]:
@@ -156,13 +190,18 @@ def registrar(arquivo: dict, historicos: dict[int, list[dict]], mudancas: dict, 
                          for c in sorted(set(antes) | set(lt["entradas"])) if antes.get(c) != lt["entradas"].get(c)]
                 rev = ult["revisao"] + 1
                 revisa = {"id": ult["id"], "versao_anterior": ult["versao_dados"], "alteracoes": alter}
-            alvo = [comp] if not revisa else [a["competencia"] for a in revisa["alteracoes"]]
+            if revisa:
+                alvo = {observacao(chave, a["competencia"]) for a in revisa["alteracoes"]}
+            else:
+                chave_nova = {"mensal": comp, "cdi": f"cdi:{comp}",
+                              "ptax": (lt.get("fechamento") or {}).get("data", "")}[s["leitura"]]
+                alvo = {observacao(chave, chave_nova)} if chave_nova else set()
             reg = {
                 "id": f"{chave}-{comp}" + (f"-r{rev}" if rev else ""), "serie": chave, "codigo": s["codigo"],
                 "competencia": comp, "revisao": rev, "url": url_registro(chave, comp, rev),
                 "registrado_em": versao["data"], "versao_dados": {"sha": versao["sha"], "curto": versao["sha"][:7]},
-                "identificado": identificado_em(mudancas, s["codigo"], alvo, primeira=not revisa),
-                "divulgacao_oficial": None, "carga_inicial": not pubs and not novos, "revisa": revisa,
+                "identificado": identificado_em(mudancas, alvo, primeira=not revisa),
+                "divulgacao_oficial": None, "carga_inicial": not da_serie and not any(n["serie"] == chave for n in novos), "revisa": revisa,
                 "leitura": lt,
             }
             novos.append(reg)
@@ -172,7 +211,7 @@ def registrar(arquivo: dict, historicos: dict[int, list[dict]], mudancas: dict, 
 
 def dados_conferem(versao: dict, raiz: Path = ROOT) -> bool:
     """Os arquivos das séries são os do commit de versao.json? (git diff)"""
-    arqs = [f"data/{s['codigo']}_history.json" for s in SERIES.values()]
+    arqs = sorted({f"data/{c}_history.json" for s in SERIES.values() for c in s["series"]})
     r = subprocess.run(["git", "diff", "--quiet", versao["sha"], "--", *arqs], cwd=raiz,
                        capture_output=True, text=True)
     return r.returncode == 0
@@ -245,24 +284,60 @@ def titulo(reg: dict) -> str:
     return f"Revisão {reg['revisao']} — {t}" if reg["revisao"] else t
 
 
+def rotulo_entrada(chave: str, k: str) -> str:
+    if ":" in k:
+        nome, k = k.split(":", 1)
+        return f"{nome.upper()} de {L.mes_txt(k)}"
+    return L.mes_txt(k) if len(k) == 7 else f"{k[8:10]}/{k[5:7]}/{k[:4]}"
+
+
+def fmt_entrada(chave: str, x) -> str:
+    if x is None:
+        return "ausente"
+    return f"R$ {fmt_num(x, 4)}" if SERIES[chave]["leitura"] == "ptax" else v(x)
+
+
+def periodo(lt: dict) -> str:
+    if lt["regra"].startswith("leitura-mensal"):
+        return L.mes_txt(lt["competencia"])
+    if lt["regra"].startswith("leitura-cdi"):
+        return f"{L.mes_txt(lt['inicio'])} a {L.mes_txt(lt['fim'])}"
+    seg = L._segunda(lt["competencia"])
+    from datetime import timedelta
+    return f"semana de {seg:%d/%m} a {seg + timedelta(days=4):%d/%m/%Y}"
+
+
+SUFIXO = {"mensal": "leitura mensal e acumulado", "cdi": "acumulado e taxa real", "ptax": "fechamento semanal"}
+
+
+def titulo_curto(reg: dict) -> str:
+    lt, s = reg["leitura"], SERIES[reg["serie"]]
+    base = (f"{lt['nome']} de {periodo(lt)}" if s["leitura"] != "ptax" else f"{lt['nome']}, {periodo(lt)}")
+    base += f", revisão {reg['revisao']}" if reg["revisao"] else ""
+    t = f"{base}: {SUFIXO[s['leitura']]}"
+    return t if len(t) <= 70 else base[:70]
+
+
 def bloco_revisao(reg: dict) -> str:
     r = reg["revisa"]
     if not r:
         return ""
     sha_a, sha_b = r["versao_anterior"]["sha"], reg["versao_dados"]["sha"]
-    cod = reg["codigo"]
-    linhas = "".join(f"<tr><td>{e(L.mes_txt(a['competencia']))}</td><td>{v(a['antes'])}</td><td>{v(a['depois'])}</td></tr>"
-                     for a in r["alteracoes"])
-    anterior = r["id"]
+    chave = reg["serie"]
+    linhas = "".join(f"<tr><td>{e(rotulo_entrada(chave, a['competencia']))}</td><td>{e(fmt_entrada(chave, a['antes']))}</td>"
+                     f"<td>{e(fmt_entrada(chave, a['depois']))}</td></tr>" for a in r["alteracoes"])
+    versoes = " · ".join(
+        f'série {c}: <a href="{RAW}/{sha_a}/data/{c}_history.json">versão anterior ({sha_a[:7]})</a>, '
+        f'<a href="{RAW}/{sha_b}/data/{c}_history.json">versão revisada ({sha_b[:7]})</a>'
+        for c in SERIES[chave]["series"])
     return (f'<section class="card" aria-labelledby="rev-t"><h2 id="rev-t">O que esta revisão mudou</h2>'
-            f'<p>Esta leitura substitui a <a href="{url_por_id(anterior)}">anterior</a>, que continua publicada. '
-            "Valores das competências que mudaram:</p>"
+            f'<p>Esta leitura substitui a <a href="{url_por_id(r["id"])}">anterior</a>, que continua publicada. '
+            "Valores que mudaram:</p>"
             '<div class="tabela-rolagem" role="region" aria-labelledby="rev-t" tabindex="0"><table><thead><tr>'
-            '<th scope="col">Competência</th><th scope="col">Valor anterior</th><th scope="col">Valor revisado</th>'
+            '<th scope="col">Observação</th><th scope="col">Valor anterior</th><th scope="col">Valor revisado</th>'
             f"</tr></thead><tbody>{linhas}</tbody></table></div>"
-            f'<p class="mut">Série na <a href="{RAW}/{sha_a}/data/{cod}_history.json">versão anterior ({sha_a[:7]})</a> '
-            f'e na <a href="{RAW}/{sha_b}/data/{cod}_history.json">versão revisada ({sha_b[:7]})</a> · '
-            f'<a href="{REPO_URL}/compare/{sha_a}...{sha_b}">comparar as versões no GitHub</a>.</p></section>')
+            f'<p class="mut">{versoes} · <a href="{REPO_URL}/compare/{sha_a}...{sha_b}">comparar as versões no '
+            "GitHub</a>.</p></section>")
 
 
 _POR_ID: dict[str, str] = {}
@@ -270,6 +345,41 @@ _POR_ID: dict[str, str] = {}
 
 def url_por_id(i: str) -> str:
     return _POR_ID.get(i, f"{BASE_URL}/divulgacoes/")
+
+
+def kpis_de(lt: dict) -> list:
+    return resumo_mensal(lt) if lt["regra"].startswith("leitura-mensal") else lt["kpis"]
+
+
+def tabela_generica(lt: dict, rotulo: str) -> str:
+    def cel(x):
+        return "—" if x is None else e(fmt_num(x)) if isinstance(x, float) else e(x)
+    th = "".join(f'<th scope="col">{e(c)}</th>' for c in lt["tabela"]["cab"])
+    corpo = "".join("<tr>" + "".join(f"<td>{cel(x)}</td>" for x in li) + "</tr>" for li in lt["tabela"]["linhas"])
+    return (f'<div class="tabela-rolagem" role="region" aria-labelledby="{rotulo}" tabindex="0"><table>'
+            f"<thead><tr>{th}</tr></thead><tbody>{corpo}</tbody></table></div>")
+
+
+def conta_de(lt: dict, serie: str, pre: str, rotulo: str = "conta-t", h: str = "h2") -> str:
+    """Seção com a tabela que permite refazer a conta (e, no CDI, os links para
+    o comparador e o simulador com o mesmo período)."""
+    if lt["regra"].startswith("leitura-mensal"):
+        return (f'<{h} id="{rotulo}">A conta, mês a mês</{h}>'
+                f'<p>Janela atual: {e(L.mes_txt(lt["janela"][0]))} a {e(L.mes_txt(lt["janela"][1]))}. Janela anterior: '
+                f'{e(L.mes_txt(lt["janela_anterior"][0]))} a {e(L.mes_txt(lt["janela_anterior"][1]))}.</p>'
+                + tabela_mensal(lt, serie, pre, rotulo))
+    html = f'<{h} id="{rotulo}">Os dados usados</{h}>' + tabela_generica(lt, rotulo)
+    if lt["regra"].startswith("leitura-cdi"):
+        lk = lt["links"]
+        html += (f'<p><a class="pill" href="{e(lk["comparador"])}">Abrir no comparador ({e(periodo(lt))})</a>'
+                 f'<a class="pill" href="{e(lk["simulador"])}">Simular 100% do CDI no mesmo período</a></p>'
+                 f'<p class="mut">O comparador usa as mesmas competências fechadas, de {e(L.mes_txt(lt["inicio"]))} a '
+                 f'{e(L.mes_txt(lt["fim"]))}, com o CDI mensal (SGS 4391). O simulador trabalha com dias úteis: '
+                 f'aplica a taxa DI diária (SGS 4389) de {lk["simulador_de"][8:]}/{lk["simulador_de"][5:7]}/'
+                 f'{lk["simulador_de"][:4]} (aplicação) até {lk["simulador_ate"][8:]}/{lk["simulador_ate"][5:7]}/'
+                 f'{lk["simulador_ate"][:4]} (resgate, sem render nesse dia). Por isso o resultado dele pode diferir '
+                 "em centésimos do acumulado mensal.</p>")
+    return html
 
 
 def pagina(reg: dict, todos: list[dict]) -> str:
@@ -284,9 +394,7 @@ def pagina(reg: dict, todos: list[dict]) -> str:
                         "datePublished": reg["registrado_em"], "isPartOf": {"@id": f"{BASE_URL}/#website"},
                         "publisher": {"@type": "Organization", "name": "Observatório de Taxas", "url": f"{BASE_URL}/"}})
     ld += "\n" + jsonld_script({"@context": "https://schema.org", **crumb_ld})
-    curto = (f"{lt['nome']} de {L.mes_txt(lt['competencia'])}"
-             + (f", revisão {reg['revisao']}" if reg["revisao"] else "") + ": leitura mensal e acumulado")
-    topo = head(curto, desc, url, ld, crumb_html, []).replace("</style>", CSS + "</style>", 1)
+    topo = head(titulo_curto(reg), desc, url, ld, crumb_html, []).replace("</style>", CSS + "</style>", 1)
     mais_novas = [p for p in todos if p["serie"] == reg["serie"] and p["competencia"] == reg["competencia"]
                   and p["revisao"] > reg["revisao"]]
     aviso = ""
@@ -297,10 +405,15 @@ def pagina(reg: dict, todos: list[dict]) -> str:
     sha = reg["versao_dados"]["sha"]
     ident = reg.get("identificado")
     ident_txt = (f'{e(quando(ident["gerado_em"]))}, na coleta automática do SGS' if ident else
-                 "não registrado: esta é a primeira leitura do arquivo de divulgações, criado depois de a "
-                 "competência chegar ao Observatório" if reg.get("carga_inicial") else "não registrado")
-    kpis = "".join(f'<div class="kpi"><span>{e(r)}</span><b>{e(x)}</b></div>' for r, x in resumo_mensal(lt))
+                 "não registrado: esta é a primeira leitura do arquivo de divulgações, criado depois de o "
+                 "dado chegar ao Observatório" if reg.get("carga_inicial") else "não registrado")
+    kpis = "".join(f'<div class="kpi"><span>{e(r)}</span><b>{e(x)}</b></div>' for r, x in kpis_de(lt))
     nota = f'<p class="mut">{e(lt["nota"])}</p>' if lt.get("nota") else ""
+    fontes = " · ".join(f'<a href="https://api.bcb.gov.br/dados/serie/bcdata.sgs.{c}/dados?formato=json">série {c}</a>'
+                        for c in s["series"])
+    jsons = " · ".join(f'<a href="{RAW}/{sha}/data/{c}_history.json">série {c} nessa versão (JSON)</a>'
+                       for c in s["series"])
+    rot_periodo = "Competência" if s["leitura"] == "mensal" else "Período"
     return (topo + f"""<article>
 <h1>{e(t)}</h1>
 {aviso}
@@ -310,20 +423,16 @@ def pagina(reg: dict, todos: list[dict]) -> str:
 {nota}
 </section>
 {bloco_revisao(reg)}
-<section class="card" aria-labelledby="conta-t"><h2 id="conta-t">A conta, mês a mês</h2>
-<p>Janela atual: {e(L.mes_txt(lt["janela"][0]))} a {e(L.mes_txt(lt["janela"][1]))}. Janela anterior:
-{e(L.mes_txt(lt["janela_anterior"][0]))} a {e(L.mes_txt(lt["janela_anterior"][1]))}.</p>
-{tabela_mensal(lt, reg["serie"], pre)}
-</section>
+<section class="card" aria-labelledby="conta-t">{conta_de(lt, reg["serie"], pre)}</section>
 <section class="card" aria-labelledby="proc-t"><h2 id="proc-t">Fonte, datas e versão</h2>
 <dl class="ficha">
-<dt>Indicador</dt><dd>{e(lt["nome"])}, produzido pelo {e(s["produtor"])}</dd>
-<dt>Obtido em</dt><dd>SGS do Banco Central, <a href="https://api.bcb.gov.br/dados/serie/bcdata.sgs.{reg["codigo"]}/dados?formato=json">série {reg["codigo"]}</a></dd>
-<dt>Competência</dt><dd><time datetime="{lt["competencia"]}">{e(L.mes_txt(lt["competencia"]))}</time></dd>
+<dt>Indicador</dt><dd>{e(lt["nome"])}, produzido por {e(s["produtor"])}</dd>
+<dt>Obtido em</dt><dd>SGS do Banco Central: {fontes}</dd>
+<dt>{rot_periodo}</dt><dd>{e(periodo(lt))}</dd>
 <dt>Identificado pelo Observatório</dt><dd>{ident_txt}</dd>
-<dt>Divulgação oficial</dt><dd>não informada: o SGS não traz a data de divulgação do {e(s["produtor"])}, e o Observatório não a deduz da hora da coleta</dd>
+<dt>Divulgação oficial</dt><dd>não informada: o SGS não traz a data de divulgação do produtor, e o Observatório não a deduz da hora da coleta</dd>
 <dt>Registrado em</dt><dd>{e(quando(reg["registrado_em"]))} (data do commit dos dados)</dd>
-<dt>Versão dos dados</dt><dd>commit <a href="{REPO_URL}/commit/{sha}">{sha[:7]}</a> · <a href="{RAW}/{sha}/data/{reg["codigo"]}_history.json">série nessa versão (JSON)</a></dd>
+<dt>Versão dos dados</dt><dd>commit <a href="{REPO_URL}/commit/{sha}">{sha[:7]}</a> · {jsons}</dd>
 <dt>Regra</dt><dd><code>{e(lt["regra"])}</code> (<a href="{REPO_URL}/blob/{sha}/scripts/leituras.py">código nessa versão</a>)</dd>
 <dt>Identificador</dt><dd><code>{e(reg["id"])}</code></dd>
 </dl></section>
@@ -382,12 +491,13 @@ def _rfc822(iso: str) -> str:
 
 def resumo(reg: dict) -> str:
     lt, s = reg["leitura"], SERIES[reg["serie"]]
-    partes = [f"Competência: {L.mes_txt(lt['competencia'])}."] + lt["frases"][:2]
+    rot = "Competência" if s["leitura"] == "mensal" else "Período"
+    partes = [f"{rot}: {periodo(lt)}."] + lt["frases"][:2]
     if reg["revisa"]:
-        alt = "; ".join(f"{L.mes_txt(a['competencia'])}: {v(a['antes'])} → {v(a['depois'])}"
-                        for a in reg["revisa"]["alteracoes"])
+        alt = "; ".join(f"{rotulo_entrada(reg['serie'], a['competencia'])}: {fmt_entrada(reg['serie'], a['antes'])} → "
+                        f"{fmt_entrada(reg['serie'], a['depois'])}" for a in reg["revisa"]["alteracoes"])
         partes.insert(1, f"Revisão de dados: {alt}.")
-    partes.append(f"Fonte: {s['produtor']}, via SGS {reg['codigo']} do Banco Central. "
+    partes.append(f"Fonte: {s['produtor']}, via SGS {', '.join(map(str, s['series']))} do Banco Central. "
                   f"Versão dos dados: {reg['versao_dados']['curto']}.")
     return " ".join(partes)
 
@@ -441,7 +551,7 @@ def main() -> None:
         elif not dados_conferem(versao):
             print(f"divulgacoes: os dados não são os do commit {versao['sha'][:7]}; nada registrado.")
         else:
-            historicos = {s["codigo"]: load_history(s["codigo"]) for s in SERIES.values()}
+            historicos = {c: load_history(c) for s in SERIES.values() for c in s["series"]}
             novos = registrar(arquivo, historicos, ler(MUDANCAS, {}), versao)
             for n in novos:
                 print(f"divulgacoes: novo registro {n['id']}")
