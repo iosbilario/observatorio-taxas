@@ -38,7 +38,8 @@ def commit_dos_dados(raiz: Path = ROOT) -> tuple[str, str] | None:
     r = subprocess.run(
         ["git", "log", "-1", "--format=%H%x09%cI", "--", "data", "docs/data",
          ":(exclude)docs/data/versao.json", ":(exclude)data/mudancas.json",
-         ":(exclude)docs/data/mudancas.json"],
+         ":(exclude)docs/data/mudancas.json", ":(exclude)data/publicacoes.json",
+         ":(exclude)docs/data/publicacoes.json"],
         cwd=raiz, capture_output=True, text=True)
     if r.returncode != 0 or not r.stdout.strip():
         return None

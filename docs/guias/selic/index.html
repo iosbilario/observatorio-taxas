@@ -83,6 +83,10 @@ dl.ficha dd{margin:0}
 .tabela-hub td.num{text-align:right}
 h2.grupo{margin-top:1.6rem}
 @media(max-width:520px){dl.ficha{grid-template-columns:1fr}}
+.tabela-rolagem{overflow-x:auto;margin:.4rem 0 1rem}
+.tabela-rolagem:focus-visible{outline:2px solid var(--carimbo);outline-offset:2px}
+.tabela-rolagem table{min-width:560px}
+.tabela-rolagem caption{caption-side:bottom;text-align:left;padding-top:.5rem}
 
 .ctrl{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));gap:10px}
 .ctrl fieldset{border:1px solid var(--linha);border-radius:8px;margin:0;padding:.5rem .8rem .7rem}
@@ -131,6 +135,7 @@ svg.grafico{width:100%;height:auto;display:block}
   <link rel="icon" href="../../icon-192.png" sizes="192x192" type="image/png" />
   <link rel="apple-touch-icon" href="../../apple-touch-icon.png" />
   <link rel="manifest" href="../../site.webmanifest" />
+  <link rel="alternate" type="application/rss+xml" title="Observatório de Taxas — divulgações" href="https://observatoriodetaxas.tec.br/feed.xml" />
   <!-- icones:end -->
 </head>
 <body><a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -233,6 +238,7 @@ produzidos pelo IBGE; IGP-M e IGP-DI pela FGV IBRE. Não é recomendação finan
       <ul>
         <li><a href="https://github.com/iosbilario/observatorio-taxas#dados-e-metodologia">Metodologia</a></li>
         <li><a href="../../data/series.json">Dados abertos (JSON)</a></li>
+        <li><a href="../../divulgacoes/">Divulgações</a> · <a href="../../feed.xml">RSS</a></li>
         <li><a href="https://github.com/iosbilario/observatorio-taxas/blob/main/desenvolvimento/GUIA.md">Guia do desenvolvedor</a></li>
         <li><a href="https://github.com/iosbilario/observatorio-taxas/blob/main/desenvolvimento/REPRODUCAO.md">Reprodução</a></li>
         <li><a href="https://github.com/iosbilario/observatorio-taxas/releases">Versões</a></li>
