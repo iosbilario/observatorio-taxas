@@ -90,6 +90,9 @@ jobs:
       - name: Gerar os guias (/guias/)
         run: python scripts/build_guias.py
 
+      - name: Evolução do contrato (/reajuste/evolucao/)
+        run: python scripts/build_evolucao.py
+
       - name: Gerar "O que mudou nesta coleta?" (/mudancas/)
         run: python scripts/build_mudancas.py
 

@@ -157,6 +157,23 @@
       var txt = texto(d);
       botao.hidden = false; caixa.hidden = true; status.textContent = "";
       botao.onclick = function () { copiar(txt, botao, status, caixa); };
+      var cmp = raizEl.querySelector("[data-demo-comparar]");
+      if (cmp && d.chave) ligaComparar(cmp, d.chave, d.refYm, d.valor, raizEl.getAttribute("data-base-evolucao") || "../evolucao/");
+    };
+  }
+
+  // "Comparar com outro índice": abre /reajuste/evolucao/ com índice, período e
+  // regra no endereço e o VALOR só no sessionStorage desta aba.
+  function linkComparar(base, chave, refYm) {
+    var inicio = somaMeses(refYm, -11), corte = somaMeses(refYm, 1);
+    return base + "?indice=" + chave + "&inicio=" + inicio + "&regra=1&corte=" + corte + "&comparar=1&cenario=" +
+      (chave === "ipca" ? "igpm" : "ipca");
+  }
+  function ligaComparar(a, chave, refYm, valor, base) {
+    a.href = linkComparar(base, chave, refYm);
+    a.hidden = false;
+    a.onclick = function () {
+      try { sessionStorage.setItem("obs-evolucao", JSON.stringify({ valor: valor })); } catch (e) { /* sem armazenamento: a pessoa digita */ }
     };
   }
 
@@ -200,7 +217,7 @@
         area.querySelector("[data-demo-copiar]").hidden = true;
         return;
       }
-      mostra({ valor: v, fator: fator, indice: ds.indice, refYm: ds.ref, produtor: ds.produtor,
+      mostra({ valor: v, fator: fator, indice: ds.indice, refYm: ds.ref, produtor: ds.produtor, chave: ds.chave,
                link: linkConferencia(ds.chave, ds.ref, sha) });
     });
   }
@@ -215,5 +232,6 @@
     parseValor: parseValor, mesTxt: mesTxt, somaMeses: somaMeses, calcula: calcula,
     linkConferencia: linkConferencia, texto: texto, fatorNaVersao: fatorNaVersao,
     montaBlocoResultado: montaBlocoResultado, versaoAtual: versaoAtual, copiar: copiar,
+    linkComparar: linkComparar, ligaComparar: ligaComparar,
   };
 });

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- ===================== Segurança (site estático, sem headers HTTP) ===================== -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data: https://observatoriotaxas.goatcounter.com https://carimbo.tec.br; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self' https://gc.zgo.at 'sha256-8qh1qN0OU2G9CI0EmVqbdqHd1+x92hZmYO80BSiJgDc=' 'sha256-2D0yPViBCVtZ3BwKbogRO2iJy8HeYkshUpJ8803uzQg=' 'sha256-gO0xs4ise/cWfgpkYsBTBfI4TAPhT6Hl9s1hg/+tE9o='; connect-src 'self' https://observatoriotaxas.goatcounter.com; frame-src 'self'" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data: https://observatoriotaxas.goatcounter.com https://carimbo.tec.br; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self' https://gc.zgo.at 'sha256-8qh1qN0OU2G9CI0EmVqbdqHd1+x92hZmYO80BSiJgDc=' 'sha256-2D0yPViBCVtZ3BwKbogRO2iJy8HeYkshUpJ8803uzQg=' 'sha256-upGMNuiCVYq1QhBobAdB0fKI//LVQoyKsuC1Fhg09u4='; connect-src 'self' https://observatoriotaxas.goatcounter.com; frame-src 'self'" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <script>if (top !== self) { try { top.location = self.location; } catch (e) { document.documentElement.style.display = "none"; } }</script>
 
@@ -141,7 +141,7 @@
 
   <link rel="preload" as="font" type="font/woff2" href="fonts/ibmplexserif-latin-400.woff2" crossorigin />
   <link rel="preload" as="font" type="font/woff2" href="fonts/sourcesans3-latin-0.woff2" crossorigin />
-  <script src="demonstrativo.js?v=9e34bd3d38"></script>
+  <script src="demonstrativo.js?v=eb62d711c1"></script>
   <script src="catalogo.js?v=e2cf20838f" defer></script>
   <link rel="stylesheet" href="refy/tokens.css?v=ee92076019" />
   <style>
@@ -573,6 +573,7 @@ footer a{color:var(--ink-2)}
           </div>
           <p class="rj-res" id="rj-res" aria-live="polite">Informe o valor para ver o resultado.</p>
           <button type="button" class="rj-copiar" id="rj-copiar" hidden>Copiar demonstrativo</button>
+          <p class="rj-note"><a id="rj-comparar" hidden href="reajuste/evolucao/">Comparar com outro índice</a> · <a href="reajuste/evolucao/">Ver evolução desde o início do contrato</a></p>
           <p class="rj-note" id="rj-copiar-status" role="status" aria-live="polite"></p>
           <textarea class="rj-texto" id="rj-texto" rows="9" readonly hidden aria-label="Texto do demonstrativo"></textarea>
           <p class="rj-note" id="rj-note">Aplica o acumulado de 12 meses mais recente do índice. Confira no contrato o índice pactuado e o mês de referência (defasagem). Conteúdo informativo.</p>
@@ -971,6 +972,7 @@ footer a{color:var(--ink-2)}
         const ix = idxAtual();
         const v = Demo ? Demo.parseValor(inp.value) : parseValor(inp.value);
         btnCopiar.hidden = true; txCopiar.hidden = true; stCopiar.textContent = "";
+        const lkComparar = document.getElementById("rj-comparar"); lkComparar.hidden = true;
         if (v === null || !isFinite(v) || v <= 0) { res.textContent = "Informe o valor para ver o resultado."; return; }
         let fator, rotulo, desc, url, urlTxt;
         if (modo === "anual") {
@@ -981,6 +983,7 @@ footer a{color:var(--ink-2)}
             const txt = Demo.texto({ valor: v, fator: ix.fator, indice: ix.nome, refYm: ix.refYm,
               produtor: ix.produtor, link: Demo.linkConferencia(ix.key, ix.refYm, shaDados) });
             btnCopiar.hidden = false;
+            if (Demo.ligaComparar) Demo.ligaComparar(lkComparar, ix.key, ix.refYm, v, "reajuste/evolucao/");
             btnCopiar.onclick = () => Demo.copiar(txt, btnCopiar, stCopiar, txCopiar);
           }
         } else {

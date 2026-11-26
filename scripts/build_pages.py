@@ -702,6 +702,8 @@ ao fator de reajuste <b>{fator_txt(fator)}</b>.</p>
 </form>
 <p class="res" id="res" data-demo-res aria-live="polite"></p>
 <button type="button" class="copiar-demo" data-demo-copiar hidden>Copiar demonstrativo</button>
+<p><a class="pill" data-demo-comparar hidden href="../evolucao/">Comparar com outro índice</a>
+<a class="pill" href="../evolucao/?indice={key}&amp;inicio={mes_iso(ini)}&amp;regra=1">Ver evolução desde o início do contrato</a></p>
 <p class="mut" data-demo-status role="status" aria-live="polite"></p>
 <textarea class="demo-texto" data-demo-texto rows="9" readonly hidden aria-label="Texto do demonstrativo"></textarea>
 <p class="mut">O demonstrativo traz o link desta página com a versão dos dados, sem o valor do contrato: quem
@@ -832,6 +834,8 @@ de onde o Observatório coleta os dados. Conteúdo informativo, não é orienta�
 oficiais coletados automaticamente do SGS do Banco Central e <a href="https://github.com/iosbilario/observatorio-taxas">versionados em aberto</a>.</p>
 <p class="mut">Precisa corrigir um valor entre duas datas, e não reajustar um contrato?
 Use a <a href="{BASE_URL}/correcao/">correção monetária</a>.</p>
+<p><a class="pill" href="{BASE_URL}/reajuste/evolucao/">Ver evolução desde o início do contrato</a> <span class="mut">os reajustes
+anuais desde o primeiro aniversário, com a memória de cada ano, e a comparação com outro índice.</span></p>
 {seletor}
 {email_block()}
 {cards}
