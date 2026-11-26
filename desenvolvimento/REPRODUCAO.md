@@ -85,6 +85,54 @@ produtor tenha revisado algum mês.
   repositório temporário (a segunda revisa uma competência antiga) e confere
   que o recibo da primeira continua dando o resultado original.
 
+## Divulgações (leituras permanentes e RSS)
+
+Cada nova competência de uma série acompanhada (hoje o IPCA) ganha uma leitura
+permanente em `/divulgacoes/<serie>/<competencia>/`, que também é um item do
+`/feed.xml` (RSS 2.0).
+
+- **Arquivo durável:** `data/publicacoes.json` (espelho em `docs/data/`), mantido
+  por [`scripts/build_divulgacoes.py`](../scripts/build_divulgacoes.py). Só
+  cresce. Cada registro guarda a leitura inteira: números, tabela, texto, regra
+  (`leitura-mensal-v1`) e versão dos dados. A página e o item do RSS são gerados
+  só do registro, então não mudam quando os dados são revisados ou a regra muda.
+- **Por que não `mudancas.json`:** ele guarda só as 30 coletas mais recentes.
+  Entra apenas para saber quando o Observatório identificou a competência.
+- **Eventos:** competência nova vira um registro (`ipca-2026-10`); nova coleta
+  com os mesmos valores não muda nada; uma entrada da conta que muda vira um
+  registro novo (`ipca-2026-10-r1`, `-r2`…), com valores anterior e revisado e
+  as duas versões dos dados. Uma carga histórica só registra a competência mais
+  recente de cada série.
+- **Versão dos dados sem SHA futuro:** o registro nasce no passo da versão dos
+  dados do `monitor.yml` (`build_divulgacoes.py --registrar`), depois do commit
+  da coleta, quando o commit existe e está em `versao.json`. Antes de registrar,
+  o script confere com `git diff` que os arquivos das séries são os desse commit.
+- **Datas:** competência (mês do índice), identificado em (coleta que trouxe o
+  dado) e registrado em (data do commit dos dados). A data oficial de divulgação
+  do IBGE não está no SGS e fica como "não informada".
+- **Teste:** `tests/test_divulgacoes.py`.
+- **CDI e PTAX (Entrega 2):** o CDI registra uma leitura por competência mensal
+  fechada (`cdi-2026-10`: 12 meses do CDI mensal, SGS 4391, contra o IPCA nas
+  mesmas competências, taxa real = (1 + CDI) ÷ (1 + IPCA) − 1). A PTAX registra o
+  fechamento semanal (`dolar-2026-W47`: última cotação da semana encerrada contra
+  a última da semana anterior; semana encerrada = hoje já no sábado dela, com
+  "hoje" = data do commit dos dados, para a leitura não depender da hora em que o
+  script roda). A ficha da PTAX acompanha também a variação diária e mostra a
+  semana em andamento como parcial; o parcial não entra no registro nem no RSS.
+  Teste: `tests/test_leituras_cdi_ptax.py`.
+- **Acompanhar e citar (Entrega 3):** cada leitura oferece "Acompanhar este
+  indicador" (a ficha em `/indicadores/<slug>/#leitura`, que recalcula a cada
+  coleta) e "Citar esta análise" (o registro em `/divulgacoes/…/`). Decisão: a
+  citação aponta para o resultado já produzido, guardado no registro com a
+  memória de cálculo, e não para "dados do commit X refeitos pela regra de
+  hoje". Assim uma regra nova ou um dado revisado não muda uma citação antiga, e
+  o site não precisa guardar versões antigas do código. Cada registro tem
+  `dados.csv` (separador `;`, com série, recorte, transformação, unidade, versão
+  e regra no topo) e `grafico.svg` (com fonte, versão e regra no próprio arquivo),
+  gerados só do registro. Um endereço de análise que não existe cai no
+  `docs/404.html`, que diz que aquela versão não está disponível e dá um link
+  separado para a visão atual, sem redirecionar. Teste: `tests/test_citar.py`.
+
 ## Reprodução dos cálculos
 
 | Cálculo | Fórmula | Código | Teste |

@@ -83,6 +83,10 @@ dl.ficha dd{margin:0}
 .tabela-hub td.num{text-align:right}
 h2.grupo{margin-top:1.6rem}
 @media(max-width:520px){dl.ficha{grid-template-columns:1fr}}
+.tabela-rolagem{overflow-x:auto;margin:.4rem 0 1rem}
+.tabela-rolagem:focus-visible{outline:2px solid var(--carimbo);outline-offset:2px}
+.tabela-rolagem table{min-width:560px}
+.tabela-rolagem caption{caption-side:bottom;text-align:left;padding-top:.5rem}
 </style>
 <script data-goatcounter="https://observatoriotaxas.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
   <link rel="stylesheet" href="../../nav.css?v=eb59306490" />
@@ -96,6 +100,7 @@ h2.grupo{margin-top:1.6rem}
   <link rel="icon" href="../../icon-192.png" sizes="192x192" type="image/png" />
   <link rel="apple-touch-icon" href="../../apple-touch-icon.png" />
   <link rel="manifest" href="../../site.webmanifest" />
+  <link rel="alternate" type="application/rss+xml" title="Observatório de Taxas — divulgações" href="https://observatoriodetaxas.tec.br/feed.xml" />
   <!-- icones:end -->
 </head>
 <body><a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -129,6 +134,7 @@ h2.grupo{margin-top:1.6rem}
 <p class="lead">IGP-DI — variação mensal: <b>1,15%</b>, referência outubro de 2026. Fonte: Instituto Brasileiro de Economia da Fundação Getulio Vargas (FGV IBRE), série 190 do SGS do Banco Central.</p>
 <div class="kpis"><div class="kpi"><span>Valor atual</span><b>1,15%</b></div><div class="kpi"><span>Referência</span><b>outubro de 2026</b></div><div class="kpi"><span>Acumulado em 12 meses</span><b>5,00%</b></div><div class="kpi"><span>Acumulado em 2026</span><b>4,89%</b></div></div>
 <p>Nos 12 meses até outubro de 2026, a variação acumulada foi de 5,00% (produto de 1 + variação mensal ÷ 100, menos 1). Em 2026, até outubro, o acumulado é de 4,89%.</p>
+
 <section class="card" aria-labelledby="oque-t"><h2 id="oque-t">O que é</h2>
 <p>Índice Geral de Preços – Disponibilidade Interna, calculado pela FGV IBRE com a mesma composição do IGP-M, mas com preços coletados no mês de referência inteiro.</p><p>Corrige contratos públicos e de fornecimento e é usado em séries históricas de preços.</p>
 <p class="mut">Também procurado como: IGP-DI hoje.</p></section>
@@ -186,6 +192,7 @@ do Banco Central do Brasil e não altera os valores. Série histórica versionad
       <ul>
         <li><a href="https://github.com/iosbilario/observatorio-taxas#dados-e-metodologia">Metodologia</a></li>
         <li><a href="../../data/series.json">Dados abertos (JSON)</a></li>
+        <li><a href="../../divulgacoes/">Divulgações</a> · <a href="../../feed.xml">RSS</a></li>
         <li><a href="https://github.com/iosbilario/observatorio-taxas/blob/main/desenvolvimento/GUIA.md">Guia do desenvolvedor</a></li>
         <li><a href="https://github.com/iosbilario/observatorio-taxas/blob/main/desenvolvimento/REPRODUCAO.md">Reprodução</a></li>
         <li><a href="https://github.com/iosbilario/observatorio-taxas/releases">Versões</a></li>

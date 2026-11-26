@@ -398,6 +398,27 @@ def bloco_rebobinar() -> str:
 
 
 # --------------------------------------------------------------------------- #
+def bloco_divulgacoes(n: int = 3) -> str:
+    """Últimas divulgações (data/publicacoes.json, scripts/build_divulgacoes.py)
+    e o link do RSS. Mesma ordem do feed: registro mais recente primeiro."""
+    try:
+        pubs = json.loads((ROOT / "data" / "publicacoes.json").read_text(encoding="utf-8")).get("publicacoes", [])
+    except (OSError, ValueError):
+        pubs = []
+    pubs = sorted(pubs, key=lambda p: (p["registrado_em"], p["competencia"], p["revisao"], p["id"]), reverse=True)[:n]
+    import build_divulgacoes as D     # aqui: evita carregar os geradores quando o bloco não é usado
+    cards = []
+    for p in pubs:
+        lt = p["leitura"]
+        t = D.titulo(p)
+        cards.append(f'<a class="guia-card" href="{p["url"].replace(BASE_URL + "/", "")}">'
+                     f'<span class="rot">{esc(D.SERIES[p["serie"]]["nome"])} · {esc(D.periodo(lt))}</span>'
+                     f'<h3>{esc(t)}</h3><p>{esc(lt["frases"][0] if lt["frases"] else "")}</p></a>')
+    vazio = "" if cards else '<p class="sub">Nenhuma divulgação registrada ainda.</p>'
+    return (f'{vazio}<div class="guias-grade">{"".join(cards)}</div>'
+            '<p class="sub" style="margin-top:1rem"><a href="feed.xml">Assinar o RSS das divulgações</a></p>')
+
+
 def inject(html: str, nome: str, conteudo: str) -> str:
     pat = re.compile(rf"(<!-- {nome}:inicio -->).*?(<!-- {nome}:fim -->)", re.S)
     if not pat.search(html):
@@ -492,10 +513,12 @@ def rebuild_sitemap() -> int:
     # divulgadas enquanto o coletor não estiver no ar.
     urls = [f"{BASE_URL}/", f"{BASE_URL}/rebobinar.html",
             f"{BASE_URL}/var.html", f"{BASE_URL}/retransmissora.html",
-            f"{BASE_URL}/reajuste/", f"{BASE_URL}/correcao/", f"{BASE_URL}/apoie/", f"{BASE_URL}/sobre/", f"{BASE_URL}/privacidade/", f"{BASE_URL}/termos/", f"{BASE_URL}/mcp/", f"{BASE_URL}/indicadores/", f"{BASE_URL}/comparador/", f"{BASE_URL}/simulador-cdi/", f"{BASE_URL}/guias/", f"{BASE_URL}/mudancas/"]
+            f"{BASE_URL}/reajuste/", f"{BASE_URL}/correcao/", f"{BASE_URL}/apoie/", f"{BASE_URL}/sobre/", f"{BASE_URL}/privacidade/", f"{BASE_URL}/termos/", f"{BASE_URL}/mcp/", f"{BASE_URL}/indicadores/", f"{BASE_URL}/comparador/", f"{BASE_URL}/simulador-cdi/", f"{BASE_URL}/guias/", f"{BASE_URL}/mudancas/", f"{BASE_URL}/divulgacoes/"]
     for sub in ("reajuste", "correcao", "indicadores", "guias"):
         for idx in sorted((docs / sub).glob("*/index.html")):
             urls.append(f"{BASE_URL}/{sub}/{idx.parent.name}/")
+    for idx in sorted((docs / "divulgacoes").glob("*/*/**/index.html")):
+        urls.append(f"{BASE_URL}/{idx.parent.relative_to(docs).as_posix()}/")
     vistos, unicas = set(), []
     for u in urls:
         if u not in vistos and _arquivo_da_url(u).is_file():
@@ -542,6 +565,7 @@ def main() -> None:
     html = inject(html, "carimbo", bloco_carimbo())
     html = inject(html, "boletim", bloco_boletim())
     html = inject(html, "mais", bloco_mais())
+    html = inject(html, "divulgacoes", bloco_divulgacoes())
     html = inject(html, "var", bloco_var())
     html = inject(html, "rebobinar", bloco_rebobinar())
     INDEX.write_text(html, encoding="utf-8")

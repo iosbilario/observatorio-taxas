@@ -216,6 +216,10 @@ dl.ficha dd{margin:0}
 .tabela-hub td.num{text-align:right}
 h2.grupo{margin-top:1.6rem}
 @media(max-width:520px){dl.ficha{grid-template-columns:1fr}}
+.tabela-rolagem{overflow-x:auto;margin:.4rem 0 1rem}
+.tabela-rolagem:focus-visible{outline:2px solid var(--carimbo);outline-offset:2px}
+.tabela-rolagem table{min-width:560px}
+.tabela-rolagem caption{caption-side:bottom;text-align:left;padding-top:.5rem}
 """
 
 CSP = ("default-src 'self'; base-uri 'self'; object-src 'none'; "
@@ -427,6 +431,39 @@ def licenca_url(codigo: int) -> str:
     return ODBL_URL if cat.SERIES[codigo]["produtor"] is cat.BCB else LICENCA_DADOS_URL
 
 
+def bloco_leitura(codigo: int, pts: list[dict]) -> str:
+    """Leitura da competência mais recente (scripts/leituras.py), com a conta e
+    o link para a divulgação permanente (build_divulgacoes.py). Só para as
+    séries com divulgação."""
+    import build_divulgacoes as D   # aqui: build_divulgacoes importa build_ferramentas, que importa este módulo
+    chave = D.FICHA_POR_CODIGO.get(codigo)
+    if not chave:
+        return ""
+    hist = {c: load_history(c) for c in D.SERIES[chave]["series"]}
+    versao = D.ler(D.VERSAO, {})
+    lt = D.leitura_de(chave, hist, hoje=D.hoje_da_versao(versao) if versao.get("data") else None)
+    pubs = D.ler(D.ARQUIVO, {}).get("publicacoes", [])
+    reg = D.registro_da_leitura(pubs, chave, lt)
+    kpis = "".join(f'<div class="kpi"><span>{e(r)}</span><b>{e(x)}</b></div>' for r, x in D.kpis_de(lt))
+    if reg:
+        perm = (f'<p>Divulgação permanente desta leitura: <a href="{reg["url"]}">{e(D.titulo(reg))}</a> '
+                f'(versão dos dados {reg["versao_dados"]["curto"]}).</p>')
+    else:
+        perm = ('<p class="mut">A divulgação permanente desta competência ainda não foi registrada: ela é criada '
+                'quando a coleta grava a versão dos dados.</p>')
+    perm += D.bloco_acoes(reg, f"{url_pagina(codigo)}#leitura", h="h3")
+    da_serie = D.ordenadas([p for p in pubs if p["serie"] == chave])
+    lista = "".join(f'<li><a href="{p["url"]}">{e(D.titulo(p))}</a></li>' for p in da_serie[:12])
+    anteriores = (f'<h3>Divulgações do {e(D.SERIES[chave]["nome"])}</h3><ul>{lista}</ul>'
+                  f'<p><a class="pill" href="{BASE_URL}/divulgacoes/">Todas as divulgações</a>'
+                  f'<a class="pill" href="{D.FEED_URL}">RSS</a></p>') if da_serie else ""
+    nota = f'<p class="mut">{e(lt["nota"])}</p>' if lt.get("nota") else ""
+    return (f'<section class="card" id="leitura" aria-labelledby="leitura-t">'
+            f'<h2 id="leitura-t">Leitura: {e(D.periodo(lt))}</h2>'
+            f'<div class="kpis">{kpis}</div>{"".join(f"<p>{e(f)}</p>" for f in lt["frases"])}{nota}'
+            f'{D.conta_de(lt, chave, "../../", "leitura-conta-t", h="h3")}{perm}{anteriores}</section>')
+
+
 def pagina(codigo: int, pts: list[dict], grupo: str) -> str:
     m = cat.SERIES[codigo]
     p = PAGINAS[codigo]
@@ -521,6 +558,7 @@ def pagina(codigo: int, pts: list[dict], grupo: str) -> str:
 <p class="lead">{resposta}</p>
 {nota_parcial}<div class="kpis">{kpi_html}</div>
 {"".join(f"<p>{e(f)}</p>" for f in frases)}
+{bloco_leitura(codigo, pts)}
 <section class="card" aria-labelledby="oque-t"><h2 id="oque-t">O que é</h2>
 <p>{e(p['o_que'])}</p><p>{e(p['uso'])}</p>
 <p class="mut">Também procurado como: {e(outros_nomes)}.</p></section>

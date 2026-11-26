@@ -391,6 +391,26 @@ def _vizinho(dt: datetime, passo: int) -> datetime:
     return datetime(n // 12, n % 12 + 1, 1)
 
 
+def frase_troca_da_janela(ac: float, ac_ant: float, ref: datetime, mensal: float, saiu: float) -> tuple[str, bool | None]:
+    """Como o acumulado de 12 meses mudou de um mês para o seguinte, e por quê:
+    a janela nova ganha o mês `ref` (variação `mensal`) e perde o mês de um ano
+    antes (variação `saiu`). Devolve (frase, subiu?), com None quando estável.
+    Usada pela leitura das páginas de reajuste e pelas divulgações."""
+    ant, saiu_dt = _vizinho(ref, -1), _vizinho(ref, -12)
+    dif = ac - ac_ant
+    entrou_txt = f"{fmt_num(mensal)}% em {mes_ano(ref)}"
+    saiu_txt = f"{fmt_num(saiu)}% em {mes_ano(saiu_dt)}"
+    if abs(dif) < 0.005:
+        return (f"O acumulado em 12 meses ficou praticamente estável em {fmt_num(ac)}% na passagem de "
+                f"{mes_ano(ant)} para {mes_ano(ref)}. A variação que entrou na conta, {entrou_txt}, foi quase "
+                f"igual à que saiu, {saiu_txt}."), None
+    sobe = dif > 0
+    return (f"O acumulado em 12 meses {'subiu' if sobe else 'caiu'} de {fmt_num(ac_ant)}% em "
+            f"{mes_ano(ant)} para {fmt_num(ac)}% em {mes_ano(ref)}, {'uma alta' if sobe else 'uma queda'} "
+            f"de {_pp(dif)}. A conta muda porque a variação que entrou na janela, {entrou_txt}, foi "
+            f"{'maior' if sobe else 'menor'} do que a que saiu, {saiu_txt}."), sobe
+
+
 def faq_month(nome: str, fonte: dict, codigo: int, ref: datetime, ini: datetime,
               mensal: float, ac: float, fator: float, exemplo: float) -> list[tuple[str, str]]:
     """Perguntas e respostas da página do mês. O MESMO texto vai para a seção
@@ -468,20 +488,10 @@ def leitura_do_mes(key: str, info: dict, janela: list[dict], ctx: dict) -> tuple
     if _ym(ant) in c["ac"] and _ym(saiu_dt) in c["mensal"]:
         ac_ant = c["ac"][_ym(ant)]
         saiu = c["mensal"][_ym(saiu_dt)]
-        dif = ac - ac_ant
-        entrou_txt = f"{fmt_num(mensal)}% em {mes_ano(ref)}"
-        saiu_txt = f"{fmt_num(saiu)}% em {mes_ano(saiu_dt)}"
-        if abs(dif) < 0.005:
-            frase = (f"O acumulado em 12 meses ficou praticamente estável em {fmt_num(ac)}% na passagem de "
-                     f"{mes_ano(ant)} para {ref_txt}. A variação que entrou na conta, {entrou_txt}, foi quase "
-                     f"igual à que saiu, {saiu_txt}.")
+        frase, sobe = frase_troca_da_janela(ac, ac_ant, ref, mensal, saiu)
+        if sobe is None:
             pergunta = f"O {nome} acumulado mudou em {ref_txt}?"
         else:
-            sobe = dif > 0
-            frase = (f"O acumulado em 12 meses {'subiu' if sobe else 'caiu'} de {fmt_num(ac_ant)}% em "
-                     f"{mes_ano(ant)} para {fmt_num(ac)}% em {ref_txt}, {'uma alta' if sobe else 'uma queda'} "
-                     f"de {_pp(dif)}. A conta muda porque a variação que entrou na janela, {entrou_txt}, foi "
-                     f"{'maior' if sobe else 'menor'} do que a que saiu, {saiu_txt}.")
             pergunta = f"Por que o {nome} acumulado {'subiu' if sobe else 'caiu'} em {ref_txt}?"
             # Sequência de meses na mesma direção.
             seq, cur = 1, ant

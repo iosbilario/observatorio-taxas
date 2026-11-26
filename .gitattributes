@@ -13,5 +13,11 @@ docs/reajuste/                  export-ignore
 docs/correcao/                  export-ignore
 docs/indicadores/               export-ignore
 docs/guias/                     export-ignore
+docs/divulgacoes/               export-ignore
 CHANGELOG.md                    export-ignore
 tests/fixtures/valores_baseline.json export-ignore
+
+# CSV das divulgações: bytes exatos (BOM e CRLF, para o Excel). Sem -text, um
+# clone com core.autocrlf guardaria LF e o validate.yml, que regenera o
+# arquivo, veria diferença.
+docs/divulgacoes/**/dados.csv   -text

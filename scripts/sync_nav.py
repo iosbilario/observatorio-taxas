@@ -237,6 +237,8 @@ def bloco_icones(prefixo: str) -> str:
             f'  <link rel="icon" href="{prefixo}icon-192.png" sizes="192x192" type="image/png" />\n'
             f'  <link rel="apple-touch-icon" href="{prefixo}apple-touch-icon.png" />\n'
             f'  <link rel="manifest" href="{prefixo}site.webmanifest" />\n'
+            '  <link rel="alternate" type="application/rss+xml" title="Observatório de Taxas — divulgações" '
+            'href="https://observatoriodetaxas.tec.br/feed.xml" />\n'
             f"  {ICONES_FIM}")
 
 
