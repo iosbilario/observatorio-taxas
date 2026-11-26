@@ -166,10 +166,10 @@ nav.vizinhos{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
 
 # Ícone embutido (o mesmo de docs/index.html): sem ele o navegador pede
 # /favicon.ico, que não existe, e registra um 404 em cada página gerada.
-FAVICON = ("<link rel=\"icon\" href=\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' "
-           "viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230E1210'/%3E%3Cpolyline "
-           "points='4,22 12,14 18,18 28,6' fill='none' stroke='%23D9B54A' stroke-width='3' "
-           "stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E\" />")
+# Os ícones (favicon.ico/.svg, PNG, manifest) entram em todas as páginas por
+# scripts/sync_nav.py, com o prefixo relativo certo. Antes ia aqui um favicon
+# embutido em data:, que o Google não usa no resultado da busca.
+FAVICON = ""
 
 WEBSITE_ID = f"{BASE_URL}/#website"
 

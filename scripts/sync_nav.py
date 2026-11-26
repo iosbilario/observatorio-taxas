@@ -224,6 +224,35 @@ def garante_tema_site(html: str, rel: str, prefixo: str) -> str:
     return html
 
 
+# Ícones (docs/favicon.*, scripts/build_icones.py). Arquivos com URL própria:
+# o Google não usa favicon embutido em data: no resultado da busca.
+ICONES_INICIO = "<!-- icones:start -->"
+ICONES_FIM = "<!-- icones:end -->"
+
+
+def bloco_icones(prefixo: str) -> str:
+    return (f"{ICONES_INICIO}\n"
+            f'  <link rel="icon" href="{prefixo}favicon.ico" sizes="48x48" />\n'
+            f'  <link rel="icon" href="{prefixo}favicon.svg" type="image/svg+xml" />\n'
+            f'  <link rel="icon" href="{prefixo}icon-192.png" sizes="192x192" type="image/png" />\n'
+            f'  <link rel="apple-touch-icon" href="{prefixo}apple-touch-icon.png" />\n'
+            f'  <link rel="manifest" href="{prefixo}site.webmanifest" />\n'
+            f"  {ICONES_FIM}")
+
+
+def garante_icones(html: str, prefixo: str) -> str:
+    """Troca o favicon embutido (data:) pelo bloco de arquivos, uma vez por
+    página, logo antes de </head>. Idempotente."""
+    html = re.sub(r'[ \t]*<link rel="icon" href="data:[^"]*" ?/?>\n?', "", html)
+    bloco = bloco_icones(prefixo)
+    if ICONES_INICIO in html:
+        return re.sub(re.escape(ICONES_INICIO) + r".*?" + re.escape(ICONES_FIM), lambda _: bloco, html,
+                      count=1, flags=re.S)
+    if "</head>" not in html:
+        raise SystemExit("página sem </head>")
+    return html.replace("</head>", "  " + bloco + "\n</head>", 1)
+
+
 # Arquivos compartilhados por todas as páginas. O endereço leva ?v=<hash do
 # conteúdo>: quando o arquivo muda, a URL muda e o navegador não usa a cópia
 # velha do cache (o GitHub Pages manda max-age=600). Sem isso, uma página
@@ -256,6 +285,7 @@ def sincroniza(caminho: Path, corpo: str, rodape: str | None = None, ano: int | 
     html = garante_css(html, prefixo)
     html = garante_script_estrelas(html, prefixo)
     html = garante_tema_site(html, rel, prefixo)
+    html = garante_icones(html, prefixo)
     html = versiona_arquivos(html)
 
     novo_bloco = bloco(corpo, prefixo, chave_ativa(rel))
