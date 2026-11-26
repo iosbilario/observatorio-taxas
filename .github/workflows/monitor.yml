@@ -27,6 +27,10 @@ jobs:
       - name: Checkout
         # Pinado por SHA de commit (supply-chain). Tag: v6.0.3
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        # Histórico completo: versoes_series.py lê no git log em que commit cada
+        # série mudou (consulta por data histórica, /historico/).
+        with:
+          fetch-depth: 0
 
       - name: Setup Python
         # Pinado por SHA de commit (supply-chain). Tag: v6.3.0
@@ -159,6 +163,8 @@ jobs:
           python scripts/build_mudancas.py
           python scripts/build_divulgacoes.py --registrar
           python scripts/build_calendario.py
+          python scripts/versoes_series.py
+          python scripts/build_historico.py
           python scripts/build_indicadores.py
           python scripts/render_index.py
           python scripts/sync_nav.py

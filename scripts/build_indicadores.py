@@ -626,6 +626,9 @@ def pagina(codigo: int, pts: list[dict], grupo: str) -> str:
 <iframe data-segue-tema src="/embed.html?s={codigo}&amp;tema=claro&amp;h=320" title="{e(m['nome'])}: gráfico dos últimos 24 meses" loading="lazy"></iframe>
 </section>
 {tabela(codigo, pts)}
+<section class="card" aria-labelledby="hist-t"><h2 id="hist-t">Versões anteriores</h2>
+<p>O que o Observatório tinha registrado desta série numa data passada, comparado com o valor atual de cada observação.</p>
+<p><a class="pill" href="{BASE_URL}/historico/?serie={codigo}">Consultar versão histórica</a></p></section>
 <section class="card" aria-labelledby="ficha-t"><h2 id="ficha-t">Ficha técnica</h2>
 <dl class="ficha">
 <dt>Indicador</dt><dd>{e(m['nome'])}</dd>

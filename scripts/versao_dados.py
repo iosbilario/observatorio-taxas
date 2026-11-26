@@ -40,7 +40,7 @@ def commit_dos_dados(raiz: Path = ROOT) -> tuple[str, str] | None:
          ":(exclude)docs/data/versao.json", ":(exclude)data/mudancas.json",
          ":(exclude)docs/data/mudancas.json", ":(exclude)data/publicacoes.json",
          ":(exclude)docs/data/publicacoes.json", ":(exclude)data/calendario*.json",
-         ":(exclude)docs/data/calendario*.json"],
+         ":(exclude)docs/data/calendario*.json", ":(exclude)docs/data/versoes"],
         cwd=raiz, capture_output=True, text=True)
     if r.returncode != 0 or not r.stdout.strip():
         return None
