@@ -1,6 +1,59 @@
 {
   "coletas": [
     {
+      "base": "f4569a48e9826a7e19c8db87e4aeeb662a4a5f81",
+      "commit": null,
+      "gerado_em": "2026-11-26T11:27:52-03:00",
+      "novas": [
+        {
+          "codigo": 226,
+          "data": "25/11/2026",
+          "nome": "TR - Taxa Referencial (%)",
+          "valor": "0.1712"
+        },
+        {
+          "codigo": 25,
+          "data": "25/11/2026",
+          "nome": "Poupança (depósitos até 03/05/2012) - rentabilidade (%)",
+          "valor": "0.6721"
+        },
+        {
+          "codigo": 195,
+          "data": "25/11/2026",
+          "nome": "Poupança (depósitos a partir de 04/05/2012) - rentabilidade (%)",
+          "valor": "0.6721"
+        },
+        {
+          "codigo": 4389,
+          "data": "25/11/2026",
+          "nome": "CDI anualizado base 252 (% a.a.)",
+          "valor": "13.65"
+        },
+        {
+          "codigo": 7478,
+          "data": "01/11/2026",
+          "nome": "IPCA-15 - variação mensal (%)",
+          "valor": "0.22"
+        },
+        {
+          "codigo": 13621,
+          "data": "25/11/2026",
+          "nome": "Reservas internacionais - conceito caixa (US$ milhões)",
+          "valor": "361634"
+        }
+      ],
+      "revisoes": [
+        {
+          "antes": "0.76",
+          "codigo": 4391,
+          "data": "01/11/2026",
+          "depois": "0.82",
+          "nome": "CDI - acumulado no mês (%)"
+        }
+      ],
+      "series_novas": []
+    },
+    {
       "base": "3e6cee9c17494370e58a3d8716e31cae9d5f08ac",
       "commit": "f4569a48e9826a7e19c8db87e4aeeb662a4a5f81",
       "gerado_em": "2026-11-25T22:18:26-03:00",

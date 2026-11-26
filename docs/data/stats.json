@@ -1,6 +1,6 @@
 {
-  "gerado_em": "2026-11-25T22:18:30-03:00",
-  "gerado_em_fmt": "25/11/2026 às 22:18",
+  "gerado_em": "2026-11-26T11:27:56-03:00",
+  "gerado_em_fmt": "26/11/2026 às 11:27",
   "grupos": {
     "Admin": {
       "acessos": 0,
@@ -16,14 +16,14 @@
       }
     },
     "Home": {
-      "acessos": 208,
+      "acessos": 211,
       "sub": {}
     },
     "Reajuste": {
-      "acessos": 178,
+      "acessos": 181,
       "sub": {
-        "IGP-DI": 10,
-        "IGP-M": 47,
+        "IGP-DI": 11,
+        "IGP-M": 48,
         "INPC": 14,
         "IPCA": 43
       }
@@ -31,11 +31,7 @@
   },
   "serie_diaria": [
     {
-      "acessos": 0,
-      "data": "2026-10-26"
-    },
-    {
-      "acessos": 6,
+      "acessos": 5,
       "data": "2026-10-27"
     },
     {
@@ -151,23 +147,27 @@
       "data": "2026-11-24"
     },
     {
-      "acessos": 44,
+      "acessos": 46,
       "data": "2026-11-25"
+    },
+    {
+      "acessos": 12,
+      "data": "2026-11-26"
     }
   ],
   "site": "observatoriotaxas",
   "timezone": "America/Sao_Paulo (UTC-3)",
   "top_paginas": [
     {
-      "count": 204,
+      "count": 207,
       "path": "/"
     },
     {
-      "count": 98,
+      "count": 103,
       "path": "/indicadores/cdi"
     },
     {
-      "count": 61,
+      "count": 62,
       "path": "/reajuste"
     },
     {
@@ -183,7 +183,7 @@
       "path": "/var.html"
     },
     {
-      "count": 17,
+      "count": 18,
       "path": "/indicadores/dolar"
     },
     {
@@ -208,25 +208,25 @@
     },
     {
       "count": 9,
+      "path": "/indicadores/euro"
+    },
+    {
+      "count": 9,
       "path": "/simulador-cdi"
     },
     {
       "count": 8,
       "path": "/apoie"
-    },
-    {
-      "count": 8,
-      "path": "/reajuste/ipca-setembro-2026"
     }
   ],
   "totais": {
     "all_time": {
-      "acessos": 767,
-      "visitantes": 792
+      "acessos": 781,
+      "visitantes": 806
     },
     "ultimos_30d": {
-      "acessos": 411,
-      "visitantes": 411
+      "acessos": 424,
+      "visitantes": 424
     }
   }
 }

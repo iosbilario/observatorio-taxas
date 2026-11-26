@@ -1357,3 +1357,13 @@
     ↳ Meta Selic (% a.a.): caiu de 14,25 para 14.
 [2026-11-25 20:40:26 +0000] Meta Selic (% a.a.): 14.00 -> 13.75
     ↳ Meta Selic (% a.a.): caiu de 14 para 13,75.
+[2026-11-26 14:27:34 +0000] TR - Taxa Referencial (%): 0.1710 -> 0.1712
+    ↳ TR - Taxa Referencial (%): subiu de 0,171 para 0,1712.
+[2026-11-26 14:27:34 +0000] Poupança (depósitos até 03/05/2012) - rentabilidade (%): 0.6719 -> 0.6721
+    ↳ Poupança (depósitos até 03/05/2012) - rentabilidade (%): subiu de 0,6719 para 0,6721.
+[2026-11-26 14:27:34 +0000] Poupança (depósitos a partir de 04/05/2012) - rentabilidade (%): 0.6719 -> 0.6721
+    ↳ Poupança (depósitos a partir de 04/05/2012) - rentabilidade (%): subiu de 0,6719 para 0,6721.
+[2026-11-26 14:27:34 +0000] IPCA-15 - variação mensal (%): 0.32 -> 0.22
+    ↳ IPCA-15 - variação mensal (%): caiu de 0,32 para 0,22.
+[2026-11-26 14:27:34 +0000] Reservas internacionais - conceito caixa (US$ milhões): 361903 -> 361634
+    ↳ Reservas internacionais - conceito caixa (US$ milhões): caiu de 361903 para 361634.

@@ -1,7 +1,7 @@
 {
  "https://observatoriodetaxas.tec.br/": {
-  "hash": "3e3d5d25d96be54a",
-  "lastmod": "2026-11-25"
+  "hash": "6a135878dacb190e",
+  "lastmod": "2026-11-26"
  },
  "https://observatoriodetaxas.tec.br/apoie/": {
   "hash": "36b7c8caf6249415",
@@ -60,16 +60,16 @@
   "lastmod": "2026-11-25"
  },
  "https://observatoriodetaxas.tec.br/indicadores/": {
-  "hash": "6c6550809f73616b",
-  "lastmod": "2026-11-25"
+  "hash": "942d35e5683d5d94",
+  "lastmod": "2026-11-26"
  },
  "https://observatoriodetaxas.tec.br/indicadores/cdi-acumulado-no-mes/": {
-  "hash": "d4d0d97aca79367f",
-  "lastmod": "2026-11-25"
+  "hash": "1d6ee616e195f1f1",
+  "lastmod": "2026-11-26"
  },
  "https://observatoriodetaxas.tec.br/indicadores/cdi/": {
-  "hash": "29bc31d9c1c703ba",
-  "lastmod": "2026-11-25"
+  "hash": "87788946ee1d645a",
+  "lastmod": "2026-11-26"
  },
  "https://observatoriodetaxas.tec.br/indicadores/desemprego/": {
   "hash": "2f4b8cae4dfdf3bb",
@@ -116,8 +116,8 @@
   "lastmod": "2026-11-24"
  },
  "https://observatoriodetaxas.tec.br/indicadores/ipca-15/": {
-  "hash": "4e1f588bfabb72c8",
-  "lastmod": "2026-11-24"
+  "hash": "11e87e9d46b851ab",
+  "lastmod": "2026-11-26"
  },
  "https://observatoriodetaxas.tec.br/indicadores/ipca/": {
   "hash": "b57199b1ff0959b5",
@@ -132,16 +132,16 @@
   "lastmod": "2026-11-25"
  },
  "https://observatoriodetaxas.tec.br/indicadores/poupanca-regra-antiga/": {
-  "hash": "c011333941f2899a",
-  "lastmod": "2026-11-25"
+  "hash": "7c34e4a8f1013ae2",
+  "lastmod": "2026-11-26"
  },
  "https://observatoriodetaxas.tec.br/indicadores/poupanca/": {
-  "hash": "bafbefae4a0d6465",
-  "lastmod": "2026-11-25"
+  "hash": "3c98db5a08d5c99f",
+  "lastmod": "2026-11-26"
  },
  "https://observatoriodetaxas.tec.br/indicadores/reservas-internacionais/": {
-  "hash": "6e02fa1493ae21a4",
-  "lastmod": "2026-11-25"
+  "hash": "53589d32889eeb09",
+  "lastmod": "2026-11-26"
  },
  "https://observatoriodetaxas.tec.br/indicadores/saldo-de-credito/": {
   "hash": "be8cb0b2b4e322b3",
@@ -160,16 +160,16 @@
   "lastmod": "2026-11-24"
  },
  "https://observatoriodetaxas.tec.br/indicadores/tr/": {
-  "hash": "b2bec1010bc54576",
-  "lastmod": "2026-11-25"
+  "hash": "1d5bee152013f773",
+  "lastmod": "2026-11-26"
  },
  "https://observatoriodetaxas.tec.br/mcp/": {
   "hash": "060ea9cf8fcb33d2",
   "lastmod": "2026-11-24"
  },
  "https://observatoriodetaxas.tec.br/mudancas/": {
-  "hash": "bf9c65044befa1cb",
-  "lastmod": "2026-11-25"
+  "hash": "6fe6312aa109d0a2",
+  "lastmod": "2026-11-26"
  },
  "https://observatoriodetaxas.tec.br/privacidade/": {
   "hash": "f4a21addde965a77",
@@ -2284,8 +2284,8 @@
   "lastmod": "2026-11-24"
  },
  "https://observatoriodetaxas.tec.br/simulador-cdi/": {
-  "hash": "3fdb20084a5b573e",
-  "lastmod": "2026-11-25"
+  "hash": "9df14c19e0a1aace",
+  "lastmod": "2026-11-26"
  },
  "https://observatoriodetaxas.tec.br/sobre/": {
   "hash": "61c467f09308096b",
