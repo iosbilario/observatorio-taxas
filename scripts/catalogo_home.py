@@ -30,15 +30,18 @@ from build_pages import fmt_num
 from servidor_mcp import catalogo as cat
 from tempo_series import referencia, rotulo_card
 
-# (grupo em config.yml, id do endereço, título, código de referência)
+# (grupo em config.yml, id do endereço, título, código de referência, rótulo
+# curto da referência no resumo do tema: "IPCA em 12 meses · 4,63%")
 TEMAS = [
-    ("Inflação", "inflacao", "Inflação", 13522),
-    ("Juros", "juros", "Juros e poupança", 432),
-    ("Câmbio", "cambio", "Câmbio", 1),
-    ("Crédito", "credito", "Crédito", 21082),
-    ("Atividade & Emprego", "atividade", "Atividade e emprego", 24369),
-    ("Setor externo e fiscal", "externo", "Setor externo e fiscal", 13621),
+    ("Inflação", "inflacao", "Inflação", 13522, "IPCA em 12 meses"),
+    ("Juros", "juros", "Juros e poupança", 432, "Meta Selic"),
+    ("Câmbio", "cambio", "Câmbio", 1, "Dólar PTAX de venda"),
+    ("Crédito", "credito", "Crédito", 21082, "Inadimplência"),
+    ("Atividade & Emprego", "atividade", "Atividade e emprego", 24369, "Desemprego"),
+    ("Setor externo e fiscal", "externo", "Setor externo e fiscal", 13621, "Reservas internacionais"),
 ]
+# Nome da linha quando o da ficha é ambíguo lado a lado no catálogo.
+NOMES = {1: "Dólar PTAX de venda", 10813: "Dólar PTAX de compra"}
 ACOES = {"inflacao": ("correcao/", "Corrigir um valor pela inflação"),
          "juros": ("comparador/", "Comparar Selic, CDI e IPCA")}
 TEMA_INICIAL = "inflacao"
@@ -148,7 +151,7 @@ def linha(codigo: int, pts: list[dict]) -> dict:
     """Dados de uma linha do catálogo (pts = histórico da série)."""
     fechados, _ = BI.completos(codigo, pts)
     p = BI.PAGINAS[codigo]
-    d = {"codigo": codigo, "nome": p["curto"], "unidade": cat.SERIES[codigo]["unidade"],
+    d = {"codigo": codigo, "nome": NOMES.get(codigo, p["curto"]), "unidade": cat.SERIES[codigo]["unidade"],
          "url": f"indicadores/{p['slug']}/", "valor": None, "ref": "", "variacao": None, "svg": ""}
     if not fechados:
         return d
@@ -175,16 +178,17 @@ def temas(series: list[dict], historicos: dict[int, list[dict]]) -> list[dict]:
         c = it["codigo"]
         if c in BI.PAGINAS and historicos.get(c):
             por_grupo.setdefault(it.get("grupo", "Outros"), []).append(c)
-    conf = {g: (i, t, r) for g, i, t, r in TEMAS}
+    conf = {g: (i, t, r, rc) for g, i, t, r, rc in TEMAS}
     ordem = [g for g, *_ in TEMAS if g in por_grupo] + [g for g in por_grupo if g not in conf]
     saida = []
     for g in ordem:
-        ident, titulo, ref = conf.get(g, (_slug(g), g, None))
+        ident, titulo, ref, rotulo = conf.get(g, (_slug(g), g, None, None))
         codigos = por_grupo[g]
         linhas = [linha(c, historicos[c]) for c in codigos]
         refc = ref if ref in codigos else codigos[0]
+        refli = next(li for li in linhas if li["codigo"] == refc)
         saida.append({"grupo": g, "id": ident, "titulo": titulo, "linhas": linhas, "n": len(linhas),
-                      "referencia": next(li for li in linhas if li["codigo"] == refc),
+                      "referencia": refli, "rotulo_ref": rotulo if ref in codigos else refli["nome"],
                       "acao": ACOES.get(ident)})
     return saida
 
@@ -196,7 +200,7 @@ def _cab(t: dict) -> str:
     r = t["referencia"]
     return (f'<span class="cat-tema-nome">{e(t["titulo"])}</span>'
             f'<span class="cat-tema-n">{t["n"]} {"série" if t["n"] == 1 else "séries"}</span>'
-            f'<span class="cat-tema-ref"><b>{e(r["valor"] or "—")}</b> {e(r["nome"])} · {e(r["unidade"])}</span>')
+            f'<span class="cat-tema-ref">{e(t["rotulo_ref"])} · <b>{e(r["valor"] or "—")}</b></span>')
 
 
 def _linha_html(li: dict) -> str:

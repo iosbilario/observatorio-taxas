@@ -10,10 +10,10 @@
      conteúdo, que aparece embaixo dele).
 
    Endereço: #catalogo-<tema> (ex.: /#catalogo-cambio) abre o tema e leva ao
-   catálogo. Trocar de tema substitui o fragmento (history.replaceState), sem
-   criar entradas no histórico; voltar e avançar continuam como antes e, se
-   chegarem a um #catalogo-<tema>, o tema é escolhido. Outros fragmentos da
-   página não são tocados. */
+   catálogo. Cada troca feita pela pessoa cria uma entrada no histórico
+   (history.pushState); Voltar e Avançar restauram o tema daquela entrada sem
+   rolar a página, e voltar até a entrada sem fragmento restaura o tema
+   inicial. Outros fragmentos da página (#selic etc.) não são tocados. */
 (function () {
   "use strict";
   var raiz = document.querySelector("[data-catalogo]");
@@ -48,7 +48,8 @@
   });
 
   function marcarHash(id) {
-    if (history.replaceState) history.replaceState(history.state, "", "#catalogo-" + id);
+    var h = "#catalogo-" + id;
+    if (location.hash !== h && history.pushState) history.pushState({ catalogo: id }, "", h);
   }
 
   function definirSanfona(id, abrir) {
@@ -135,7 +136,8 @@
 
   function irParaHash(rolar) {
     var id = temaDoHash();
-    if (!id) return;
+    if (!id && !location.hash) id = raiz.getAttribute("data-inicial");   // de volta à entrada sem fragmento
+    if (!id || ids.indexOf(id) < 0) return;
     if (raiz.classList.contains("abas")) selecionar(id, false);
     else { ativo = id; modoSanfona(); }
     if (!rolar) return;
@@ -152,7 +154,11 @@
   if (inicial) ativo = inicial;
   aplicarModo();
   if (inicial) irParaHash(true);
-  window.addEventListener("hashchange", function () { irParaHash(true); });
+  // Voltar/Avançar: popstate restaura sem rolar. Um hashchange que não veio do
+  // histórico (link para #catalogo-<tema>) escolhe o tema e rola até ele.
+  var doHistorico = false;
+  window.addEventListener("popstate", function () { doHistorico = true; irParaHash(false); setTimeout(function () { doHistorico = false; }, 0); });
+  window.addEventListener("hashchange", function () { if (!doHistorico) irParaHash(true); });
   if (largo.addEventListener) largo.addEventListener("change", aplicarModo);
   else if (largo.addListener) largo.addListener(aplicarModo);
 })();
