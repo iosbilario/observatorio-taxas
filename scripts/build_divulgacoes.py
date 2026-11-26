@@ -160,6 +160,20 @@ def identificado_em(mudancas: dict, alvo: set[tuple[int, str]], primeira: bool) 
     return {"gerado_em": col["gerado_em"], "commit": col.get("commit")}
 
 
+def tipo_da_alteracao(mudancas: dict, chave: str, alt: dict) -> str:
+    """Classifica uma entrada alterada de uma leitura (tempo_series.classificar)
+    pela coleta de mudancas.json que a trouxe. Uma competência que faltava e
+    chegou é "nova"; sem a coleta, "alterado"."""
+    from tempo_series import classificar
+    if alt.get("antes") is None:
+        return "nova"
+    cod, data = observacao(chave, alt["competencia"])
+    for col in sorted(mudancas.get("coletas", []), key=lambda c: c["gerado_em"], reverse=True):
+        if any(int(r.get("codigo", 0)) == cod and r.get("data") == data for r in col.get("revisoes", [])):
+            return classificar("revisao", cod, data, col["gerado_em"])
+    return "alterado"
+
+
 def registrar(arquivo: dict, historicos: dict[int, list[dict]], mudancas: dict, versao: dict) -> list[dict]:
     """Acrescenta ao arquivo os registros novos e devolve só os acrescentados.
     Determinístico: mesmas entradas, nenhum registro novo."""
@@ -190,6 +204,8 @@ def registrar(arquivo: dict, historicos: dict[int, list[dict]], mudancas: dict, 
                     continue
                 alter = [{"competencia": c, "antes": antes.get(c), "depois": lt["entradas"].get(c)}
                          for c in sorted(set(antes) | set(lt["entradas"])) if antes.get(c) != lt["entradas"].get(c)]
+                for a in alter:
+                    a["tipo"] = tipo_da_alteracao(mudancas, chave, a)
                 rev = ult["revisao"] + 1
                 revisa = {"id": ult["id"], "versao_anterior": ult["versao_dados"], "alteracoes": alter}
             if revisa:
@@ -282,8 +298,16 @@ def resumo_mensal(lt: dict) -> list[tuple[str, str]]:
 
 
 def titulo(reg: dict) -> str:
+    """Título do registro. Numa revisão, o motivo vem da classificação das
+    entradas alteradas, sem atribuir correção ou método ao produtor."""
     t = reg["leitura"]["titulo"]
-    return f"Revisão {reg['revisao']} — {t}" if reg["revisao"] else t
+    if not reg["revisao"]:
+        return t
+    from tempo_series import rotulo_tipo
+    tipos = {a.get("tipo", "alterado") for a in (reg.get("revisa") or {}).get("alteracoes", [])}
+    chave = ("andamento" if "andamento" in tipos else "encerrado" if tipos == {"encerrado"} else
+             "nova" if tipos == {"nova"} else "alterado")
+    return f"{rotulo_tipo(chave)} (revisão {reg['revisao']}) — {t}"
 
 
 def rotulo_entrada(chave: str, k: str) -> str:
@@ -326,7 +350,9 @@ def bloco_revisao(reg: dict) -> str:
         return ""
     sha_a, sha_b = r["versao_anterior"]["sha"], reg["versao_dados"]["sha"]
     chave = reg["serie"]
-    linhas = "".join(f"<tr><td>{e(rotulo_entrada(chave, a['competencia']))}</td><td>{e(fmt_entrada(chave, a['antes']))}</td>"
+    from tempo_series import rotulo_tipo
+    linhas = "".join(f"<tr><td>{e(rotulo_entrada(chave, a['competencia']))}</td><td>{e(rotulo_tipo(a.get('tipo', 'alterado')))}</td>"
+                     f"<td>{e(fmt_entrada(chave, a['antes']))}</td>"
                      f"<td>{e(fmt_entrada(chave, a['depois']))}</td></tr>" for a in r["alteracoes"])
     versoes = " · ".join(
         f'série {c}: <a href="{RAW}/{sha_a}/data/{c}_history.json">versão anterior ({sha_a[:7]})</a>, '
@@ -336,7 +362,8 @@ def bloco_revisao(reg: dict) -> str:
             f'<p>Esta leitura substitui a <a href="{url_por_id(r["id"])}">anterior</a>, que continua publicada. '
             "Valores que mudaram:</p>"
             '<div class="tabela-rolagem" role="region" aria-labelledby="rev-t" tabindex="0"><table><thead><tr>'
-            '<th scope="col">Observação</th><th scope="col">Valor anterior</th><th scope="col">Valor revisado</th>'
+            '<th scope="col">Observação</th><th scope="col">O que mudou</th><th scope="col">Valor anterior</th>'
+            '<th scope="col">Valor revisado</th>'
             f"</tr></thead><tbody>{linhas}</tbody></table></div>"
             f'<p class="mut">{versoes} · <a href="{REPO_URL}/compare/{sha_a}...{sha_b}">comparar as versões no '
             "GitHub</a>.</p></section>")

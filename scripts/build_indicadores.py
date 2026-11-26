@@ -464,6 +464,39 @@ def bloco_leitura(codigo: int, pts: list[dict]) -> str:
             f'{D.conta_de(lt, chave, "../../", "leitura-conta-t", h="h3")}{perm}{anteriores}</section>')
 
 
+def bloco_mudancas(codigo: int, n: int = 5) -> str:
+    """As últimas mudanças desta série registradas em mudancas.json, com a
+    mesma classificação de /mudancas/ (tempo_series.classificar)."""
+    from tempo_series import classificar, referencia, rotulo_tipo
+    try:
+        coletas = json.loads((DATA_DIR / "mudancas.json").read_text(encoding="utf-8")).get("coletas", [])
+    except (OSError, ValueError):
+        return ""
+    itens = []
+    for c in coletas:
+        for tipo, lista in (("revisao", c.get("revisoes", [])), ("nova", c.get("novas", []))):
+            for r in lista:
+                if int(r.get("codigo", 0)) == codigo:
+                    itens.append((c["gerado_em"], tipo, r))
+    if not itens:
+        return ""
+    linhas = []
+    for quando, tipo, r in itens[:n]:
+        t = classificar(tipo, codigo, r["data"], quando)
+        dia = datetime.fromisoformat(quando).strftime("%d/%m/%Y às %H:%M")
+        antes = valor(codigo, float(r["antes"])) if tipo == "revisao" else "—"
+        depois = valor(codigo, float(r["depois"] if tipo == "revisao" else r["valor"]))
+        linhas.append(f"<tr><td>{e(referencia(codigo, parse_date(r['data'])))}</td><td>{e(rotulo_tipo(t))}</td>"
+                      f"<td>{e(antes)}</td><td>{e(depois)}</td><td>{e(dia)}</td></tr>")
+    return ('<section class="card" aria-labelledby="mud-t"><h2 id="mud-t">Mudanças recentes registradas</h2>'
+            '<div class="tabela-rolagem" role="region" aria-labelledby="mud-t" tabindex="0"><table><thead><tr>'
+            '<th scope="col">Referência</th><th scope="col">O que mudou</th><th scope="col">Valor anterior</th>'
+            '<th scope="col">Valor novo</th><th scope="col">Registrado em (Brasília)</th></tr></thead>'
+            f'<tbody>{"".join(linhas)}</tbody></table></div>'
+            f'<p class="mut">Das coletas mais recentes guardadas pelo site. <a href="{BASE_URL}/mudancas/">O que mudou '
+            'em cada coleta</a>.</p></section>')
+
+
 def pagina(codigo: int, pts: list[dict], grupo: str) -> str:
     m = cat.SERIES[codigo]
     p = PAGINAS[codigo]
@@ -559,6 +592,7 @@ def pagina(codigo: int, pts: list[dict], grupo: str) -> str:
 {nota_parcial}<div class="kpis">{kpi_html}</div>
 {"".join(f"<p>{e(f)}</p>" for f in frases)}
 {bloco_leitura(codigo, pts)}
+{bloco_mudancas(codigo)}
 <section class="card" aria-labelledby="oque-t"><h2 id="oque-t">O que é</h2>
 <p>{e(p['o_que'])}</p><p>{e(p['uso'])}</p>
 <p class="mut">Também procurado como: {e(outros_nomes)}.</p></section>

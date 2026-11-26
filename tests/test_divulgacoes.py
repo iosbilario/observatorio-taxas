@@ -197,8 +197,8 @@ class ArquivoEFeed(unittest.TestCase):
         v["2026-02"] = 0.27
         r2 = D.registrar(arq, {433: serie(v)}, {}, versao(SHA4, "2026-03-25T12:00:00Z"))
         self.assertEqual([r["id"] for r in r1 + r2], ["ipca-2026-02-r1", "ipca-2026-02-r2"])
-        self.assertEqual(r1[0]["revisa"]["alteracoes"], [{"competencia": "2026-02", "antes": 0.2, "depois": 0.25}])
-        self.assertEqual(r2[0]["revisa"]["alteracoes"], [{"competencia": "2026-02", "antes": 0.25, "depois": 0.27}])
+        self.assertEqual(r1[0]["revisa"]["alteracoes"], [{"competencia": "2026-02", "antes": 0.2, "depois": 0.25, "tipo": "alterado"}])
+        self.assertEqual(r2[0]["revisa"]["alteracoes"], [{"competencia": "2026-02", "antes": 0.25, "depois": 0.27, "tipo": "alterado"}])
         self.assertEqual(r2[0]["revisa"]["versao_anterior"]["sha"], SHA3)
         # A publicação inicial continua no arquivo, igual.
         ini = next(p for p in arq["publicacoes"] if p["id"] == "ipca-2026-02")

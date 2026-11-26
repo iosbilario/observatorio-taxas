@@ -167,10 +167,12 @@ class Pagina(unittest.TestCase):
 
     def test_separa_revisoes_de_novas_com_valores_e_link(self):
         html = bm.pagina({"coletas": [self.COLETA]}, {"sha": SHA_B})
-        rev = html.index("<h2 id=\"rev-t\">Revisões (1)")
+        rev = html.index("<h2 id=\"rev-t\">Valores alterados (1)")
         nov = html.index("<h2 id=\"novas-t\">Observações novas (1)")
         self.assertLess(rev, nov)
-        self.assertIn("<td>IPCA - variação mensal (%)</td><td>competência setembro de 2026</td><td>0,48</td><td>0,5</td>", html)
+        self.assertIn("<td>IPCA - variação mensal (%)</td><td>competência setembro de 2026</td>"
+                      "<td><b>Alteração em período encerrado</b></td><td>0,48</td><td>0,5</td>"
+                      "<td>25/11/2026 às 13:26</td>", html)
         self.assertIn("<td>Câmbio USD/BRL - venda</td><td>cotação de 25/11/2026</td><td>—</td><td>5,8825</td>", html)
         ancora = hashlib.sha256(b"data/433_history.json").hexdigest()
         self.assertIn(f'{REPO_URL}/commit/{SHA_B}#diff-{ancora}', html)
@@ -180,7 +182,7 @@ class Pagina(unittest.TestCase):
     def test_sem_mudanca_de_um_tipo_diz_isso(self):
         c = dict(self.COLETA, revisoes=[])
         html = bm.pagina({"coletas": [c]}, {})
-        self.assertIn("Nenhum valor já publicado foi revisado nesta coleta.", html)
+        self.assertIn("Nenhum valor já publicado mudou nesta coleta.", html)
         c = dict(self.COLETA, novas=[])
         self.assertIn("Nenhuma observação nova nesta coleta.", bm.pagina({"coletas": [c]}, {}))
 
