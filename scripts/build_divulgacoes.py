@@ -661,7 +661,32 @@ def svg_registro(reg: dict) -> str:
         partes.append(f'<text x="{ml - 6}" y="{y(marca) + 4:.1f}" font-size="10" fill="#555" text-anchor="end">'
                       f'{e(fmt_num(marca, 2 if s["leitura"] != "ptax" else 4))}</text>')
     base = y(0) if s["leitura"] != "ptax" else y(lo)
-    for i in range(n):
+    linha = s["leitura"] in ("ptax", "cdi")   # nível (cotação) e duas séries lado a lado: linha, não barra
+    if linha:
+        px = (lambda i: ml + larg * (i + 0.5))
+        for marca in (lo, (lo + hi) / 2, hi):
+            partes.append(f'<line x1="{ml}" x2="{W - mr}" y1="{y(marca):.1f}" y2="{y(marca):.1f}" stroke="#e3e3e3"/>')
+        if s["leitura"] == "ptax":
+            ls = lt["tabela"]["linhas"]
+            corte = next((i for i, li in enumerate(ls) if li[1] == "encerrada"), None)
+            if corte:
+                xc = (px(corte - 1) + px(corte)) / 2
+                partes.append(f'<line x1="{xc:.1f}" x2="{xc:.1f}" y1="{mt}" y2="{H - mb}" stroke="#bbb" stroke-dasharray="4 3"/>')
+                partes.append(f'<text x="{xc - 6:.1f}" y="{mt + 10}" font-size="10" fill="#666" text-anchor="end">semana anterior</text>')
+                partes.append(f'<text x="{xc + 6:.1f}" y="{mt + 10}" font-size="10" fill="#666">semana encerrada</text>')
+        for nome, vs, cor in series:
+            pts = [(px(i), y(x)) for i, x in enumerate(vs) if x is not None]
+            partes.append(f'<polyline points="{" ".join(f"{a:.1f},{b:.1f}" for a, b in pts)}" fill="none" '
+                          f'stroke="{cor}" stroke-width="2.2" stroke-linejoin="round"/>')
+            for i, x in enumerate(vs):
+                if x is None:
+                    continue
+                partes.append(f'<circle cx="{px(i):.1f}" cy="{y(x):.1f}" r="3" fill="{cor}"><title>{e(nome)}, '
+                              f'{e(rot[i])}: {e(fmt_num(x, 4 if s["leitura"] == "ptax" else 2))}</title></circle>')
+        for i in range(n):
+            partes.append(f'<text x="{px(i):.1f}" y="{H - mb + 16}" font-size="10" fill="#333" '
+                          f'text-anchor="middle">{e(rot[i])}</text>')
+    for i in range(n if not linha else 0):
         for j, (_, vs, cor) in enumerate(series):
             x = vs[i]
             if x is None:
@@ -674,8 +699,11 @@ def svg_registro(reg: dict) -> str:
                           f'{e(fmt_num(x, 4 if s["leitura"] == "ptax" else 2))}</title></rect>')
         partes.append(f'<text x="{ml + i * larg + larg / 2:.1f}" y="{H - mb + 16}" font-size="10" fill="#333" '
                       f'text-anchor="middle">{e(rot[i])}</text>')
-    leg = " · ".join(nome for nome, _, _ in series)
-    partes.append(f'<text x="{ml}" y="{H - 46}" font-size="10" fill="#333">{e(leg)}</text>')
+    xl = ml
+    for nome, _, cor in series:
+        partes.append(f'<rect x="{xl}" y="{H - 55}" width="10" height="10" fill="{cor}"/>'
+                      f'<text x="{xl + 14}" y="{H - 46}" font-size="10" fill="#333">{e(nome)}</text>')
+        xl += 24 + 6 * len(nome)
     partes.append(f'<text x="{ml}" y="{H - 30}" font-size="10" fill="#555">Fonte: {e(s["produtor"])}, via SGS '
                   f'{e(", ".join(map(str, s["series"])))} do Banco Central · dados do commit '
                   f'{reg["versao_dados"]["curto"]} · regra {e(lt["regra"])}</text>')
@@ -687,7 +715,8 @@ def svg_registro(reg: dict) -> str:
 
 def grafico_alt(reg: dict) -> str:
     lt = reg["leitura"]
-    return f"Gráfico de barras: {titulo(reg)}. {periodo(lt)}. Valores na tabela da página."
+    tipo = "barras" if lt["regra"].startswith("leitura-mensal") else "linha"
+    return f"Gráfico de {tipo}: {titulo(reg)}. {periodo(lt)}. Valores na tabela da página."
 
 
 def bloco_acoes(reg: dict | None, ficha: str, pre: str = "", h: str = "h2") -> str:
