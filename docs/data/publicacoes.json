@@ -1,0 +1,160 @@
+{
+ "formato": 1,
+ "publicacoes": [
+  {
+   "carga_inicial": true,
+   "codigo": 433,
+   "competencia": "2026-10",
+   "divulgacao_oficial": null,
+   "id": "ipca-2026-10",
+   "identificado": null,
+   "leitura": {
+    "acumulado_12m": 4.628360717970881,
+    "acumulado_12m_anterior": 4.576119675071877,
+    "anterior": "2026-09",
+    "codigo": 433,
+    "competencia": "2026-10",
+    "diferenca_pp": 0.05224104289900389,
+    "entradas": {
+     "2025-10": 0.09,
+     "2025-11": 0.18,
+     "2025-12": 0.33,
+     "2026-01": 0.33,
+     "2026-02": 0.7,
+     "2026-03": 0.88,
+     "2026-04": 0.67,
+     "2026-05": 0.58,
+     "2026-06": 0.16,
+     "2026-07": 0.07,
+     "2026-08": -0.32,
+     "2026-09": 0.82,
+     "2026-10": 0.14
+    },
+    "frases": [
+     "A taxa mensal do IPCA desacelerou de 0,82% em setembro de 2026 para 0,14% em outubro de 2026, uma diferença de 0,68 pontos percentuais.",
+     "O acumulado em 12 meses subiu de 4,58% em setembro de 2026 para 4,63% em outubro de 2026, uma alta de 0,05 pontos percentuais. A conta muda porque a variação que entrou na janela, 0,14% em outubro de 2026, foi maior do que a que saiu, 0,09% em outubro de 2025.",
+     "Os dois movimentos não se contradizem. A taxa mensal compara outubro de 2026 com setembro de 2026. O acumulado não depende de setembro de 2026, que está nas duas janelas: ele só muda pelo mês que entrou (outubro de 2026, 0,14%) e pelo que saiu (outubro de 2025, 0,09%). Como 0,14% é menor que 0,82% e maior que 0,09%, a taxa mensal desacelera e o acumulado sobe ao mesmo tempo."
+    ],
+    "janela": [
+     "2025-11",
+     "2026-10"
+    ],
+    "janela_anterior": [
+     "2025-10",
+     "2026-09"
+    ],
+    "lacunas": [],
+    "linhas": [
+     {
+      "competencia": "2025-10",
+      "janela_anterior": true,
+      "janela_atual": false,
+      "papel": "saiu da janela",
+      "valor": 0.09
+     },
+     {
+      "competencia": "2025-11",
+      "janela_anterior": true,
+      "janela_atual": true,
+      "papel": "",
+      "valor": 0.18
+     },
+     {
+      "competencia": "2025-12",
+      "janela_anterior": true,
+      "janela_atual": true,
+      "papel": "",
+      "valor": 0.33
+     },
+     {
+      "competencia": "2026-01",
+      "janela_anterior": true,
+      "janela_atual": true,
+      "papel": "",
+      "valor": 0.33
+     },
+     {
+      "competencia": "2026-02",
+      "janela_anterior": true,
+      "janela_atual": true,
+      "papel": "",
+      "valor": 0.7
+     },
+     {
+      "competencia": "2026-03",
+      "janela_anterior": true,
+      "janela_atual": true,
+      "papel": "",
+      "valor": 0.88
+     },
+     {
+      "competencia": "2026-04",
+      "janela_anterior": true,
+      "janela_atual": true,
+      "papel": "",
+      "valor": 0.67
+     },
+     {
+      "competencia": "2026-05",
+      "janela_anterior": true,
+      "janela_atual": true,
+      "papel": "",
+      "valor": 0.58
+     },
+     {
+      "competencia": "2026-06",
+      "janela_anterior": true,
+      "janela_atual": true,
+      "papel": "",
+      "valor": 0.16
+     },
+     {
+      "competencia": "2026-07",
+      "janela_anterior": true,
+      "janela_atual": true,
+      "papel": "",
+      "valor": 0.07
+     },
+     {
+      "competencia": "2026-08",
+      "janela_anterior": true,
+      "janela_atual": true,
+      "papel": "",
+      "valor": -0.32
+     },
+     {
+      "competencia": "2026-09",
+      "janela_anterior": true,
+      "janela_atual": true,
+      "papel": "",
+      "valor": 0.82
+     },
+     {
+      "competencia": "2026-10",
+      "janela_anterior": false,
+      "janela_atual": true,
+      "papel": "entrou na janela",
+      "valor": 0.14
+     }
+    ],
+    "mensal": 0.14,
+    "mensal_anterior": 0.82,
+    "nome": "IPCA",
+    "nota": "Essa explicação é aritmética: mostra como a troca de meses move a janela de 12 meses. Ela não diz quais preços pressionaram a inflação. Atribuir o movimento a alimentos, combustíveis ou serviços exigiria os dados de grupos e itens do IPCA, publicados pelo IBGE e não coletados pelo Observatório.",
+    "regra": "leitura-mensal-v1",
+    "saiu": "2025-10",
+    "saiu_valor": 0.09,
+    "titulo": "IPCA de outubro de 2026: taxa mensal desacelera para 0,14% e acumulado em 12 meses sobe para 4,63%"
+   },
+   "registrado_em": "2026-11-26T14:28:01Z",
+   "revisa": null,
+   "revisao": 0,
+   "serie": "ipca",
+   "url": "https://observatoriodetaxas.tec.br/divulgacoes/ipca/2026-10/",
+   "versao_dados": {
+    "curto": "317df49",
+    "sha": "317df4940d39ffadab5b8896188c05636c3dc37e"
+   }
+  }
+ ]
+}

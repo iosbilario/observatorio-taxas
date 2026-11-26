@@ -84,6 +84,11 @@ jobs:
       - name: Gerar "O que mudou nesta coleta?" (/mudancas/)
         run: python scripts/build_mudancas.py
 
+      # Só refaz páginas e feed a partir de data/publicacoes.json. Registros
+      # novos nascem no passo da versão dos dados, quando o commit existe.
+      - name: Divulgações e RSS (/divulgacoes/, /feed.xml)
+        run: python scripts/build_divulgacoes.py
+
       - name: Assar boletim no HTML da landing e regenerar o sitemap
         run: python scripts/render_index.py
 
@@ -138,10 +143,14 @@ jobs:
       # O VAR carrega as séries desse commit e grava o mesmo hash no recibo.
       # Também preenche o commit da coleta em mudancas.json e refaz /mudancas/
       # com os links para o diff (build_mudancas + sync_nav para o menu).
+      # Divulgações: registra a leitura de cada competência nova com o commit
+      # dos dados (que agora existe) e refaz a ficha e a capa que apontam para ela.
       - name: Versão dos dados (versao.json) + carimbo da capa
         run: |
           python scripts/versao_dados.py
           python scripts/build_mudancas.py
+          python scripts/build_divulgacoes.py --registrar
+          python scripts/build_indicadores.py
           python scripts/render_index.py
           python scripts/sync_nav.py
           python scripts/csp_hashes.py
