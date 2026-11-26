@@ -1,6 +1,6 @@
 {
-  "gerado_em": "2026-11-25T17:40:49-03:00",
-  "gerado_em_fmt": "25/11/2026 às 17:40",
+  "gerado_em": "2026-11-25T22:18:30-03:00",
+  "gerado_em_fmt": "25/11/2026 às 22:18",
   "grupos": {
     "Admin": {
       "acessos": 0,
@@ -22,8 +22,8 @@
     "Reajuste": {
       "acessos": 178,
       "sub": {
-        "IGP-DI": 11,
-        "IGP-M": 46,
+        "IGP-DI": 10,
+        "IGP-M": 47,
         "INPC": 14,
         "IPCA": 43
       }
@@ -151,7 +151,7 @@
       "data": "2026-11-24"
     },
     {
-      "acessos": 40,
+      "acessos": 44,
       "data": "2026-11-25"
     }
   ],
@@ -163,7 +163,7 @@
       "path": "/"
     },
     {
-      "count": 97,
+      "count": 98,
       "path": "/indicadores/cdi"
     },
     {
@@ -184,15 +184,15 @@
     },
     {
       "count": 17,
+      "path": "/indicadores/dolar"
+    },
+    {
+      "count": 17,
       "path": "/indicadores"
     },
     {
       "count": 17,
       "path": "/retransmissora.html"
-    },
-    {
-      "count": 16,
-      "path": "/indicadores/dolar"
     },
     {
       "count": 12,
@@ -221,12 +221,12 @@
   ],
   "totais": {
     "all_time": {
-      "acessos": 764,
-      "visitantes": 788
+      "acessos": 767,
+      "visitantes": 792
     },
     "ultimos_30d": {
-      "acessos": 407,
-      "visitantes": 407
+      "acessos": 411,
+      "visitantes": 411
     }
   }
 }
