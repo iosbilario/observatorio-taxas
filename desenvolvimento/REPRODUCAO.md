@@ -111,6 +111,15 @@ permanente em `/divulgacoes/<serie>/<competencia>/`, que também é um item do
   dado) e registrado em (data do commit dos dados). A data oficial de divulgação
   do IBGE não está no SGS e fica como "não informada".
 - **Teste:** `tests/test_divulgacoes.py`.
+- **CDI e PTAX (Entrega 2):** o CDI registra uma leitura por competência mensal
+  fechada (`cdi-2026-10`: 12 meses do CDI mensal, SGS 4391, contra o IPCA nas
+  mesmas competências, taxa real = (1 + CDI) ÷ (1 + IPCA) − 1). A PTAX registra o
+  fechamento semanal (`dolar-2026-W47`: última cotação da semana encerrada contra
+  a última da semana anterior; semana encerrada = hoje já no sábado dela, com
+  "hoje" = data do commit dos dados, para a leitura não depender da hora em que o
+  script roda). A ficha da PTAX acompanha também a variação diária e mostra a
+  semana em andamento como parcial; o parcial não entra no registro nem no RSS.
+  Teste: `tests/test_leituras_cdi_ptax.py`.
 
 ## Reprodução dos cálculos
 

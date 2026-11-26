@@ -434,13 +434,13 @@ def bloco_divulgacoes(n: int = 3) -> str:
     except (OSError, ValueError):
         pubs = []
     pubs = sorted(pubs, key=lambda p: (p["registrado_em"], p["competencia"], p["revisao"], p["id"]), reverse=True)[:n]
+    import build_divulgacoes as D     # aqui: evita carregar os geradores quando o bloco não é usado
     cards = []
     for p in pubs:
         lt = p["leitura"]
-        t = (f"Revisão {p['revisao']} — " if p["revisao"] else "") + lt["titulo"]
-        mes = MESC[int(p["competencia"][5:7]) - 1]
+        t = D.titulo(p)
         cards.append(f'<a class="guia-card" href="{p["url"].replace(BASE_URL + "/", "")}">'
-                     f'<span class="rot">{esc(lt["nome"])} · {mes} de {p["competencia"][:4]}</span>'
+                     f'<span class="rot">{esc(D.SERIES[p["serie"]]["nome"])} · {esc(D.periodo(lt))}</span>'
                      f'<h3>{esc(t)}</h3><p>{esc(lt["frases"][0] if lt["frases"] else "")}</p></a>')
     vazio = "" if cards else '<p class="sub">Nenhuma divulgação registrada ainda.</p>'
     return (f'{vazio}<div class="guias-grade">{"".join(cards)}</div>'

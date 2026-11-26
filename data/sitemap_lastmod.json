@@ -1,6 +1,6 @@
 {
  "https://observatoriodetaxas.tec.br/": {
-  "hash": "60a9a2fa1d834a1f",
+  "hash": "c8cdbfb1d0a1a104",
   "lastmod": "2026-11-26"
  },
  "https://observatoriodetaxas.tec.br/apoie/": {
@@ -32,11 +32,19 @@
   "lastmod": "2026-11-26"
  },
  "https://observatoriodetaxas.tec.br/divulgacoes/": {
-  "hash": "9eeaee5cd1bba318",
+  "hash": "42bf87ec55a9be6b",
+  "lastmod": "2026-11-26"
+ },
+ "https://observatoriodetaxas.tec.br/divulgacoes/cdi/2026-10/": {
+  "hash": "46da1b3cab0f1756",
+  "lastmod": "2026-11-26"
+ },
+ "https://observatoriodetaxas.tec.br/divulgacoes/dolar/2026-W47/": {
+  "hash": "97826c58e7019ebc",
   "lastmod": "2026-11-26"
  },
  "https://observatoriodetaxas.tec.br/divulgacoes/ipca/2026-10/": {
-  "hash": "5da50f411f682dfb",
+  "hash": "ce8a25ac27a49296",
   "lastmod": "2026-11-26"
  },
  "https://observatoriodetaxas.tec.br/guias/": {
@@ -76,7 +84,7 @@
   "lastmod": "2026-11-26"
  },
  "https://observatoriodetaxas.tec.br/indicadores/cdi/": {
-  "hash": "09d20783e62b9575",
+  "hash": "e61e28d4b6b881f1",
   "lastmod": "2026-11-26"
  },
  "https://observatoriodetaxas.tec.br/indicadores/desemprego/": {
@@ -92,7 +100,7 @@
   "lastmod": "2026-11-26"
  },
  "https://observatoriodetaxas.tec.br/indicadores/dolar/": {
-  "hash": "a2f93b805941126f",
+  "hash": "b3de02541b0f1a94",
   "lastmod": "2026-11-26"
  },
  "https://observatoriodetaxas.tec.br/indicadores/euro/": {
@@ -128,7 +136,7 @@
   "lastmod": "2026-11-26"
  },
  "https://observatoriodetaxas.tec.br/indicadores/ipca/": {
-  "hash": "df7dd1621ac8e287",
+  "hash": "12912de04a1d27f5",
   "lastmod": "2026-11-26"
  },
  "https://observatoriodetaxas.tec.br/indicadores/juros-do-credito/": {

@@ -8,12 +8,28 @@
     <atom:link href="https://observatoriodetaxas.tec.br/feed.xml" rel="self" type="application/rss+xml" />
     <lastBuildDate>Thu, 26 Nov 2026 14:28:01 GMT</lastBuildDate>
     <item>
+      <title>Dólar PTAX na semana de 16/11 a 20/11/2026: R$ 5,8889, +4,20% na semana</title>
+      <link>https://observatoriodetaxas.tec.br/divulgacoes/dolar/2026-W47/</link>
+      <guid isPermaLink="true">https://observatoriodetaxas.tec.br/divulgacoes/dolar/2026-W47/</guid>
+      <pubDate>Thu, 26 Nov 2026 14:28:01 GMT</pubDate>
+      <category>Dólar PTAX (venda)</category>
+      <description>Período: semana de 16/11 a 20/11/2026. Na cotação de 19/11/2026, a PTAX de venda ficou em R$ 5,8889, +R$ 0,0787 (+1,35%) em relação à observação anterior, de 18/11/2026 (R$ 5,8102). Na semana de 16/11 a 20/11/2026, o dólar subiu: a última cotação, de quinta-feira 19/11/2026, foi R$ 5,8889, +R$ 0,2371 (+4,20%) contra a última da semana anterior, de sexta-feira 13/11/2026 (R$ 5,6518). Fonte: Banco Central do Brasil, via SGS 1 do Banco Central. Versão dos dados: 317df49.</description>
+    </item>
+    <item>
       <title>IPCA de outubro de 2026: taxa mensal desacelera para 0,14% e acumulado em 12 meses sobe para 4,63%</title>
       <link>https://observatoriodetaxas.tec.br/divulgacoes/ipca/2026-10/</link>
       <guid isPermaLink="true">https://observatoriodetaxas.tec.br/divulgacoes/ipca/2026-10/</guid>
       <pubDate>Thu, 26 Nov 2026 14:28:01 GMT</pubDate>
       <category>IPCA</category>
       <description>Competência: outubro de 2026. A taxa mensal do IPCA desacelerou de 0,82% em setembro de 2026 para 0,14% em outubro de 2026, uma diferença de 0,68 pontos percentuais. O acumulado em 12 meses subiu de 4,58% em setembro de 2026 para 4,63% em outubro de 2026, uma alta de 0,05 pontos percentuais. A conta muda porque a variação que entrou na janela, 0,14% em outubro de 2026, foi maior do que a que saiu, 0,09% em outubro de 2025. Fonte: IBGE, via SGS 433 do Banco Central. Versão dos dados: 317df49.</description>
+    </item>
+    <item>
+      <title>CDI de novembro de 2025 a outubro de 2026: 14,23% no período, 9,18% acima da inflação</title>
+      <link>https://observatoriodetaxas.tec.br/divulgacoes/cdi/2026-10/</link>
+      <guid isPermaLink="true">https://observatoriodetaxas.tec.br/divulgacoes/cdi/2026-10/</guid>
+      <pubDate>Thu, 26 Nov 2026 14:28:01 GMT</pubDate>
+      <category>CDI</category>
+      <description>Período: novembro de 2025 a outubro de 2026. De novembro de 2025 a outubro de 2026 (12 competências fechadas), o CDI acumulou 14,23% e o IPCA, 4,63%. Descontada a inflação, o CDI ficou 9,18% acima do IPCA no período (taxa real = (1 + CDI) ÷ (1 + IPCA) − 1). A diferença simples entre os acumulados seria 9,60 pontos percentuais, que não é a taxa real. Fonte: B3 (taxa DI), via SGS 4391, 433, 4389 do Banco Central. Versão dos dados: 317df49.</description>
     </item>
   </channel>
 </rss>

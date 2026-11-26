@@ -155,6 +155,293 @@
     "curto": "317df49",
     "sha": "317df4940d39ffadab5b8896188c05636c3dc37e"
    }
+  },
+  {
+   "carga_inicial": true,
+   "codigo": 4391,
+   "competencia": "2026-10",
+   "divulgacao_oficial": null,
+   "id": "cdi-2026-10",
+   "identificado": null,
+   "leitura": {
+    "cdi_acumulado": 14.231484779651993,
+    "cdi_diario": {
+     "data": "2026-11-25",
+     "valor": 13.65
+    },
+    "codigo": 4391,
+    "competencia": "2026-10",
+    "entradas": {
+     "cdi:2025-11": 1.05,
+     "cdi:2025-12": 1.22,
+     "cdi:2026-01": 1.16,
+     "cdi:2026-02": 1.0,
+     "cdi:2026-03": 1.21,
+     "cdi:2026-04": 1.09,
+     "cdi:2026-05": 1.07,
+     "cdi:2026-06": 1.12,
+     "cdi:2026-07": 1.22,
+     "cdi:2026-08": 1.09,
+     "cdi:2026-09": 1.08,
+     "cdi:2026-10": 1.07,
+     "ipca:2025-11": 0.18,
+     "ipca:2025-12": 0.33,
+     "ipca:2026-01": 0.33,
+     "ipca:2026-02": 0.7,
+     "ipca:2026-03": 0.88,
+     "ipca:2026-04": 0.67,
+     "ipca:2026-05": 0.58,
+     "ipca:2026-06": 0.16,
+     "ipca:2026-07": 0.07,
+     "ipca:2026-08": -0.32,
+     "ipca:2026-09": 0.82,
+     "ipca:2026-10": 0.14
+    },
+    "fim": "2026-10",
+    "frases": [
+     "De novembro de 2025 a outubro de 2026 (12 competências fechadas), o CDI acumulou 14,23% e o IPCA, 4,63%.",
+     "Descontada a inflação, o CDI ficou 9,18% acima do IPCA no período (taxa real = (1 + CDI) ÷ (1 + IPCA) − 1). A diferença simples entre os acumulados seria 9,60 pontos percentuais, que não é a taxa real.",
+     "Novembro de 2026 ainda está em andamento na série mensal do CDI e não entra na conta."
+    ],
+    "inicio": "2025-11",
+    "ipca_acumulado": 4.628360717970881,
+    "kpis": [
+     [
+      "Período",
+      "novembro de 2025 a outubro de 2026"
+     ],
+     [
+      "CDI acumulado",
+      "14,23%"
+     ],
+     [
+      "IPCA acumulado",
+      "4,63%"
+     ],
+     [
+      "Acima ou abaixo da inflação (real)",
+      "+9,18%"
+     ]
+    ],
+    "lacunas": [],
+    "links": {
+     "comparador": "https://observatoriodetaxas.tec.br/comparador/?de=2025-11&ate=2026-10&i=cdi,ipca&ver=pct",
+     "simulador": "https://observatoriodetaxas.tec.br/simulador-cdi/?valor=1000&percentual=100&de=2025-11-01&ate=2026-11-01&modo=bruto",
+     "simulador_ate": "2026-11-01",
+     "simulador_de": "2025-11-01"
+    },
+    "mes_aberto": "2026-11",
+    "meses": 12,
+    "nome": "CDI",
+    "nota": "Duas séries diferentes: a conta usa o CDI acumulado em cada mês (SGS 4391), que é o quanto rendeu 100% do CDI naquele mês. A taxa DI diária anualizada (SGS 4389), hoje em 13,65% ao ano na data de 25/11/2026, é a taxa de um dia útil expressa em base de 252 dias úteis por ano, não o que se acumulou no período. Os índices não descontam imposto de renda nem custos de uma aplicação real.",
+    "regra": "leitura-cdi-ipca-v1",
+    "tabela": {
+     "cab": [
+      "Competência",
+      "CDI no mês (%)",
+      "IPCA no mês (%)"
+     ],
+     "linhas": [
+      [
+       "novembro de 2025",
+       1.05,
+       0.18
+      ],
+      [
+       "dezembro de 2025",
+       1.22,
+       0.33
+      ],
+      [
+       "janeiro de 2026",
+       1.16,
+       0.33
+      ],
+      [
+       "fevereiro de 2026",
+       1.0,
+       0.7
+      ],
+      [
+       "março de 2026",
+       1.21,
+       0.88
+      ],
+      [
+       "abril de 2026",
+       1.09,
+       0.67
+      ],
+      [
+       "maio de 2026",
+       1.07,
+       0.58
+      ],
+      [
+       "junho de 2026",
+       1.12,
+       0.16
+      ],
+      [
+       "julho de 2026",
+       1.22,
+       0.07
+      ],
+      [
+       "agosto de 2026",
+       1.09,
+       -0.32
+      ],
+      [
+       "setembro de 2026",
+       1.08,
+       0.82
+      ],
+      [
+       "outubro de 2026",
+       1.07,
+       0.14
+      ]
+     ]
+    },
+    "taxa_real": 9.178318379245809,
+    "titulo": "CDI de novembro de 2025 a outubro de 2026: 14,23% no período, 9,18% acima da inflação"
+   },
+   "registrado_em": "2026-11-26T14:28:01Z",
+   "revisa": null,
+   "revisao": 0,
+   "serie": "cdi",
+   "url": "https://observatoriodetaxas.tec.br/divulgacoes/cdi/2026-10/",
+   "versao_dados": {
+    "curto": "317df49",
+    "sha": "317df4940d39ffadab5b8896188c05636c3dc37e"
+   }
+  },
+  {
+   "carga_inicial": true,
+   "codigo": 1,
+   "competencia": "2026-W47",
+   "divulgacao_oficial": null,
+   "id": "dolar-2026-W47",
+   "identificado": null,
+   "leitura": {
+    "codigo": 1,
+    "competencia": "2026-W47",
+    "diaria": {
+     "data": "2026-11-19",
+     "data_anterior": "2026-11-18",
+     "valor": 5.8889,
+     "valor_anterior": 5.8102,
+     "variacao_pct": 1.3545144745447546,
+     "variacao_reais": 0.07869999999999955
+    },
+    "entradas": {
+     "2026-11-13": 5.6518,
+     "2026-11-19": 5.8889
+    },
+    "fechamento": {
+     "data": "2026-11-19",
+     "data_anterior": "2026-11-13",
+     "semana": "2026-W47",
+     "semana_anterior": "2026-W46",
+     "valor": 5.8889,
+     "valor_anterior": 5.6518,
+     "variacao_pct": 4.1951236774125045,
+     "variacao_reais": 0.23709999999999987
+    },
+    "frases": [
+     "Na cotação de 19/11/2026, a PTAX de venda ficou em R$ 5,8889, +R$ 0,0787 (+1,35%) em relação à observação anterior, de 18/11/2026 (R$ 5,8102).",
+     "Na semana de 16/11 a 20/11/2026, o dólar subiu: a última cotação, de quinta-feira 19/11/2026, foi R$ 5,8889, +R$ 0,2371 (+4,20%) contra a última da semana anterior, de sexta-feira 13/11/2026 (R$ 5,6518).",
+     "Não houve PTAX na sexta-feira, 20/11/2026; o fechamento usa a última cotação disponível da semana, de quinta-feira 19/11/2026."
+    ],
+    "hoje": "2026-11-26",
+    "kpis": [
+     [
+      "Última cotação",
+      "R$ 5,8889 em 19/11/2026"
+     ],
+     [
+      "Contra a observação anterior",
+      "+R$ 0,0787 (+1,35%) desde 18/11/2026"
+     ],
+     [
+      "Fechamento da semana",
+      "R$ 5,8889 em 19/11/2026"
+     ],
+     [
+      "Contra a semana anterior",
+      "+R$ 0,2371 (+4,20%) desde 13/11/2026"
+     ]
+    ],
+    "nome": "Dólar PTAX (venda)",
+    "nota": "A PTAX é a taxa de referência calculada pelo Banco Central em cada dia útil. Variação em reais = cotação nova − cotação de comparação; em percentual = cotação nova ÷ cotação de comparação − 1. A explicação mostra só o movimento da cotação: atribuí-lo a juros, fluxo ou notícias exigiria outros dados.",
+    "parcial": null,
+    "regra": "leitura-ptax-semanal-v1",
+    "tabela": {
+     "cab": [
+      "Dia",
+      "Semana",
+      "PTAX de venda (R$)"
+     ],
+     "linhas": [
+      [
+       "segunda-feira 09/11/2026",
+       "anterior",
+       "5,5146"
+      ],
+      [
+       "terça-feira 10/11/2026",
+       "anterior",
+       "5,5840"
+      ],
+      [
+       "quarta-feira 11/11/2026",
+       "anterior",
+       "5,5606"
+      ],
+      [
+       "quinta-feira 12/11/2026",
+       "anterior",
+       "5,6143"
+      ],
+      [
+       "sexta-feira 13/11/2026",
+       "anterior",
+       "5,6518"
+      ],
+      [
+       "segunda-feira 16/11/2026",
+       "encerrada",
+       "5,7324"
+      ],
+      [
+       "terça-feira 17/11/2026",
+       "encerrada",
+       "5,7851"
+      ],
+      [
+       "quarta-feira 18/11/2026",
+       "encerrada",
+       "5,8102"
+      ],
+      [
+       "quinta-feira 19/11/2026",
+       "encerrada",
+       "5,8889"
+      ]
+     ]
+    },
+    "titulo": "Dólar PTAX na semana de 16/11 a 20/11/2026: R$ 5,8889, +4,20% na semana"
+   },
+   "registrado_em": "2026-11-26T14:28:01Z",
+   "revisa": null,
+   "revisao": 0,
+   "serie": "dolar",
+   "url": "https://observatoriodetaxas.tec.br/divulgacoes/dolar/2026-W47/",
+   "versao_dados": {
+    "curto": "317df49",
+    "sha": "317df4940d39ffadab5b8896188c05636c3dc37e"
+   }
   }
  ]
 }
