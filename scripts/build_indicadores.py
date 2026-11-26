@@ -220,6 +220,7 @@ h2.grupo{margin-top:1.6rem}
 .tabela-rolagem:focus-visible{outline:2px solid var(--carimbo);outline-offset:2px}
 .tabela-rolagem table{min-width:560px}
 .tabela-rolagem caption{caption-side:bottom;text-align:left;padding-top:.5rem}
+.estado{font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--linha);border-radius:999px;padding:1px 8px;margin-left:.4rem;white-space:nowrap}
 """
 
 CSP = ("default-src 'self'; base-uri 'self'; object-src 'none'; "
@@ -464,6 +465,63 @@ def bloco_leitura(codigo: int, pts: list[dict]) -> str:
             f'{D.conta_de(lt, chave, "../../", "leitura-conta-t", h="h3")}{perm}{anteriores}</section>')
 
 
+CALENDARIO_POR_CODIGO = {433: "ipca", 7478: "ipca15", 432: "copom"}
+
+
+def bloco_proximo_evento(codigo: int) -> str:
+    """Próximo evento do calendário (build_calendario.py) para IPCA, IPCA-15 e
+    Meta Selic."""
+    fam = CALENDARIO_POR_CODIGO.get(codigo)
+    if not fam:
+        return ""
+    import build_calendario as K
+    evs, cob, hoje, _, _ = K.carregar()
+    ev = K.proximo_da_familia(evs, fam, hoje)
+    if not ev:
+        fim = cob.get(fam)
+        return ('<section class="card" aria-labelledby="agenda-t"><h2 id="agenda-t">Próxima divulgação</h2>'
+                f'<p>A agenda verificada termina em {e(K.dia_txt(fim))}; ainda não há próximo evento na fonte consultada. '
+                f'<a href="{BASE_URL}/calendario/">Calendário</a>.</p></section>')
+    return ('<section class="card" aria-labelledby="agenda-t"><h2 id="agenda-t">Próxima divulgação</h2>'
+            f'<p><a href="{BASE_URL}/calendario/{ev["id"]}/">{K.resumo_evento(ev)}</a></p>'
+            f'<p class="mut">Data prevista na agenda oficial ({e(ev["fonte"]["nome"])}, conferida em '
+            f'{e(K.dia_txt(ev["fonte"]["conferido_em"]))}). <a href="{BASE_URL}/calendario/">Calendário completo</a>.</p>'
+            '</section>')
+
+
+def bloco_mudancas(codigo: int, n: int = 5) -> str:
+    """As últimas mudanças desta série registradas em mudancas.json, com a
+    mesma classificação de /mudancas/ (tempo_series.classificar)."""
+    from tempo_series import classificar, referencia, rotulo_tipo
+    try:
+        coletas = json.loads((DATA_DIR / "mudancas.json").read_text(encoding="utf-8")).get("coletas", [])
+    except (OSError, ValueError):
+        return ""
+    itens = []
+    for c in coletas:
+        for tipo, lista in (("revisao", c.get("revisoes", [])), ("nova", c.get("novas", []))):
+            for r in lista:
+                if int(r.get("codigo", 0)) == codigo:
+                    itens.append((c["gerado_em"], tipo, r))
+    if not itens:
+        return ""
+    linhas = []
+    for quando, tipo, r in itens[:n]:
+        t = classificar(tipo, codigo, r["data"], quando)
+        dia = datetime.fromisoformat(quando).strftime("%d/%m/%Y às %H:%M")
+        antes = valor(codigo, float(r["antes"])) if tipo == "revisao" else "—"
+        depois = valor(codigo, float(r["depois"] if tipo == "revisao" else r["valor"]))
+        linhas.append(f"<tr><td>{e(referencia(codigo, parse_date(r['data'])))}</td><td>{e(rotulo_tipo(t))}</td>"
+                      f"<td>{e(antes)}</td><td>{e(depois)}</td><td>{e(dia)}</td></tr>")
+    return ('<section class="card" aria-labelledby="mud-t"><h2 id="mud-t">Mudanças recentes registradas</h2>'
+            '<div class="tabela-rolagem" role="region" aria-labelledby="mud-t" tabindex="0"><table><thead><tr>'
+            '<th scope="col">Referência</th><th scope="col">O que mudou</th><th scope="col">Valor anterior</th>'
+            '<th scope="col">Valor novo</th><th scope="col">Registrado em (Brasília)</th></tr></thead>'
+            f'<tbody>{"".join(linhas)}</tbody></table></div>'
+            f'<p class="mut">Das coletas mais recentes guardadas pelo site. <a href="{BASE_URL}/mudancas/">O que mudou '
+            'em cada coleta</a>.</p></section>')
+
+
 def pagina(codigo: int, pts: list[dict], grupo: str) -> str:
     m = cat.SERIES[codigo]
     p = PAGINAS[codigo]
@@ -558,7 +616,9 @@ def pagina(codigo: int, pts: list[dict], grupo: str) -> str:
 <p class="lead">{resposta}</p>
 {nota_parcial}<div class="kpis">{kpi_html}</div>
 {"".join(f"<p>{e(f)}</p>" for f in frases)}
+{bloco_proximo_evento(codigo)}
 {bloco_leitura(codigo, pts)}
+{bloco_mudancas(codigo)}
 <section class="card" aria-labelledby="oque-t"><h2 id="oque-t">O que é</h2>
 <p>{e(p['o_que'])}</p><p>{e(p['uso'])}</p>
 <p class="mut">Também procurado como: {e(outros_nomes)}.</p></section>
@@ -566,6 +626,9 @@ def pagina(codigo: int, pts: list[dict], grupo: str) -> str:
 <iframe data-segue-tema src="/embed.html?s={codigo}&amp;tema=claro&amp;h=320" title="{e(m['nome'])}: gráfico dos últimos 24 meses" loading="lazy"></iframe>
 </section>
 {tabela(codigo, pts)}
+<section class="card" aria-labelledby="hist-t"><h2 id="hist-t">Versões anteriores</h2>
+<p>O que o Observatório tinha registrado desta série numa data passada, comparado com o valor atual de cada observação.</p>
+<p><a class="pill" href="{BASE_URL}/historico/?serie={codigo}">Consultar versão histórica</a></p></section>
 <section class="card" aria-labelledby="ficha-t"><h2 id="ficha-t">Ficha técnica</h2>
 <dl class="ficha">
 <dt>Indicador</dt><dd>{e(m['nome'])}</dd>

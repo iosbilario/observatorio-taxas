@@ -37,7 +37,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 
 from build_ferramentas import CSP, e, head  # noqa: E402
 from build_pages import jsonld_script, migalhas  # noqa: E402
-from tempo_series import referencia  # noqa: E402
+from tempo_series import classificar, explicacao_tipo, referencia, rotulo_tipo  # noqa: E402
 
 DOCS = ROOT / "docs"
 SAIDA = DOCS / "mudancas" / "index.html"
@@ -98,15 +98,24 @@ def tabela(titulo_id: str, legenda: str, cab: list[str], linhas: list[list[str]]
 
 
 def secao_revisoes(c: dict) -> str:
+    """Datas que já existiam e voltaram com outro valor, classificadas pela
+    natureza da série e pelo estado do período NA HORA DA COLETA
+    (tempo_series.classificar): o texto não muda quando a página é refeita."""
     rev = c.get("revisoes", [])
     if not rev:
-        return ('<h2 id="rev-t">Revisões</h2>\n<p>Nenhum valor já publicado foi revisado nesta coleta.</p>')
-    linhas = [[e(r["nome"]), e(referencia(r["codigo"], r["data"])), e(valor(r["antes"])), e(valor(r["depois"])),
-               f'<a href="{link_diff(c, r["codigo"])}">ver no GitHub</a>'] for r in rev]
-    return (f'<h2 id="rev-t">Revisões ({len(rev)})</h2>\n'
-            '<p>Datas que já estavam publicadas e voltaram do Banco Central com outro valor.</p>\n'
-            + tabela("rev-t", "Revisões de valores já publicados",
-                     ["Indicador", "Referência", "Valor anterior", "Valor novo", "Mudança"], linhas))
+        return ('<h2 id="rev-t">Valores alterados</h2>\n<p>Nenhum valor já publicado mudou nesta coleta.</p>')
+    tipos = [classificar("revisao", r["codigo"], r["data"], c["gerado_em"]) for r in rev]
+    linhas = [[e(r["nome"]), e(referencia(r["codigo"], r["data"])), f"<b>{e(rotulo_tipo(t))}</b>",
+               e(valor(r["antes"])), e(valor(r["depois"])), e(quando(c["gerado_em"]).replace(" (horário de Brasília)", "")),
+               f'<a href="{link_diff(c, r["codigo"])}">ver no GitHub</a>'] for r, t in zip(rev, tipos)]
+    legenda = "".join(f"<li><b>{e(rotulo_tipo(t))}.</b> {e(explicacao_tipo(t))}</li>"
+                      for t in dict.fromkeys(tipos))
+    return (f'<h2 id="rev-t">Valores alterados ({len(rev)})</h2>\n'
+            '<p>Datas que já estavam no histórico e voltaram do Banco Central com outro valor.</p>\n'
+            f'<ul class="mut">{legenda}</ul>\n'
+            + tabela("rev-t", "Valores alterados, com o estado do período na hora da coleta",
+                     ["Indicador", "Referência", "O que mudou", "Valor anterior", "Valor novo", "Registrado em",
+                      "Mudança"], linhas))
 
 
 def secao_novas(c: dict) -> str:
@@ -158,7 +167,7 @@ def corpo(dados: dict, versao: dict) -> str:
                 "<p>Esta coleta não tinha uma versão anterior registrada dos dados; a comparação vale só "
                 "para as séries que já existiam.</p>")
     n_rev, n_obs = len(c.get("revisoes", [])), len(c.get("novas", []))
-    resumo = f"{n_obs} observação(ões) nova(s) e {n_rev} revisão(ões)."
+    resumo = f"{n_obs} observação(ões) nova(s) e {n_rev} valor(es) alterado(s)."
     html = (f'<div class="estado"><p><b>Última mudança publicada:</b> {e(quando(c["gerado_em"]))}{sobre}{comp}.</p>'
             f"<p>{resumo}</p>{sem_base}" + verificacao(c["gerado_em"]) + "</div>\n"
             + secao_revisoes(c) + "\n" + secao_novas(c) + "\n" + secao_series_novas(c))
@@ -167,7 +176,7 @@ def corpo(dados: dict, versao: dict) -> str:
         for k in coletas[1:]:
             link = (f' · <a href="{REPO_URL}/commit/{k["commit"]}">{e(k["commit"][:7])}</a>' if k.get("commit") else "")
             itens.append(f"<li>{e(quando(k['gerado_em']))}: {len(k.get('novas', []))} nova(s), "
-                         f"{len(k.get('revisoes', []))} revisão(ões){link}</li>")
+                         f"{len(k.get('revisoes', []))} valor(es) alterado(s){link}</li>")
         html += ("\n<h2>Coletas anteriores</h2>\n<p class=\"mut\">As últimas publicações guardadas no site. "
                  f'O histórico completo fica no <a href="{REPO_URL}/commits/main/data">Git</a>.</p>\n'
                  f'<ul class="coletas">{"".join(itens)}</ul>')

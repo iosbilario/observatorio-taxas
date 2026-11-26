@@ -27,6 +27,10 @@ jobs:
       - name: Checkout
         # Pinado por SHA de commit (supply-chain). Tag: v6.0.3
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        # Histórico completo: versoes_series.py lê no git log em que commit cada
+        # série mudou (consulta por data histórica, /historico/).
+        with:
+          fetch-depth: 0
 
       - name: Setup Python
         # Pinado por SHA de commit (supply-chain). Tag: v6.3.0
@@ -66,6 +70,11 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: python scripts/fetch.py
 
+      # Agendas oficiais do IBGE e do BC (data/calendario_fontes.json). Em
+      # falha, mantém a última agenda válida e não derruba a coleta.
+      - name: Agenda de divulgações (IBGE e Banco Central)
+        run: python scripts/fetch_calendario.py
+
       - name: Gerar páginas programáticas de reajuste
         run: python scripts/build_pages.py
 
@@ -81,6 +90,9 @@ jobs:
       - name: Gerar os guias (/guias/)
         run: python scripts/build_guias.py
 
+      - name: Evolução do contrato (/reajuste/evolucao/)
+        run: python scripts/build_evolucao.py
+
       - name: Gerar "O que mudou nesta coleta?" (/mudancas/)
         run: python scripts/build_mudancas.py
 
@@ -88,6 +100,9 @@ jobs:
       # novos nascem no passo da versão dos dados, quando o commit existe.
       - name: Divulgações e RSS (/divulgacoes/, /feed.xml)
         run: python scripts/build_divulgacoes.py
+
+      - name: Calendário de divulgações (/calendario/)
+        run: python scripts/build_calendario.py
 
       - name: Assar boletim no HTML da landing e regenerar o sitemap
         run: python scripts/render_index.py
@@ -150,6 +165,9 @@ jobs:
           python scripts/versao_dados.py
           python scripts/build_mudancas.py
           python scripts/build_divulgacoes.py --registrar
+          python scripts/build_calendario.py
+          python scripts/versoes_series.py
+          python scripts/build_historico.py
           python scripts/build_indicadores.py
           python scripts/render_index.py
           python scripts/sync_nav.py

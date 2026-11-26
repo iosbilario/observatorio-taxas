@@ -57,6 +57,9 @@ jobs:
           python scripts/build_guias.py
           python scripts/build_mudancas.py
           python scripts/build_divulgacoes.py
+          python scripts/build_calendario.py
+          python scripts/build_historico.py
+          python scripts/build_evolucao.py
           python scripts/render_index.py
           python scripts/sync_nav.py
           python scripts/adsense.py

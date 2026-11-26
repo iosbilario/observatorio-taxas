@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- ===================== Segurança (site estático, sem headers HTTP) ===================== -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data: https://observatoriotaxas.goatcounter.com https://carimbo.tec.br; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self' https://gc.zgo.at 'sha256-8qh1qN0OU2G9CI0EmVqbdqHd1+x92hZmYO80BSiJgDc=' 'sha256-2D0yPViBCVtZ3BwKbogRO2iJy8HeYkshUpJ8803uzQg=' 'sha256-gO0xs4ise/cWfgpkYsBTBfI4TAPhT6Hl9s1hg/+tE9o='; connect-src 'self' https://observatoriotaxas.goatcounter.com; frame-src 'self'" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data: https://observatoriotaxas.goatcounter.com https://carimbo.tec.br; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self' https://gc.zgo.at 'sha256-8qh1qN0OU2G9CI0EmVqbdqHd1+x92hZmYO80BSiJgDc=' 'sha256-2D0yPViBCVtZ3BwKbogRO2iJy8HeYkshUpJ8803uzQg=' 'sha256-upGMNuiCVYq1QhBobAdB0fKI//LVQoyKsuC1Fhg09u4='; connect-src 'self' https://observatoriotaxas.goatcounter.com; frame-src 'self'" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <script>if (top !== self) { try { top.location = self.location; } catch (e) { document.documentElement.style.display = "none"; } }</script>
 
@@ -141,7 +141,7 @@
 
   <link rel="preload" as="font" type="font/woff2" href="fonts/ibmplexserif-latin-400.woff2" crossorigin />
   <link rel="preload" as="font" type="font/woff2" href="fonts/sourcesans3-latin-0.woff2" crossorigin />
-  <script src="demonstrativo.js?v=9e34bd3d38"></script>
+  <script src="demonstrativo.js?v=eb62d711c1"></script>
   <script src="catalogo.js?v=e2cf20838f" defer></script>
   <link rel="stylesheet" href="refy/tokens.css?v=ee92076019" />
   <style>
@@ -246,6 +246,13 @@ section.bloco{padding:clamp(2rem,5vw,3rem) 0;border-top:1px solid var(--line)}
 .duas{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;align-items:start}
 @media(max-width:800px){.duas{grid-template-columns:1fr}}
 
+/* ============ Próximas divulgações (scripts/build_calendario.py) ============ */
+.cal-lista{list-style:none;margin:.6rem 0 0;padding:0;border-top:1px solid var(--line)}
+.cal-lista li{border-bottom:1px solid var(--line)}
+.cal-lista a{display:block;padding:.6rem .2rem;color:var(--ink-2);text-decoration:none}
+.cal-lista a:hover{background:var(--surface)}
+.cal-lista b{color:var(--ink-1);font-family:var(--font-heading)}
+.cal-lista .estado{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);border:1px solid var(--line);border-radius:999px;padding:1px 8px;margin-left:.3rem;white-space:nowrap}
 /* ============ Indicadores por tema (scripts/catalogo_home.py + docs/catalogo.js) ============ */
 .cat-janela{font-size:.86rem;color:var(--ink-3);margin:0 0 .9rem}
 .cat-temas{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.4rem}
@@ -506,6 +513,11 @@ footer a{color:var(--ink-2)}
         <!-- divulgacoes:inicio -->
 <div class="guias-grade"><a class="guia-card" href="divulgacoes/dolar/2026-W47/"><span class="rot">Dólar PTAX (venda) · semana de 16/11 a 20/11/2026</span><h3>Dólar PTAX na semana de 16/11 a 20/11/2026: R$ 5,8889, +4,20% na semana</h3><p>Na cotação de 19/11/2026, a PTAX de venda ficou em R$ 5,8889, +R$ 0,0787 (+1,35%) em relação à observação anterior, de 18/11/2026 (R$ 5,8102).</p></a><a class="guia-card" href="divulgacoes/ipca/2026-10/"><span class="rot">IPCA · outubro de 2026</span><h3>IPCA de outubro de 2026: taxa mensal desacelera para 0,14% e acumulado em 12 meses sobe para 4,63%</h3><p>A taxa mensal do IPCA desacelerou de 0,82% em setembro de 2026 para 0,14% em outubro de 2026, uma diferença de 0,68 pontos percentuais.</p></a><a class="guia-card" href="divulgacoes/cdi/2026-10/"><span class="rot">CDI · novembro de 2025 a outubro de 2026</span><h3>CDI de novembro de 2025 a outubro de 2026: 14,23% no período, 9,18% acima da inflação</h3><p>De novembro de 2025 a outubro de 2026 (12 competências fechadas), o CDI acumulou 14,23% e o IPCA, 4,63%.</p></a></div><p class="sub" style="margin-top:1rem"><a href="feed.xml">Assinar o RSS das divulgações</a></p>
 <!-- divulgacoes:fim -->
+        <h3 class="tit" id="agenda-t" style="font-size:1.15rem;margin-top:1.6rem">Próximas divulgações</h3>
+        <p class="sub">IPCA, IPCA-15 e Copom, pela agenda oficial do IBGE e do Banco Central.</p>
+        <!-- agenda:inicio -->
+<ul class="cal-lista"><li><a href="calendario/ipca15-2026-11/"><b>IPCA-15 de novembro de 2026</b> · 26/11/2026 <span class="estado">publicado</span></a></li><li><a href="calendario/copom-2026-8/"><b>Copom, 8ª reunião de 2026</b> · 09/12/2026 <span class="estado">previsto</span></a></li><li><a href="calendario/ipca-2026-11/"><b>IPCA de novembro de 2026</b> · 11/12/2026 <span class="estado">previsto</span></a></li><li><a href="calendario/ipca15-2026-12/"><b>IPCA-15 de dezembro de 2026</b> · 23/12/2026 <span class="estado">previsto</span></a></li></ul><p><a href="calendario/">Calendário completo</a></p>
+<!-- agenda:fim -->
       </div>
     </section>
 
@@ -561,6 +573,7 @@ footer a{color:var(--ink-2)}
           </div>
           <p class="rj-res" id="rj-res" aria-live="polite">Informe o valor para ver o resultado.</p>
           <button type="button" class="rj-copiar" id="rj-copiar" hidden>Copiar demonstrativo</button>
+          <p class="rj-note"><a id="rj-comparar" hidden href="reajuste/evolucao/">Comparar com outro índice</a> · <a href="reajuste/evolucao/">Ver evolução desde o início do contrato</a></p>
           <p class="rj-note" id="rj-copiar-status" role="status" aria-live="polite"></p>
           <textarea class="rj-texto" id="rj-texto" rows="9" readonly hidden aria-label="Texto do demonstrativo"></textarea>
           <p class="rj-note" id="rj-note">Aplica o acumulado de 12 meses mais recente do índice. Confira no contrato o índice pactuado e o mês de referência (defasagem). Conteúdo informativo.</p>
@@ -959,6 +972,7 @@ footer a{color:var(--ink-2)}
         const ix = idxAtual();
         const v = Demo ? Demo.parseValor(inp.value) : parseValor(inp.value);
         btnCopiar.hidden = true; txCopiar.hidden = true; stCopiar.textContent = "";
+        const lkComparar = document.getElementById("rj-comparar"); lkComparar.hidden = true;
         if (v === null || !isFinite(v) || v <= 0) { res.textContent = "Informe o valor para ver o resultado."; return; }
         let fator, rotulo, desc, url, urlTxt;
         if (modo === "anual") {
@@ -969,6 +983,7 @@ footer a{color:var(--ink-2)}
             const txt = Demo.texto({ valor: v, fator: ix.fator, indice: ix.nome, refYm: ix.refYm,
               produtor: ix.produtor, link: Demo.linkConferencia(ix.key, ix.refYm, shaDados) });
             btnCopiar.hidden = false;
+            if (Demo.ligaComparar) Demo.ligaComparar(lkComparar, ix.key, ix.refYm, v, "reajuste/evolucao/");
             btnCopiar.onclick = () => Demo.copiar(txt, btnCopiar, stCopiar, txCopiar);
           }
         } else {

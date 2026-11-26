@@ -17,6 +17,9 @@
   <url><loc>https://observatoriodetaxas.tec.br/guias/</loc><lastmod>2026-11-25</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/mudancas/</loc><lastmod>2026-11-26</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/divulgacoes/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/calendario/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/historico/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/reajuste/evolucao/</loc><lastmod>2026-11-26</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/reajuste/igpdi-abril-2016/</loc><lastmod>2026-11-26</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/reajuste/igpdi-abril-2017/</loc><lastmod>2026-11-26</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/reajuste/igpdi-abril-2018/</loc><lastmod>2026-11-26</lastmod></url>
@@ -576,6 +579,46 @@
   <url><loc>https://observatoriodetaxas.tec.br/guias/ipca-igpm-inpc-igpdi/</loc><lastmod>2026-11-25</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/guias/reajuste-de-aluguel/</loc><lastmod>2026-11-26</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/guias/selic/</loc><lastmod>2026-11-25</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/calendario/copom-2026-1/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/calendario/copom-2026-2/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/calendario/copom-2026-3/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/calendario/copom-2026-4/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/calendario/copom-2026-5/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/calendario/copom-2026-6/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/calendario/copom-2026-7/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/calendario/copom-2026-8/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/calendario/copom-2027-1/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/calendario/copom-2027-2/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/calendario/copom-2027-3/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/calendario/copom-2027-4/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/calendario/copom-2027-5/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/calendario/copom-2027-6/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/calendario/copom-2027-7/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/calendario/copom-2027-8/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/calendario/ipca-2026-01/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/calendario/ipca-2026-02/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/calendario/ipca-2026-03/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/calendario/ipca-2026-04/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/calendario/ipca-2026-05/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/calendario/ipca-2026-06/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/calendario/ipca-2026-07/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/calendario/ipca-2026-08/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/calendario/ipca-2026-09/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/calendario/ipca-2026-10/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/calendario/ipca-2026-11/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/calendario/ipca-2026-12/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/calendario/ipca15-2026-01/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/calendario/ipca15-2026-02/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/calendario/ipca15-2026-03/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/calendario/ipca15-2026-04/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/calendario/ipca15-2026-05/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/calendario/ipca15-2026-06/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/calendario/ipca15-2026-07/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/calendario/ipca15-2026-08/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/calendario/ipca15-2026-09/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/calendario/ipca15-2026-10/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/calendario/ipca15-2026-11/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://observatoriodetaxas.tec.br/calendario/ipca15-2026-12/</loc><lastmod>2026-11-26</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/divulgacoes/cdi/2026-10/</loc><lastmod>2026-11-26</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/divulgacoes/dolar/2026-W47/</loc><lastmod>2026-11-26</lastmod></url>
   <url><loc>https://observatoriodetaxas.tec.br/divulgacoes/ipca/2026-10/</loc><lastmod>2026-11-26</lastmod></url>
