@@ -27,7 +27,7 @@ sys.path.insert(0, str(ROOT))
 from build_correcao import faq_html, faq_ld  # noqa: E402
 from build_ferramentas import e, head  # noqa: E402
 from build_indicadores import completos, load_history  # noqa: E402
-from build_pages import acumulado, fmt_num, jsonld_script, mes_ano, migalhas  # noqa: E402
+from build_pages import acumulado, aplica_fator, fator_txt, fmt_num, jsonld_script, mes_ano, migalhas  # noqa: E402
 
 DOCS = ROOT / "docs"
 BASE_URL = "https://observatoriodetaxas.tec.br"
@@ -146,7 +146,7 @@ com as séries do Banco Central.</p>
 
 def guia_aluguel(ix: dict) -> tuple:
     g, i = ix["IGP-M"], ix["IPCA"]
-    novo_g, novo_i = 2000 * (1 + g["ac"] / 100), 2000 * (1 + i["ac"] / 100)
+    novo_g, novo_i = aplica_fator(2000, 1 + g["ac"] / 100), aplica_fator(2000, 1 + i["ac"] / 100)
     ref = mes_ano(g["ref"])
     corpo = f"""
 <p class="resposta">Para reajustar um aluguel, multiplique o valor atual por (1 + acumulado do índice em 12 meses
@@ -167,8 +167,8 @@ disser outra coisa, vale o contrato.</p>
 
 <h2>3. Faça a conta</h2>
 <ol>
-<li>Transforme o acumulado em fator: {pct(g['ac'])} vira {fmt_num(1 + g['ac'] / 100, 6)}.</li>
-<li>Multiplique o aluguel atual pelo fator: R$ 2.000,00 × {fmt_num(1 + g['ac'] / 100, 6)} = {reais(novo_g)}.</li>
+<li>Transforme o acumulado em fator: {pct(g['ac'])} vira {fator_txt(1 + g['ac'] / 100)}.</li>
+<li>Multiplique o aluguel atual pelo fator: R$ 2.000,00 × {fator_txt(1 + g['ac'] / 100)} = {reais(novo_g)}.</li>
 <li>Arredonde para centavos só no final.</li>
 </ol>
 <p>A página de cada mês em <a href="../../reajuste/">Reajuste de contratos</a> já traz o fator, a tabela dos 12
@@ -275,7 +275,7 @@ def guia_acumulado(ix: dict) -> tuple:
     for p in tres:
         fator *= 1 + p["valor"] / 100
         passos.append(f"<li>{mes_ano(p['dt']).capitalize()}: {pct(p['valor'])} → fator acumulado "
-                      f"{fmt_num(fator, 6)}</li>")
+                      f"{fator_txt(fator)}</li>")
     soma = sum(p["valor"] for p in tres)
     corpo = f"""
 <p class="resposta">O acumulado de vários meses é a <b>multiplicação</b> dos fatores de cada mês, menos 1. Não é a
@@ -289,7 +289,7 @@ pequena em três meses de inflação baixa, mas cresce com o tempo e com taxas m
 sobre o valor já corrigido pelos anteriores.</p>
 
 <h2>Fator e acumulado são a mesma informação</h2>
-<p>O fator é 1 + acumulado ÷ 100. Um acumulado de {pct(i['ac'])} é um fator de {fmt_num(1 + i['ac'] / 100, 6)}.
+<p>O fator é 1 + acumulado ÷ 100. Um acumulado de {pct(i['ac'])} é um fator de {fator_txt(1 + i['ac'] / 100)}.
 Para corrigir ou reajustar um valor, basta multiplicá-lo pelo fator.</p>
 
 <h2>Por que o Observatório pode diferir do número oficial em centésimos</h2>

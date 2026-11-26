@@ -26,6 +26,7 @@ from __future__ import annotations
 
 import json
 from datetime import datetime
+from decimal import ROUND_HALF_UP, Decimal
 from pathlib import Path
 
 import yaml
@@ -197,6 +198,26 @@ def acumulado(janela: list[dict]) -> float:
 
 def fmt_num(v: float, dec: int = 2) -> str:
     return f"{v:,.{dec}f}".replace(",", "X").replace(".", ",").replace("X", ".")
+
+
+# Fator de reajuste/correção: SEMPRE com estas casas e a conta feita com o
+# fator exibido, igual a docs/demonstrativo.js (CASAS_FATOR e calcula). Quem
+# copia o fator de qualquer trecho do site e multiplica à mão chega ao mesmo
+# centavo do demonstrativo e da calculadora.
+CASAS_FATOR = 10
+
+
+def fator_exibido(fator: float) -> Decimal:
+    return Decimal(repr(fator)).quantize(Decimal(1).scaleb(-CASAS_FATOR), ROUND_HALF_UP)
+
+
+def fator_txt(fator: float) -> str:
+    return fmt_num(float(fator_exibido(fator)), CASAS_FATOR)
+
+
+def aplica_fator(valor: float, fator: float) -> float:
+    """valor × fator exibido, arredondado ao centavo (meio centavo para cima)."""
+    return float((Decimal(repr(valor)) * fator_exibido(fator)).quantize(Decimal("0.01"), ROUND_HALF_UP))
 
 
 def mes_ano(dt: datetime) -> str:
@@ -376,7 +397,7 @@ def faq_month(nome: str, fonte: dict, codigo: int, ref: datetime, ini: datetime,
     visível e para o FAQPage do JSON-LD (dado estruturado = conteúdo visível)."""
     ref_txt, ini_txt = mes_ano(ref), mes_ano(ini)
     prox_txt = MESES[_vizinho(ref, 1).month - 1]
-    reaj = (f"Multiplique o valor atual pelo fator {fmt_num(fator, 6)}. Exemplo: um aluguel de "
+    reaj = (f"Multiplique o valor atual pelo fator {fator_txt(fator)}. Exemplo: um aluguel de "
             f"R$ 2.000,00 passa a R$ {fmt_num(exemplo)}.")
     if ac < 0:
         reaj += (" Como o acumulado é negativo, o efeito depende do contrato: há contratos que aplicam a "
@@ -581,7 +602,7 @@ def build_month_page(key: str, info: dict, janela: list[dict], todas_paginas: di
 
     title = f"{nome} de {ref_txt}: {fmt_num(mensal)}% no mês e {fmt_num(ac)}% em 12 meses"
     desc = (f"O {nome} ({produtor}) variou {fmt_num(mensal)}% em {ref_txt} e acumulou {fmt_num(ac)}% "
-            f"nos 12 meses até {ref_txt} (fator {fmt_num(fator, 6)}). Memória de cálculo e calculadora "
+            f"nos 12 meses até {ref_txt} (fator {fator_txt(fator)}). Memória de cálculo e calculadora "
             f"de reajuste de aluguel e contratos.")
 
     linhas = "".join(
@@ -589,7 +610,7 @@ def build_month_page(key: str, info: dict, janela: list[dict], todas_paginas: di
         for p in janela
     )
 
-    exemplo = 2000.0 * fator
+    exemplo = aplica_fator(2000.0, fator)
     perguntas = faq_month(nome, fonte, info["codigo"], ref, ini, mensal, ac, fator, exemplo)
     leitura, extras = leitura_do_mes(key, info, janela, ctx) if ctx else ("", [])
     perguntas = perguntas[:2] + extras + perguntas[2:]
@@ -648,13 +669,13 @@ def build_month_page(key: str, info: dict, janela: list[dict], todas_paginas: di
 <p class="resposta">O {nome} de <time datetime="{mes_iso(ref)}">{ref_txt}</time> variou
 <b>{fmt_num(mensal)}%</b> no mês. Nos 12 meses de <time datetime="{mes_iso(ini)}">{ini_txt}</time>
 a <time datetime="{mes_iso(ref)}">{ref_txt}</time>, acumulou <b>{fmt_num(ac)}%</b>, o que corresponde
-ao fator de reajuste <b>{fmt_num(fator, 6)}</b>.</p>
+ao fator de reajuste <b>{fator_txt(fator)}</b>.</p>
 {vizinhos}
 </header>
 <div class="card">
 <p class="mut">{nome} acumulado 12 meses (até {ref_txt})</p>
 <p class="big{neg}">{fmt_num(ac)}%</p>
-<p>Fator de reajuste: <b>{fmt_num(fator, 6)}</b> · Exemplo: aluguel de R$ 2.000,00 → <b>R$ {fmt_num(exemplo)}</b></p>
+<p>Fator de reajuste: <b>{fator_txt(fator)}</b> · Exemplo: aluguel de R$ 2.000,00 → <b>R$ {fmt_num(exemplo)}</b></p>
 {aviso_neg}
 <p class="mut">Índice tipicamente usado em {info['uso']}.</p>
 </div>
@@ -761,7 +782,7 @@ o acumulado de 12 meses, o fator e a calculadora daquela referência.</p>
 <p class="mut">Usado em {info["uso"]}.</p>
 <a class="destaque" href="{r["slug"]}/">
 <span class="d-num{neg}">{fmt_num(r["ac"])}%</span>
-<span class="d-leg">acumulado 12 meses até {r["refTxt"]} · fator {fmt_num(r["fator"], 6)} — abrir cálculo completo →</span>
+<span class="d-leg">acumulado 12 meses até {r["refTxt"]} · fator {fator_txt(r["fator"])} — abrir cálculo completo →</span>
 </a>
 {bloco_meses(key, info["nome"], paginas)}
 </div>"""

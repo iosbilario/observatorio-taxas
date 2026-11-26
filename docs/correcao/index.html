@@ -155,8 +155,11 @@ function calc(){
   if(i1<=i0){res.textContent='O mês final deve ser posterior ao inicial.';return;}
   var fator=1.0;
   for(var k=i0+1;k<=i1;k++){fator*=1+pts[k].v/100;}
-  var novo=v*fator, ac=(fator-1)*100;
-  var f6=fator.toLocaleString('pt-BR',{minimumFractionDigits:6,maximumFractionDigits:6});
+  // Mesma regra de docs/demonstrativo.js: fator com 10 casas e a conta feita
+  // com o fator exibido, em centavos inteiros, meio centavo para cima.
+  var fInt=BigInt(Math.round(fator*1e10)), esc=BigInt(1e10);
+  var novo=Number((BigInt(Math.round(v*100))*fInt+esc/BigInt(2))/esc)/100, ac=(fator-1)*100;
+  var f6=(Number(fInt)/1e10).toLocaleString('pt-BR',{minimumFractionDigits:10,maximumFractionDigits:10});
   res.innerHTML='Valor corrigido: <b>R$ '+novo.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})+'</b>'
     +'<br><span class="mut">'+SERIES[key].nome+' acumulado no período: '+ac.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})+'%'
     +' · fator '+f6+' · de '+pts[i0].label+' a '+pts[i1].label+'</span>';

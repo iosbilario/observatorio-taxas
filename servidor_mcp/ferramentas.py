@@ -23,7 +23,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
 
 from build_correcao import fator_periodo  # noqa: E402
-from build_pages import MESES, acumulado  # noqa: E402
+from build_pages import MESES, acumulado, aplica_fator, fator_exibido  # noqa: E402
 
 from . import catalogo as cat  # noqa: E402
 from .dados import Dados, FonteIndisponivel  # noqa: E402
@@ -184,14 +184,18 @@ def calculate_adjustment(d: Dados, valor: float, indice: str, data_inicial: str,
                         "fator_acumulado": f})
     taxa = (fator - 1) * 100
     final = valor * fator
+    # Exibição igual à do site: mesmas funções de scripts/build_pages.py.
+    fator_10 = fator_exibido(fator)
+    final_exibido = aplica_fator(valor, fator)
     return {
         "valor_original": valor, "indice": m["nome"], "codigo_sgs": cod,
         "periodo": {"mes_inicial": pts[i0]["dt"].strftime("%Y-%m"), "mes_final": pts[i1]["dt"].strftime("%Y-%m"),
                     "meses_aplicados": len(aplicados),
                     "regra": "aplica as variações dos meses posteriores ao mês inicial até o mês final, inclusive"},
         "taxa_acumulada_pct": taxa, "fator": fator, "valor_final": final,
-        "arredondado": {"taxa_acumulada_pct": f"{taxa:.2f}", "fator": f"{fator:.6f}", "valor_final": f"{final:.2f}",
-                        "regra": "exibição com 2 casas (taxa e valor) e 6 casas (fator), como no site"},
+        "arredondado": {"taxa_acumulada_pct": f"{taxa:.2f}", "fator": str(fator_10), "valor_final": f"{final_exibido:.2f}",
+                        "regra": "como no site: taxa com 2 casas, fator com 10 casas e valor final = valor × fator "
+                                 "exibido, arredondado ao centavo (meio centavo para cima)"},
         "formula": "fator = Π (1 + variação_mensal/100) dos meses aplicados; valor_final = valor_original × fator",
         "memoria_de_calculo": memoria,
         "equivalencia_no_site": {
