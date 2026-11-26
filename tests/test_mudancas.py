@@ -69,7 +69,7 @@ class RotulosDeTempo(unittest.TestCase):
         self.assertRegex(boletim, r'id="desemprego".*?num-ref">trimestre móvel até [a-zç]+ de \d{4}<')
         self.assertIn("em vigor desde", boletim)
         self.assertNotIn("por decisão do Copom", boletim)
-        self.assertRegex(mais, r'Euro \(venda\).*?num-ref">cotação de')
+        self.assertRegex(mais, r'>Euro<small>R\$ por € · cotação de \d\d/\d\d/\d{4}</small>')
 
     def test_carimbo_separa_publicacao_e_leva_a_mudancas(self):
         c = ri.bloco_carimbo()

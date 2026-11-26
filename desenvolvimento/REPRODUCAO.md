@@ -111,6 +111,27 @@ permanente em `/divulgacoes/<serie>/<competencia>/`, que também é um item do
   dado) e registrado em (data do commit dos dados). A data oficial de divulgação
   do IBGE não está no SGS e fica como "não informada".
 - **Teste:** `tests/test_divulgacoes.py`.
+- **CDI e PTAX (Entrega 2):** o CDI registra uma leitura por competência mensal
+  fechada (`cdi-2026-10`: 12 meses do CDI mensal, SGS 4391, contra o IPCA nas
+  mesmas competências, taxa real = (1 + CDI) ÷ (1 + IPCA) − 1). A PTAX registra o
+  fechamento semanal (`dolar-2026-W47`: última cotação da semana encerrada contra
+  a última da semana anterior; semana encerrada = hoje já no sábado dela, com
+  "hoje" = data do commit dos dados, para a leitura não depender da hora em que o
+  script roda). A ficha da PTAX acompanha também a variação diária e mostra a
+  semana em andamento como parcial; o parcial não entra no registro nem no RSS.
+  Teste: `tests/test_leituras_cdi_ptax.py`.
+- **Acompanhar e citar (Entrega 3):** cada leitura oferece "Acompanhar este
+  indicador" (a ficha em `/indicadores/<slug>/#leitura`, que recalcula a cada
+  coleta) e "Citar esta análise" (o registro em `/divulgacoes/…/`). Decisão: a
+  citação aponta para o resultado já produzido, guardado no registro com a
+  memória de cálculo, e não para "dados do commit X refeitos pela regra de
+  hoje". Assim uma regra nova ou um dado revisado não muda uma citação antiga, e
+  o site não precisa guardar versões antigas do código. Cada registro tem
+  `dados.csv` (separador `;`, com série, recorte, transformação, unidade, versão
+  e regra no topo) e `grafico.svg` (com fonte, versão e regra no próprio arquivo),
+  gerados só do registro. Um endereço de análise que não existe cai no
+  `docs/404.html`, que diz que aquela versão não está disponível e dá um link
+  separado para a visão atual, sem redirecionar. Teste: `tests/test_citar.py`.
 
 ## Reprodução dos cálculos
 

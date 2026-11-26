@@ -232,11 +232,12 @@ class Publicado(unittest.TestCase):
         self.assertEqual(sorted(links), sorted(p["url"] for p in pubs))
         for p in pubs:
             html = (DOCS / p["url"].removeprefix(D.BASE_URL + "/") / "index.html").read_text(encoding="utf-8")
-            self.assertIn('href="../../../indicadores/ipca/#leitura"', html)
-            self.assertIn("<!-- nav:start -->", html)
-        ficha = (DOCS / "indicadores" / "ipca" / "index.html").read_text(encoding="utf-8")
-        self.assertIn('id="leitura"', ficha)
-        self.assertIn(pubs[-1]["url"], ficha)
+            ficha_rel = D.SERIES[p["serie"]]["ficha"]
+            pre = "../" * (p["url"].removeprefix(D.BASE_URL + "/").rstrip("/").count("/") + 1)
+            self.assertTrue(f'href="{pre}{ficha_rel}#leitura"' in html, p["id"])
+            self.assertTrue("<!-- nav:start -->" in html, p["id"])
+            ficha = (DOCS / ficha_rel / "index.html").read_text(encoding="utf-8")
+            self.assertTrue('id="leitura"' in ficha and p["url"] in ficha, p["id"])
         capa = (DOCS / "index.html").read_text(encoding="utf-8")
         self.assertIn('href="divulgacoes/ipca/', capa)
         self.assertIn('href="feed.xml"', capa)

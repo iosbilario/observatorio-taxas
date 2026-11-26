@@ -58,11 +58,11 @@ class PaginaInicial(unittest.TestCase):
     def test_mais_indicadores_ligam_paginas_que_existem(self):
         html = home()
         bloco = re.search(r"<!-- mais:inicio -->(.*?)<!-- mais:fim -->", html, re.S).group(1)
-        links = re.findall(r'class="mais-card" href="(indicadores/[a-z0-9-]+/)"', bloco)
-        self.assertGreaterEqual(len(links), 10)
+        links = re.findall(r'class="cat-linha" href="(indicadores/[a-z0-9-]+/)"', bloco)
+        self.assertGreaterEqual(len(links), 20)
         for rel in links:
             self.assertTrue((DOCS / rel / "index.html").is_file(), rel)
-        self.assertEqual(bloco.count('class="num-delta'), len(links))
+        self.assertEqual(bloco.count('class="cat-var"'), len(links))
 
     def test_links_internos_da_home_existem(self):
         html = home()

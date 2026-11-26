@@ -6,7 +6,7 @@ index.html, blocos ESTÁTICOS (funcionam sem JavaScript):
 
   <!-- carimbo:inicio -->   data, hora da coleta e commit
   <!-- boletim:inicio -->   as 5 perguntas do dia, com resposta, valor e direcionador
-  <!-- mais:inicio -->      grade com mais 12 indicadores
+  <!-- mais:inicio -->      indicadores por tema (scripts/catalogo_home.py)
   <!-- var:inicio -->       recibo do VAR (IPCA 2019-2022 vs 2023-hoje), com veredito
   <!-- rebobinar:inicio -->  fita de 6 meses + a manchete do mês atual
 
@@ -56,22 +56,6 @@ BOLETIM = [
      "casas": 2, "link": "reajuste/igpm-{mes}/", "link_txt": "Calcular o meu reajuste"},
     {"cod": 24369, "anchor": "desemprego", "pergunta": "Qual é a taxa de desemprego?", "rot": "Desemprego",
      "suf": "%", "casas": 1, "link": "indicadores/desemprego/", "link_txt": "Série completa"},
-]
-
-# Mais indicadores (grade abaixo das perguntas). slug = página em /indicadores/.
-MAIS = [
-    {"cod": 1178, "slug": "selic-efetiva", "rot": "Selic efetiva", "suf": "% a.a.", "casas": 2},
-    {"cod": 4389, "slug": "cdi", "rot": "CDI", "suf": "% a.a.", "casas": 2},
-    {"cod": 195, "slug": "poupanca", "rot": "Poupança no mês", "suf": "%", "casas": 4},
-    {"cod": 226, "slug": "tr", "rot": "TR no mês", "suf": "%", "casas": 4},
-    {"cod": 433, "slug": "ipca", "rot": "IPCA no mês", "suf": "%", "casas": 2},
-    {"cod": 188, "slug": "inpc", "rot": "INPC no mês", "suf": "%", "casas": 2},
-    {"cod": 190, "slug": "igp-di", "rot": "IGP-DI no mês", "suf": "%", "casas": 2},
-    {"cod": 21619, "slug": "euro", "rot": "Euro (venda)", "pref": "R$ ", "casas": 4},
-    {"cod": 20714, "slug": "juros-do-credito", "rot": "Juros do crédito", "suf": "% a.a.", "casas": 2},
-    {"cod": 21082, "slug": "inadimplencia", "rot": "Inadimplência", "suf": "%", "casas": 2},
-    {"cod": 24363, "slug": "ibc-br", "rot": "IBC-Br (prévia do PIB)", "casas": 2, "du": " pontos"},
-    {"cod": 4513, "slug": "divida-liquida", "rot": "Dívida líquida", "suf": "% do PIB", "casas": 2},
 ]
 
 # Indicadores de nível para eleger a manchete do Rebobinar (z-score do movimento).
@@ -258,23 +242,11 @@ def bloco_boletim() -> str:
 
 
 def bloco_mais() -> str:
-    """Mais indicadores: valor atual, direcionador e link para a página da série."""
-    cards = []
-    for m in MAIS:
-        pts = load_history(m["cod"])
-        if not pts:
-            continue
-        pref, suf, dec = m.get("pref", ""), m.get("suf", ""), m["casas"]
-        cls, delta = _delta(pts, dec, pref, m.get("du", " p.p."))
-        cards.append(
-            f'<a class="mais-card" href="indicadores/{m["slug"]}/">'
-            f'<span class="mais-rot">{esc(m["rot"])}</span>'
-            f'<span class="mais-val">{esc(pref + fmt_num(pts[-1]["v"], dec))}'
-            + (f'<small>{esc(suf)}</small>' if suf else "")
-            + f'</span><span class="num-delta {cls}">{esc(delta)}</span>'
-            f'<span class="num-ref">{esc(rotulo_card(m["cod"], pts))}</span></a>'
-        )
-    return '<div class="mais-grade">\n' + "\n".join(cards) + "\n</div>"
+    """Indicadores por tema (scripts/catalogo_home.py): as séries com ficha em
+    /indicadores/, agrupadas por tema, com valor, referência, variação e
+    minigráfico. O marcador continua "mais" (era a grade "Mais indicadores")."""
+    import catalogo_home
+    return catalogo_home.gerar()
 
 
 def acumulado(pts: list[dict], a: str, z: str) -> tuple[float, int]:
@@ -434,13 +406,13 @@ def bloco_divulgacoes(n: int = 3) -> str:
     except (OSError, ValueError):
         pubs = []
     pubs = sorted(pubs, key=lambda p: (p["registrado_em"], p["competencia"], p["revisao"], p["id"]), reverse=True)[:n]
+    import build_divulgacoes as D     # aqui: evita carregar os geradores quando o bloco não é usado
     cards = []
     for p in pubs:
         lt = p["leitura"]
-        t = (f"Revisão {p['revisao']} — " if p["revisao"] else "") + lt["titulo"]
-        mes = MESC[int(p["competencia"][5:7]) - 1]
+        t = D.titulo(p)
         cards.append(f'<a class="guia-card" href="{p["url"].replace(BASE_URL + "/", "")}">'
-                     f'<span class="rot">{esc(lt["nome"])} · {mes} de {p["competencia"][:4]}</span>'
+                     f'<span class="rot">{esc(D.SERIES[p["serie"]]["nome"])} · {esc(D.periodo(lt))}</span>'
                      f'<h3>{esc(t)}</h3><p>{esc(lt["frases"][0] if lt["frases"] else "")}</p></a>')
     vazio = "" if cards else '<p class="sub">Nenhuma divulgação registrada ainda.</p>'
     return (f'{vazio}<div class="guias-grade">{"".join(cards)}</div>'

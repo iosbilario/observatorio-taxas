@@ -436,19 +436,22 @@ def bloco_leitura(codigo: int, pts: list[dict]) -> str:
     o link para a divulgação permanente (build_divulgacoes.py). Só para as
     séries com divulgação."""
     import build_divulgacoes as D   # aqui: build_divulgacoes importa build_ferramentas, que importa este módulo
-    chave = next((k for k, s in D.SERIES.items() if s["codigo"] == codigo), None)
+    chave = D.FICHA_POR_CODIGO.get(codigo)
     if not chave:
         return ""
-    lt = D.leitura_de(chave, {codigo: pts})
+    hist = {c: load_history(c) for c in D.SERIES[chave]["series"]}
+    versao = D.ler(D.VERSAO, {})
+    lt = D.leitura_de(chave, hist, hoje=D.hoje_da_versao(versao) if versao.get("data") else None)
     pubs = D.ler(D.ARQUIVO, {}).get("publicacoes", [])
     reg = D.registro_da_leitura(pubs, chave, lt)
-    kpis = "".join(f'<div class="kpi"><span>{e(r)}</span><b>{e(x)}</b></div>' for r, x in D.resumo_mensal(lt))
+    kpis = "".join(f'<div class="kpi"><span>{e(r)}</span><b>{e(x)}</b></div>' for r, x in D.kpis_de(lt))
     if reg:
         perm = (f'<p>Divulgação permanente desta leitura: <a href="{reg["url"]}">{e(D.titulo(reg))}</a> '
                 f'(versão dos dados {reg["versao_dados"]["curto"]}).</p>')
     else:
         perm = ('<p class="mut">A divulgação permanente desta competência ainda não foi registrada: ela é criada '
                 'quando a coleta grava a versão dos dados.</p>')
+    perm += D.bloco_acoes(reg, f"{url_pagina(codigo)}#leitura", h="h3")
     da_serie = D.ordenadas([p for p in pubs if p["serie"] == chave])
     lista = "".join(f'<li><a href="{p["url"]}">{e(D.titulo(p))}</a></li>' for p in da_serie[:12])
     anteriores = (f'<h3>Divulgações do {e(D.SERIES[chave]["nome"])}</h3><ul>{lista}</ul>'
@@ -456,14 +459,9 @@ def bloco_leitura(codigo: int, pts: list[dict]) -> str:
                   f'<a class="pill" href="{D.FEED_URL}">RSS</a></p>') if da_serie else ""
     nota = f'<p class="mut">{e(lt["nota"])}</p>' if lt.get("nota") else ""
     return (f'<section class="card" id="leitura" aria-labelledby="leitura-t">'
-            f'<h2 id="leitura-t">Leitura de {e(L_mes(lt["competencia"]))}</h2>'
+            f'<h2 id="leitura-t">Leitura: {e(D.periodo(lt))}</h2>'
             f'<div class="kpis">{kpis}</div>{"".join(f"<p>{e(f)}</p>" for f in lt["frases"])}{nota}'
-            f'<h3 id="leitura-conta-t">A conta, mês a mês</h3>'
-            f'{D.tabela_mensal(lt, chave, "../../", "leitura-conta-t")}{perm}{anteriores}</section>')
-
-
-def L_mes(competencia: str) -> str:
-    return f"{MESES[int(competencia[5:7]) - 1]} de {competencia[:4]}"
+            f'{D.conta_de(lt, chave, "../../", "leitura-conta-t", h="h3")}{perm}{anteriores}</section>')
 
 
 def pagina(codigo: int, pts: list[dict], grupo: str) -> str:
