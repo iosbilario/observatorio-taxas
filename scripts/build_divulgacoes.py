@@ -74,6 +74,8 @@ CSS = """
 .tabela-rolagem:focus-visible{outline:2px solid var(--carimbo);outline-offset:2px}
 .tabela-rolagem table{min-width:560px}
 caption{caption-side:bottom;text-align:left;padding-top:.5rem}
+.grafico-div img{width:100%;height:auto;border-radius:6px;background:#fff}
+.grafico-div{margin:1rem 0}
 .lista-div li{margin:.45rem 0}
 """
 
@@ -422,6 +424,9 @@ def pagina(reg: dict, todos: list[dict]) -> str:
 {"".join(f"<p>{e(f)}</p>" for f in lt["frases"])}
 {nota}
 </section>
+<figure class="card grafico-div"><img src="grafico.svg" width="720" height="340" alt="{e(grafico_alt(reg))}"/>
+<figcaption class="mut">Os mesmos números da tabela abaixo.</figcaption></figure>
+{bloco_acoes(reg, url_ficha(reg))}
 {bloco_revisao(reg)}
 <section class="card" aria-labelledby="conta-t">{conta_de(lt, reg["serie"], pre)}</section>
 <section class="card" aria-labelledby="proc-t"><h2 id="proc-t">Fonte, datas e versão</h2>
@@ -537,9 +542,170 @@ def gerar(arquivo: dict) -> None:
         c = caminho(p)
         c.parent.mkdir(parents=True, exist_ok=True)
         c.write_text(pagina(p, pubs), encoding="utf-8")
+        (c.parent / "dados.csv").write_bytes(csv_registro(p).encode("utf-8"))
+        (c.parent / "grafico.svg").write_text(svg_registro(p), encoding="utf-8")
     (DOCS / "divulgacoes").mkdir(exist_ok=True)
     (DOCS / "divulgacoes" / "index.html").write_text(hub(pubs), encoding="utf-8")
     (DOCS / "feed.xml").write_bytes(feed(pubs))
+
+
+# ── citar, baixar e acompanhar (Entrega 3) ────────────────────────────────
+#
+# Decisão: uma citação aponta para o REGISTRO, não para "a série no commit X
+# refeita pela regra de hoje". O registro (data/publicacoes.json) já guarda o
+# resultado e a memória de cálculo da regra que o produziu, e a página, o CSV e
+# a imagem são gerados só dele. Assim a citação continua dando o mesmo número
+# depois de uma revisão dos dados ou de uma regra nova, sem o site precisar
+# guardar versões antigas do código. O link de acompanhamento leva à ficha do
+# indicador, que recalcula com os dados de agora.
+
+TRANSFORMACAO = {
+    "mensal": "acumulado em 12 meses = (1 + taxa₁ ÷ 100) × … × (1 + taxa₁₂ ÷ 100) − 1, na janela atual e na anterior",
+    "cdi": "acumulado no período = produto de (1 + taxa do mês ÷ 100) − 1; taxa real = (1 + CDI) ÷ (1 + IPCA) − 1",
+    "ptax": "variação em reais = cotação − cotação de comparação; em percentual = cotação ÷ cotação de comparação − 1",
+}
+UNIDADE = {"mensal": "% (variação no mês e acumulado)", "cdi": "% no mês e no período",
+           "ptax": "R$ por dólar (PTAX de venda)"}
+
+
+def url_ficha(reg: dict) -> str:
+    return f"{BASE_URL}/{SERIES[reg['serie']]['ficha']}#leitura"
+
+
+def citacao(reg: dict) -> str:
+    """Texto de citação: série, recorte, transformação, versão e regra."""
+    lt, s = reg["leitura"], SERIES[reg["serie"]]
+    return (f"Observatório de Taxas. {titulo(reg)}. {s['nome']} ({s['produtor']}), SGS "
+            f"{', '.join(map(str, s['series']))}; recorte: {periodo(lt)}; transformação: "
+            f"{TRANSFORMACAO[s['leitura']]}; dados do commit {reg['versao_dados']['sha']}; regra {lt['regra']}. "
+            f"Disponível em: {reg['url']}")
+
+
+def tabela_linhas(reg: dict) -> tuple[list[str], list[list[str]]]:
+    """Cabeçalho e linhas da tabela da página, como texto, para o CSV."""
+    lt = reg["leitura"]
+    if lt["regra"].startswith("leitura-mensal"):
+        cab = ["Competência", "Variação no mês (%)", "Fator do mês", "Janela atual", "Janela anterior", "Papel na troca"]
+        lin = [[L.mes_txt(li["competencia"]), "" if li["valor"] is None else fmt_num(li["valor"]),
+                "" if li["valor"] is None else fmt_num(1 + li["valor"] / 100, 6),
+                "sim" if li["janela_atual"] else "", "sim" if li["janela_anterior"] else "", li["papel"]]
+               for li in lt["linhas"]]
+        lin.append(["Acumulado em 12 meses (%)", "", "",
+                    "" if lt["acumulado_12m"] is None else fmt_num(lt["acumulado_12m"]),
+                    "" if lt["acumulado_12m_anterior"] is None else fmt_num(lt["acumulado_12m_anterior"]), ""])
+        return cab, lin
+    cel = (lambda x: "" if x is None else fmt_num(x) if isinstance(x, float) else str(x))
+    return list(lt["tabela"]["cab"]), [[cel(x) for x in li] for li in lt["tabela"]["linhas"]]
+
+
+def _csv_celula(x: str) -> str:
+    """Mesma regra do docs/calculos.js: ';' como separador e sem fórmula no Excel."""
+    if x and x[0] in "=+-@\t\r" and not (x[0] == "-" and x[1:2].isdigit()):
+        x = "'" + x
+    return '"' + x.replace('"', '""') + '"' if any(c in x for c in ';"\n\r') else x
+
+
+def csv_registro(reg: dict) -> str:
+    lt, s = reg["leitura"], SERIES[reg["serie"]]
+    meta = [
+        ["Observatório de Taxas", titulo(reg)],
+        ["Série", f"{s['nome']}, produzido por {s['produtor']}; SGS {', '.join(map(str, s['series']))}"],
+        ["Recorte", periodo(lt)],
+        ["Transformação", TRANSFORMACAO[s["leitura"]]],
+        ["Unidade", UNIDADE[s["leitura"]]],
+        ["Versão dos dados", reg["versao_dados"]["sha"]],
+        ["Regra", lt["regra"]],
+        ["Registrado em", reg["registrado_em"]],
+        ["Citar (link permanente)", reg["url"]],
+        ["Acompanhar (visão atualizada)", url_ficha(reg)],
+        [],
+    ]
+    cab, lin = tabela_linhas(reg)
+    linhas = meta + [cab] + lin
+    return "\ufeff" + "\r\n".join(";".join(_csv_celula(c) for c in li) for li in linhas) + "\r\n"
+
+
+def svg_registro(reg: dict) -> str:
+    """Gráfico de barras do recorte, com título, fonte, versão e regra no próprio
+    arquivo (continua compreensível depois de baixado)."""
+    lt, s = reg["leitura"], SERIES[reg["serie"]]
+    if lt["regra"].startswith("leitura-mensal"):
+        rot = [li["competencia"][2:].replace("-", "/") for li in lt["linhas"]]
+        series = [(f"{lt['nome']} no mês (%)", [li["valor"] for li in lt["linhas"]], "#1f5fa8")]
+        destaque = {i: "#c0392b" if li["papel"] == "saiu da janela" else "#1e8449"
+                    for i, li in enumerate(lt["linhas"]) if li["papel"]}
+    elif lt["regra"].startswith("leitura-cdi"):
+        ls = lt["tabela"]["linhas"]
+        rot = [L.soma_mes(lt["inicio"], k)[2:].replace("-", "/") for k in range(len(ls))]
+        series = [("CDI no mês (%)", [li[1] for li in ls], "#1f5fa8"), ("IPCA no mês (%)", [li[2] for li in ls], "#b9770e")]
+        destaque = {}
+    else:
+        ls = lt["tabela"]["linhas"]
+        rot = [li[0].split()[-1][:5] for li in ls]
+        series = [("PTAX de venda (R$)", [float(li[2].replace(".", "").replace(",", ".")) for li in ls], "#1f5fa8")]
+        destaque = {i: "#1e8449" for i, li in enumerate(ls) if li[1] == "encerrada"}
+    W, H, ml, mr, mt, mb = 720, 340, 56, 16, 64, 84
+    vals = [x for _, vs, _ in series for x in vs if x is not None]
+    lo, hi = (min(vals + [0.0]), max(vals + [0.0])) if s["leitura"] != "ptax" else (min(vals) * 0.995, max(vals) * 1.002)
+    if hi == lo:
+        hi = lo + 1
+    n, k = len(rot), len(series)
+    larg = (W - ml - mr) / max(n, 1)
+    y = (lambda x: mt + (hi - x) * (H - mt - mb) / (hi - lo))
+    partes = [f'<rect width="{W}" height="{H}" fill="#ffffff"/>',
+              f'<text x="{ml}" y="22" font-size="14" font-weight="700" fill="#111">{e(titulo(reg))[:110]}</text>',
+              f'<text x="{ml}" y="42" font-size="11" fill="#444">{e(periodo(lt))} · {e(UNIDADE[s["leitura"]])}</text>',
+              f'<line x1="{ml}" x2="{W - mr}" y1="{y(max(lo, 0) if s["leitura"] != "ptax" else lo):.1f}" '
+              f'y2="{y(max(lo, 0) if s["leitura"] != "ptax" else lo):.1f}" stroke="#888"/>']
+    for marca in (lo, (lo + hi) / 2, hi):
+        partes.append(f'<text x="{ml - 6}" y="{y(marca) + 4:.1f}" font-size="10" fill="#555" text-anchor="end">'
+                      f'{e(fmt_num(marca, 2 if s["leitura"] != "ptax" else 4))}</text>')
+    base = y(0) if s["leitura"] != "ptax" else y(lo)
+    for i in range(n):
+        for j, (_, vs, cor) in enumerate(series):
+            x = vs[i]
+            if x is None:
+                continue
+            bw = larg * 0.7 / k
+            bx = ml + i * larg + larg * 0.15 + j * bw
+            top, alt = (y(x), base - y(x)) if y(x) < base else (base, y(x) - base)
+            partes.append(f'<rect x="{bx:.1f}" y="{top:.1f}" width="{bw:.1f}" height="{max(alt, 0.5):.1f}" '
+                          f'fill="{destaque.get(i, cor) if k == 1 else cor}"><title>{e(rot[i])}: '
+                          f'{e(fmt_num(x, 4 if s["leitura"] == "ptax" else 2))}</title></rect>')
+        partes.append(f'<text x="{ml + i * larg + larg / 2:.1f}" y="{H - mb + 16}" font-size="10" fill="#333" '
+                      f'text-anchor="middle">{e(rot[i])}</text>')
+    leg = " · ".join(nome for nome, _, _ in series)
+    partes.append(f'<text x="{ml}" y="{H - 46}" font-size="10" fill="#333">{e(leg)}</text>')
+    partes.append(f'<text x="{ml}" y="{H - 30}" font-size="10" fill="#555">Fonte: {e(s["produtor"])}, via SGS '
+                  f'{e(", ".join(map(str, s["series"])))} do Banco Central · dados do commit '
+                  f'{reg["versao_dados"]["curto"]} · regra {e(lt["regra"])}</text>')
+    partes.append(f'<text x="{ml}" y="{H - 14}" font-size="10" fill="#555">{e(reg["url"])}</text>')
+    return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" '
+            f'font-family="Arial, Helvetica, sans-serif" role="img"><title>{e(titulo(reg))}</title>'
+            + "".join(partes) + "</svg>\n")
+
+
+def grafico_alt(reg: dict) -> str:
+    lt = reg["leitura"]
+    return f"Gráfico de barras: {titulo(reg)}. {periodo(lt)}. Valores na tabela da página."
+
+
+def bloco_acoes(reg: dict | None, ficha: str, pre: str = "", h: str = "h2") -> str:
+    """Acompanhar (visão atual, ficha) e citar (registro permanente), com o CSV e
+    a imagem do recorte citado. Links comuns: funcionam sem JavaScript e pelo
+    teclado."""
+    seguir = (f'<p><a class="pill" href="{ficha}">Acompanhar este indicador</a> '
+              '<span class="mut">abre a ficha, que se atualiza a cada coleta com dado novo.</span></p>')
+    if not reg:
+        return (f'<section class="card" aria-labelledby="usar-t"><{h} id="usar-t">Acompanhar e citar</{h}>{seguir}'
+                '<p class="mut">Citar esta análise: o registro permanente ainda não existe para esta leitura.</p></section>')
+    base = reg["url"]
+    return (f'<section class="card" aria-labelledby="usar-t"><{h} id="usar-t">Acompanhar e citar</{h}>{seguir}'
+            f'<p><a class="pill" href="{base}">Citar esta análise</a> <span class="mut">link permanente: '
+            'continua mostrando este resultado, com estes dados e esta regra, mesmo depois de revisões.</span></p>'
+            f'<p class="mut" id="citacao-{e(reg["id"])}">{e(citacao(reg))}</p>'
+            f'<p><a class="pill" href="{base}dados.csv" download>Baixar CSV do recorte</a>'
+            f'<a class="pill" href="{base}grafico.svg" download>Baixar imagem do gráfico (SVG)</a></p></section>')
 
 
 def main() -> None:

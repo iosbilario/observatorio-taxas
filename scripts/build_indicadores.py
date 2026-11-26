@@ -451,6 +451,7 @@ def bloco_leitura(codigo: int, pts: list[dict]) -> str:
     else:
         perm = ('<p class="mut">A divulgação permanente desta competência ainda não foi registrada: ela é criada '
                 'quando a coleta grava a versão dos dados.</p>')
+    perm += D.bloco_acoes(reg, f"{url_pagina(codigo)}#leitura", h="h3")
     da_serie = D.ordenadas([p for p in pubs if p["serie"] == chave])
     lista = "".join(f'<li><a href="{p["url"]}">{e(D.titulo(p))}</a></li>' for p in da_serie[:12])
     anteriores = (f'<h3>Divulgações do {e(D.SERIES[chave]["nome"])}</h3><ul>{lista}</ul>'
