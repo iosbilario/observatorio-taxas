@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- ===================== Segurança (site estático, sem headers HTTP) ===================== -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data: https://observatoriotaxas.goatcounter.com https://carimbo.tec.br; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self' https://gc.zgo.at 'sha256-8qh1qN0OU2G9CI0EmVqbdqHd1+x92hZmYO80BSiJgDc=' 'sha256-2D0yPViBCVtZ3BwKbogRO2iJy8HeYkshUpJ8803uzQg=' 'sha256-XJvooG45FZiUl+ADNCuE+8gp6VlI9crOQzhnpkUbo7w='; connect-src 'self' https://observatoriotaxas.goatcounter.com; frame-src 'self'" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data: https://observatoriotaxas.goatcounter.com https://carimbo.tec.br; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self' https://gc.zgo.at 'sha256-8qh1qN0OU2G9CI0EmVqbdqHd1+x92hZmYO80BSiJgDc=' 'sha256-2D0yPViBCVtZ3BwKbogRO2iJy8HeYkshUpJ8803uzQg=' 'sha256-gO0xs4ise/cWfgpkYsBTBfI4TAPhT6Hl9s1hg/+tE9o='; connect-src 'self' https://observatoriotaxas.goatcounter.com; frame-src 'self'" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <script>if (top !== self) { try { top.location = self.location; } catch (e) { document.documentElement.style.display = "none"; } }</script>
 
@@ -923,12 +923,12 @@ footer a{color:var(--ink-2)}
           if (!(i1 > i0)) { res.textContent = "O mês final deve ser posterior ao inicial."; return; }
           fator = 1;
           for (let k = i0 + 1; k <= i1; k++) fator *= 1 + ix.pts[k].v / 100;
-          const f6 = fator.toLocaleString("pt-BR", { minimumFractionDigits: 6, maximumFractionDigits: 6 });
+          const f6 = Demo ? Demo.fatorTxt(fator) : fator.toLocaleString("pt-BR", { minimumFractionDigits: 10, maximumFractionDigits: 10 });
           rotulo = "Valor corrigido";
           desc = `${ix.nome} de ${ix.pts[i0].label} a ${ix.pts[i1].label}: ${fmtPct((fator - 1) * 100)} · fator ${f6}`;
           url = `correcao/${ix.key}/`; urlTxt = `Abrir a calculadora completa de correção pelo ${ix.nome}`;
         }
-        const novo = modo === "anual" && Demo ? Demo.calcula(v, fator).novo : v * fator, dif = novo - v;
+        const novo = Demo ? Demo.calcula(v, fator).novo : v * fator, dif = novo - v;
         res.innerHTML = `${rotulo}: <span class="novo">R$ ${fmtBRL(novo)}</span> ` +
           `<span>(${dif < 0 ? "−" : "+"}R$ ${fmtBRL(Math.abs(dif))})</span><br/>` +
           `<span>${esc(desc)}</span><br/>` +

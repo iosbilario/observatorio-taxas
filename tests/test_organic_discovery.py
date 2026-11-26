@@ -333,9 +333,15 @@ class TestDadosEFormulas(unittest.TestCase):
             self.assertTrue(chave.startswith("reajuste/"), chave)
             html = (DOCS / chave / "index.html").read_text(encoding="utf-8")
             self.assertRegex(html, r'<p class="big[^"]*">' + re.escape(v["acumulado"]) + "</p>", chave)
-            self.assertIn(f"<b>{v['fator']}</b>", html, chave)
             if "fator_js" in v:
                 self.assertIn(f'data-fator="{v["fator_js"]}"', html, chave)
+                # O fator da linha de base (6 casas) é o mesmo número; o site
+                # agora o escreve com 10 casas (build_pages.CASAS_FATOR).
+                f = float(v["fator_js"])
+                self.assertEqual(fmt(f, 6), v["fator"], chave)
+                self.assertIn(f"<b>{build_pages.fator_txt(f)}</b>", html, chave)
+            else:
+                self.assertRegex(html, r"<b>" + re.escape(v["fator"]) + r"\d{4}</b>", chave)
 
     def test_correcao_mostra_ultimos_12_meses(self):
         """O destaque de correcao/<índice> é o acumulado das 12 variações mais
@@ -345,7 +351,7 @@ class TestDadosEFormulas(unittest.TestCase):
             ac = build_pages.acumulado(hist[-12:])
             html = (DOCS / "correcao" / key / "index.html").read_text(encoding="utf-8")
             self.assertRegex(html, r'<p class="big[^"]*">' + re.escape(f"{fmt(ac)}%") + "</p>", key)
-            self.assertIn(f"<b>{fmt(1 + ac / 100, 6)}</b>", html, key)
+            self.assertIn(f"<b>{build_pages.fator_txt(1 + ac / 100)}</b>", html, key)
 
     def test_dados_centrais_no_html_inicial_de_todas_as_paginas_de_mes(self):
         """Indicador, competência, variação do mês, acumulado, fator, produtor
@@ -365,7 +371,7 @@ class TestDadosEFormulas(unittest.TestCase):
                 ref_txt = build_pages.mes_ano(ref)
                 self.assertIn(f"O {info['nome']} de {ref_txt} variou {fmt(j[-1]['valor'])}% no mês", txt, rel)
                 self.assertIn(f"acumulou {fmt(ac)}%", txt, rel)
-                self.assertIn(fmt(1 + ac / 100, 6), txt, rel)
+                self.assertIn(build_pages.fator_txt(1 + ac / 100), txt, rel)
                 self.assertIn(fonte["produtor"]["nome"], txt, rel)
                 self.assertIn(f"série {info['codigo']}", txt, rel)
                 self.assertIn(f"{build_pages.mes_ano(j[0]['dt'])} a {ref_txt}", txt, rel)

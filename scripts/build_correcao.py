@@ -28,7 +28,7 @@ from pathlib import Path
 
 import yaml
 
-from build_pages import FAVICON, WEBSITE_ID, jsonld_script, migalhas
+from build_pages import FAVICON, WEBSITE_ID, aplica_fator, fator_txt, jsonld_script, migalhas
 from fontes import FONTES, LINHA_PROCEDENCIA
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -261,8 +261,11 @@ function calc(){
   if(i1<=i0){res.textContent='O mês final deve ser posterior ao inicial.';return;}
   var fator=1.0;
   for(var k=i0+1;k<=i1;k++){fator*=1+pts[k].v/100;}
-  var novo=v*fator, ac=(fator-1)*100;
-  var f6=fator.toLocaleString('pt-BR',{minimumFractionDigits:6,maximumFractionDigits:6});
+  // Mesma regra de docs/demonstrativo.js: fator com 10 casas e a conta feita
+  // com o fator exibido, em centavos inteiros, meio centavo para cima.
+  var fInt=BigInt(Math.round(fator*1e10)), esc=BigInt(1e10);
+  var novo=Number((BigInt(Math.round(v*100))*fInt+esc/BigInt(2))/esc)/100, ac=(fator-1)*100;
+  var f6=(Number(fInt)/1e10).toLocaleString('pt-BR',{minimumFractionDigits:10,maximumFractionDigits:10});
   res.innerHTML='Valor corrigido: <b>R$ '+novo.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})+'</b>'
     +'<br><span class="mut">'+SERIES[key].nome+' acumulado no período: '+ac.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})+'%'
     +' · fator '+f6+' · de '+pts[i0].label+' a '+pts[i1].label+'</span>';
@@ -313,12 +316,12 @@ def build_index_page(key: str, info: dict, pts: list[dict]) -> tuple[str, str]:
     fator = fator_periodo(pts, start, last)
     ac = (fator - 1.0) * 100.0
     ref_ini, ref_fim = mes_ano(pts[start]["dt"]), mes_ano(pts[last]["dt"])
-    exemplo = 1000.0 * fator
+    exemplo = aplica_fator(1000.0, fator)
 
     title = f"Correção monetária pelo {nome}: atualize valores entre datas"
     desc = (f"Calculadora de correção monetária pelo {nome}: atualize um valor entre duas datas com "
             f"o índice {fonte['produtor']['do']}, obtido no SGS do Banco Central. Nos 12 meses até {ref_fim}, "
-            f"o {nome} acumulou {fmt_num(ac)}% (fator {fmt_num(fator, 6)}).")
+            f"o {nome} acumulou {fmt_num(ac)}% (fator {fator_txt(fator)}).")
 
     perguntas = [
         (f"Como corrigir um valor pelo {nome} entre duas datas?",
@@ -328,7 +331,7 @@ def build_index_page(key: str, info: dict, pts: list[dict]) -> tuple[str, str]:
          f"do SGS do Banco Central."),
         (f"Quanto o {nome} acumulou nos 12 meses até {ref_fim}?",
          f"Do mês seguinte a {ref_ini} até {ref_fim} (12 variações mensais), o {nome} acumulou "
-         f"{fmt_num(ac)}% (fator {fmt_num(fator, 6)}). Exemplo: R$ 1.000,00 corrigidos passam a "
+         f"{fmt_num(ac)}% (fator {fator_txt(fator)}). Exemplo: R$ 1.000,00 corrigidos passam a "
          f"R$ {fmt_num(exemplo)}."),
         (f"Quem calcula o {nome}?",
          f"O {nome} ({fonte['nome_completo']}) é produzido {fonte['produtor']['pelo']}. O Banco Central "
@@ -356,7 +359,7 @@ def build_index_page(key: str, info: dict, pts: list[dict]) -> tuple[str, str]:
 <div class="card">
 <p class="mut">{nome} acumulado nos 12 meses até {ref_fim}</p>
 <p class="big">{fmt_num(ac)}%</p>
-<p>Fator: <b>{fmt_num(fator, 6)}</b> · Exemplo: R$ 1.000,00 → <b>R$ {fmt_num(exemplo)}</b></p>
+<p>Fator: <b>{fator_txt(fator)}</b> · Exemplo: R$ 1.000,00 → <b>R$ {fmt_num(exemplo)}</b></p>
 <p class="mut">Índice tipicamente usado em {info['uso']}. Memória de cálculo mês a mês na página do
 <a href="{BASE_URL}/reajuste/{slug_reaj}/">{nome} de {ref_fim}</a>.</p>
 </div>

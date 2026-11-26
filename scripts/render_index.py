@@ -30,6 +30,7 @@ from urllib.parse import quote
 import sys
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from tempo_series import rotulo_card, vigencia_meta  # noqa: E402
+from build_pages import aplica_fator  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "docs" / "data"
@@ -222,7 +223,7 @@ def _frase(b: dict, pts: list[dict]) -> str:
             fator *= 1 + p["v"] / 100
         ac = (fator - 1) * 100
         return (f"O IGP-M variou <b>{v}%</b> em {_mes(ref)} e acumula {fmt_num(ac, 2)}% em 12 meses. "
-                f"Um aluguel de R$ 2.000,00 reajustado por ele vai a R$ {fmt_num(2000 * fator, 2)}.")
+                f"Um aluguel de R$ 2.000,00 reajustado por ele vai a R$ {fmt_num(aplica_fator(2000, fator), 2)}.")
     if b["cod"] == 24369:
         return (f"A desocupação ficou em <b>{v}%</b> no trimestre móvel até {_mes(ref)}, "
                 "segundo a PNAD Contínua do IBGE.")

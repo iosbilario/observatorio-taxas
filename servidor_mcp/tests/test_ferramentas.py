@@ -8,6 +8,7 @@ from __future__ import annotations
 import json
 import os
 import re
+from decimal import ROUND_HALF_UP, Decimal
 import unittest
 from contextlib import contextmanager
 from pathlib import Path
@@ -192,8 +193,10 @@ class TestCalculos(unittest.TestCase):
         r = f.calculate_adjustment(D, 1000.0, "selic-mensal", "2025-10", "2026-10")
         self.assertEqual(len(r["memoria_de_calculo"]), 12)
         self.assertAlmostEqual(r["memoria_de_calculo"][-1]["fator_acumulado"], r["fator"], places=12)
-        self.assertEqual(r["arredondado"]["valor_final"], f"{1000.0 * r['fator']:.2f}")
-        self.assertEqual(r["arredondado"]["fator"], f"{r['fator']:.6f}")
+        fd = Decimal(r["arredondado"]["fator"])
+        self.assertEqual(fd, Decimal(repr(r["fator"])).quantize(Decimal("1e-10"), ROUND_HALF_UP))
+        self.assertEqual(r["arredondado"]["valor_final"],
+                         f"{(Decimal(1000) * fd).quantize(Decimal('0.01'), ROUND_HALF_UP):.2f}")
 
     def test_calculo_rejeita_serie_que_nao_e_variacao_mensal(self):
         e = erro(f.calculate_adjustment, D, 1000.0, "dolar", "2025-01", "2025-06")

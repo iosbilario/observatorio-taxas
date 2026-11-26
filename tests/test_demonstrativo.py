@@ -149,6 +149,38 @@ class TestDemonstrativo(unittest.TestCase):
 
 class TestPaginas(unittest.TestCase):
 
+    @unittest.skipUnless(NODE, "node não encontrado")
+    def test_todo_trecho_que_ensina_a_conta_usa_o_fator_do_demonstrativo(self):
+        """Página do mês: todo fator escrito (resposta, card, FAQ, descrição) é o
+        fatorTxt do demonstrativo, e o exemplo de R$ 2.000,00 é o calcula dele.
+        Correção monetária: o mesmo, com o exemplo de R$ 1.000,00."""
+        casos = []
+        for sub, valor in (("reajuste", 2000), ("correcao", 1000)):
+            for p in sorted((DOCS / sub).glob("*/index.html")):
+                html = p.read_text(encoding="utf-8")
+                fatores = set(re.findall(r"fator(?: de reajuste)?:? (?:<b>)?(\d+,\d+)", html))
+                exemplos = set(re.findall(r"(?:passa[m]? a|→ <b>) ?R\$ ([\d.]+,\d\d)", html))
+                if not fatores:
+                    continue
+                m = re.search(r'data-fator="([0-9.]+)"', html)
+                casos.append([p.parent.name, sub, valor, m and float(m.group(1)), sorted(fatores), sorted(exemplos)])
+        self.assertGreater(len([c for c in casos if c[1] == "reajuste"]), 500)
+        self.assertGreater(len([c for c in casos if c[1] == "correcao"]), 3)
+        for nome, sub, valor, f, fatores, exemplos in casos:
+            self.assertEqual(len(fatores), 1, (nome, fatores))
+            self.assertEqual(len(fatores[0].split(",")[1]), 10, (nome, fatores))
+            self.assertLessEqual(len(exemplos), 1, (nome, exemplos))
+        reaj = [c for c in casos if c[3] is not None]
+        r = js("return casos.map(([n,s,v,f])=>[D.fatorTxt(f), D.br(D.calcula(v,f).novo,2)]);", casos=reaj)
+        for (nome, _, _, _, fatores, exemplos), (ftxt, novo) in zip(reaj, r):
+            self.assertEqual(fatores, [ftxt], nome)
+            self.assertEqual(exemplos, [novo], nome)
+        for nome, sub, valor, _, fatores, exemplos in casos:
+            if exemplos:
+                fd = Decimal(fatores[0].replace(",", "."))
+                esperado = (Decimal(valor) * fd).quantize(Decimal("0.01"), ROUND_HALF_UP)
+                self.assertEqual(Decimal(exemplos[0].replace(".", "").replace(",", ".")), esperado, nome)
+
     def test_paginas_de_mes_usam_o_componente(self):
         paginas = sorted((DOCS / "reajuste").glob("*-*-*/index.html"))
         self.assertGreater(len(paginas), 500)
