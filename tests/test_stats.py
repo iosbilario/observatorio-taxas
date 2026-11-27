@@ -67,6 +67,14 @@ class Coletor(unittest.TestCase):
         for p, s in casos.items():
             self.assertEqual(FS.secao(p), s, p)
 
+    def test_nomes_de_tela_pais_e_origem_em_portugues(self):
+        self.assertEqual(FS.nome_detalhe("sizes", {"id": "phone", "name": ""}), "Celular")
+        self.assertEqual(FS.nome_detalhe("sizes", {"id": "desktophd", "name": ""}), "Computador (tela grande)")
+        self.assertEqual(FS.nome_detalhe("locations", {"id": "BR", "name": "Brazil"}), "Brasil")
+        self.assertEqual(FS.nome_detalhe("locations", {"id": "NO", "name": "Norway"}), "Norway")
+        self.assertEqual(FS.nome_detalhe("toprefs", {"id": "", "name": ""}), "Acesso direto ou sem origem")
+        self.assertEqual(FS.nome_detalhe("browsers", {"name": "Chrome"}), "Chrome")
+
     def test_por_hora_corta_a_hora_em_andamento(self):
         serie = [{"data": "2026-11-26", "acessos": 0, "por_hora": list(range(24))},
                  {"data": "2026-11-27", "acessos": 0, "por_hora": [5] * 24}]
