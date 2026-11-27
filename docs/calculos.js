@@ -117,11 +117,14 @@
      e o saldo é composto dia a dia. O percentual é aplicado à taxa de cada
      dia ANTES da composição. Dias sem observação não existem (não há
      interpolação). */
+  // Um limite só para o cálculo e para a leitura do link: o link que a própria
+  // página gera precisa reabrir com o mesmo valor.
+  var VALOR_MAX_SIMULADOR = 1e12;
   function simularCDI(diario, inicio, fim, percentual, valor) {
     if (!diaValido(inicio) || !diaValido(fim)) return { erro: "Datas inválidas." };
     if (fim <= inicio) return { erro: "A data de resgate deve ser posterior à de aplicação." };
     if (!(percentual > 0 && percentual <= 300)) return { erro: "Percentual do CDI deve estar entre 0,01% e 300%." };
-    if (!(valor > 0 && valor <= 1e12)) return { erro: "Valor inicial inválido." };
+    if (!(valor > 0 && valor <= VALOR_MAX_SIMULADOR)) return { erro: "Valor inicial inválido." };
     if (!diario.length) return { erro: "Série do CDI indisponível." };
     var primeiro = diario[0].d, ultimo = diario[diario.length - 1].d;
     if (inicio < primeiro) return { erro: "A série do CDI começa em " + primeiro + "." };
@@ -228,7 +231,7 @@
   }
   function lerParamsSimulador(qs) {
     var p = {}, v;
-    if ((v = numero(qs.get("valor"), 0.01, 1e9)) !== null) p.valor = v;
+    if ((v = numero(qs.get("valor"), 0.01, VALOR_MAX_SIMULADOR)) !== null) p.valor = v;
     if ((v = numero(qs.get("percentual"), 0.01, 300)) !== null) p.percentual = v;
     if (PERIODOS[qs.get("periodo")]) p.periodo = qs.get("periodo");
     if (diaValido(qs.get("de")) && diaValido(qs.get("ate"))) { p.de = qs.get("de"); p.ate = qs.get("ate"); delete p.periodo; }
@@ -259,7 +262,7 @@
     historico: historico, porMes: porMes, compor: compor, comparar: comparar,
     simularCDI: simularCDI, aliquotaIR: aliquotaIR, aliquotaIOF: aliquotaIOF, tributosCDB: tributosCDB,
     centavos: centavos, inflacaoPeriodo: inflacaoPeriodo, rentabilidadeReal: rentabilidadeReal,
-    br: br, csv: csv, csvSimulacao: csvSimulacao, lerParamsSimulador: lerParamsSimulador,
+    br: br, csv: csv, csvSimulacao: csvSimulacao, lerParamsSimulador: lerParamsSimulador, VALOR_MAX_SIMULADOR: VALOR_MAX_SIMULADOR,
     lerParamsComparador: lerParamsComparador, periodoParaDatas: periodoParaDatas, PERIODOS: PERIODOS,
     INDICADORES: INDICADORES,
   };
