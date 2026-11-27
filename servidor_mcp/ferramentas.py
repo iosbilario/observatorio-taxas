@@ -101,7 +101,7 @@ def _procedencia(cod: int) -> dict:
 # GoatCounter, quem chega por um link de resposta do ChatGPT ou do Claude
 # aparece separado de quem chega de chatgpt.com por outro caminho. Os JSON de
 # dados ficam sem marcação (não são páginas e não passam pelo contador).
-ORIGEM_MCP = "utm_source=observatorio-mcp"
+ORIGEM_MCP = "utm_source=observatorio-mcp&utm_campaign=mcp"
 
 
 def com_origem(url: str) -> str:

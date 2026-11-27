@@ -242,7 +242,7 @@ class TestOrigemDosLinks(unittest.TestCase):
     def test_paginas_levam_a_origem_mcp_e_dados_nao(self):
         from servidor_mcp import ferramentas as F
         self.assertEqual(F.com_origem("https://observatoriodetaxas.tec.br/reajuste/ipca-mar%C3%A7o-2026/"),
-                         "https://observatoriodetaxas.tec.br/reajuste/ipca-mar%C3%A7o-2026/?utm_source=observatorio-mcp")
+                         "https://observatoriodetaxas.tec.br/reajuste/ipca-mar%C3%A7o-2026/?utm_source=observatorio-mcp&utm_campaign=mcp")
         self.assertEqual(F.com_origem("https://observatoriodetaxas.tec.br/#selic"),
-                         "https://observatoriodetaxas.tec.br/?utm_source=observatorio-mcp#selic")
-        self.assertEqual(F.com_origem("https://x/?a=1"), "https://x/?a=1&utm_source=observatorio-mcp")
+                         "https://observatoriodetaxas.tec.br/?utm_source=observatorio-mcp&utm_campaign=mcp#selic")
+        self.assertEqual(F.com_origem("https://x/?a=1"), "https://x/?a=1&utm_source=observatorio-mcp&utm_campaign=mcp")
