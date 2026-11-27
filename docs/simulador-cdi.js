@@ -59,12 +59,19 @@
     // Evento do GoatCounter quando a PESSOA faz um cálculo (envio, mudança no
     // formulário ou atalho). O cálculo automático ao abrir a página não conta.
     // Uma vez por página aberta.
-    var contou = false;
-    function eventoCalculo() {
-      if (contou) return; contou = true;
+    // Dois eventos separados, uma vez cada por página aberta:
+    // - resultado-simulador-cdi: o resultado inicial apareceu (a página
+    //   carregou a série e calculou sozinha, sem a pessoa tocar no formulário);
+    // - calculo-simulador-cdi: a pessoa mexeu no formulário e calculou.
+    var contados = {};
+    function evento(path, title, tentativa) {
+      if (contados[path]) return;
       var g = window.goatcounter;
-      if (g && g.count) g.count({ path: "calculo-simulador-cdi", title: "Cálculo no simulador de CDI", event: true });
+      if (g && g.count) { contados[path] = true; g.count({ path: path, title: title, event: true }); return; }
+      // count.js carrega de forma assíncrona: espera até ~5 s antes de desistir.
+      if ((tentativa || 0) < 10) setTimeout(function () { evento(path, title, (tentativa || 0) + 1); }, 500);
     }
+    function eventoCalculo() { evento("calculo-simulador-cdi", "Cálculo no simulador de CDI"); }
     function render(daPessoa) {
       var st = estado(), box = $("resultado");
       box.textContent = "";
@@ -74,6 +81,7 @@
       if (r.erro) { box.appendChild(el("p", r.erro, "resultado erro")); $("memoria").textContent = ""; atual = null; return; }
       atual = r;
       if (daPessoa) eventoCalculo();
+      else evento("resultado-simulador-cdi", "Resultado inicial do simulador de CDI");
       var tr = st.modo === "liquido" ? C.tributosCDB(r.rendimentoBruto, r.diasCorridos) : null;
       var final = r.valorBruto - (tr ? tr.total : 0);
       var liquido = final - st.valor;

@@ -54,6 +54,7 @@ def api_falsa(dias: list[str]):
                 {"path": "/indicadores/cdi/", "count": 113}, {"path": "/simulador-cdi/", "count": 10},
                 {"path": "/reajuste/igpm-outubro-2026/", "count": 7},
                 {"path": "cta-simulador-cdi", "count": 4, "event": True},
+                {"path": "resultado-simulador-cdi", "count": 8, "event": True},
                 {"path": "calculo-simulador-cdi", "count": 2, "event": True}]})
         if url.endswith("/stats/toprefs"):
             return Resposta({"more": False, "stats": [
@@ -121,7 +122,7 @@ class Coletor(unittest.TestCase):
         self.assertEqual(s["totais"]["30d_anteriores"]["visitantes"], 24 * 31)
         self.assertEqual(s["secoes_30d"][0], {"secao": "Indicadores", "acessos": 125})
         self.assertIn({"secao": "Evolução do contrato", "acessos": 5}, s["secoes_30d"])
-        self.assertEqual(set(s["detalhes_30d"]), {"origens", "navegadores", "sistemas", "telas", "paises"})
+        self.assertEqual(set(s["detalhes_30d"]), {"origens", "navegadores", "sistemas", "telas", "paises", "campanhas"})
         self.assertEqual(len(s["detalhes_30d"]["origens"]), FS.TOP_DETALHE)
         self.assertEqual(s["detalhes_30d"]["navegadores"][0], {"nome": "browsers-0", "acessos": 20})
         self.assertEqual(s["detalhes_30d"]["origens"][1], {"nome": "Acesso direto ou sem origem", "acessos": 90})
@@ -137,7 +138,8 @@ class Coletor(unittest.TestCase):
         self.assertGreaterEqual(s["funis"]["desde"], FS.EVENTOS_DESDE)   # nunca antes da medição
         self.assertTrue(s["funis"]["completo"])
         cdi = next(f for f in s["funis"]["caminhos"] if f["id"] == "cdi")
-        self.assertEqual([e["visitantes"] for e in cdi["etapas"]], [113, 4, 10, 2])
+        self.assertEqual([e["visitantes"] for e in cdi["etapas"]], [113, 4, 10, 8, 2])
+        self.assertEqual(cdi["etapas"][3]["rotulo"], "Viram o resultado inicial (sem mexer)")
         igpm = next(f for f in s["funis"]["caminhos"] if f["id"] == "igpm")
         self.assertEqual(igpm["etapas"][2]["visitantes"], 30 + 7)
         self.assertNotIn("cta-simulador-cdi", json.dumps(s["top_paginas"]))   # evento não é página
