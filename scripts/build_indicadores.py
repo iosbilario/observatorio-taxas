@@ -321,6 +321,11 @@ def e(s: str) -> str:
 
 
 # ---------------------------------------------------------------------- páginas
+CSS_CONVITE = ('<style>.convite{margin:.2rem 0 1.2rem}.convite-a{display:inline-block;background:var(--carimbo);'
+               'color:var(--cofre);border:0;border-radius:8px;padding:.6rem 1rem;font-weight:600}'
+               '.convite-a:hover{border:0;filter:brightness(1.08)}</style>\n')
+
+
 def head(title: str, desc: str, canonical: str, jsonld: str, crumb: str) -> str:
     return f"""<!DOCTYPE html>
 <html lang="pt-BR">
@@ -614,11 +619,23 @@ def pagina(codigo: int, pts: list[dict], grupo: str) -> str:
                         f'em andamento: {valor(codigo, parcial["valor"])} acumulado até a última coleta. Os números '
                         f'abaixo usam só meses fechados.</p>\n')
 
+    # Convite logo abaixo da taxa, medido no GoatCounter (clique no link e,
+    # na ferramenta, o cálculo feito pela pessoa): ver FUNIS em fetch_stats.py.
+    convite = ""
+    if codigo == 4389:
+        convite = ('<p class="convite"><a class="convite-a" href="/simulador-cdi/?valor=1000&amp;percentual=100&amp;periodo=12m" '
+                   'data-goatcounter-click="cta-simulador-cdi" data-goatcounter-title="Convite do CDI para o simulador">'
+                   'Simule quanto R$ 1.000 rende a 100% do CDI</a></p>\n')
+    elif codigo == 189:
+        convite = (f'<p class="convite"><a class="convite-a" href="{BASE_URL}/reajuste/igpm-{slug_mes(ult["dt"])}/" '
+                   'data-goatcounter-click="cta-reajuste-igpm" data-goatcounter-title="Convite do IGP-M para o reajuste">'
+                   'Calcule o reajuste do aluguel pelo IGP-M</a></p>\n')
+
     corpo = f"""<article>
 <h1>{e(nome_curto)} hoje</h1>
 <p class="lead">{resposta}</p>
 {nota_parcial}<div class="kpis">{kpi_html}</div>
-{"".join(f"<p>{e(f)}</p>" for f in frases)}
+{convite}{"".join(f"<p>{e(f)}</p>" for f in frases)}
 {bloco_proximo_evento(codigo)}
 {bloco_leitura(codigo, pts)}
 {bloco_mudancas(codigo)}
@@ -650,6 +667,8 @@ def pagina(codigo: int, pts: list[dict], grupo: str) -> str:
 </section>
 </article>"""
     produtores = f"{m['nome']} produzido por {prod['nome']} ({prod['sigla']})"
+    if convite:   # CSS do convite só nas fichas que o têm, para não mexer nas outras páginas
+        corpo = CSS_CONVITE + corpo
     return head(title, desc, url, jsonld, crumb_html) + corpo + rodape(produtores)
 
 

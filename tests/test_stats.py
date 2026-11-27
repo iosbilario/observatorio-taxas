@@ -50,7 +50,17 @@ def api_falsa(dias: list[str]):
             return Resposta({"hits": [
                 {"path": "/", "count": 50}, {"path": "/reajuste/igpm-outubro-2026/", "count": 30},
                 {"path": "/reajuste/evolucao/", "count": 5}, {"path": "/indicadores/ipca/", "count": 12},
-                {"path": "/embed.html?s=432", "count": 3}, {"path": "/xyz", "count": 1}]})
+                {"path": "/embed.html?s=432", "count": 3}, {"path": "/xyz", "count": 1},
+                {"path": "/indicadores/cdi/", "count": 113}, {"path": "/simulador-cdi/", "count": 10},
+                {"path": "/reajuste/igpm-outubro-2026/", "count": 7},
+                {"path": "cta-simulador-cdi", "count": 4, "event": True},
+                {"path": "calculo-simulador-cdi", "count": 2, "event": True}]})
+        if url.endswith("/stats/toprefs"):
+            return Resposta({"more": False, "stats": [
+                {"name": "chatgpt.com", "count": 132}, {"name": "", "count": 90}, {"name": "Google", "count": 58},
+                {"name": "observatoriodetaxas.tec.br/index.html", "count": 24},
+                {"name": "observatoriodetaxas.tec.br", "count": 18}] +
+                [{"name": f"site{i}.com", "count": 1} for i in range(12)]})
         pagina = url.rsplit("/", 1)[1]
         return Resposta({"stats": [{"name": f"{pagina}-{i}", "count": 20 - i} for i in range(15)]})
     return get
@@ -98,11 +108,25 @@ class Coletor(unittest.TestCase):
             FS.main()
             s = json.loads((Path(tmp) / "docs" / "stats.json").read_text(encoding="utf-8"))
         self.assertEqual(s["totais"]["30d_anteriores"]["visitantes"], 24 * 31)
-        self.assertEqual(s["secoes_30d"][0], {"secao": "Home", "acessos": 50})
+        self.assertEqual(s["secoes_30d"][0], {"secao": "Indicadores", "acessos": 125})
         self.assertIn({"secao": "Evolução do contrato", "acessos": 5}, s["secoes_30d"])
         self.assertEqual(set(s["detalhes_30d"]), {"origens", "navegadores", "sistemas", "telas", "paises"})
         self.assertEqual(len(s["detalhes_30d"]["origens"]), FS.TOP_DETALHE)
-        self.assertEqual(s["detalhes_30d"]["origens"][0], {"nome": "toprefs-0", "acessos": 20})
+        self.assertEqual(s["detalhes_30d"]["navegadores"][0], {"nome": "browsers-0", "acessos": 20})
+        self.assertEqual(s["detalhes_30d"]["origens"][1], {"nome": "Acesso direto ou sem origem", "acessos": 90})
+        o = s["origens_30d"]
+        self.assertEqual(o["totais"], {"externo": 132 + 58 + 12, "direto": 90, "interno": 42})
+        self.assertEqual(o["denominador"], 24 * 31)
+        self.assertTrue(o["completo"])
+        self.assertEqual([x["nome"] for x in o["externas"][:2]], ["chatgpt.com", "Google"])
+        self.assertEqual(len(o["externas"]), FS.TOP_DETALHE)
+        self.assertEqual(o["outros_externos"], 4)               # 12 sites de 1: 8 no top, 4 em "Outros"
+        self.assertNotIn("observatoriodetaxas", json.dumps(o["externas"]))
+        cdi = next(f for f in s["funis_30d"] if f["id"] == "cdi")
+        self.assertEqual([e["visitantes"] for e in cdi["etapas"]], [113, 4, 10, 2])
+        igpm = next(f for f in s["funis_30d"] if f["id"] == "igpm")
+        self.assertEqual(igpm["etapas"][2]["visitantes"], 30 + 7)
+        self.assertNotIn("cta-simulador-cdi", json.dumps(s["top_paginas"]))   # evento não é página
         self.assertLessEqual(len(s["ultimas_48h"]), 48)
         self.assertIsNotNone(s["ultima_hora"])
         self.assertEqual(len(s["media_por_hora_do_dia"]), 24)
@@ -151,7 +175,10 @@ async function roda(stats) {
   const novo = Object.assign({}, antigo, { totais: { all_time: { acessos: 10, visitantes: 5 }, ultimos_30d: { acessos: 8, visitantes: 4 }, "30d_anteriores": { visitantes: 2 } },
                    ultima_hora: { hora: "2026-11-27T09:00", acessos: 7 }, ultimas_48h: [{ hora: "2026-11-27T09:00", acessos: 7 }],
                    media_por_hora_do_dia: Array.from({ length: 24 }, (_, h) => h === 14 ? 3 : 1),
-                   secoes_30d: [{ secao: "Home", acessos: 5 }], detalhes_30d: { origens: [{ nome: "google.com", acessos: 3 }] } });
+                   secoes_30d: [{ secao: "Home", acessos: 5 }], detalhes_30d: {},
+                   origens_30d: { denominador: 4, completo: true, totais: { externo: 3, direto: 1, interno: 2 }, externas: [{ nome: "google.com", acessos: 3 }], outros_externos: 0 },
+                   funis_30d: [{ id: "cdi", nome: "CDI → simulador", etapas: [{ tipo: "pagina", rotulo: "Visitantes da página do CDI", visitantes: 113 }, { tipo: "evento", rotulo: "Fizeram um cálculo", visitantes: 2 }] }],
+                   eventos_desde: "2026-11-27" });
   process.stdout.write(JSON.stringify({ antigo: await roda(antigo), novo: await roda(novo) }));
 })();
 """
@@ -169,6 +196,10 @@ async function roda(stats) {
         self.assertIn("visitantes das 09h às 09h59 de 27/11", out["novo"])
         self.assertIn("das 14h às 14h59", out["novo"])
         self.assertIn("google.com", out["novo"])
+        self.assertIn("Percentuais sobre os 4 visitantes", out["novo"])
+        self.assertIn("Navegação dentro do Observatório", out["novo"])
+        self.assertIn("CDI → simulador", out["novo"])
+        self.assertIn("medidos desde 27/11/2026", out["novo"])
         self.assertIn("Média por dia nos 30 dias: 4", out["antigo"])
         self.assertIn("Média das 24 horas: 1,1", out["novo"])
 

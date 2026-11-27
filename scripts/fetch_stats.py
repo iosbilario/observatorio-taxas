@@ -145,6 +145,93 @@ def nome_detalhe(pagina: str, s: dict) -> str:
     return nome or "Desconhecido"
 
 
+# Origem dos acessos: o painel separa quem veio de fora, quem chegou sem
+# referência (link digitado, app, favorito) e a navegação dentro do próprio site.
+DOMINIO_PROPRIO = "observatoriodetaxas.tec.br"
+LIMITE_ORIGENS = 100   # pede mais que o top 10 para classificar e fechar o total
+
+# Funis medidos com eventos do GoatCounter (desde 27/11/2026): página de
+# entrada, clique no convite, página da ferramenta e cálculo feito pela pessoa.
+EVENTOS_DESDE = "2026-11-27"
+FUNIS = [
+    {"id": "cdi", "nome": "CDI → simulador", "etapas": [
+        ("pagina", "indicadores/cdi", "Visitantes da página do CDI"),
+        ("evento", "cta-simulador-cdi", "Clicaram em \u201cSimule quanto R$ 1.000 rende\u201d"),
+        ("pagina", "simulador-cdi", "Visitantes do simulador"),
+        ("evento", "calculo-simulador-cdi", "Fizeram um cálculo no simulador"),
+    ]},
+    {"id": "igpm", "nome": "IGP-M → reajuste", "etapas": [
+        ("pagina", "indicadores/igp-m", "Visitantes da página do IGP-M"),
+        ("evento", "cta-reajuste-igpm", "Clicaram em \u201cCalcule o reajuste do aluguel\u201d"),
+        ("prefixo", "reajuste/igpm-", "Visitantes das páginas de reajuste pelo IGP-M"),
+        ("evento", "calculo-reajuste-igpm", "Calcularam um reajuste pelo IGP-M"),
+    ]},
+]
+
+
+def tipo_origem(nome: str) -> str:
+    n = (nome or "").strip().lower()
+    if not n:
+        return "direto"
+    if n == DOMINIO_PROPRIO or n.startswith(DOMINIO_PROPRIO + "/") or n.endswith("." + DOMINIO_PROPRIO):
+        return "interno"
+    return "externo"
+
+
+def resume_origens(itens: list[dict], completo: bool, visitantes: int) -> dict:
+    """Origens separadas em externo, direto e interno, com o denominador explícito.
+
+    itens = [{nome, acessos}] cru de /stats/toprefs (nome vazio = sem referência).
+    'outros_externos' só é calculado quando a API devolveu a lista inteira
+    (completo), porque só então a soma fecha.
+    """
+    soma = {"externo": 0, "direto": 0, "interno": 0}
+    externas = []
+    for i in itens:
+        k = tipo_origem(i["nome"])
+        soma[k] += i["acessos"]
+        if k == "externo":
+            externas.append(i)
+    top = sorted(externas, key=lambda i: -i["acessos"])[:TOP_DETALHE]
+    return {
+        "denominador": visitantes,
+        "completo": completo,
+        "totais": soma,
+        "externas": top,
+        "outros_externos": soma["externo"] - sum(i["acessos"] for i in top) if completo else None,
+    }
+
+
+def norm_path(path: str) -> str:
+    p = (path or "").split("?")[0].split("#")[0].lower().strip("/")
+    if p.startswith("observatorio-taxas"):
+        p = p[len("observatorio-taxas"):].strip("/")
+    return p[:-len("/index.html")] if p.endswith("/index.html") else p
+
+
+def funis(paginas: list[dict], eventos: list[dict]) -> list[dict]:
+    """Contagem de cada etapa dos funis. São visitantes por página ou por
+    evento, contados separadamente: não é uma taxa de conversão exata."""
+    por_pagina: dict[str, int] = {}
+    for h in paginas:
+        k = norm_path(h["path"])
+        por_pagina[k] = por_pagina.get(k, 0) + h["count"]
+    por_evento = {h["path"].strip("/"): h["count"] for h in eventos}
+    saida = []
+    for f in FUNIS:
+        etapas = []
+        for tipo, chave, rotulo in f["etapas"]:
+            if tipo == "pagina":
+                n = por_pagina.get(chave, 0)
+            elif tipo == "prefixo":
+                n = sum(v for k, v in por_pagina.items() if k.startswith(chave))
+            else:
+                n = por_evento.get(chave, 0)
+            etapas.append({"tipo": tipo, "chave": chave, "rotulo": rotulo, "visitantes": n})
+        saida.append({"id": f["id"], "nome": f["nome"], "etapas": etapas})
+    return saida
+
+
 class GoatCounter:
     def __init__(self, code: str, token: str):
         self.base = f"https://{code}.goatcounter.com/api/v0"
@@ -182,14 +269,18 @@ class GoatCounter:
         return True, total, diaria
 
     def detalhe(self, pagina: str, start: str, end: str) -> list[dict]:
-        """Top de /stats/{pagina} (toprefs, browsers...): [{nome, acessos}, ...]."""
+        """Top de /stats/{pagina} (browsers, sizes...): [{nome, acessos}, ...]."""
+        itens, _ = self.detalhe_cru(pagina, start, end, TOP_DETALHE)
+        return [{"nome": nome_detalhe(pagina, s), "acessos": int(s.get("count") or 0)} for s in itens][:TOP_DETALHE]
+
+    def detalhe_cru(self, pagina: str, start: str, end: str, limite: int) -> tuple[list[dict], bool | None]:
+        """(itens crus de /stats/{pagina}, completo?). completo=None se falhou."""
         try:
-            data = self._get(f"/stats/{pagina}", {"start": start, "end": end, "limit": TOP_DETALHE})
+            data = self._get(f"/stats/{pagina}", {"start": start, "end": end, "limit": limite})
         except Exception as exc:  # noqa: BLE001
             print(f"[aviso] /stats/{pagina} falhou: {exc}", file=sys.stderr)
-            return []
-        return [{"nome": nome_detalhe(pagina, s), "acessos": int(s.get("count") or 0)}
-                for s in (data.get("stats") or [])][:TOP_DETALHE]
+            return [], None
+        return list(data.get("stats") or []), not data.get("more")
 
     def hits(self, start: str, end: str) -> list[dict]:
         """Páginas do período: [{path, count}, ...] (até HITS_LIMIT)."""
@@ -203,7 +294,7 @@ class GoatCounter:
             print(f"[aviso] mais de {HITS_LIMIT} páginas distintas; a cauda longa "
                   "foi truncada (não afeta grupos nem o Top 15).", file=sys.stderr)
         return [
-            {"path": h.get("path") or "", "count": int(h.get("count") or 0)}
+            {"path": h.get("path") or "", "count": int(h.get("count") or 0), "event": bool(h.get("event"))}
             for h in (data.get("hits") or [])
         ]
 
@@ -339,7 +430,16 @@ def main() -> None:
     _, vis_30d_ant, _ = gc.total(ini_60d, ini_30d)
     hits_tudo = gc.hits(ini_tudo, fim)
     hits_30d = gc.hits(ini_30d, fim)
-    detalhes = {chave: gc.detalhe(pagina, ini_30d, fim) for chave, pagina in DETALHES.items()}
+    detalhes = {chave: gc.detalhe(pagina, ini_30d, fim) for chave, pagina in DETALHES.items() if chave != "origens"}
+    refs, refs_completo = gc.detalhe_cru("toprefs", ini_30d, fim, LIMITE_ORIGENS)
+    origens = [{"nome": (s.get("name") or "").strip(), "acessos": int(s.get("count") or 0)} for s in refs]
+    detalhes["origens"] = [{"nome": nome_detalhe("toprefs", {"name": o["nome"]}), "acessos": o["acessos"]}
+                           for o in origens[:TOP_DETALHE]]
+    # Eventos (cliques e cálculos) chegam em /stats/hits com event=true: saem das
+    # contagens de páginas e vão só para os funis.
+    eventos_30d = [h for h in hits_30d if h.get("event")]
+    hits_tudo = [h for h in hits_tudo if not h.get("event")]
+    hits_30d = [h for h in hits_30d if not h.get("event")]
 
     if not gc.houve_sucesso:
         # API inteira indisponível: não sobrescreve um stats.json anterior bom.
@@ -374,6 +474,9 @@ def main() -> None:
         "ultima_hora": ultima_hora,
         "media_por_hora_do_dia": media_hora,
         "detalhes_30d": detalhes,
+        "origens_30d": resume_origens(origens, bool(refs_completo), vis_30d) if refs_completo is not None else None,
+        "funis_30d": funis(hits_30d, eventos_30d),
+        "eventos_desde": EVENTOS_DESDE,
     }
 
     write_json(DATA_DIR / "stats.json", stats)
