@@ -143,8 +143,71 @@
       }
     ]
   },
-  "gerado_em": "2026-11-27T13:04:42-03:00",
-  "gerado_em_fmt": "27/11/2026 às 13:04",
+  "eventos_desde": "2026-11-27",
+  "funis_30d": [
+    {
+      "etapas": [
+        {
+          "chave": "indicadores/cdi",
+          "rotulo": "Visitantes da página do CDI",
+          "tipo": "pagina",
+          "visitantes": 113
+        },
+        {
+          "chave": "cta-simulador-cdi",
+          "rotulo": "Clicaram em “Simule quanto R$ 1.000 rende”",
+          "tipo": "evento",
+          "visitantes": 0
+        },
+        {
+          "chave": "simulador-cdi",
+          "rotulo": "Visitantes do simulador",
+          "tipo": "pagina",
+          "visitantes": 10
+        },
+        {
+          "chave": "calculo-simulador-cdi",
+          "rotulo": "Fizeram um cálculo no simulador",
+          "tipo": "evento",
+          "visitantes": 0
+        }
+      ],
+      "id": "cdi",
+      "nome": "CDI → simulador"
+    },
+    {
+      "etapas": [
+        {
+          "chave": "indicadores/igp-m",
+          "rotulo": "Visitantes da página do IGP-M",
+          "tipo": "pagina",
+          "visitantes": 0
+        },
+        {
+          "chave": "cta-reajuste-igpm",
+          "rotulo": "Clicaram em “Calcule o reajuste do aluguel”",
+          "tipo": "evento",
+          "visitantes": 0
+        },
+        {
+          "chave": "reajuste/igpm-",
+          "rotulo": "Visitantes das páginas de reajuste pelo IGP-M",
+          "tipo": "prefixo",
+          "visitantes": 23
+        },
+        {
+          "chave": "calculo-reajuste-igpm",
+          "rotulo": "Calcularam um reajuste pelo IGP-M",
+          "tipo": "evento",
+          "visitantes": 0
+        }
+      ],
+      "id": "igpm",
+      "nome": "IGP-M → reajuste"
+    }
+  ],
+  "gerado_em": "2026-11-27T13:20:02-03:00",
+  "gerado_em_fmt": "27/11/2026 às 13:20",
   "grupos": {
     "Admin": {
       "acessos": 0,
@@ -199,6 +262,58 @@
     0.81,
     0.58
   ],
+  "origens_30d": {
+    "completo": true,
+    "denominador": 490,
+    "externas": [
+      {
+        "acessos": 132,
+        "nome": "chatgpt.com"
+      },
+      {
+        "acessos": 58,
+        "nome": "Google"
+      },
+      {
+        "acessos": 41,
+        "nome": "www.bing.com"
+      },
+      {
+        "acessos": 11,
+        "nome": "Yahoo"
+      },
+      {
+        "acessos": 9,
+        "nome": "bing.com"
+      },
+      {
+        "acessos": 3,
+        "nome": "chatgpt.com"
+      },
+      {
+        "acessos": 2,
+        "nome": "duckduckgo.com"
+      },
+      {
+        "acessos": 2,
+        "nome": "openai"
+      },
+      {
+        "acessos": 2,
+        "nome": "raw.githack.com/iosbilario/observatorio-taxas/398a8677/docs/index.html"
+      },
+      {
+        "acessos": 1,
+        "nome": "www.linkedin.com"
+      }
+    ],
+    "outros_externos": 10,
+    "totais": {
+      "direto": 90,
+      "externo": 271,
+      "interno": 129
+    }
+  },
   "secoes_30d": [
     {
       "acessos": 211,
@@ -396,124 +511,154 @@
   "top_paginas": [
     {
       "count": 213,
+      "event": false,
       "path": "/"
     },
     {
       "count": 113,
+      "event": false,
       "path": "/indicadores/cdi"
     },
     {
       "count": 69,
+      "event": false,
       "path": "/reajuste"
     },
     {
       "count": 64,
+      "event": false,
       "path": "/rebobinar.html"
     },
     {
       "count": 27,
+      "event": false,
       "path": "/correcao"
     },
     {
       "count": 23,
+      "event": false,
       "path": "/indicadores"
     },
     {
       "count": 23,
+      "event": false,
       "path": "/var.html"
     },
     {
       "count": 22,
+      "event": false,
       "path": "/retransmissora.html"
     },
     {
       "count": 20,
+      "event": false,
       "path": "/indicadores/dolar"
     },
     {
       "count": 12,
+      "event": false,
       "path": "/reajuste/igpm-julho-2026"
     },
     {
       "count": 11,
+      "event": false,
       "path": "/indicadores/cdi-acumulado-no-mes"
     },
     {
       "count": 11,
+      "event": false,
       "path": "/indicadores/euro"
     },
     {
       "count": 10,
+      "event": false,
       "path": "/simulador-cdi"
     },
     {
       "count": 10,
+      "event": false,
       "path": "/mcp"
     },
     {
       "count": 8,
+      "event": false,
       "path": "/comparador"
     }
   ],
   "top_paginas_30d": [
     {
       "count": 113,
+      "event": false,
       "path": "/indicadores/cdi"
     },
     {
       "count": 61,
+      "event": false,
       "path": "/"
     },
     {
       "count": 33,
+      "event": false,
       "path": "/reajuste"
     },
     {
       "count": 23,
+      "event": false,
       "path": "/indicadores"
     },
     {
       "count": 20,
+      "event": false,
       "path": "/indicadores/dolar"
     },
     {
       "count": 12,
+      "event": false,
       "path": "/var.html"
     },
     {
       "count": 12,
+      "event": false,
       "path": "/rebobinar.html"
     },
     {
       "count": 11,
+      "event": false,
       "path": "/indicadores/cdi-acumulado-no-mes"
     },
     {
       "count": 11,
+      "event": false,
       "path": "/indicadores/euro"
     },
     {
       "count": 11,
+      "event": false,
       "path": "/correcao"
     },
     {
       "count": 10,
+      "event": false,
       "path": "/simulador-cdi"
     },
     {
       "count": 10,
+      "event": false,
       "path": "/mcp"
     },
     {
       "count": 9,
+      "event": false,
       "path": "/retransmissora.html"
     },
     {
       "count": 8,
+      "event": false,
       "path": "/comparador"
     },
     {
       "count": 8,
+      "event": false,
       "path": "/apoie"
     }
   ],
