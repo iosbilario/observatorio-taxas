@@ -10,6 +10,7 @@ O Zenodo arquiva cada release publicada no GitHub e emite dois tipos de DOI:
 | DOI | Valor | Registro |
 | --- | --- | --- |
 | Conceito (todas as versões) | [10.5281/zenodo.24151062](https://doi.org/10.5281/zenodo.24151062) | sempre resolve para a versão mais recente |
+| Versão v1.10.0 | [10.5281/zenodo.24593722](https://doi.org/10.5281/zenodo.24593722) | [zenodo.org/records/24593722](https://zenodo.org/records/24593722) |
 | Versão v1.9.0 | [10.5281/zenodo.24517515](https://doi.org/10.5281/zenodo.24517515) | [zenodo.org/records/24517515](https://zenodo.org/records/24517515) |
 | Versão v1.8.0 | [10.5281/zenodo.24208300](https://doi.org/10.5281/zenodo.24208300) | [zenodo.org/records/24208300](https://zenodo.org/records/24208300) |
 | Versão v1.7.0 | [10.5281/zenodo.24195784](https://doi.org/10.5281/zenodo.24195784) | [zenodo.org/records/24195784](https://zenodo.org/records/24195784) |
@@ -27,6 +28,8 @@ O Zenodo arquiva cada release publicada no GitHub e emite dois tipos de DOI:
 | Terceira release arquivada | v1.8.0 (indicadores, comparador, simulador de CDI), publicada no GitHub em 13/11/2026 no commit `af433151` ([notas](RELEASE-v1.8.0.md)), registro `/api/records/24208300` conferido |
 | Quarta release arquivada | v1.9.0 (novo visual com o Refy Design, modo claro e escuro, guias), publicada no GitHub em 24/11/2026 no commit `75dc7ff9` ([notas](RELEASE-v1.9.0.md)) |
 | Registro da v1.9.0 | Conferido pela API (`/api/records/24517515`): título "Observatório de Taxas", versão v1.9.0, tipo Software, licença MIT, criador "Pereira, Leandro Borges", DOI conceito 10.5281/zenodo.24151062, um arquivo `iosbilario/observatorio-taxas-v1.9.0.zip` de 2.718.309 bytes |
+| Quinta release arquivada | v1.10.0 (contas refeitas na versão dos dados, divulgações e RSS, calendário, versão histórica, evolução do contrato), publicada no GitHub em 27/11/2026 no commit `4d7b7006` ([notas](RELEASE-v1.10.0.md)) |
+| Registro da v1.10.0 | Conferido pela API (`/api/records/24593722`): título "Observatório de Taxas", versão v1.10.0, tipo Software, licença MIT, criador "Pereira, Leandro Borges", DOI conceito 10.5281/zenodo.24151062, um arquivo `iosbilario/observatorio-taxas-v1.10.0.zip` de 3.180.360 bytes |
 | Releases anteriores | v1.0.0 a v1.5.0, sem DOI (publicadas antes da integração) |
 
 A busca textual da API (`/api/records?q=...`) demorou a indexar o registro

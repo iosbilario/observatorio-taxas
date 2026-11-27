@@ -46,6 +46,9 @@ identifiers:
   - type: doi
     value: "10.5281/zenodo.24517515"
     description: "DOI da versão v1.9.0 (Zenodo)"
+  - type: doi
+    value: "10.5281/zenodo.24593722"
+    description: "DOI da versão v1.10.0 (Zenodo)"
 repository-code: "https://github.com/iosbilario/observatorio-taxas"
 url: "https://observatoriodetaxas.tec.br/"
 license: MIT

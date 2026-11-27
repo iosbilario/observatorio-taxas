@@ -18,8 +18,9 @@ DOI_VERSAO_160 = "10.5281/zenodo.24151063"
 DOI_VERSAO_170 = "10.5281/zenodo.24195784"   # conferido em /api/records/24195784
 DOI_VERSAO_180 = "10.5281/zenodo.24208300"   # conferido em /api/records/24208300
 DOI_VERSAO_190 = "10.5281/zenodo.24517515"   # conferido em /api/records/24517515
-DOIS_REAIS = {DOI_CONCEITO, DOI_VERSAO_160, DOI_VERSAO_170, DOI_VERSAO_180, DOI_VERSAO_190}
-REGISTROS_REAIS = {"24151063", "24195784", "24208300", "24517515"}
+DOI_VERSAO_1100 = "10.5281/zenodo.24593722"  # conferido em /api/records/24593722
+DOIS_REAIS = {DOI_CONCEITO, DOI_VERSAO_160, DOI_VERSAO_170, DOI_VERSAO_180, DOI_VERSAO_190, DOI_VERSAO_1100}
+REGISTROS_REAIS = {"24151063", "24195784", "24208300", "24517515", "24593722"}
 FORA = ("data/", "docs/data/", "docs/reajuste/", "docs/correcao/", "docs/indicadores/", "docs/guias/",
         "docs/divulgacoes/", "docs/mudancas/", "docs/feed.xml", "CHANGELOG.md",
         "tests/fixtures/valores_baseline.json")
@@ -123,7 +124,7 @@ class TestReleasePreparada(unittest.TestCase):
         for rel in DOCS_MD + ["CITATION.cff", "docs/sobre/index.html"]:
             t = (ROOT / rel).read_text(encoding="utf-8")
             self.assertTrue(set(re.findall(r"10\.5281/zenodo\.\d+", t)) <= DOIS_REAIS, rel)
-            self.assertNotRegex(t, r"(?i)doi\.org/10\.(?!5281/zenodo\.(?:2415106[23]|24195784|24208300|24517515)\b)", rel)
+            self.assertNotRegex(t, r"(?i)doi\.org/10\.(?!5281/zenodo\.(?:2415106[23]|24195784|24208300|24517515|24593722)\b)", rel)
             for rec in re.findall(r"zenodo\.org/records?/(\d+)", t):
                 self.assertIn(rec, REGISTROS_REAIS, rel)
 
@@ -138,6 +139,7 @@ class TestReleasePreparada(unittest.TestCase):
         self.assertIn(f"https://doi.org/{DOI_VERSAO_170}", t)
         self.assertIn(f"https://doi.org/{DOI_VERSAO_180}", t)
         self.assertIn(f"https://doi.org/{DOI_VERSAO_190}", t)
+        self.assertIn(f"https://doi.org/{DOI_VERSAO_1100}", t)
 
     def test_links_relativos_dos_documentos_existem(self):
         faltando = []
