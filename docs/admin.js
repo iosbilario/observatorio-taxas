@@ -85,6 +85,9 @@
   function render(s) {
     app.textContent = "";
     var t = s.totais || {}, m30 = t.ultimos_30d || {}, ant = t["30d_anteriores"] || {}, tudo = t.all_time || {};
+    var velhos = s.blocos_da_coleta_anterior || [];
+    if (velhos.length) app.appendChild(el("p", "Nesta coleta a API do GoatCounter não respondeu a " + velhos.length +
+      (velhos.length === 1 ? " bloco" : " blocos") + " (" + velhos.join(", ") + "); eles mostram os números da coleta anterior.", "aviso"));
     if (s.gerado_em_fmt) document.getElementById("coleta").textContent =
       "Última coleta: " + s.gerado_em_fmt + " (horário de Brasília). Dados agregados do GoatCounter, coletados a cada 6 horas pelo mesmo robô das séries.";
 

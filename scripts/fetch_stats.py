@@ -37,6 +37,7 @@ from __future__ import annotations
 import json
 import os
 import sys
+import time
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
@@ -49,6 +50,8 @@ DATA_DIR = ROOT / "data"
 DOCS_DATA_DIR = ROOT / "docs" / "data"  # espelho servido pelo GitHub Pages
 
 TIMEOUT = 30          # segundos por requisição
+PAUSA = 0.7           # entre chamadas: a API do GoatCounter limita a taxa (429)
+TENTATIVAS = 4        # por chamada, quando a API responde 429
 HITS_LIMIT = 200      # teto da API por chamada; cobre todas as páginas do site
 DIAS_JANELA = 30      # janela "recente" e da série diária
 
@@ -286,9 +289,21 @@ class GoatCounter:
             "Content-Type": "application/json",
         })
         self.houve_sucesso = False  # ao menos uma chamada 200? (evita clobber)
+        self.falhas: list[str] = []  # chamadas que falharam nesta coleta
 
     def _get(self, endpoint: str, params: dict) -> dict:
-        resp = self.session.get(f"{self.base}{endpoint}", params=params, timeout=TIMEOUT)
+        for tentativa in range(TENTATIVAS):
+            time.sleep(PAUSA)
+            resp = self.session.get(f"{self.base}{endpoint}", params=params, timeout=TIMEOUT)
+            if getattr(resp, "status_code", 200) != 429 or tentativa == TENTATIVAS - 1:
+                break
+            espera = resp.headers.get("Retry-After") if hasattr(resp, "headers") else None
+            try:
+                espera = float(espera)
+            except (TypeError, ValueError):
+                espera = 5.0 * (tentativa + 1)
+            print(f"[aviso] {endpoint}: 429, nova tentativa em {espera:.0f} s", file=sys.stderr)
+            time.sleep(min(espera, 30))
         resp.raise_for_status()
         data = resp.json()
         self.houve_sucesso = True
@@ -315,7 +330,9 @@ class GoatCounter:
 
     def detalhe(self, pagina: str, start: str, end: str) -> list[dict]:
         """Top de /stats/{pagina} (browsers, sizes...): [{nome, acessos}, ...]."""
-        itens, _ = self.detalhe_cru(pagina, start, end, TOP_DETALHE)
+        itens, _ = self.detalhe_cru(pagina, start, end, TOP_DETALHE)  # None = falhou
+        if itens is None:
+            return None
         return [{"nome": nome_detalhe(pagina, s), "acessos": int(s.get("count") or 0)} for s in itens][:TOP_DETALHE]
 
     def detalhe_cru(self, pagina: str, start: str, end: str, limite: int) -> tuple[list[dict], bool | None]:
@@ -324,7 +341,8 @@ class GoatCounter:
             data = self._get(f"/stats/{pagina}", {"start": start, "end": end, "limit": limite})
         except Exception as exc:  # noqa: BLE001
             print(f"[aviso] /stats/{pagina} falhou: {exc}", file=sys.stderr)
-            return [], None
+            self.falhas.append(pagina)
+            return None, None
         return list(data.get("stats") or []), not data.get("more")
 
     def hits(self, start: str, end: str) -> list[dict]:
@@ -338,6 +356,7 @@ class GoatCounter:
                              {"start": start, "end": end, "limit": HITS_LIMIT})
         except Exception as exc:  # noqa: BLE001
             print(f"[aviso] /stats/hits falhou: {exc}", file=sys.stderr)
+            self.falhas.append("hits")
             return [], None
         if data.get("more"):
             print(f"[aviso] mais de {HITS_LIMIT} páginas distintas; a cauda longa "
@@ -481,6 +500,7 @@ def main() -> None:
     hits_30d = gc.hits(ini_30d, fim)
     detalhes = {chave: gc.detalhe(pagina, ini_30d, fim) for chave, pagina in DETALHES.items() if chave != "origens"}
     refs, refs_completo = gc.detalhe_cru("toprefs", ini_30d, fim, LIMITE_ORIGENS)
+    refs = refs or []
     origens = [{"nome": (s.get("name") or "").strip(), "acessos": int(s.get("count") or 0)} for s in refs]
     detalhes["origens"] = [{"nome": nome_detalhe("toprefs", {"name": o["nome"]}), "acessos": o["acessos"]}
                            for o in soma_origens(origens)[:TOP_DETALHE]]
@@ -535,6 +555,27 @@ def main() -> None:
         } if funil_completo is not None else None,
         "eventos_desde": EVENTOS_DESDE,
     }
+
+    # Bloco que falhou nesta coleta (429, rede) não vira zero nem lista vazia:
+    # fica o valor da coleta anterior, e o JSON diz quais foram reaproveitados.
+    anterior = {}
+    try:
+        anterior = json.loads((DATA_DIR / "stats.json").read_text(encoding="utf-8"))
+    except Exception:  # noqa: BLE001 — sem arquivo anterior, nada a reaproveitar
+        pass
+    reaproveitados = []
+    for k, v in list(stats["detalhes_30d"].items()):
+        if v is None:
+            antigo = (anterior.get("detalhes_30d") or {}).get(k)
+            stats["detalhes_30d"][k] = antigo if antigo is not None else []
+            reaproveitados.append(k)
+    for k in ("origens_30d", "funis"):
+        if stats[k] is None:
+            stats[k] = anterior.get(k)
+            reaproveitados.append(k)
+    stats["blocos_da_coleta_anterior"] = reaproveitados
+    if reaproveitados:
+        print(f"[aviso] blocos mantidos da coleta anterior: {', '.join(reaproveitados)}", file=sys.stderr)
 
     write_json(DATA_DIR / "stats.json", stats)
     write_json(DOCS_DATA_DIR / "stats.json", stats)
