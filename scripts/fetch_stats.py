@@ -130,6 +130,18 @@ PAISES = {"Brazil": "Brasil", "United States": "Estados Unidos", "Portugal": "Po
           "Colombia": "Colômbia", "Uruguay": "Uruguai", "Paraguay": "Paraguai", "Peru": "Peru",
           "Switzerland": "Suíça", "Belgium": "Bélgica", "Singapore": "Singapura", "Australia": "Austrália",
           "Russia": "Rússia", "Sweden": "Suécia", "Finland": "Finlândia", "Poland": "Polônia",
+          "Turkey": "Turquia", "Türkiye": "Turquia", "United Arab Emirates": "Emirados Árabes Unidos",
+          "Austria": "Áustria", "Norway": "Noruega", "Denmark": "Dinamarca", "Greece": "Grécia",
+          "Czechia": "Tchéquia", "Czech Republic": "Tchéquia", "Hungary": "Hungria", "Romania": "Romênia",
+          "Ukraine": "Ucrânia", "Israel": "Israel", "Saudi Arabia": "Arábia Saudita", "South Africa": "África do Sul",
+          "Angola": "Angola", "Mozambique": "Moçambique", "Cape Verde": "Cabo Verde", "Cabo Verde": "Cabo Verde",
+          "Bolivia": "Bolívia", "Venezuela": "Venezuela", "Ecuador": "Equador", "Panama": "Panamá",
+          "Costa Rica": "Costa Rica", "Dominican Republic": "República Dominicana", "Cuba": "Cuba",
+          "Guatemala": "Guatemala", "New Zealand": "Nova Zelândia", "South Korea": "Coreia do Sul",
+          "Korea, Republic of": "Coreia do Sul", "Hong Kong": "Hong Kong", "Taiwan": "Taiwan",
+          "Indonesia": "Indonésia", "Philippines": "Filipinas", "Vietnam": "Vietnã", "Thailand": "Tailândia",
+          "Malaysia": "Malásia", "Pakistan": "Paquistão", "Bangladesh": "Bangladesh", "Egypt": "Egito",
+          "Nigeria": "Nigéria", "Morocco": "Marrocos", "Luxembourg": "Luxemburgo",
           "(unknown)": "Desconhecido", "": "Desconhecido"}
 
 
