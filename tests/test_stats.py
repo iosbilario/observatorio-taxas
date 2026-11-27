@@ -81,7 +81,9 @@ class Coletor(unittest.TestCase):
         self.assertEqual(FS.nome_detalhe("sizes", {"id": "phone", "name": ""}), "Celular")
         self.assertEqual(FS.nome_detalhe("sizes", {"id": "desktophd", "name": ""}), "Computador (tela grande)")
         self.assertEqual(FS.nome_detalhe("locations", {"id": "BR", "name": "Brazil"}), "Brasil")
-        self.assertEqual(FS.nome_detalhe("locations", {"id": "NO", "name": "Norway"}), "Norway")
+        self.assertEqual(FS.nome_detalhe("locations", {"id": "TR", "name": "Turkey"}), "Turquia")
+        self.assertEqual(FS.nome_detalhe("locations", {"id": "AE", "name": "United Arab Emirates"}), "Emirados Árabes Unidos")
+        self.assertEqual(FS.nome_detalhe("locations", {"id": "XX", "name": "Atlantis"}), "Atlantis")
         self.assertEqual(FS.nome_detalhe("toprefs", {"id": "", "name": ""}), "Acesso direto ou sem origem")
         self.assertEqual(FS.nome_detalhe("browsers", {"name": "Chrome"}), "Chrome")
 
