@@ -60,7 +60,7 @@ CSS = """
 .cal-lista{list-style:none;margin:0;padding:0}
 .cal-lista li{border-bottom:1px solid var(--linha);padding:.7rem 0}
 .cal-lista b{font-family:"Fraunces",Georgia,serif}
-.estado{font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;
+span.estado{font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;
  border:1px solid var(--linha);border-radius:999px;padding:1px 8px;margin-left:.4rem;white-space:nowrap}
 """
 
