@@ -45,7 +45,7 @@ O GitHub gera o source archive com `git archive`, que respeita o
 | Fora do depósito | Motivo |
 | --- | --- |
 | `data/`, `docs/data/` | Séries do IBGE (IPCA, INPC, desocupação) e da FGV IBRE (IGP-M, IGP-DI) junto com as do BCB |
-| `docs/reajuste/`, `docs/correcao/`, `docs/indicadores/`, `docs/guias/` | Páginas geradas com esses valores |
+| `docs/reajuste/`, `docs/correcao/`, `docs/indicadores/`, `docs/guias/`, `docs/divulgacoes/`, `docs/mudancas/`, `docs/feed.xml` | Páginas e feed gerados com esses valores |
 | `CHANGELOG.md` | Registro de mudanças de valores das séries |
 | `tests/fixtures/valores_baseline.json` | Acumulados derivados das séries |
 

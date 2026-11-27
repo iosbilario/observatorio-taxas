@@ -79,11 +79,16 @@ O Observatório guarda esse caminho:
 | Indicadores | Uma página por série (25) com valor atual, contexto, últimos 12 meses e ficha técnica, mais uma tabela com todas | [/indicadores/](https://observatoriodetaxas.tec.br/indicadores/) |
 | Comparador | Selic, CDI e IPCA acumulados em qualquer período, com gráfico, tabela mês a mês e link compartilhável | [/comparador/](https://observatoriodetaxas.tec.br/comparador/) |
 | Simulador de CDI | Quanto rende X% do CDI com a taxa DI diária, IR e IOF do CDB, inflação do período e memória de cálculo em CSV | [/simulador-cdi/](https://observatoriodetaxas.tec.br/simulador-cdi/) |
-| Reajuste de contratos | Acumulado de 12 meses, fator e calculadora por índice e mês: uma página para cada mês desde dezembro de 2015, com a leitura do mês (o que mudou e por quê, posição no histórico, comparação com os outros índices) | [/reajuste/](https://observatoriodetaxas.tec.br/reajuste/) |
+| Reajuste de contratos | Acumulado de 12 meses, fator e calculadora por índice e mês: uma página para cada mês desde dezembro de 2015, com a leitura do mês (o que mudou e por quê, posição no histórico, comparação com os outros índices) e um demonstrativo para copiar, com link que refaz a conta na mesma versão dos dados | [/reajuste/](https://observatoriodetaxas.tec.br/reajuste/) |
+| Evolução do contrato | Valor de um contrato a cada aniversário desde o início, por um índice, com comparação com outro índice. O valor não sai do navegador | [/reajuste/evolucao/](https://observatoriodetaxas.tec.br/reajuste/evolucao/) |
 | Correção monetária | Atualiza um valor entre duas datas pelo IPCA, IGP-M, INPC ou IGP-DI | [/correcao/](https://observatoriodetaxas.tec.br/correcao/) |
 | Guias | Reajuste de aluguel, IPCA x INPC x IGP-M x IGP-DI, cálculo do acumulado, correção monetária, Selic e dólar PTAX, com exemplos atualizados a cada coleta | [/guias/](https://observatoriodetaxas.tec.br/guias/) |
 | Rebobinar | A economia mês a mês, como uma linha do tempo de commits | [/rebobinar.html](https://observatoriodetaxas.tec.br/rebobinar.html) |
-| VAR da Economia | Confere uma afirmação comparando dois períodos de uma série e emite um recibo com link permanente | [/var.html](https://observatoriodetaxas.tec.br/var.html) |
+| VAR da Economia | Confere uma afirmação comparando dois períodos de uma série e emite um recibo com link permanente, refeito no commit dos dados usado | [/var.html](https://observatoriodetaxas.tec.br/var.html) |
+| Divulgações | Uma página permanente por divulgação (IPCA do mês, CDI contra o IPCA, PTAX da semana), com CSV e RSS | [/divulgacoes/](https://observatoriodetaxas.tec.br/divulgacoes/) · [RSS](https://observatoriodetaxas.tec.br/feed.xml) |
+| Calendário | Próximas divulgações do IPCA e do IPCA-15 (IBGE) e reuniões do Copom, com fonte oficial de cada data | [/calendario/](https://observatoriodetaxas.tec.br/calendario/) |
+| O que mudou nesta coleta? | Observações novas e valores alterados na última coleta, separando período em andamento de período encerrado | [/mudancas/](https://observatoriodetaxas.tec.br/mudancas/) |
+| Versão histórica | A série como o Observatório a registrou até uma data, comparada com a atual, com link para compartilhar | [/historico/](https://observatoriodetaxas.tec.br/historico/) |
 | Retransmissora | Gera o código para incorporar um gráfico que se atualiza sozinho | [/retransmissora.html](https://observatoriodetaxas.tec.br/retransmissora.html) |
 | Dados abertos | Séries em JSON e manifesto de todas as séries | [/data/series.json](https://observatoriodetaxas.tec.br/data/series.json) |
 | Servidor MCP | Consulta indicadores, séries e cálculos de dentro do ChatGPT, do Claude e de outros clientes MCP | [/mcp/](https://observatoriodetaxas.tec.br/mcp/) |
