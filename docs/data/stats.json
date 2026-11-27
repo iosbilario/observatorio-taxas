@@ -1,8 +1,10 @@
 {
+  "blocos_da_coleta_anterior": [],
   "detalhes_30d": {
+    "campanhas": [],
     "navegadores": [
       {
-        "acessos": 419,
+        "acessos": 420,
         "nome": "Chrome"
       },
       {
@@ -14,15 +16,97 @@
         "nome": "Firefox"
       }
     ],
-    "origens": [],
-    "paises": [],
+    "origens": [
+      {
+        "acessos": 135,
+        "nome": "chatgpt.com"
+      },
+      {
+        "acessos": 133,
+        "nome": "observatoriodetaxas.tec.br"
+      },
+      {
+        "acessos": 93,
+        "nome": "Acesso direto ou sem origem"
+      },
+      {
+        "acessos": 58,
+        "nome": "Google"
+      },
+      {
+        "acessos": 50,
+        "nome": "Bing"
+      },
+      {
+        "acessos": 11,
+        "nome": "Yahoo"
+      },
+      {
+        "acessos": 9,
+        "nome": "raw.githack.com"
+      },
+      {
+        "acessos": 2,
+        "nome": "DuckDuckGo"
+      },
+      {
+        "acessos": 2,
+        "nome": "openai"
+      },
+      {
+        "acessos": 1,
+        "nome": "gemini.google.com"
+      }
+    ],
+    "paises": [
+      {
+        "acessos": 427,
+        "nome": "Brasil"
+      },
+      {
+        "acessos": 57,
+        "nome": "Estados Unidos"
+      },
+      {
+        "acessos": 2,
+        "nome": "Espanha"
+      },
+      {
+        "acessos": 2,
+        "nome": "Reino Unido"
+      },
+      {
+        "acessos": 2,
+        "nome": "Turquia"
+      },
+      {
+        "acessos": 1,
+        "nome": "Emirados Árabes Unidos"
+      },
+      {
+        "acessos": 1,
+        "nome": "Argentina"
+      },
+      {
+        "acessos": 1,
+        "nome": "Áustria"
+      },
+      {
+        "acessos": 1,
+        "nome": "Tchéquia"
+      },
+      {
+        "acessos": 1,
+        "nome": "Alemanha"
+      }
+    ],
     "sistemas": [
       {
         "acessos": 213,
         "nome": "Windows"
       },
       {
-        "acessos": 151,
+        "acessos": 152,
         "nome": "macOS"
       },
       {
@@ -48,7 +132,7 @@
         "nome": "Tablet"
       },
       {
-        "acessos": 390,
+        "acessos": 391,
         "nome": "Computador"
       },
       {
@@ -62,9 +146,80 @@
     ]
   },
   "eventos_desde": "2026-11-27",
-  "funis": null,
-  "gerado_em": "2026-11-27T13:54:31-03:00",
-  "gerado_em_fmt": "27/11/2026 às 13:54",
+  "funis": {
+    "caminhos": [
+      {
+        "etapas": [
+          {
+            "chave": "indicadores/cdi",
+            "rotulo": "Visitantes da página do CDI",
+            "tipo": "pagina",
+            "visitantes": 7
+          },
+          {
+            "chave": "cta-simulador-cdi",
+            "rotulo": "Clicaram em “Simule quanto R$ 1.000 rende”",
+            "tipo": "evento",
+            "visitantes": 1
+          },
+          {
+            "chave": "simulador-cdi",
+            "rotulo": "Visitantes do simulador",
+            "tipo": "pagina",
+            "visitantes": 1
+          },
+          {
+            "chave": "resultado-simulador-cdi",
+            "rotulo": "Viram o resultado inicial (sem mexer)",
+            "tipo": "evento",
+            "visitantes": 1
+          },
+          {
+            "chave": "calculo-simulador-cdi",
+            "rotulo": "Mexeram no simulador e calcularam",
+            "tipo": "evento",
+            "visitantes": 1
+          }
+        ],
+        "id": "cdi",
+        "nome": "CDI → simulador"
+      },
+      {
+        "etapas": [
+          {
+            "chave": "indicadores/igp-m",
+            "rotulo": "Visitantes da página do IGP-M",
+            "tipo": "pagina",
+            "visitantes": 0
+          },
+          {
+            "chave": "cta-reajuste-igpm",
+            "rotulo": "Clicaram em “Calcule o reajuste do aluguel”",
+            "tipo": "evento",
+            "visitantes": 0
+          },
+          {
+            "chave": "reajuste/igpm-",
+            "rotulo": "Visitantes das páginas de reajuste pelo IGP-M",
+            "tipo": "prefixo",
+            "visitantes": 1
+          },
+          {
+            "chave": "calculo-reajuste-igpm",
+            "rotulo": "Calcularam um reajuste pelo IGP-M",
+            "tipo": "evento",
+            "visitantes": 0
+          }
+        ],
+        "id": "igpm",
+        "nome": "IGP-M → reajuste"
+      }
+    ],
+    "completo": true,
+    "desde": "2026-11-27"
+  },
+  "gerado_em": "2026-11-27T14:07:45-03:00",
+  "gerado_em_fmt": "27/11/2026 às 14:07",
   "grupos": {
     "Admin": {
       "acessos": 0,
@@ -84,10 +239,10 @@
       "sub": {}
     },
     "Reajuste": {
-      "acessos": 182,
+      "acessos": 181,
       "sub": {
         "IGP-DI": 9,
-        "IGP-M": 46,
+        "IGP-M": 45,
         "INPC": 15,
         "IPCA": 40
       }
@@ -108,7 +263,7 @@
     1.26,
     1.03,
     0.77,
-    1.65,
+    1.68,
     0.68,
     1.32,
     0.65,
@@ -119,7 +274,58 @@
     0.81,
     0.58
   ],
-  "origens_30d": null,
+  "origens_30d": {
+    "completo": true,
+    "denominador": 497,
+    "externas": [
+      {
+        "acessos": 135,
+        "nome": "chatgpt.com"
+      },
+      {
+        "acessos": 58,
+        "nome": "Google"
+      },
+      {
+        "acessos": 50,
+        "nome": "Bing"
+      },
+      {
+        "acessos": 11,
+        "nome": "Yahoo"
+      },
+      {
+        "acessos": 9,
+        "nome": "raw.githack.com"
+      },
+      {
+        "acessos": 2,
+        "nome": "DuckDuckGo"
+      },
+      {
+        "acessos": 2,
+        "nome": "openai"
+      },
+      {
+        "acessos": 1,
+        "nome": "gemini.google.com"
+      },
+      {
+        "acessos": 1,
+        "nome": "github.com"
+      },
+      {
+        "acessos": 1,
+        "nome": "lbptecnologia.com.br"
+      }
+    ],
+    "outros_externos": 1,
+    "totais": {
+      "direto": 93,
+      "externo": 271,
+      "interno": 133
+    }
+  },
   "secoes_30d": [
     {
       "acessos": 213,
@@ -308,7 +514,7 @@
       "data": "2026-11-26"
     },
     {
-      "acessos": 29,
+      "acessos": 30,
       "data": "2026-11-27"
     }
   ],
@@ -473,23 +679,19 @@
       "visitantes": 102
     },
     "all_time": {
-      "acessos": 847,
-      "visitantes": 885
+      "acessos": 846,
+      "visitantes": 886
     },
     "ultimos_30d": {
       "acessos": 494,
-      "visitantes": 496
+      "visitantes": 497
     }
   },
   "ultima_hora": {
     "acessos": 7,
-    "hora": "2026-11-27T12:00"
+    "hora": "2026-11-27T13:00"
   },
   "ultimas_48h": [
-    {
-      "acessos": 0,
-      "hora": "2026-11-25T13:00"
-    },
     {
       "acessos": 5,
       "hora": "2026-11-25T14:00"
@@ -677,6 +879,10 @@
     {
       "acessos": 7,
       "hora": "2026-11-27T12:00"
+    },
+    {
+      "acessos": 7,
+      "hora": "2026-11-27T13:00"
     }
   ]
 }
