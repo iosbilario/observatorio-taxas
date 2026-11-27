@@ -1,6 +1,27 @@
 {
   "coletas": [
     {
+      "base": "704aa0f21d6f134f61aa84c54f4f5359e281f8cf",
+      "commit": null,
+      "gerado_em": "2026-11-27T12:57:17-03:00",
+      "novas": [
+        {
+          "codigo": 432,
+          "data": "26/11/2026",
+          "nome": "Meta Selic (% a.a.)",
+          "valor": "13.75"
+        },
+        {
+          "codigo": 432,
+          "data": "27/11/2026",
+          "nome": "Meta Selic (% a.a.)",
+          "valor": "13.75"
+        }
+      ],
+      "revisoes": [],
+      "series_novas": []
+    },
+    {
       "base": "736eeb524f68c4fbb6972742641dfb175ca6d331",
       "commit": "704aa0f21d6f134f61aa84c54f4f5359e281f8cf",
       "gerado_em": "2026-11-27T12:48:37-03:00",

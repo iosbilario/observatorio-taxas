@@ -1,6 +1,150 @@
 {
-  "gerado_em": "2026-11-27T12:48:47-03:00",
-  "gerado_em_fmt": "27/11/2026 às 12:48",
+  "detalhes_30d": {
+    "navegadores": [
+      {
+        "acessos": 412,
+        "nome": "Chrome"
+      },
+      {
+        "acessos": 74,
+        "nome": "Safari"
+      },
+      {
+        "acessos": 5,
+        "nome": "Firefox"
+      }
+    ],
+    "origens": [
+      {
+        "acessos": 132,
+        "nome": "chatgpt.com"
+      },
+      {
+        "acessos": 90,
+        "nome": "(sem nome)"
+      },
+      {
+        "acessos": 58,
+        "nome": "Google"
+      },
+      {
+        "acessos": 41,
+        "nome": "www.bing.com"
+      },
+      {
+        "acessos": 23,
+        "nome": "observatoriodetaxas.tec.br/index.html"
+      },
+      {
+        "acessos": 18,
+        "nome": "observatoriodetaxas.tec.br"
+      },
+      {
+        "acessos": 15,
+        "nome": "observatoriodetaxas.tec.br/indicadores"
+      },
+      {
+        "acessos": 12,
+        "nome": "observatoriodetaxas.tec.br/reajuste"
+      },
+      {
+        "acessos": 11,
+        "nome": "Yahoo"
+      },
+      {
+        "acessos": 11,
+        "nome": "observatoriodetaxas.tec.br/var.html"
+      }
+    ],
+    "paises": [
+      {
+        "acessos": 420,
+        "nome": "Brazil"
+      },
+      {
+        "acessos": 57,
+        "nome": "United States"
+      },
+      {
+        "acessos": 2,
+        "nome": "Spain"
+      },
+      {
+        "acessos": 2,
+        "nome": "Turkey"
+      },
+      {
+        "acessos": 1,
+        "nome": "United Arab Emirates"
+      },
+      {
+        "acessos": 1,
+        "nome": "Argentina"
+      },
+      {
+        "acessos": 1,
+        "nome": "Austria"
+      },
+      {
+        "acessos": 1,
+        "nome": "Czechia"
+      },
+      {
+        "acessos": 1,
+        "nome": "Germany"
+      },
+      {
+        "acessos": 1,
+        "nome": "Finland"
+      }
+    ],
+    "sistemas": [
+      {
+        "acessos": 213,
+        "nome": "Windows"
+      },
+      {
+        "acessos": 145,
+        "nome": "macOS"
+      },
+      {
+        "acessos": 62,
+        "nome": "iOS"
+      },
+      {
+        "acessos": 39,
+        "nome": "Linux"
+      },
+      {
+        "acessos": 32,
+        "nome": "Android"
+      }
+    ],
+    "telas": [
+      {
+        "acessos": 92,
+        "nome": "(sem nome)"
+      },
+      {
+        "acessos": 7,
+        "nome": "(sem nome)"
+      },
+      {
+        "acessos": 383,
+        "nome": "(sem nome)"
+      },
+      {
+        "acessos": 9,
+        "nome": "(sem nome)"
+      },
+      {
+        "acessos": 0,
+        "nome": "(sem nome)"
+      }
+    ]
+  },
+  "gerado_em": "2026-11-27T12:57:25-03:00",
+  "gerado_em_fmt": "27/11/2026 às 12:57",
   "grupos": {
     "Admin": {
       "acessos": 0,
@@ -29,6 +173,98 @@
       }
     }
   },
+  "media_por_hora_do_dia": [
+    0.19,
+    0.35,
+    0.1,
+    0.1,
+    0.1,
+    0.19,
+    0.26,
+    0.19,
+    0.48,
+    0.61,
+    1.29,
+    1.26,
+    1.03,
+    0.55,
+    1.65,
+    0.68,
+    1.32,
+    0.65,
+    1.16,
+    1.13,
+    0.65,
+    0.45,
+    0.81,
+    0.58
+  ],
+  "secoes_30d": [
+    {
+      "acessos": 211,
+      "secao": "Indicadores"
+    },
+    {
+      "acessos": 85,
+      "secao": "Reajuste"
+    },
+    {
+      "acessos": 61,
+      "secao": "Home"
+    },
+    {
+      "acessos": 24,
+      "secao": "Institucional"
+    },
+    {
+      "acessos": 19,
+      "secao": "Outras"
+    },
+    {
+      "acessos": 14,
+      "secao": "Correção"
+    },
+    {
+      "acessos": 13,
+      "secao": "VAR da Economia"
+    },
+    {
+      "acessos": 12,
+      "secao": "Rebobinar"
+    },
+    {
+      "acessos": 10,
+      "secao": "MCP"
+    },
+    {
+      "acessos": 10,
+      "secao": "Simulador de CDI"
+    },
+    {
+      "acessos": 9,
+      "secao": "Embeds"
+    },
+    {
+      "acessos": 8,
+      "secao": "Comparador"
+    },
+    {
+      "acessos": 6,
+      "secao": "Divulgações"
+    },
+    {
+      "acessos": 4,
+      "secao": "O que mudou"
+    },
+    {
+      "acessos": 2,
+      "secao": "Guias"
+    },
+    {
+      "acessos": 1,
+      "secao": "Calendário"
+    }
+  ],
   "serie_diaria": [
     {
       "acessos": 0,
@@ -219,7 +455,72 @@
       "path": "/comparador"
     }
   ],
+  "top_paginas_30d": [
+    {
+      "count": 113,
+      "path": "/indicadores/cdi"
+    },
+    {
+      "count": 61,
+      "path": "/"
+    },
+    {
+      "count": 33,
+      "path": "/reajuste"
+    },
+    {
+      "count": 23,
+      "path": "/indicadores"
+    },
+    {
+      "count": 20,
+      "path": "/indicadores/dolar"
+    },
+    {
+      "count": 12,
+      "path": "/var.html"
+    },
+    {
+      "count": 12,
+      "path": "/rebobinar.html"
+    },
+    {
+      "count": 11,
+      "path": "/indicadores/cdi-acumulado-no-mes"
+    },
+    {
+      "count": 11,
+      "path": "/indicadores/euro"
+    },
+    {
+      "count": 11,
+      "path": "/correcao"
+    },
+    {
+      "count": 10,
+      "path": "/simulador-cdi"
+    },
+    {
+      "count": 10,
+      "path": "/mcp"
+    },
+    {
+      "count": 9,
+      "path": "/retransmissora.html"
+    },
+    {
+      "count": 8,
+      "path": "/comparador"
+    },
+    {
+      "count": 8,
+      "path": "/apoie"
+    }
+  ],
   "totais": {
+    "30d_anteriores": {
+      "visitantes": 102
+    },
     "all_time": {
       "acessos": 845,
       "visitantes": 878
@@ -228,5 +529,203 @@
       "acessos": 489,
       "visitantes": 489
     }
-  }
+  },
+  "ultima_hora": {
+    "acessos": 4,
+    "hora": "2026-11-27T11:00"
+  },
+  "ultimas_48h": [
+    {
+      "acessos": 8,
+      "hora": "2026-11-25T12:00"
+    },
+    {
+      "acessos": 0,
+      "hora": "2026-11-25T13:00"
+    },
+    {
+      "acessos": 5,
+      "hora": "2026-11-25T14:00"
+    },
+    {
+      "acessos": 4,
+      "hora": "2026-11-25T15:00"
+    },
+    {
+      "acessos": 5,
+      "hora": "2026-11-25T16:00"
+    },
+    {
+      "acessos": 5,
+      "hora": "2026-11-25T17:00"
+    },
+    {
+      "acessos": 0,
+      "hora": "2026-11-25T18:00"
+    },
+    {
+      "acessos": 1,
+      "hora": "2026-11-25T19:00"
+    },
+    {
+      "acessos": 1,
+      "hora": "2026-11-25T20:00"
+    },
+    {
+      "acessos": 0,
+      "hora": "2026-11-25T21:00"
+    },
+    {
+      "acessos": 1,
+      "hora": "2026-11-25T22:00"
+    },
+    {
+      "acessos": 1,
+      "hora": "2026-11-25T23:00"
+    },
+    {
+      "acessos": 0,
+      "hora": "2026-11-26T00:00"
+    },
+    {
+      "acessos": 0,
+      "hora": "2026-11-26T01:00"
+    },
+    {
+      "acessos": 0,
+      "hora": "2026-11-26T02:00"
+    },
+    {
+      "acessos": 0,
+      "hora": "2026-11-26T03:00"
+    },
+    {
+      "acessos": 0,
+      "hora": "2026-11-26T04:00"
+    },
+    {
+      "acessos": 0,
+      "hora": "2026-11-26T05:00"
+    },
+    {
+      "acessos": 0,
+      "hora": "2026-11-26T06:00"
+    },
+    {
+      "acessos": 0,
+      "hora": "2026-11-26T07:00"
+    },
+    {
+      "acessos": 0,
+      "hora": "2026-11-26T08:00"
+    },
+    {
+      "acessos": 4,
+      "hora": "2026-11-26T09:00"
+    },
+    {
+      "acessos": 1,
+      "hora": "2026-11-26T10:00"
+    },
+    {
+      "acessos": 13,
+      "hora": "2026-11-26T11:00"
+    },
+    {
+      "acessos": 9,
+      "hora": "2026-11-26T12:00"
+    },
+    {
+      "acessos": 6,
+      "hora": "2026-11-26T13:00"
+    },
+    {
+      "acessos": 12,
+      "hora": "2026-11-26T14:00"
+    },
+    {
+      "acessos": 0,
+      "hora": "2026-11-26T15:00"
+    },
+    {
+      "acessos": 1,
+      "hora": "2026-11-26T16:00"
+    },
+    {
+      "acessos": 0,
+      "hora": "2026-11-26T17:00"
+    },
+    {
+      "acessos": 1,
+      "hora": "2026-11-26T18:00"
+    },
+    {
+      "acessos": 1,
+      "hora": "2026-11-26T19:00"
+    },
+    {
+      "acessos": 1,
+      "hora": "2026-11-26T20:00"
+    },
+    {
+      "acessos": 0,
+      "hora": "2026-11-26T21:00"
+    },
+    {
+      "acessos": 12,
+      "hora": "2026-11-26T22:00"
+    },
+    {
+      "acessos": 1,
+      "hora": "2026-11-26T23:00"
+    },
+    {
+      "acessos": 0,
+      "hora": "2026-11-27T00:00"
+    },
+    {
+      "acessos": 0,
+      "hora": "2026-11-27T01:00"
+    },
+    {
+      "acessos": 1,
+      "hora": "2026-11-27T02:00"
+    },
+    {
+      "acessos": 0,
+      "hora": "2026-11-27T03:00"
+    },
+    {
+      "acessos": 0,
+      "hora": "2026-11-27T04:00"
+    },
+    {
+      "acessos": 1,
+      "hora": "2026-11-27T05:00"
+    },
+    {
+      "acessos": 0,
+      "hora": "2026-11-27T06:00"
+    },
+    {
+      "acessos": 0,
+      "hora": "2026-11-27T07:00"
+    },
+    {
+      "acessos": 3,
+      "hora": "2026-11-27T08:00"
+    },
+    {
+      "acessos": 0,
+      "hora": "2026-11-27T09:00"
+    },
+    {
+      "acessos": 6,
+      "hora": "2026-11-27T10:00"
+    },
+    {
+      "acessos": 4,
+      "hora": "2026-11-27T11:00"
+    }
+  ]
 }
