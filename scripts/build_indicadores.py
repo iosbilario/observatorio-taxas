@@ -164,7 +164,10 @@ PAGINAS: dict[int, dict] = {
     24363: dict(slug="ibc-br", curto="IBC-Br (prévia do PIB)", casas=2,
                 o_que="Índice de Atividade Econômica do Banco Central, número-índice mensal que acompanha a atividade "
                       "da economia (série sem ajuste sazonal).",
-                uso="É usado como sinal antecipado do PIB, que o IBGE divulga a cada trimestre.",
+                uso="É chamado de prévia do PIB porque sai antes e costuma andar junto com ele, mas não é o PIB "
+                    "oficial: o PIB é calculado e divulgado pelo IBGE a cada trimestre. O Observatório usa a série "
+                    "sem ajuste sazonal (SGS 24363); o Banco Central costuma destacar a série com ajuste sazonal, "
+                    "por isso a variação de um mês para o outro pode ser diferente nas duas.",
                 outros=["prévia do PIB", "atividade econômica"]),
     24369: dict(slug="desemprego", curto="Taxa de desemprego", casas=1, suf="%",
                 o_que="Taxa de desocupação medida pelo IBGE na PNAD Contínua, em % da força de trabalho, para "
