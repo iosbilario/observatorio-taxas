@@ -212,6 +212,7 @@
         }
       } else sha = atual;
     })();
+    var contou = false;
     form.addEventListener("submit", async function (ev) {
       ev.preventDefault();
       await pronto;
@@ -224,6 +225,11 @@
       }
       mostra({ valor: v, fator: fator, indice: ds.indice, refYm: ds.ref, produtor: ds.produtor, chave: ds.chave,
                link: linkConferencia(ds.chave, ds.ref, sha) });
+      // Evento do GoatCounter: cálculo feito pela pessoa, uma vez por página.
+      if (!contou && window.goatcounter && window.goatcounter.count) {
+        contou = true;
+        window.goatcounter.count({ path: "calculo-reajuste-" + ds.chave, title: "Cálculo de reajuste (" + ds.indice + ")", event: true });
+      }
     });
   }
 

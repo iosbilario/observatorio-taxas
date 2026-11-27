@@ -56,7 +56,16 @@
     }
     function linha(dl, rot, val, cls) { dl.appendChild(el("dt", rot)); dl.appendChild(el("dd", val, cls)); }
 
-    function render() {
+    // Evento do GoatCounter quando a PESSOA faz um cálculo (envio, mudança no
+    // formulário ou atalho). O cálculo automático ao abrir a página não conta.
+    // Uma vez por página aberta.
+    var contou = false;
+    function eventoCalculo() {
+      if (contou) return; contou = true;
+      var g = window.goatcounter;
+      if (g && g.count) g.count({ path: "calculo-simulador-cdi", title: "Cálculo no simulador de CDI", event: true });
+    }
+    function render(daPessoa) {
       var st = estado(), box = $("resultado");
       box.textContent = "";
       var r = C.simularCDI(diario, st.de, st.ate, st.percentual, st.valor);
@@ -64,6 +73,7 @@
       else if (isNaN(st.percentual)) r = { erro: "Informe o percentual do CDI, por exemplo 110." };
       if (r.erro) { box.appendChild(el("p", r.erro, "resultado erro")); $("memoria").textContent = ""; atual = null; return; }
       atual = r;
+      if (daPessoa) eventoCalculo();
       var tr = st.modo === "liquido" ? C.tributosCDB(r.rendimentoBruto, r.diasCorridos) : null;
       var final = r.valorBruto - (tr ? tr.total : 0);
       var liquido = final - st.valor;
@@ -129,14 +139,14 @@
       $("de").max = ultimo; $("ate").max = C.somaDias(ultimo, 1);
       aplicar(C.lerParamsSimulador(new URLSearchParams(location.search)));
       form.addEventListener("change", render);
-      form.addEventListener("submit", function (ev) { ev.preventDefault(); render(); });
+      form.addEventListener("submit", function (ev) { ev.preventDefault(); render(true); });
       ["valor", "percentual"].forEach(function (k) {
         Array.prototype.forEach.call(document.querySelectorAll("[data-" + k + "]"), function (b) {
-          b.addEventListener("click", function () { var o = {}; o[k] = +b.getAttribute("data-" + k); aplicar(o); render(); });
+          b.addEventListener("click", function () { var o = {}; o[k] = +b.getAttribute("data-" + k); aplicar(o); render(true); });
         });
       });
       Array.prototype.forEach.call(document.querySelectorAll("[data-periodo]"), function (b) {
-        b.addEventListener("click", function () { aplicar({ periodo: b.getAttribute("data-periodo") }); render(); });
+        b.addEventListener("click", function () { aplicar({ periodo: b.getAttribute("data-periodo") }); render(true); });
       });
       $("copiar").addEventListener("click", function () {
         var st = estado(), u = location.origin + url(st, periodoAtual(st));

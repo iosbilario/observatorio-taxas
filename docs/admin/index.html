@@ -79,13 +79,18 @@ td.path{overflow-wrap:anywhere;color:var(--papel)}
 tr.sub td:first-child{padding-left:1.4rem;color:var(--papel-70)}
 .aviso{border-left:3px solid var(--carimbo);padding:.2rem 0 .2rem .9rem;color:var(--papel-70);font-size:.88rem;margin:.6rem 0 0}
 .vazio{color:var(--papel-45);font-size:.88rem;margin:.3rem 0}
+ol.funil{list-style:none;counter-reset:etapa;padding:0;margin:.2rem 0 0}
+ol.funil li{counter-increment:etapa;display:grid;grid-template-columns:1.6rem minmax(0,1fr) auto;gap:.6rem;align-items:baseline;padding:.45rem 0;border-bottom:1px solid var(--linha);font-size:.9rem}
+ol.funil li::before{content:counter(etapa);font-family:"IBM Plex Mono",monospace;font-size:.75rem;color:var(--papel-45)}
+ol.funil li.evento .nome{color:var(--carimbo);font-weight:600}
+ol.funil .n{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;color:var(--papel)}
 </style>
   <link rel="stylesheet" href="../nav.css?v=eb59306490"/>
   <link rel="stylesheet" href="../refy/tokens.css?v=ee92076019"/>
   <link rel="stylesheet" href="../tema.css?v=25c56aab61"/>
   <script src="../tema.js?v=02cb43da0a"></script>
   <script src="../estrelas.js?v=b002890fba" defer></script>
-  <script src="../admin.js?v=e0394d466e" defer></script>
+  <script src="../admin.js?v=23575428de" defer></script>
   <!-- icones:start -->
   <link rel="icon" href="../favicon.ico" sizes="48x48" />
   <link rel="icon" href="../favicon.svg" type="image/svg+xml" />

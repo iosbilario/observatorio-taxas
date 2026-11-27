@@ -64,9 +64,10 @@
   function fmtMedia(n) { return n.toLocaleString("pt-BR", { maximumFractionDigits: 1 }); }
 
   // Lista com barra proporcional: [{nome, acessos}].
-  function listaBarras(itens, total) {
+  // total = denominador do percentual; escala = valor que enche a barra.
+  function listaBarras(itens, total, escala) {
     var ul = el("ul", null, "lista-barras");
-    var mx = Math.max.apply(null, itens.map(function (i) { return i.acessos; }).concat([1]));
+    var mx = escala || Math.max.apply(null, itens.map(function (i) { return i.acessos; }).concat([1]));
     itens.forEach(function (i) {
       var li = el("li"); li.appendChild(el("span", i.nome, "nome"));
       li.appendChild(el("span", fmt(i.acessos) + (total ? " · " + pct(100 * i.acessos / total) : ""), "n"));
@@ -144,15 +145,56 @@
     duas.appendChild(ct);
     app.appendChild(duas);
 
-    // Origem e aparelhos
-    var det = s.detalhes_30d || {};
-    var blocos = [["origens", "De onde vêm", "Sites e buscas que trouxeram visitantes (30 dias)."], ["paises", "Países", null],
-                  ["telas", "Tamanho de tela", null], ["navegadores", "Navegadores", null], ["sistemas", "Sistemas", null]];
+    // Funis: página de entrada → convite → ferramenta → cálculo
+    var fs = s.funis_30d || [];
+    var cf = card("Da consulta à ferramenta", "Visitantes de cada etapa nos últimos 30 dias, contados separadamente por página ou evento. " +
+      "Não é taxa de conversão: quem calcula pode ter chegado à ferramenta por outro caminho." +
+      (s.eventos_desde ? " Cliques e cálculos medidos desde " + diaMes(s.eventos_desde) + "/" + s.eventos_desde.slice(0, 4) + "." : ""));
+    if (fs.length) {
+      var df = el("div", null, "duas");
+      fs.forEach(function (f) {
+        var bloco = el("div"); bloco.appendChild(el("h3", f.nome));
+        var ol = el("ol", null, "funil");
+        f.etapas.forEach(function (e) {
+          var li = el("li"); li.appendChild(el("span", e.rotulo, "nome")); li.appendChild(el("span", fmt(e.visitantes), "n"));
+          if (e.tipo === "evento") li.className = "evento";
+          ol.appendChild(li);
+        });
+        bloco.appendChild(ol); df.appendChild(bloco);
+      });
+      cf.appendChild(df);
+    } else semDados(cf);
+    app.appendChild(cf);
+
+    // Origem dos acessos: de fora, sem origem e dentro do site, separados.
+    var o = s.origens_30d, co = card("De onde vêm");
+    if (o && o.totais) {
+      var den = o.denominador || 0, tt = o.totais;
+      co.appendChild(el("p", "Percentuais sobre os " + fmt(den) + " visitantes dos últimos 30 dias.", "mut"));
+      co.appendChild(listaBarras([{ nome: "Vieram de outros sites e buscas", acessos: tt.externo },
+                                  { nome: "Acesso direto ou sem origem", acessos: tt.direto },
+                                  { nome: "Navegação dentro do Observatório", acessos: tt.interno }], den, den));
+      co.appendChild(el("h3", "Sites e buscas"));
+      var ext = (o.externas || []).slice();
+      if (o.completo && o.outros_externos > 0) ext.push({ nome: "Outros sites", acessos: o.outros_externos });
+      if (ext.length) co.appendChild(listaBarras(ext, den, ext[0].acessos));
+      else co.appendChild(el("p", "Nenhum visitante de outros sites no período.", "vazio"));
+      if (!o.completo) co.appendChild(el("p", "A API devolveu só parte das origens; os totais acima podem estar abaixo do real e \u201cOutros\u201d não é mostrado.", "aviso"));
+    } else {
+      var antigos = (s.detalhes_30d || {}).origens || [];
+      if (antigos.length) { co.appendChild(el("p", "Ranking sem separar navegação interna (formato antigo do stats.json).", "aviso")); co.appendChild(listaBarras(antigos)); }
+      else semDados(co);
+    }
+
+    // Aparelhos e lugares, sobre o total de visitantes da janela
+    var det = s.detalhes_30d || {}, den30 = m30.visitantes || 0;
+    var blocos = [["paises", "Países"], ["telas", "Tamanho de tela"], ["navegadores", "Navegadores"], ["sistemas", "Sistemas"]];
     var d2 = el("div", null, "duas");
+    d2.appendChild(co);
     blocos.forEach(function (b) {
-      var c = card(b[1], b[2]);
+      var c = card(b[1], den30 ? "Percentuais sobre os " + fmt(den30) + " visitantes dos 30 dias. Mostra os 10 primeiros." : null);
       var itens = det[b[0]] || [];
-      if (itens.length) c.appendChild(listaBarras(itens, itens.reduce(function (a, i) { return a + i.acessos; }, 0)));
+      if (itens.length) c.appendChild(listaBarras(itens, den30));
       else semDados(c);
       d2.appendChild(c);
     });
