@@ -70,6 +70,9 @@ FERR_CSS = """
 .legenda{display:flex;flex-wrap:wrap;gap:14px;font-size:.84rem;color:var(--papel-70);margin:.4rem 0 0}
 .legenda i{display:inline-block;width:18px;height:0;border-top:3px solid;vertical-align:middle;margin-right:6px}
 svg.grafico{width:100%;height:auto;display:block}
+:root{--cmp-cdi:#D9B54A;--cmp-selic:#E9E6DC;--cmp-ipca:#8FB3D9;--cmp-eixo:var(--papel-70);--cmp-grade:var(--linha)}
+html[data-theme="light"]{--cmp-cdi:#8a5a00;--cmp-selic:#1f2a24;--cmp-ipca:#1b5fab}
+html[data-theme="dark"]{--cmp-cdi:#e3c063;--cmp-selic:#e6e8e6;--cmp-ipca:#8ab8ee}
 .alta{color:var(--alta)}.queda{color:var(--queda)}
 """
 
