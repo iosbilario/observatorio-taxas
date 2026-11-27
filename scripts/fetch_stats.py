@@ -119,6 +119,32 @@ def rfc3339(dt: datetime) -> str:
     return dt.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:00:00Z")
 
 
+# /stats/sizes traz o nome vazio e só o id da faixa de largura.
+TELAS = {"phone": "Celular", "largephone": "Celular grande", "tablet": "Tablet",
+         "desktop": "Computador", "desktophd": "Computador (tela grande)", "unknown": "Desconhecido"}
+# /stats/locations traz o nome do país em inglês.
+PAISES = {"Brazil": "Brasil", "United States": "Estados Unidos", "Portugal": "Portugal", "Spain": "Espanha",
+          "Argentina": "Argentina", "Germany": "Alemanha", "France": "França", "United Kingdom": "Reino Unido",
+          "Canada": "Canadá", "Mexico": "México", "Netherlands": "Países Baixos", "Italy": "Itália",
+          "Ireland": "Irlanda", "Japan": "Japão", "China": "China", "India": "Índia", "Chile": "Chile",
+          "Colombia": "Colômbia", "Uruguay": "Uruguai", "Paraguay": "Paraguai", "Peru": "Peru",
+          "Switzerland": "Suíça", "Belgium": "Bélgica", "Singapore": "Singapura", "Australia": "Austrália",
+          "Russia": "Rússia", "Sweden": "Suécia", "Finland": "Finlândia", "Poland": "Polônia",
+          "(unknown)": "Desconhecido", "": "Desconhecido"}
+
+
+def nome_detalhe(pagina: str, s: dict) -> str:
+    """Nome legível de um item de /stats/{pagina}, em português."""
+    nome = (s.get("name") or "").strip()
+    if pagina == "sizes":
+        return TELAS.get(str(s.get("id") or "").strip(), nome or "Desconhecido")
+    if pagina == "locations":
+        return PAISES.get(nome, nome)
+    if pagina == "toprefs" and not nome:
+        return "Acesso direto ou sem origem"
+    return nome or "Desconhecido"
+
+
 class GoatCounter:
     def __init__(self, code: str, token: str):
         self.base = f"https://{code}.goatcounter.com/api/v0"
@@ -162,7 +188,7 @@ class GoatCounter:
         except Exception as exc:  # noqa: BLE001
             print(f"[aviso] /stats/{pagina} falhou: {exc}", file=sys.stderr)
             return []
-        return [{"nome": (s.get("name") or "").strip() or "(sem nome)", "acessos": int(s.get("count") or 0)}
+        return [{"nome": nome_detalhe(pagina, s), "acessos": int(s.get("count") or 0)}
                 for s in (data.get("stats") or [])][:TOP_DETALHE]
 
     def hits(self, start: str, end: str) -> list[dict]:
