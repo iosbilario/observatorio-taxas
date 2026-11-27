@@ -1,6 +1,22 @@
 {
   "coletas": [
     {
+      "base": "62af3affa941ac51fd5c25f6d3ab988a5a07772c",
+      "commit": null,
+      "gerado_em": "2026-11-26T22:16:00-03:00",
+      "novas": [],
+      "revisoes": [
+        {
+          "antes": "0.82",
+          "codigo": 4390,
+          "data": "01/11/2026",
+          "depois": "0.87",
+          "nome": "Selic - acumulada no mês (%)"
+        }
+      ],
+      "series_novas": []
+    },
+    {
       "base": "f4569a48e9826a7e19c8db87e4aeeb662a4a5f81",
       "commit": "317df4940d39ffadab5b8896188c05636c3dc37e",
       "gerado_em": "2026-11-26T11:27:52-03:00",

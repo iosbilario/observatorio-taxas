@@ -1,13 +1,13 @@
 {
-  "gerado_em": "2026-11-26T12:59:58-03:00",
-  "gerado_em_fmt": "26/11/2026 às 12:59",
+  "gerado_em": "2026-11-26T22:16:11-03:00",
+  "gerado_em_fmt": "26/11/2026 às 22:16",
   "grupos": {
     "Admin": {
       "acessos": 0,
       "sub": {}
     },
     "Correção": {
-      "acessos": 38,
+      "acessos": 39,
       "sub": {
         "IGP-DI": 0,
         "IGP-M": 3,
@@ -16,22 +16,22 @@
       }
     },
     "Home": {
-      "acessos": 213,
+      "acessos": 215,
       "sub": {}
     },
     "Reajuste": {
       "acessos": 182,
       "sub": {
-        "IGP-DI": 10,
+        "IGP-DI": 9,
         "IGP-M": 48,
         "INPC": 15,
-        "IPCA": 42
+        "IPCA": 41
       }
     }
   },
   "serie_diaria": [
     {
-      "acessos": 4,
+      "acessos": 0,
       "data": "2026-10-27"
     },
     {
@@ -151,7 +151,7 @@
       "data": "2026-11-25"
     },
     {
-      "acessos": 27,
+      "acessos": 50,
       "data": "2026-11-26"
     }
   ],
@@ -159,39 +159,39 @@
   "timezone": "America/Sao_Paulo (UTC-3)",
   "top_paginas": [
     {
-      "count": 209,
+      "count": 211,
       "path": "/"
     },
     {
-      "count": 104,
+      "count": 107,
       "path": "/indicadores/cdi"
     },
     {
-      "count": 64,
+      "count": 66,
       "path": "/reajuste"
     },
     {
-      "count": 61,
+      "count": 62,
       "path": "/rebobinar.html"
     },
     {
-      "count": 26,
+      "count": 27,
       "path": "/correcao"
     },
     {
-      "count": 20,
+      "count": 21,
       "path": "/var.html"
     },
     {
-      "count": 19,
+      "count": 20,
       "path": "/retransmissora.html"
     },
     {
-      "count": 18,
+      "count": 19,
       "path": "/indicadores/dolar"
     },
     {
-      "count": 18,
+      "count": 19,
       "path": "/indicadores"
     },
     {
@@ -204,15 +204,15 @@
     },
     {
       "count": 10,
+      "path": "/indicadores/euro"
+    },
+    {
+      "count": 10,
       "path": "/simulador-cdi"
     },
     {
       "count": 10,
       "path": "/mcp"
-    },
-    {
-      "count": 9,
-      "path": "/indicadores/euro"
     },
     {
       "count": 8,
@@ -221,12 +221,12 @@
   ],
   "totais": {
     "all_time": {
-      "acessos": 793,
-      "visitantes": 821
+      "acessos": 813,
+      "visitantes": 844
     },
     "ultimos_30d": {
-      "acessos": 438,
-      "visitantes": 438
+      "acessos": 457,
+      "visitantes": 457
     }
   }
 }
