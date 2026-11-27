@@ -132,7 +132,7 @@ function nodeFalso(tag) {
 }
 async function roda(stats) {
   const app = nodeFalso("div"), coleta = nodeFalso("p");
-  global.document = { getElementById: id => id === "app" ? app : coleta, createElement: nodeFalso, createElementNS: (ns, t) => nodeFalso(t) };
+  global.document = { getElementById: id => id === "app" ? app : coleta, createElement: nodeFalso, createElementNS: (ns, t) => nodeFalso(t), createTextNode: (x) => ({ textContent: x }) };
   global.fetch = async () => ({ ok: true, json: async () => stats });
   eval(JS); await new Promise(r => setTimeout(r, 20));
   return app.textContent;
@@ -161,6 +161,8 @@ async function roda(stats) {
         self.assertIn("visitantes das 09h às 09h59 de 27/11", out["novo"])
         self.assertIn("das 14h às 14h59", out["novo"])
         self.assertIn("google.com", out["novo"])
+        self.assertIn("Média por dia nos 30 dias: 4", out["antigo"])
+        self.assertIn("Média das 24 horas: 1,1", out["novo"])
 
 
 if __name__ == "__main__":

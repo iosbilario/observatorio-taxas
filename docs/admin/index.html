@@ -7,7 +7,7 @@
 <meta name="referrer" content="strict-origin-when-cross-origin"/>
 <meta name="robots" content="noindex, nofollow"/>
 <meta name="theme-color" content="#ffffff"/>
-<title>Painel de acessos | Observatório de Taxas</title>
+<title>Observatório de Acessos | Observatório de Taxas</title>
 <!--
   NOTA DE SEGURANÇA (leia antes de "proteger com senha"):
   Site 100% estático no GitHub Pages: não há servidor para validar credenciais,
@@ -45,7 +45,7 @@ ul.lista,ol.lista{color:var(--papel-70);padding-left:1.2rem;margin:.3rem 0 .8rem
 h3{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:1rem;margin:1rem 0 .3rem}
 footer{margin-top:32px;color:var(--papel-45);font-size:.8rem;border-top:1px solid var(--linha);padding-top:1.2rem}
 footer a{color:var(--papel-70)}
-/* ---- Painel de acessos ---- */
+/* ---- Observatório de Acessos ---- */
 :root{--maxw:1040px}
 .kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.8rem;margin:1.2rem 0}
 @media(max-width:820px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -61,6 +61,10 @@ footer a{color:var(--papel-70)}
 .grafico .barra.fraca{fill:color-mix(in srgb,currentColor 35%,transparent)}
 .grafico .linha-g{stroke:var(--linha)}
 .grafico text{fill:var(--papel-45);font-family:"IBM Plex Mono",monospace;font-size:11px}
+.grafico .media{stroke:var(--obs-cai,var(--queda));stroke-width:2;stroke-dasharray:6 4}
+.grafico text.media-t{fill:var(--obs-cai,var(--queda));font-weight:600}
+.legenda-media{font-size:.8rem;color:var(--papel-45);margin:.4rem 0 0}
+.legenda-media i{display:inline-block;width:20px;height:0;border-top:2px dashed var(--obs-cai,var(--queda));vertical-align:middle;margin-right:6px}
 .lista-barras{list-style:none;padding:0;margin:.2rem 0 0}
 .lista-barras li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.1rem 1rem;padding:.35rem 0;border-bottom:1px solid var(--linha);font-size:.9rem}
 .lista-barras .nome{color:var(--papel);overflow-wrap:anywhere}
@@ -81,7 +85,7 @@ tr.sub td:first-child{padding-left:1.4rem;color:var(--papel-70)}
   <link rel="stylesheet" href="../tema.css?v=25c56aab61"/>
   <script src="../tema.js?v=02cb43da0a"></script>
   <script src="../estrelas.js?v=b002890fba" defer></script>
-  <script src="../admin.js?v=73081af3c8" defer></script>
+  <script src="../admin.js?v=e0394d466e" defer></script>
   <!-- icones:start -->
   <link rel="icon" href="../favicon.ico" sizes="48x48" />
   <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
@@ -118,7 +122,7 @@ tr.sub td:first-child{padding-left:1.4rem;color:var(--papel-70)}
 <main id="conteudo">
 <header>
 <p class="eyebrow">Interno · fora da busca</p>
-<h1>Painel de acessos</h1>
+<h1>Observatório de Acessos</h1>
 <p class="lead">Quantas pessoas usam o Observatório, de onde vêm e o que consultam.</p>
 <p class="mut" id="coleta">Dados agregados do GoatCounter, coletados a cada 6 horas pelo mesmo robô das séries.</p>
 </header>

@@ -1,4 +1,4 @@
-/* admin.js — Painel de acessos (/admin/).
+/* admin.js — Observatório de Acessos (/admin/).
 
    Lê só /data/stats.json, gravado por scripts/fetch_stats.py a cada coleta, e
    desenha tudo com SVG e CSS do próprio site: sem biblioteca externa, cores
@@ -39,6 +39,7 @@
       var t = svg("text", { x: M.l - 6, y: y + 4, "text-anchor": "end" }); t.textContent = fmt(Math.round(v)); g.appendChild(t);
     });
     var bw = (W - M.l - M.r) / pontos.length;
+    var media = pontos.reduce(function (a, p) { return a + p.n; }, 0) / (pontos.length || 1);
     pontos.forEach(function (p, i) {
       var h = (H - M.t - M.b) * p.n / mx, x = M.l + i * bw;
       var r = svg("rect", { x: (x + bw * 0.15).toFixed(1), y: (H - M.b - h).toFixed(1), width: (bw * 0.7).toFixed(1), height: Math.max(h, p.n ? 1 : 0).toFixed(1),
@@ -48,8 +49,19 @@
         var t = svg("text", { x: (x + bw / 2).toFixed(1), y: H - 6, "text-anchor": "middle" }); t.textContent = p.curto || p.rotulo; g.appendChild(t);
       }
     });
-    return g;
+    // Linha vermelha pontilhada com a média do período, por cima das barras.
+    if (pontos.length) {
+      var ym = (M.t + (H - M.t - M.b) * (1 - media / mx)).toFixed(1);
+      var lm = svg("line", { x1: M.l, x2: W - M.r, y1: ym, y2: ym, class: "media" });
+      var tm = svg("title", {}); tm.textContent = "Média: " + fmtMedia(media); lm.appendChild(tm); g.appendChild(lm);
+      var rt = svg("text", { x: W - M.r, y: (ym - 5).toFixed(1), "text-anchor": "end", class: "media-t" }); rt.textContent = "média " + fmtMedia(media); g.appendChild(rt);
+    }
+    var fig = el("div"); fig.appendChild(g);
+    var lg = el("p", null, "legenda-media"); lg.appendChild(el("i")); lg.appendChild(document.createTextNode((opc.media || "Média do período") + ": " + fmtMedia(media)));
+    fig.appendChild(lg);
+    return fig;
   }
+  function fmtMedia(n) { return n.toLocaleString("pt-BR", { maximumFractionDigits: 1 }); }
 
   // Lista com barra proporcional: [{nome, acessos}].
   function listaBarras(itens, total) {
@@ -94,7 +106,7 @@
     var c48 = card("Últimas 48 horas", "Visitantes por hora até a última hora cheia antes da coleta. Não é \u201conline agora\u201d: o GoatCounter agrupa por hora e a coleta roda a cada 6 horas.");
     var h48 = s.ultimas_48h || [];
     if (h48.length) c48.appendChild(barras(h48.map(function (p) { return { rotulo: diaMes(p.hora) + " " + p.hora.slice(11, 13) + "h", curto: p.hora.slice(11, 13) + "h", n: p.acessos }; }),
-      { cada: 6, rotulo: "Visitantes por hora nas últimas 48 horas" }));
+      { cada: 6, rotulo: "Visitantes por hora nas últimas 48 horas", media: "Média por hora nas 48 horas" }));
     else semDados(c48);
     app.appendChild(c48);
 
@@ -104,7 +116,7 @@
     if (sd.length) {
       var soma = sd.reduce(function (a, p) { return a + p.acessos; }, 0), melhor = sd.reduce(function (a, p) { return p.acessos > a.acessos ? p : a; }, sd[0]);
       cd.appendChild(el("p", "Média de " + fmt(Math.round(soma / sd.length)) + " visitantes por dia. Maior dia: " + diaMes(melhor.data) + ", com " + fmt(melhor.acessos) + ".", "mut"));
-      cd.appendChild(barras(sd.map(function (p) { return { rotulo: diaMes(p.data), n: p.acessos }; }), { cada: 5, rotulo: "Visitantes por dia nos últimos 30 dias" }));
+      cd.appendChild(barras(sd.map(function (p) { return { rotulo: diaMes(p.data), n: p.acessos }; }), { cada: 5, rotulo: "Visitantes por dia nos últimos 30 dias", media: "Média por dia nos 30 dias" }));
     } else semDados(cd);
     app.appendChild(cd);
 
@@ -115,7 +127,7 @@
       var pico = mh.indexOf(Math.max.apply(null, mh));
       cp.appendChild(el("p", "Em média, o horário com mais visitantes é das " + pico + "h às " + pico + "h59 (horário de Brasília), com " +
         mh[pico].toLocaleString("pt-BR", { maximumFractionDigits: 1 }) + " por hora.", "mut"));
-      cp.appendChild(barras(mh.map(function (n, h) { return { rotulo: h + "h", n: n }; }), { cada: 3, destaque: pico, rotulo: "Média de visitantes por hora do dia" }));
+      cp.appendChild(barras(mh.map(function (n, h) { return { rotulo: h + "h", n: n }; }), { cada: 3, destaque: pico, rotulo: "Média de visitantes por hora do dia", media: "Média das 24 horas" }));
     } else semDados(cp);
     app.appendChild(cp);
 
