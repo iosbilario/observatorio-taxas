@@ -1,6 +1,27 @@
 {
   "coletas": [
     {
+      "base": "3fafeb719e2f520fa964d35d212873cbce27837f",
+      "commit": null,
+      "gerado_em": "2026-11-27T13:54:24-03:00",
+      "novas": [
+        {
+          "codigo": 1,
+          "data": "27/11/2026",
+          "nome": "Câmbio USD/BRL - venda",
+          "valor": "5.5430"
+        },
+        {
+          "codigo": 21619,
+          "data": "27/11/2026",
+          "nome": "Câmbio EUR/BRL - venda",
+          "valor": "6.0646000"
+        }
+      ],
+      "revisoes": [],
+      "series_novas": []
+    },
+    {
       "base": "993ae695148b9b93e2e89fad704876536b3f713a",
       "commit": "3fafeb719e2f520fa964d35d212873cbce27837f",
       "gerado_em": "2026-11-27T13:41:48-03:00",
