@@ -190,6 +190,38 @@ def tipo_origem(nome: str) -> str:
     return "externo"
 
 
+# Mesma origem com grafias diferentes (www., caminho, maiúsculas) vira uma só
+# linha. Os nomes que o GoatCounter já agrupa ("Google", "Yahoo") ficam como estão.
+ALIAS_ORIGEM = {"bing.com": "Bing", "google.com": "Google", "chatgpt.com": "chatgpt.com",
+                "duckduckgo.com": "DuckDuckGo", "yahoo.com": "Yahoo", "search.yahoo.com": "Yahoo"}
+
+
+def nome_origem(nome: str) -> str:
+    """Chave de agrupamento de uma origem: host sem esquema, sem www. e sem caminho."""
+    n = (nome or "").strip()
+    if not n:
+        return ""
+    h = n.lower()
+    for pre in ("https://", "http://"):
+        if h.startswith(pre):
+            h = h[len(pre):]
+    h = h.split("/")[0].split("?")[0].split(":")[0]
+    if h.startswith("www."):
+        h = h[4:]
+    if "." not in h:            # nome agrupado pelo GoatCounter (Google, Yahoo...)
+        return ALIAS_ORIGEM.get(h, n)
+    return ALIAS_ORIGEM.get(h, h)
+
+
+def soma_origens(itens: list[dict]) -> list[dict]:
+    """Soma os acessos de cada origem depois de normalizar o nome."""
+    soma: dict[str, int] = {}
+    for i in itens:
+        k = nome_origem(i["nome"])
+        soma[k] = soma.get(k, 0) + i["acessos"]
+    return [{"nome": k, "acessos": v} for k, v in sorted(soma.items(), key=lambda x: (-x[1], x[0]))]
+
+
 def resume_origens(itens: list[dict], completo: bool, visitantes: int) -> dict:
     """Origens separadas em externo, direto e interno, com o denominador explícito.
 
@@ -199,7 +231,7 @@ def resume_origens(itens: list[dict], completo: bool, visitantes: int) -> dict:
     """
     soma = {"externo": 0, "direto": 0, "interno": 0}
     externas = []
-    for i in itens:
+    for i in soma_origens(itens):
         k = tipo_origem(i["nome"])
         soma[k] += i["acessos"]
         if k == "externo":
@@ -296,19 +328,23 @@ class GoatCounter:
 
     def hits(self, start: str, end: str) -> list[dict]:
         """Páginas do período: [{path, count}, ...] (até HITS_LIMIT)."""
+        return self.hits_e_completo(start, end)[0]
+
+    def hits_e_completo(self, start: str, end: str) -> tuple[list[dict], bool | None]:
+        """(páginas do período, a lista veio inteira?). None = a chamada falhou."""
         try:
             data = self._get("/stats/hits",
                              {"start": start, "end": end, "limit": HITS_LIMIT})
         except Exception as exc:  # noqa: BLE001
             print(f"[aviso] /stats/hits falhou: {exc}", file=sys.stderr)
-            return []
+            return [], None
         if data.get("more"):
             print(f"[aviso] mais de {HITS_LIMIT} páginas distintas; a cauda longa "
                   "foi truncada (não afeta grupos nem o Top 15).", file=sys.stderr)
         return [
             {"path": h.get("path") or "", "count": int(h.get("count") or 0), "event": bool(h.get("event"))}
             for h in (data.get("hits") or [])
-        ]
+        ], not data.get("more")
 
 
 # --------------------------------------------------------------------------- #
@@ -446,10 +482,14 @@ def main() -> None:
     refs, refs_completo = gc.detalhe_cru("toprefs", ini_30d, fim, LIMITE_ORIGENS)
     origens = [{"nome": (s.get("name") or "").strip(), "acessos": int(s.get("count") or 0)} for s in refs]
     detalhes["origens"] = [{"nome": nome_detalhe("toprefs", {"name": o["nome"]}), "acessos": o["acessos"]}
-                           for o in origens[:TOP_DETALHE]]
+                           for o in soma_origens(origens)[:TOP_DETALHE]]
+    # Funis: páginas, cliques e cálculos na MESMA janela, desde o início da
+    # medição dos eventos (não 30 dias). Janela curta = poucas páginas, e a
+    # API indica se a lista veio inteira.
+    ini_funil_dt = max(datetime.fromisoformat(EVENTOS_DESDE).replace(tzinfo=BRT), agora - timedelta(days=DIAS_JANELA))
+    hits_funil, funil_completo = gc.hits_e_completo(rfc3339(ini_funil_dt), fim)
     # Eventos (cliques e cálculos) chegam em /stats/hits com event=true: saem das
     # contagens de páginas e vão só para os funis.
-    eventos_30d = [h for h in hits_30d if h.get("event")]
     hits_tudo = [h for h in hits_tudo if not h.get("event")]
     hits_30d = [h for h in hits_30d if not h.get("event")]
 
@@ -487,7 +527,11 @@ def main() -> None:
         "media_por_hora_do_dia": media_hora,
         "detalhes_30d": detalhes,
         "origens_30d": resume_origens(origens, bool(refs_completo), vis_30d) if refs_completo is not None else None,
-        "funis_30d": funis(hits_30d, eventos_30d),
+        "funis": {
+            "desde": ini_funil_dt.astimezone(BRT).strftime("%Y-%m-%d"),
+            "completo": funil_completo,
+            "caminhos": funis([h for h in hits_funil if not h.get("event")], [h for h in hits_funil if h.get("event")]),
+        } if funil_completo is not None else None,
         "eventos_desde": EVENTOS_DESDE,
     }
 
