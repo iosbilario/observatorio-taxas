@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://observatoriodetaxas.tec.br/">
+  <a href="https://observatoriodetaxas.tec.br/?utm_source=github-readme">
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="assets/readme/banner-escuro.svg">
       <img src="assets/readme/banner.svg" width="100%" alt="Observatório de Taxas. Os números mudam. O histórico fica. Indicadores econômicos brasileiros, séries históricas versionadas e ferramentas gratuitas para consulta, comparação e cálculo.">
@@ -8,19 +8,19 @@
 </p>
 
 <p align="center">
-  <a href="https://observatoriodetaxas.tec.br/"><b>Site</b></a> ·
-  <a href="https://observatoriodetaxas.tec.br/indicadores/">Indicadores</a> ·
-  <a href="https://observatoriodetaxas.tec.br/comparador/">Comparador</a> ·
-  <a href="https://observatoriodetaxas.tec.br/simulador-cdi/">Simulador de CDI</a> ·
-  <a href="https://observatoriodetaxas.tec.br/reajuste/">Reajuste</a> ·
-  <a href="https://observatoriodetaxas.tec.br/correcao/">Correção monetária</a> ·
-  <a href="https://observatoriodetaxas.tec.br/guias/">Guias</a> ·
-  <a href="https://observatoriodetaxas.tec.br/var.html">VAR</a> ·
+  <a href="https://observatoriodetaxas.tec.br/?utm_source=github-readme"><b>Site</b></a> ·
+  <a href="https://observatoriodetaxas.tec.br/indicadores/?utm_source=github-readme">Indicadores</a> ·
+  <a href="https://observatoriodetaxas.tec.br/comparador/?utm_source=github-readme">Comparador</a> ·
+  <a href="https://observatoriodetaxas.tec.br/simulador-cdi/?utm_source=github-readme">Simulador de CDI</a> ·
+  <a href="https://observatoriodetaxas.tec.br/reajuste/?utm_source=github-readme">Reajuste</a> ·
+  <a href="https://observatoriodetaxas.tec.br/correcao/?utm_source=github-readme">Correção monetária</a> ·
+  <a href="https://observatoriodetaxas.tec.br/guias/?utm_source=github-readme">Guias</a> ·
+  <a href="https://observatoriodetaxas.tec.br/var.html?utm_source=github-readme">VAR</a> ·
   <a href="https://observatoriodetaxas.tec.br/data/series.json">Dados (JSON)</a> ·
   <a href="https://chatgpt.com/plugins/plugin_asdk_app_6af615624cb08191ae41993bad0b6279">Plugin no ChatGPT</a> ·
-  <a href="https://observatoriodetaxas.tec.br/mcp/">MCP</a> ·
+  <a href="https://observatoriodetaxas.tec.br/mcp/?utm_source=github-readme">MCP</a> ·
   <a href="desenvolvimento/GUIA.md">Guia do desenvolvedor</a> ·
-  <a href="https://observatoriodetaxas.tec.br/apoie/">Apoie</a>
+  <a href="https://observatoriodetaxas.tec.br/apoie/?utm_source=github-readme">Apoie</a>
 </p>
 
 <p align="center">
@@ -33,8 +33,8 @@
   <a href="https://github.com/iosbilario/observatorio-taxas/commits/main"><img src="https://img.shields.io/github/last-commit/iosbilario/observatorio-taxas?label=%C3%BAltimo%20commit" alt="Data do último commit"></a>
   <a href="https://github.com/iosbilario/observatorio-taxas/stargazers"><img src="https://img.shields.io/github/stars/iosbilario/observatorio-taxas?style=social" alt="Estrelas no GitHub"></a>
   <br>
-  <a href="https://observatoriodetaxas.tec.br/"><img src="https://img.shields.io/website?url=https%3A%2F%2Fobservatoriodetaxas.tec.br&label=site" alt="Situação do site"></a>
-  <a href="https://observatoriodetaxas.tec.br/indicadores/"><img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fobservatoriodetaxas.tec.br%2Fdata%2Fseries.json&query=%24.length&label=s%C3%A9ries&color=1B5FAB" alt="Número de séries acompanhadas"></a>
+  <a href="https://observatoriodetaxas.tec.br/?utm_source=github-readme"><img src="https://img.shields.io/website?url=https%3A%2F%2Fobservatoriodetaxas.tec.br&label=site" alt="Situação do site"></a>
+  <a href="https://observatoriodetaxas.tec.br/indicadores/?utm_source=github-readme"><img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fobservatoriodetaxas.tec.br%2Fdata%2Fseries.json&query=%24.length&label=s%C3%A9ries&color=1B5FAB" alt="Número de séries acompanhadas"></a>
   <a href="https://observatoriodetaxas.tec.br/data/meta.json"><img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fobservatoriodetaxas.tec.br%2Fdata%2Fmeta.json&query=%24.gerado_em_fmt&label=%C3%BAltima%20coleta&color=111113" alt="Horário da última coleta com mudança"></a>
   <a href="https://doi.org/10.5281/zenodo.24151062"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.24151062.svg" alt="DOI 10.5281/zenodo.24151062 (todas as versões, Zenodo)"></a>
   <a href="https://refy.design/"><img src="https://img.shields.io/badge/design-Refy%20Design-B9431D" alt="Interface feita com o Refy Design"></a>
@@ -75,23 +75,23 @@ O Observatório guarda esse caminho:
 
 | Ferramenta | O que faz | Link |
 | --- | --- | --- |
-| Painel | As cinco perguntas do dia (Selic, inflação, dólar, aluguel, desemprego) respondidas em uma frase, com variação no mês, e mais 12 indicadores | [observatoriodetaxas.tec.br](https://observatoriodetaxas.tec.br/) |
-| Indicadores | Uma página por série (25) com valor atual, contexto, últimos 12 meses e ficha técnica, mais uma tabela com todas | [/indicadores/](https://observatoriodetaxas.tec.br/indicadores/) |
-| Comparador | Selic, CDI e IPCA acumulados em qualquer período, com gráfico, tabela mês a mês e link compartilhável | [/comparador/](https://observatoriodetaxas.tec.br/comparador/) |
-| Simulador de CDI | Quanto rende X% do CDI com a taxa DI diária, IR e IOF do CDB, inflação do período e memória de cálculo em CSV | [/simulador-cdi/](https://observatoriodetaxas.tec.br/simulador-cdi/) |
-| Reajuste de contratos | Acumulado de 12 meses, fator e calculadora por índice e mês: uma página para cada mês desde dezembro de 2015, com a leitura do mês (o que mudou e por quê, posição no histórico, comparação com os outros índices) e um demonstrativo para copiar, com link que refaz a conta na mesma versão dos dados | [/reajuste/](https://observatoriodetaxas.tec.br/reajuste/) |
-| Evolução do contrato | Valor de um contrato a cada aniversário desde o início, por um índice, com comparação com outro índice. O valor não sai do navegador | [/reajuste/evolucao/](https://observatoriodetaxas.tec.br/reajuste/evolucao/) |
-| Correção monetária | Atualiza um valor entre duas datas pelo IPCA, IGP-M, INPC ou IGP-DI | [/correcao/](https://observatoriodetaxas.tec.br/correcao/) |
-| Guias | Reajuste de aluguel, IPCA x INPC x IGP-M x IGP-DI, cálculo do acumulado, correção monetária, Selic e dólar PTAX, com exemplos atualizados a cada coleta | [/guias/](https://observatoriodetaxas.tec.br/guias/) |
-| Rebobinar | A economia mês a mês, como uma linha do tempo de commits | [/rebobinar.html](https://observatoriodetaxas.tec.br/rebobinar.html) |
-| VAR da Economia | Confere uma afirmação comparando dois períodos de uma série e emite um recibo com link permanente, refeito no commit dos dados usado | [/var.html](https://observatoriodetaxas.tec.br/var.html) |
-| Divulgações | Uma página permanente por divulgação (IPCA do mês, CDI contra o IPCA, PTAX da semana), com CSV e RSS | [/divulgacoes/](https://observatoriodetaxas.tec.br/divulgacoes/) · [RSS](https://observatoriodetaxas.tec.br/feed.xml) |
-| Calendário | Próximas divulgações do IPCA e do IPCA-15 (IBGE) e reuniões do Copom, com fonte oficial de cada data | [/calendario/](https://observatoriodetaxas.tec.br/calendario/) |
-| O que mudou nesta coleta? | Observações novas e valores alterados na última coleta, separando período em andamento de período encerrado | [/mudancas/](https://observatoriodetaxas.tec.br/mudancas/) |
-| Versão histórica | A série como o Observatório a registrou até uma data, comparada com a atual, com link para compartilhar | [/historico/](https://observatoriodetaxas.tec.br/historico/) |
-| Retransmissora | Gera o código para incorporar um gráfico que se atualiza sozinho | [/retransmissora.html](https://observatoriodetaxas.tec.br/retransmissora.html) |
+| Painel | As cinco perguntas do dia (Selic, inflação, dólar, aluguel, desemprego) respondidas em uma frase, com variação no mês, e mais 12 indicadores | [observatoriodetaxas.tec.br](https://observatoriodetaxas.tec.br/?utm_source=github-readme) |
+| Indicadores | Uma página por série (25) com valor atual, contexto, últimos 12 meses e ficha técnica, mais uma tabela com todas | [/indicadores/](https://observatoriodetaxas.tec.br/indicadores/?utm_source=github-readme) |
+| Comparador | Selic, CDI e IPCA acumulados em qualquer período, com gráfico, tabela mês a mês e link compartilhável | [/comparador/](https://observatoriodetaxas.tec.br/comparador/?utm_source=github-readme) |
+| Simulador de CDI | Quanto rende X% do CDI com a taxa DI diária, IR e IOF do CDB, inflação do período e memória de cálculo em CSV | [/simulador-cdi/](https://observatoriodetaxas.tec.br/simulador-cdi/?utm_source=github-readme) |
+| Reajuste de contratos | Acumulado de 12 meses, fator e calculadora por índice e mês: uma página para cada mês desde dezembro de 2015, com a leitura do mês (o que mudou e por quê, posição no histórico, comparação com os outros índices) e um demonstrativo para copiar, com link que refaz a conta na mesma versão dos dados | [/reajuste/](https://observatoriodetaxas.tec.br/reajuste/?utm_source=github-readme) |
+| Evolução do contrato | Valor de um contrato a cada aniversário desde o início, por um índice, com comparação com outro índice. O valor não sai do navegador | [/reajuste/evolucao/](https://observatoriodetaxas.tec.br/reajuste/evolucao/?utm_source=github-readme) |
+| Correção monetária | Atualiza um valor entre duas datas pelo IPCA, IGP-M, INPC ou IGP-DI | [/correcao/](https://observatoriodetaxas.tec.br/correcao/?utm_source=github-readme) |
+| Guias | Reajuste de aluguel, IPCA x INPC x IGP-M x IGP-DI, cálculo do acumulado, correção monetária, Selic e dólar PTAX, com exemplos atualizados a cada coleta | [/guias/](https://observatoriodetaxas.tec.br/guias/?utm_source=github-readme) |
+| Rebobinar | A economia mês a mês, como uma linha do tempo de commits | [/rebobinar.html](https://observatoriodetaxas.tec.br/rebobinar.html?utm_source=github-readme) |
+| VAR da Economia | Confere uma afirmação comparando dois períodos de uma série e emite um recibo com link permanente, refeito no commit dos dados usado | [/var.html](https://observatoriodetaxas.tec.br/var.html?utm_source=github-readme) |
+| Divulgações | Uma página permanente por divulgação (IPCA do mês, CDI contra o IPCA, PTAX da semana), com CSV e RSS | [/divulgacoes/](https://observatoriodetaxas.tec.br/divulgacoes/?utm_source=github-readme) · [RSS](https://observatoriodetaxas.tec.br/feed.xml) |
+| Calendário | Próximas divulgações do IPCA e do IPCA-15 (IBGE) e reuniões do Copom, com fonte oficial de cada data | [/calendario/](https://observatoriodetaxas.tec.br/calendario/?utm_source=github-readme) |
+| O que mudou nesta coleta? | Observações novas e valores alterados na última coleta, separando período em andamento de período encerrado | [/mudancas/](https://observatoriodetaxas.tec.br/mudancas/?utm_source=github-readme) |
+| Versão histórica | A série como o Observatório a registrou até uma data, comparada com a atual, com link para compartilhar | [/historico/](https://observatoriodetaxas.tec.br/historico/?utm_source=github-readme) |
+| Retransmissora | Gera o código para incorporar um gráfico que se atualiza sozinho | [/retransmissora.html](https://observatoriodetaxas.tec.br/retransmissora.html?utm_source=github-readme) |
 | Dados abertos | Séries em JSON e manifesto de todas as séries | [/data/series.json](https://observatoriodetaxas.tec.br/data/series.json) |
-| Servidor MCP | Consulta indicadores, séries e cálculos de dentro do ChatGPT, do Claude e de outros clientes MCP | [/mcp/](https://observatoriodetaxas.tec.br/mcp/) |
+| Servidor MCP | Consulta indicadores, séries e cálculos de dentro do ChatGPT, do Claude e de outros clientes MCP | [/mcp/](https://observatoriodetaxas.tec.br/mcp/?utm_source=github-readme) |
 
 ## Servidor MCP (ChatGPT e Claude)
 
@@ -115,13 +115,13 @@ fica em [`servidor_mcp/`](servidor_mcp/).
   desocupação (IBGE), IGP-M e IGP-DI (FGV IBRE) e CDI (B3) ficam suspensos no
   MCP até a confirmação dos termos de redistribuição com os produtores.
 - **Privacidade:** recebe só os parâmetros da consulta, não grava parâmetros
-  nem IP. Ver a [seção do MCP na política de privacidade](https://observatoriodetaxas.tec.br/privacidade/#mcp-t).
+  nem IP. Ver a [seção do MCP na política de privacidade](https://observatoriodetaxas.tec.br/privacidade/?utm_source=github-readme#mcp-t).
 - **No ChatGPT:** o plugin oficial está no diretório desde 24/11/2026:
   [Observatório de Taxas no ChatGPT](https://chatgpt.com/plugins/plugin_asdk_app_6af615624cb08191ae41993bad0b6279).
   Guia de uso com telas reais, incluindo um alerta diário do dólar com tarefa
   agendada: [como usar o Observatório de Taxas no ChatGPT](https://lbptecnologia.com.br/blog/observatorio-de-taxas-no-chatgpt/).
 - **No Claude e em outros clientes MCP:** passo a passo em
-  [observatoriodetaxas.tec.br/mcp](https://observatoriodetaxas.tec.br/mcp/).
+  [observatoriodetaxas.tec.br/mcp](https://observatoriodetaxas.tec.br/mcp/?utm_source=github-readme).
 - **Custo:** R$ 0. Render Free num workspace sem cartão; o serviço dorme após
   15 minutos sem uso e leva cerca de 1 minuto para acordar.
 
@@ -366,7 +366,7 @@ arquivamento funciona e como acompanhar: [`organic-discovery/ZENODO.md`](organic
 
 O Observatório é gratuito e continua gratuito. Se ele foi útil para você, uma
 contribuição voluntária ajuda a manter a coleta, a infraestrutura e as
-ferramentas: [observatoriodetaxas.tec.br/apoie](https://observatoriodetaxas.tec.br/apoie/).
+ferramentas: [observatoriodetaxas.tec.br/apoie](https://observatoriodetaxas.tec.br/apoie/?utm_source=github-readme).
 
 ---
 

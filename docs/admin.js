@@ -192,7 +192,8 @@
 
     // Aparelhos e lugares, sobre o total de visitantes da janela
     var det = s.detalhes_30d || {}, den30 = m30.visitantes || 0;
-    var blocos = [["paises", "Países"], ["telas", "Tamanho de tela"], ["navegadores", "Navegadores"], ["sistemas", "Sistemas"]];
+    var blocos = [["paises", "Países"], ["telas", "Tamanho de tela"], ["navegadores", "Navegadores"], ["sistemas", "Sistemas"],
+                  ["campanhas", "Campanhas (utm_campaign)"]];
     var d2 = el("div", null, "duas");
     d2.appendChild(co);
     blocos.forEach(function (b) {

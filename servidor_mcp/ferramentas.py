@@ -97,13 +97,26 @@ def _procedencia(cod: int) -> dict:
             "fonte_url": cat.SGS_API.format(codigo=cod), "licenca": cat.licenca(cod)}
 
 
+# Páginas do site citadas pelo servidor levam a origem "observatorio-mcp": no
+# GoatCounter, quem chega por um link de resposta do ChatGPT ou do Claude
+# aparece separado de quem chega de chatgpt.com por outro caminho. Os JSON de
+# dados ficam sem marcação (não são páginas e não passam pelo contador).
+ORIGEM_MCP = "utm_source=observatorio-mcp"
+
+
+def com_origem(url: str) -> str:
+    base, _, frag = url.partition("#")
+    base += ("&" if "?" in base else "?") + ORIGEM_MCP
+    return base + ("#" + frag if frag else "")
+
+
 def _url_observatorio(cod: int, pts: list[dict], i: int) -> str:
     m = cat.SERIES[cod]
     if m.get("chave_reajuste") and i >= 11:
         dt = pts[i]["dt"]
-        return f"{cat.SITE}/reajuste/{m['chave_reajuste']}-{quote(MESES[dt.month - 1])}-{dt.year}/"
+        return com_origem(f"{cat.SITE}/reajuste/{m['chave_reajuste']}-{quote(MESES[dt.month - 1])}-{dt.year}/")
     if m.get("ancora"):
-        return f"{cat.SITE}/{m['ancora']}"
+        return com_origem(f"{cat.SITE}/{m['ancora']}")
     return f"{cat.SITE}/data/{cod}_history.json"
 
 
@@ -199,7 +212,7 @@ def calculate_adjustment(d: Dados, valor: float, indice: str, data_inicial: str,
         "formula": "fator = Π (1 + variação_mensal/100) dos meses aplicados; valor_final = valor_original × fator",
         "memoria_de_calculo": memoria,
         "equivalencia_no_site": {
-            "correcao": f"{cat.SITE}/correcao/{m.get('chave_reajuste', '')}/" if m.get("chave_reajuste") else None,
+            "correcao": com_origem(f"{cat.SITE}/correcao/{m.get('chave_reajuste', '')}/") if m.get("chave_reajuste") else None,
             "reajuste_12_meses": (_url_observatorio(cod, pts, i1) if m.get("chave_reajuste") and i1 - i0 == 12
                                   else None)},
         "observacoes": (["Acumulado negativo: o efeito em contratos depende da cláusula de reajuste."]

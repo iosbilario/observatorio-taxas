@@ -65,7 +65,7 @@ IDX_NOMES = {"ipca": "IPCA", "igpm": "IGP-M", "inpc": "INPC", "igpdi": "IGP-DI"}
 
 TOP_DETALHE = 10      # itens por lista de origem, navegador, sistema, tela, país
 DETALHES = {"origens": "toprefs", "navegadores": "browsers", "sistemas": "systems",
-            "telas": "sizes", "paises": "locations"}
+            "telas": "sizes", "paises": "locations", "campanhas": "campaigns"}
 
 # Seções do site pelo começo do path (depois da base). A ordem importa: a
 # primeira que casar vence ("reajuste/evolucao" antes de "reajuste").
@@ -170,7 +170,8 @@ FUNIS = [
         ("pagina", "indicadores/cdi", "Visitantes da página do CDI"),
         ("evento", "cta-simulador-cdi", "Clicaram em \u201cSimule quanto R$ 1.000 rende\u201d"),
         ("pagina", "simulador-cdi", "Visitantes do simulador"),
-        ("evento", "calculo-simulador-cdi", "Fizeram um cálculo no simulador"),
+        ("evento", "resultado-simulador-cdi", "Viram o resultado inicial (sem mexer)"),
+        ("evento", "calculo-simulador-cdi", "Mexeram no simulador e calcularam"),
     ]},
     {"id": "igpm", "nome": "IGP-M → reajuste", "etapas": [
         ("pagina", "indicadores/igp-m", "Visitantes da página do IGP-M"),
