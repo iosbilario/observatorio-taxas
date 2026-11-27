@@ -41,7 +41,11 @@ TEMAS = [
     ("Setor externo e fiscal", "externo", "Setor externo e fiscal", 13621, "Reservas internacionais"),
 ]
 # Nome da linha quando o da ficha é ambíguo lado a lado no catálogo.
-NOMES = {1: "Dólar PTAX de venda", 10813: "Dólar PTAX de compra"}
+NOMES = {1: "Dólar PTAX de venda", 10813: "Dólar PTAX de compra", 24363: "IBC-Br · atividade econômica"}
+# Séries cuja variação precisa dizer que não tem ajuste sazonal: o Banco Central
+# destaca a série ajustada (IBC-Br de set/2026: −0,2% ante agosto), enquanto o
+# Observatório publica a sem ajuste (−1,77%). Os dois números estão certos.
+SEM_AJUSTE = {24363}
 ACOES = {"inflacao": ("correcao/", "Corrigir um valor pela inflação"),
          "juros": ("comparador/", "Comparar Selic, CDI e IPCA")}
 TEMA_INICIAL = "inflacao"
@@ -164,6 +168,8 @@ def linha(codigo: int, pts: list[dict]) -> dict:
         d["variacao"] = {"texto": BI.variacao(codigo, base["valor"], ult["valor"]),
                          "sentido": "alta" if dif > 0 else "queda" if dif < 0 else "estável",
                          "base": rotulo_base(codigo, base)}
+        if codigo in SEM_AJUSTE:
+            d["variacao"]["texto"] += f" ante {BI.MESES[base['dt'].month - 1]}, sem ajuste sazonal"
     d["svg"] = minigrafico(codigo, fechados)
     return d
 
