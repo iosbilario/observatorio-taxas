@@ -38,9 +38,14 @@
   function parseValor(s) {
     s = String(s == null ? "" : s).trim().replace(/^R\$\s*/, "");
     if (!s) return null;
-    if (s.indexOf(",") >= 0) s = s.replace(/\./g, "").replace(",", ".");
-    else if (/^\d{1,3}(\.\d{3})+$/.test(s)) s = s.replace(/\./g, "");
-    if (!/^\d+(\.\d+)?$/.test(s)) return null;
+    // Com vírgula: ela é o decimal e os pontos só podem separar milhares (1.000,50).
+    // Sem vírgula: pontos em grupos de três são milhares (1.000.000); um ponto só
+    // com uma ou duas casas é decimal (1000.50). Qualquer outro formato é recusado.
+    if (s.indexOf(",") >= 0) {
+      if (!/^(\d{1,3}(\.\d{3})+|\d+),\d{1,2}$/.test(s)) return null;
+      s = s.replace(/\./g, "").replace(",", ".");
+    } else if (/^\d{1,3}(\.\d{3})+$/.test(s)) s = s.replace(/\./g, "");
+    else if (!/^\d+(\.\d{1,2})?$/.test(s)) return null;
     var v = Number(s);
     return v > 0 && v <= VALOR_MAX ? v : null;
   }

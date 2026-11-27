@@ -129,7 +129,9 @@ class TestDemonstrativo(unittest.TestCase):
     def test_parse_valor(self):
         casos = {"2.000,00": 2000, "2000,5": 2000.5, "2000.50": 2000.5, "2.000": 2000,
                  "R$ 1.234,56": 1234.56, "10.000.000,00": 10000000, "0,01": 0.01,
-                 "10.000.000,01": None, "0": None, "-5": None, "abc": None, "": None, "1,2,3": None}
+                 "10.000.000,01": None, "0": None, "-5": None, "abc": None, "": None, "1,2,3": None,
+                 "1.000.000,00": 1000000, "1000000": 1000000, "1000.50": 1000.5, "1.000,00xyz": None,
+                 "1,000.00": None, "10.00.0": None, "1.0000,00": None, "1000,505": None}
         r = js("return casos.map(s=>D.parseValor(s));", casos=list(casos))
         self.assertEqual(dict(zip(casos, r)), casos)
 
