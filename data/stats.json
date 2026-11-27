@@ -2,7 +2,7 @@
   "detalhes_30d": {
     "navegadores": [
       {
-        "acessos": 412,
+        "acessos": 413,
         "nome": "Chrome"
       },
       {
@@ -21,7 +21,7 @@
       },
       {
         "acessos": 90,
-        "nome": "(sem nome)"
+        "nome": "Acesso direto ou sem origem"
       },
       {
         "acessos": 58,
@@ -32,7 +32,7 @@
         "nome": "www.bing.com"
       },
       {
-        "acessos": 23,
+        "acessos": 24,
         "nome": "observatoriodetaxas.tec.br/index.html"
       },
       {
@@ -58,16 +58,16 @@
     ],
     "paises": [
       {
-        "acessos": 420,
-        "nome": "Brazil"
+        "acessos": 421,
+        "nome": "Brasil"
       },
       {
         "acessos": 57,
-        "nome": "United States"
+        "nome": "Estados Unidos"
       },
       {
         "acessos": 2,
-        "nome": "Spain"
+        "nome": "Espanha"
       },
       {
         "acessos": 2,
@@ -91,11 +91,11 @@
       },
       {
         "acessos": 1,
-        "nome": "Germany"
+        "nome": "Alemanha"
       },
       {
         "acessos": 1,
-        "nome": "Finland"
+        "nome": "Finlândia"
       }
     ],
     "sistemas": [
@@ -104,7 +104,7 @@
         "nome": "Windows"
       },
       {
-        "acessos": 145,
+        "acessos": 146,
         "nome": "macOS"
       },
       {
@@ -123,28 +123,28 @@
     "telas": [
       {
         "acessos": 92,
-        "nome": "(sem nome)"
+        "nome": "Celular"
       },
       {
         "acessos": 7,
-        "nome": "(sem nome)"
+        "nome": "Tablet"
       },
       {
-        "acessos": 383,
-        "nome": "(sem nome)"
+        "acessos": 384,
+        "nome": "Computador"
       },
       {
         "acessos": 9,
-        "nome": "(sem nome)"
+        "nome": "Computador (tela grande)"
       },
       {
         "acessos": 0,
-        "nome": "(sem nome)"
+        "nome": "Desconhecido"
       }
     ]
   },
-  "gerado_em": "2026-11-27T12:57:25-03:00",
-  "gerado_em_fmt": "27/11/2026 às 12:57",
+  "gerado_em": "2026-11-27T13:04:42-03:00",
+  "gerado_em_fmt": "27/11/2026 às 13:04",
   "grupos": {
     "Admin": {
       "acessos": 0,
@@ -164,10 +164,10 @@
       "sub": {}
     },
     "Reajuste": {
-      "acessos": 184,
+      "acessos": 183,
       "sub": {
         "IGP-DI": 9,
-        "IGP-M": 48,
+        "IGP-M": 47,
         "INPC": 15,
         "IPCA": 40
       }
@@ -187,7 +187,7 @@
     1.29,
     1.26,
     1.03,
-    0.55,
+    0.58,
     1.65,
     0.68,
     1.32,
@@ -258,11 +258,11 @@
     },
     {
       "acessos": 2,
-      "secao": "Guias"
+      "secao": "Calendário"
     },
     {
-      "acessos": 1,
-      "secao": "Calendário"
+      "acessos": 2,
+      "secao": "Guias"
     }
   ],
   "serie_diaria": [
@@ -387,7 +387,7 @@
       "data": "2026-11-26"
     },
     {
-      "acessos": 22,
+      "acessos": 23,
       "data": "2026-11-27"
     }
   ],
@@ -523,22 +523,18 @@
     },
     "all_time": {
       "acessos": 845,
-      "visitantes": 878
+      "visitantes": 879
     },
     "ultimos_30d": {
-      "acessos": 489,
-      "visitantes": 489
+      "acessos": 490,
+      "visitantes": 490
     }
   },
   "ultima_hora": {
-    "acessos": 4,
-    "hora": "2026-11-27T11:00"
+    "acessos": 7,
+    "hora": "2026-11-27T12:00"
   },
   "ultimas_48h": [
-    {
-      "acessos": 8,
-      "hora": "2026-11-25T12:00"
-    },
     {
       "acessos": 0,
       "hora": "2026-11-25T13:00"
@@ -726,6 +722,10 @@
     {
       "acessos": 4,
       "hora": "2026-11-27T11:00"
+    },
+    {
+      "acessos": 7,
+      "hora": "2026-11-27T12:00"
     }
   ]
 }
