@@ -58,6 +58,8 @@ def api_falsa(dias: list[str]):
         if url.endswith("/stats/toprefs"):
             return Resposta({"more": False, "stats": [
                 {"name": "chatgpt.com", "count": 132}, {"name": "", "count": 90}, {"name": "Google", "count": 58},
+                {"name": "https://chatgpt.com/c/abc", "count": 3}, {"name": "www.bing.com", "count": 41},
+                {"name": "bing.com", "count": 9},
                 {"name": "observatoriodetaxas.tec.br/index.html", "count": 24},
                 {"name": "observatoriodetaxas.tec.br", "count": 18}] +
                 [{"name": f"site{i}.com", "count": 1} for i in range(12)]})
@@ -86,6 +88,13 @@ class Coletor(unittest.TestCase):
         self.assertEqual(FS.nome_detalhe("locations", {"id": "XX", "name": "Atlantis"}), "Atlantis")
         self.assertEqual(FS.nome_detalhe("toprefs", {"id": "", "name": ""}), "Acesso direto ou sem origem")
         self.assertEqual(FS.nome_detalhe("browsers", {"name": "Chrome"}), "Chrome")
+
+    def test_origens_com_grafias_diferentes_somam(self):
+        casos = {"www.bing.com": "Bing", "bing.com": "Bing", "https://chatgpt.com/c/1": "chatgpt.com",
+                 "CHATGPT.COM": "chatgpt.com", "Google": "Google", "news.ycombinator.com": "news.ycombinator.com",
+                 "lbptecnologia.com.br/blog/x": "lbptecnologia.com.br", "": ""}
+        for n, esperado in casos.items():
+            self.assertEqual(FS.nome_origem(n), esperado, n)
 
     def test_por_hora_corta_a_hora_em_andamento(self):
         serie = [{"data": "2026-11-26", "acessos": 0, "por_hora": list(range(24))},
@@ -117,16 +126,19 @@ class Coletor(unittest.TestCase):
         self.assertEqual(s["detalhes_30d"]["navegadores"][0], {"nome": "browsers-0", "acessos": 20})
         self.assertEqual(s["detalhes_30d"]["origens"][1], {"nome": "Acesso direto ou sem origem", "acessos": 90})
         o = s["origens_30d"]
-        self.assertEqual(o["totais"], {"externo": 132 + 58 + 12, "direto": 90, "interno": 42})
+        self.assertEqual(o["totais"], {"externo": 132 + 3 + 58 + 41 + 9 + 12, "direto": 90, "interno": 42})
         self.assertEqual(o["denominador"], 24 * 31)
         self.assertTrue(o["completo"])
-        self.assertEqual([x["nome"] for x in o["externas"][:2]], ["chatgpt.com", "Google"])
+        self.assertEqual(o["externas"][:3], [{"nome": "chatgpt.com", "acessos": 135}, {"nome": "Google", "acessos": 58},
+                                             {"nome": "Bing", "acessos": 50}])
         self.assertEqual(len(o["externas"]), FS.TOP_DETALHE)
-        self.assertEqual(o["outros_externos"], 4)               # 12 sites de 1: 8 no top, 4 em "Outros"
+        self.assertEqual(o["outros_externos"], 5)               # 12 sites de 1: 7 no top, 5 em "Outros"
         self.assertNotIn("observatoriodetaxas", json.dumps(o["externas"]))
-        cdi = next(f for f in s["funis_30d"] if f["id"] == "cdi")
+        self.assertGreaterEqual(s["funis"]["desde"], FS.EVENTOS_DESDE)   # nunca antes da medição
+        self.assertTrue(s["funis"]["completo"])
+        cdi = next(f for f in s["funis"]["caminhos"] if f["id"] == "cdi")
         self.assertEqual([e["visitantes"] for e in cdi["etapas"]], [113, 4, 10, 2])
-        igpm = next(f for f in s["funis_30d"] if f["id"] == "igpm")
+        igpm = next(f for f in s["funis"]["caminhos"] if f["id"] == "igpm")
         self.assertEqual(igpm["etapas"][2]["visitantes"], 30 + 7)
         self.assertNotIn("cta-simulador-cdi", json.dumps(s["top_paginas"]))   # evento não é página
         self.assertLessEqual(len(s["ultimas_48h"]), 48)
@@ -179,7 +191,7 @@ async function roda(stats) {
                    media_por_hora_do_dia: Array.from({ length: 24 }, (_, h) => h === 14 ? 3 : 1),
                    secoes_30d: [{ secao: "Home", acessos: 5 }], detalhes_30d: {},
                    origens_30d: { denominador: 4, completo: true, totais: { externo: 3, direto: 1, interno: 2 }, externas: [{ nome: "google.com", acessos: 3 }], outros_externos: 0 },
-                   funis_30d: [{ id: "cdi", nome: "CDI → simulador", etapas: [{ tipo: "pagina", rotulo: "Visitantes da página do CDI", visitantes: 113 }, { tipo: "evento", rotulo: "Fizeram um cálculo", visitantes: 2 }] }],
+                   funis: { desde: "2026-11-27", completo: true, caminhos: [{ id: "cdi", nome: "CDI → simulador", etapas: [{ tipo: "pagina", rotulo: "Visitantes da página do CDI", visitantes: 113 }, { tipo: "evento", rotulo: "Fizeram um cálculo", visitantes: 2 }] }] },
                    eventos_desde: "2026-11-27" });
   process.stdout.write(JSON.stringify({ antigo: await roda(antigo), novo: await roda(novo) }));
 })();
@@ -201,7 +213,7 @@ async function roda(stats) {
         self.assertIn("Percentuais sobre os 4 visitantes", out["novo"])
         self.assertIn("Navegação dentro do Observatório", out["novo"])
         self.assertIn("CDI → simulador", out["novo"])
-        self.assertIn("medidos desde 27/11/2026", out["novo"])
+        self.assertIn("desde 27/11/2026, quando começou a medição", out["novo"])
         self.assertIn("Média por dia nos 30 dias: 4", out["antigo"])
         self.assertIn("Média das 24 horas: 1,1", out["novo"])
 

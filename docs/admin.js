@@ -145,11 +145,13 @@
     duas.appendChild(ct);
     app.appendChild(duas);
 
-    // Funis: página de entrada → convite → ferramenta → cálculo
-    var fs = s.funis_30d || [];
-    var cf = card("Da consulta à ferramenta", "Visitantes de cada etapa nos últimos 30 dias, contados separadamente por página ou evento. " +
-      "Não é taxa de conversão: quem calcula pode ter chegado à ferramenta por outro caminho." +
-      (s.eventos_desde ? " Cliques e cálculos medidos desde " + diaMes(s.eventos_desde) + "/" + s.eventos_desde.slice(0, 4) + "." : ""));
+    // Funis: página de entrada → convite → ferramenta → cálculo, todos na
+    // mesma janela (desde o início da medição dos eventos).
+    var fu = s.funis, fs = fu ? (fu.caminhos || []) : (s.funis_30d || []);
+    var desde = fu && fu.desde ? diaMes(fu.desde) + "/" + fu.desde.slice(0, 4) : null;
+    var cf = card("Da consulta à ferramenta", (desde ? "Visitantes de cada etapa desde " + desde + ", quando começou a medição dos cliques e cálculos: visitas, cliques e cálculos na mesma janela. "
+                                                     : "Visitantes de cada etapa nos últimos 30 dias. ") +
+      "Cada etapa é contada separadamente por página ou evento, então não é taxa de conversão: quem calcula pode ter chegado à ferramenta por outro caminho.");
     if (fs.length) {
       var df = el("div", null, "duas");
       fs.forEach(function (f) {
@@ -163,6 +165,8 @@
         bloco.appendChild(ol); df.appendChild(bloco);
       });
       cf.appendChild(df);
+      if (!fu) cf.appendChild(el("p", "Formato antigo do stats.json: visitas de 30 dias e eventos desde a medição, em janelas diferentes.", "aviso"));
+      else if (!fu.completo) cf.appendChild(el("p", "A API devolveu só parte das páginas da janela; etapas com poucas visitas podem aparecer abaixo do real.", "aviso"));
     } else semDados(cf);
     app.appendChild(cf);
 
