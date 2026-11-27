@@ -1,6 +1,21 @@
 {
   "coletas": [
     {
+      "base": "993ae695148b9b93e2e89fad704876536b3f713a",
+      "commit": null,
+      "gerado_em": "2026-11-27T13:41:48-03:00",
+      "novas": [
+        {
+          "codigo": 10813,
+          "data": "27/11/2026",
+          "nome": "Câmbio USD/BRL - compra",
+          "valor": "5.5424"
+        }
+      ],
+      "revisoes": [],
+      "series_novas": []
+    },
+    {
       "base": "704aa0f21d6f134f61aa84c54f4f5359e281f8cf",
       "commit": "4d0897c112361e1e90819aeea8d7e65b53c0f69a",
       "gerado_em": "2026-11-27T12:57:17-03:00",

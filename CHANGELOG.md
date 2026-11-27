@@ -1391,3 +1391,5 @@
     ↳ Inadimplência da carteira de crédito - total (%): subiu de 4,99 para 5,1.
 [2026-11-27 15:48:18 +0000] Reservas internacionais - conceito caixa (US$ milhões): 361634 -> 362498
     ↳ Reservas internacionais - conceito caixa (US$ milhões): subiu de 361634 para 362498.
+[2026-11-27 16:41:19 +0000] Câmbio USD/BRL - compra: 5.7440 -> 5.5424
+    ↳ Câmbio USD/BRL - compra: caiu de 5,744 para 5,5424.
