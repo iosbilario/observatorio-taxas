@@ -209,7 +209,13 @@ def dbr(d: date) -> str:
     return d.strftime("%d/%m/%Y")
 
 
-def head(title: str, desc: str, canonical: str, jsonld: str, crumb: str, scripts: list[str]) -> str:
+# Cores do gráfico do Comparador por tema (lidas por docs/comparador.js). Só na
+# página do Comparador, para não mudar o CSS das outras páginas que usam head().
+CSS_COMPARADOR = (':root{--cmp-cdi:#D9B54A;--cmp-selic:#E9E6DC;--cmp-ipca:#8FB3D9;--cmp-eixo:var(--papel-70);--cmp-grade:var(--linha)}html[data-theme="light"]{--cmp-cdi:#8a5a00;--cmp-selic:#1f2a24;--cmp-ipca:#1b5fab}html[data-theme="dark"]{--cmp-cdi:#e3c063;--cmp-selic:#e6e8e6;--cmp-ipca:#8ab8ee}')
+
+
+def head(title: str, desc: str, canonical: str, jsonld: str, crumb: str, scripts: list[str],
+         css_extra: str = "") -> str:
     tags = "\n".join(f'<script src="/{s}" defer></script>' for s in scripts)
     return f"""<!DOCTYPE html>
 <html lang="pt-BR">
@@ -232,7 +238,7 @@ def head(title: str, desc: str, canonical: str, jsonld: str, crumb: str, scripts
 <meta property="og:url" content="{canonical}"/>
 <meta property="og:image" content="{BASE_URL}/og-image.png"/>
 {jsonld}
-<style>{CSS}{EXTRA_CSS}{FERR_CSS}</style>
+<style>{CSS}{EXTRA_CSS}{FERR_CSS}{css_extra}</style>
 {tags}
 {goatcounter_beacon()}
 </head>
@@ -386,7 +392,7 @@ número representa quanto custaria, no fim do período, o que custava R$ 1.000 n
 <a class="pill" href="/indicadores/">Todos os indicadores</a><a class="pill" href="/var.html">VAR da Economia</a></p></section>
 </article>"""
     return head(title + " | Observatório de Taxas" if len(title) < 50 else title, desc, URL_COMP, jsonld, crumb_html,
-                ["calculos.js", "comparador.js"]) + corpo + RODAPE
+                ["calculos.js", "comparador.js"], CSS_COMPARADOR) + corpo + RODAPE
 
 
 def pagina_simulador(s: dict) -> str:

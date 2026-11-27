@@ -7,7 +7,7 @@
 
 <!-- Segurança: SEM frame-ancestors e SEM guard anti-frame — ser embutível é o
      produto desta página. O CSP abaixo só tranca o resto (self + inline próprio). -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-aMP8PH6N+qQo27dYp9RmpKRQpVJ5UMUNfrYECfKabn0='; connect-src 'self'" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-Y1R+L6Nrmz9bNNKJ5/ykmv1gdf4H07xp602k4J0me6E='; connect-src 'self'" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
 
 <title>Gráfico — Observatório de Taxas</title>
@@ -144,6 +144,13 @@
       var s = x.toLocaleString("pt-BR", { minimumFractionDigits: m.casas, maximumFractionDigits: m.casas });
       return (m.pref || "") + s + (m.suf ? (m.suf[0] === "%" ? m.suf : " " + m.suf) : "");
     }
+    // Variação entre dois valores. Em séries que já são taxas em % (Meta Selic
+    // 14,00% -> 13,75%), a diferença é em pontos percentuais, não em %.
+    function fmtDelta(x) {
+      if (m.suf && m.suf[0] === "%")
+        return x.toLocaleString("pt-BR", { minimumFractionDigits: m.casas, maximumFractionDigits: m.casas }) + " p.p.";
+      return fmt(x);
+    }
     function fmtSuf() { return m.suf ? (m.suf[0] === "%" ? "%" : "") : ""; }
     function dataBonita(d) { var p = String(d).split("/"); return p[0] + "/" + p[1] + "/" + p[2]; }
 
@@ -231,7 +238,7 @@
         if (pontos.length > 1 && Math.abs(dd) > 1e-9) {
           var up = dd > 0;
           el.className = "delta " + (up ? "up" : "down");
-          el.innerHTML = (up ? "▲" : "▼") + " " + esc((up ? "+" : "-") + fmt(Math.abs(dd)).replace(/^R\$ /, "R$ ")) + ' <span class="cap">no período</span>';
+          el.innerHTML = (up ? "▲" : "▼") + " " + esc((up ? "+" : "\u2212") + fmtDelta(Math.abs(dd))) + ' <span class="cap">no período</span>';
         } else { el.className = "delta flat"; el.innerHTML = '<span class="cap">estável no período</span>'; }
       }
       if (!pontos.length) {

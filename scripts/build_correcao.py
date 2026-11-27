@@ -231,6 +231,7 @@ convenção de correção previstos no seu contrato ou decisão.
 # JavaScript da calculadora. Placeholders __SERIES_JSON__ / __DEFAULT_KEY__ são
 # substituídos por texto (evita colisão com o '%' literal do JS).
 CALC_JS = """
+<script src="__PREFIXO__demonstrativo.js"></script>
 <script>
 const SERIES = __SERIES_JSON__;
 const DEFAULT_KEY = __DEFAULT_KEY__;
@@ -255,9 +256,11 @@ function calc(){
   var key=idxKey(), pts=SERIES[key].pts;
   var i0=parseInt(document.getElementById('de').value,10);
   var i1=parseInt(document.getElementById('ate').value,10);
-  var v=parseFloat((document.getElementById('valor').value||'').replace('.','').replace(',','.'));
+  // Mesmo leitor estrito das páginas de reajuste (docs/demonstrativo.js):
+  // 1.000.000,00, 1000000 e 1000.50 são lidos certo; texto sobrando é recusado.
+  var v=ObsDemo.parseValor(document.getElementById('valor').value);
   var res=document.getElementById('res');
-  if(isNaN(v)){res.textContent='Informe o valor a corrigir.';return;}
+  if(v===null){res.textContent='Informe um valor entre R$ 0,01 e '+ObsDemo.brl(ObsDemo.VALOR_MAX)+', como 1.000,00 ou 1000.';return;}
   if(i1<=i0){res.textContent='O mês final deve ser posterior ao inicial.';return;}
   var fator=1.0;
   for(var k=i0+1;k<=i1;k++){fator*=1+pts[k].v/100;}
@@ -346,6 +349,7 @@ def build_index_page(key: str, info: dict, pts: list[dict]) -> tuple[str, str]:
     slug_reaj = f"{key}-{MESES[pts[last]['dt'].month - 1]}-{pts[last]['dt'].year}"
 
     js = (CALC_JS
+          .replace("__PREFIXO__", "../../")
           .replace("__SERIES_JSON__", json.dumps({key: {"nome": nome, "pts": serie_js(pts)}}, ensure_ascii=False))
           .replace("__DEFAULT_KEY__", json.dumps(key)))
 
@@ -383,6 +387,7 @@ def build_hub(series_all: dict) -> str:
             "Gratuito e sem cadastro.")
 
     js = (CALC_JS
+          .replace("__PREFIXO__", "../")
           .replace("__SERIES_JSON__", json.dumps(series_all, ensure_ascii=False))
           .replace("__DEFAULT_KEY__", json.dumps(next(iter(INDICES)))))
 

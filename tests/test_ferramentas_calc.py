@@ -244,9 +244,16 @@ class TestCsvEUrl(unittest.TestCase):
         p = js("C.lerParamsComparador(new URLSearchParams(q))", q="de=2024-01&ate=2025-12&i=ipca,cdi&ver=reais")
         self.assertEqual(p, {"de": "2024-01", "ate": "2025-12", "indicadores": ["cdi", "ipca"], "ver": "reais"})
 
+    def test_link_reabre_o_mesmo_valor_que_o_calculo_aceita(self):
+        # O simulador calcula até VALOR_MAX_SIMULADOR; o link gerado precisa voltar com o mesmo valor.
+        for v in (1000, 2000000000, 999999999999.99):
+            q = f"valor={v}&percentual=100&periodo=12m"
+            self.assertEqual(js("C.lerParamsSimulador(new URLSearchParams(q)).valor", q=q), v, q)
+        self.assertEqual(js("C.VALOR_MAX_SIMULADOR"), 1e12)
+
     def test_parametros_invalidos_sao_ignorados(self):
         ruins = ("valor=<script>alert(1)</script>&percentual=1e5&periodo=13m&modo=javascript:x&de=2025-02-30&ate=x",
-                 "valor=99999999999&percentual=-5", "valor=1000;drop&percentual=110%22")
+                 "valor=9999999999999&percentual=-5", "valor=1000;drop&percentual=110%22")
         for q in ruins:
             self.assertEqual(js("C.lerParamsSimulador(new URLSearchParams(q))", q=q), {}, q)
         p = js("C.lerParamsComparador(new URLSearchParams(q))", q="de=2025-13&ate=2025-01&i=bitcoin,<b>&ver=html&meses=7")

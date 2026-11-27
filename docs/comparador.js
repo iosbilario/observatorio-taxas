@@ -10,7 +10,8 @@
     var padrao = JSON.parse(raiz.getAttribute("data-padrao"));
     var CODIGO = { cdi: 4391, selic: 4390, ipca: 433 };
     var NOME = { cdi: "CDI", selic: "Selic", ipca: "IPCA" };
-    var COR = { cdi: "#D9B54A", selic: "#E9E6DC", ipca: "#8FB3D9" };
+    // Cores pelas variáveis do tema (build_ferramentas.py): legíveis no claro e no escuro.
+    var COR = { cdi: "var(--cmp-cdi)", selic: "var(--cmp-selic)", ipca: "var(--cmp-ipca)" };
     var $ = function (id) { return document.getElementById(id); };
     var form = $("form-comp"), mapas = {};
     var ultimoComum = [padrao.fechado.cdi, padrao.fechado.selic, padrao.fechado.ipca].sort()[0];
@@ -57,22 +58,30 @@
       if (mx === mn) mx = mn + 1;
       var NS = "http://www.w3.org/2000/svg", svg = document.createElementNS(NS, "svg");
       svg.setAttribute("viewBox", "0 0 " + W + " " + H); svg.setAttribute("class", "grafico"); svg.setAttribute("aria-hidden", "true");
-      function px(i) { return M.l + (linhas.length < 2 ? 0 : i * (W - M.l - M.r) / (linhas.length - 1)); }
+      var umMes = linhas.length < 2;
+      function px(i) { return umMes ? (M.l + W - M.r) / 2 : M.l + i * (W - M.l - M.r) / (linhas.length - 1); }
       function py(v) { return M.t + (mx - v) * (H - M.t - M.b) / (mx - mn); }
-      function t(x, yy, s, anc) { var e = document.createElementNS(NS, "text"); e.setAttribute("x", x); e.setAttribute("y", yy); e.setAttribute("fill", "rgba(233,230,220,.55)"); e.setAttribute("font-size", "11"); e.setAttribute("font-family", "IBM Plex Mono, monospace"); if (anc) e.setAttribute("text-anchor", anc); e.textContent = s; svg.appendChild(e); }
+      function t(x, yy, s, anc) { var e = document.createElementNS(NS, "text"); e.setAttribute("x", x); e.setAttribute("y", yy); e.style.fill = "var(--cmp-eixo)"; e.setAttribute("font-size", "11"); e.setAttribute("font-family", "IBM Plex Mono, monospace"); if (anc) e.setAttribute("text-anchor", anc); e.textContent = s; svg.appendChild(e); }
       [mn, (mn + mx) / 2, mx].forEach(function (v) {
         var ln = document.createElementNS(NS, "line");
         ln.setAttribute("x1", M.l); ln.setAttribute("x2", W - M.r); ln.setAttribute("y1", py(v)); ln.setAttribute("y2", py(v));
-        ln.setAttribute("stroke", "rgba(233,230,220,.14)"); svg.appendChild(ln);
+        ln.style.stroke = "var(--cmp-grade)"; svg.appendChild(ln);
         t(M.l - 6, py(v) + 4, base ? "R$ " + C.br(v, 0) : C.br(v, 1) + "%", "end");
       });
-      t(M.l, H - 8, mesCurto(linhas[0].mes)); t(W - M.r, H - 8, mesCurto(linhas[linhas.length - 1].mes), "end");
+      if (umMes) t(px(0), H - 8, mesCurto(linhas[0].mes), "middle");
+      else { t(M.l, H - 8, mesCurto(linhas[0].mes)); t(W - M.r, H - 8, mesCurto(linhas[linhas.length - 1].mes), "end"); }
       ks.forEach(function (k) {
         var d = linhas.map(function (l, i) { return (i ? "L" : "M") + px(i).toFixed(1) + " " + py(y(l.fatores[k])).toFixed(1); }).join(" ");
         var p = document.createElementNS(NS, "path");
-        p.setAttribute("d", d); p.setAttribute("fill", "none"); p.setAttribute("stroke", COR[k]); p.setAttribute("stroke-width", "2.2");
+        p.setAttribute("d", d); p.setAttribute("fill", "none"); p.style.stroke = COR[k]; p.setAttribute("stroke-width", "2.2");
         if (k === "ipca") p.setAttribute("stroke-dasharray", "6 4");
         svg.appendChild(p);
+        // Um mês só não forma linha: marca o ponto, senão o gráfico fica vazio.
+        if (umMes) {
+          var c = document.createElementNS(NS, "circle");
+          c.setAttribute("cx", px(0)); c.setAttribute("cy", py(y(linhas[0].fatores[k]))); c.setAttribute("r", "5"); c.style.fill = COR[k];
+          svg.appendChild(c);
+        }
         var item = el("span"); var i = el("i"); i.style.borderTopColor = COR[k]; if (k === "ipca") i.style.borderTopStyle = "dashed";
         item.appendChild(i); item.appendChild(document.createTextNode(NOME[k] + (k === "ipca" ? " (preços)" : "")));
         leg.appendChild(item);
@@ -117,14 +126,25 @@
       }
     }
 
+    // Depois de um erro, o gráfico e a tabela da consulta anterior saem da tela:
+    // não podem ficar visíveis valores que já não correspondem ao formulário.
+    function limpar(msg) {
+      $("resultado").textContent = msg; $("resultado").className = "resultado erro";
+      $("grafico").textContent = ""; $("grafico").appendChild(el("p", "Corrija o formulário para ver o gráfico.", "aviso"));
+      $("grafico").setAttribute("aria-label", "Sem gráfico: " + msg);
+      $("legenda").textContent = "";
+      var tb = $("tabela"); tb.querySelector("thead").textContent = ""; tb.querySelector("tbody").textContent = "";
+      tb.hidden = true;
+    }
+
     function render() {
       var st = estado();
-      if (!st.indicadores.length) { $("resultado").textContent = "Escolha ao menos um indicador."; return; }
+      if (!st.indicadores.length) { limpar("Escolha ao menos um indicador."); return; }
       if (st.ate > ultimoComum) { st.ate = ultimoComum; $("ate").value = ultimoComum; }
       var m = {}; st.indicadores.forEach(function (k) { m[k] = mapas[k]; });
       var res = C.comparar(m, st.de, st.ate);
-      if (res.erro) { $("resultado").textContent = res.erro; $("resultado").className = "resultado erro"; return; }
-      $("resultado").className = "resultado";
+      if (res.erro) { limpar(res.erro); return; }
+      $("resultado").className = "resultado"; $("tabela").hidden = false;
       frase(res, st); grafico(res, st); tabela(res, st); marcarChips(st);
       history.replaceState(null, "", url(st));
     }
