@@ -26,6 +26,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 import fetch_stats as FS  # noqa: E402
 
 BRT = timezone(timedelta(hours=-3))
+FS.PAUSA = 0          # testes sem espera entre chamadas
 
 
 class Resposta:
@@ -69,7 +70,46 @@ def api_falsa(dias: list[str]):
     return get
 
 
+class Resposta429:
+    status_code = 429
+    headers = {"Retry-After": "0"}
+
+    def raise_for_status(self):
+        import requests
+        raise requests.HTTPError("429 Client Error: Too Many Requests")
+
+
 class Coletor(unittest.TestCase):
+
+    def test_429_tenta_de_novo_e_bloco_que_falha_fica_da_coleta_anterior(self):
+        hoje = datetime.now(timezone.utc).astimezone(BRT).date()
+        dias = [(hoje - timedelta(days=i)).isoformat() for i in range(30, -1, -1)]
+        boa = api_falsa(dias)
+        vistos = {"toprefs": 0}
+
+        def get(url, params=None, timeout=None):
+            if url.endswith("/stats/toprefs"):
+                vistos["toprefs"] += 1
+                return Resposta429() if vistos["toprefs"] == 1 else boa(url, params, timeout)
+            if url.endswith("/stats/locations"):
+                return Resposta429()                       # falha em todas as tentativas
+            return boa(url, params, timeout)
+
+        with tempfile.TemporaryDirectory() as tmp, \
+                mock.patch.dict(os.environ, {"GOATCOUNTER_TOKEN": "teste"}), \
+                mock.patch.object(FS, "DATA_DIR", Path(tmp) / "data"), \
+                mock.patch.object(FS, "DOCS_DATA_DIR", Path(tmp) / "docs"), \
+                mock.patch.object(FS, "load_code", return_value="exemplo"), \
+                mock.patch("requests.Session.get", side_effect=get):
+            (Path(tmp) / "data").mkdir()
+            (Path(tmp) / "data" / "stats.json").write_text(json.dumps(
+                {"detalhes_30d": {"paises": [{"nome": "Brasil", "acessos": 7}]}}), encoding="utf-8")
+            FS.main()
+            s = json.loads((Path(tmp) / "data" / "stats.json").read_text(encoding="utf-8"))
+        self.assertEqual(vistos["toprefs"], 2)                             # o 429 foi tentado de novo
+        self.assertIsNotNone(s["origens_30d"])
+        self.assertEqual(s["detalhes_30d"]["paises"], [{"nome": "Brasil", "acessos": 7}])   # da coleta anterior
+        self.assertEqual(s["blocos_da_coleta_anterior"], ["paises"])
 
     def test_secoes(self):
         casos = {"/": "Home", "/observatorio-taxas/": "Home", "/reajuste/evolucao/": "Evolução do contrato",
