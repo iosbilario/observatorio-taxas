@@ -56,8 +56,6 @@ SCRIPT_ESTRELAS = "estrelas.js"
 IGNORADAS = {
     "embed.html":
         "payload de iframe; o header vazaria para o site de terceiros",
-    "admin/index.html":
-        "painel interno (Disallow no robots) e sem landmark #conteudo",
 }
 
 
@@ -259,7 +257,7 @@ def garante_icones(html: str, prefixo: str) -> str:
 # conteúdo>: quando o arquivo muda, a URL muda e o navegador não usa a cópia
 # velha do cache (o GitHub Pages manda max-age=600). Sem isso, uma página
 # nova pode carregar com o nav.css antigo por até 10 minutos.
-VERSIONADOS = ("nav.css", "tema.css", "tema.js", "refy/tokens.css", "estrelas.js", "var-nucleo.js", "demonstrativo.js", "mudancas.js", "catalogo.js", "historico.js", "evolucao.js", "sobre.js")
+VERSIONADOS = ("nav.css", "tema.css", "tema.js", "refy/tokens.css", "estrelas.js", "var-nucleo.js", "demonstrativo.js", "mudancas.js", "catalogo.js", "historico.js", "evolucao.js", "sobre.js", "admin.js")
 
 
 def _versao(nome: str) -> str:

@@ -20,6 +20,16 @@ Nunca derruba o job:
 API (OpenAPI em https://<code>.goatcounter.com/api.json):
   GET /api/v0/stats/total -> {total, stats:[{day, daily}, ...]}   (visitantes)
   GET /api/v0/stats/hits  -> {hits:[{path, count}, ...], more}     (por página)
+  GET /api/v0/stats/{page} -> {stats:[{name, count}, ...], more}  (page = toprefs,
+      browsers, systems, sizes, locations: origem, navegador, sistema, tela, país)
+
+O que o painel mostra a mais (desde a v1.10.0):
+  - comparação dos últimos 30 dias com os 30 anteriores;
+  - acessos por hora nas últimas 48 h e média por hora do dia (pico);
+  - "última hora registrada": a última hora cheia antes da coleta. Não é
+    "online agora": a API agrupa por hora e a coleta roda a cada 6 h;
+  - origem dos acessos, navegador, sistema, tamanho de tela e país (top 10);
+  - acessos por seção do site (todas as seções, não só reajuste e correção).
 """
 
 from __future__ import annotations
@@ -52,6 +62,32 @@ BRT = timezone(timedelta(hours=-3))
 
 # Prefixos de slug -> nome de exibição do índice (reajuste e correção).
 IDX_NOMES = {"ipca": "IPCA", "igpm": "IGP-M", "inpc": "INPC", "igpdi": "IGP-DI"}
+
+TOP_DETALHE = 10      # itens por lista de origem, navegador, sistema, tela, país
+DETALHES = {"origens": "toprefs", "navegadores": "browsers", "sistemas": "systems",
+            "telas": "sizes", "paises": "locations"}
+
+# Seções do site pelo começo do path (depois da base). A ordem importa: a
+# primeira que casar vence ("reajuste/evolucao" antes de "reajuste").
+SECOES = [
+    ("Evolução do contrato", ("reajuste/evolucao",)),
+    ("Reajuste", ("reajuste",)),
+    ("Correção", ("correcao",)),
+    ("Indicadores", ("indicadores",)),
+    ("Comparador", ("comparador",)),
+    ("Simulador de CDI", ("simulador-cdi",)),
+    ("VAR da Economia", ("var.html",)),
+    ("Divulgações", ("divulgacoes", "feed.xml")),
+    ("Calendário", ("calendario",)),
+    ("O que mudou", ("mudancas",)),
+    ("Versão histórica", ("historico",)),
+    ("Guias", ("guias",)),
+    ("Rebobinar", ("rebobinar.html",)),
+    ("Embeds", ("embed.html", "retransmissora.html")),
+    ("MCP", ("mcp",)),
+    ("Institucional", ("sobre", "apoie", "privacidade", "termos")),
+    ("Admin", ("admin",)),
+]
 
 
 # --------------------------------------------------------------------------- #
@@ -113,10 +149,21 @@ class GoatCounter:
             return False, 0, []
         total = int(data.get("total") or 0)
         diaria = [
-            {"data": s.get("day"), "acessos": int(s.get("daily") or 0)}
+            {"data": s.get("day"), "acessos": int(s.get("daily") or 0),
+             "por_hora": [int(x or 0) for x in (s.get("hourly") or [])][:24]}
             for s in (data.get("stats") or []) if s.get("day")
         ]
         return True, total, diaria
+
+    def detalhe(self, pagina: str, start: str, end: str) -> list[dict]:
+        """Top de /stats/{pagina} (toprefs, browsers...): [{nome, acessos}, ...]."""
+        try:
+            data = self._get(f"/stats/{pagina}", {"start": start, "end": end, "limit": TOP_DETALHE})
+        except Exception as exc:  # noqa: BLE001
+            print(f"[aviso] /stats/{pagina} falhou: {exc}", file=sys.stderr)
+            return []
+        return [{"nome": (s.get("name") or "").strip() or "(sem nome)", "acessos": int(s.get("count") or 0)}
+                for s in (data.get("stats") or [])][:TOP_DETALHE]
 
     def hits(self, start: str, end: str) -> list[dict]:
         """Páginas do período: [{path, count}, ...] (até HITS_LIMIT)."""
@@ -167,6 +214,47 @@ def classificar(path: str) -> tuple[str | None, str | None]:
     if not segs:
         return "Home", None
     return None, None  # conta no total/top, mas fora dos grupos nomeados
+
+
+def secao(path: str) -> str:
+    """Seção do site de um path (Home, Reajuste, Indicadores...; 'Outras')."""
+    p = (path or "").split("?")[0].split("#")[0].lower().strip("/")
+    if p.startswith("observatorio-taxas"):
+        p = p[len("observatorio-taxas"):].strip("/")
+    if p in ("", "index.html"):
+        return "Home"
+    for nome, prefixos in SECOES:
+        if any(p == x or p.startswith(x + "/") or p.startswith(x + "?") for x in prefixos):
+            return nome
+    return "Outras"
+
+
+def agrega_secoes(hits: list[dict]) -> list[dict]:
+    """[{secao, acessos}] em ordem decrescente, só as que tiveram acesso."""
+    soma: dict[str, int] = {}
+    for h in hits:
+        s = secao(h["path"])
+        soma[s] = soma.get(s, 0) + h["count"]
+    return [{"secao": s, "acessos": n} for s, n in sorted(soma.items(), key=lambda x: (-x[1], x[0])) if n]
+
+
+def por_hora(serie: list[dict], agora_brt: datetime) -> tuple[list[dict], dict | None, list[float]]:
+    """(últimas 48 h, última hora cheia, média por hora do dia nos dias da série).
+
+    As horas vêm de /stats/total, no fuso do site (America/Sao_Paulo). A hora
+    em andamento na coleta fica de fora: ainda não está completa.
+    """
+    horas = []
+    for d in serie:
+        for h, n in enumerate(d.get("por_hora") or []):
+            horas.append((f"{d['data']}T{h:02d}:00", n))
+    corte = agora_brt.strftime("%Y-%m-%dT%H:00")
+    cheias = [(k, n) for k, n in horas if k < corte]
+    ult48 = [{"hora": k, "acessos": n} for k, n in cheias[-48:]]
+    ultima = {"hora": cheias[-1][0], "acessos": cheias[-1][1]} if cheias else None
+    dias = [d for d in serie if len(d.get("por_hora") or []) == 24]
+    media = [round(sum(d["por_hora"][h] for d in dias) / len(dias), 2) if dias else 0.0 for h in range(24)]
+    return ult48, ultima, media
 
 
 def agrega_grupos(hits: list[dict]) -> dict:
@@ -221,8 +309,11 @@ def main() -> None:
         _, vis_tudo, _ = gc.total(ini_tudo, fim)
 
     _, vis_30d, serie_diaria = gc.total(ini_30d, fim)
+    ini_60d = rfc3339(agora - timedelta(days=2 * DIAS_JANELA))
+    _, vis_30d_ant, _ = gc.total(ini_60d, ini_30d)
     hits_tudo = gc.hits(ini_tudo, fim)
     hits_30d = gc.hits(ini_30d, fim)
+    detalhes = {chave: gc.detalhe(pagina, ini_30d, fim) for chave, pagina in DETALHES.items()}
 
     if not gc.houve_sucesso:
         # API inteira indisponível: não sobrescreve um stats.json anterior bom.
@@ -235,6 +326,7 @@ def main() -> None:
     top = sorted(hits_tudo, key=lambda h: h["count"], reverse=True)[:15]
 
     agora_brt = agora.astimezone(BRT)
+    ult48, ultima_hora, media_hora = por_hora(serie_diaria, agora_brt)
     stats = {
         "gerado_em": agora_brt.isoformat(timespec="seconds"),
         "gerado_em_fmt": agora_brt.strftime("%d/%m/%Y às %H:%M"),
@@ -245,10 +337,17 @@ def main() -> None:
         "totais": {
             "all_time": {"acessos": pv_tudo, "visitantes": vis_tudo},
             "ultimos_30d": {"acessos": pv_30d, "visitantes": vis_30d},
+            "30d_anteriores": {"visitantes": vis_30d_ant},
         },
         "grupos": agrega_grupos(hits_tudo),
+        "secoes_30d": agrega_secoes(hits_30d),
         "top_paginas": top,
-        "serie_diaria": serie_diaria,
+        "top_paginas_30d": sorted(hits_30d, key=lambda h: h["count"], reverse=True)[:15],
+        "serie_diaria": [{"data": d["data"], "acessos": d["acessos"]} for d in serie_diaria],
+        "ultimas_48h": ult48,
+        "ultima_hora": ultima_hora,
+        "media_por_hora_do_dia": media_hora,
+        "detalhes_30d": detalhes,
     }
 
     write_json(DATA_DIR / "stats.json", stats)
