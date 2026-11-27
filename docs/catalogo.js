@@ -53,11 +53,12 @@
     if (location.hash !== h && history.pushState) history.pushState({ catalogo: id }, "", h);
   }
 
-  // Fechar o tema que está no endereço tira o fragmento (sem nova entrada no
-  // histórico): ao recarregar, a página não reabre o tema que a pessoa fechou.
+  // Fechar o tema que está no endereço tira o fragmento, também com uma entrada
+  // no histórico: ao recarregar, a página não reabre o tema que a pessoa fechou,
+  // e Voltar reabre esse tema.
   function desmarcarHash(id) {
-    if (location.hash === "#catalogo-" + id && history.replaceState)
-      history.replaceState(null, "", location.pathname + location.search);
+    if (location.hash === "#catalogo-" + id && history.pushState)
+      history.pushState({ catalogo: null }, "", location.pathname + location.search);
   }
 
   function definirSanfona(id, abrir) {
@@ -144,6 +145,10 @@
   });
 
   function irParaHash(rolar) {
+    // Entrada criada ao fechar um tema no celular: tudo fechado.
+    if (!location.hash && history.state && history.state.catalogo === null && !raiz.classList.contains("abas")) {
+      ativo = null; modoSanfona(); return;
+    }
     var id = temaDoHash();
     if (!id && !location.hash) id = raiz.getAttribute("data-inicial");   // de volta à entrada sem fragmento
     if (!id || ids.indexOf(id) < 0) return;
