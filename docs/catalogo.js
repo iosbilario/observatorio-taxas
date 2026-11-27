@@ -43,6 +43,7 @@
       var abrir = b.getAttribute("aria-expanded") !== "true";
       definirSanfona(p.getAttribute("data-tema"), abrir);
       if (abrir) marcarHash(p.getAttribute("data-tema"));
+      else desmarcarHash(p.getAttribute("data-tema"));
     });
     botoes.push(b);
   });
@@ -52,6 +53,13 @@
     if (location.hash !== h && history.pushState) history.pushState({ catalogo: id }, "", h);
   }
 
+  // Fechar o tema que está no endereço tira o fragmento (sem nova entrada no
+  // histórico): ao recarregar, a página não reabre o tema que a pessoa fechou.
+  function desmarcarHash(id) {
+    if (location.hash === "#catalogo-" + id && history.replaceState)
+      history.replaceState(null, "", location.pathname + location.search);
+  }
+
   function definirSanfona(id, abrir) {
     paineis.forEach(function (p, i) {
       if (p.getAttribute("data-tema") !== id) return;
@@ -59,6 +67,7 @@
       p.querySelector(".cat-corpo").hidden = !abrir;
     });
     if (abrir) ativo = id;
+    else if (ativo === id) ativo = null;
   }
 
   function selecionar(id, focar) {
@@ -90,7 +99,7 @@
       p.tabIndex = -1;
       p.querySelector(".cat-corpo").hidden = false;
     });
-    selecionar(ativo, false);
+    selecionar(ativo || raiz.getAttribute("data-inicial") || ids[0], false);
   }
 
   function modoSanfona() {
