@@ -1,6 +1,6 @@
 {
-  "gerado_em": "2026-11-26T22:16:11-03:00",
-  "gerado_em_fmt": "26/11/2026 às 22:16",
+  "gerado_em": "2026-11-27T12:48:47-03:00",
+  "gerado_em_fmt": "27/11/2026 às 12:48",
   "grupos": {
     "Admin": {
       "acessos": 0,
@@ -16,26 +16,22 @@
       }
     },
     "Home": {
-      "acessos": 215,
+      "acessos": 217,
       "sub": {}
     },
     "Reajuste": {
-      "acessos": 182,
+      "acessos": 184,
       "sub": {
         "IGP-DI": 9,
         "IGP-M": 48,
         "INPC": 15,
-        "IPCA": 41
+        "IPCA": 40
       }
     }
   },
   "serie_diaria": [
     {
       "acessos": 0,
-      "data": "2026-10-27"
-    },
-    {
-      "acessos": 2,
       "data": "2026-10-28"
     },
     {
@@ -151,27 +147,31 @@
       "data": "2026-11-25"
     },
     {
-      "acessos": 50,
+      "acessos": 62,
       "data": "2026-11-26"
+    },
+    {
+      "acessos": 22,
+      "data": "2026-11-27"
     }
   ],
   "site": "observatoriotaxas",
   "timezone": "America/Sao_Paulo (UTC-3)",
   "top_paginas": [
     {
-      "count": 211,
+      "count": 213,
       "path": "/"
     },
     {
-      "count": 107,
+      "count": 113,
       "path": "/indicadores/cdi"
     },
     {
-      "count": 66,
+      "count": 69,
       "path": "/reajuste"
     },
     {
-      "count": 62,
+      "count": 64,
       "path": "/rebobinar.html"
     },
     {
@@ -179,20 +179,20 @@
       "path": "/correcao"
     },
     {
-      "count": 21,
+      "count": 23,
+      "path": "/indicadores"
+    },
+    {
+      "count": 23,
       "path": "/var.html"
     },
     {
-      "count": 20,
+      "count": 22,
       "path": "/retransmissora.html"
     },
     {
-      "count": 19,
+      "count": 20,
       "path": "/indicadores/dolar"
-    },
-    {
-      "count": 19,
-      "path": "/indicadores"
     },
     {
       "count": 12,
@@ -203,7 +203,7 @@
       "path": "/indicadores/cdi-acumulado-no-mes"
     },
     {
-      "count": 10,
+      "count": 11,
       "path": "/indicadores/euro"
     },
     {
@@ -216,17 +216,17 @@
     },
     {
       "count": 8,
-      "path": "/apoie"
+      "path": "/comparador"
     }
   ],
   "totais": {
     "all_time": {
-      "acessos": 813,
-      "visitantes": 844
+      "acessos": 845,
+      "visitantes": 878
     },
     "ultimos_30d": {
-      "acessos": 457,
-      "visitantes": 457
+      "acessos": 489,
+      "visitantes": 489
     }
   }
 }

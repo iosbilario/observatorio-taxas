@@ -1,6 +1,6 @@
 {
  "copom_decisoes": {
-  "conferido_em": "2026-11-26",
+  "conferido_em": "2026-11-27",
   "itens": [
    {
     "data": "2024-06-19",
@@ -106,7 +106,7 @@
   "url": "https://www.bcb.gov.br/api/servico/sitebcb/copom/comunicados?quantidade=20"
  },
  "ibge": {
-  "conferido_em": "2026-11-26",
+  "conferido_em": "2026-11-27",
   "itens": [
    {
     "competencia": "2016-12",

@@ -1367,3 +1367,27 @@
     ↳ IPCA-15 - variação mensal (%): caiu de 0,32 para 0,22.
 [2026-11-26 14:27:34 +0000] Reservas internacionais - conceito caixa (US$ milhões): 361903 -> 361634
     ↳ Reservas internacionais - conceito caixa (US$ milhões): caiu de 361903 para 361634.
+[2026-11-27 15:48:18 +0000] TR - Taxa Referencial (%): 0.1712 -> 0.1691
+    ↳ TR - Taxa Referencial (%): caiu de 0,1712 para 0,1691.
+[2026-11-27 15:48:18 +0000] Poupança (depósitos até 03/05/2012) - rentabilidade (%): 0.6721 -> 0.6699
+    ↳ Poupança (depósitos até 03/05/2012) - rentabilidade (%): caiu de 0,6721 para 0,6699.
+[2026-11-27 15:48:18 +0000] Poupança (depósitos a partir de 04/05/2012) - rentabilidade (%): 0.6721 -> 0.6699
+    ↳ Poupança (depósitos a partir de 04/05/2012) - rentabilidade (%): caiu de 0,6721 para 0,6699.
+[2026-11-27 15:48:18 +0000] IGP-M - variação mensal (%): 1.47 -> 1.24
+    ↳ IGP-M - variação mensal (%): caiu de 1,47 para 1,24.
+[2026-11-27 15:48:18 +0000] Câmbio USD/BRL - venda: 5.8825 -> 5.7446
+    ↳ Câmbio USD/BRL - venda: caiu de 5,8825 para 5,7446.
+[2026-11-27 15:48:18 +0000] Câmbio USD/BRL - compra: 5.8819 -> 5.7440
+    ↳ Câmbio USD/BRL - compra: caiu de 5,8819 para 5,744.
+[2026-11-27 15:48:18 +0000] Câmbio EUR/BRL - venda: 6.4413000 -> 6.3041000
+    ↳ Câmbio EUR/BRL - venda: caiu de 6,4413 para 6,3041.
+[2026-11-27 15:48:18 +0000] Taxa de desocupação - PNAD (%): 5.2 -> 5.1
+    ↳ Taxa de desocupação - PNAD (%): caiu de 5,2 para 5,1.
+[2026-11-27 15:48:18 +0000] Saldo da carteira de crédito - total (R$ milhões): 7437699 -> 7466155
+    ↳ Saldo da carteira de crédito - total (R$ milhões): subiu de 7437699 para 7466155.
+[2026-11-27 15:48:18 +0000] Taxa média de juros das operações de crédito - total (% a.a.): 32.38 -> 32.93
+    ↳ Taxa média de juros das operações de crédito - total (% a.a.): subiu de 32,38 para 32,93.
+[2026-11-27 15:48:18 +0000] Inadimplência da carteira de crédito - total (%): 4.99 -> 5.10
+    ↳ Inadimplência da carteira de crédito - total (%): subiu de 4,99 para 5,1.
+[2026-11-27 15:48:18 +0000] Reservas internacionais - conceito caixa (US$ milhões): 361634 -> 362498
+    ↳ Reservas internacionais - conceito caixa (US$ milhões): subiu de 361634 para 362498.

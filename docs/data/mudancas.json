@@ -1,6 +1,135 @@
 {
   "coletas": [
     {
+      "base": "736eeb524f68c4fbb6972742641dfb175ca6d331",
+      "commit": null,
+      "gerado_em": "2026-11-27T12:48:37-03:00",
+      "novas": [
+        {
+          "codigo": 1178,
+          "data": "26/11/2026",
+          "nome": "Selic anualizada (% a.a.)",
+          "valor": "13.65"
+        },
+        {
+          "codigo": 226,
+          "data": "26/11/2026",
+          "nome": "TR - Taxa Referencial (%)",
+          "valor": "0.1691"
+        },
+        {
+          "codigo": 25,
+          "data": "26/11/2026",
+          "nome": "Poupança (depósitos até 03/05/2012) - rentabilidade (%)",
+          "valor": "0.6699"
+        },
+        {
+          "codigo": 195,
+          "data": "26/11/2026",
+          "nome": "Poupança (depósitos a partir de 04/05/2012) - rentabilidade (%)",
+          "valor": "0.6699"
+        },
+        {
+          "codigo": 4389,
+          "data": "26/11/2026",
+          "nome": "CDI anualizado base 252 (% a.a.)",
+          "valor": "13.65"
+        },
+        {
+          "codigo": 189,
+          "data": "01/11/2026",
+          "nome": "IGP-M - variação mensal (%)",
+          "valor": "1.24"
+        },
+        {
+          "codigo": 1,
+          "data": "26/11/2026",
+          "nome": "Câmbio USD/BRL - venda",
+          "valor": "5.7446"
+        },
+        {
+          "codigo": 10813,
+          "data": "26/11/2026",
+          "nome": "Câmbio USD/BRL - compra",
+          "valor": "5.7440"
+        },
+        {
+          "codigo": 21619,
+          "data": "26/11/2026",
+          "nome": "Câmbio EUR/BRL - venda",
+          "valor": "6.3041000"
+        },
+        {
+          "codigo": 24369,
+          "data": "01/10/2026",
+          "nome": "Taxa de desocupação - PNAD (%)",
+          "valor": "5.1"
+        },
+        {
+          "codigo": 20539,
+          "data": "01/10/2026",
+          "nome": "Saldo da carteira de crédito - total (R$ milhões)",
+          "valor": "7466155"
+        },
+        {
+          "codigo": 20714,
+          "data": "01/10/2026",
+          "nome": "Taxa média de juros das operações de crédito - total (% a.a.)",
+          "valor": "32.93"
+        },
+        {
+          "codigo": 21082,
+          "data": "01/10/2026",
+          "nome": "Inadimplência da carteira de crédito - total (%)",
+          "valor": "5.10"
+        },
+        {
+          "codigo": 13621,
+          "data": "26/11/2026",
+          "nome": "Reservas internacionais - conceito caixa (US$ milhões)",
+          "valor": "362498"
+        }
+      ],
+      "revisoes": [
+        {
+          "antes": "0.82",
+          "codigo": 4391,
+          "data": "01/11/2026",
+          "depois": "0.87",
+          "nome": "CDI - acumulado no mês (%)"
+        },
+        {
+          "antes": "7444208",
+          "codigo": 20539,
+          "data": "01/09/2026",
+          "depois": "7437699",
+          "nome": "Saldo da carteira de crédito - total (R$ milhões)"
+        },
+        {
+          "antes": "32.23",
+          "codigo": 20714,
+          "data": "01/08/2026",
+          "depois": "32.22",
+          "nome": "Taxa média de juros das operações de crédito - total (% a.a.)"
+        },
+        {
+          "antes": "32.36",
+          "codigo": 20714,
+          "data": "01/09/2026",
+          "depois": "32.38",
+          "nome": "Taxa média de juros das operações de crédito - total (% a.a.)"
+        },
+        {
+          "antes": "4.98",
+          "codigo": 21082,
+          "data": "01/09/2026",
+          "depois": "4.99",
+          "nome": "Inadimplência da carteira de crédito - total (%)"
+        }
+      ],
+      "series_novas": []
+    },
+    {
       "base": "62af3affa941ac51fd5c25f6d3ab988a5a07772c",
       "commit": "736eeb524f68c4fbb6972742641dfb175ca6d331",
       "gerado_em": "2026-11-26T22:16:00-03:00",
