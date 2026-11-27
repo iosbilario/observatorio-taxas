@@ -19,7 +19,11 @@ abstract: >-
   do Banco Central e os mesmos cálculos do site para assistentes como ChatGPT
   e Claude, uma página por indicador, um comparador de Selic, CDI e IPCA, um
   simulador de rendimento do CDI e guias de uso. A interface tem modo claro e
-  escuro com os tokens do Refy Design.
+  escuro com os tokens do Refy Design. Recibos e demonstrativos apontam para o
+  commit dos dados usado e podem ser refeitos naquela versão; há divulgações
+  permanentes com RSS, calendário oficial de divulgações (IBGE e Copom),
+  consulta da série como estava numa data passada e evolução de um contrato
+  ao longo dos aniversários.
 type: software
 authors:
   - given-names: "Leandro Borges"
@@ -45,8 +49,8 @@ identifiers:
 repository-code: "https://github.com/iosbilario/observatorio-taxas"
 url: "https://observatoriodetaxas.tec.br/"
 license: MIT
-version: "1.9.0"
-date-released: "2026-11-24"
+version: "1.10.0"
+date-released: "2026-11-27"
 keywords:
   - indicadores econômicos
   - séries temporais
