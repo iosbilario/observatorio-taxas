@@ -4,29 +4,29 @@
     "campanhas": [],
     "navegadores": [
       {
-        "acessos": 420,
+        "acessos": 437,
         "nome": "Chrome"
       },
       {
-        "acessos": 74,
+        "acessos": 75,
         "nome": "Safari"
       },
       {
-        "acessos": 5,
+        "acessos": 6,
         "nome": "Firefox"
       }
     ],
     "origens": [
       {
-        "acessos": 135,
-        "nome": "chatgpt.com"
-      },
-      {
-        "acessos": 133,
+        "acessos": 140,
         "nome": "observatoriodetaxas.tec.br"
       },
       {
-        "acessos": 93,
+        "acessos": 139,
+        "nome": "chatgpt.com"
+      },
+      {
+        "acessos": 96,
         "nome": "Acesso direto ou sem origem"
       },
       {
@@ -34,7 +34,7 @@
         "nome": "Google"
       },
       {
-        "acessos": 50,
+        "acessos": 55,
         "nome": "Bing"
       },
       {
@@ -60,7 +60,7 @@
     ],
     "paises": [
       {
-        "acessos": 427,
+        "acessos": 446,
         "nome": "Brasil"
       },
       {
@@ -102,29 +102,29 @@
     ],
     "sistemas": [
       {
-        "acessos": 213,
+        "acessos": 220,
         "nome": "Windows"
       },
       {
-        "acessos": 152,
+        "acessos": 153,
         "nome": "macOS"
       },
       {
-        "acessos": 62,
+        "acessos": 63,
         "nome": "iOS"
+      },
+      {
+        "acessos": 42,
+        "nome": "Android"
       },
       {
         "acessos": 40,
         "nome": "Linux"
-      },
-      {
-        "acessos": 32,
-        "nome": "Android"
       }
     ],
     "telas": [
       {
-        "acessos": 92,
+        "acessos": 103,
         "nome": "Celular"
       },
       {
@@ -132,11 +132,11 @@
         "nome": "Tablet"
       },
       {
-        "acessos": 391,
+        "acessos": 398,
         "nome": "Computador"
       },
       {
-        "acessos": 9,
+        "acessos": 10,
         "nome": "Computador (tela grande)"
       },
       {
@@ -154,31 +154,31 @@
             "chave": "indicadores/cdi",
             "rotulo": "Visitantes da página do CDI",
             "tipo": "pagina",
-            "visitantes": 7
+            "visitantes": 11
           },
           {
             "chave": "cta-simulador-cdi",
             "rotulo": "Clicaram em “Simule quanto R$ 1.000 rende”",
             "tipo": "evento",
-            "visitantes": 1
+            "visitantes": 3
           },
           {
             "chave": "simulador-cdi",
             "rotulo": "Visitantes do simulador",
             "tipo": "pagina",
-            "visitantes": 1
+            "visitantes": 3
           },
           {
             "chave": "resultado-simulador-cdi",
             "rotulo": "Viram o resultado inicial (sem mexer)",
             "tipo": "evento",
-            "visitantes": 1
+            "visitantes": 3
           },
           {
             "chave": "calculo-simulador-cdi",
             "rotulo": "Mexeram no simulador e calcularam",
             "tipo": "evento",
-            "visitantes": 1
+            "visitantes": 3
           }
         ],
         "id": "cdi",
@@ -218,8 +218,8 @@
     "completo": true,
     "desde": "2026-11-27"
   },
-  "gerado_em": "2026-11-27T14:07:45-03:00",
-  "gerado_em_fmt": "27/11/2026 às 14:07",
+  "gerado_em": "2026-11-27T21:50:11-03:00",
+  "gerado_em_fmt": "27/11/2026 às 21:50",
   "grupos": {
     "Admin": {
       "acessos": 0,
@@ -239,12 +239,12 @@
       "sub": {}
     },
     "Reajuste": {
-      "acessos": 181,
+      "acessos": 183,
       "sub": {
         "IGP-DI": 9,
         "IGP-M": 45,
-        "INPC": 15,
-        "IPCA": 40
+        "INPC": 14,
+        "IPCA": 41
       }
     }
   },
@@ -263,23 +263,23 @@
     1.26,
     1.03,
     0.77,
-    1.68,
-    0.68,
-    1.32,
+    1.84,
+    0.71,
+    1.45,
     0.65,
+    1.26,
     1.16,
-    1.13,
-    0.65,
+    0.81,
     0.45,
     0.81,
     0.58
   ],
   "origens_30d": {
     "completo": true,
-    "denominador": 497,
+    "denominador": 516,
     "externas": [
       {
-        "acessos": 135,
+        "acessos": 139,
         "nome": "chatgpt.com"
       },
       {
@@ -287,7 +287,7 @@
         "nome": "Google"
       },
       {
-        "acessos": 50,
+        "acessos": 55,
         "nome": "Bing"
       },
       {
@@ -321,18 +321,18 @@
     ],
     "outros_externos": 1,
     "totais": {
-      "direto": 93,
-      "externo": 271,
-      "interno": 133
+      "direto": 96,
+      "externo": 280,
+      "interno": 140
     }
   },
   "secoes_30d": [
     {
-      "acessos": 213,
+      "acessos": 220,
       "secao": "Indicadores"
     },
     {
-      "acessos": 85,
+      "acessos": 88,
       "secao": "Reajuste"
     },
     {
@@ -353,15 +353,15 @@
     },
     {
       "acessos": 13,
+      "secao": "Simulador de CDI"
+    },
+    {
+      "acessos": 13,
       "secao": "VAR da Economia"
     },
     {
       "acessos": 12,
       "secao": "Rebobinar"
-    },
-    {
-      "acessos": 11,
-      "secao": "Simulador de CDI"
     },
     {
       "acessos": 10,
@@ -376,7 +376,7 @@
       "secao": "Comparador"
     },
     {
-      "acessos": 6,
+      "acessos": 7,
       "secao": "Divulgações"
     },
     {
@@ -514,7 +514,7 @@
       "data": "2026-11-26"
     },
     {
-      "acessos": 30,
+      "acessos": 49,
       "data": "2026-11-27"
     }
   ],
@@ -527,12 +527,12 @@
       "path": "/"
     },
     {
-      "count": 115,
+      "count": 119,
       "event": false,
       "path": "/indicadores/cdi"
     },
     {
-      "count": 69,
+      "count": 71,
       "event": false,
       "path": "/reajuste"
     },
@@ -559,12 +559,22 @@
     {
       "count": 22,
       "event": false,
+      "path": "/indicadores/dolar"
+    },
+    {
+      "count": 22,
+      "event": false,
       "path": "/retransmissora.html"
     },
     {
-      "count": 20,
+      "count": 13,
       "event": false,
-      "path": "/indicadores/dolar"
+      "path": "/simulador-cdi"
+    },
+    {
+      "count": 12,
+      "event": false,
+      "path": "/indicadores/euro"
     },
     {
       "count": 12,
@@ -575,16 +585,6 @@
       "count": 11,
       "event": false,
       "path": "/indicadores/cdi-acumulado-no-mes"
-    },
-    {
-      "count": 11,
-      "event": false,
-      "path": "/indicadores/euro"
-    },
-    {
-      "count": 11,
-      "event": false,
-      "path": "/simulador-cdi"
     },
     {
       "count": 10,
@@ -599,7 +599,7 @@
   ],
   "top_paginas_30d": [
     {
-      "count": 115,
+      "count": 119,
       "event": false,
       "path": "/indicadores/cdi"
     },
@@ -609,7 +609,7 @@
       "path": "/"
     },
     {
-      "count": 33,
+      "count": 35,
       "event": false,
       "path": "/reajuste"
     },
@@ -619,9 +619,19 @@
       "path": "/indicadores"
     },
     {
-      "count": 20,
+      "count": 22,
       "event": false,
       "path": "/indicadores/dolar"
+    },
+    {
+      "count": 13,
+      "event": false,
+      "path": "/simulador-cdi"
+    },
+    {
+      "count": 12,
+      "event": false,
+      "path": "/indicadores/euro"
     },
     {
       "count": 12,
@@ -637,16 +647,6 @@
       "count": 11,
       "event": false,
       "path": "/indicadores/cdi-acumulado-no-mes"
-    },
-    {
-      "count": 11,
-      "event": false,
-      "path": "/indicadores/euro"
-    },
-    {
-      "count": 11,
-      "event": false,
-      "path": "/simulador-cdi"
     },
     {
       "count": 11,
@@ -676,50 +676,22 @@
   ],
   "totais": {
     "30d_anteriores": {
-      "visitantes": 102
+      "visitantes": 101
     },
     "all_time": {
-      "acessos": 846,
-      "visitantes": 886
+      "acessos": 858,
+      "visitantes": 905
     },
     "ultimos_30d": {
-      "acessos": 494,
-      "visitantes": 497
+      "acessos": 507,
+      "visitantes": 516
     }
   },
   "ultima_hora": {
-    "acessos": 7,
-    "hora": "2026-11-27T13:00"
+    "acessos": 5,
+    "hora": "2026-11-27T20:00"
   },
   "ultimas_48h": [
-    {
-      "acessos": 5,
-      "hora": "2026-11-25T14:00"
-    },
-    {
-      "acessos": 4,
-      "hora": "2026-11-25T15:00"
-    },
-    {
-      "acessos": 5,
-      "hora": "2026-11-25T16:00"
-    },
-    {
-      "acessos": 5,
-      "hora": "2026-11-25T17:00"
-    },
-    {
-      "acessos": 0,
-      "hora": "2026-11-25T18:00"
-    },
-    {
-      "acessos": 1,
-      "hora": "2026-11-25T19:00"
-    },
-    {
-      "acessos": 1,
-      "hora": "2026-11-25T20:00"
-    },
     {
       "acessos": 0,
       "hora": "2026-11-25T21:00"
@@ -883,6 +855,34 @@
     {
       "acessos": 7,
       "hora": "2026-11-27T13:00"
+    },
+    {
+      "acessos": 6,
+      "hora": "2026-11-27T14:00"
+    },
+    {
+      "acessos": 1,
+      "hora": "2026-11-27T15:00"
+    },
+    {
+      "acessos": 4,
+      "hora": "2026-11-27T16:00"
+    },
+    {
+      "acessos": 0,
+      "hora": "2026-11-27T17:00"
+    },
+    {
+      "acessos": 3,
+      "hora": "2026-11-27T18:00"
+    },
+    {
+      "acessos": 1,
+      "hora": "2026-11-27T19:00"
+    },
+    {
+      "acessos": 5,
+      "hora": "2026-11-27T20:00"
     }
   ]
 }
