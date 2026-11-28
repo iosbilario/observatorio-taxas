@@ -4,11 +4,11 @@
     "campanhas": [],
     "navegadores": [
       {
-        "acessos": 437,
+        "acessos": 439,
         "nome": "Chrome"
       },
       {
-        "acessos": 75,
+        "acessos": 79,
         "nome": "Safari"
       },
       {
@@ -18,23 +18,23 @@
     ],
     "origens": [
       {
-        "acessos": 140,
-        "nome": "observatoriodetaxas.tec.br"
-      },
-      {
-        "acessos": 139,
+        "acessos": 143,
         "nome": "chatgpt.com"
       },
       {
-        "acessos": 96,
+        "acessos": 141,
+        "nome": "observatoriodetaxas.tec.br"
+      },
+      {
+        "acessos": 97,
         "nome": "Acesso direto ou sem origem"
       },
       {
-        "acessos": 58,
+        "acessos": 60,
         "nome": "Google"
       },
       {
-        "acessos": 55,
+        "acessos": 53,
         "nome": "Bing"
       },
       {
@@ -60,11 +60,11 @@
     ],
     "paises": [
       {
-        "acessos": 446,
+        "acessos": 449,
         "nome": "Brasil"
       },
       {
-        "acessos": 57,
+        "acessos": 59,
         "nome": "Estados Unidos"
       },
       {
@@ -102,7 +102,7 @@
     ],
     "sistemas": [
       {
-        "acessos": 220,
+        "acessos": 219,
         "nome": "Windows"
       },
       {
@@ -110,21 +110,21 @@
         "nome": "macOS"
       },
       {
-        "acessos": 63,
+        "acessos": 67,
         "nome": "iOS"
       },
       {
-        "acessos": 42,
+        "acessos": 44,
         "nome": "Android"
       },
       {
-        "acessos": 40,
+        "acessos": 41,
         "nome": "Linux"
       }
     ],
     "telas": [
       {
-        "acessos": 103,
+        "acessos": 109,
         "nome": "Celular"
       },
       {
@@ -154,7 +154,7 @@
             "chave": "indicadores/cdi",
             "rotulo": "Visitantes da página do CDI",
             "tipo": "pagina",
-            "visitantes": 11
+            "visitantes": 14
           },
           {
             "chave": "cta-simulador-cdi",
@@ -218,8 +218,8 @@
     "completo": true,
     "desde": "2026-11-27"
   },
-  "gerado_em": "2026-11-27T21:50:11-03:00",
-  "gerado_em_fmt": "27/11/2026 às 21:50",
+  "gerado_em": "2026-11-28T11:44:03-03:00",
+  "gerado_em_fmt": "28/11/2026 às 11:44",
   "grupos": {
     "Admin": {
       "acessos": 0,
@@ -235,7 +235,7 @@
       }
     },
     "Home": {
-      "acessos": 217,
+      "acessos": 219,
       "sub": {}
     },
     "Reajuste": {
@@ -255,12 +255,12 @@
     0.1,
     0.1,
     0.19,
-    0.26,
+    0.29,
     0.19,
     0.48,
-    0.61,
-    1.29,
-    1.26,
+    0.65,
+    1.35,
+    1.32,
     1.03,
     0.77,
     1.84,
@@ -276,18 +276,18 @@
   ],
   "origens_30d": {
     "completo": true,
-    "denominador": 516,
+    "denominador": 522,
     "externas": [
       {
-        "acessos": 139,
+        "acessos": 143,
         "nome": "chatgpt.com"
       },
       {
-        "acessos": 58,
+        "acessos": 60,
         "nome": "Google"
       },
       {
-        "acessos": 55,
+        "acessos": 53,
         "nome": "Bing"
       },
       {
@@ -321,22 +321,22 @@
     ],
     "outros_externos": 1,
     "totais": {
-      "direto": 96,
-      "externo": 280,
-      "interno": 140
+      "direto": 97,
+      "externo": 284,
+      "interno": 141
     }
   },
   "secoes_30d": [
     {
-      "acessos": 220,
+      "acessos": 225,
       "secao": "Indicadores"
     },
     {
-      "acessos": 88,
+      "acessos": 87,
       "secao": "Reajuste"
     },
     {
-      "acessos": 61,
+      "acessos": 62,
       "secao": "Home"
     },
     {
@@ -380,7 +380,7 @@
       "secao": "Divulgações"
     },
     {
-      "acessos": 5,
+      "acessos": 6,
       "secao": "O que mudou"
     },
     {
@@ -394,11 +394,7 @@
   ],
   "serie_diaria": [
     {
-      "acessos": 0,
-      "data": "2026-10-28"
-    },
-    {
-      "acessos": 5,
+      "acessos": 3,
       "data": "2026-10-29"
     },
     {
@@ -516,18 +512,22 @@
     {
       "acessos": 49,
       "data": "2026-11-27"
+    },
+    {
+      "acessos": 8,
+      "data": "2026-11-28"
     }
   ],
   "site": "observatoriotaxas",
   "timezone": "America/Sao_Paulo (UTC-3)",
   "top_paginas": [
     {
-      "count": 213,
+      "count": 215,
       "event": false,
       "path": "/"
     },
     {
-      "count": 119,
+      "count": 122,
       "event": false,
       "path": "/indicadores/cdi"
     },
@@ -547,6 +547,11 @@
       "path": "/correcao"
     },
     {
+      "count": 24,
+      "event": false,
+      "path": "/indicadores/dolar"
+    },
+    {
       "count": 23,
       "event": false,
       "path": "/indicadores"
@@ -555,11 +560,6 @@
       "count": 23,
       "event": false,
       "path": "/var.html"
-    },
-    {
-      "count": 22,
-      "event": false,
-      "path": "/indicadores/dolar"
     },
     {
       "count": 22,
@@ -599,12 +599,12 @@
   ],
   "top_paginas_30d": [
     {
-      "count": 119,
+      "count": 122,
       "event": false,
       "path": "/indicadores/cdi"
     },
     {
-      "count": 61,
+      "count": 62,
       "event": false,
       "path": "/"
     },
@@ -614,14 +614,14 @@
       "path": "/reajuste"
     },
     {
+      "count": 24,
+      "event": false,
+      "path": "/indicadores/dolar"
+    },
+    {
       "count": 23,
       "event": false,
       "path": "/indicadores"
-    },
-    {
-      "count": 22,
-      "event": false,
-      "path": "/indicadores/dolar"
     },
     {
       "count": 13,
@@ -676,78 +676,22 @@
   ],
   "totais": {
     "30d_anteriores": {
-      "visitantes": 101
+      "visitantes": 104
     },
     "all_time": {
-      "acessos": 858,
-      "visitantes": 905
+      "acessos": 866,
+      "visitantes": 913
     },
     "ultimos_30d": {
-      "acessos": 507,
-      "visitantes": 516
+      "acessos": 513,
+      "visitantes": 522
     }
   },
   "ultima_hora": {
-    "acessos": 5,
-    "hora": "2026-11-27T20:00"
+    "acessos": 2,
+    "hora": "2026-11-28T10:00"
   },
   "ultimas_48h": [
-    {
-      "acessos": 0,
-      "hora": "2026-11-25T21:00"
-    },
-    {
-      "acessos": 1,
-      "hora": "2026-11-25T22:00"
-    },
-    {
-      "acessos": 1,
-      "hora": "2026-11-25T23:00"
-    },
-    {
-      "acessos": 0,
-      "hora": "2026-11-26T00:00"
-    },
-    {
-      "acessos": 0,
-      "hora": "2026-11-26T01:00"
-    },
-    {
-      "acessos": 0,
-      "hora": "2026-11-26T02:00"
-    },
-    {
-      "acessos": 0,
-      "hora": "2026-11-26T03:00"
-    },
-    {
-      "acessos": 0,
-      "hora": "2026-11-26T04:00"
-    },
-    {
-      "acessos": 0,
-      "hora": "2026-11-26T05:00"
-    },
-    {
-      "acessos": 0,
-      "hora": "2026-11-26T06:00"
-    },
-    {
-      "acessos": 0,
-      "hora": "2026-11-26T07:00"
-    },
-    {
-      "acessos": 0,
-      "hora": "2026-11-26T08:00"
-    },
-    {
-      "acessos": 4,
-      "hora": "2026-11-26T09:00"
-    },
-    {
-      "acessos": 1,
-      "hora": "2026-11-26T10:00"
-    },
     {
       "acessos": 13,
       "hora": "2026-11-26T11:00"
@@ -883,6 +827,62 @@
     {
       "acessos": 5,
       "hora": "2026-11-27T20:00"
+    },
+    {
+      "acessos": 0,
+      "hora": "2026-11-27T21:00"
+    },
+    {
+      "acessos": 0,
+      "hora": "2026-11-27T22:00"
+    },
+    {
+      "acessos": 0,
+      "hora": "2026-11-27T23:00"
+    },
+    {
+      "acessos": 0,
+      "hora": "2026-11-28T00:00"
+    },
+    {
+      "acessos": 0,
+      "hora": "2026-11-28T01:00"
+    },
+    {
+      "acessos": 0,
+      "hora": "2026-11-28T02:00"
+    },
+    {
+      "acessos": 0,
+      "hora": "2026-11-28T03:00"
+    },
+    {
+      "acessos": 0,
+      "hora": "2026-11-28T04:00"
+    },
+    {
+      "acessos": 0,
+      "hora": "2026-11-28T05:00"
+    },
+    {
+      "acessos": 1,
+      "hora": "2026-11-28T06:00"
+    },
+    {
+      "acessos": 1,
+      "hora": "2026-11-28T07:00"
+    },
+    {
+      "acessos": 0,
+      "hora": "2026-11-28T08:00"
+    },
+    {
+      "acessos": 2,
+      "hora": "2026-11-28T09:00"
+    },
+    {
+      "acessos": 2,
+      "hora": "2026-11-28T10:00"
     }
   ]
 }

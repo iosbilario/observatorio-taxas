@@ -15,7 +15,7 @@
    "estado": "publicado",
    "familia": "ipca15",
    "fonte": {
-    "conferido_em": "2026-11-27",
+    "conferido_em": "2026-11-28",
     "id_fonte": 4209,
     "nome": "Calendário de divulgações do IBGE (API)",
     "url": "https://servicodados.ibge.gov.br/api/v3/calendario/"
@@ -37,7 +37,7 @@
    "familia": "copom",
    "fonte": {
     "conferido_em": "2026-11-26",
-    "decisoes_conferidas_em": "2026-11-27",
+    "decisoes_conferidas_em": "2026-11-28",
     "nome": "Calendário de reuniões (notas oficiais do BC) e comunicados do Copom (API do BC)",
     "url": "https://www.bcb.gov.br/api/servico/sitebcb/notasimprensa/20739",
     "url_decisoes": "https://www.bcb.gov.br/api/servico/sitebcb/copom/comunicados?quantidade=20"
@@ -72,7 +72,7 @@
    "estado": "publicado",
    "familia": "ipca",
    "fonte": {
-    "conferido_em": "2026-11-27",
+    "conferido_em": "2026-11-28",
     "id_fonte": 4211,
     "nome": "Calendário de divulgações do IBGE (API)",
     "url": "https://servicodados.ibge.gov.br/api/v3/calendario/"
@@ -93,7 +93,7 @@
    "estado": "publicado",
    "familia": "ipca15",
    "fonte": {
-    "conferido_em": "2026-11-27",
+    "conferido_em": "2026-11-28",
     "id_fonte": 4214,
     "nome": "Calendário de divulgações do IBGE (API)",
     "url": "https://servicodados.ibge.gov.br/api/v3/calendario/"
@@ -114,7 +114,7 @@
    "estado": "publicado",
    "familia": "ipca",
    "fonte": {
-    "conferido_em": "2026-11-27",
+    "conferido_em": "2026-11-28",
     "id_fonte": 4220,
     "nome": "Calendário de divulgações do IBGE (API)",
     "url": "https://servicodados.ibge.gov.br/api/v3/calendario/"
@@ -136,7 +136,7 @@
    "familia": "copom",
    "fonte": {
     "conferido_em": "2026-11-26",
-    "decisoes_conferidas_em": "2026-11-27",
+    "decisoes_conferidas_em": "2026-11-28",
     "nome": "Calendário de reuniões (notas oficiais do BC) e comunicados do Copom (API do BC)",
     "url": "https://www.bcb.gov.br/api/servico/sitebcb/notasimprensa/20739",
     "url_decisoes": "https://www.bcb.gov.br/api/servico/sitebcb/copom/comunicados?quantidade=20"
@@ -171,7 +171,7 @@
    "estado": "publicado",
    "familia": "ipca15",
    "fonte": {
-    "conferido_em": "2026-11-27",
+    "conferido_em": "2026-11-28",
     "id_fonte": 4225,
     "nome": "Calendário de divulgações do IBGE (API)",
     "url": "https://servicodados.ibge.gov.br/api/v3/calendario/"
@@ -192,7 +192,7 @@
    "estado": "publicado",
    "familia": "ipca",
    "fonte": {
-    "conferido_em": "2026-11-27",
+    "conferido_em": "2026-11-28",
     "id_fonte": 4232,
     "nome": "Calendário de divulgações do IBGE (API)",
     "url": "https://servicodados.ibge.gov.br/api/v3/calendario/"
@@ -213,7 +213,7 @@
    "estado": "publicado",
    "familia": "ipca15",
    "fonte": {
-    "conferido_em": "2026-11-27",
+    "conferido_em": "2026-11-28",
     "id_fonte": 4237,
     "nome": "Calendário de divulgações do IBGE (API)",
     "url": "https://servicodados.ibge.gov.br/api/v3/calendario/"
@@ -235,7 +235,7 @@
    "familia": "copom",
    "fonte": {
     "conferido_em": "2026-11-26",
-    "decisoes_conferidas_em": "2026-11-27",
+    "decisoes_conferidas_em": "2026-11-28",
     "nome": "Calendário de reuniões (notas oficiais do BC) e comunicados do Copom (API do BC)",
     "url": "https://www.bcb.gov.br/api/servico/sitebcb/notasimprensa/20739",
     "url_decisoes": "https://www.bcb.gov.br/api/servico/sitebcb/copom/comunicados?quantidade=20"
@@ -270,7 +270,7 @@
    "estado": "publicado",
    "familia": "ipca",
    "fonte": {
-    "conferido_em": "2026-11-27",
+    "conferido_em": "2026-11-28",
     "id_fonte": 4242,
     "nome": "Calendário de divulgações do IBGE (API)",
     "url": "https://servicodados.ibge.gov.br/api/v3/calendario/"
@@ -291,7 +291,7 @@
    "estado": "publicado",
    "familia": "ipca15",
    "fonte": {
-    "conferido_em": "2026-11-27",
+    "conferido_em": "2026-11-28",
     "id_fonte": 4250,
     "nome": "Calendário de divulgações do IBGE (API)",
     "url": "https://servicodados.ibge.gov.br/api/v3/calendario/"
@@ -312,7 +312,7 @@
    "estado": "publicado",
    "familia": "ipca",
    "fonte": {
-    "conferido_em": "2026-11-27",
+    "conferido_em": "2026-11-28",
     "id_fonte": 4260,
     "nome": "Calendário de divulgações do IBGE (API)",
     "url": "https://servicodados.ibge.gov.br/api/v3/calendario/"
@@ -334,7 +334,7 @@
    "familia": "copom",
    "fonte": {
     "conferido_em": "2026-11-26",
-    "decisoes_conferidas_em": "2026-11-27",
+    "decisoes_conferidas_em": "2026-11-28",
     "nome": "Calendário de reuniões (notas oficiais do BC) e comunicados do Copom (API do BC)",
     "url": "https://www.bcb.gov.br/api/servico/sitebcb/notasimprensa/20739",
     "url_decisoes": "https://www.bcb.gov.br/api/servico/sitebcb/copom/comunicados?quantidade=20"
@@ -369,7 +369,7 @@
    "estado": "publicado",
    "familia": "ipca15",
    "fonte": {
-    "conferido_em": "2026-11-27",
+    "conferido_em": "2026-11-28",
     "id_fonte": 4264,
     "nome": "Calendário de divulgações do IBGE (API)",
     "url": "https://servicodados.ibge.gov.br/api/v3/calendario/"
@@ -390,7 +390,7 @@
    "estado": "publicado",
    "familia": "ipca",
    "fonte": {
-    "conferido_em": "2026-11-27",
+    "conferido_em": "2026-11-28",
     "id_fonte": 4270,
     "nome": "Calendário de divulgações do IBGE (API)",
     "url": "https://servicodados.ibge.gov.br/api/v3/calendario/"
@@ -411,7 +411,7 @@
    "estado": "publicado",
    "familia": "ipca15",
    "fonte": {
-    "conferido_em": "2026-11-27",
+    "conferido_em": "2026-11-28",
     "id_fonte": 4276,
     "nome": "Calendário de divulgações do IBGE (API)",
     "url": "https://servicodados.ibge.gov.br/api/v3/calendario/"
@@ -433,7 +433,7 @@
    "familia": "copom",
    "fonte": {
     "conferido_em": "2026-11-26",
-    "decisoes_conferidas_em": "2026-11-27",
+    "decisoes_conferidas_em": "2026-11-28",
     "nome": "Calendário de reuniões (notas oficiais do BC) e comunicados do Copom (API do BC)",
     "url": "https://www.bcb.gov.br/api/servico/sitebcb/notasimprensa/20739",
     "url_decisoes": "https://www.bcb.gov.br/api/servico/sitebcb/copom/comunicados?quantidade=20"
@@ -468,7 +468,7 @@
    "estado": "publicado",
    "familia": "ipca",
    "fonte": {
-    "conferido_em": "2026-11-27",
+    "conferido_em": "2026-11-28",
     "id_fonte": 4282,
     "nome": "Calendário de divulgações do IBGE (API)",
     "url": "https://servicodados.ibge.gov.br/api/v3/calendario/"
@@ -489,7 +489,7 @@
    "estado": "publicado",
    "familia": "ipca15",
    "fonte": {
-    "conferido_em": "2026-11-27",
+    "conferido_em": "2026-11-28",
     "id_fonte": 4289,
     "nome": "Calendário de divulgações do IBGE (API)",
     "url": "https://servicodados.ibge.gov.br/api/v3/calendario/"
@@ -510,7 +510,7 @@
    "estado": "publicado",
    "familia": "ipca",
    "fonte": {
-    "conferido_em": "2026-11-27",
+    "conferido_em": "2026-11-28",
     "id_fonte": 4297,
     "nome": "Calendário de divulgações do IBGE (API)",
     "url": "https://servicodados.ibge.gov.br/api/v3/calendario/"
@@ -532,7 +532,7 @@
    "familia": "copom",
    "fonte": {
     "conferido_em": "2026-11-26",
-    "decisoes_conferidas_em": "2026-11-27",
+    "decisoes_conferidas_em": "2026-11-28",
     "nome": "Calendário de reuniões (notas oficiais do BC) e comunicados do Copom (API do BC)",
     "url": "https://www.bcb.gov.br/api/servico/sitebcb/notasimprensa/20739",
     "url_decisoes": "https://www.bcb.gov.br/api/servico/sitebcb/copom/comunicados?quantidade=20"
@@ -567,7 +567,7 @@
    "estado": "publicado",
    "familia": "ipca15",
    "fonte": {
-    "conferido_em": "2026-11-27",
+    "conferido_em": "2026-11-28",
     "id_fonte": 4302,
     "nome": "Calendário de divulgações do IBGE (API)",
     "url": "https://servicodados.ibge.gov.br/api/v3/calendario/"
@@ -588,7 +588,7 @@
    "estado": "publicado",
    "familia": "ipca",
    "fonte": {
-    "conferido_em": "2026-11-27",
+    "conferido_em": "2026-11-28",
     "id_fonte": 4309,
     "nome": "Calendário de divulgações do IBGE (API)",
     "url": "https://servicodados.ibge.gov.br/api/v3/calendario/"
@@ -609,7 +609,7 @@
    "estado": "publicado",
    "familia": "ipca15",
    "fonte": {
-    "conferido_em": "2026-11-27",
+    "conferido_em": "2026-11-28",
     "id_fonte": 4314,
     "nome": "Calendário de divulgações do IBGE (API)",
     "url": "https://servicodados.ibge.gov.br/api/v3/calendario/"
@@ -631,7 +631,7 @@
    "familia": "copom",
    "fonte": {
     "conferido_em": "2026-11-26",
-    "decisoes_conferidas_em": "2026-11-27",
+    "decisoes_conferidas_em": "2026-11-28",
     "nome": "Calendário de reuniões (notas oficiais do BC) e comunicados do Copom (API do BC)",
     "url": "https://www.bcb.gov.br/api/servico/sitebcb/notasimprensa/20739",
     "url_decisoes": "https://www.bcb.gov.br/api/servico/sitebcb/copom/comunicados?quantidade=20"
@@ -666,7 +666,7 @@
    "estado": "publicado",
    "familia": "ipca",
    "fonte": {
-    "conferido_em": "2026-11-27",
+    "conferido_em": "2026-11-28",
     "id_fonte": 4321,
     "nome": "Calendário de divulgações do IBGE (API)",
     "url": "https://servicodados.ibge.gov.br/api/v3/calendario/"
@@ -687,7 +687,7 @@
    "estado": "publicado",
    "familia": "ipca15",
    "fonte": {
-    "conferido_em": "2026-11-27",
+    "conferido_em": "2026-11-28",
     "id_fonte": 4330,
     "nome": "Calendário de divulgações do IBGE (API)",
     "url": "https://servicodados.ibge.gov.br/api/v3/calendario/"
@@ -709,7 +709,7 @@
    "familia": "copom",
    "fonte": {
     "conferido_em": "2026-11-26",
-    "decisoes_conferidas_em": "2026-11-27",
+    "decisoes_conferidas_em": "2026-11-28",
     "nome": "Calendário de reuniões (notas oficiais do BC) e comunicados do Copom (API do BC)",
     "url": "https://www.bcb.gov.br/api/servico/sitebcb/notasimprensa/20739",
     "url_decisoes": "https://www.bcb.gov.br/api/servico/sitebcb/copom/comunicados?quantidade=20"
@@ -740,7 +740,7 @@
    "estado": "previsto",
    "familia": "ipca",
    "fonte": {
-    "conferido_em": "2026-11-27",
+    "conferido_em": "2026-11-28",
     "id_fonte": 4338,
     "nome": "Calendário de divulgações do IBGE (API)",
     "url": "https://servicodados.ibge.gov.br/api/v3/calendario/"
@@ -761,7 +761,7 @@
    "estado": "previsto",
    "familia": "ipca15",
    "fonte": {
-    "conferido_em": "2026-11-27",
+    "conferido_em": "2026-11-28",
     "id_fonte": 4343,
     "nome": "Calendário de divulgações do IBGE (API)",
     "url": "https://servicodados.ibge.gov.br/api/v3/calendario/"
@@ -782,7 +782,7 @@
    "estado": "previsto",
    "familia": "ipca",
    "fonte": {
-    "conferido_em": "2026-11-27",
+    "conferido_em": "2026-11-28",
     "id_fonte": 4349,
     "nome": "Calendário de divulgações do IBGE (API)",
     "url": "https://servicodados.ibge.gov.br/api/v3/calendario/"
@@ -804,7 +804,7 @@
    "familia": "copom",
    "fonte": {
     "conferido_em": "2026-11-26",
-    "decisoes_conferidas_em": "2026-11-27",
+    "decisoes_conferidas_em": "2026-11-28",
     "nome": "Calendário de reuniões (notas oficiais do BC) e comunicados do Copom (API do BC)",
     "url": "https://www.bcb.gov.br/api/servico/sitebcb/notasimprensa/21173",
     "url_decisoes": "https://www.bcb.gov.br/api/servico/sitebcb/copom/comunicados?quantidade=20"
@@ -836,7 +836,7 @@
    "familia": "copom",
    "fonte": {
     "conferido_em": "2026-11-26",
-    "decisoes_conferidas_em": "2026-11-27",
+    "decisoes_conferidas_em": "2026-11-28",
     "nome": "Calendário de reuniões (notas oficiais do BC) e comunicados do Copom (API do BC)",
     "url": "https://www.bcb.gov.br/api/servico/sitebcb/notasimprensa/21173",
     "url_decisoes": "https://www.bcb.gov.br/api/servico/sitebcb/copom/comunicados?quantidade=20"
@@ -868,7 +868,7 @@
    "familia": "copom",
    "fonte": {
     "conferido_em": "2026-11-26",
-    "decisoes_conferidas_em": "2026-11-27",
+    "decisoes_conferidas_em": "2026-11-28",
     "nome": "Calendário de reuniões (notas oficiais do BC) e comunicados do Copom (API do BC)",
     "url": "https://www.bcb.gov.br/api/servico/sitebcb/notasimprensa/21173",
     "url_decisoes": "https://www.bcb.gov.br/api/servico/sitebcb/copom/comunicados?quantidade=20"
@@ -900,7 +900,7 @@
    "familia": "copom",
    "fonte": {
     "conferido_em": "2026-11-26",
-    "decisoes_conferidas_em": "2026-11-27",
+    "decisoes_conferidas_em": "2026-11-28",
     "nome": "Calendário de reuniões (notas oficiais do BC) e comunicados do Copom (API do BC)",
     "url": "https://www.bcb.gov.br/api/servico/sitebcb/notasimprensa/21173",
     "url_decisoes": "https://www.bcb.gov.br/api/servico/sitebcb/copom/comunicados?quantidade=20"
@@ -932,7 +932,7 @@
    "familia": "copom",
    "fonte": {
     "conferido_em": "2026-11-26",
-    "decisoes_conferidas_em": "2026-11-27",
+    "decisoes_conferidas_em": "2026-11-28",
     "nome": "Calendário de reuniões (notas oficiais do BC) e comunicados do Copom (API do BC)",
     "url": "https://www.bcb.gov.br/api/servico/sitebcb/notasimprensa/21173",
     "url_decisoes": "https://www.bcb.gov.br/api/servico/sitebcb/copom/comunicados?quantidade=20"
@@ -964,7 +964,7 @@
    "familia": "copom",
    "fonte": {
     "conferido_em": "2026-11-26",
-    "decisoes_conferidas_em": "2026-11-27",
+    "decisoes_conferidas_em": "2026-11-28",
     "nome": "Calendário de reuniões (notas oficiais do BC) e comunicados do Copom (API do BC)",
     "url": "https://www.bcb.gov.br/api/servico/sitebcb/notasimprensa/21173",
     "url_decisoes": "https://www.bcb.gov.br/api/servico/sitebcb/copom/comunicados?quantidade=20"
@@ -996,7 +996,7 @@
    "familia": "copom",
    "fonte": {
     "conferido_em": "2026-11-26",
-    "decisoes_conferidas_em": "2026-11-27",
+    "decisoes_conferidas_em": "2026-11-28",
     "nome": "Calendário de reuniões (notas oficiais do BC) e comunicados do Copom (API do BC)",
     "url": "https://www.bcb.gov.br/api/servico/sitebcb/notasimprensa/21173",
     "url_decisoes": "https://www.bcb.gov.br/api/servico/sitebcb/copom/comunicados?quantidade=20"
@@ -1028,7 +1028,7 @@
    "familia": "copom",
    "fonte": {
     "conferido_em": "2026-11-26",
-    "decisoes_conferidas_em": "2026-11-27",
+    "decisoes_conferidas_em": "2026-11-28",
     "nome": "Calendário de reuniões (notas oficiais do BC) e comunicados do Copom (API do BC)",
     "url": "https://www.bcb.gov.br/api/servico/sitebcb/notasimprensa/21173",
     "url_decisoes": "https://www.bcb.gov.br/api/servico/sitebcb/copom/comunicados?quantidade=20"
