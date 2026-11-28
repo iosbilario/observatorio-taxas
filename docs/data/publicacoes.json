@@ -442,6 +442,134 @@
     "curto": "317df49",
     "sha": "317df4940d39ffadab5b8896188c05636c3dc37e"
    }
+  },
+  {
+   "carga_inicial": false,
+   "codigo": 1,
+   "competencia": "2026-W48",
+   "divulgacao_oficial": null,
+   "id": "dolar-2026-W48",
+   "identificado": {
+    "commit": "7b576e002e273c7abc3bb42ff500a14f358f2a34",
+    "gerado_em": "2026-11-27T13:54:24-03:00"
+   },
+   "leitura": {
+    "codigo": 1,
+    "competencia": "2026-W48",
+    "diaria": {
+     "data": "2026-11-27",
+     "data_anterior": "2026-11-26",
+     "valor": 5.543,
+     "valor_anterior": 5.7446,
+     "variacao_pct": -3.5093827246457487,
+     "variacao_reais": -0.2016
+    },
+    "entradas": {
+     "2026-11-19": 5.8889,
+     "2026-11-27": 5.543
+    },
+    "fechamento": {
+     "data": "2026-11-27",
+     "data_anterior": "2026-11-19",
+     "semana": "2026-W48",
+     "semana_anterior": "2026-W47",
+     "valor": 5.543,
+     "valor_anterior": 5.8889,
+     "variacao_pct": -5.873762502334889,
+     "variacao_reais": -0.34589999999999943
+    },
+    "frases": [
+     "Na cotação de 27/11/2026, a PTAX de venda ficou em R$ 5,5430, −R$ 0,2016 (−3,51%) em relação à observação anterior, de 26/11/2026 (R$ 5,7446).",
+     "Na semana de 23/11 a 27/11/2026, o dólar caiu: a última cotação, de sexta-feira 27/11/2026, foi R$ 5,5430, −R$ 0,3459 (−5,87%) contra a última da semana anterior, de quinta-feira 19/11/2026 (R$ 5,8889)."
+    ],
+    "hoje": "2026-11-28",
+    "kpis": [
+     [
+      "Última cotação",
+      "R$ 5,5430 em 27/11/2026"
+     ],
+     [
+      "Contra a observação anterior",
+      "−R$ 0,2016 (−3,51%) desde 26/11/2026"
+     ],
+     [
+      "Fechamento da semana",
+      "R$ 5,5430 em 27/11/2026"
+     ],
+     [
+      "Contra a semana anterior",
+      "−R$ 0,3459 (−5,87%) desde 19/11/2026"
+     ]
+    ],
+    "nome": "Dólar PTAX (venda)",
+    "nota": "A PTAX é a taxa de referência calculada pelo Banco Central em cada dia útil. Variação em reais = cotação nova − cotação de comparação; em percentual = cotação nova ÷ cotação de comparação − 1. A explicação mostra só o movimento da cotação: atribuí-lo a juros, fluxo ou notícias exigiria outros dados.",
+    "parcial": null,
+    "regra": "leitura-ptax-semanal-v1",
+    "tabela": {
+     "cab": [
+      "Dia",
+      "Semana",
+      "PTAX de venda (R$)"
+     ],
+     "linhas": [
+      [
+       "segunda-feira 16/11/2026",
+       "anterior",
+       "5,7324"
+      ],
+      [
+       "terça-feira 17/11/2026",
+       "anterior",
+       "5,7851"
+      ],
+      [
+       "quarta-feira 18/11/2026",
+       "anterior",
+       "5,8102"
+      ],
+      [
+       "quinta-feira 19/11/2026",
+       "anterior",
+       "5,8889"
+      ],
+      [
+       "segunda-feira 23/11/2026",
+       "encerrada",
+       "5,9708"
+      ],
+      [
+       "terça-feira 24/11/2026",
+       "encerrada",
+       "5,8573"
+      ],
+      [
+       "quarta-feira 25/11/2026",
+       "encerrada",
+       "5,8825"
+      ],
+      [
+       "quinta-feira 26/11/2026",
+       "encerrada",
+       "5,7446"
+      ],
+      [
+       "sexta-feira 27/11/2026",
+       "encerrada",
+       "5,5430"
+      ]
+     ]
+    },
+    "titulo": "Dólar PTAX na semana de 23/11 a 27/11/2026: R$ 5,5430, −5,87% na semana"
+   },
+   "registrado_em": "2026-11-28T14:44:16Z",
+   "revisa": null,
+   "revisao": 0,
+   "serie": "dolar",
+   "url": "https://observatoriodetaxas.tec.br/divulgacoes/dolar/2026-W48/",
+   "versao_dados": {
+    "curto": "3b47396",
+    "sha": "3b473960a4cb6d514e6951d35974f8f96508a224"
+   }
   }
  ]
 }

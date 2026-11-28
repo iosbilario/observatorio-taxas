@@ -1,14 +1,14 @@
 {
  "https://observatoriodetaxas.tec.br/": {
-  "hash": "5229f51bcfd444ad",
-  "lastmod": "2026-11-27"
+  "hash": "47d6aee4742716ba",
+  "lastmod": "2026-11-28"
  },
  "https://observatoriodetaxas.tec.br/apoie/": {
   "hash": "36b7c8caf6249415",
   "lastmod": "2026-11-13"
  },
  "https://observatoriodetaxas.tec.br/calendario/": {
-  "hash": "c622b357ca8075d6",
+  "hash": "2c43a63a95ad808e",
   "lastmod": "2026-11-28"
  },
  "https://observatoriodetaxas.tec.br/calendario/copom-2026-1/": {
@@ -196,8 +196,8 @@
   "lastmod": "2026-11-26"
  },
  "https://observatoriodetaxas.tec.br/divulgacoes/": {
-  "hash": "42bf87ec55a9be6b",
-  "lastmod": "2026-11-26"
+  "hash": "1a800773edc18000",
+  "lastmod": "2026-11-28"
  },
  "https://observatoriodetaxas.tec.br/divulgacoes/cdi/2026-10/": {
   "hash": "adcc11ad863a8f27",
@@ -206,6 +206,10 @@
  "https://observatoriodetaxas.tec.br/divulgacoes/dolar/2026-W47/": {
   "hash": "d7b66df8cb0d8e67",
   "lastmod": "2026-11-26"
+ },
+ "https://observatoriodetaxas.tec.br/divulgacoes/dolar/2026-W48/": {
+  "hash": "b74d581d925615ba",
+  "lastmod": "2026-11-28"
  },
  "https://observatoriodetaxas.tec.br/divulgacoes/ipca/2026-10/": {
   "hash": "25d3d367d1391799",
@@ -268,8 +272,8 @@
   "lastmod": "2026-11-27"
  },
  "https://observatoriodetaxas.tec.br/indicadores/dolar/": {
-  "hash": "0bec59f299060150",
-  "lastmod": "2026-11-27"
+  "hash": "4ba0f9a175bde925",
+  "lastmod": "2026-11-28"
  },
  "https://observatoriodetaxas.tec.br/indicadores/euro/": {
   "hash": "a2de65be92040049",

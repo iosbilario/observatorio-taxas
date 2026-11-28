@@ -6,7 +6,15 @@
     <description>Leitura de cada nova competência dos indicadores acompanhados, com a conta e a versão dos dados.</description>
     <language>pt-BR</language>
     <atom:link href="https://observatoriodetaxas.tec.br/feed.xml" rel="self" type="application/rss+xml" />
-    <lastBuildDate>Thu, 26 Nov 2026 14:28:01 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 28 Nov 2026 14:44:16 GMT</lastBuildDate>
+    <item>
+      <title>Dólar PTAX na semana de 23/11 a 27/11/2026: R$ 5,5430, −5,87% na semana</title>
+      <link>https://observatoriodetaxas.tec.br/divulgacoes/dolar/2026-W48/</link>
+      <guid isPermaLink="true">https://observatoriodetaxas.tec.br/divulgacoes/dolar/2026-W48/</guid>
+      <pubDate>Sat, 28 Nov 2026 14:44:16 GMT</pubDate>
+      <category>Dólar PTAX (venda)</category>
+      <description>Período: semana de 23/11 a 27/11/2026. Na cotação de 27/11/2026, a PTAX de venda ficou em R$ 5,5430, −R$ 0,2016 (−3,51%) em relação à observação anterior, de 26/11/2026 (R$ 5,7446). Na semana de 23/11 a 27/11/2026, o dólar caiu: a última cotação, de sexta-feira 27/11/2026, foi R$ 5,5430, −R$ 0,3459 (−5,87%) contra a última da semana anterior, de quinta-feira 19/11/2026 (R$ 5,8889). Fonte: Banco Central do Brasil, via SGS 1 do Banco Central. Versão dos dados: 3b47396.</description>
+    </item>
     <item>
       <title>Dólar PTAX na semana de 16/11 a 20/11/2026: R$ 5,8889, +4,20% na semana</title>
       <link>https://observatoriodetaxas.tec.br/divulgacoes/dolar/2026-W47/</link>
